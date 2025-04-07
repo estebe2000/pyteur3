@@ -1,0 +1,1016 @@
+{
+  "localisation_cartographie_mobilite": [
+    {
+      "question": "Qu'est-ce que la latitude d'un point sur Terre ?",
+      "options": [
+        "Sa distance à l'équateur mesurée en kilomètres",
+        "Son angle par rapport au méridien de Greenwich",
+        "Son angle par rapport au plan de l'équateur, mesuré en degrés",
+        "Son altitude par rapport au niveau de la mer"
+      ],
+      "correct": "Son angle par rapport au plan de l'équateur, mesuré en degrés",
+      "explanation": "La latitude mesure la position Nord-Sud d'un point. Elle varie de 0° à l'équateur à 90° aux pôles (Nord ou Sud)."
+    },
+    {
+      "question": "Qu'est-ce que la longitude d'un point sur Terre ?",
+      "options": [
+        "Sa distance au pôle Nord",
+        "Son angle par rapport au plan de l'équateur",
+        "Son angle par rapport à un méridien de référence (Greenwich), mesuré en degrés",
+        "Sa vitesse de déplacement"
+      ],
+      "correct": "Son angle par rapport à un méridien de référence (Greenwich), mesuré en degrés",
+      "explanation": "La longitude mesure la position Est-Ouest d'un point. Elle varie de 0° au méridien de Greenwich à 180° Est ou Ouest."
+    },
+    {
+      "question": "Quel est le parallèle de référence pour la latitude, correspondant à 0° ?",
+      "options": [
+        "Le Tropique du Cancer",
+        "Le Cercle Polaire Arctique",
+        "L'Équateur",
+        "Le Méridien de Greenwich"
+      ],
+      "correct": "L'Équateur",
+      "explanation": "L'Équateur est le cercle imaginaire à égale distance des deux pôles, servant de référence (0°) pour mesurer la latitude."
+    },
+    {
+      "question": "Quel est le méridien de référence pour la longitude, correspondant à 0° ?",
+      "options": [
+        "Le Méridien de Paris",
+        "L'Équateur",
+        "Le Méridien de Greenwich",
+        "L'Antiméridien"
+      ],
+      "correct": "Le Méridien de Greenwich",
+      "explanation": "Le méridien passant par l'observatoire de Greenwich (Royaume-Uni) a été choisi par convention internationale comme origine (0°) pour mesurer la longitude."
+    },
+    {
+      "question": "Quelle unité est principalement utilisée pour exprimer la latitude et la longitude ?",
+      "options": [
+        "Kilomètres",
+        "Mètres par seconde",
+        "Degrés (°), minutes ('), secondes ('')",
+        "Radians"
+      ],
+      "correct": "Degrés (°), minutes ('), secondes ('')",
+      "explanation": "Les coordonnées géographiques sont des angles mesurés en degrés sexagésimaux (degrés, minutes, secondes) ou en degrés décimaux."
+    },
+    {
+      "question": "Qu'est-ce que l'altitude d'un lieu ?",
+      "options": [
+        "Sa position Est-Ouest",
+        "Sa distance au centre de la Terre",
+        "Son élévation verticale par rapport à un niveau de référence (souvent le niveau moyen de la mer)",
+        "Sa température moyenne"
+      ],
+      "correct": "Son élévation verticale par rapport à un niveau de référence (souvent le niveau moyen de la mer)",
+      "explanation": "L'altitude mesure la hauteur d'un point. Le niveau de référence le plus commun est le niveau moyen de la mer."
+    },
+    {
+      "question": "Quel système géodésique mondial est utilisé par le GPS comme référence pour les coordonnées ?",
+      "options": [
+        "NTF (Nouvelle Triangulation de la France)",
+        "ED50 (European Datum 1950)",
+        "WGS 84 (World Geodetic System 1984)",
+        "Lambert 93"
+      ],
+      "correct": "WGS 84 (World Geodetic System 1984)",
+      "explanation": "WGS 84 est le système de référence standard utilisé par le GPS pour définir la forme de la Terre (ellipsoïde) et l'origine des coordonnées."
+    },
+    {
+      "question": "Quel instrument historique permettait aux navigateurs de mesurer la hauteur des astres (Soleil, étoiles) au-dessus de l'horizon pour déterminer la latitude ?",
+      "options": [
+        "Une boussole",
+        "Un télescope",
+        "Un sextant",
+        "Un baromètre"
+      ],
+      "correct": "Un sextant",
+      "explanation": "Le sextant, inventé au 18ème siècle, permet de mesurer des angles, notamment la hauteur angulaire d'un astre, essentielle pour calculer la latitude en mer."
+    },
+    {
+      "question": "Que signifie l'acronyme GPS ?",
+      "options": [
+        "Global Positioning Satellite",
+        "Geographic Positioning System",
+        "Global Positioning System",
+        "General Purpose Software"
+      ],
+      "correct": "Global Positioning System",
+      "explanation": "GPS signifie Global Positioning System (Système Mondial de Positionnement). C'est le système américain de positionnement par satellite."
+    },
+    {
+      "question": "Sur quel principe mathématique repose principalement le calcul de la position par GPS ?",
+      "options": [
+        "La triangulation (mesure d'angles)",
+        "La trigonométrie sphérique",
+        "La trilatération (mesure de distances)",
+        "L'effet Doppler"
+      ],
+      "correct": "La trilatération (mesure de distances)",
+      "explanation": "Le récepteur GPS mesure le temps que met le signal à lui parvenir depuis plusieurs satellites. Connaissant la vitesse du signal, il calcule sa distance à chaque satellite et détermine sa position par intersection des sphères."
+    },
+    {
+      "question": "Combien de satellites GPS sont nécessaires au minimum pour obtenir une position 3D (latitude, longitude, altitude) et l'heure exacte ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct": "4",
+      "explanation": "Trois satellites suffisent pour calculer une position 2D (latitude, longitude) si l'altitude est connue. Un quatrième satellite est nécessaire pour déterminer l'altitude et synchroniser l'horloge du récepteur (corriger son décalage)."
+    },
+    {
+      "question": "Quels sont les trois segments composant le système GPS ?",
+      "options": [
+        "Terrestre, Aérien, Spatial",
+        "Spatial, Contrôle, Utilisateur",
+        "Militaire, Civil, Commercial",
+        "Émetteur, Récepteur, Processeur"
+      ],
+      "correct": "Spatial, Contrôle, Utilisateur",
+      "explanation": "Le segment spatial comprend les satellites, le segment contrôle gère le système depuis le sol, et le segment utilisateur concerne les récepteurs GPS."
+    },
+    {
+      "question": "Quelle information essentielle est transmise par les signaux GPS, permettant au récepteur de calculer sa distance aux satellites ?",
+      "options": [
+        "La température du satellite",
+        "L'heure d'émission précise du signal et les données orbitales du satellite (éphémérides)",
+        "La météo spatiale",
+        "L'identifiant unique du récepteur"
+      ],
+      "correct": "L'heure d'émission précise du signal et les données orbitales du satellite (éphémérides)",
+      "explanation": "Le récepteur compare l'heure d'émission reçue avec sa propre horloge pour calculer le temps de trajet. Les éphémérides indiquent la position exacte du satellite au moment de l'émission."
+    },
+    {
+      "question": "Laquelle de ces propositions est une source d'erreur affectant la précision du GPS ?",
+      "options": [
+        "La rotation de la Terre",
+        "Les retards du signal dus à la traversée de l'atmosphère (ionosphère, troposphère)",
+        "La présence de la Lune",
+        "Le champ magnétique terrestre"
+      ],
+      "correct": "Les retards du signal dus à la traversée de l'atmosphère (ionosphère, troposphère)",
+      "explanation": "L'atmosphère ralentit les signaux GPS. D'autres erreurs incluent les erreurs d'horloge, les erreurs orbitales et les trajets multiples (réflexions du signal)."
+    },
+    {
+      "question": "Quel est le nom du système de positionnement par satellite développé par l'Union Européenne ?",
+      "options": [
+        "GPS",
+        "GLONASS",
+        "Galileo",
+        "Beidou"
+      ],
+      "correct": "Galileo",
+      "explanation": "Galileo est le système civil européen, conçu pour être interopérable avec le GPS mais indépendant."
+    },
+    {
+      "question": "Quel pays a développé le système de positionnement par satellite GLONASS ?",
+      "options": [
+        "Les États-Unis",
+        "La Chine",
+        "L'Union Européenne",
+        "La Russie"
+      ],
+      "correct": "La Russie",
+      "explanation": "GLONASS (Globalnaya Navigatsionnaya Sputnikovaya Sistema) est le système de navigation par satellite russe."
+    },
+    {
+      "question": "Quel est le nom du système de navigation par satellite chinois ?",
+      "options": [
+        "GPS",
+        "Galileo",
+        "Beidou (BDS)",
+        "NavIC"
+      ],
+      "correct": "Beidou (BDS)",
+      "explanation": "Beidou est le système de navigation par satellite développé par la Chine."
+    },
+    {
+      "question": "Que signifie l'acronyme GNSS (souvent utilisé pour parler de GPS, Galileo, etc.) ?",
+      "options": [
+        "Global Navigation Satellite System",
+        "Geographic Network Survey System",
+        "General Navigation Safety Standard",
+        "Global Node Security System"
+      ],
+      "correct": "Global Navigation Satellite System",
+      "explanation": "GNSS est le terme générique désignant tout système de positionnement par satellite à couverture mondiale ou régionale."
+    },
+    {
+      "question": "Quelle est la différence fondamentale entre la trilatération (GPS) et la triangulation ?",
+      "options": [
+        "La trilatération utilise 3 points, la triangulation en utilise 4",
+        "La trilatération mesure des distances, la triangulation mesure des angles",
+        "La trilatération est utilisée en mer, la triangulation sur terre",
+        "Il n'y a pas de différence"
+      ],
+      "correct": "La trilatération mesure des distances, la triangulation mesure des angles",
+      "explanation": "Le GPS fonctionne par trilatération (mesure de la distance à des points connus). La triangulation (utilisée par exemple en géodésie classique) détermine une position en mesurant des angles depuis des points connus."
+    },
+    {
+      "question": "Comment fonctionne approximativement la localisation par 'Cell ID' (identifiant de cellule) des réseaux mobiles ?",
+      "options": [
+        "En mesurant la distance aux satellites GPS",
+        "En utilisant la boussole du téléphone",
+        "En identifiant l'antenne relais à laquelle le téléphone est connecté et en connaissant la position de cette antenne",
+        "En analysant les réseaux Wi-Fi environnants"
+      ],
+      "correct": "En identifiant l'antenne relais à laquelle le téléphone est connecté et en connaissant la position de cette antenne",
+      "explanation": "La localisation par Cell ID est peu précise mais rapide et économe en énergie. Elle donne la zone de couverture de l'antenne relais."
+    },
+    {
+      "question": "Comment fonctionne la localisation par Wi-Fi ?",
+      "options": [
+        "Le téléphone se connecte à un satellite Wi-Fi",
+        "Le téléphone détecte les réseaux Wi-Fi environnants et compare leurs identifiants (SSID, adresse MAC) à une base de données qui associe ces réseaux à des positions géographiques connues",
+        "Le téléphone mesure l'angle des signaux Wi-Fi",
+        "Le téléphone utilise le débit Wi-Fi pour calculer la distance"
+      ],
+      "correct": "Le téléphone détecte les réseaux Wi-Fi environnants et compare leurs identifiants (SSID, adresse MAC) à une base de données qui associe ces réseaux à des positions géographiques connues",
+      "explanation": "Cette méthode est efficace en intérieur où le GPS passe mal, mais nécessite une base de données de points d'accès Wi-Fi géolocalisés."
+    },
+    {
+      "question": "Qu'est-ce qu'une carte géographique ?",
+      "options": [
+        "Une photographie aérienne brute",
+        "Une représentation plane, simplifiée et conventionnelle de tout ou partie de la surface terrestre",
+        "Uniquement une liste de noms de lieux",
+        "Un globe terrestre"
+      ],
+      "correct": "Une représentation plane, simplifiée et conventionnelle de tout ou partie de la surface terrestre",
+      "explanation": "Une carte utilise des symboles, une échelle et une projection pour représenter l'espace géographique sur une surface plane."
+    },
+    {
+      "question": "Qu'indique l'échelle d'une carte ?",
+      "options": [
+        "Le niveau de détail des informations",
+        "Le rapport entre une distance mesurée sur la carte et la distance réelle correspondante sur le terrain",
+        "L'année de création de la carte",
+        "L'orientation de la carte (le Nord)"
+      ],
+      "correct": "Le rapport entre une distance mesurée sur la carte et la distance réelle correspondante sur le terrain",
+      "explanation": "Une échelle de 1:100 000 signifie que 1 cm sur la carte représente 100 000 cm (soit 1 km) sur le terrain."
+    },
+    {
+      "question": "À quoi sert la légende d'une carte ?",
+      "options": [
+        "À indiquer l'échelle",
+        "À raconter l'histoire de la région cartographiée",
+        "À expliquer la signification des symboles, couleurs et signes conventionnels utilisés sur la carte",
+        "À montrer l'orientation"
+      ],
+      "correct": "À expliquer la signification des symboles, couleurs et signes conventionnels utilisés sur la carte",
+      "explanation": "La légende est indispensable pour pouvoir interpréter et comprendre les informations représentées sur la carte."
+    },
+    {
+      "question": "Pourquoi une projection cartographique est-elle nécessaire pour créer une carte plane ?",
+      "options": [
+        "Pour ajouter de la couleur à la carte",
+        "Pour représenter la surface courbe de la Terre (sphère ou ellipsoïde) sur une surface plane (la carte)",
+        "Pour calculer l'échelle",
+        "Pour indiquer le Nord"
+      ],
+      "correct": "Pour représenter la surface courbe de la Terre (sphère ou ellipsoïde) sur une surface plane (la carte)",
+      "explanation": "Il est impossible de représenter parfaitement une surface courbe sur un plan sans déformation. Chaque projection choisit de préserver certaines propriétés (angles, surfaces, distances) au détriment des autres."
+    },
+    {
+      "question": "Quelle est la principale caractéristique (et déformation) de la projection de Mercator, souvent utilisée pour la navigation maritime ?",
+      "options": [
+        "Elle conserve parfaitement les surfaces (projection équivalente)",
+        "Elle conserve les angles (projection conforme), mais déforme énormément les surfaces près des pôles",
+        "Elle conserve les distances depuis le centre (projection équidistante)",
+        "Elle ne présente aucune déformation"
+      ],
+      "correct": "Elle conserve les angles (projection conforme), mais déforme énormément les surfaces près des pôles",
+      "explanation": "La conformité (conservation des angles) est utile pour la navigation car une route à cap constant (loxodromie) est représentée par une droite. Cependant, les zones polaires paraissent beaucoup plus grandes qu'elles ne le sont."
+    },
+    {
+      "question": "Quelle projection cartographique est connue pour tenter de représenter fidèlement les surfaces (projection équivalente), quitte à déformer les formes ?",
+      "options": [
+        "Mercator",
+        "Peters (ou Gall-Peters)",
+        "Stéréographique polaire",
+        "Orthographique"
+      ],
+      "correct": "Peters (ou Gall-Peters)",
+      "explanation": "La projection de Peters est une projection équivalente, c'est-à-dire qu'elle respecte les rapports de superficie entre les différentes régions du monde, contrairement à Mercator. Les formes sont cependant étirées."
+    },
+    {
+      "question": "Quelle célèbre carte de France, réalisée au 18ème siècle, fut la première à couvrir l'ensemble du royaume avec une base géométrique précise ?",
+      "options": [
+        "La Table de Peutinger",
+        "La Carte de Cassini",
+        "L'Atlas de Mercator",
+        "La Carte d'État-Major"
+      ],
+      "correct": "La Carte de Cassini",
+      "explanation": "Initiée par César-François Cassini, cette carte monumentale fut un jalon majeur dans la cartographie française, basée sur une triangulation géodésique du territoire."
+    },
+    {
+      "question": "Qu'est-ce que la Table de Peutinger ?",
+      "options": [
+        "Une carte moderne de l'Allemagne",
+        "Une carte marine du 16ème siècle",
+        "Une copie médiévale d'une ancienne carte romaine montrant les routes et les villes de l'Empire romain",
+        "Un manuel de navigation astronomique"
+      ],
+      "correct": "Une copie médiévale d'une ancienne carte romaine montrant les routes et les villes de l'Empire romain",
+      "explanation": "La Table de Peutinger est un document unique qui représente le réseau routier romain (cursus publicus) de manière schématique et très allongée, plutôt qu'une représentation géographique fidèle."
+    },
+    {
+      "question": "Que désigne un SIG (Système d'Information Géographique) ou GIS (Geographic Information System) ?",
+      "options": [
+        "Un type de satellite GPS",
+        "Un logiciel de dessin assisté par ordinateur",
+        "Un système informatique permettant de collecter, stocker, analyser et visualiser des données géographiques (données spatiales)",
+        "Un format de fichier image"
+      ],
+      "correct": "Un système informatique permettant de collecter, stocker, analyser et visualiser des données géographiques (données spatiales)",
+      "explanation": "Les SIG sont des outils puissants pour gérer et analyser des informations liées à leur localisation (ex: urbanisme, environnement, marketing)."
+    },
+    {
+      "question": "Dans un SIG, comment sont généralement représentés des éléments comme les routes, les rivières ou les frontières administratives ?",
+      "options": [
+        "Par des points",
+        "Par des lignes (données vectorielles)",
+        "Par des pixels (données raster)",
+        "Par du texte descriptif uniquement"
+      ],
+      "correct": "Par des lignes (données vectorielles)",
+      "explanation": "Le modèle vectoriel utilise des points, des lignes et des polygones pour représenter des objets géographiques discrets avec leurs coordonnées."
+    },
+    {
+      "question": "Dans un SIG, comment sont généralement représentées des informations continues comme l'altitude, la température ou une image satellite ?",
+      "options": [
+        "Par des points isolés",
+        "Par des lignes connectées",
+        "Par une grille de cellules ou pixels (données raster)",
+        "Par des polygones administratifs"
+      ],
+      "correct": "Par une grille de cellules ou pixels (données raster)",
+      "explanation": "Le modèle raster divise l'espace en une grille régulière, chaque cellule (pixel) ayant une valeur représentant l'information mesurée à cet endroit."
+    },
+    {
+      "question": "Laquelle de ces applications relève typiquement de l'utilisation d'un SIG ?",
+      "options": [
+        "Le traitement de texte",
+        "L'analyse de l'impact d'une nouvelle route sur l'environnement",
+        "La retouche de photos de vacances",
+        "La gestion de la comptabilité d'une entreprise"
+      ],
+      "correct": "L'analyse de l'impact d'une nouvelle route sur l'environnement",
+      "explanation": "Les SIG permettent de croiser différentes couches d'informations géographiques (relief, occupation du sol, zones protégées, tracé de la route) pour réaliser des analyses spatiales complexes."
+    },
+    {
+      "question": "Quel est l'objectif principal d'un algorithme de calcul d'itinéraire (routing) ?",
+      "options": [
+        "Trouver le chemin le plus beau",
+        "Trouver le chemin le plus court ou le plus rapide entre deux points sur un réseau (routier, piéton...)",
+        "Identifier tous les chemins possibles",
+        "Calculer la distance à vol d'oiseau"
+      ],
+      "correct": "Trouver le chemin le plus court ou le plus rapide entre deux points sur un réseau (routier, piéton...)",
+      "explanation": "Les algorithmes de routage cherchent à optimiser un critère (distance, temps, coût) pour trouver le meilleur itinéraire dans un graphe représentant le réseau."
+    },
+    {
+      "question": "Quel algorithme classique est souvent utilisé pour trouver le chemin le plus court dans un graphe pondéré (comme un réseau routier avec des distances ou des temps) ?",
+      "options": [
+        "L'algorithme de tri rapide (Quicksort)",
+        "L'algorithme de Dijkstra",
+        "L'algorithme de compression LZW",
+        "L'algorithme de recherche binaire"
+      ],
+      "correct": "L'algorithme de Dijkstra",
+      "explanation": "L'algorithme de Dijkstra explore progressivement le graphe à partir du point de départ pour trouver le chemin le moins coûteux vers toutes les autres destinations, y compris la destination finale."
+    },
+    {
+      "question": "Quelles données sont essentielles pour un système de navigation (GPS auto, smartphone) afin de calculer un itinéraire réaliste ?",
+      "options": [
+        "Uniquement la position de départ et d'arrivée",
+        "La carte du réseau routier (graphe), les limitations de vitesse, les sens uniques, et idéalement l'information trafic en temps réel",
+        "La marque et le modèle du véhicule",
+        "La météo prévue"
+      ],
+      "correct": "La carte du réseau routier (graphe), les limitations de vitesse, les sens uniques, et idéalement l'information trafic en temps réel",
+      "explanation": "Le calcul d'itinéraire nécessite une description précise du réseau et des contraintes de circulation pour estimer les temps de parcours et proposer le meilleur chemin."
+    },
+    {
+      "question": "Comment les applications de navigation obtiennent-elles souvent l'information trafic en temps réel ?",
+      "options": [
+        "En analysant les bulletins météo",
+        "Grâce aux données de vitesse et de localisation anonymisées envoyées par les smartphones des autres utilisateurs de l'application",
+        "En se connectant aux satellites météo",
+        "En lisant les journaux locaux"
+      ],
+      "correct": "Grâce aux données de vitesse et de localisation anonymisées envoyées par les smartphones des autres utilisateurs de l'application",
+      "explanation": "Le crowdsourcing (collecte de données auprès de la foule d'utilisateurs) est une source majeure d'information trafic, complétée par des capteurs routiers ou des partenariats."
+    },
+    {
+      "question": "Que signifie faire du covoiturage (carpooling) ?",
+      "options": [
+        "Louer une voiture à plusieurs",
+        "Utiliser sa voiture personnelle pour transporter d'autres personnes effectuant un trajet similaire, en partageant les frais",
+        "Prendre les transports en commun",
+        "Utiliser un service de VTC (Véhicule de Tourisme avec Chauffeur)"
+      ],
+      "correct": "Utiliser sa voiture personnelle pour transporter d'autres personnes effectuant un trajet similaire, en partageant les frais",
+      "explanation": "Le covoiturage vise à optimiser l'utilisation des véhicules en regroupant des personnes ayant des trajets compatibles, souvent via des plateformes dédiées."
+    },
+    {
+      "question": "Lequel de ces capteurs est essentiel pour la perception de l'environnement par une voiture autonome ?",
+      "options": [
+        "Un thermomètre",
+        "Un capteur de pluie",
+        "Le LIDAR (télédétection par laser), les caméras, les radars",
+        "Un microphone"
+      ],
+      "correct": "Le LIDAR (télédétection par laser), les caméras, les radars",
+      "explanation": "Les véhicules autonomes combinent les données de multiples capteurs (LIDAR pour une cartographie 3D précise, caméras pour la reconnaissance visuelle, radars pour la détection d'objets et la mesure de vitesse) pour 'voir' et comprendre leur environnement."
+    },
+    {
+      "question": "Qu'est-ce qui distingue principalement les différents niveaux d'autonomie d'un véhicule (selon la classification SAE J3016) ?",
+      "options": [
+        "La vitesse maximale du véhicule",
+        "La couleur du véhicule",
+        "Le degré d'intervention requis de la part du conducteur humain et les conditions dans lesquelles le système autonome peut fonctionner",
+        "Le type de moteur (électrique ou thermique)"
+      ],
+      "correct": "Le degré d'intervention requis de la part du conducteur humain et les conditions dans lesquelles le système autonome peut fonctionner",
+      "explanation": "Les niveaux vont de 0 (aucune aide) à 5 (autonomie complète dans toutes les conditions, sans conducteur humain nécessaire)."
+    },
+    {
+      "question": "Laquelle de ces applications est un exemple de 'service basé sur la localisation' (Location-Based Service - LBS) ?",
+      "options": [
+        "Un éditeur de texte",
+        "Une application météo affichant la météo de votre position actuelle",
+        "Une calculatrice scientifique",
+        "Un lecteur de musique"
+      ],
+      "correct": "Une application météo affichant la météo de votre position actuelle",
+      "explanation": "Les LBS utilisent la position géographique de l'utilisateur pour lui fournir des informations ou des services pertinents (météo locale, restaurants à proximité, offres promotionnelles géolocalisées...)."
+    },
+    {
+      "question": "Que sont les 'données de géolocalisation' ?",
+      "options": [
+        "Des informations sur la météo",
+        "Des informations indiquant la position géographique d'un objet ou d'une personne à un moment donné",
+        "Des statistiques démographiques",
+        "Des données sur le trafic routier uniquement"
+      ],
+      "correct": "Des informations indiquant la position géographique d'un objet ou d'une personne à un moment donné",
+      "explanation": "Ces données (coordonnées, timestamp) sont considérées comme des données personnelles et soulèvent des enjeux de vie privée."
+    },
+    {
+      "question": "Quel est le principal risque pour la vie privée lié à la collecte et à l'utilisation des données de géolocalisation ?",
+      "options": [
+        "La décharge rapide de la batterie du téléphone",
+        "Le suivi des déplacements et des habitudes des individus, potentiellement sans leur consentement éclairé ou à des fins malveillantes",
+        "La saturation de la mémoire du téléphone",
+        "La réception de publicités non ciblées"
+      ],
+      "correct": "Le suivi des déplacements et des habitudes des individus, potentiellement sans leur consentement éclairé ou à des fins malveillantes",
+      "explanation": "L'historique de localisation peut révéler des informations très sensibles sur la vie d'une personne (domicile, travail, lieux fréquentés, routines)."
+    },
+    {
+      "question": "Quel format de fichier basé sur XML est couramment utilisé pour échanger des données GPS (points de cheminement, traces, itinéraires) ?",
+      "options": [
+        "CSV",
+        "KML",
+        "GPX (GPS Exchange Format)",
+        "TXT"
+      ],
+      "correct": "GPX (GPS Exchange Format)",
+      "explanation": "GPX est un standard ouvert permettant de partager facilement des données GPS entre différentes applications et appareils."
+    },
+    {
+      "question": "Quel format de fichier, également basé sur XML et popularisé par Google Earth, est utilisé pour représenter des données géographiques (points, lignes, polygones, images) dans un contexte de cartographie virtuelle ?",
+      "options": [
+        "GPX",
+        "Shapefile (.shp)",
+        "KML (Keyhole Markup Language)",
+        "GeoJSON"
+      ],
+      "correct": "KML (Keyhole Markup Language)",
+      "explanation": "KML permet de décrire des annotations géographiques et des visualisations pour des logiciels comme Google Earth ou Google Maps."
+    },
+    {
+      "question": "Quel protocole de communication série est standard pour la transmission de données GPS (position, vitesse, heure...) entre un récepteur GPS et un autre appareil (ordinateur, smartphone) ?",
+      "options": [
+        "HTTP",
+        "Bluetooth",
+        "NMEA 0183",
+        "Wi-Fi Direct"
+      ],
+      "correct": "NMEA 0183",
+      "explanation": "NMEA 0183 définit un format de phrases textuelles (ex: $GPGGA, $GPRMC) transmettant les informations calculées par le récepteur GPS."
+    },
+    {
+      "question": "À quoi sert une centrale inertielle (IMU - Inertial Measurement Unit) dans un smartphone ou un système de navigation ?",
+      "options": [
+        "À mesurer la température",
+        "À capter les signaux GPS",
+        "À mesurer les mouvements et l'orientation (accélération, vitesse de rotation) grâce à des accéléromètres et des gyroscopes",
+        "À se connecter au réseau Wi-Fi"
+      ],
+      "correct": "À mesurer les mouvements et l'orientation (accélération, vitesse de rotation) grâce à des accéléromètres et des gyroscopes",
+      "explanation": "L'IMU permet d'estimer la position et l'orientation même en l'absence de signal GPS (navigation à l'estime), ou d'améliorer la précision du positionnement."
+    },
+    {
+      "question": "Qu'est-ce que la navigation à l'estime (dead reckoning) ?",
+      "options": [
+        "Utiliser uniquement les étoiles pour naviguer",
+        "Calculer sa position actuelle en utilisant une position précédemment déterminée et en y ajoutant les déplacements estimés (vitesse, direction, temps)",
+        "Suivre une carte routière papier",
+        "Demander son chemin à d'autres personnes"
+      ],
+      "correct": "Calculer sa position actuelle en utilisant une position précédemment déterminée et en y ajoutant les déplacements estimés (vitesse, direction, temps)",
+      "explanation": "C'est une méthode ancienne, aujourd'hui aidée par les centrales inertielles, mais qui accumule les erreurs au fil du temps sans recalage (ex: par GPS)."
+    },
+    {
+      "question": "Qu'est-ce que l'A-GPS (Assisted GPS) ?",
+      "options": [
+        "Un GPS spécialement conçu pour les avions",
+        "Un système qui utilise les réseaux mobiles (ou Wi-Fi) pour télécharger rapidement les données orbitales des satellites (éphémérides), accélérant ainsi l'obtention de la première position (TTFF)",
+        "Un GPS qui donne des instructions vocales",
+        "Un GPS avec un écran plus grand"
+      ],
+      "correct": "Un système qui utilise les réseaux mobiles (ou Wi-Fi) pour télécharger rapidement les données orbitales des satellites (éphémérides), accélérant ainsi l'obtention de la première position (TTFF)",
+      "explanation": "L'A-GPS améliore le temps de démarrage du GPS ('Time To First Fix') en obtenant les informations nécessaires via une connexion de données plutôt qu'en les attendant directement des satellites."
+    },
+    {
+      "question": "Quel est le principe du GPS différentiel (DGPS) ?",
+      "options": [
+        "Utiliser deux récepteurs GPS en même temps",
+        "Utiliser des stations terrestres de référence à des positions connues pour calculer les erreurs GPS locales et transmettre des corrections aux récepteurs mobiles à proximité, améliorant ainsi leur précision",
+        "Utiliser uniquement les satellites Galileo",
+        "Crypter les signaux GPS"
+      ],
+      "correct": "Utiliser des stations terrestres de référence à des positions connues pour calculer les erreurs GPS locales et transmettre des corrections aux récepteurs mobiles à proximité, améliorant ainsi leur précision",
+      "explanation": "Le DGPS permet d'atteindre une précision de l'ordre du mètre, voire moins, en corrigeant les erreurs communes (atmosphériques, orbitales)."
+    },
+    {
+      "question": "Qu'est-ce que le géocodage (geocoding) ?",
+      "options": [
+        "Convertir des coordonnées géographiques (latitude, longitude) en une adresse postale",
+        "Convertir une adresse postale en coordonnées géographiques (latitude, longitude)",
+        "Crypter des données de localisation",
+        "Dessiner une carte"
+      ],
+      "correct": "Convertir une adresse postale en coordonnées géographiques (latitude, longitude)",
+      "explanation": "Le géocodage permet de placer une adresse sur une carte en lui attribuant des coordonnées."
+    },
+    {
+      "question": "Qu'est-ce que le géocodage inversé (reverse geocoding) ?",
+      "options": [
+        "Convertir une adresse en coordonnées",
+        "Trouver l'itinéraire entre deux adresses",
+        "Convertir des coordonnées géographiques (latitude, longitude) en une adresse postale ou un nom de lieu lisible par l'homme",
+        "Calculer la distance entre deux points"
+      ],
+      "correct": "Convertir des coordonnées géographiques (latitude, longitude) en une adresse postale ou un nom de lieu lisible par l'homme",
+      "explanation": "Le géocodage inversé permet de savoir où l'on se trouve en termes d'adresse à partir de coordonnées GPS."
+    },
+    {
+      "question": "Quelle est la particularité d'OpenStreetMap (OSM) ?",
+      "options": [
+        "C'est un service de cartographie appartenant à Google",
+        "C'est un projet collaboratif mondial visant à créer une carte du monde libre et modifiable par tous, sous licence ouverte",
+        "C'est une ancienne carte historique",
+        "C'est un système de navigation par satellite"
+      ],
+      "correct": "C'est un projet collaboratif mondial visant à créer une carte du monde libre et modifiable par tous, sous licence ouverte",
+      "explanation": "OSM est souvent qualifié de 'Wikipedia des cartes'. Ses données sont collectées par des contributeurs bénévoles et sont réutilisables librement."
+    },
+    {
+      "question": "Lequel de ces services est un exemple de service de cartographie en ligne (Web mapping) ?",
+      "options": [
+        "Microsoft Word",
+        "Adobe Photoshop",
+        "Google Maps, OpenStreetMap, Géoportail",
+        "WinRAR"
+      ],
+      "correct": "Google Maps, OpenStreetMap, Géoportail",
+      "explanation": "Ces services permettent de visualiser des cartes, de rechercher des lieux et souvent de calculer des itinéraires via un navigateur web ou une application mobile."
+    },
+    {
+      "question": "Quelle est la principale source des images aériennes ou satellitaires que l'on voit sur les services de cartographie en ligne ?",
+      "options": [
+        "Des dessins faits à la main",
+        "Des photographies prises depuis des avions ou des satellites d'observation de la Terre",
+        "Des modèles 3D générés par ordinateur",
+        "Des cartes anciennes scannées"
+      ],
+      "correct": "Des photographies prises depuis des avions ou des satellites d'observation de la Terre",
+      "explanation": "L'imagerie satellitaire et la photographie aérienne (orthophotographie) fournissent une vue réaliste du territoire, souvent utilisée comme fond de carte."
+    },
+    {
+      "question": "Pourquoi les satellites GPS embarquent-ils des horloges atomiques extrêmement précises ?",
+      "options": [
+        "Pour économiser de l'énergie",
+        "Parce que le calcul de la distance est basé sur la mesure très précise du temps de trajet du signal (Distance = Vitesse x Temps)",
+        "Pour résister aux conditions spatiales",
+        "Pour afficher l'heure aux utilisateurs"
+      ],
+      "correct": "Parce que le calcul de la distance est basé sur la mesure très précise du temps de trajet du signal (Distance = Vitesse x Temps)",
+      "explanation": "Une minuscule erreur de temps (même de quelques nanosecondes) se traduirait par une erreur de positionnement importante, car le signal voyage à la vitesse de la lumière."
+    },
+    {
+      "question": "Qu'est-ce que le géoïde ?",
+      "options": [
+        "La forme mathématique parfaite de la Terre (sphère)",
+        "Une forme géométrique utilisée pour les projections cartographiques",
+        "La surface équipotentielle du champ de pesanteur terrestre qui coïncide le mieux avec le niveau moyen des mers",
+        "Le nom d'un satellite GPS"
+      ],
+      "correct": "La surface équipotentielle du champ de pesanteur terrestre qui coïncide le mieux avec le niveau moyen des mers",
+      "explanation": "Le géoïde est une surface de référence plus complexe qu'un ellipsoïde, utilisée pour définir précisément les altitudes (altitude 'orthométrique')."
+    },
+    {
+      "question": "Quelle forme mathématique simple est utilisée par des systèmes comme WGS 84 pour approximer la forme de la Terre ?",
+      "options": [
+        "Un cube",
+        "Un plan infini",
+        "Un ellipsoïde de révolution",
+        "Un cylindre"
+      ],
+      "correct": "Un ellipsoïde de révolution",
+      "explanation": "Un ellipsoïde (une sphère légèrement aplatie aux pôles) est une bonne approximation mathématique de la forme globale de la Terre, utilisée comme référence pour les coordonnées géographiques (latitude, longitude)."
+    },
+    {
+      "question": "Quelle est la différence entre les coordonnées en degrés décimaux (DD) et en degrés, minutes, secondes (DMS) ?",
+      "options": [
+        "Aucune, c'est la même chose",
+        "DD utilise des chiffres après la virgule (ex: 48.85°), DMS utilise des subdivisions sexagésimales (ex: 48° 51' 12'')",
+        "DD est utilisé pour la latitude, DMS pour la longitude",
+        "DD est plus précis que DMS"
+      ],
+      "correct": "DD utilise des chiffres après la virgule (ex: 48.85°), DMS utilise des subdivisions sexagésimales (ex: 48° 51' 12'')",
+      "explanation": "Ce sont deux manières différentes d'écrire la même coordonnée angulaire. Les systèmes informatiques utilisent souvent les degrés décimaux."
+    },
+    {
+      "question": "Sur une carte, à quoi sert la flèche indiquant le Nord ?",
+      "options": [
+        "À indiquer l'échelle",
+        "À orienter la carte, c'est-à-dire à faire correspondre les directions de la carte avec celles du terrain",
+        "À montrer la direction du vent dominant",
+        "À indiquer la date de la carte"
+      ],
+      "correct": "À orienter la carte, c'est-à-dire à faire correspondre les directions de la carte avec celles du terrain",
+      "explanation": "L'orientation (généralement le Nord géographique) permet de s'orienter sur le terrain en utilisant la carte et éventuellement une boussole."
+    },
+    {
+      "question": "Que représentent les lignes de niveau (ou courbes de niveau) sur une carte topographique ?",
+      "options": [
+        "Les limites administratives",
+        "Les routes et chemins",
+        "Les lignes imaginaires reliant tous les points situés à la même altitude",
+        "Les zones de végétation"
+      ],
+      "correct": "Les lignes imaginaires reliant tous les points situés à la même altitude",
+      "explanation": "Les courbes de niveau permettent de représenter le relief : des lignes rapprochées indiquent une pente forte, des lignes espacées une pente faible."
+    },
+    {
+      "question": "Que représente une carte thématique ?",
+      "options": [
+        "Uniquement le relief et les routes",
+        "La distribution spatiale d'un phénomène particulier (ex: densité de population, résultats électoraux, données climatiques)",
+        "Une carte très ancienne",
+        "Une carte à très grande échelle"
+      ],
+      "correct": "La distribution spatiale d'un phénomène particulier (ex: densité de population, résultats électoraux, données climatiques)",
+      "explanation": "Contrairement aux cartes topographiques (générales), les cartes thématiques se concentrent sur un sujet spécifique."
+    },
+    {
+      "question": "Quel type de carte représente principalement le relief, les cours d'eau, les routes et les localités ?",
+      "options": [
+        "Une carte thématique",
+        "Une carte topographique",
+        "Une carte géologique",
+        "Une carte climatique"
+      ],
+      "correct": "Une carte topographique",
+      "explanation": "Les cartes topographiques (comme les cartes IGN en France) donnent une représentation détaillée des éléments physiques et humains du terrain."
+    },
+    {
+      "question": "Comment appelle-t-on une carte thématique où les différentes zones géographiques (pays, régions, départements) sont colorées en fonction de la valeur d'une variable statistique ?",
+      "options": [
+        "Une carte topographique",
+        "Une carte en courbes de niveau",
+        "Une carte choroplèthe",
+        "Une carte routière"
+      ],
+      "correct": "Une carte choroplèthe",
+      "explanation": "Les cartes choroplèthes utilisent des aplats de couleur ou des motifs pour représenter des données quantitatives agrégées par unité administrative."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'carte de chaleur' (heatmap) dans un contexte cartographique ?",
+      "options": [
+        "Une carte indiquant les températures météo",
+        "Une visualisation qui utilise des couleurs (souvent du bleu/vert au rouge/jaune) pour représenter la densité ou l'intensité d'un phénomène en différents points de l'espace",
+        "Une carte indiquant les zones à risque d'incendie",
+        "Une carte des courants marins chauds"
+      ],
+      "correct": "Une visualisation qui utilise des couleurs (souvent du bleu/vert au rouge/jaune) pour représenter la densité ou l'intensité d'un phénomène en différents points de l'espace",
+      "explanation": "Les heatmaps sont utiles pour visualiser la concentration de points (ex: accidents, crimes, tweets géolocalisés)."
+    },
+    {
+      "question": "Qu'est-ce que le 'geofencing' (ou géorepérage) ?",
+      "options": [
+        "Construire une clôture physique autour d'une zone",
+        "La création d'une frontière virtuelle autour d'une zone géographique réelle, permettant de déclencher une action lorsqu'un appareil entre ou sort de cette zone",
+        "Une technique de cryptage de données GPS",
+        "Une méthode de projection cartographique"
+      ],
+      "correct": "La création d'une frontière virtuelle autour d'une zone géographique réelle, permettant de déclencher une action lorsqu'un appareil entre ou sort de cette zone",
+      "explanation": "Le geofencing est utilisé pour la publicité ciblée, les rappels géolocalisés, le suivi de flotte, la sécurité des enfants, etc."
+    },
+    {
+      "question": "Comment un système de navigation peut-il proposer un itinéraire alternatif pour éviter un bouchon ?",
+      "options": [
+        "En arrêtant le calcul d'itinéraire",
+        "En intégrant l'information trafic en temps réel pour recalculer les temps de parcours sur les différents segments routiers et trouver un nouveau chemin optimal",
+        "En ignorant le bouchon",
+        "En proposant de faire demi-tour"
+      ],
+      "correct": "En intégrant l'information trafic en temps réel pour recalculer les temps de parcours sur les différents segments routiers et trouver un nouveau chemin optimal",
+      "explanation": "L'information trafic (ralentissements, accidents) modifie les 'poids' (temps de parcours) des arcs du graphe routier, ce qui peut rendre un autre chemin plus rapide."
+    },
+    {
+      "question": "Quel est l'un des principaux défis technologiques pour la localisation précise en intérieur (indoor positioning) ?",
+      "options": [
+        "La faible luminosité",
+        "L'absence ou la forte atténuation des signaux GPS à l'intérieur des bâtiments",
+        "La vitesse de déplacement élevée",
+        "La présence de trop de personnes"
+      ],
+      "correct": "L'absence ou la forte atténuation des signaux GPS à l'intérieur des bâtiments",
+      "explanation": "Le GPS fonctionne mal en intérieur, ce qui nécessite d'utiliser d'autres technologies (Wi-Fi, Bluetooth beacons, UWB, centrales inertielles)."
+    },
+    {
+      "question": "Quelle technologie utilise de petites balises émettant des signaux Bluetooth de faible énergie pour permettre la localisation approximative en intérieur ?",
+      "options": [
+        "Le GPS",
+        "Le NFC",
+        "Les balises BLE (Bluetooth Low Energy)",
+        "Le LIDAR"
+      ],
+      "correct": "Les balises BLE (Bluetooth Low Energy)",
+      "explanation": "Les beacons BLE diffusent un identifiant unique. Un smartphone détectant ces signaux peut estimer sa proximité avec les balises et déterminer sa position relative."
+    },
+    {
+      "question": "Qu'est-ce que l'effet 'canyon urbain' sur la réception GPS ?",
+      "options": [
+        "Une amélioration du signal GPS en ville",
+        "Le blocage ou la réflexion des signaux GPS par les hauts bâtiments dans les rues étroites, réduisant la précision et la disponibilité du positionnement",
+        "Un écho sonore particulier dans les rues",
+        "Une augmentation de la température due aux bâtiments"
+      ],
+      "correct": "Le blocage ou la réflexion des signaux GPS par les hauts bâtiments dans les rues étroites, réduisant la précision et la disponibilité du positionnement",
+      "explanation": "Les bâtiments masquent une partie du ciel, limitant le nombre de satellites visibles, et provoquent des erreurs de trajets multiples (multipath)."
+    },
+    {
+      "question": "Quelle couche de l'atmosphère, contenant des particules chargées, provoque un retard important et variable des signaux GPS ?",
+      "options": [
+        "La troposphère",
+        "La stratosphère",
+        "L'ionosphère",
+        "La mésosphère"
+      ],
+      "correct": "L'ionosphère",
+      "explanation": "L'ionosphère (entre 60 et 1000 km d'altitude) affecte la propagation des ondes radio. Les récepteurs GPS bi-fréquence peuvent mieux estimer et corriger ce retard."
+    },
+    {
+      "question": "Quelle erreur GPS est causée par la réflexion du signal sur des surfaces (bâtiments, sol) avant qu'il n'atteigne le récepteur ?",
+      "options": [
+        "L'erreur d'horloge du satellite",
+        "Le retard ionosphérique",
+        "L'erreur de trajets multiples (multipath)",
+        "L'erreur d'éphéméride"
+      ],
+      "correct": "L'erreur de trajets multiples (multipath)",
+      "explanation": "Le récepteur reçoit à la fois le signal direct et des signaux réfléchis qui ont parcouru une distance plus longue, ce qui fausse le calcul de la distance réelle au satellite."
+    },
+    {
+      "question": "Qu'est-ce que le 'geotagging' (ou géomarquage) ?",
+      "options": [
+        "Dessiner une carte",
+        "Ajouter des métadonnées de coordonnées géographiques (latitude, longitude) à un contenu numérique (photo, vidéo, message)",
+        "Crypter une position géographique",
+        "Calculer un itinéraire"
+      ],
+      "correct": "Ajouter des métadonnées de coordonnées géographiques (latitude, longitude) à un contenu numérique (photo, vidéo, message)",
+      "explanation": "Le géomarquage permet de savoir où une photo a été prise ou d'où un message a été envoyé."
+    },
+    {
+      "question": "Que désigne le concept de 'Mobility as a Service' (MaaS) ?",
+      "options": [
+        "La vente de voitures comme service",
+        "L'intégration de différents services de transport (public, covoiturage, vélos/trottinettes en libre-service, VTC...) dans une seule interface numérique pour planifier et payer ses trajets",
+        "Un service de réparation de trottinettes",
+        "Un nouveau type de GPS"
+      ],
+      "correct": "L'intégration de différents services de transport (public, covoiturage, vélos/trottinettes en libre-service, VTC...) dans une seule interface numérique pour planifier et payer ses trajets",
+      "explanation": "Le MaaS vise à offrir une alternative à la voiture individuelle en facilitant l'accès et l'utilisation combinée de divers modes de transport."
+    },
+    {
+      "question": "Comment la cartographie et les SIG peuvent-ils aider à l'urbanisme ?",
+      "options": [
+        "En choisissant la couleur des bâtiments",
+        "En analysant l'occupation du sol, en simulant l'impact de nouveaux aménagements, en planifiant les réseaux de transport et d'énergie",
+        "En comptant le nombre d'habitants uniquement",
+        "En dessinant des plans de maisons individuelles"
+      ],
+      "correct": "En analysant l'occupation du sol, en simulant l'impact de nouveaux aménagements, en planifiant les réseaux de transport et d'énergie",
+      "explanation": "Les SIG sont des outils essentiels pour la planification urbaine, permettant de visualiser et d'analyser les données spatiales pour prendre des décisions éclairées."
+    },
+    {
+      "question": "Comment les données de localisation peuvent-elles être utilisées en épidémiologie (étude des maladies) ?",
+      "options": [
+        "Pour prédire la météo",
+        "Pour cartographier la propagation d'une épidémie, identifier des foyers d'infection et analyser les facteurs environnementaux liés à la maladie",
+        "Pour compter le nombre de médecins",
+        "Pour vendre des médicaments en ligne"
+      ],
+      "correct": "Pour cartographier la propagation d'une épidémie, identifier des foyers d'infection et analyser les facteurs environnementaux liés à la maladie",
+      "explanation": "La dimension spatiale est cruciale en épidémiologie. La cartographie aide à comprendre comment les maladies se diffusent et où intervenir."
+    },
+    {
+      "question": "Quel est l'avantage principal du GPS pour l'agriculture de précision ?",
+      "options": [
+        "Permettre aux agriculteurs de regarder des vidéos dans leur tracteur",
+        "Guider très précisément les machines agricoles pour optimiser les semis, la fertilisation et les traitements en fonction des besoins spécifiques de chaque zone de la parcelle",
+        "Prévoir les récoltes des voisins",
+        "Augmenter la vitesse des tracteurs"
+      ],
+      "correct": "Guider très précisément les machines agricoles pour optimiser les semis, la fertilisation et les traitements en fonction des besoins spécifiques de chaque zone de la parcelle",
+      "explanation": "L'agriculture de précision utilise le GPS et d'autres capteurs pour moduler les interventions au sein d'une même parcelle, économisant ainsi les intrants et réduisant l'impact environnemental."
+    },
+    {
+      "question": "Comment le GPS aide-t-il les services d'urgence (comme le SAMU ou les pompiers) ?",
+      "options": [
+        "En leur donnant la météo",
+        "En localisant précisément l'appelant (via E112/AML sur mobile) et en guidant rapidement les véhicules d'intervention vers le lieu de l'incident",
+        "En gérant leur planning",
+        "En mesurant leur vitesse de déplacement"
+      ],
+      "correct": "En localisant précisément l'appelant (via E112/AML sur mobile) et en guidant rapidement les véhicules d'intervention vers le lieu de l'incident",
+      "explanation": "La localisation précise et rapide est vitale dans les situations d'urgence pour réduire les délais d'intervention."
+    },
+    {
+      "question": "Qu'est-ce qu'un Système de Coordonnées de Référence (SCR) ou Coordinate Reference System (CRS) ?",
+      "options": [
+        "Un type de GPS",
+        "Un système qui définit comment les coordonnées (2D ou 3D) se rapportent à des lieux réels sur Terre (incluant le système géodésique et la projection)",
+        "Un logiciel de cartographie",
+        "Une échelle de carte"
+      ],
+      "correct": "Un système qui définit comment les coordonnées (2D ou 3D) se rapportent à des lieux réels sur Terre (incluant le système géodésique et la projection)",
+      "explanation": "Il est crucial d'utiliser le même SCR (ex: WGS 84, Lambert 93) lors de la combinaison de différentes couches de données géographiques pour qu'elles se superposent correctement."
+    },
+    {
+      "question": "Quelle est la différence entre un système de coordonnées géographique (comme WGS 84) et un système de coordonnées projetées (comme Lambert 93) ?",
+      "options": [
+        "Il n'y a pas de différence",
+        "Le système géographique utilise des coordonnées angulaires (latitude, longitude) sur un ellipsoïde, tandis que le système projeté utilise des coordonnées cartésiennes (X, Y) sur une carte plane",
+        "Le système géographique est utilisé pour les petites zones, le projeté pour le monde entier",
+        "Le système géographique est en 3D, le projeté est en 2D uniquement"
+      ],
+      "correct": "Le système géographique utilise des coordonnées angulaires (latitude, longitude) sur un ellipsoïde, tandis que le système projeté utilise des coordonnées cartésiennes (X, Y) sur une carte plane",
+      "explanation": "Les coordonnées projetées (exprimées en mètres) sont issues d'une projection cartographique et sont pratiques pour mesurer des distances et des surfaces sur la carte, mais sont valides uniquement dans la zone de la projection."
+    },
+    {
+      "question": "Quel système de coordonnées projetées est officiel et couramment utilisé pour la France métropolitaine ?",
+      "options": [
+        "Mercator Universel Transverse (UTM)",
+        "WGS 84",
+        "Lambert 93",
+        "Stéréographique Polaire"
+      ],
+      "correct": "Lambert 93",
+      "explanation": "Lambert 93 est la projection conique conforme officielle en France métropolitaine, utilisée notamment par l'IGN."
+    },
+    {
+      "question": "Qu'est-ce qu'une API (Interface de Programmation d'Application) dans le contexte de la cartographie ?",
+      "options": [
+        "Un format de carte",
+        "Un ensemble de fonctions et de protocoles permettant à un développeur d'intégrer des fonctionnalités de cartographie (afficher une carte, calculer un itinéraire, géocoder...) dans sa propre application",
+        "Un type de satellite",
+        "Un appareil de mesure GPS"
+      ],
+      "correct": "Un ensemble de fonctions et de protocoles permettant à un développeur d'intégrer des fonctionnalités de cartographie (afficher une carte, calculer un itinéraire, géocoder...) dans sa propre application",
+      "explanation": "Des API comme celles de Google Maps, OpenLayers ou Leaflet permettent de créer facilement des applications web ou mobiles utilisant des cartes interactives."
+    },
+    {
+      "question": "Quelle technologie utilise des impulsions laser pour mesurer des distances et créer des nuages de points 3D très précis de l'environnement, souvent utilisée pour la cartographie et les véhicules autonomes ?",
+      "options": [
+        "Le Radar",
+        "Le Sonar",
+        "Le LIDAR (Light Detection and Ranging)",
+        "La Photogrammétrie"
+      ],
+      "correct": "Le LIDAR (Light Detection and Ranging)",
+      "explanation": "Le LIDAR mesure le temps de retour d'un faisceau laser réfléchi pour cartographier en détail la topographie ou les objets environnants."
+    },
+    {
+      "question": "Pourquoi est-il important de mettre à jour régulièrement les cartes (routières, topographiques) ?",
+      "options": [
+        "Parce que les couleurs passent avec le temps",
+        "Parce que le territoire évolue constamment (nouvelles routes, nouveaux bâtiments, changements d'occupation du sol...)",
+        "Pour justifier le prix des GPS",
+        "Ce n'est pas important"
+      ],
+      "correct": "Parce que le territoire évolue constamment (nouvelles routes, nouveaux bâtiments, changements d'occupation du sol...)",
+      "explanation": "Des cartes obsolètes peuvent entraîner des erreurs de navigation, des analyses incorrectes et de mauvaises décisions."
+    },
+    {
+      "question": "Quelle est une source importante de données pour la mise à jour des cartes routières par des services comme Google Maps ou Waze ?",
+      "options": [
+        "Les cartes anciennes",
+        "Les informations collectées auprès des utilisateurs (traces GPS, signalements d'erreurs ou de travaux) - le crowdsourcing",
+        "Les livres d'histoire",
+        "Les bulletins météo"
+      ],
+      "correct": "Les informations collectées auprès des utilisateurs (traces GPS, signalements d'erreurs ou de travaux) - le crowdsourcing",
+      "explanation": "L'analyse des données de déplacement anonymisées et les signalements actifs des utilisateurs permettent de détecter rapidement les modifications du réseau routier."
+    },
+    {
+      "question": "Comment peut-on calculer approximativement la distance 'à vol d'oiseau' entre deux points dont on connaît la latitude et la longitude ?",
+      "options": [
+        "En utilisant un tableur",
+        "En mesurant sur une carte papier avec une règle",
+        "En utilisant des formules mathématiques basées sur la trigonométrie sphérique (comme la formule de Haversine)",
+        "En demandant à un oiseau"
+      ],
+      "correct": "En utilisant des formules mathématiques basées sur la trigonométrie sphérique (comme la formule de Haversine)",
+      "explanation": "Ces formules prennent en compte la courbure de la Terre pour calculer la distance la plus courte sur la surface de la sphère (arc de grand cercle)."
+    },
+    {
+      "question": "En navigation GPS, qu'est-ce qu'un 'waypoint' (ou point de cheminement) ?",
+      "options": [
+        "Le point de départ",
+        "Le point d'arrivée",
+        "Une position géographique intermédiaire enregistrée ou utilisée pour définir un itinéraire",
+        "Un type de carte"
+      ],
+      "correct": "Une position géographique intermédiaire enregistrée ou utilisée pour définir un itinéraire",
+      "explanation": "Un itinéraire peut être défini comme une séquence de waypoints à atteindre."
+    },
+    {
+      "question": "En navigation GPS, qu'est-ce qu'une 'trace' (track) ?",
+      "options": [
+        "L'itinéraire prévu",
+        "L'enregistrement du chemin réellement parcouru, sous forme d'une série de points horodatés",
+        "Un type de symbole sur la carte",
+        "La vitesse moyenne du parcours"
+      ],
+      "correct": "L'enregistrement du chemin réellement parcouru, sous forme d'une série de points horodatés",
+      "explanation": "La trace permet de visualiser a posteriori le parcours effectué, souvent exportable au format GPX."
+    },
+    {
+      "question": "À quoi sert principalement une boussole en navigation ?",
+      "options": [
+        "À mesurer l'altitude",
+        "À indiquer la direction du Nord magnétique, permettant ainsi de s'orienter et de déterminer d'autres directions",
+        "À mesurer la vitesse",
+        "À capter les signaux GPS"
+      ],
+      "correct": "À indiquer la direction du Nord magnétique, permettant ainsi de s'orienter et de déterminer d'autres directions",
+      "explanation": "La boussole est un outil d'orientation fondamental, souvent utilisé conjointement avec une carte."
+    },
+    {
+      "question": "Quelle est la différence entre le Nord magnétique (indiqué par la boussole) et le Nord géographique (vrai Nord) ?",
+      "options": [
+        "Il n'y a pas de différence",
+        "Le Nord magnétique correspond au pôle Nord géographique",
+        "Le Nord magnétique est le point vers lequel pointe l'aiguille aimantée (qui varie dans le temps et l'espace), tandis que le Nord géographique est l'axe de rotation de la Terre. L'angle entre les deux est la déclinaison magnétique.",
+        "Le Nord géographique est utilisé en mer, le Nord magnétique sur terre"
+      ],
+      "correct": "Le Nord magnétique est le point vers lequel pointe l'aiguille aimantée (qui varie dans le temps et l'espace), tandis que le Nord géographique est l'axe de rotation de la Terre. L'angle entre les deux est la déclinaison magnétique.",
+      "explanation": "Pour une orientation précise avec une carte (orientée vers le Nord géographique), il faut tenir compte de la déclinaison magnétique locale (souvent indiquée sur les cartes topographiques)."
+    },
+    {
+      "question": "Comment un système de navigation estime-t-il le temps de trajet ?",
+      "options": [
+        "En se basant uniquement sur la distance totale",
+        "En divisant la distance de chaque segment de l'itinéraire par la vitesse moyenne estimée sur ce segment (prenant en compte limitations, type de route, et éventuellement trafic), puis en additionnant ces temps",
+        "En demandant au conducteur",
+        "En mesurant la température extérieure"
+      ],
+      "correct": "En divisant la distance de chaque segment de l'itinéraire par la vitesse moyenne estimée sur ce segment (prenant en compte limitations, type de route, et éventuellement trafic), puis en additionnant ces temps",
+      "explanation": "L'estimation du temps (ETA - Estimated Time of Arrival) est un calcul complexe basé sur les caractéristiques de l'itinéraire et les conditions de circulation."
+    },
+    {
+      "question": "Laquelle de ces affirmations est vraie concernant les déformations dues aux projections cartographiques ?",
+      "options": [
+        "Toutes les projections conservent à la fois les angles et les surfaces",
+        "La projection de Mercator montre le Groenland plus petit que l'Australie",
+        "Aucune projection plane ne peut représenter parfaitement la surface courbe de la Terre sans déformation",
+        "Les cartes à petite échelle (ex: planisphère) ont moins de déformations que les cartes à grande échelle (ex: plan de ville)"
+      ],
+      "correct": "Aucune projection plane ne peut représenter parfaitement la surface courbe de la Terre sans déformation",
+      "explanation": "Toute projection implique un compromis : on choisit de préserver certaines propriétés (angles, surfaces, distances locales) au détriment des autres. Les déformations sont généralement plus importantes sur les cartes couvrant de grandes zones (petite échelle)."
+    }
+  ]
+}

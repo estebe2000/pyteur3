@@ -1,0 +1,884 @@
+{
+  "architecture_os": [
+    {
+      "question": "Quelle architecture, proposée notamment par John von Neumann, décrit un ordinateur où les instructions et les données sont stockées dans la même mémoire ?",
+      "options": [
+        "Architecture Harvard",
+        "Architecture parallèle",
+        "Architecture de von Neumann",
+        "Architecture distribuée"
+      ],
+      "correct": "Architecture de von Neumann",
+      "explanation": "L'architecture de von Neumann est caractérisée par une mémoire unique pour les instructions et les données, une unité de contrôle, une unité arithmétique et logique, et des dispositifs d'entrée/sortie."
+    },
+    {
+      "question": "Quels sont les quatre composants principaux de l'architecture de von Neumann ?",
+      "options": [
+        "Clavier, Écran, Souris, Imprimante",
+        "CPU, RAM, Disque Dur, Carte Mère",
+        "Unité Arithmétique et Logique (UAL), Unité de Contrôle (UC), Mémoire, Dispositifs d'Entrée/Sortie",
+        "Navigateur Web, Serveur, Base de Données, Réseau"
+      ],
+      "correct": "Unité Arithmétique et Logique (UAL), Unité de Contrôle (UC), Mémoire, Dispositifs d'Entrée/Sortie",
+      "explanation": "Ces quatre éléments interagissent via des bus pour exécuter des programmes."
+    },
+    {
+      "question": "Quelle partie de l'Unité Centrale de Traitement (CPU) effectue les calculs arithmétiques (additions, soustractions...) et logiques (ET, OU, NON...) ?",
+      "options": [
+        "L'Unité de Contrôle (UC)",
+        "La Mémoire Cache",
+        "L'Unité Arithmétique et Logique (UAL ou ALU)",
+        "Les Registres"
+      ],
+      "correct": "L'Unité Arithmétique et Logique (UAL ou ALU)",
+      "explanation": "L'UAL (ALU en anglais) est le 'calculateur' du processeur."
+    },
+    {
+      "question": "Quelle partie de l'Unité Centrale de Traitement (CPU) est responsable de chercher les instructions en mémoire, de les décoder et de commander les autres composants pour les exécuter ?",
+      "options": [
+        "L'Unité Arithmétique et Logique (UAL)",
+        "L'Unité de Contrôle (UC)",
+        "La Mémoire Principale (RAM)",
+        "Le Bus de Données"
+      ],
+      "correct": "L'Unité de Contrôle (UC)",
+      "explanation": "L'Unité de Contrôle (Control Unit) orchestre l'exécution des instructions du programme."
+    },
+    {
+      "question": "Comment appelle-t-on les petites zones de mémoire très rapides situées à l'intérieur du CPU, utilisées pour stocker temporairement des données ou des adresses pendant les calculs ?",
+      "options": [
+        "La Mémoire Cache",
+        "La RAM",
+        "Les Registres",
+        "La ROM"
+      ],
+      "correct": "Les Registres",
+      "explanation": "Les registres (ex: Accumulateur, Compteur Ordinal) offrent l'accès mémoire le plus rapide car ils sont directement dans le processeur."
+    },
+    {
+      "question": "Quel registre spécial du CPU contient l'adresse mémoire de la prochaine instruction à exécuter ?",
+      "options": [
+        "Le Registre d'Instruction (RI)",
+        "L'Accumulateur (ACC)",
+        "Le Compteur Ordinal (CO ou PC - Program Counter)",
+        "Le Registre d'État (PSW)"
+      ],
+      "correct": "Le Compteur Ordinal (CO ou PC - Program Counter)",
+      "explanation": "Le Compteur Ordinal est mis à jour après chaque instruction pour pointer vers la suivante, assurant le déroulement séquentiel du programme (sauf en cas de sauts)."
+    },
+    {
+      "question": "Quel est le cycle de base exécuté par le CPU pour traiter une instruction ?",
+      "options": [
+        "Lire -> Écrire -> Effacer",
+        "Charger -> Exécuter -> Sauvegarder",
+        "Chercher -> Décoder -> Exécuter (Fetch-Decode-Execute)",
+        "Compiler -> Interpréter -> Afficher"
+      ],
+      "correct": "Chercher -> Décoder -> Exécuter (Fetch-Decode-Execute)",
+      "explanation": "Le CPU va chercher l'instruction pointée par le PC en mémoire, la décode pour savoir quoi faire, puis exécute l'opération demandée."
+    },
+    {
+      "question": "Où sont stockés le programme en cours d'exécution et ses données de travail principales ?",
+      "options": [
+        "Dans le disque dur",
+        "Dans la mémoire vive (RAM - Random Access Memory)",
+        "Dans la mémoire morte (ROM)",
+        "Dans les registres uniquement"
+      ],
+      "correct": "Dans la mémoire vive (RAM - Random Access Memory)",
+      "explanation": "La RAM est la mémoire principale, rapide et volatile, où le CPU accède directement aux instructions et données nécessaires à l'exécution."
+    },
+    {
+      "question": "Quelle est la caractéristique principale de la mémoire vive (RAM) ?",
+      "options": [
+        "Elle est non volatile (conserve les données sans alimentation)",
+        "Elle est très lente",
+        "Elle est volatile (perd son contenu lorsque l'alimentation est coupée)",
+        "Elle a une capacité illimitée"
+      ],
+      "correct": "Elle est volatile (perd son contenu lorsque l'alimentation est coupée)",
+      "explanation": "La RAM est une mémoire de travail temporaire. Les données persistantes doivent être sauvegardées sur un support de stockage (disque dur, SSD)."
+    },
+    {
+      "question": "Quel type de mémoire contient des instructions ou des données permanentes, définies à la fabrication, et qui ne peuvent pas (ou difficilement) être modifiées ?",
+      "options": [
+        "RAM",
+        "Mémoire Cache",
+        "ROM (Read-Only Memory)",
+        "Disque Dur"
+      ],
+      "correct": "ROM (Read-Only Memory)",
+      "explanation": "La ROM (ou ses variantes comme l'EEPROM/Flash pour le BIOS/UEFI) stocke des programmes essentiels au démarrage de l'ordinateur."
+    },
+    {
+      "question": "Qu'est-ce que la mémoire cache du CPU ?",
+      "options": [
+        "La mémoire principale (RAM)",
+        "Une petite quantité de mémoire très rapide située entre le CPU et la RAM, qui stocke les données et instructions les plus fréquemment utilisées",
+        "La mémoire de stockage (disque dur)",
+        "Une mémoire externe"
+      ],
+      "correct": "Une petite quantité de mémoire très rapide située entre le CPU et la RAM, qui stocke les données et instructions les plus fréquemment utilisées",
+      "explanation": "La mémoire cache (L1, L2, L3) réduit le temps d'attente moyen du CPU en anticipant les accès mémoire fréquents."
+    },
+    {
+      "question": "Comment sont classées les mémoires selon leur vitesse d'accès (du plus rapide au plus lent) ?",
+      "options": [
+        "RAM -> Cache -> Registres -> Disque Dur",
+        "Disque Dur -> RAM -> Cache -> Registres",
+        "Registres -> Cache -> RAM -> Disque Dur/SSD",
+        "Cache -> Registres -> RAM -> Disque Dur"
+      ],
+      "correct": "Registres -> Cache -> RAM -> Disque Dur/SSD",
+      "explanation": "La hiérarchie mémoire est organisée ainsi : plus on est proche du CPU, plus la mémoire est rapide, petite et chère."
+    },
+    {
+      "question": "Comment appelle-t-on l'ensemble des fils conducteurs qui permettent la communication (transfert d'adresses, de données, de signaux de contrôle) entre les différents composants de l'ordinateur (CPU, RAM, périphériques) ?",
+      "options": [
+        "Les câbles d'alimentation",
+        "Les bus système",
+        "Les ports USB",
+        "Les circuits imprimés"
+      ],
+      "correct": "Les bus système",
+      "explanation": "Les bus (bus d'adresses, bus de données, bus de contrôle) forment les 'autoroutes' de l'information sur la carte mère."
+    },
+    {
+      "question": "Quel bus est utilisé par le CPU pour spécifier l'adresse mémoire ou l'adresse du périphérique avec lequel il veut communiquer ?",
+      "options": [
+        "Le bus de données",
+        "Le bus d'adresses",
+        "Le bus de contrôle",
+        "Le bus USB"
+      ],
+      "correct": "Le bus d'adresses",
+      "explanation": "La largeur du bus d'adresses détermine la quantité maximale de mémoire que le CPU peut adresser directement."
+    },
+    {
+      "question": "Quel bus est utilisé pour transférer les données (instructions ou opérandes) entre le CPU, la mémoire et les périphériques ?",
+      "options": [
+        "Le bus de données",
+        "Le bus d'adresses",
+        "Le bus de contrôle",
+        "Le bus PCI"
+      ],
+      "correct": "Le bus de données",
+      "explanation": "La largeur du bus de données (ex: 64 bits) influence la quantité de données transférées en une seule fois."
+    },
+    {
+      "question": "Quel bus transporte les signaux qui synchronisent et coordonnent les opérations entre les différents composants (ex: signal de lecture/écriture mémoire, horloge) ?",
+      "options": [
+        "Le bus de données",
+        "Le bus d'adresses",
+        "Le bus de contrôle",
+        "Le bus système"
+      ],
+      "correct": "Le bus de contrôle",
+      "explanation": "Le bus de contrôle gère le 'dialogue' et le timing des échanges sur les autres bus."
+    },
+    {
+      "question": "Comment appelle-t-on les dispositifs qui permettent à l'utilisateur d'entrer des informations dans l'ordinateur ?",
+      "options": [
+        "Périphériques de sortie",
+        "Périphériques d'entrée",
+        "Périphériques de stockage",
+        "Unités centrales"
+      ],
+      "correct": "Périphériques d'entrée",
+      "explanation": "Exemples : clavier, souris, scanner, microphone."
+    },
+    {
+      "question": "Comment appelle-t-on les dispositifs qui permettent à l'ordinateur de présenter des informations à l'utilisateur ?",
+      "options": [
+        "Périphériques de sortie",
+        "Périphériques d'entrée",
+        "Périphériques de stockage",
+        "Processeurs"
+      ],
+      "correct": "Périphériques de sortie",
+      "explanation": "Exemples : écran, imprimante, haut-parleurs."
+    },
+    {
+      "question": "Lequel de ces éléments est un périphérique d'entrée ET de sortie ?",
+      "options": [
+        "Clavier",
+        "Imprimante",
+        "Écran tactile",
+        "Webcam"
+      ],
+      "correct": "Écran tactile",
+      "explanation": "Un écran tactile permet à la fois d'afficher des informations (sortie) et de recevoir des commandes de l'utilisateur (entrée)."
+    },
+    {
+      "question": "Lequel de ces éléments est un périphérique de stockage permettant de conserver les données de manière permanente ?",
+      "options": [
+        "La RAM",
+        "Le CPU",
+        "L'écran",
+        "Le disque dur (HDD) ou le SSD"
+      ],
+      "correct": "Le disque dur (HDD) ou le SSD",
+      "explanation": "Les disques durs et SSD sont des mémoires de masse non volatiles utilisées pour le stockage à long terme des fichiers et du système d'exploitation."
+    },
+    {
+      "question": "Quel composant principal de l'ordinateur connecte tous les autres composants (CPU, RAM, cartes d'extension, périphériques...) ?",
+      "options": [
+        "Le bloc d'alimentation",
+        "La carte mère (motherboard)",
+        "Le disque dur",
+        "Le lecteur de CD/DVD"
+      ],
+      "correct": "La carte mère (motherboard)",
+      "explanation": "La carte mère contient les circuits imprimés, les connecteurs et les bus qui permettent aux différents composants de communiquer."
+    },
+    {
+      "question": "Quelle est la fonction principale d'un système d'exploitation (OS) ?",
+      "options": [
+        "Exécuter uniquement des jeux vidéo",
+        "Servir d'interface entre l'utilisateur et le matériel, et gérer les ressources de l'ordinateur (processeur, mémoire, périphériques)",
+        "Naviguer sur Internet",
+        "Écrire du code source"
+      ],
+      "correct": "Servir d'interface entre l'utilisateur et le matériel, et gérer les ressources de l'ordinateur (processeur, mémoire, périphériques)",
+      "explanation": "L'OS fournit une couche d'abstraction qui simplifie l'utilisation de l'ordinateur et permet aux applications de s'exécuter."
+    },
+    {
+      "question": "Lequel de ces éléments n'est PAS une fonction principale d'un système d'exploitation ?",
+      "options": [
+        "La gestion des processus",
+        "La gestion de la mémoire",
+        "La compilation de code source en langage machine",
+        "La gestion des fichiers"
+      ],
+      "correct": "La compilation de code source en langage machine",
+      "explanation": "La compilation est réalisée par un logiciel spécifique (le compilateur), qui est une application fonctionnant *sur* le système d'exploitation, mais pas une fonction de l'OS lui-même."
+    },
+    {
+      "question": "Qu'est-ce qu'un processus dans le contexte d'un système d'exploitation ?",
+      "options": [
+        "Un fichier sur le disque dur",
+        "Un programme en cours d'exécution, avec son propre espace mémoire et ses ressources allouées",
+        "Un périphérique matériel",
+        "Une connexion réseau"
+      ],
+      "correct": "Un programme en cours d'exécution, avec son propre espace mémoire et ses ressources allouées",
+      "explanation": "L'OS gère les processus pour permettre à plusieurs programmes de s'exécuter (en apparence) simultanément."
+    },
+    {
+      "question": "Comment appelle-t-on la partie de l'OS responsable de décider quel processus doit utiliser le CPU et pendant combien de temps ?",
+      "options": [
+        "Le gestionnaire de fichiers",
+        "Le gestionnaire de mémoire",
+        "L'ordonnanceur (scheduler)",
+        "Le pilote de périphérique"
+      ],
+      "correct": "L'ordonnanceur (scheduler)",
+      "explanation": "L'ordonnanceur implémente la politique d'allocation du temps CPU entre les processus prêts à s'exécuter."
+    },
+    {
+      "question": "Quel état décrit un processus qui est prêt à s'exécuter mais attend que l'ordonnanceur lui alloue le CPU ?",
+      "options": [
+        "En cours d'exécution (Running)",
+        "Prêt (Ready)",
+        "Bloqué (Waiting/Blocked)",
+        "Terminé (Terminated)"
+      ],
+      "correct": "Prêt (Ready)",
+      "explanation": "Les processus dans l'état Prêt sont en attente de leur tour pour utiliser le processeur."
+    },
+    {
+      "question": "Quel état décrit un processus qui est en train d'utiliser le CPU ?",
+      "options": [
+        "En cours d'exécution (Running)",
+        "Prêt (Ready)",
+        "Bloqué (Waiting/Blocked)",
+        "Nouveau (New)"
+      ],
+      "correct": "En cours d'exécution (Running)",
+      "explanation": "Un seul processus peut être en cours d'exécution sur un cœur de CPU à un instant donné."
+    },
+    {
+      "question": "Quel état décrit un processus qui ne peut pas continuer son exécution car il attend un événement extérieur (ex: fin d'une lecture disque, réception de données réseau) ?",
+      "options": [
+        "En cours d'exécution (Running)",
+        "Prêt (Ready)",
+        "Bloqué (Waiting/Blocked)",
+        "Terminé (Terminated)"
+      ],
+      "correct": "Bloqué (Waiting/Blocked)",
+      "explanation": "Un processus bloqué n'utilise pas le CPU et attend que l'événement qui le bloque se produise."
+    },
+    {
+      "question": "Qu'est-ce que la 'mémoire virtuelle' gérée par le système d'exploitation ?",
+      "options": [
+        "La mémoire cache du CPU",
+        "Un mécanisme qui utilise une partie du disque dur (fichier d'échange ou swap) pour étendre la mémoire RAM disponible, donnant l'illusion que l'ordinateur a plus de RAM qu'en réalité",
+        "La mémoire ROM",
+        "La mémoire des cartes graphiques"
+      ],
+      "correct": "Un mécanisme qui utilise une partie du disque dur (fichier d'échange ou swap) pour étendre la mémoire RAM disponible, donnant l'illusion que l'ordinateur a plus de RAM qu'en réalité",
+      "explanation": "La mémoire virtuelle permet d'exécuter des programmes plus grands que la RAM physique et d'isoler les espaces d'adressage des processus."
+    },
+    {
+      "question": "Quelle est la fonction principale d'un système de fichiers (file system) ?",
+      "options": [
+        "Gérer l'allocation du CPU",
+        "Organiser et gérer le stockage des fichiers et des répertoires sur les périphériques de stockage (disque dur, SSD), en fournissant une structure hiérarchique",
+        "Contrôler les périphériques d'entrée/sortie",
+        "Fournir l'interface graphique"
+      ],
+      "correct": "Organiser et gérer le stockage des fichiers et des répertoires sur les périphériques de stockage (disque dur, SSD), en fournissant une structure hiérarchique",
+      "explanation": "Le système de fichiers (ex: NTFS, ext4, APFS) permet de nommer, localiser, lire, écrire et gérer les fichiers et leurs métadonnées."
+    },
+    {
+      "question": "Comment appelle-t-on la structure arborescente utilisée par les systèmes de fichiers pour organiser les fichiers ?",
+      "options": [
+        "Une liste",
+        "Une table de hachage",
+        "Une hiérarchie de répertoires (ou dossiers)",
+        "Un graphe"
+      ],
+      "correct": "Une hiérarchie de répertoires (ou dossiers)",
+      "explanation": "Les fichiers sont contenus dans des répertoires, qui peuvent eux-mêmes contenir d'autres répertoires, formant une structure en arbre à partir d'un répertoire racine."
+    },
+    {
+      "question": "Qu'est-ce qu'un chemin d'accès (path) dans un système de fichiers ?",
+      "options": [
+        "Le nom du fichier seul",
+        "La taille du fichier",
+        "Une chaîne de caractères indiquant l'emplacement d'un fichier ou d'un répertoire dans la hiérarchie, en partant de la racine ou du répertoire courant",
+        "Les permissions du fichier"
+      ],
+      "correct": "Une chaîne de caractères indiquant l'emplacement d'un fichier ou d'un répertoire dans la hiérarchie, en partant de la racine ou du répertoire courant",
+      "explanation": "Exemple de chemin absolu (Linux/macOS) : `/home/user/documents/rapport.txt`. Exemple de chemin absolu (Windows) : `C:\\Users\\user\\Documents\\rapport.txt`."
+    },
+    {
+      "question": "Que permettent de contrôler les permissions (droits d'accès) sur les fichiers et répertoires ?",
+      "options": [
+        "La taille maximale des fichiers",
+        "Qui a le droit de lire, d'écrire ou d'exécuter un fichier, ou de lister/modifier un répertoire",
+        "La date de création du fichier",
+        "Le type de fichier"
+      ],
+      "correct": "Qui a le droit de lire, d'écrire ou d'exécuter un fichier, ou de lister/modifier un répertoire",
+      "explanation": "Les permissions (ex: rwx pour propriétaire, groupe, autres sous Unix/Linux) sont un mécanisme de sécurité fondamental."
+    },
+    {
+      "question": "Quelle est la différence entre une interface en ligne de commande (CLI - Command Line Interface) et une interface graphique utilisateur (GUI - Graphical User Interface) ?",
+      "options": [
+        "CLI utilise la souris, GUI utilise le clavier",
+        "CLI est plus récente que GUI",
+        "CLI permet l'interaction via des commandes textuelles tapées au clavier, tandis que GUI utilise des éléments graphiques (fenêtres, icônes, menus, pointeur)",
+        "GUI est uniquement pour les jeux"
+      ],
+      "correct": "CLI permet l'interaction via des commandes textuelles tapées au clavier, tandis que GUI utilise des éléments graphiques (fenêtres, icônes, menus, pointeur)",
+      "explanation": "La CLI (ex: terminal Linux, invite de commandes Windows) est puissante mais moins intuitive pour les débutants que la GUI (ex: bureau Windows, macOS)."
+    },
+    {
+      "question": "Comment appelle-t-on la partie centrale du système d'exploitation, qui gère les fonctions les plus fondamentales (accès matériel, gestion processus/mémoire...) ?",
+      "options": [
+        "Le shell",
+        "Le noyau (kernel)",
+        "L'interface graphique",
+        "Le système de fichiers"
+      ],
+      "correct": "Le noyau (kernel)",
+      "explanation": "Le noyau est le cœur de l'OS, s'exécutant avec les privilèges les plus élevés et interagissant directement avec le matériel."
+    },
+    {
+      "question": "Comment appelle-t-on l'interpréteur de commandes qui permet à l'utilisateur d'interagir avec le noyau via une interface textuelle ?",
+      "options": [
+        "Le noyau (kernel)",
+        "Le shell (ex: bash, zsh, cmd.exe)",
+        "Le pilote (driver)",
+        "Le compilateur"
+      ],
+      "correct": "Le shell (ex: bash, zsh, cmd.exe)",
+      "explanation": "Le shell lit les commandes tapées par l'utilisateur, les interprète et demande au noyau d'exécuter les actions correspondantes."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'pilote' (driver) de périphérique ?",
+      "options": [
+        "Un utilisateur expert",
+        "Un logiciel spécifique qui permet au système d'exploitation de communiquer avec un périphérique matériel particulier (carte graphique, imprimante, carte réseau...)",
+        "Un composant matériel",
+        "Une interface réseau"
+      ],
+      "correct": "Un logiciel spécifique qui permet au système d'exploitation de communiquer avec un périphérique matériel particulier (carte graphique, imprimante, carte réseau...)",
+      "explanation": "Le pilote sert d'intermédiaire et 'traduit' les commandes génériques de l'OS en commandes spécifiques compréhensibles par le matériel."
+    },
+    {
+      "question": "Lequel de ces systèmes d'exploitation est connu pour être open source ?",
+      "options": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "iOS"
+      ],
+      "correct": "Linux",
+      "explanation": "Le noyau Linux est développé sous une licence open source (GPL), permettant à quiconque de voir, modifier et distribuer le code source."
+    },
+    {
+      "question": "Lequel de ces systèmes d'exploitation est développé par Apple pour ses ordinateurs Mac ?",
+      "options": [
+        "Windows",
+        "Linux",
+        "Android",
+        "macOS"
+      ],
+      "correct": "macOS",
+      "explanation": "macOS (anciennement OS X) est le système d'exploitation propriétaire d'Apple pour sa gamme Macintosh."
+    },
+    {
+      "question": "Lequel de ces systèmes d'exploitation est le plus utilisé sur les ordinateurs de bureau et portables dans le monde ?",
+      "options": [
+        "Linux",
+        "macOS",
+        "Windows",
+        "Chrome OS"
+      ],
+      "correct": "Windows",
+      "explanation": "Windows, développé par Microsoft, détient la plus grande part de marché sur les ordinateurs personnels."
+    },
+    {
+      "question": "Lequel de ces systèmes d'exploitation est principalement utilisé sur les smartphones et tablettes (hors produits Apple) ?",
+      "options": [
+        "Windows",
+        "iOS",
+        "Linux",
+        "Android"
+      ],
+      "correct": "Android",
+      "explanation": "Android, basé sur le noyau Linux et développé principalement par Google, est le système d'exploitation mobile le plus répandu."
+    },
+    {
+      "question": "Quel est le rôle des 'appels système' (system calls) ?",
+      "options": [
+        "Permettre aux utilisateurs de téléphoner",
+        "Permettre aux programmes applicatifs de demander des services au noyau du système d'exploitation (ex: ouvrir un fichier, allouer de la mémoire, créer un processus)",
+        "Appeler d'autres programmes",
+        "Afficher des messages d'erreur"
+      ],
+      "correct": "Permettre aux programmes applicatifs de demander des services au noyau du système d'exploitation (ex: ouvrir un fichier, allouer de la mémoire, créer un processus)",
+      "explanation": "Les appels système sont l'interface via laquelle les applications interagissent avec les fonctions protégées du noyau."
+    },
+    {
+      "question": "Quelle est la différence entre un microprocesseur et un microcontrôleur ?",
+      "options": [
+        "Le microprocesseur est plus petit",
+        "Le microcontrôleur intègre CPU, mémoire (RAM, Flash) et périphériques sur une seule puce, tandis qu'un microprocesseur est juste le CPU nécessitant des composants externes",
+        "Le microcontrôleur est utilisé dans les PC, le microprocesseur dans les systèmes embarqués",
+        "Il n'y a pas de différence"
+      ],
+      "correct": "Le microcontrôleur intègre CPU, mémoire (RAM, Flash) et périphériques sur une seule puce, tandis qu'un microprocesseur est juste le CPU nécessitant des composants externes",
+      "explanation": "Les microcontrôleurs sont optimisés pour les systèmes embarqués autonomes, tandis que les microprocesseurs sont le cœur des ordinateurs plus généraux."
+    },
+    {
+      "question": "Quel composant mesure la fréquence à laquelle le CPU exécute ses cycles d'horloge, souvent exprimée en Gigahertz (GHz) ?",
+      "options": [
+        "La taille de la mémoire cache",
+        "La vitesse du bus système",
+        "La fréquence d'horloge (clock speed)",
+        "Le nombre de cœurs"
+      ],
+      "correct": "La fréquence d'horloge (clock speed)",
+      "explanation": "La fréquence d'horloge indique le nombre de cycles par seconde que le processeur peut effectuer. Une fréquence plus élevée signifie généralement des calculs plus rapides (mais ce n'est pas le seul facteur de performance)."
+    },
+    {
+      "question": "Que signifie avoir un processeur 'multi-cœurs' (multi-core) ?",
+      "options": [
+        "Le processeur est très résistant",
+        "Le processeur intègre plusieurs unités centrales de traitement (cœurs) indépendantes sur la même puce, permettant d'exécuter plusieurs tâches réellement en parallèle",
+        "Le processeur a une très grande mémoire cache",
+        "Le processeur est compatible avec plusieurs systèmes d'exploitation"
+      ],
+      "correct": "Le processeur intègre plusieurs unités centrales de traitement (cœurs) indépendantes sur la même puce, permettant d'exécuter plusieurs tâches réellement en parallèle",
+      "explanation": "Les processeurs modernes sont presque tous multi-cœurs (dual-core, quad-core, etc.) pour améliorer les performances globales."
+    },
+    {
+      "question": "Quelle porte logique retourne Vrai (1) si et seulement si ses deux entrées sont Vraies (1) ?",
+      "options": [
+        "OU (OR)",
+        "NON (NOT)",
+        "ET (AND)",
+        "OU Exclusif (XOR)"
+      ],
+      "correct": "ET (AND)",
+      "explanation": "La porte ET implémente l'opération logique ET : Sortie = Entrée1 AND Entrée2."
+    },
+    {
+      "question": "Quelle porte logique retourne Vrai (1) si au moins l'une de ses entrées est Vraie (1) ?",
+      "options": [
+        "ET (AND)",
+        "OU (OR)",
+        "NON (NOT)",
+        "NAND"
+      ],
+      "correct": "OU (OR)",
+      "explanation": "La porte OU implémente l'opération logique OU : Sortie = Entrée1 OR Entrée2."
+    },
+    {
+      "question": "Quelle porte logique inverse la valeur de son unique entrée (0 devient 1, 1 devient 0) ?",
+      "options": [
+        "ET (AND)",
+        "OU (OR)",
+        "NON (NOT)",
+        "XOR"
+      ],
+      "correct": "NON (NOT)",
+      "explanation": "La porte NON (ou inverseur) implémente la négation logique."
+    },
+    {
+      "question": "Comment sont physiquement implémentées les portes logiques dans les circuits intégrés modernes ?",
+      "options": [
+        "Avec des relais électromécaniques",
+        "Avec des tubes à vide",
+        "Avec des assemblages de transistors",
+        "Avec des engrenages miniatures"
+      ],
+      "correct": "Avec des assemblages de transistors",
+      "explanation": "Les transistors agissent comme des interrupteurs commandés électriquement, permettant de construire les fonctions logiques de base (ET, OU, NON) qui sont ensuite combinées pour former des circuits plus complexes."
+    },
+    {
+      "question": "Quel type de mémoire non volatile utilise des cellules flottantes pour stocker les informations, couramment utilisée dans les SSD, clés USB et cartes mémoire ?",
+      "options": [
+        "RAM dynamique (DRAM)",
+        "RAM statique (SRAM)",
+        "Mémoire Flash",
+        "Mémoire à bulles"
+      ],
+      "correct": "Mémoire Flash",
+      "explanation": "La mémoire Flash conserve les données sans alimentation électrique et permet des cycles d'écriture/effacement, ce qui la rend idéale pour le stockage persistant."
+    },
+    {
+      "question": "Quel est le rôle du BIOS ou de l'UEFI sur une carte mère ?",
+      "options": [
+        "Gérer l'affichage graphique",
+        "Contenir le système d'exploitation principal",
+        "Être le premier programme exécuté au démarrage pour initialiser le matériel de base et lancer le chargement du système d'exploitation (bootloader)",
+        "Stocker les fichiers de l'utilisateur"
+      ],
+      "correct": "Être le premier programme exécuté au démarrage pour initialiser le matériel de base et lancer le chargement du système d'exploitation (bootloader)",
+      "explanation": "Le BIOS (Basic Input/Output System) ou son successeur l'UEFI (Unified Extensible Firmware Interface) est un firmware stocké sur une puce de la carte mère, essentiel pour le démarrage."
+    },
+    {
+      "question": "Quel port est couramment utilisé pour connecter un écran d'ordinateur et transmettre un signal vidéo (et souvent audio) numérique haute définition ?",
+      "options": [
+        "Port Série (RS-232)",
+        "Port Parallèle",
+        "Port USB",
+        "Port HDMI ou DisplayPort"
+      ],
+      "correct": "Port HDMI ou DisplayPort",
+      "explanation": "HDMI (High-Definition Multimedia Interface) et DisplayPort sont les standards actuels pour la connexion d'écrans numériques."
+    },
+    {
+      "question": "Quel port réseau filaire est le plus couramment utilisé pour connecter un ordinateur à un réseau local (LAN) ?",
+      "options": [
+        "Port USB",
+        "Port Ethernet (RJ45)",
+        "Port HDMI",
+        "Port FireWire"
+      ],
+      "correct": "Port Ethernet (RJ45)",
+      "explanation": "Le port Ethernet permet une connexion réseau filaire stable et rapide."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'thread' (ou fil d'exécution) dans le contexte de la gestion des processus ?",
+      "options": [
+        "Un processus complet",
+        "Une sous-partie d'un processus qui peut s'exécuter indépendamment (en parallèle ou concurrence) avec d'autres threads du même processus, partageant le même espace mémoire",
+        "Un fichier système",
+        "Une connexion réseau"
+      ],
+      "correct": "Une sous-partie d'un processus qui peut s'exécuter indépendamment (en parallèle ou concurrence) avec d'autres threads du même processus, partageant le même espace mémoire",
+      "explanation": "Les threads permettent à une application de réaliser plusieurs tâches en parallèle (ex: un thread pour l'interface utilisateur, un autre pour le calcul en arrière-plan)."
+    },
+    {
+      "question": "Quel mécanisme de communication inter-processus (IPC) permet à un processus d'envoyer un signal simple à un autre processus (souvent pour l'interrompre ou le terminer) ?",
+      "options": [
+        "Mémoire partagée",
+        "Files (pipes)",
+        "Signaux (Signals)",
+        "Sockets"
+      ],
+      "correct": "Signaux (Signals)",
+      "explanation": "Les signaux (comme SIGTERM, SIGKILL sous Unix/Linux) sont une forme simple d'IPC pour notifier des événements entre processus."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'deadlock' (interblocage) dans un système d'exploitation ?",
+      "options": [
+        "Un processus qui se termine normalement",
+        "Une situation où deux processus (ou plus) s'attendent mutuellement pour libérer une ressource qu'ils détiennent, les bloquant indéfiniment",
+        "Une erreur de mémoire",
+        "Une attaque de sécurité"
+      ],
+      "correct": "Une situation où deux processus (ou plus) s'attendent mutuellement pour libérer une ressource qu'ils détiennent, les bloquant indéfiniment",
+      "explanation": "L'interblocage est un problème potentiel dans les systèmes multitâches où les processus se partagent des ressources."
+    },
+    {
+      "question": "Quelle partie de l'URL indique au navigateur sur quel port spécifique du serveur il doit se connecter (le port par défaut pour HTTP étant 80 et pour HTTPS 443) ?",
+      "options": [
+        "Le protocole (http/https)",
+        "Le nom de domaine",
+        "Le chemin de la ressource",
+        "Le numéro de port (ex: :8080)"
+      ],
+      "correct": "Le numéro de port (ex: :8080)",
+      "explanation": "Si aucun port n'est spécifié, le navigateur utilise le port par défaut du protocole (80 pour HTTP, 443 pour HTTPS)."
+    },
+    {
+      "question": "Quel type de logiciel permet de créer un environnement isolé simulant un ordinateur complet (matériel + OS) à l'intérieur d'un autre système d'exploitation ?",
+      "options": [
+        "Un compilateur",
+        "Un éditeur de texte",
+        "Un logiciel de virtualisation (ex: VirtualBox, VMware)",
+        "Un navigateur web"
+      ],
+      "correct": "Un logiciel de virtualisation (ex: VirtualBox, VMware)",
+      "explanation": "La virtualisation permet d'exécuter plusieurs systèmes d'exploitation sur une seule machine physique."
+    },
+    {
+      "question": "Dans un système de fichiers de type Unix/Linux, que représente le répertoire racine ?",
+      "options": [
+        "Le répertoire personnel de l'utilisateur",
+        "Le répertoire contenant les applications",
+        "Le sommet de la hiérarchie de fichiers, noté par un slash (/)",
+        "Le répertoire des fichiers temporaires"
+      ],
+      "correct": "Le sommet de la hiérarchie de fichiers, noté par un slash (/)",
+      "explanation": "Tous les autres fichiers et répertoires sont situés sous la racine dans l'arborescence."
+    },
+    {
+      "question": "Dans un système de fichiers de type Unix/Linux, que représente le tilde (~) dans un chemin d'accès ?",
+      "options": [
+        "Le répertoire racine (/)",
+        "Le répertoire parent (..)",
+        "Le répertoire personnel (home directory) de l'utilisateur courant",
+        "Le répertoire courant (.)"
+      ],
+      "correct": "Le répertoire personnel (home directory) de l'utilisateur courant",
+      "explanation": "Le tilde est un raccourci pratique pour désigner le dossier personnel de l'utilisateur connecté."
+    },
+    {
+      "question": "Quelle commande en ligne de commande (Linux/macOS) permet de lister le contenu d'un répertoire ?",
+      "options": [
+        "cd",
+        "ls",
+        "mkdir",
+        "pwd"
+      ],
+      "correct": "ls",
+      "explanation": "La commande `ls` (list) affiche les fichiers et sous-répertoires du répertoire courant ou spécifié."
+    },
+    {
+      "question": "Quelle commande en ligne de commande (Linux/macOS/Windows) permet de changer de répertoire courant ?",
+      "options": [
+        "ls (ou dir)",
+        "pwd",
+        "cd (change directory)",
+        "mkdir (ou md)"
+      ],
+      "correct": "cd (change directory)",
+      "explanation": "La commande `cd` suivie du nom du répertoire permet de se déplacer dans l'arborescence."
+    },
+    {
+      "question": "Quelle commande en ligne de commande (Linux/macOS) permet d'afficher le chemin du répertoire courant ?",
+      "options": [
+        "cd",
+        "ls",
+        "pwd (print working directory)",
+        "whoami"
+      ],
+      "correct": "pwd (print working directory)",
+      "explanation": "`pwd` affiche le chemin absolu du répertoire dans lequel on se trouve actuellement."
+    },
+    {
+      "question": "Comment sont généralement représentées les permissions de base (lecture, écriture, exécution) sous Unix/Linux ?",
+      "options": [
+        "Par des nombres de 0 à 9",
+        "Par une chaîne de 3 caractères (rwx) pour le propriétaire, le groupe et les autres",
+        "Par un seul chiffre",
+        "Par Vrai ou Faux"
+      ],
+      "correct": "Par une chaîne de 3 caractères (rwx) pour le propriétaire, le groupe et les autres",
+      "explanation": "Exemple : `-rwxr-xr--` signifie que le propriétaire a les droits lecture/écriture/exécution (rwx), le groupe a lecture/exécution (r-x), et les autres ont seulement lecture (r--)."
+    },
+    {
+      "question": "Quel est l'avantage d'une architecture Harvard (mémoires séparées pour les instructions et les données) par rapport à von Neumann pour certaines applications ?",
+      "options": [
+        "Elle est plus simple à construire",
+        "Elle permet de chercher la prochaine instruction en même temps que l'on accède aux données de l'instruction courante, améliorant potentiellement les performances (parallélisme)",
+        "Elle utilise moins de bus",
+        "Elle est plus économe en énergie"
+      ],
+      "correct": "Elle permet de chercher la prochaine instruction en même temps que l'on accède aux données de l'instruction courante, améliorant potentiellement les performances (parallélisme)",
+      "explanation": "L'architecture Harvard est souvent utilisée dans les microcontrôleurs et processeurs de signal numérique (DSP) où ce parallélisme est bénéfique."
+    },
+    {
+      "question": "Quelle est la fonction d'une MMU (Memory Management Unit) ?",
+      "options": [
+        "Gérer les entrées/sorties",
+        "Traduire les adresses virtuelles utilisées par les processus en adresses physiques de la RAM, et gérer la protection mémoire",
+        "Effectuer les calculs arithmétiques",
+        "Contrôler le bus système"
+      ],
+      "correct": "Traduire les adresses virtuelles utilisées par les processus en adresses physiques de la RAM, et gérer la protection mémoire",
+      "explanation": "La MMU est un composant matériel essentiel (souvent intégré au CPU) pour la mise en œuvre de la mémoire virtuelle et la protection entre processus."
+    },
+    {
+      "question": "Quel mécanisme permet à plusieurs processus d'accéder à la même zone de mémoire physique pour échanger des données rapidement ?",
+      "options": [
+        "Les signaux",
+        "Les fichiers temporaires",
+        "La mémoire partagée (Shared Memory)",
+        "Les sockets réseau"
+      ],
+      "correct": "La mémoire partagée (Shared Memory)",
+      "explanation": "La mémoire partagée est une technique d'IPC efficace mais qui nécessite une synchronisation attentive pour éviter les conflits d'accès."
+    },
+    {
+      "question": "Quel algorithme d'ordonnancement simple exécute les processus dans leur ordre d'arrivée ?",
+      "options": [
+        "Tourniquet (Round Robin)",
+        "Premier Arrivé, Premier Servi (PAPS ou FIFO - First-In, First-Out)",
+        "Plus Court d'Abord (SJF - Shortest Job First)",
+        "Priorités"
+      ],
+      "correct": "Premier Arrivé, Premier Servi (PAPS ou FIFO - First-In, First-Out)",
+      "explanation": "FIFO est simple mais peut être inefficace si un long processus bloque des processus courts arrivés après lui."
+    },
+    {
+      "question": "Quel algorithme d'ordonnancement alloue à chaque processus une petite tranche de temps CPU (quantum) et passe au processus suivant à la fin du quantum ?",
+      "options": [
+        "FIFO",
+        "SJF",
+        "Tourniquet (Round Robin)",
+        "Priorités"
+      ],
+      "correct": "Tourniquet (Round Robin)",
+      "explanation": "Round Robin assure un partage équitable du temps CPU entre les processus prêts, améliorant la réactivité pour les tâches interactives."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'système de fichiers journalisé' ?",
+      "options": [
+        "Un système de fichiers qui écrit tout dans un seul fichier journal",
+        "Un système de fichiers qui tient un journal des modifications à effectuer avant de les appliquer réellement, améliorant la robustesse en cas de panne (crash, coupure de courant)",
+        "Un système de fichiers accessible uniquement par les journalistes",
+        "Un système de fichiers qui enregistre l'historique de navigation"
+      ],
+      "correct": "Un système de fichiers qui tient un journal des modifications à effectuer avant de les appliquer réellement, améliorant la robustesse en cas de panne (crash, coupure de courant)",
+      "explanation": "La journalisation permet de récupérer plus facilement un état cohérent du système de fichiers après une interruption brutale."
+    },
+    {
+      "question": "Quel est le rôle principal de la commande `sudo` sous Linux/macOS ?",
+      "options": [
+        "Supprimer des fichiers",
+        "Changer d'utilisateur",
+        "Exécuter une commande avec les privilèges de l'administrateur (superutilisateur ou root)",
+        "Afficher le manuel d'une commande"
+      ],
+      "correct": "Exécuter une commande avec les privilèges de l'administrateur (superutilisateur ou root)",
+      "explanation": "`sudo` (superuser do) permet à un utilisateur autorisé d'exécuter temporairement une commande nécessitant des droits élevés."
+    },
+    {
+      "question": "Quelle est l'unité de base d'allocation sur un disque dur géré par le système de fichiers ?",
+      "options": [
+        "Le bit",
+        "L'octet",
+        "Le bloc (ou cluster)",
+        "Le secteur"
+      ],
+      "correct": "Le bloc (ou cluster)",
+      "explanation": "Le système de fichiers alloue l'espace disque par blocs de taille fixe (ex: 4 Ko), même si un fichier est plus petit."
+    },
+    {
+      "question": "Comment s'appelle la table, souvent située au début du disque, qui contient les informations sur les partitions ?",
+      "options": [
+        "La table d'allocation de fichiers (FAT)",
+        "La table des inodes",
+        "La table de partition (ex: MBR ou GPT)",
+        "Le répertoire racine"
+      ],
+      "correct": "La table de partition (ex: MBR ou GPT)",
+      "explanation": "La table de partition décrit comment le disque est divisé en différentes sections logiques (partitions), chacune pouvant contenir un système de fichiers."
+    },
+    {
+      "question": "Quel protocole réseau est souvent utilisé par l'OS pour obtenir automatiquement une adresse IP et d'autres paramètres réseau (passerelle, DNS) auprès d'un serveur ?",
+      "options": [
+        "DNS",
+        "HTTP",
+        "DHCP (Dynamic Host Configuration Protocol)",
+        "FTP"
+      ],
+      "correct": "DHCP (Dynamic Host Configuration Protocol)",
+      "explanation": "DHCP simplifie la configuration réseau des machines clientes en leur attribuant dynamiquement les informations nécessaires."
+    },
+    {
+      "question": "Quel composant matériel est responsable de l'affichage des images sur l'écran ?",
+      "options": [
+        "La carte son",
+        "La carte réseau",
+        "La carte graphique (ou GPU intégré)",
+        "Le disque dur"
+      ],
+      "correct": "La carte graphique (ou GPU intégré)",
+      "explanation": "La carte graphique traite les données d'image et les envoie à l'écran via un port vidéo (HDMI, DisplayPort...). Elle possède souvent sa propre mémoire (VRAM)."
+    },
+    {
+      "question": "Quel terme désigne l'ensemble des microprogrammes (firmware) et logiciels de bas niveau qui gèrent le matériel et fournissent des services à l'OS et aux applications ?",
+      "options": [
+        "Le matériel (Hardware)",
+        "La couche d'abstraction matérielle (HAL - Hardware Abstraction Layer) et les pilotes",
+        "Les applications utilisateur",
+        "L'interface graphique"
+      ],
+      "correct": "La couche d'abstraction matérielle (HAL - Hardware Abstraction Layer) et les pilotes",
+      "explanation": "Cette couche masque les spécificités du matériel à l'OS, le rendant plus portable."
+    },
+    {
+      "question": "Que signifie 'booter' un ordinateur ?",
+      "options": [
+        "L'éteindre",
+        "Le processus de démarrage de l'ordinateur, depuis la mise sous tension jusqu'au chargement complet du système d'exploitation",
+        "Installer un nouveau logiciel",
+        "Connecter un périphérique"
+      ],
+      "correct": "Le processus de démarrage de l'ordinateur, depuis la mise sous tension jusqu'au chargement complet du système d'exploitation",
+      "explanation": "Le terme vient de 'bootstrap', l'idée étant que le système se 'tire lui-même par les lacets' pour démarrer."
+    },
+    {
+      "question": "Dans le cycle Fetch-Decode-Execute, quelle étape consiste à identifier l'opération à réaliser et ses opérandes ?",
+      "options": [
+        "Fetch (Chercher)",
+        "Decode (Décoder)",
+        "Execute (Exécuter)",
+        "Store (Stocker)"
+      ],
+      "correct": "Decode (Décoder)",
+      "explanation": "L'unité de contrôle analyse l'instruction (préalablement cherchée en mémoire) pour déterminer l'action à effectuer."
+    },
+    {
+      "question": "Quel type de système d'exploitation est conçu pour s'exécuter sur des appareils mobiles comme les smartphones et les tablettes ?",
+      "options": [
+        "OS de serveur (ex: Windows Server, Linux)",
+        "OS de bureau (ex: Windows 10, macOS)",
+        "OS mobile (ex: Android, iOS)",
+        "OS temps réel (RTOS)"
+      ],
+      "correct": "OS mobile (ex: Android, iOS)",
+      "explanation": "Les OS mobiles sont optimisés pour les écrans tactiles, la gestion de l'énergie et la connectivité sans fil."
+    },
+    {
+      "question": "Quel concept permet à un système d'exploitation de protéger les processus les uns des autres, empêchant un processus d'accéder ou de modifier la mémoire d'un autre processus sans autorisation ?",
+      "options": [
+        "La mémoire virtuelle et la protection mémoire (via la MMU)",
+        "Le multitâche",
+        "Le système de fichiers",
+        "L'ordonnancement"
+      ],
+      "correct": "La mémoire virtuelle et la protection mémoire (via la MMU)",
+      "explanation": "Chaque processus dispose de son propre espace d'adressage virtuel isolé, géré et protégé par l'OS et la MMU."
+    }
+  ]
+}

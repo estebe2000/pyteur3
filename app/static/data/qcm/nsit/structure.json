@@ -1,0 +1,873 @@
+{
+  "structures_donnees": [
+    {
+      "question": "Qu'est-ce qu'une structure de données ?",
+      "options": [
+        "Un algorithme de tri",
+        "Un type de variable de base comme entier ou flottant",
+        "Une manière d'organiser et de stocker des données en mémoire pour pouvoir les utiliser efficacement",
+        "Un langage de programmation"
+      ],
+      "correct": "Une manière d'organiser et de stocker des données en mémoire pour pouvoir les utiliser efficacement",
+      "explanation": "Une structure de données définit comment les données sont reliées et quelles opérations peuvent être effectuées sur elles (ajout, suppression, recherche...)."
+    },
+    {
+      "question": "Quelle est la différence entre un type abstrait de données (ADT) et une structure de données ?",
+      "options": [
+        "Il n'y a pas de différence",
+        "L'ADT décrit les opérations possibles (l'interface), tandis que la structure de données est l'implémentation concrète",
+        "L'ADT est l'implémentation, la structure de données est l'interface",
+        "L'ADT est toujours plus lent que la structure de données"
+      ],
+      "correct": "L'ADT décrit les opérations possibles (l'interface), tandis que la structure de données est l'implémentation concrète",
+      "explanation": "Le type abstrait (ex: la Pile) définit ce qu'on peut faire (empiler, dépiler), la structure (ex: liste Python, tableau) définit comment c'est fait en mémoire."
+    },
+    {
+      "question": "Parmi les structures suivantes, laquelle est linéaire ?",
+      "options": [
+        "Arbre binaire",
+        "Graphe",
+        "Pile (Stack)",
+        "Table de hachage"
+      ],
+      "correct": "Pile (Stack)",
+      "explanation": "Les structures linéaires organisent les données en séquence (un élément après l'autre), comme les listes, piles et files. Arbres et graphes sont non linéaires."
+    },
+    {
+      "question": "Quel principe régit le fonctionnement d'une Pile (Stack) ?",
+      "options": [
+        "FIFO (First-In, First-Out)",
+        "LIFO (Last-In, First-Out)",
+        "Accès direct par indice",
+        "Association clé-valeur"
+      ],
+      "correct": "LIFO (Last-In, First-Out)",
+      "explanation": "Dans une pile, le dernier élément ajouté est le premier à être retiré, comme une pile d'assiettes."
+    },
+    {
+      "question": "Quelle opération ajoute un élément au sommet d'une pile ?",
+      "options": [
+        "dequeue",
+        "pop",
+        "push (empiler)",
+        "peek"
+      ],
+      "correct": "push (empiler)",
+      "explanation": "L'opération 'push' (empiler en français) ajoute un élément sur le dessus de la pile."
+    },
+    {
+      "question": "Quelle opération retire et retourne l'élément au sommet d'une pile ?",
+      "options": [
+        "enqueue",
+        "push",
+        "peek",
+        "pop (dépiler)"
+      ],
+      "correct": "pop (dépiler)",
+      "explanation": "L'opération 'pop' (dépiler) supprime l'élément supérieur et le renvoie."
+    },
+    {
+      "question": "Quelle opération permet de consulter l'élément au sommet d'une pile sans le retirer ?",
+      "options": [
+        "push",
+        "pop",
+        "peek (ou top)",
+        "isEmpty"
+      ],
+      "correct": "peek (ou top)",
+      "explanation": "'Peek' ou 'top' permet de regarder l'élément supérieur sans modifier la pile."
+    },
+    {
+      "question": "Quelle structure de données Python peut être utilisée facilement pour implémenter une pile ?",
+      "options": [
+        "tuple",
+        "dict",
+        "set",
+        "list (avec append et pop)"
+      ],
+      "correct": "list (avec append et pop)",
+      "explanation": "Les listes Python ont des méthodes `append` (pour empiler) et `pop` (sans indice, pour dépiler) qui fonctionnent efficacement en fin de liste (complexité amortie O(1))."
+    },
+    {
+      "question": "Quelle est la complexité temporelle typique des opérations push et pop sur une pile implémentée avec une liste Python (ou un tableau dynamique) ?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1) (amorti)",
+        "O(n^2)"
+      ],
+      "correct": "O(1) (amorti)",
+      "explanation": "L'ajout et la suppression en fin de liste Python sont généralement en temps constant (amorti sur plusieurs opérations)."
+    },
+    {
+      "question": "Dans quel cas une pile est-elle une structure de données appropriée ?",
+      "options": [
+        "Gérer une file d'attente à la caisse",
+        "Implémenter la fonction 'Annuler' (Undo) dans un éditeur",
+        "Stocker un annuaire téléphonique",
+        "Représenter les liens entre amis sur un réseau social"
+      ],
+      "correct": "Implémenter la fonction 'Annuler' (Undo) dans un éditeur",
+      "explanation": "La fonction 'Annuler' doit annuler la dernière action effectuée, ce qui correspond au principe LIFO de la pile (on dépile la dernière action ajoutée)."
+    },
+    {
+      "question": "Quel principe régit le fonctionnement d'une File (Queue) ?",
+      "options": [
+        "LIFO (Last-In, First-Out)",
+        "FIFO (First-In, First-Out)",
+        "Accès aléatoire",
+        "Tri automatique"
+      ],
+      "correct": "FIFO (First-In, First-Out)",
+      "explanation": "Dans une file, le premier élément ajouté est le premier à être retiré, comme dans une file d'attente."
+    },
+    {
+      "question": "Quelle opération ajoute un élément à la fin (queue) d'une file ?",
+      "options": [
+        "pop",
+        "push",
+        "enqueue (enfiler)",
+        "dequeue"
+      ],
+      "correct": "enqueue (enfiler)",
+      "explanation": "L'opération 'enqueue' (enfiler) ajoute un élément à l'arrière de la file."
+    },
+    {
+      "question": "Quelle opération retire et retourne l'élément au début (tête) d'une file ?",
+      "options": [
+        "enqueue",
+        "push",
+        "peek",
+        "dequeue (défiler)"
+      ],
+      "correct": "dequeue (défiler)",
+      "explanation": "L'opération 'dequeue' (défiler) supprime l'élément le plus anciennement ajouté (celui en tête) et le renvoie."
+    },
+    {
+      "question": "Quelle opération permet de consulter l'élément en tête d'une file sans le retirer ?",
+      "options": [
+        "enqueue",
+        "dequeue",
+        "peek (ou front)",
+        "isEmpty"
+      ],
+      "correct": "peek (ou front)",
+      "explanation": "'Peek' ou 'front' permet de regarder l'élément en tête de file sans modifier la file."
+    },
+    {
+      "question": "Pourquoi l'implémentation d'une file avec une liste Python standard (en ajoutant à la fin et retirant au début) peut-elle être inefficace ?",
+      "options": [
+        "Parce que `append` est lent",
+        "Parce que retirer un élément au début (ex: `pop(0)` ou `del L[0]`) nécessite de décaler tous les autres éléments (complexité O(n))",
+        "Parce que les listes ne peuvent pas stocker assez d'éléments",
+        "Parce que les listes sont immuables"
+      ],
+      "correct": "Parce que retirer un élément au début (ex: `pop(0)` ou `del L[0]`) nécessite de décaler tous les autres éléments (complexité O(n))",
+      "explanation": "Pour des files longues, cette opération de décalage rend l'opération dequeue très lente."
+    },
+    {
+      "question": "Quelle structure de données Python, optimisée pour les ajouts et suppressions aux deux extrémités, est recommandée pour implémenter une file efficacement ?",
+      "options": [
+        "tuple",
+        "dict",
+        "collections.deque (double-ended queue)",
+        "set"
+      ],
+      "correct": "collections.deque (double-ended queue)",
+      "explanation": "Les deques sont implémentées comme des listes doublement chaînées, permettant des ajouts et suppressions en O(1) aux deux bouts."
+    },
+    {
+      "question": "Quelle est la complexité temporelle typique des opérations enqueue et dequeue sur une file implémentée avec `collections.deque` ?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "O(n^2)"
+      ],
+      "correct": "O(1)",
+      "explanation": "Les opérations aux extrémités d'une deque sont en temps constant."
+    },
+    {
+      "question": "Dans quel cas une file est-elle une structure de données appropriée ?",
+      "options": [
+        "Gérer l'historique de navigation (bouton Précédent)",
+        "Gérer les appels de fonctions",
+        "Modéliser une file d'attente (clients, tâches d'impression, traitement de requêtes serveur)",
+        "Vérifier si des parenthèses sont bien équilibrées"
+      ],
+      "correct": "Modéliser une file d'attente (clients, tâches d'impression, traitement de requêtes serveur)",
+      "explanation": "Le principe FIFO correspond naturellement à la gestion d'une file d'attente où le premier arrivé est le premier servi."
+    },
+    {
+      "question": "Qu'est-ce qu'une liste chaînée (Linked List) ?",
+      "options": [
+        "Un type de liste Python standard",
+        "Une structure de données linéaire où les éléments (nœuds) ne sont pas forcément contigus en mémoire, chaque nœud contenant une valeur et une référence (pointeur) vers le nœud suivant",
+        "Une liste stockée sur plusieurs ordinateurs",
+        "Une liste obligatoirement triée"
+      ],
+      "correct": "Une structure de données linéaire où les éléments (nœuds) ne sont pas forcément contigus en mémoire, chaque nœud contenant une valeur et une référence (pointeur) vers le nœud suivant",
+      "explanation": "Les listes chaînées offrent une alternative aux tableaux/listes Python pour implémenter des séquences, avec des avantages et inconvénients différents."
+    },
+    {
+      "question": "Quel est l'avantage principal de l'insertion/suppression d'un élément au milieu d'une liste chaînée (si on a déjà une référence au nœud précédent) par rapport à une liste Python ?",
+      "options": [
+        "C'est toujours plus lent",
+        "C'est plus rapide (O(1)) car il n'y a pas besoin de décaler les éléments suivants, seulement de modifier quelques références",
+        "Cela utilise moins de mémoire",
+        "C'est impossible"
+      ],
+      "correct": "C'est plus rapide (O(1)) car il n'y a pas besoin de décaler les éléments suivants, seulement de modifier quelques références",
+      "explanation": "Dans une liste Python (tableau dynamique), l'insertion/suppression au milieu coûte O(n) à cause des décalages."
+    },
+    {
+      "question": "Quel est l'inconvénient principal de l'accès à un élément par son indice dans une liste chaînée simple ?",
+      "options": [
+        "C'est impossible",
+        "C'est en temps constant O(1)",
+        "C'est lent (O(n)) car il faut parcourir la liste depuis le début en suivant les références jusqu'à atteindre le i-ème élément",
+        "Cela nécessite de trier la liste d'abord"
+      ],
+      "correct": "C'est lent (O(n)) car il faut parcourir la liste depuis le début en suivant les références jusqu'à atteindre le i-ème élément",
+      "explanation": "Contrairement aux listes Python (tableaux) où l'accès par indice est en O(1), les listes chaînées nécessitent un parcours séquentiel."
+    },
+    {
+      "question": "Dans un nœud de liste chaînée simple, que trouve-t-on typiquement ?",
+      "options": [
+        "Seulement la valeur",
+        "Seulement une référence au nœud suivant",
+        "La valeur de l'élément et une référence vers le nœud suivant",
+        "La valeur, une référence au suivant et une référence au précédent"
+      ],
+      "correct": "La valeur de l'élément et une référence vers le nœud suivant",
+      "explanation": "C'est la structure minimale d'un nœud dans une liste simplement chaînée."
+    },
+    {
+      "question": "Quelle structure de données non linéaire est caractérisée par une relation hiérarchique entre des nœuds, avec un nœud racine unique ?",
+      "options": [
+        "Liste",
+        "File",
+        "Arbre (Tree)",
+        "Pile"
+      ],
+      "correct": "Arbre (Tree)",
+      "explanation": "Les arbres représentent des hiérarchies (système de fichiers, organigramme, DOM HTML...)."
+    },
+    {
+      "question": "Dans un arbre, comment appelle-t-on le nœud situé au sommet de la hiérarchie, qui n'a pas de parent ?",
+      "options": [
+        "Feuille (Leaf)",
+        "Nœud interne",
+        "Racine (Root)",
+        "Branche"
+      ],
+      "correct": "Racine (Root)",
+      "explanation": "La racine est le point de départ de l'arbre."
+    },
+    {
+      "question": "Dans un arbre, comment appelle-t-on un nœud qui n'a pas d'enfants ?",
+      "options": [
+        "Racine (Root)",
+        "Nœud interne",
+        "Feuille (Leaf)",
+        "Parent"
+      ],
+      "correct": "Feuille (Leaf)",
+      "explanation": "Les feuilles sont les nœuds terminaux de l'arbre."
+    },
+    {
+      "question": "Dans un arbre, si le nœud B est directement en dessous du nœud A, quelle est la relation entre A et B ?",
+      "options": [
+        "A est l'enfant de B",
+        "A et B sont frères",
+        "A est le parent de B, B est l'enfant de A",
+        "A et B sont des feuilles"
+      ],
+      "correct": "A est le parent de B, B est l'enfant de A",
+      "explanation": "Ces termes décrivent la relation hiérarchique directe dans l'arbre."
+    },
+    {
+      "question": "Qu'est-ce qu'un arbre binaire ?",
+      "options": [
+        "Un arbre où chaque nœud a exactement 2 enfants",
+        "Un arbre où chaque nœud a au plus 2 enfants (un enfant gauche et/ou un enfant droit)",
+        "Un arbre avec seulement 2 niveaux",
+        "Un arbre dont les valeurs sont binaires (0 ou 1)"
+      ],
+      "correct": "Un arbre où chaque nœud a au plus 2 enfants (un enfant gauche et/ou un enfant droit)",
+      "explanation": "Un nœud peut avoir 0, 1 ou 2 enfants dans un arbre binaire."
+    },
+    {
+      "question": "Comment implémente-t-on souvent un nœud d'arbre binaire ?",
+      "options": [
+        "Avec une seule valeur",
+        "Avec une valeur et une liste d'enfants",
+        "Avec une valeur, une référence vers le fils gauche et une référence vers le fils droit",
+        "Avec une matrice"
+      ],
+      "correct": "Avec une valeur, une référence vers le fils gauche et une référence vers le fils droit",
+      "explanation": "Chaque nœud contient sa donnée et des liens (éventuellement nuls) vers ses sous-arbres gauche et droit."
+    },
+    {
+      "question": "Qu'est-ce qu'un Arbre Binaire de Recherche (ABR ou BST - Binary Search Tree) ?",
+      "options": [
+        "Un arbre binaire où les valeurs sont insérées aléatoirement",
+        "Un arbre binaire où tous les niveaux sont complets",
+        "Un arbre binaire où, pour chaque nœud, toutes les valeurs dans le sous-arbre gauche sont inférieures (ou égales) à la valeur du nœud, et toutes les valeurs dans le sous-arbre droit sont supérieures (ou égales)",
+        "Un arbre binaire qui ne contient que des nombres"
+      ],
+      "correct": "Un arbre binaire où, pour chaque nœud, toutes les valeurs dans le sous-arbre gauche sont inférieures (ou égales) à la valeur du nœud, et toutes les valeurs dans le sous-arbre droit sont supérieures (ou égales)",
+      "explanation": "Cette propriété d'ordre permet des recherches efficaces."
+    },
+    {
+      "question": "Quel est l'avantage principal d'un Arbre Binaire de Recherche (équilibré) par rapport à une liste triée pour la recherche, l'insertion et la suppression ?",
+      "options": [
+        "Il utilise moins de mémoire",
+        "Il est plus facile à implémenter",
+        "Ces opérations ont une complexité temporelle moyenne en O(log n), ce qui est meilleur que O(n) pour l'insertion/suppression dans une liste triée",
+        "Il garantit un accès en O(1)"
+      ],
+      "correct": "Ces opérations ont une complexité temporelle moyenne en O(log n), ce qui est meilleur que O(n) pour l'insertion/suppression dans une liste triée",
+      "explanation": "L'ABR combine l'efficacité de la recherche dichotomique avec la flexibilité des insertions/suppressions (en moyenne)."
+    },
+    {
+      "question": "Comment fonctionne la recherche d'une valeur `v` dans un ABR ?",
+      "options": [
+        "On parcourt tous les nœuds niveau par niveau",
+        "On compare `v` à la racine : si égal, trouvé ; si plus petit, on cherche récursivement dans le sous-arbre gauche ; si plus grand, on cherche récursivement dans le sous-arbre droit",
+        "On trie d'abord toutes les valeurs",
+        "On suit toujours le chemin le plus à gauche"
+      ],
+      "correct": "On compare `v` à la racine : si égal, trouvé ; si plus petit, on cherche récursivement dans le sous-arbre gauche ; si plus grand, on cherche récursivement dans le sous-arbre droit",
+      "explanation": "La propriété d'ordre de l'ABR guide la recherche, éliminant une grande partie de l'arbre à chaque comparaison."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de la recherche dans un ABR dans le pire des cas ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Dans le pire cas, si l'arbre est déséquilibré (chaque nœud n'a qu'un seul enfant, formant une liste chaînée), la recherche dégénère en recherche séquentielle."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de la recherche dans un ABR équilibré ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(log n)",
+      "explanation": "Si l'arbre est (approximativement) équilibré, sa hauteur est logarithmique par rapport au nombre de nœuds, et la recherche suit un chemin de cette longueur."
+    },
+    {
+      "question": "Quel parcours d'un ABR permet d'obtenir les éléments dans l'ordre croissant ?",
+      "options": [
+        "Parcours préfixe (racine, gauche, droit)",
+        "Parcours postfixe (gauche, droit, racine)",
+        "Parcours infixe (gauche, racine, droit)",
+        "Parcours en largeur"
+      ],
+      "correct": "Parcours infixe (gauche, racine, droit)",
+      "explanation": "En visitant le sous-arbre gauche, puis la racine, puis le sous-arbre droit, on respecte l'ordre défini par la propriété de l'ABR."
+    },
+    {
+      "question": "Qu'est-ce qu'un graphe (Graph) en tant que structure de données ?",
+      "options": [
+        "Un type de graphique statistique",
+        "Une structure de données représentant un ensemble d'objets (sommets ou nœuds) et les relations (arêtes ou arcs) entre ces objets",
+        "Une hiérarchie stricte comme un arbre",
+        "Une séquence linéaire"
+      ],
+      "correct": "Une structure de données représentant un ensemble d'objets (sommets ou nœuds) et les relations (arêtes ou arcs) entre ces objets",
+      "explanation": "Les graphes modélisent des réseaux (sociaux, routiers, informatiques...), des dépendances, etc."
+    },
+    {
+      "question": "Dans un graphe, comment appelle-t-on les 'points' ou 'objets' ?",
+      "options": [
+        "Arêtes (Edges)",
+        "Arcs",
+        "Sommets (Vertices) ou Nœuds (Nodes)",
+        "Poids (Weights)"
+      ],
+      "correct": "Sommets (Vertices) ou Nœuds (Nodes)",
+      "explanation": "Les sommets représentent les entités du réseau."
+    },
+    {
+      "question": "Dans un graphe, comment appelle-t-on les 'liens' ou 'connexions' entre les sommets ?",
+      "options": [
+        "Sommets (Vertices)",
+        "Nœuds (Nodes)",
+        "Arêtes (Edges) ou Arcs",
+        "Degrés (Degrees)"
+      ],
+      "correct": "Arêtes (Edges) ou Arcs",
+      "explanation": "Les arêtes (graphe non orienté) ou arcs (graphe orienté) représentent les relations entre les sommets."
+    },
+    {
+      "question": "Quelle est la différence entre un graphe orienté et un graphe non orienté ?",
+      "options": [
+        "Un graphe orienté a des poids, pas l'autre",
+        "Un graphe non orienté a moins de sommets",
+        "Dans un graphe orienté, les arêtes (arcs) ont une direction (A -> B est différent de B -> A), alors que dans un graphe non orienté, les arêtes sont bidirectionnelles (A -- B)",
+        "Un graphe orienté est toujours acyclique"
+      ],
+      "correct": "Dans un graphe orienté, les arêtes (arcs) ont une direction (A -> B est différent de B -> A), alors que dans un graphe non orienté, les arêtes sont bidirectionnelles (A -- B)",
+      "explanation": "Le choix entre orienté et non orienté dépend de la nature de la relation modélisée (ex: amitié vs suivi sur un réseau social)."
+    },
+    {
+      "question": "Qu'est-ce qu'un graphe pondéré (weighted graph) ?",
+      "options": [
+        "Un graphe avec beaucoup de sommets",
+        "Un graphe où chaque arête (ou arc) a une valeur numérique associée (poids ou coût)",
+        "Un graphe non orienté uniquement",
+        "Un graphe dessiné avec des lignes épaisses"
+      ],
+      "correct": "Un graphe où chaque arête (ou arc) a une valeur numérique associée (poids ou coût)",
+      "explanation": "Le poids peut représenter une distance, un temps, un coût, une capacité, etc."
+    },
+    {
+      "question": "Comment peut-on représenter un graphe en mémoire à l'aide d'une structure bidimensionnelle où chaque cellule (i, j) indique s'il y a une arête entre le sommet i et le sommet j ?",
+      "options": [
+        "Liste d'adjacence",
+        "Matrice d'adjacence",
+        "Liste d'arêtes",
+        "Arbre couvrant"
+      ],
+      "correct": "Matrice d'adjacence",
+      "explanation": "La matrice d'adjacence est une matrice carrée (taille N x N si N sommets) où M[i][j] = 1 (ou le poids) s'il y a une arête (i, j), et 0 (ou infini) sinon."
+    },
+    {
+      "question": "Quel est l'avantage principal de la matrice d'adjacence pour représenter un graphe ?",
+      "options": [
+        "Elle utilise peu de mémoire pour les graphes peu denses",
+        "Elle permet de vérifier très rapidement (O(1)) s'il existe une arête entre deux sommets donnés",
+        "Elle est facile à modifier pour ajouter/supprimer des sommets",
+        "Elle représente facilement les poids négatifs"
+      ],
+      "correct": "Elle permet de vérifier très rapidement (O(1)) s'il existe une arête entre deux sommets donnés",
+      "explanation": "Il suffit de regarder la valeur dans la cellule M[i][j] correspondante."
+    },
+    {
+      "question": "Quel est l'inconvénient principal de la matrice d'adjacence, surtout pour les graphes avec peu d'arêtes (graphes peu denses ou épars) ?",
+      "options": [
+        "Elle est lente pour vérifier l'existence d'une arête",
+        "Elle ne peut pas représenter les graphes orientés",
+        "Elle utilise beaucoup de mémoire (O(N^2), où N est le nombre de sommets), même s'il y a peu d'arêtes",
+        "Elle ne peut pas stocker les poids"
+      ],
+      "correct": "Elle utilise beaucoup de mémoire (O(N^2), où N est le nombre de sommets), même s'il y a peu d'arêtes",
+      "explanation": "La taille de la matrice dépend uniquement du nombre de sommets, pas du nombre d'arêtes. Elle contient beaucoup de zéros pour les graphes épars."
+    },
+    {
+      "question": "Comment peut-on représenter un graphe en associant à chaque sommet la liste des sommets auxquels il est directement connecté ?",
+      "options": [
+        "Matrice d'adjacence",
+        "Liste d'adjacence",
+        "Liste d'arêtes",
+        "Matrice d'incidence"
+      ],
+      "correct": "Liste d'adjacence",
+      "explanation": "Une liste d'adjacence est souvent implémentée comme un tableau (ou dictionnaire) où l'indice (ou la clé) est le sommet de départ, et la valeur est la liste de ses voisins."
+    },
+    {
+      "question": "Quel est l'avantage principal de la liste d'adjacence, surtout pour les graphes peu denses ?",
+      "options": [
+        "Elle permet un accès en O(1) pour vérifier l'existence d'une arête",
+        "Elle utilise une quantité de mémoire proportionnelle au nombre de sommets et d'arêtes (O(N+E)), ce qui est efficace pour les graphes épars",
+        "Elle est plus simple à représenter sur papier",
+        "Elle ne fonctionne que pour les graphes non orientés"
+      ],
+      "correct": "Elle utilise une quantité de mémoire proportionnelle au nombre de sommets et d'arêtes (O(N+E)), ce qui est efficace pour les graphes épars",
+      "explanation": "Contrairement à la matrice (O(N^2)), l'espace mémoire de la liste d'adjacence dépend du nombre réel de connexions."
+    },
+    {
+      "question": "Quel est l'inconvénient principal de la liste d'adjacence par rapport à la matrice d'adjacence ?",
+      "options": [
+        "Elle utilise plus de mémoire pour les graphes denses",
+        "Vérifier s'il existe une arête entre deux sommets i et j peut nécessiter de parcourir la liste des voisins de i (complexité O(degré(i)) dans le pire cas)",
+        "Elle ne peut pas représenter les graphes pondérés",
+        "Elle est moins intuitive"
+      ],
+      "correct": "Vérifier s'il existe une arête entre deux sommets i et j peut nécessiter de parcourir la liste des voisins de i (complexité O(degré(i)) dans le pire cas)",
+      "explanation": "Contrairement à l'accès direct en O(1) de la matrice, tester une arête spécifique est moins rapide avec la liste d'adjacence."
+    },
+    {
+      "question": "Pour représenter un réseau social avec des millions d'utilisateurs mais où chaque utilisateur n'a en moyenne que quelques centaines d'amis, quelle représentation de graphe est la plus adaptée en termes de mémoire ?",
+      "options": [
+        "Matrice d'adjacence",
+        "Liste d'adjacence",
+        "Les deux sont équivalentes",
+        "Aucune des deux"
+      ],
+      "correct": "Liste d'adjacence",
+      "explanation": "C'est un graphe très épars (peu dense). La matrice serait gigantesque (N^2 avec N=millions), alors que la liste d'adjacence ne stockera que les connexions existantes (N*degré moyen)."
+    },
+    {
+      "question": "Qu'est-ce qu'un parcours de graphe ?",
+      "options": [
+        "Modifier les poids des arêtes",
+        "Une méthode systématique pour visiter tous les sommets (et/ou arêtes) accessibles d'un graphe à partir d'un sommet de départ",
+        "Calculer le chemin le plus court",
+        "Supprimer un sommet du graphe"
+      ],
+      "correct": "Une méthode systématique pour visiter tous les sommets (et/ou arêtes) accessibles d'un graphe à partir d'un sommet de départ",
+      "explanation": "Les parcours permettent d'explorer la structure du graphe et sont à la base de nombreux autres algorithmes."
+    },
+    {
+      "question": "Quel algorithme de parcours de graphe explore les voisins d'un sommet, puis les voisins des voisins, etc., en avançant niveau par niveau ?",
+      "options": [
+        "Parcours en Profondeur (DFS - Depth First Search)",
+        "Parcours en Largeur (BFS - Breadth First Search)",
+        "Algorithme de Dijkstra",
+        "Algorithme de Kruskal"
+      ],
+      "correct": "Parcours en Largeur (BFS - Breadth First Search)",
+      "explanation": "Le BFS utilise typiquement une file pour explorer le graphe couche par couche à partir du sommet source."
+    },
+    {
+      "question": "Quelle structure de données est naturellement utilisée pour implémenter un parcours en largeur (BFS) ?",
+      "options": [
+        "Une pile (Stack)",
+        "Une file (Queue)",
+        "Un dictionnaire",
+        "Un arbre binaire"
+      ],
+      "correct": "Une file (Queue)",
+      "explanation": "On enfile le sommet de départ, puis tant que la file n'est pas vide, on défile un sommet, on le traite, et on enfile ses voisins non encore visités."
+    },
+    {
+      "question": "Quel algorithme de parcours de graphe explore aussi loin que possible le long d'un chemin avant de revenir en arrière (backtracking) ?",
+      "options": [
+        "Parcours en Profondeur (DFS - Depth First Search)",
+        "Parcours en Largeur (BFS - Breadth First Search)",
+        "Algorithme A*",
+        "Algorithme de Bellman-Ford"
+      ],
+      "correct": "Parcours en Profondeur (DFS - Depth First Search)",
+      "explanation": "Le DFS explore une branche jusqu'au bout avant de remonter pour explorer une autre branche. Il utilise souvent la récursivité ou une pile."
+    },
+    {
+      "question": "Quelle structure de données est naturellement utilisée (implicitement par la récursivité ou explicitement) pour implémenter un parcours en profondeur (DFS) ?",
+      "options": [
+        "Une file (Queue)",
+        "Une pile (Stack)",
+        "Une liste d'adjacence",
+        "Une matrice d'adjacence"
+      ],
+      "correct": "Une pile (Stack)",
+      "explanation": "La pile (souvent la pile d'appels récursifs) mémorise les chemins en cours d'exploration pour pouvoir revenir en arrière."
+    },
+    {
+      "question": "Pour trouver le chemin le plus court en nombre d'arêtes entre deux sommets dans un graphe non pondéré, quel algorithme de parcours est le plus adapté ?",
+      "options": [
+        "Parcours en Profondeur (DFS)",
+        "Parcours en Largeur (BFS)",
+        "Algorithme de Dijkstra",
+        "N'importe lequel des deux parcours"
+      ],
+      "correct": "Parcours en Largeur (BFS)",
+      "explanation": "Le BFS explore niveau par niveau, garantissant que le premier chemin trouvé vers un sommet est le plus court en termes de nombre d'arêtes."
+    },
+    {
+      "question": "Qu'est-ce qu'une table de hachage (Hash Table) ?",
+      "options": [
+        "Une table triée",
+        "Une structure de données qui implémente une table associative (dictionnaire), en utilisant une fonction de hachage pour calculer un indice (hash) où stocker ou retrouver un élément",
+        "Une représentation de graphe",
+        "Une pile optimisée"
+      ],
+      "correct": "Une structure de données qui implémente une table associative (dictionnaire), en utilisant une fonction de hachage pour calculer un indice (hash) où stocker ou retrouver un élément",
+      "explanation": "Les tables de hachage permettent des opérations (ajout, recherche, suppression) en temps moyen O(1)."
+    },
+    {
+      "question": "Quel est le rôle de la fonction de hachage dans une table de hachage ?",
+      "options": [
+        "Trier les clés",
+        "Calculer la valeur associée à une clé",
+        "Transformer une clé (de type quelconque) en un indice (entier) pour un tableau sous-jacent",
+        "Compter le nombre d'éléments"
+      ],
+      "correct": "Transformer une clé (de type quelconque) en un indice (entier) pour un tableau sous-jacent",
+      "explanation": "La fonction de hachage doit idéalement distribuer les clés de manière uniforme dans le tableau pour minimiser les collisions."
+    },
+    {
+      "question": "Que se passe-t-il dans une table de hachage lorsque deux clés différentes produisent le même indice (hash) ?",
+      "options": [
+        "La deuxième clé écrase la première",
+        "Une erreur se produit et le programme s'arrête",
+        "Il y a une 'collision', qui doit être gérée par une stratégie spécifique (ex: chaînage séparé, adressage ouvert)",
+        "La table de hachage est automatiquement agrandie"
+      ],
+      "correct": "Il y a une 'collision', qui doit être gérée par une stratégie spécifique (ex: chaînage séparé, adressage ouvert)",
+      "explanation": "Les collisions sont inévitables. Les stratégies de résolution visent à permettre de stocker et retrouver les deux éléments malgré le hash identique."
+    },
+    {
+      "question": "Quelle est la complexité temporelle moyenne des opérations d'insertion, suppression et recherche dans une table de hachage bien dimensionnée avec une bonne fonction de hachage ?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "O(n^2)"
+      ],
+      "correct": "O(1)",
+      "explanation": "En moyenne, ces opérations prennent un temps constant, indépendant du nombre d'éléments stockés. C'est l'avantage majeur des tables de hachage."
+    },
+    {
+      "question": "Quelle est la complexité temporelle dans le pire cas des opérations sur une table de hachage (si toutes les clés ont le même hash) ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Dans le cas pathologique où toutes les clés entrent en collision, la table de hachage dégénère en une liste (avec chaînage) et les opérations deviennent linéaires."
+    },
+    {
+      "question": "Pourquoi les clés utilisées dans une table de hachage (ou un dictionnaire Python) doivent-elles être immuables ?",
+      "options": [
+        "Parce que c'est plus rapide",
+        "Parce que la fonction de hachage doit toujours retourner le même indice pour la même clé. Si la clé pouvait changer après insertion, on ne pourrait plus la retrouver.",
+        "Pour économiser de la mémoire",
+        "Ce n'est pas une nécessité"
+      ],
+      "correct": "Parce que la fonction de hachage doit toujours retourner le même indice pour la même clé. Si la clé pouvait changer après insertion, on ne pourrait plus la retrouver.",
+      "explanation": "L'immutabilité garantit la stabilité du hash de la clé."
+    },
+    {
+      "question": "Quel type Python peut être utilisé comme clé de dictionnaire ?",
+      "options": [
+        "list",
+        "dict",
+        "int, float, bool, str, tuple (s'il contient des immuables)",
+        "set"
+      ],
+      "correct": "int, float, bool, str, tuple (s'il contient des immuables)",
+      "explanation": "Tous ces types sont immuables et donc hachables, ils peuvent servir de clés. Les listes, dictionnaires et sets sont mutables et ne le peuvent pas."
+    },
+    {
+      "question": "Quelle structure de données est souvent utilisée pour implémenter les ensembles (set) ?",
+      "options": [
+        "Une liste triée",
+        "Un arbre binaire de recherche",
+        "Une table de hachage (où seules les clés sont stockées)",
+        "Une pile"
+      ],
+      "correct": "Une table de hachage (où seules les clés sont stockées)",
+      "explanation": "L'utilisation d'une table de hachage permet aux ensembles d'avoir des opérations d'ajout, suppression et test d'appartenance en temps moyen O(1)."
+    },
+    {
+      "question": "Dans quel cas est-il préférable d'utiliser une liste plutôt qu'un tuple ?",
+      "options": [
+        "Quand la collection de données ne doit pas changer",
+        "Quand on a besoin de pouvoir modifier, ajouter ou supprimer des éléments après la création",
+        "Quand on veut utiliser la collection comme clé de dictionnaire",
+        "Quand la performance d'accès est critique"
+      ],
+      "correct": "Quand on a besoin de pouvoir modifier, ajouter ou supprimer des éléments après la création",
+      "explanation": "La mutabilité des listes est leur principal avantage sur les tuples."
+    },
+    {
+      "question": "Dans quel cas est-il préférable d'utiliser un dictionnaire plutôt qu'une liste ?",
+      "options": [
+        "Quand l'ordre des éléments est la seule chose qui compte",
+        "Quand on a besoin d'accéder aux éléments par un indice numérique séquentiel",
+        "Quand on a besoin d'associer des valeurs à des clés uniques et d'y accéder rapidement par ces clés",
+        "Quand on veut garantir l'immutabilité"
+      ],
+      "correct": "Quand on a besoin d'associer des valeurs à des clés uniques et d'y accéder rapidement par ces clés",
+      "explanation": "Les dictionnaires sont idéaux pour représenter des enregistrements ou des correspondances, où l'accès se fait par nom (clé) plutôt que par position (indice)."
+    },
+    {
+      "question": "Quelle structure de données implémente une file de priorité (Priority Queue) ?",
+      "options": [
+        "Une pile",
+        "Une file standard",
+        "Un tas (Heap)",
+        "Une table de hachage"
+      ],
+      "correct": "Un tas (Heap)",
+      "explanation": "Un tas (min-heap ou max-heap) est une structure basée sur un arbre (souvent implémentée avec un tableau) qui permet d'insérer des éléments et d'extraire rapidement l'élément ayant la plus petite (ou plus grande) priorité (souvent en O(log n))."
+    },
+    {
+      "question": "Quel est le coût (complexité) de l'accès à l'élément d'indice `i` dans une liste Python `L` ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(i)"
+      ],
+      "correct": "O(1)",
+      "explanation": "Les listes Python étant implémentées comme des tableaux dynamiques, l'accès à L[i] se fait directement via le calcul de l'adresse mémoire (adresse_debut + i * taille_element), ce qui prend un temps constant."
+    },
+    {
+      "question": "Quel est le coût (complexité) de la recherche de la présence d'un élément `x` dans une liste Python `L` non triée ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Dans le pire cas, il faut parcourir toute la liste pour déterminer si l'élément est présent ou non (recherche séquentielle)."
+    },
+    {
+      "question": "Quel est le coût (complexité) moyen de la recherche de la présence d'une clé `k` dans un dictionnaire Python `d` ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(k)"
+      ],
+      "correct": "O(1)",
+      "explanation": "Grâce à la table de hachage sous-jacente, tester `k in d` est en moyenne très rapide."
+    },
+    {
+      "question": "Quelle structure de données utiliseriez-vous pour stocker l'historique des pages visitées dans un navigateur (pour la fonction 'Précédent') ?",
+      "options": [
+        "Une file",
+        "Une pile",
+        "Un dictionnaire",
+        "Un arbre"
+      ],
+      "correct": "Une pile",
+      "explanation": "Lorsque l'on visite une nouvelle page, on l'empile. Le bouton 'Précédent' dépile la page courante pour afficher la précédente (LIFO)."
+    },
+    {
+      "question": "Quel type de structure est souvent utilisé pour représenter l'arborescence d'un système de fichiers ?",
+      "options": [
+        "Une liste chaînée",
+        "Une pile",
+        "Un arbre n-aire (où chaque nœud peut avoir plusieurs enfants)",
+        "Un graphe cyclique"
+      ],
+      "correct": "Un arbre n-aire (où chaque nœud peut avoir plusieurs enfants)",
+      "explanation": "Chaque répertoire (nœud) peut contenir plusieurs fichiers ou sous-répertoires (enfants), formant une structure hiérarchique arborescente."
+    },
+    {
+      "question": "Pour représenter les relations d'amitié sur Facebook (si A est ami avec B, alors B est ami avec A), quel type de graphe utiliserait-on ?",
+      "options": [
+        "Un graphe orienté",
+        "Un graphe non orienté",
+        "Un graphe pondéré",
+        "Un arbre"
+      ],
+      "correct": "Un graphe non orienté",
+      "explanation": "La relation d'amitié est réciproque, donc une arête non orientée entre A et B suffit."
+    },
+    {
+      "question": "Pour représenter les relations 'suit' sur Twitter (A suit B ne signifie pas que B suit A), quel type de graphe utiliserait-on ?",
+      "options": [
+        "Un graphe orienté",
+        "Un graphe non orienté",
+        "Un graphe complet",
+        "Une liste"
+      ],
+      "correct": "Un graphe orienté",
+      "explanation": "La relation n'est pas symétrique, il faut donc des arcs dirigés (ex: un arc de A vers B si A suit B)."
+    },
+    {
+      "question": "Comment est généralement représenté un arbre binaire en utilisant une structure de nœuds récursive en Python ?",
+      "options": [
+        "Une liste de listes",
+        "Un dictionnaire",
+        "Une classe `Noeud` avec des attributs `valeur`, `gauche` (référence vers un autre Noeud ou None), et `droit` (référence vers un autre Noeud ou None)",
+        "Un tuple imbriqué"
+      ],
+      "correct": "Une classe `Noeud` avec des attributs `valeur`, `gauche` (référence vers un autre Noeud ou None), et `droit` (référence vers un autre Noeud ou None)",
+      "explanation": "Cette structure récursive (un nœud contient des références vers d'autres nœuds du même type) est une manière classique d'implémenter des arbres."
+    },
+    {
+      "question": "Que signifie dire qu'une liste Python est une structure de données 'dynamique' ?",
+      "options": [
+        "Qu'elle change de type pendant l'exécution",
+        "Que sa taille peut changer pendant l'exécution (on peut ajouter/supprimer des éléments)",
+        "Qu'elle est toujours stockée sur le disque dur",
+        "Qu'elle ne peut contenir que des nombres dynamiques"
+      ],
+      "correct": "Que sa taille peut changer pendant l'exécution (on peut ajouter/supprimer des éléments)",
+      "explanation": "Contrairement aux tableaux statiques de certains langages dont la taille est fixe, les listes Python peuvent grandir ou rétrécir dynamiquement."
+    },
+    {
+      "question": "Quel est l'inconvénient potentiel d'une liste Python très fragmentée en mémoire après de nombreuses insertions/suppressions ?",
+      "options": [
+        "Elle devient immuable",
+        "Les accès aux éléments peuvent être légèrement ralentis par la localité mémoire réduite (cache misses)",
+        "Elle ne peut plus être triée",
+        "Elle prend moins de place"
+      ],
+      "correct": "Les accès aux éléments peuvent être légèrement ralentis par la localité mémoire réduite (cache misses)",
+      "explanation": "Bien que l'accès par indice reste O(1) en théorie, si les éléments sont dispersés en mémoire, les performances du cache processeur peuvent être moins bonnes qu'avec un tableau contigu."
+    },
+    {
+      "question": "Quelle structure permet de stocker une collection d'éléments sans doublons et sans ordre particulier ?",
+      "options": [
+        "Liste (list)",
+        "Tuple (tuple)",
+        "Ensemble (set)",
+        "Dictionnaire (dict)"
+      ],
+      "correct": "Ensemble (set)",
+      "explanation": "Les ensembles garantissent l'unicité des éléments et offrent des opérations ensemblistes efficaces (union, intersection, différence, test d'appartenance)."
+    },
+    {
+      "question": "Si S1 = {1, 2, 3} et S2 = {3, 4, 5}, que retourne l'opération d'union S1 | S2 ?",
+      "options": [
+        "{3}",
+        "{1, 2, 3, 4, 5}",
+        "{1, 2, 4, 5}",
+        "{1, 2, 3, 3, 4, 5}"
+      ],
+      "correct": "{1, 2, 3, 4, 5}",
+      "explanation": "L'union contient tous les éléments présents dans S1 ou dans S2 (ou les deux), sans doublons."
+    },
+    {
+      "question": "Si S1 = {1, 2, 3} et S2 = {3, 4, 5}, que retourne l'opération d'intersection S1 & S2 ?",
+      "options": [
+        "{3}",
+        "{1, 2, 3, 4, 5}",
+        "{1, 2, 4, 5}",
+        "{}"
+      ],
+      "correct": "{3}",
+      "explanation": "L'intersection contient uniquement les éléments présents à la fois dans S1 et dans S2."
+    },
+    {
+      "question": "Si S1 = {1, 2, 3} et S2 = {3, 4, 5}, que retourne l'opération de différence S1 - S2 ?",
+      "options": [
+        "{3}",
+        "{1, 2}",
+        "{4, 5}",
+        "{1, 2, 3, 4, 5}"
+      ],
+      "correct": "{1, 2}",
+      "explanation": "La différence S1 - S2 contient les éléments qui sont dans S1 mais pas dans S2."
+    },
+    {
+      "question": "Quelle est la complexité temporelle moyenne du test d'appartenance (`element in mon_set`) pour un ensemble (set) Python ?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "O(n^2)"
+      ],
+      "correct": "O(1)",
+      "explanation": "Comme les ensembles sont implémentés avec des tables de hachage, vérifier si un élément est présent est en moyenne très rapide."
+    },
+    {
+      "question": "Quel est l'ordre de complexité pour accéder au k-ième élément d'une pile ou d'une file (sans le retirer) ?",
+      "options": [
+        "O(1)",
+        "O(log k)",
+        "O(k)",
+        "O(n)"
+      ],
+      "correct": "O(k)",
+      "explanation": "Les piles et les files ne permettent un accès direct (O(1)) qu'au sommet/tête. Pour accéder au k-ième élément, il faut en retirer k-1 (ou les parcourir dans le cas d'une implémentation par liste chaînée), ce qui prend un temps proportionnel à k."
+    }
+  ]
+}

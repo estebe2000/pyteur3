@@ -1,0 +1,1005 @@
+{
+  "histoire_informatique": [
+    {
+      "question": "Quel outil de calcul antique, utilisant des boules ou des jetons coulissant sur des tiges, est considéré comme l'un des premiers instruments d'aide au calcul ?",
+      "options": [
+        "La Pascaline",
+        "Le boulier (ou abaque)",
+        "La machine de Babbage",
+        "Le logarithme"
+      ],
+      "correct": "Le boulier (ou abaque)",
+      "explanation": "Le boulier, apparu dans diverses civilisations antiques (Mésopotamie, Chine), permettait d'effectuer des opérations arithmétiques de base bien avant les machines mécaniques."
+    },
+    {
+      "question": "Qui a inventé la 'Pascaline', l'une des premières calculatrices mécaniques capables d'effectuer des additions et des soustractions ?",
+      "options": [
+        "Charles Babbage",
+        "Gottfried Wilhelm Leibniz",
+        "Blaise Pascal",
+        "Ada Lovelace"
+      ],
+      "correct": "Blaise Pascal",
+      "explanation": "Blaise Pascal a conçu et construit la Pascaline vers 1642 pour aider son père, collecteur d'impôts. Elle utilisait un système d'engrenages pour les opérations."
+    },
+    {
+      "question": "Quelle innovation majeure la machine à calculer de Gottfried Wilhelm Leibniz apportait-elle par rapport à la Pascaline ?",
+      "options": [
+        "Elle était électronique",
+        "Elle pouvait effectuer les quatre opérations arithmétiques (addition, soustraction, multiplication, division)",
+        "Elle utilisait des cartes perforées",
+        "Elle était programmable"
+      ],
+      "correct": "Elle pouvait effectuer les quatre opérations arithmétiques (addition, soustraction, multiplication, division)",
+      "explanation": "La machine de Leibniz (Stepped Reckoner), développée vers 1673, améliorait la Pascaline en ajoutant la capacité d'effectuer des multiplications et des divisions."
+    },
+    {
+      "question": "Quel inventeur français a utilisé des cartes perforées pour automatiser les métiers à tisser au début du 19ème siècle, inspirant plus tard les pionniers de l'informatique ?",
+      "options": [
+        "Blaise Pascal",
+        "Joseph Marie Jacquard",
+        "Denis Diderot",
+        "André-Marie Ampère"
+      ],
+      "correct": "Joseph Marie Jacquard",
+      "explanation": "Le métier Jacquard (vers 1801) utilisait des cartes perforées pour contrôler les motifs de tissage, démontrant le potentiel du stockage d'informations sur un support perforé."
+    },
+    {
+      "question": "Comment s'appelle la machine imaginée par Charles Babbage au 19ème siècle, considérée comme l'ancêtre conceptuel de l'ordinateur moderne programmable ?",
+      "options": [
+        "La Pascaline",
+        "La machine à différences",
+        "La machine analytique",
+        "Le métier Jacquard"
+      ],
+      "correct": "La machine analytique",
+      "explanation": "La machine analytique (Analytical Engine), conçue mais jamais entièrement construite par Babbage, incluait des concepts clés comme une unité de calcul (moulin), une mémoire (magasin) et la programmation par cartes perforées."
+    },
+    {
+      "question": "Qui est considérée comme la première programmeuse de l'histoire pour son travail sur la machine analytique de Charles Babbage ?",
+      "options": [
+        "Grace Hopper",
+        "Marie Curie",
+        "Ada Lovelace",
+        "Hedy Lamarr"
+      ],
+      "correct": "Ada Lovelace",
+      "explanation": "Ada Lovelace a écrit des notes détaillées sur la machine analytique, y compris un algorithme pour calculer les nombres de Bernoulli, considéré comme le premier programme informatique."
+    },
+    {
+      "question": "Quel ingénieur américain a développé une machine à statistiques utilisant des cartes perforées pour accélérer le recensement américain de 1890 ?",
+      "options": [
+        "Charles Babbage",
+        "Herman Hollerith",
+        "John Atanasoff",
+        "Konrad Zuse"
+      ],
+      "correct": "Herman Hollerith",
+      "explanation": "La tabulatrice d'Hollerith lisait les données codées sur cartes perforées, réduisant considérablement le temps de traitement du recensement. Son entreprise deviendra plus tard IBM."
+    },
+    {
+      "question": "Quel pionnier allemand est crédité d'avoir construit l'un des premiers calculateurs programmables électromécaniques (le Z3) dans les années 1930-1940 ?",
+      "options": [
+        "Alan Turing",
+        "John von Neumann",
+        "Konrad Zuse",
+        "Howard Aiken"
+      ],
+      "correct": "Konrad Zuse",
+      "explanation": "Konrad Zuse a développé plusieurs calculateurs, dont le Z3 (1941), qui utilisait des relais électromécaniques et était programmable en binaire."
+    },
+    {
+      "question": "Quel était le nom du calculateur électromécanique développé à Harvard par Howard Aiken en collaboration avec IBM, achevé en 1944 ?",
+      "options": [
+        "ENIAC",
+        "Colossus",
+        "Z3",
+        "Harvard Mark I (ASCC)"
+      ],
+      "correct": "Harvard Mark I (ASCC)",
+      "explanation": "Le Harvard Mark I (Automatic Sequence Controlled Calculator) était une immense machine électromécanique programmée par bande perforée, utilisée pour des calculs balistiques."
+    },
+    {
+      "question": "Quel mathématicien britannique est célèbre pour son travail sur la théorie de la calculabilité (machine de Turing) et son rôle dans le décryptage d'Enigma pendant la Seconde Guerre mondiale ?",
+      "options": [
+        "Charles Babbage",
+        "John von Neumann",
+        "Alan Turing",
+        "Claude Shannon"
+      ],
+      "correct": "Alan Turing",
+      "explanation": "La machine de Turing est un modèle théorique fondamental de l'informatique. Turing a aussi joué un rôle clé à Bletchley Park pour casser les codes allemands."
+    },
+    {
+      "question": "Quel était le nom des calculateurs électroniques britanniques utilisés à Bletchley Park pour décrypter les messages allemands Lorenz durant la Seconde Guerre mondiale ?",
+      "options": [
+        "ENIAC",
+        "Mark I",
+        "Colossus",
+        "Z4"
+      ],
+      "correct": "Colossus",
+      "explanation": "Les machines Colossus (dès 1943) étaient parmi les premiers calculateurs électroniques programmables (via des interrupteurs et câbles), conçus spécifiquement pour la cryptanalyse."
+    },
+    {
+      "question": "Quel est le nom du premier calculateur électronique 'general purpose' (polyvalent) américain, achevé en 1946, qui utilisait des tubes à vide ?",
+      "options": [
+        "Colossus",
+        "Harvard Mark I",
+        "ENIAC",
+        "UNIVAC"
+      ],
+      "correct": "ENIAC",
+      "explanation": "L'ENIAC (Electronic Numerical Integrator and Computer) était une machine énorme et rapide pour l'époque, mais sa programmation par câblage était fastidieuse."
+    },
+    {
+      "question": "Quelle innovation majeure introduite par l'architecture de von Neumann a simplifié la programmation des ordinateurs par rapport à l'ENIAC ?",
+      "options": [
+        "L'utilisation de transistors",
+        "Le concept de programme enregistré en mémoire (stored program concept)",
+        "L'interface graphique",
+        "La connexion réseau"
+      ],
+      "correct": "Le concept de programme enregistré en mémoire (stored program concept)",
+      "explanation": "L'architecture de von Neumann (proposée dans le cadre du projet EDVAC) stocke à la fois les instructions du programme et les données dans la même mémoire, permettant de modifier facilement les programmes."
+    },
+    {
+      "question": "Quels sont les composants principaux d'une architecture de von Neumann ?",
+      "options": [
+        "Clavier, Écran, Imprimante",
+        "Unité Arithmétique et Logique (UAL), Unité de Contrôle (UC), Mémoire, Dispositifs d'Entrée/Sortie (E/S)",
+        "Carte mère, Carte graphique, Disque dur",
+        "Navigateur Web, Serveur, Base de données"
+      ],
+      "correct": "Unité Arithmétique et Logique (UAL), Unité de Contrôle (UC), Mémoire, Dispositifs d'Entrée/Sortie (E/S)",
+      "explanation": "L'UAL et l'UC forment l'Unité Centrale de Traitement (CPU). La mémoire stocke programmes et données. Les E/S permettent l'interaction avec l'extérieur."
+    },
+    {
+      "question": "Quelle invention de 1947 par Bell Labs a révolutionné l'électronique en remplaçant les volumineux et fragiles tubes à vide ?",
+      "options": [
+        "Le circuit intégré",
+        "Le transistor",
+        "Le microprocesseur",
+        "La mémoire vive (RAM)"
+      ],
+      "correct": "Le transistor",
+      "explanation": "Le transistor, plus petit, plus fiable, plus rapide et consommant moins d'énergie, a permis la miniaturisation et l'essor des ordinateurs."
+    },
+    {
+      "question": "Quel composant électronique, inventé à la fin des années 1950, regroupe plusieurs transistors et autres composants sur une seule puce de silicium ?",
+      "options": [
+        "Le tube à vide",
+        "Le relais électromécanique",
+        "Le circuit intégré (IC)",
+        "La carte perforée"
+      ],
+      "correct": "Le circuit intégré (IC)",
+      "explanation": "Le circuit intégré (inventé par Jack Kilby et Robert Noyce) a permis une miniaturisation et une augmentation de la complexité des ordinateurs encore plus importantes."
+    },
+    {
+      "question": "Comment appelle-t-on la première génération d'ordinateurs (approx. 1945-1956) ?",
+      "options": [
+        "Ordinateurs à transistors",
+        "Ordinateurs à circuits intégrés",
+        "Ordinateurs à tubes à vide",
+        "Micro-ordinateurs"
+      ],
+      "correct": "Ordinateurs à tubes à vide",
+      "explanation": "La première génération était caractérisée par l'utilisation de tubes à vide comme composants actifs (ex: ENIAC, UNIVAC I)."
+    },
+    {
+      "question": "Quelle technologie caractérise la deuxième génération d'ordinateurs (approx. 1956-1963) ?",
+      "options": [
+        "Tubes à vide",
+        "Transistors",
+        "Circuits intégrés",
+        "Microprocesseurs"
+      ],
+      "correct": "Transistors",
+      "explanation": "La deuxième génération a vu le remplacement des tubes à vide par des transistors, rendant les ordinateurs plus petits, plus rapides et plus fiables."
+    },
+    {
+      "question": "Quelle technologie caractérise la troisième génération d'ordinateurs (approx. 1964-1971) ?",
+      "options": [
+        "Transistors",
+        "Circuits intégrés (SSI/MSI)",
+        "Microprocesseurs (VLSI)",
+        "Intelligence artificielle"
+      ],
+      "correct": "Circuits intégrés (SSI/MSI)",
+      "explanation": "La troisième génération est marquée par l'utilisation de circuits intégrés, permettant une intégration plus poussée et l'apparition de familles d'ordinateurs comme l'IBM 360."
+    },
+    {
+      "question": "Quelle invention majeure caractérise la quatrième génération d'ordinateurs (dès 1971) ?",
+      "options": [
+        "Le transistor",
+        "Le circuit intégré simple",
+        "Le microprocesseur (intégration de l'unité centrale sur une seule puce)",
+        "L'écran tactile"
+      ],
+      "correct": "Le microprocesseur (intégration de l'unité centrale sur une seule puce)",
+      "explanation": "L'invention du microprocesseur (Intel 4004 en 1971) a ouvert la voie à la création des micro-ordinateurs et des ordinateurs personnels."
+    },
+    {
+      "question": "Quel ordinateur, vendu en kit en 1975, est souvent considéré comme le déclencheur de la révolution de la micro-informatique personnelle ?",
+      "options": [
+        "L'Apple II",
+        "L'IBM PC",
+        "Le MITS Altair 8800",
+        "Le Commodore 64"
+      ],
+      "correct": "Le MITS Altair 8800",
+      "explanation": "L'Altair 8800, basé sur le processeur Intel 8080, a suscité l'enthousiasme des passionnés et inspiré de nombreux pionniers, dont Bill Gates et Paul Allen."
+    },
+    {
+      "question": "Qui sont les co-fondateurs d'Apple Computer, célèbres pour avoir lancé l'Apple I puis l'Apple II, l'un des premiers micro-ordinateurs grand public à succès ?",
+      "options": [
+        "Bill Gates et Paul Allen",
+        "Steve Jobs et Steve Wozniak",
+        "Larry Page et Sergey Brin",
+        "Linus Torvalds et Richard Stallman"
+      ],
+      "correct": "Steve Jobs et Steve Wozniak",
+      "explanation": "Wozniak était le concepteur technique principal de l'Apple I et II, tandis que Jobs était le visionnaire et le responsable marketing."
+    },
+    {
+      "question": "Quelle entreprise a lancé l'IBM PC en 1981, standardisant une architecture ouverte qui a dominé le marché des ordinateurs personnels ?",
+      "options": [
+        "Apple",
+        "Microsoft",
+        "IBM",
+        "Intel"
+      ],
+      "correct": "IBM",
+      "explanation": "L'IBM PC, avec son architecture ouverte utilisant des composants de divers fournisseurs (processeur Intel, système d'exploitation Microsoft), a créé un standard de fait."
+    },
+    {
+      "question": "Quel système d'exploitation Microsoft a fourni pour l'IBM PC original ?",
+      "options": [
+        "Windows 1.0",
+        "MS-DOS (Microsoft Disk Operating System)",
+        "Xenix",
+        "OS/2"
+      ],
+      "correct": "MS-DOS (Microsoft Disk Operating System)",
+      "explanation": "MS-DOS (basé sur QDOS) était un système d'exploitation en ligne de commande qui est devenu dominant sur les compatibles PC."
+    },
+    {
+      "question": "Qui sont les co-fondateurs de Microsoft, initialement connus pour avoir développé un interpréteur BASIC pour l'Altair 8800 ?",
+      "options": [
+        "Steve Jobs et Steve Wozniak",
+        "Linus Torvalds et Richard Stallman",
+        "Bill Gates et Paul Allen",
+        "Ken Thompson et Dennis Ritchie"
+      ],
+      "correct": "Bill Gates et Paul Allen",
+      "explanation": "Gates et Allen ont fondé Microsoft en 1975 et ont connu un succès majeur avec MS-DOS puis Windows."
+    },
+    {
+      "question": "Quel ordinateur d'Apple, lancé en 1984, a popularisé l'interface graphique utilisateur (GUI) avec souris, icônes et fenêtres ?",
+      "options": [
+        "Apple II",
+        "Lisa",
+        "Macintosh",
+        "iMac"
+      ],
+      "correct": "Macintosh",
+      "explanation": "Bien que précédé par le Lisa (et inspiré par les travaux du Xerox PARC), le Macintosh a été le premier ordinateur à succès commercial à démocratiser l'interface graphique."
+    },
+    {
+      "question": "Quel système d'exploitation multitâche et multi-utilisateur, développé aux Bell Labs dans les années 1970, a eu une influence majeure sur de nombreux autres systèmes (Linux, macOS) ?",
+      "options": [
+        "MS-DOS",
+        "Windows",
+        "UNIX",
+        "CP/M"
+      ],
+      "correct": "UNIX",
+      "explanation": "UNIX, développé notamment par Ken Thompson et Dennis Ritchie, a introduit de nombreux concepts fondamentaux des systèmes d'exploitation modernes."
+    },
+    {
+      "question": "Quel langage de programmation a été développé par Dennis Ritchie aux Bell Labs en même temps qu'UNIX, et est encore très utilisé aujourd'hui ?",
+      "options": [
+        "BASIC",
+        "Fortran",
+        "COBOL",
+        "Le langage C"
+      ],
+      "correct": "Le langage C",
+      "explanation": "Le langage C a été conçu pour écrire le système UNIX. Il est réputé pour son efficacité et sa portabilité."
+    },
+    {
+      "question": "Qui est le créateur du noyau Linux, un système d'exploitation open source inspiré d'UNIX ?",
+      "options": [
+        "Richard Stallman",
+        "Bill Gates",
+        "Linus Torvalds",
+        "Steve Jobs"
+      ],
+      "correct": "Linus Torvalds",
+      "explanation": "Linus Torvalds a initié le développement du noyau Linux en 1991 et continue de superviser son évolution."
+    },
+    {
+      "question": "Quel projet, initié par Richard Stallman, vise à créer un système d'exploitation entièrement libre, dont le noyau Linux est souvent utilisé ?",
+      "options": [
+        "Le projet Manhattan",
+        "Le projet GNU",
+        "Le projet Apollo",
+        "Le projet Debian"
+      ],
+      "correct": "Le projet GNU",
+      "explanation": "Le projet GNU (GNU's Not Unix) a développé de nombreux outils et bibliothèques essentiels des systèmes libres, souvent combinés avec le noyau Linux (formant GNU/Linux)."
+    },
+    {
+      "question": "Quel réseau informatique expérimental, financé par le département de la Défense américain (DoD) dans les années 1960-1970, est considéré comme le précurseur d'Internet ?",
+      "options": [
+        "CYCLADES",
+        "NSFNET",
+        "ARPANET",
+        "BITNET"
+      ],
+      "correct": "ARPANET",
+      "explanation": "ARPANET (Advanced Research Projects Agency Network) a développé et testé des technologies clés comme la commutation de paquets et les protocoles TCP/IP."
+    },
+    {
+      "question": "Quelle suite de protocoles de communication, développée pour ARPANET, est devenue la base du fonctionnement d'Internet ?",
+      "options": [
+        "HTTP/HTML",
+        "SMTP/POP3",
+        "TCP/IP (Transmission Control Protocol / Internet Protocol)",
+        "FTP/Telnet"
+      ],
+      "correct": "TCP/IP (Transmission Control Protocol / Internet Protocol)",
+      "explanation": "TCP/IP définit comment les données sont découpées en paquets, adressées, acheminées et réassemblées sur le réseau."
+    },
+    {
+      "question": "Qui est considéré comme l'inventeur principal du World Wide Web (WWW), incluant les concepts d'URL, HTTP et HTML ?",
+      "options": [
+        "Vint Cerf",
+        "Robert Kahn",
+        "Tim Berners-Lee",
+        "Marc Andreessen"
+      ],
+      "correct": "Tim Berners-Lee",
+      "explanation": "Travaillant au CERN, Tim Berners-Lee a développé les fondations du Web au début des années 1990 pour faciliter le partage d'informations entre chercheurs."
+    },
+    {
+      "question": "Quel a été le premier navigateur web graphique largement diffusé, développé au NCSA en 1993, qui a popularisé le World Wide Web ?",
+      "options": [
+        "WorldWideWeb (Nexus)",
+        "Internet Explorer",
+        "Mosaic",
+        "Netscape Navigator"
+      ],
+      "correct": "Mosaic",
+      "explanation": "NCSA Mosaic, avec sa capacité à afficher images et texte sur la même page et sa facilité d'utilisation, a joué un rôle crucial dans l'adoption du Web par le grand public."
+    },
+    {
+      "question": "Quelle loi empirique, formulée par un cofondateur d'Intel, prédit que le nombre de transistors sur une puce double environ tous les deux ans ?",
+      "options": [
+        "La loi d'Amdahl",
+        "La loi de Moore",
+        "La loi de Metcalfe",
+        "La loi de Wirth"
+      ],
+      "correct": "La loi de Moore",
+      "explanation": "La loi de Moore (formulée par Gordon Moore en 1965) a décrit et prédit l'évolution exponentielle de la densité des circuits intégrés pendant plusieurs décennies."
+    },
+    {
+      "question": "Quel langage de programmation de haut niveau, développé dans les années 1950, est l'un des plus anciens encore utilisés, notamment dans le calcul scientifique ?",
+      "options": [
+        "C++",
+        "Java",
+        "Fortran",
+        "Python"
+      ],
+      "correct": "Fortran",
+      "explanation": "Fortran (Formula Translation) a été l'un des premiers langages compilés, conçu pour faciliter l'écriture de programmes de calcul numérique."
+    },
+    {
+      "question": "Quel langage de programmation, développé dans les années 1950-1960, a été largement utilisé pour les applications de gestion et d'entreprise ?",
+      "options": [
+        "Lisp",
+        "APL",
+        "COBOL",
+        "Pascal"
+      ],
+      "correct": "COBOL",
+      "explanation": "COBOL (Common Business-Oriented Language) a été conçu pour être lisible et adapté au traitement de données commerciales et financières."
+    },
+    {
+      "question": "Quel langage de programmation orienté objet, développé par Sun Microsystems dans les années 1990, est connu pour sa portabilité grâce à la machine virtuelle Java (JVM) ?",
+      "options": [
+        "C#",
+        "Objective-C",
+        "Java",
+        "Smalltalk"
+      ],
+      "correct": "Java",
+      "explanation": "Le slogan de Java 'Write Once, Run Anywhere' (Écrire une fois, exécuter partout) met en avant sa capacité à fonctionner sur différentes plateformes via la JVM."
+    },
+    {
+      "question": "Quel langage de script interprété, créé au début des années 1990 par Guido van Rossum, est aujourd'hui très populaire pour sa lisibilité et sa polyvalence (web, science des données, IA...) ?",
+      "options": [
+        "Perl",
+        "Ruby",
+        "PHP",
+        "Python"
+      ],
+      "correct": "Python",
+      "explanation": "Python est apprécié pour sa syntaxe claire et son vaste écosystème de bibliothèques."
+    },
+    {
+      "question": "Quelle entreprise a été pionnière dans le développement d'interfaces graphiques (GUI) et de la souris dans son centre de recherche Xerox PARC dans les années 1970 ?",
+      "options": [
+        "IBM",
+        "Apple",
+        "Microsoft",
+        "Xerox"
+      ],
+      "correct": "Xerox",
+      "explanation": "Les travaux du Xerox PARC sur l'ordinateur Alto ont fortement influencé la conception du Lisa et du Macintosh d'Apple, ainsi que de Windows."
+    },
+    {
+      "question": "Comment s'appelle le passage de la technologie des tubes à vide aux transistors, puis aux circuits intégrés ?",
+      "options": [
+        "La virtualisation",
+        "La miniaturisation",
+        "L'optimisation",
+        "La compilation"
+      ],
+      "correct": "La miniaturisation",
+      "explanation": "Chaque génération technologique a permis de réduire la taille, la consommation d'énergie et le coût des composants, tout en augmentant leur vitesse et leur densité."
+    },
+    {
+      "question": "Quel fut le premier tableur électronique grand public, lancé en 1979 pour l'Apple II, qui a grandement contribué à son succès ?",
+      "options": [
+        "Lotus 1-2-3",
+        "Microsoft Excel",
+        "VisiCalc",
+        "Google Sheets"
+      ],
+      "correct": "VisiCalc",
+      "explanation": "VisiCalc est considéré comme la 'killer application' qui a transformé le micro-ordinateur d'un hobby de passionné à un outil de productivité pour les entreprises."
+    },
+    {
+      "question": "Quelle invention, popularisée par Douglas Engelbart dans les années 1960, est devenue un périphérique d'entrée standard avec l'avènement des interfaces graphiques ?",
+      "options": [
+        "Le clavier",
+        "L'écran tactile",
+        "La souris",
+        "Le joystick"
+      ],
+      "correct": "La souris",
+      "explanation": "La démonstration de 1968 par Engelbart ('The Mother of All Demos') a présenté de nombreuses innovations, dont la souris, l'hypertexte et la visioconférence."
+    },
+    {
+      "question": "Comment s'appelle la théorie de l'information développée par Claude Shannon en 1948, qui a jeté les bases mathématiques de la communication numérique ?",
+      "options": [
+        "La théorie de la relativité",
+        "La théorie de la calculabilité",
+        "La théorie mathématique de la communication",
+        "La théorie des jeux"
+      ],
+      "correct": "La théorie mathématique de la communication",
+      "explanation": "Le travail de Shannon a défini des concepts clés comme l'entropie de l'information, la capacité du canal et les bases du codage et de la compression de données."
+    },
+    {
+      "question": "Quelle entreprise a dominé le marché des grands systèmes informatiques (mainframes) pendant une grande partie du 20ème siècle ?",
+      "options": [
+        "DEC",
+        "Apple",
+        "IBM",
+        "HP"
+      ],
+      "correct": "IBM",
+      "explanation": "IBM, issue de l'entreprise d'Hollerith, est devenue synonyme d'informatique d'entreprise avec ses mainframes comme la série 700/7000 puis le System/360."
+    },
+    {
+      "question": "Quelle catégorie d'ordinateurs, plus petits et moins chers que les mainframes, est apparue dans les années 1960 et a ouvert l'informatique à de nouvelles applications (laboratoires, usines) ?",
+      "options": [
+        "Les supercalculateurs",
+        "Les mini-ordinateurs",
+        "Les micro-ordinateurs",
+        "Les serveurs"
+      ],
+      "correct": "Les mini-ordinateurs",
+      "explanation": "Des entreprises comme DEC (avec le PDP-8) ont popularisé les mini-ordinateurs, rendant l'informatique accessible en dehors des grands centres de calcul."
+    },
+    {
+      "question": "Quel support de stockage magnétique, sous forme de disque souple protégé par une enveloppe, était couramment utilisé sur les micro-ordinateurs des années 1970-1990 ?",
+      "options": [
+        "La bande magnétique",
+        "Le disque dur",
+        "La disquette (floppy disk)",
+        "La carte perforée"
+      ],
+      "correct": "La disquette (floppy disk)",
+      "explanation": "Les disquettes (8 pouces, puis 5,25 pouces, puis 3,5 pouces) ont été le principal support amovible pour les logiciels et les données personnelles pendant longtemps."
+    },
+    {
+      "question": "Quel support de stockage optique, développé conjointement par Philips et Sony, est devenu populaire dans les années 1990 pour la distribution de logiciels et de musique ?",
+      "options": [
+        "Le DVD",
+        "Le Blu-ray",
+        "Le CD-ROM",
+        "La clé USB"
+      ],
+      "correct": "Le CD-ROM",
+      "explanation": "Le CD-ROM (Compact Disc Read-Only Memory) offrait une capacité de stockage bien supérieure à celle des disquettes, permettant de distribuer des applications volumineuses et des contenus multimédias."
+    },
+    {
+      "question": "Quelle technologie d'affichage a progressivement remplacé les écrans à tube cathodique (CRT) pour les ordinateurs et télévisions à partir des années 2000 ?",
+      "options": [
+        "L'écran plasma",
+        "L'écran à cristaux liquides (LCD)",
+        "L'écran OLED",
+        "Le projecteur vidéo"
+      ],
+      "correct": "L'écran à cristaux liquides (LCD)",
+      "explanation": "Les écrans LCD, plus plats, plus légers et consommant moins d'énergie, ont supplanté les volumineux écrans CRT."
+    },
+    {
+      "question": "Quel concept décrit un logiciel dont le code source est accessible, modifiable et redistribuable librement ?",
+      "options": [
+        "Logiciel propriétaire",
+        "Logiciel open source (ou logiciel libre)",
+        "Shareware",
+        "Freeware"
+      ],
+      "correct": "Logiciel open source (ou logiciel libre)",
+      "explanation": "L'open source (terme popularisé fin des années 90) et le logiciel libre (mouvement initié par R. Stallman) promeuvent le partage et la collaboration autour du code source."
+    },
+    {
+      "question": "Quel est l'impact majeur de l'invention du transistor sur la taille et la consommation des ordinateurs ?",
+      "options": [
+        "Augmentation de la taille et de la consommation",
+        "Réduction drastique de la taille et de la consommation d'énergie",
+        "Aucun impact significatif",
+        "Impact uniquement sur la vitesse"
+      ],
+      "correct": "Réduction drastique de la taille et de la consommation d'énergie",
+      "explanation": "Le transistor, étant beaucoup plus petit et moins énergivore que le tube à vide, a permis de construire des ordinateurs plus compacts, moins chers et plus fiables."
+    },
+    {
+      "question": "Quel concept clé permet à un programme d'ordinateur de prendre des décisions en fonction de certaines conditions ?",
+      "options": [
+        "La boucle (iteration)",
+        "La séquence (sequence)",
+        "L'instruction conditionnelle (conditional statement, ex: if-then-else)",
+        "L'affectation de variable"
+      ],
+      "correct": "L'instruction conditionnelle (conditional statement, ex: if-then-else)",
+      "explanation": "La capacité d'exécuter différentes instructions selon qu'une condition est vraie ou fausse est fondamentale en programmation, un concept déjà présent dans la machine analytique de Babbage."
+    },
+    {
+      "question": "Quel type de mémoire permet un accès rapide et direct à n'importe quelle donnée, quelle que soit sa position ?",
+      "options": [
+        "Mémoire séquentielle (bande magnétique)",
+        "Mémoire vive (RAM - Random Access Memory)",
+        "Mémoire morte (ROM)",
+        "Mémoire cache"
+      ],
+      "correct": "Mémoire vive (RAM - Random Access Memory)",
+      "explanation": "L'accès aléatoire (Random Access) signifie que le temps d'accès à une donnée ne dépend pas de l'adresse mémoire, contrairement à une bande où il faut dérouler."
+    },
+    {
+      "question": "Quel acronyme désigne l'Unité Centrale de Traitement, le 'cerveau' de l'ordinateur qui exécute les instructions ?",
+      "options": [
+        "RAM",
+        "ROM",
+        "CPU (Central Processing Unit)",
+        "GPU (Graphics Processing Unit)"
+      ],
+      "correct": "CPU (Central Processing Unit)",
+      "explanation": "Le CPU est le composant qui effectue les calculs et contrôle les opérations de l'ordinateur."
+    },
+    {
+      "question": "Quel système numérique utilise uniquement les chiffres 0 et 1 pour représenter l'information ?",
+      "options": [
+        "Le système décimal",
+        "Le système hexadécimal",
+        "Le système binaire",
+        "Le système octal"
+      ],
+      "correct": "Le système binaire",
+      "explanation": "Le système binaire est la base de fonctionnement des ordinateurs numériques, car les deux états (0/1) sont faciles à représenter électroniquement (tension basse/haute, courant/pas de courant)."
+    },
+    {
+      "question": "Comment appelle-t-on l'unité de base de l'information en informatique, représentant un 0 ou un 1 ?",
+      "options": [
+        "Octet (Byte)",
+        "Mot (Word)",
+        "Bit (Binary Digit)",
+        "Pixel"
+      ],
+      "correct": "Bit (Binary Digit)",
+      "explanation": "Le bit est la plus petite quantité d'information manipulable par une machine numérique."
+    },
+    {
+      "question": "Combien de bits y a-t-il généralement dans un octet (Byte) ?",
+      "options": [
+        "4",
+        "8",
+        "16",
+        "32"
+      ],
+      "correct": "8",
+      "explanation": "Un octet est un groupement de 8 bits, permettant de représenter 2^8 = 256 valeurs différentes."
+    },
+    {
+      "question": "Quel système d'exploitation a été développé par Microsoft et est devenu dominant sur les ordinateurs personnels à partir des années 1990 ?",
+      "options": [
+        "macOS",
+        "Linux",
+        "UNIX",
+        "Windows"
+      ],
+      "correct": "Windows",
+      "explanation": "Après MS-DOS, Microsoft a lancé Windows (initialement une surcouche graphique), qui est devenu le système d'exploitation le plus utilisé sur PC."
+    },
+    {
+      "question": "Quelle invention a permis de stocker des programmes et des données de manière permanente, même lorsque l'ordinateur est éteint ?",
+      "options": [
+        "La mémoire vive (RAM)",
+        "Le processeur (CPU)",
+        "Les dispositifs de stockage de masse (disque dur, SSD, etc.)",
+        "La carte mère"
+      ],
+      "correct": "Les dispositifs de stockage de masse (disque dur, SSD, etc.)",
+      "explanation": "Contrairement à la RAM qui est volatile, les mémoires de masse (magnétiques, optiques, flash) permettent un stockage persistant des informations."
+    },
+    {
+      "question": "Quelle évolution majeure a marqué le passage des disques durs mécaniques (HDD) aux SSD ?",
+      "options": [
+        "Les SSD utilisent des plateaux magnétiques rotatifs",
+        "Les SSD utilisent de la mémoire flash (sans pièces mobiles), offrant des temps d'accès beaucoup plus rapides et une meilleure résistance aux chocs",
+        "Les SSD ont une capacité de stockage inférieure",
+        "Les SSD sont moins chers que les HDD à capacité égale"
+      ],
+      "correct": "Les SSD utilisent de la mémoire flash (sans pièces mobiles), offrant des temps d'accès beaucoup plus rapides et une meilleure résistance aux chocs",
+      "explanation": "Les SSD (Solid-State Drives) ont révolutionné les performances de stockage, bien qu'initialement plus coûteux."
+    },
+    {
+      "question": "Quel concept décrit la connexion de plusieurs ordinateurs entre eux pour partager des ressources et des informations ?",
+      "options": [
+        "La compilation",
+        "Le débogage",
+        "Le réseau informatique",
+        "L'algorithmique"
+      ],
+      "correct": "Le réseau informatique",
+      "explanation": "La mise en réseau, de ARPANET à Internet, a été une étape fondamentale dans l'évolution de l'informatique."
+    },
+    {
+      "question": "Quel protocole est utilisé pour transférer des pages web sur Internet (la base du WWW) ?",
+      "options": [
+        "FTP (File Transfer Protocol)",
+        "SMTP (Simple Mail Transfer Protocol)",
+        "HTTP (HyperText Transfer Protocol)",
+        "TCP (Transmission Control Protocol)"
+      ],
+      "correct": "HTTP (HyperText Transfer Protocol)",
+      "explanation": "HTTP (et sa version sécurisée HTTPS) est le protocole qui permet aux navigateurs de demander et de recevoir des pages web depuis les serveurs."
+    },
+    {
+      "question": "Quel langage est utilisé pour structurer le contenu des pages web ?",
+      "options": [
+        "CSS (Cascading Style Sheets)",
+        "JavaScript",
+        "HTML (HyperText Markup Language)",
+        "SQL (Structured Query Language)"
+      ],
+      "correct": "HTML (HyperText Markup Language)",
+      "explanation": "HTML utilise des balises pour définir les éléments d'une page (titres, paragraphes, liens, images...)."
+    },
+    {
+      "question": "Quel langage est utilisé pour définir la présentation et le style visuel des pages web (couleurs, polices, mise en page) ?",
+      "options": [
+        "HTML",
+        "JavaScript",
+        "CSS (Cascading Style Sheets)",
+        "PHP"
+      ],
+      "correct": "CSS (Cascading Style Sheets)",
+      "explanation": "CSS permet de séparer le contenu (HTML) de la présentation, rendant les pages plus faciles à maintenir et à adapter."
+    },
+    {
+      "question": "Quel langage de script, exécuté côté client (dans le navigateur), permet d'ajouter de l'interactivité et du dynamisme aux pages web ?",
+      "options": [
+        "HTML",
+        "CSS",
+        "Java",
+        "JavaScript"
+      ],
+      "correct": "JavaScript",
+      "explanation": "JavaScript permet de manipuler le contenu de la page, de réagir aux actions de l'utilisateur et de communiquer avec le serveur sans recharger toute la page."
+    },
+    {
+      "question": "Quelle entreprise a développé le premier microprocesseur commercial, l'Intel 4004 ?",
+      "options": [
+        "AMD",
+        "IBM",
+        "Intel",
+        "Motorola"
+      ],
+      "correct": "Intel",
+      "explanation": "L'Intel 4004, sorti en 1971, était un processeur 4 bits initialement conçu pour une calculatrice, marquant le début de l'ère des microprocesseurs."
+    },
+    {
+      "question": "Quelle évolution a permis de passer d'interfaces en ligne de commande (CLI) à des interfaces plus intuitives basées sur des fenêtres, icônes et souris ?",
+      "options": [
+        "L'invention du clavier",
+        "Le développement des interfaces graphiques utilisateur (GUI)",
+        "L'augmentation de la vitesse des processeurs",
+        "La création des réseaux"
+      ],
+      "correct": "Le développement des interfaces graphiques utilisateur (GUI)",
+      "explanation": "Les GUI, inspirées par Xerox PARC et popularisées par Apple et Microsoft, ont rendu les ordinateurs accessibles à un public beaucoup plus large."
+    },
+    {
+      "question": "Quel concept désigne la capacité d'un ordinateur à exécuter plusieurs tâches ou programmes en apparence simultanément ?",
+      "options": [
+        "Le multitâche (multitasking)",
+        "La mémoire virtuelle",
+        "La compilation",
+        "Le débogage"
+      ],
+      "correct": "Le multitâche (multitasking)",
+      "explanation": "Les systèmes d'exploitation modernes gèrent le partage du temps processeur entre plusieurs processus, donnant l'illusion qu'ils s'exécutent en parallèle."
+    },
+    {
+      "question": "Quelle tendance majeure de l'informatique a vu le jour au 21ème siècle, avec des appareils comme les smartphones et les tablettes ?",
+      "options": [
+        "Le retour aux mainframes",
+        "L'informatique mobile (mobile computing)",
+        "L'abandon d'Internet",
+        "La fin de la loi de Moore"
+      ],
+      "correct": "L'informatique mobile (mobile computing)",
+      "explanation": "Les appareils mobiles connectés ont profondément transformé l'accès à l'information et les usages de l'informatique."
+    },
+    {
+      "question": "Quel modèle informatique permet d'accéder à des ressources (stockage, calcul, logiciels) via Internet à la demande, sans avoir à gérer l'infrastructure physique sous-jacente ?",
+      "options": [
+        "L'informatique embarquée",
+        "Le calcul distribué",
+        "Le Cloud Computing",
+        "Le Peer-to-peer"
+      ],
+      "correct": "Le Cloud Computing",
+      "explanation": "Le Cloud (ex: AWS, Azure, Google Cloud) offre une flexibilité et une scalabilité importantes pour les services et applications."
+    },
+    {
+      "question": "Quel domaine de l'informatique vise à créer des machines capables de réaliser des tâches nécessitant de l'intelligence humaine (apprentissage, raisonnement, perception) ?",
+      "options": [
+        "La cryptographie",
+        "L'algorithmique",
+        "L'intelligence artificielle (IA)",
+        "La théorie des graphes"
+      ],
+      "correct": "L'intelligence artificielle (IA)",
+      "explanation": "L'IA est un domaine vaste dont les origines remontent aux pionniers comme Turing, et qui connaît un essor spectaculaire récent grâce à l'apprentissage profond (deep learning)."
+    },
+    {
+      "question": "Quel terme décrit un programme malveillant conçu pour se propager et nuire aux systèmes informatiques ?",
+      "options": [
+        "Un compilateur",
+        "Un débogueur",
+        "Un virus informatique (ou malware)",
+        "Un système d'exploitation"
+      ],
+      "correct": "Un virus informatique (ou malware)",
+      "explanation": "L'histoire de l'informatique est aussi marquée par l'émergence de menaces et la nécessité de développer la cybersécurité."
+    },
+    {
+      "question": "Quel support de stockage utilisait des trous percés dans une bande de papier pour enregistrer des informations, utilisé notamment avec les téléscripteurs et certains premiers ordinateurs ?",
+      "options": [
+        "La carte perforée",
+        "Le ruban perforé",
+        "La bande magnétique",
+        "La disquette"
+      ],
+      "correct": "Le ruban perforé",
+      "explanation": "Le ruban perforé était un support séquentiel utilisé avant et pendant les débuts de l'informatique pour l'entrée/sortie de données et de programmes."
+    },
+    {
+      "question": "Quelle femme a été une pionnière de la programmation informatique, notamment pour son travail sur le compilateur du langage COBOL ?",
+      "options": [
+        "Ada Lovelace",
+        "Hedy Lamarr",
+        "Grace Hopper",
+        "Katherine Johnson"
+      ],
+      "correct": "Grace Hopper",
+      "explanation": "L'Amirale Grace Hopper a joué un rôle majeur dans le développement des premiers compilateurs et du langage COBOL, et a popularisé le terme 'bug'."
+    },
+    {
+      "question": "Quelle machine, bien que mécanique, est parfois citée pour ses capacités logiques rudimentaires liées à un mécanisme d'engrenages découvert dans une épave antique ?",
+      "options": [
+        "La Pascaline",
+        "Le boulier",
+        "La machine d'Anticythère",
+        "Le Stepped Reckoner de Leibniz"
+      ],
+      "correct": "La machine d'Anticythère",
+      "explanation": "Ce mécanisme grec antique (environ 100 av. J.-C.) semble avoir été un calculateur astronomique complexe, montrant une ingénierie mécanique très avancée pour l'époque."
+    },
+    {
+      "question": "Quel concept, fondamental en informatique, désigne une suite finie et non ambiguë d'opérations ou d'instructions permettant de résoudre un problème ?",
+      "options": [
+        "Un bug",
+        "Un algorithme",
+        "Une variable",
+        "Une fonction"
+      ],
+      "correct": "Un algorithme",
+      "explanation": "La notion d'algorithme est au cœur de l'informatique, bien avant l'invention des ordinateurs (ex: algorithme d'Euclide). Ada Lovelace a écrit le premier algorithme destiné à une machine."
+    },
+    {
+      "question": "Quelle technologie a permis de passer des circuits intégrés SSI/MSI (quelques dizaines/centaines de transistors) aux circuits LSI puis VLSI (milliers/millions de transistors) ?",
+      "options": [
+        "L'amélioration des tubes à vide",
+        "Les progrès dans les techniques de photolithographie et de fabrication des semi-conducteurs",
+        "L'utilisation de relais plus rapides",
+        "Le développement de nouveaux langages"
+      ],
+      "correct": "Les progrès dans les techniques de photolithographie et de fabrication des semi-conducteurs",
+      "explanation": "Ces avancées technologiques ont permis de graver des composants de plus en plus petits et nombreux sur une même puce de silicium, suivant la loi de Moore."
+    },
+    {
+      "question": "Quel fut l'un des premiers langages de programmation de haut niveau conçu pour l'intelligence artificielle, développé dans les années 1950 ?",
+      "options": [
+        "Fortran",
+        "COBOL",
+        "Lisp",
+        "BASIC"
+      ],
+      "correct": "Lisp",
+      "explanation": "Lisp (List Processing), développé par John McCarthy, a introduit des concepts importants pour l'IA comme le traitement symbolique et la récursivité."
+    },
+    {
+      "question": "Quel service de courrier électronique, développé sur ARPANET, est l'une des applications les plus anciennes et les plus utilisées d'Internet ?",
+      "options": [
+        "Le World Wide Web",
+        "Le transfert de fichiers (FTP)",
+        "L'email (courrier électronique)",
+        "La messagerie instantanée"
+      ],
+      "correct": "L'email (courrier électronique)",
+      "explanation": "L'email, avec l'utilisation du symbole '@' pour séparer l'utilisateur de la machine hôte (introduit par Ray Tomlinson en 1971), a été une application clé d'ARPANET."
+    },
+    {
+      "question": "Quel système d'exploitation multitâche préemptif, développé par Microsoft dans les années 1990, a servi de base aux versions modernes de Windows (depuis Windows NT/2000/XP) ?",
+      "options": [
+        "MS-DOS",
+        "Windows 3.1",
+        "Windows NT (New Technology)",
+        "OS/2"
+      ],
+      "correct": "Windows NT (New Technology)",
+      "explanation": "Windows NT a été une refonte majeure, apportant une architecture plus robuste et sécurisée par rapport aux versions précédentes de Windows basées sur MS-DOS."
+    },
+    {
+      "question": "Quelle entreprise a été fondée par Larry Page et Sergey Brin à la fin des années 1990, initialement axée sur un moteur de recherche pour le World Wide Web ?",
+      "options": [
+        "Amazon",
+        "Facebook",
+        "Google",
+        "Yahoo!"
+      ],
+      "correct": "Google",
+      "explanation": "Google a révolutionné la recherche en ligne avec son algorithme PageRank et est devenue l'une des entreprises technologiques les plus influentes."
+    },
+    {
+      "question": "Quel appareil mobile lancé par Apple en 2007 a popularisé les smartphones à écran tactile et les écosystèmes d'applications ?",
+      "options": [
+        "BlackBerry",
+        "Nokia N95",
+        "iPhone",
+        "Palm Treo"
+      ],
+      "correct": "iPhone",
+      "explanation": "L'iPhone a marqué un tournant majeur dans l'informatique mobile grâce à son interface tactile multipoint et son App Store."
+    },
+    {
+      "question": "Quel concept décrit la tendance à intégrer des capacités informatiques et de connectivité dans des objets du quotidien (montres, thermostats, réfrigérateurs...) ?",
+      "options": [
+        "L'informatique quantique",
+        "La réalité virtuelle",
+        "L'Internet des Objets (IoT)",
+        "Le Big Data"
+      ],
+      "correct": "L'Internet des Objets (IoT)",
+      "explanation": "L'IoT représente une extension de l'informatique embarquée, où les objets communiquent via Internet."
+    },
+    {
+      "question": "Quel composant est spécifiquement conçu pour accélérer les calculs liés aux graphismes 3D, mais est aussi de plus en plus utilisé pour l'IA ?",
+      "options": [
+        "CPU (Central Processing Unit)",
+        "RAM (Random Access Memory)",
+        "GPU (Graphics Processing Unit)",
+        "SSD (Solid-State Drive)"
+      ],
+      "correct": "GPU (Graphics Processing Unit)",
+      "explanation": "L'architecture massivement parallèle des GPU est très efficace pour les calculs matriciels utilisés en rendu graphique et en apprentissage profond."
+    },
+    {
+      "question": "Quelle technologie de communication sans fil à courte portée est couramment utilisée pour connecter des périphériques comme des souris, claviers ou casques à un ordinateur ou un smartphone ?",
+      "options": [
+        "Wi-Fi",
+        "Ethernet",
+        "Bluetooth",
+        "NFC"
+      ],
+      "correct": "Bluetooth",
+      "explanation": "Bluetooth permet des connexions sans fil simples et économes en énergie entre appareils proches."
+    },
+    {
+      "question": "Quelle technologie de réseau local sans fil permet aux appareils de se connecter à Internet via un point d'accès (routeur) ?",
+      "options": [
+        "Bluetooth",
+        "Wi-Fi",
+        "Ethernet",
+        "3G/4G/5G"
+      ],
+      "correct": "Wi-Fi",
+      "explanation": "Le Wi-Fi (basé sur les normes IEEE 802.11) est la technologie dominante pour les réseaux locaux sans fil domestiques et professionnels."
+    },
+    {
+      "question": "Quel type de logiciel malveillant chiffre les données de l'utilisateur et demande une rançon pour les déchiffrer ?",
+      "options": [
+        "Virus",
+        "Cheval de Troie (Trojan)",
+        "Rançongiciel (Ransomware)",
+        "Logiciel espion (Spyware)"
+      ],
+      "correct": "Rançongiciel (Ransomware)",
+      "explanation": "Les ransomwares sont devenus une menace majeure en cybersécurité ces dernières années."
+    },
+    {
+      "question": "Quelle innovation a permis de créer des ordinateurs portables plus fins et plus légers en intégrant de nombreux composants directement sur la carte mère ?",
+      "options": [
+        "L'augmentation de la taille des batteries",
+        "L'intégration à grande échelle (LSI/VLSI) et l'amélioration de l'efficacité énergétique des composants",
+        "L'utilisation d'écrans plus petits",
+        "La suppression du clavier physique"
+      ],
+      "correct": "L'intégration à grande échelle (LSI/VLSI) et l'amélioration de l'efficacité énergétique des composants",
+      "explanation": "La miniaturisation continue des processeurs, mémoires et autres puces, ainsi que leur moindre consommation, ont été clés pour l'essor des ordinateurs portables puis mobiles."
+    },
+    {
+      "question": "Comment s'appelle l'interface physique standardisée permettant de connecter des périphériques externes à un ordinateur (ex: clés USB, disques durs externes, imprimantes) ?",
+      "options": [
+        "Le port Ethernet",
+        "Le port HDMI",
+        "Le port USB (Universal Serial Bus)",
+        "Le port série RS-232"
+      ],
+      "correct": "Le port USB (Universal Serial Bus)",
+      "explanation": "L'USB, introduit dans les années 1990, a simplifié la connexion de périphériques en remplaçant de nombreux ports spécialisés."
+    },
+    {
+      "question": "Quelle contribution majeure de Xerox PARC a inspiré l'interface du Macintosh et de Windows ?",
+      "options": [
+        "Le développement du protocole TCP/IP",
+        "L'invention du transistor",
+        "La création de l'interface graphique WIMP (Windows, Icons, Menus, Pointer) et de la souris",
+        "La mise au point du langage C"
+      ],
+      "correct": "La création de l'interface graphique WIMP (Windows, Icons, Menus, Pointer) et de la souris",
+      "explanation": "L'ordinateur Xerox Alto et son environnement graphique ont été des sources d'inspiration déterminantes pour les interfaces modernes."
+    },
+    {
+      "question": "Quel terme désigne l'ensemble des programmes et données qui ne font pas partie du matériel physique de l'ordinateur ?",
+      "options": [
+        "Le firmware",
+        "Le logiciel (Software)",
+        "Le processeur",
+        "La mémoire"
+      ],
+      "correct": "Le logiciel (Software)",
+      "explanation": "Le logiciel comprend le système d'exploitation, les applications, les pilotes, etc., qui donnent des instructions au matériel."
+    }
+  ]
+}

@@ -1,0 +1,994 @@
+{
+  "photographie_numerique": [
+    {
+      "question": "Quel composant principal d'un appareil photo numérique remplace la pellicule argentique ?",
+      "options": [
+        "L'objectif",
+        "Le capteur d'image (CCD ou CMOS)",
+        "Le viseur",
+        "La carte mémoire"
+      ],
+      "correct": "Le capteur d'image (CCD ou CMOS)",
+      "explanation": "Le capteur photosensible (CCD ou CMOS) convertit la lumière reçue de l'objectif en un signal électrique, qui est ensuite numérisé pour former l'image."
+    },
+    {
+      "question": "Qu'est-ce qu'un pixel dans une image numérique ?",
+      "options": [
+        "Un type d'objectif",
+        "Le plus petit élément constitutif d'une image numérique, ayant une couleur et une luminosité définies",
+        "Un filtre appliqué à l'image",
+        "L'unité de mesure de la taille du capteur"
+      ],
+      "correct": "Le plus petit élément constitutif d'une image numérique, ayant une couleur et une luminosité définies",
+      "explanation": "L'image numérique est une grille de pixels. Chaque pixel contient l'information de couleur et de luminosité pour un point précis de l'image."
+    },
+    {
+      "question": "Que mesure la 'définition' d'une image numérique ?",
+      "options": [
+        "La taille du fichier en mégaoctets",
+        "Le nombre total de pixels qui composent l'image (largeur x hauteur)",
+        "La sensibilité du capteur (ISO)",
+        "La vitesse d'obturation"
+      ],
+      "correct": "Le nombre total de pixels qui composent l'image (largeur x hauteur)",
+      "explanation": "La définition (exprimée en Mégapixels ou en largeur x hauteur) indique le nombre de pixels de l'image, ce qui influe sur son niveau de détail potentiel."
+    },
+    {
+      "question": "Quel modèle de couleurs est utilisé par les capteurs d'appareils photo et les écrans pour afficher les images ?",
+      "options": [
+        "CMJN (Cyan, Magenta, Jaune, Noir)",
+        "Niveaux de gris",
+        "RVB (Rouge, Vert, Bleu)",
+        "TSL (Teinte, Saturation, Luminosité)"
+      ],
+      "correct": "RVB (Rouge, Vert, Bleu)",
+      "explanation": "Le modèle RVB (ou RGB en anglais) est un modèle additif où les couleurs sont créées en mélangeant différentes intensités de lumière rouge, verte et bleue. Il est utilisé pour l'affichage lumineux."
+    },
+    {
+      "question": "Comment la couleur d'un pixel est-elle généralement codée dans une image RVB standard ?",
+      "options": [
+        "Par une seule valeur de gris",
+        "Par trois valeurs numériques représentant l'intensité de Rouge, de Vert et de Bleu",
+        "Par un nom de couleur (ex: 'rouge vif')",
+        "Par les coordonnées géographiques du pixel"
+      ],
+      "correct": "Par trois valeurs numériques représentant l'intensité de Rouge, de Vert et de Bleu",
+      "explanation": "Chaque composante (R, V, B) est souvent codée sur 8 bits (valeur de 0 à 255), permettant de représenter environ 16,7 millions de couleurs différentes."
+    },
+    {
+      "question": "Quelle valeur RVB représente la couleur noire ?",
+      "options": [
+        "R=255, V=255, B=255",
+        "R=0, V=0, B=0",
+        "R=255, V=0, B=0",
+        "R=0, V=0, B=255"
+      ],
+      "correct": "R=0, V=0, B=0",
+      "explanation": "Dans le modèle additif RVB, l'absence totale de lumière (intensité 0 pour chaque composante) produit du noir."
+    },
+    {
+      "question": "Quelle valeur RVB représente la couleur blanche ?",
+      "options": [
+        "R=255, V=255, B=255",
+        "R=0, V=0, B=0",
+        "R=0, V=255, B=0",
+        "R=128, V=128, B=128"
+      ],
+      "correct": "R=255, V=255, B=255",
+      "explanation": "Dans le modèle additif RVB, le mélange des trois composantes à leur intensité maximale (souvent 255 sur 8 bits) produit du blanc."
+    },
+    {
+      "question": "Quelle est la fonction principale de l'objectif d'un appareil photo ?",
+      "options": [
+        "Stocker les images",
+        "Afficher l'image capturée",
+        "Convertir la lumière en signal électrique",
+        "Focaliser la lumière provenant de la scène sur le capteur d'image"
+      ],
+      "correct": "Focaliser la lumière provenant de la scène sur le capteur d'image",
+      "explanation": "L'objectif est un système optique composé de lentilles qui concentre les rayons lumineux pour former une image nette sur le capteur."
+    },
+    {
+      "question": "Qu'est-ce que la 'longueur focale' d'un objectif ?",
+      "options": [
+        "Le diamètre de l'objectif",
+        "La distance entre le centre optique de l'objectif et le capteur lorsque la mise au point est faite sur l'infini",
+        "Le nombre de lentilles dans l'objectif",
+        "L'ouverture maximale de l'objectif"
+      ],
+      "correct": "La distance entre le centre optique de l'objectif et le capteur lorsque la mise au point est faite sur l'infini",
+      "explanation": "La longueur focale (exprimée en mm) détermine l'angle de champ et le grossissement : courte focale = grand angle, longue focale = téléobjectif."
+    },
+    {
+      "question": "Quel type d'objectif a une courte longueur focale (ex: 18mm, 24mm) et permet de photographier un large champ de vision ?",
+      "options": [
+        "Un téléobjectif",
+        "Un objectif macro",
+        "Un objectif grand-angle",
+        "Un objectif à focale fixe standard"
+      ],
+      "correct": "Un objectif grand-angle",
+      "explanation": "Les objectifs grand-angle capturent une scène large, idéaux pour les paysages ou les photos d'intérieur."
+    },
+    {
+      "question": "Quel type d'objectif a une longue longueur focale (ex: 200mm, 400mm) et permet de rapprocher des sujets éloignés ?",
+      "options": [
+        "Un téléobjectif",
+        "Un objectif fisheye",
+        "Un objectif grand-angle",
+        "Un objectif pancake"
+      ],
+      "correct": "Un téléobjectif",
+      "explanation": "Les téléobjectifs ont un angle de champ étroit et un fort grossissement, utiles pour la photographie animalière ou sportive."
+    },
+    {
+      "question": "Qu'est-ce que le 'diaphragme' dans un objectif ?",
+      "options": [
+        "Le capteur d'image",
+        "Un mécanisme (lamelles mobiles) qui contrôle la quantité de lumière entrant dans l'objectif en ajustant la taille de l'ouverture",
+        "Le moteur de mise au point automatique",
+        "Un filtre coloré"
+      ],
+      "correct": "Un mécanisme (lamelles mobiles) qui contrôle la quantité de lumière entrant dans l'objectif en ajustant la taille de l'ouverture",
+      "explanation": "Le diaphragme fonctionne comme l'iris de l'œil humain, s'ouvrant ou se fermant pour réguler la lumière."
+    },
+    {
+      "question": "Comment est exprimée l'ouverture du diaphragme ?",
+      "options": [
+        "En millimètres (mm)",
+        "En secondes (s)",
+        "Par un nombre f/ (ex: f/2.8, f/8, f/16)",
+        "En ISO"
+      ],
+      "correct": "Par un nombre f/ (ex: f/2.8, f/8, f/16)",
+      "explanation": "Le nombre f/ représente le rapport entre la longueur focale et le diamètre de l'ouverture. Plus le nombre f/ est petit (ex: f/2.8), plus l'ouverture est grande."
+    },
+    {
+      "question": "Quelle ouverture de diaphragme laisse passer le plus de lumière ?",
+      "options": [
+        "f/16",
+        "f/11",
+        "f/8",
+        "f/2.8"
+      ],
+      "correct": "f/2.8",
+      "explanation": "Une petite valeur de f/ (comme f/2.8) correspond à une grande ouverture, laissant entrer beaucoup de lumière. Une grande valeur (comme f/16) correspond à une petite ouverture."
+    },
+    {
+      "question": "Qu'est-ce que l'obturateur (shutter) dans un appareil photo ?",
+      "options": [
+        "Le flash intégré",
+        "Le mécanisme qui contrôle la durée pendant laquelle la lumière atteint le capteur",
+        "Le bouton pour prendre la photo",
+        "L'écran LCD"
+      ],
+      "correct": "Le mécanisme qui contrôle la durée pendant laquelle la lumière atteint le capteur",
+      "explanation": "L'obturateur s'ouvre puis se referme pendant un temps précis (la vitesse d'obturation) pour exposer le capteur à la lumière."
+    },
+    {
+      "question": "Comment est exprimée la vitesse d'obturation (temps de pose) ?",
+      "options": [
+        "En nombre f/",
+        "En ISO",
+        "En fractions de seconde (ex: 1/1000s, 1/60s) ou en secondes (ex: 1s, 30s)",
+        "En Mégapixels"
+      ],
+      "correct": "En fractions de seconde (ex: 1/1000s, 1/60s) ou en secondes (ex: 1s, 30s)",
+      "explanation": "La vitesse d'obturation détermine la durée d'exposition du capteur à la lumière."
+    },
+    {
+      "question": "Quelle vitesse d'obturation est la plus rapide et fige mieux un mouvement rapide ?",
+      "options": [
+        "1/30 s",
+        "1/125 s",
+        "1/1000 s",
+        "1 s"
+      ],
+      "correct": "1/1000 s",
+      "explanation": "Une vitesse rapide (comme 1/1000s) correspond à un temps d'exposition très court, permettant de 'geler' l'action."
+    },
+    {
+      "question": "Quel effet produit une vitesse d'obturation lente (ex: 1s) sur un sujet en mouvement ?",
+      "options": [
+        "Le sujet sera parfaitement net et figé",
+        "Le sujet apparaîtra flou (flou de mouvement)",
+        "L'image sera très sombre",
+        "L'image aura des couleurs très saturées"
+      ],
+      "correct": "Le sujet apparaîtra flou (flou de mouvement)",
+      "explanation": "Pendant le long temps de pose, le mouvement du sujet s'enregistre sur le capteur sous forme de traînée ou de flou."
+    },
+    {
+      "question": "Que mesure la sensibilité ISO du capteur ?",
+      "options": [
+        "La taille physique du capteur",
+        "La capacité du capteur à réagir à la lumière (son 'gain')",
+        "La définition de l'image",
+        "La vitesse d'obturation maximale"
+      ],
+      "correct": "La capacité du capteur à réagir à la lumière (son 'gain')",
+      "explanation": "Une sensibilité ISO faible (ex: 100 ISO) nécessite beaucoup de lumière. Une sensibilité élevée (ex: 3200 ISO) permet de photographier dans des conditions de faible luminosité."
+    },
+    {
+      "question": "Quel est l'inconvénient principal d'une sensibilité ISO élevée ?",
+      "options": [
+        "L'image devient trop sombre",
+        "L'apparition de 'bruit' numérique (grain, pixels colorés parasites) qui dégrade la qualité de l'image",
+        "La vitesse d'obturation devient trop rapide",
+        "L'ouverture du diaphragme se ferme"
+      ],
+      "correct": "L'apparition de 'bruit' numérique (grain, pixels colorés parasites) qui dégrade la qualité de l'image",
+      "explanation": "Augmenter l'ISO amplifie le signal électrique du capteur, mais amplifie aussi le bruit électronique, surtout en basse lumière."
+    },
+    {
+      "question": "Qu'appelle-t-on le 'triangle d'exposition' ?",
+      "options": [
+        "La forme du capteur",
+        "Un accessoire pour trépied",
+        "La relation entre les trois paramètres principaux qui déterminent l'exposition d'une photo : l'ouverture (f/), la vitesse d'obturation (s) et la sensibilité (ISO)",
+        "Une technique de composition d'image"
+      ],
+      "correct": "La relation entre les trois paramètres principaux qui déterminent l'exposition d'une photo : l'ouverture (f/), la vitesse d'obturation (s) et la sensibilité (ISO)",
+      "explanation": "Modifier l'un de ces trois paramètres affecte la quantité de lumière capturée et nécessite souvent d'ajuster un ou deux autres pour maintenir une exposition correcte."
+    },
+    {
+      "question": "Qu'est-ce que la 'profondeur de champ' ?",
+      "options": [
+        "La distance entre l'appareil photo et le sujet",
+        "La zone de netteté dans l'image, s'étendant devant et derrière le plan de mise au point",
+        "Le nombre de couleurs dans l'image",
+        "La taille du fichier image"
+      ],
+      "correct": "La zone de netteté dans l'image, s'étendant devant et derrière le plan de mise au point",
+      "explanation": "Une faible profondeur de champ signifie une zone de netteté réduite (sujet net, arrière-plan flou), tandis qu'une grande profondeur de champ signifie une large zone de netteté."
+    },
+    {
+      "question": "Quel réglage favorise une faible profondeur de champ (idéale pour les portraits avec arrière-plan flou) ?",
+      "options": [
+        "Une petite ouverture (ex: f/16)",
+        "Une grande ouverture (ex: f/1.8)",
+        "Une vitesse d'obturation rapide",
+        "Une sensibilité ISO élevée"
+      ],
+      "correct": "Une grande ouverture (ex: f/1.8)",
+      "explanation": "Une grande ouverture (petit nombre f/) réduit la profondeur de champ, isolant le sujet net de l'arrière-plan flou (effet bokeh)."
+    },
+    {
+      "question": "Quel réglage favorise une grande profondeur de champ (idéale pour les paysages où tout doit être net) ?",
+      "options": [
+        "Une grande ouverture (ex: f/2.8)",
+        "Une petite ouverture (ex: f/11 ou f/16)",
+        "Une vitesse d'obturation lente",
+        "Une faible sensibilité ISO"
+      ],
+      "correct": "Une petite ouverture (ex: f/11 ou f/16)",
+      "explanation": "Une petite ouverture (grand nombre f/) augmente la profondeur de champ, permettant d'avoir une zone de netteté plus étendue."
+    },
+    {
+      "question": "Qu'est-ce que la 'mise au point' (focus) ?",
+      "options": [
+        "Le réglage de la luminosité",
+        "L'ajustement de la position des lentilles de l'objectif pour que le sujet désiré apparaisse net sur le capteur",
+        "Le choix de la sensibilité ISO",
+        "Le cadrage de l'image"
+      ],
+      "correct": "L'ajustement de la position des lentilles de l'objectif pour que le sujet désiré apparaisse net sur le capteur",
+      "explanation": "La mise au point est essentielle pour obtenir une image nette à l'endroit souhaité."
+    },
+    {
+      "question": "Qu'est-ce que l'autofocus (AF) ?",
+      "options": [
+        "Un mode de prise de vue automatique",
+        "Le système automatique de l'appareil photo qui effectue la mise au point sur le sujet détecté",
+        "Un type de flash",
+        "Un filtre intégré à l'objectif"
+      ],
+      "correct": "Le système automatique de l'appareil photo qui effectue la mise au point sur le sujet détecté",
+      "explanation": "L'autofocus simplifie la prise de vue en ajustant automatiquement la netteté sur le sujet choisi ou détecté."
+    },
+    {
+      "question": "À quoi sert le réglage de la 'balance des blancs' (White Balance - WB) ?",
+      "options": [
+        "À rendre l'image plus lumineuse ou plus sombre",
+        "À ajuster les couleurs de l'image pour qu'elles apparaissent naturelles sous différentes sources de lumière (soleil, ombre, intérieur tungstène...), en définissant ce qui doit être blanc",
+        "À régler la vitesse d'obturation",
+        "À choisir le format de fichier"
+      ],
+      "correct": "À ajuster les couleurs de l'image pour qu'elles apparaissent naturelles sous différentes sources de lumière (soleil, ombre, intérieur tungstène...), en définissant ce qui doit être blanc",
+      "explanation": "Différentes sources lumineuses ont des 'températures de couleur' différentes (plus bleues ou plus jaunes). La balance des blancs compense ces dominantes pour un rendu neutre."
+    },
+    {
+      "question": "Quel réglage de balance des blancs utiliser typiquement pour une photo prise en intérieur sous une lampe à incandescence (qui donne une lumière chaude/jaune) ?",
+      "options": [
+        "Lumière du jour (Soleil)",
+        "Ombre",
+        "Tungstène / Incandescent",
+        "Flash"
+      ],
+      "correct": "Tungstène / Incandescent",
+      "explanation": "Le préréglage 'Tungstène' ajoute du bleu à l'image pour compenser la dominante jaune de ce type d'éclairage."
+    },
+    {
+      "question": "Quel mode de prise de vue laisse l'appareil choisir automatiquement tous les réglages (ouverture, vitesse, ISO) ?",
+      "options": [
+        "Mode Manuel (M)",
+        "Mode Priorité Ouverture (A ou Av)",
+        "Mode Priorité Vitesse (S ou Tv)",
+        "Mode Automatique (Auto ou icône verte)"
+      ],
+      "correct": "Mode Automatique (Auto ou icône verte)",
+      "explanation": "Le mode Auto est le plus simple pour les débutants, l'appareil prenant toutes les décisions."
+    },
+    {
+      "question": "En mode 'Priorité Ouverture' (A ou Av), que choisit le photographe et que calcule l'appareil ?",
+      "options": [
+        "Le photographe choisit la vitesse, l'appareil calcule l'ouverture",
+        "Le photographe choisit l'ouverture (pour contrôler la profondeur de champ), l'appareil calcule la vitesse d'obturation correspondante pour une bonne exposition",
+        "Le photographe choisit l'ISO, l'appareil calcule le reste",
+        "Le photographe choisit tout manuellement"
+      ],
+      "correct": "Le photographe choisit l'ouverture (pour contrôler la profondeur de champ), l'appareil calcule la vitesse d'obturation correspondante pour une bonne exposition",
+      "explanation": "Ce mode semi-automatique est idéal pour contrôler la netteté (profondeur de champ)."
+    },
+    {
+      "question": "En mode 'Priorité Vitesse' (S ou Tv), que choisit le photographe et que calcule l'appareil ?",
+      "options": [
+        "Le photographe choisit l'ouverture, l'appareil calcule la vitesse",
+        "Le photographe choisit la vitesse d'obturation (pour figer ou flouter le mouvement), l'appareil calcule l'ouverture correspondante pour une bonne exposition",
+        "Le photographe choisit la balance des blancs, l'appareil calcule le reste",
+        "Le photographe choisit tout manuellement"
+      ],
+      "correct": "Le photographe choisit la vitesse d'obturation (pour figer ou flouter le mouvement), l'appareil calcule l'ouverture correspondante pour une bonne exposition",
+      "explanation": "Ce mode semi-automatique est idéal pour contrôler l'apparence du mouvement dans l'image."
+    },
+    {
+      "question": "Quel format de fichier image est le plus courant pour les photos partagées sur le web et issues directement des appareils photo, utilisant une compression avec perte ?",
+      "options": [
+        "RAW",
+        "TIFF",
+        "JPEG (ou JPG)",
+        "PNG"
+      ],
+      "correct": "JPEG (ou JPG)",
+      "explanation": "JPEG est un format compressé (avec perte de données, mais souvent invisible) qui produit des fichiers de taille réduite, idéal pour le partage et le stockage."
+    },
+    {
+      "question": "Qu'est-ce que la compression 'avec perte' (lossy) utilisée par le format JPEG ?",
+      "options": [
+        "Le fichier perd des pixels lors de la compression",
+        "Une méthode de réduction de la taille du fichier qui élimine certaines informations jugées moins perceptibles par l'œil humain (la qualité se dégrade à chaque enregistrement)",
+        "Une compression qui ne perd aucune information (réversible)",
+        "Une méthode pour crypter le fichier"
+      ],
+      "correct": "Une méthode de réduction de la taille du fichier qui élimine certaines informations jugées moins perceptibles par l'œil humain (la qualité se dégrade à chaque enregistrement)",
+      "explanation": "La compression JPEG permet d'obtenir des fichiers beaucoup plus légers, mais au prix d'une perte irréversible d'informations."
+    },
+    {
+      "question": "Quel format de fichier contient les données brutes issues directement du capteur, sans traitement ni compression (ou avec compression sans perte), offrant une plus grande latitude de retouche ?",
+      "options": [
+        "JPEG",
+        "GIF",
+        "RAW",
+        "MP3"
+      ],
+      "correct": "RAW",
+      "explanation": "Le format RAW conserve toutes les informations capturées, offrant une flexibilité maximale en post-traitement (balance des blancs, exposition...), mais produit des fichiers volumineux nécessitant un logiciel spécifique."
+    },
+    {
+      "question": "Quel format de fichier image utilise une compression 'sans perte' (lossless) et gère la transparence, souvent utilisé pour les graphiques et logos sur le web ?",
+      "options": [
+        "JPEG",
+        "RAW",
+        "PNG",
+        "BMP"
+      ],
+      "correct": "PNG",
+      "explanation": "PNG (Portable Network Graphics) offre une compression sans perte et gère la transparence (canal alpha), contrairement au JPEG."
+    },
+    {
+      "question": "Que sont les métadonnées EXIF d'une photo numérique ?",
+      "options": [
+        "Les pixels de l'image",
+        "Des informations textuelles intégrées au fichier image, décrivant les conditions de prise de vue (modèle d'appareil, date/heure, réglages d'exposition, focale, coordonnées GPS...)",
+        "Un filigrane visible sur l'image",
+        "Le nom du fichier"
+      ],
+      "correct": "Des informations textuelles intégrées au fichier image, décrivant les conditions de prise de vue (modèle d'appareil, date/heure, réglages d'exposition, focale, coordonnées GPS...)",
+      "explanation": "Les données EXIF (Exchangeable image file format) fournissent un contexte précieux sur la manière dont la photo a été prise."
+    },
+    {
+      "question": "Quel type de mémoire amovible est couramment utilisé pour stocker les photos dans les appareils photo numériques ?",
+      "options": [
+        "Disque dur interne",
+        "Clé USB",
+        "Carte mémoire (SD, microSD, CompactFlash...)",
+        "CD-ROM"
+      ],
+      "correct": "Carte mémoire (SD, microSD, CompactFlash...)",
+      "explanation": "Les cartes mémoire offrent un stockage compact et amovible pour enregistrer les photos et vidéos."
+    },
+    {
+      "question": "Que signifie 'recadrer' (crop) une image ?",
+      "options": [
+        "Modifier ses couleurs",
+        "Augmenter sa définition",
+        "Sélectionner une partie de l'image et supprimer le reste pour améliorer la composition ou éliminer des éléments indésirables",
+        "Ajouter du texte sur l'image"
+      ],
+      "correct": "Sélectionner une partie de l'image et supprimer le reste pour améliorer la composition ou éliminer des éléments indésirables",
+      "explanation": "Le recadrage permet de modifier le cadrage initial de la photo en post-traitement."
+    },
+    {
+      "question": "Quel réglage en post-traitement permet d'ajuster la différence entre les tons les plus clairs et les tons les plus sombres de l'image ?",
+      "options": [
+        "La saturation",
+        "La netteté",
+        "Le contraste",
+        "La balance des blancs"
+      ],
+      "correct": "Le contraste",
+      "explanation": "Augmenter le contraste rend les zones claires plus claires et les zones sombres plus sombres, donnant une image plus 'claquante'. Le diminuer rapproche les tons."
+    },
+    {
+      "question": "Quel réglage en post-traitement permet d'ajuster la luminosité générale de l'image ?",
+      "options": [
+        "La teinte",
+        "La luminosité (ou exposition / brightness)",
+        "Le contraste",
+        "La saturation"
+      ],
+      "correct": "La luminosité (ou exposition / brightness)",
+      "explanation": "Ce réglage permet d'éclaircir ou d'assombrir l'ensemble de l'image."
+    },
+    {
+      "question": "Que permet de modifier le réglage de la 'saturation' ?",
+      "options": [
+        "La netteté des détails",
+        "La température de couleur",
+        "L'intensité ou la pureté des couleurs dans l'image",
+        "Le niveau de bruit numérique"
+      ],
+      "correct": "L'intensité ou la pureté des couleurs dans l'image",
+      "explanation": "Augmenter la saturation rend les couleurs plus vives, la diminuer les rend plus ternes (jusqu'au noir et blanc si la saturation est nulle)."
+    },
+    {
+      "question": "Quel type de logiciel est spécifiquement conçu pour retoucher et manipuler des images numériques (ex: GIMP, Photoshop) ?",
+      "options": [
+        "Un traitement de texte",
+        "Un tableur",
+        "Un éditeur d'images (ou logiciel de retouche photo)",
+        "Un navigateur web"
+      ],
+      "correct": "Un éditeur d'images (ou logiciel de retouche photo)",
+      "explanation": "Ces logiciels offrent des outils avancés pour modifier les pixels, ajuster les couleurs, appliquer des filtres, etc."
+    },
+    {
+      "question": "Quel type d'appareil photo combine un boîtier compact avec un objectif zoom puissant non interchangeable ?",
+      "options": [
+        "Appareil photo reflex (DSLR)",
+        "Appareil photo hybride (mirrorless)",
+        "Appareil photo bridge",
+        "Smartphone"
+      ],
+      "correct": "Appareil photo bridge",
+      "explanation": "Les bridges offrent une grande polyvalence de zoom dans un format plus simple qu'un reflex, mais avec un capteur généralement plus petit."
+    },
+    {
+      "question": "Quelle est la principale différence mécanique entre un appareil photo reflex (DSLR) et un appareil photo hybride (mirrorless) ?",
+      "options": [
+        "L'hybride n'a pas d'objectif interchangeable",
+        "Le reflex utilise une carte mémoire différente",
+        "Le reflex possède un miroir interne qui renvoie la lumière vers un viseur optique, tandis que l'hybride n'a pas de miroir et utilise un viseur électronique ou l'écran arrière",
+        "L'hybride ne peut pas enregistrer de vidéos"
+      ],
+      "correct": "Le reflex possède un miroir interne qui renvoie la lumière vers un viseur optique, tandis que l'hybride n'a pas de miroir et utilise un viseur électronique ou l'écran arrière",
+      "explanation": "L'absence de miroir rend les hybrides généralement plus compacts et légers que les reflex à capteur équivalent."
+    },
+    {
+      "question": "Par rapport à un appareil photo dédié (reflex, hybride), quel est le principal inconvénient des capteurs d'images des smartphones ?",
+      "options": [
+        "Ils sont trop grands",
+        "Leur petite taille physique limite la quantité de lumière captée et la qualité d'image, surtout en basse lumière (plus de bruit, moins bonne dynamique)",
+        "Ils n'ont pas d'autofocus",
+        "Ils ne peuvent enregistrer qu'en noir et blanc"
+      ],
+      "correct": "Leur petite taille physique limite la quantité de lumière captée et la qualité d'image, surtout en basse lumière (plus de bruit, moins bonne dynamique)",
+      "explanation": "Même si les logiciels compensent beaucoup, la physique limite la performance des petits capteurs de smartphones par rapport aux grands capteurs des appareils dédiés."
+    },
+    {
+      "question": "Qu'est-ce que la photographie computationnelle (computational photography) très utilisée dans les smartphones ?",
+      "options": [
+        "Photographier des ordinateurs",
+        "L'utilisation d'algorithmes et de traitements logiciels complexes pour améliorer l'image ou créer des effets qui dépassent les capacités purement optiques (ex: mode portrait, HDR, photo de nuit)",
+        "La photographie argentique",
+        "Stocker les photos sur un supercalculateur"
+      ],
+      "correct": "L'utilisation d'algorithmes et de traitements logiciels complexes pour améliorer l'image ou créer des effets qui dépassent les capacités purement optiques (ex: mode portrait, HDR, photo de nuit)",
+      "explanation": "Les smartphones combinent les données de plusieurs capteurs ou plusieurs expositions et appliquent des traitements IA pour compenser les limites matérielles et améliorer le rendu."
+    },
+    {
+      "question": "Qu'est-ce que l'effet 'yeux rouges' sur une photo prise au flash ?",
+      "options": [
+        "Un reflet du flash sur les lunettes",
+        "Le reflet du flash sur la rétine au fond de l'œil, riche en vaisseaux sanguins, lorsque le flash est trop proche de l'axe de l'objectif",
+        "Une dominante de couleur rouge dans toute l'image",
+        "Un problème de balance des blancs"
+      ],
+      "correct": "Le reflet du flash sur la rétine au fond de l'œil, riche en vaisseaux sanguins, lorsque le flash est trop proche de l'axe de l'objectif",
+      "explanation": "La lumière du flash entre par la pupille dilatée (en faible lumière) et se réfléchit sur la rétine rouge."
+    },
+    {
+      "question": "Quel accessoire permet de stabiliser l'appareil photo et d'éviter le flou de bougé, surtout lors de poses longues ?",
+      "options": [
+        "Un filtre polarisant",
+        "Un flash externe",
+        "Un trépied",
+        "Un objectif zoom"
+      ],
+      "correct": "Un trépied",
+      "explanation": "Le trépied maintient l'appareil parfaitement immobile, indispensable pour les vitesses d'obturation lentes où le moindre mouvement de la main provoquerait du flou."
+    },
+    {
+      "question": "Quel risque prend-on en partageant une photo géolocalisée (avec données GPS dans les EXIF) sur les réseaux sociaux ?",
+      "options": [
+        "Aucun risque",
+        "Révéler sa position géographique précise au moment de la prise de vue, ce qui peut porter atteinte à la vie privée ou à la sécurité",
+        "Améliorer la qualité de la photo",
+        "Augmenter la taille du fichier"
+      ],
+      "correct": "Révéler sa position géographique précise au moment de la prise de vue, ce qui peut porter atteinte à la vie privée ou à la sécurité",
+      "explanation": "Il est important d'être conscient des informations (métadonnées) partagées avec ses photos et de les supprimer si nécessaire."
+    },
+    {
+      "question": "Qu'est-ce que le droit à l'image en France ?",
+      "options": [
+        "Le droit de prendre en photo n'importe qui dans la rue",
+        "Le droit pour toute personne de s'opposer à la diffusion de son image sans son autorisation expresse, sauf exceptions (personnes publiques dans l'exercice de leur fonction, foules...)",
+        "Le droit de copier n'importe quelle image trouvée sur Internet",
+        "Le droit de modifier une photo comme on le souhaite"
+      ],
+      "correct": "Le droit pour toute personne de s'opposer à la diffusion de son image sans son autorisation expresse, sauf exceptions (personnes publiques dans l'exercice de leur fonction, foules...)",
+      "explanation": "Avant de publier une photo où une personne est reconnaissable, il faut généralement obtenir son accord."
+    },
+    {
+      "question": "Que protège le droit d'auteur appliqué à une photographie ?",
+      "options": [
+        "La personne photographiée",
+        "L'appareil photo utilisé",
+        "Le photographe (l'auteur de l'œuvre), en lui donnant des droits exclusifs sur l'utilisation et la reproduction de sa photo (sauf exceptions)",
+        "Le sujet photographié (paysage, objet)"
+      ],
+      "correct": "Le photographe (l'auteur de l'œuvre), en lui donnant des droits exclusifs sur l'utilisation et la reproduction de sa photo (sauf exceptions)",
+      "explanation": "Une photographie originale est une œuvre de l'esprit protégée. Utiliser la photo de quelqu'un d'autre sans autorisation ou sans respecter la licence est une contrefaçon."
+    },
+    {
+      "question": "Que sont les licences Creative Commons ?",
+      "options": [
+        "Des licences logicielles uniquement",
+        "Des licences qui interdisent toute utilisation d'une œuvre",
+        "Des licences standardisées qui permettent aux auteurs d'autoriser à l'avance certaines utilisations de leurs œuvres (photos, textes, musique...) par le public, sous certaines conditions (attribution, non commercial, pas de modification...)",
+        "Des formats de fichiers image"
+      ],
+      "correct": "Des licences standardisées qui permettent aux auteurs d'autoriser à l'avance certaines utilisations de leurs œuvres (photos, textes, musique...) par le public, sous certaines conditions (attribution, non commercial, pas de modification...)",
+      "explanation": "Les licences Creative Commons facilitent le partage légal d'œuvres tout en respectant les droits des auteurs."
+    },
+    {
+      "question": "Quelle technique consiste à combiner plusieurs photos de la même scène prises avec des expositions différentes pour obtenir une image finale avec une grande plage dynamique (détails à la fois dans les ombres et les hautes lumières) ?",
+      "options": [
+        "La photographie panoramique",
+        "Le HDR (High Dynamic Range)",
+        "La macrophotographie",
+        "Le light painting"
+      ],
+      "correct": "Le HDR (High Dynamic Range)",
+      "explanation": "Le HDR permet de surmonter les limitations de la plage dynamique des capteurs en fusionnant plusieurs expositions (sous-exposée, normale, sur-exposée)."
+    },
+    {
+      "question": "Qu'est-ce que la 'règle des tiers' en composition photographique ?",
+      "options": [
+        "Ne prendre que 3 photos du même sujet",
+        "Une règle qui suggère de diviser l'image en neuf parties égales par deux lignes horizontales et deux lignes verticales, et de placer les éléments importants le long de ces lignes ou à leurs intersections",
+        "Utiliser une ouverture de f/3",
+        "Prendre la photo à 3 mètres du sujet"
+      ],
+      "correct": "Une règle qui suggère de diviser l'image en neuf parties égales par deux lignes horizontales et deux lignes verticales, et de placer les éléments importants le long de ces lignes ou à leurs intersections",
+      "explanation": "La règle des tiers est un guide de composition classique pour créer des images plus équilibrées et dynamiques que si le sujet est centré."
+    },
+    {
+      "question": "Quelle technologie permet de créer des images ou vidéos synthétiques très réalistes, souvent en superposant le visage d'une personne sur celui d'une autre, posant des risques de désinformation ?",
+      "options": [
+        "Le HDR",
+        "Le format RAW",
+        "Le Deepfake",
+        "Le JPEG"
+      ],
+      "correct": "Le Deepfake",
+      "explanation": "Les deepfakes (hypertrucages) utilisent l'intelligence artificielle pour générer des faux contenus très convaincants, utilisés à des fins malveillantes ou satiriques."
+    },
+    {
+      "question": "Quel type de capteur (CMOS ou CCD) est le plus répandu aujourd'hui dans les appareils photo numériques et les smartphones ?",
+      "options": [
+        "CCD (Charge-Coupled Device)",
+        "CMOS (Complementary Metal-Oxide-Semiconductor)",
+        "Les deux sont utilisés à parts égales",
+        "Aucun des deux"
+      ],
+      "correct": "CMOS (Complementary Metal-Oxide-Semiconductor)",
+      "explanation": "Les capteurs CMOS sont généralement moins chers à produire, consomment moins d'énergie et permettent une lecture plus rapide que les CCD, et leur qualité a rattrapé voire dépassé celle des CCD."
+    },
+    {
+      "question": "Comment fonctionne un filtre de Bayer placé devant un capteur couleur ?",
+      "options": [
+        "Il bloque toute la lumière",
+        "Il ne laisse passer que la lumière infrarouge",
+        "C'est une mosaïque de micro-filtres rouges, verts et bleus (souvent 50% verts, 25% rouges, 25% bleus) placée sur les photosites, de sorte que chaque photosite ne capte qu'une couleur primaire",
+        "Il polarise la lumière"
+      ],
+      "correct": "C'est une mosaïque de micro-filtres rouges, verts et bleus (souvent 50% verts, 25% rouges, 25% bleus) placée sur les photosites, de sorte que chaque photosite ne capte qu'une couleur primaire",
+      "explanation": "Le processeur d'image reconstitue ensuite la couleur complète de chaque pixel en interpolant les informations des photosites voisins (dématriçage)."
+    },
+    {
+      "question": "Qu'est-ce que la 'résolution' d'une image (souvent exprimée en DPI ou PPI) ?",
+      "options": [
+        "La définition de l'image (nombre total de pixels)",
+        "La densité de pixels de l'image lorsqu'elle est affichée ou imprimée sur une certaine surface (Pixels Par Pouce - PPI, ou Dots Per Inch - DPI)",
+        "La taille du fichier",
+        "Le nombre de couleurs"
+      ],
+      "correct": "La densité de pixels de l'image lorsqu'elle est affichée ou imprimée sur une certaine surface (Pixels Par Pouce - PPI, ou Dots Per Inch - DPI)",
+      "explanation": "La résolution détermine la finesse des détails lors de l'impression ou de l'affichage. Une résolution plus élevée (ex: 300 DPI) donne une image plus nette sur papier."
+    },
+    {
+      "question": "Quel effet peut avoir la diffraction lorsque l'on utilise une très petite ouverture de diaphragme (ex: f/22) ?",
+      "options": [
+        "Une amélioration de la netteté",
+        "Une légère perte de netteté (piqué) due à la dispersion de la lumière en passant par la petite ouverture",
+        "Une réduction de la profondeur de champ",
+        "Une augmentation du bruit"
+      ],
+      "correct": "Une légère perte de netteté (piqué) due à la dispersion de la lumière en passant par la petite ouverture",
+      "explanation": "Même si une petite ouverture augmente la profondeur de champ, au-delà d'une certaine limite (variable selon l'appareil), la diffraction dégrade la netteté globale."
+    },
+    {
+      "question": "Qu'est-ce que le 'bracketing' d'exposition ?",
+      "options": [
+        "Utiliser un support pour l'appareil",
+        "Prendre automatiquement plusieurs photos de la même scène avec des réglages d'exposition différents (ex: une normale, une sous-exposée, une sur-exposée)",
+        "Mettre l'appareil en mode rafale",
+        "Utiliser un flash externe"
+      ],
+      "correct": "Prendre automatiquement plusieurs photos de la même scène avec des réglages d'exposition différents (ex: une normale, une sous-exposée, une sur-exposée)",
+      "explanation": "Le bracketing est utile dans les situations de lumière difficile pour s'assurer d'avoir au moins une photo bien exposée, ou pour créer ensuite une image HDR."
+    },
+    {
+      "question": "À quoi sert la fonction de stabilisation d'image (optique ou numérique) ?",
+      "options": [
+        "À faire la mise au point automatiquement",
+        "À compenser les petits mouvements de l'appareil photo (tremblements de la main) pour réduire le risque de flou de bougé, surtout à faible vitesse d'obturation ou avec de longues focales",
+        "À régler la balance des blancs",
+        "À augmenter la définition de l'image"
+      ],
+      "correct": "À compenser les petits mouvements de l'appareil photo (tremblements de la main) pour réduire le risque de flou de bougé, surtout à faible vitesse d'obturation ou avec de longues focales",
+      "explanation": "La stabilisation (intégrée à l'objectif ou au boîtier) permet de gagner quelques 'crans' de vitesse d'obturation pour des photos nettes à main levée."
+    },
+    {
+      "question": "Quel type d'objectif permet de photographier des sujets très petits en très gros plan, avec un rapport de grandissement élevé ?",
+      "options": [
+        "Objectif fisheye",
+        "Objectif grand-angle",
+        "Objectif macro",
+        "Téléobjectif"
+      ],
+      "correct": "Objectif macro",
+      "explanation": "Les objectifs macro sont conçus pour faire la mise au point de très près et obtenir un rapport de reproduction de 1:1 (le sujet a la même taille sur le capteur que dans la réalité) ou plus."
+    },
+    {
+      "question": "Quel format d'image est adapté pour les animations simples sur le web ?",
+      "options": [
+        "JPEG",
+        "RAW",
+        "GIF",
+        "TIFF"
+      ],
+      "correct": "GIF",
+      "explanation": "Le format GIF (Graphics Interchange Format) supporte les animations par succession d'images et la transparence simple, mais est limité à 256 couleurs."
+    },
+    {
+      "question": "Quelle technique photographique consiste à peindre avec une source lumineuse dans le cadre pendant une pose longue ?",
+      "options": [
+        "HDR",
+        "Macrophotographie",
+        "Light painting",
+        "Photographie panoramique"
+      ],
+      "correct": "Light painting",
+      "explanation": "En déplaçant une lampe ou une LED devant l'appareil pendant une exposition longue (plusieurs secondes ou minutes), on 'dessine' des formes lumineuses dans l'image."
+    },
+    {
+      "question": "Quelle partie de l'appareil photo permet de prévisualiser l'image avant la prise de vue ?",
+      "options": [
+        "La carte mémoire",
+        "L'obturateur",
+        "Le viseur (optique ou électronique) et/ou l'écran LCD arrière",
+        "Le flash"
+      ],
+      "correct": "Le viseur (optique ou électronique) et/ou l'écran LCD arrière",
+      "explanation": "Le viseur ou l'écran permettent au photographe de cadrer sa photo et de vérifier la mise au point."
+    },
+    {
+      "question": "Qu'est-ce qu'un histogramme en photographie numérique ?",
+      "options": [
+        "Un graphique montrant la composition chimique du capteur",
+        "Un graphique représentant la distribution des niveaux de luminosité (des tons sombres aux tons clairs) dans une image",
+        "Un graphique montrant la vitesse de l'autofocus",
+        "Un graphique représentant la charge de la batterie"
+      ],
+      "correct": "Un graphique représentant la distribution des niveaux de luminosité (des tons sombres aux tons clairs) dans une image",
+      "explanation": "L'histogramme est un outil utile (souvent affiché sur l'écran de l'appareil) pour évaluer l'exposition d'une photo : un pic à gauche indique une image sombre (sous-exposée), un pic à droite une image claire (sur-exposée)."
+    },
+    {
+      "question": "Que signifie 'écrêtage' (clipping) des hautes lumières ou des ombres, visible sur un histogramme ?",
+      "options": [
+        "Une bonne exposition",
+        "Le fait que des zones de l'image sont tellement claires (blanc pur) ou tellement sombres (noir pur) que tous les détails y sont perdus (information 'coupée')",
+        "Un effet de flou artistique",
+        "Une compression réussie"
+      ],
+      "correct": "Le fait que des zones de l'image sont tellement claires (blanc pur) ou tellement sombres (noir pur) que tous les détails y sont perdus (information 'coupée')",
+      "explanation": "Sur l'histogramme, l'écrêtage se manifeste par un pic 'collé' aux bords extrêmes gauche (ombres bouchées) ou droit (hautes lumières brûlées)."
+    },
+    {
+      "question": "Quel accessoire se fixe devant l'objectif pour réduire les reflets sur les surfaces non métalliques (eau, vitres) et saturer les couleurs (ciel bleu) ?",
+      "options": [
+        "Un filtre UV",
+        "Un filtre de densité neutre (ND)",
+        "Un filtre polarisant",
+        "Un bouchon d'objectif"
+      ],
+      "correct": "Un filtre polarisant",
+      "explanation": "Le filtre polarisant bloque la lumière polarisée réfléchie, améliorant le contraste et la saturation des couleurs dans certaines conditions."
+    },
+    {
+      "question": "Quel accessoire se fixe devant l'objectif pour réduire la quantité de lumière entrant, permettant d'utiliser des ouvertures plus grandes ou des vitesses plus lentes en pleine journée ?",
+      "options": [
+        "Un filtre polarisant",
+        "Un filtre UV",
+        "Un filtre de densité neutre (ND)",
+        "Un pare-soleil"
+      ],
+      "correct": "Un filtre de densité neutre (ND)",
+      "explanation": "Les filtres ND (comme des 'lunettes de soleil' pour l'objectif) sont utiles pour les poses longues en journée (flou de l'eau) ou pour filmer avec une faible profondeur de champ."
+    },
+    {
+      "question": "Quel est le rôle du processeur d'image dans un appareil photo numérique ?",
+      "options": [
+        "Stocker les photos",
+        "Focaliser la lumière",
+        "Traiter les données brutes du capteur (dématriçage, balance des blancs, réduction du bruit, application des styles d'image) pour générer le fichier final (JPEG ou RAW)",
+        "Charger la batterie"
+      ],
+      "correct": "Traiter les données brutes du capteur (dématriçage, balance des blancs, réduction du bruit, application des styles d'image) pour générer le fichier final (JPEG ou RAW)",
+      "explanation": "Le processeur d'image est responsable de la transformation du signal électrique du capteur en une image visible et de l'application des réglages choisis."
+    },
+    {
+      "question": "Quelle est la profondeur de couleur standard (nombre de bits par composante de couleur) pour une image JPEG ?",
+      "options": [
+        "1 bit",
+        "8 bits",
+        "16 bits",
+        "32 bits"
+      ],
+      "correct": "8 bits",
+      "explanation": "Une image JPEG utilise typiquement 8 bits pour coder l'intensité de chaque couleur primaire (Rouge, Vert, Bleu), soit 24 bits par pixel au total (8+8+8)."
+    },
+    {
+      "question": "Quelle est la profondeur de couleur typique des données enregistrées dans un fichier RAW ?",
+      "options": [
+        "1 bit",
+        "8 bits",
+        "12, 14 ou 16 bits",
+        "4 bits"
+      ],
+      "correct": "12, 14 ou 16 bits",
+      "explanation": "Les fichiers RAW enregistrent les données du capteur avec une plus grande profondeur (plus de niveaux de luminosité par couleur), offrant plus de nuances et une meilleure latitude de retouche que le JPEG 8 bits."
+    },
+    {
+      "question": "Quel modèle de couleur est utilisé pour l'impression ?",
+      "options": [
+        "RVB (Rouge, Vert, Bleu)",
+        "CMJN (Cyan, Magenta, Jaune, Noir)",
+        "TSL (Teinte, Saturation, Luminosité)",
+        "LAB"
+      ],
+      "correct": "CMJN (Cyan, Magenta, Jaune, Noir)",
+      "explanation": "Le modèle CMJN est soustractif : les encres (Cyan, Magenta, Jaune) absorbent certaines couleurs de la lumière blanche réfléchie par le papier. Le Noir (N) est ajouté pour obtenir des noirs profonds."
+    },
+    {
+      "question": "Qu'est-ce qu'un objectif 'à focale fixe' (prime lens) ?",
+      "options": [
+        "Un objectif qui ne peut pas faire la mise au point",
+        "Un objectif dont la longueur focale ne peut pas être changée (contrairement à un zoom)",
+        "Un objectif très bon marché",
+        "Un objectif uniquement pour la vidéo"
+      ],
+      "correct": "Un objectif dont la longueur focale ne peut pas être changée (contrairement à un zoom)",
+      "explanation": "Les objectifs à focale fixe sont souvent plus lumineux (plus grande ouverture maximale) et offrent une meilleure qualité d'image à un coût inférieur à celui d'un zoom de qualité équivalente."
+    },
+    {
+      "question": "Qu'est-ce qu'un objectif 'zoom' ?",
+      "options": [
+        "Un objectif qui agrandit les pixels",
+        "Un objectif dont la longueur focale peut être modifiée par l'utilisateur sur une certaine plage (ex: 18-55mm, 70-200mm)",
+        "Un objectif très léger",
+        "Un objectif conçu pour la macro"
+      ],
+      "correct": "Un objectif dont la longueur focale peut être modifiée par l'utilisateur sur une certaine plage (ex: 18-55mm, 70-200mm)",
+      "explanation": "Les zooms offrent une polyvalence en permettant de changer l'angle de champ sans changer d'objectif."
+    },
+    {
+      "question": "Quel phénomène optique peut créer des taches colorées ou une perte de contraste dans l'image lorsque le soleil ou une source de lumière vive est dans ou près du champ ?",
+      "options": [
+        "La diffraction",
+        "Le flare (ou lumière parasite)",
+        "L'aberration chromatique",
+        "Le vignetage"
+      ],
+      "correct": "Le flare (ou lumière parasite)",
+      "explanation": "Le flare est causé par des réflexions internes non désirées de la lumière à l'intérieur des lentilles de l'objectif."
+    },
+    {
+      "question": "Quel accessoire se fixe à l'avant de l'objectif pour aider à bloquer la lumière parasite latérale et réduire le flare ?",
+      "options": [
+        "Un filtre ND",
+        "Un filtre polarisant",
+        "Un pare-soleil",
+        "Un bouchon d'objectif"
+      ],
+      "correct": "Un pare-soleil",
+      "explanation": "Le pare-soleil agit comme une casquette pour l'objectif, empêchant la lumière directe non imageante d'atteindre la lentille frontale."
+    },
+    {
+      "question": "Qu'est-ce que l'aberration chromatique ?",
+      "options": [
+        "Une dominante de couleur dans l'image",
+        "Un défaut optique où les différentes couleurs de la lumière ne sont pas focalisées exactement au même point par l'objectif, créant des franges colorées (souvent violettes ou vertes) sur les bords contrastés",
+        "Une perte de netteté due à la diffraction",
+        "Un assombrissement des coins de l'image"
+      ],
+      "correct": "Un défaut optique où les différentes couleurs de la lumière ne sont pas focalisées exactement au même point par l'objectif, créant des franges colorées (souvent violettes ou vertes) sur les bords contrastés",
+      "explanation": "Les objectifs de meilleure qualité utilisent des verres spéciaux pour minimiser les aberrations chromatiques."
+    },
+    {
+      "question": "Qu'est-ce que le vignetage ?",
+      "options": [
+        "Un effet de flou volontaire",
+        "Un assombrissement des coins de l'image par rapport au centre, souvent plus prononcé à pleine ouverture ou avec des objectifs grand-angle",
+        "Une déformation des lignes droites",
+        "Une augmentation du bruit dans les coins"
+      ],
+      "correct": "Un assombrissement des coins de l'image par rapport au centre, souvent plus prononcé à pleine ouverture ou avec des objectifs grand-angle",
+      "explanation": "Le vignetage peut être un défaut optique ou un effet ajouté en post-traitement pour attirer l'attention vers le centre."
+    },
+    {
+      "question": "Quelle est la fonction principale d'un flash photographique ?",
+      "options": [
+        "Réchauffer le sujet",
+        "Fournir un éclairage artificiel bref et intense pour éclairer une scène sombre ou déboucher les ombres en plein jour",
+        "Mesurer la distance au sujet",
+        "Changer la couleur de la lumière ambiante"
+      ],
+      "correct": "Fournir un éclairage artificiel bref et intense pour éclairer une scène sombre ou déboucher les ombres en plein jour",
+      "explanation": "Le flash permet de photographier lorsque la lumière ambiante est insuffisante."
+    },
+    {
+      "question": "Quelle technique consiste à assembler plusieurs photos prises en séquence pour créer une image plus large (horizontalement ou verticalement) ?",
+      "options": [
+        "Le HDR",
+        "Le focus stacking",
+        "La photographie panoramique",
+        "Le light painting"
+      ],
+      "correct": "La photographie panoramique",
+      "explanation": "Les photos individuelles sont ensuite 'cousues' ensemble par un logiciel pour former une seule image panoramique."
+    },
+    {
+      "question": "Quelle application de stockage en ligne permet de sauvegarder et de partager facilement ses photos numériques ?",
+      "options": [
+        "Un traitement de texte",
+        "Un service de stockage Cloud (ex: Google Photos, iCloud Photos, Dropbox)",
+        "Un éditeur de code",
+        "Un logiciel de comptabilité"
+      ],
+      "correct": "Un service de stockage Cloud (ex: Google Photos, iCloud Photos, Dropbox)",
+      "explanation": "Le stockage Cloud offre une sauvegarde distante et un accès aux photos depuis différents appareils."
+    },
+    {
+      "question": "Quel appareil a été l'un des premiers appareils photo numériques commercialisés pour le grand public au milieu des années 90 ?",
+      "options": [
+        "Le Kodak Brownie",
+        "Le Leica M3",
+        "L'Apple QuickTake 100 ou le Casio QV-10",
+        "L'iPhone original"
+      ],
+      "correct": "L'Apple QuickTake 100 ou le Casio QV-10",
+      "explanation": "Des appareils comme l'Apple QuickTake (1994) et le Casio QV-10 (1995, avec écran LCD) ont marqué les débuts de la photographie numérique grand public."
+    },
+    {
+      "question": "Qu'est-ce que le 'bruit' ISO ou bruit numérique ?",
+      "options": [
+        "Le son produit par l'appareil photo lors de la prise de vue",
+        "Une texture granuleuse ou des pixels colorés aléatoires qui apparaissent sur l'image, surtout à haute sensibilité ISO ou dans les zones sombres",
+        "Une interférence radio",
+        "Une vibration de l'appareil"
+      ],
+      "correct": "Une texture granuleuse ou des pixels colorés aléatoires qui apparaissent sur l'image, surtout à haute sensibilité ISO ou dans les zones sombres",
+      "explanation": "Le bruit est une dégradation de l'image due à l'amplification du signal électrique dans des conditions de faible lumière."
+    },
+    {
+      "question": "Quel réglage d'appareil photo mesure la lumière de la scène et propose des réglages d'exposition ?",
+      "options": [
+        "L'autofocus",
+        "Le système de mesure de la lumière (posemètre ou cellule)",
+        "La stabilisation d'image",
+        "Le GPS intégré"
+      ],
+      "correct": "Le système de mesure de la lumière (posemètre ou cellule)",
+      "explanation": "Le posemètre analyse la luminosité de la scène (selon différents modes : matriciel, pondéré central, spot) pour aider l'appareil (ou le photographe) à déterminer une exposition correcte."
+    },
+    {
+      "question": "Qu'est-ce que la 'dynamique' (dynamic range) d'un capteur photo ?",
+      "options": [
+        "La vitesse maximale de prise de vue en rafale",
+        "La capacité du capteur à enregistrer simultanément des détails dans les zones très sombres et les zones très claires d'une scène contrastée",
+        "La taille physique du capteur",
+        "Le nombre de megapixels"
+      ],
+      "correct": "La capacité du capteur à enregistrer simultanément des détails dans les zones très sombres et les zones très claires d'une scène contrastée",
+      "explanation": "Une plus grande dynamique permet de capturer plus de nuances entre le noir le plus profond et le blanc le plus éclatant sans perte de détails (ombres bouchées ou hautes lumières brûlées)."
+    },
+    {
+      "question": "Quel problème une vitesse d'obturation trop lente peut-elle causer si l'on photographie à main levée ?",
+      "options": [
+        "Une image trop sombre",
+        "Du bruit numérique",
+        "Un flou de bougé (dû aux tremblements de la main)",
+        "Une profondeur de champ trop faible"
+      ],
+      "correct": "Un flou de bougé (dû aux tremblements de la main)",
+      "explanation": "En dessous d'une certaine vitesse (qui dépend de la focale), il est difficile de tenir l'appareil parfaitement immobile, provoquant un flou sur toute l'image."
+    },
+    {
+      "question": "En général, pour éviter le flou de bougé à main levée, quelle vitesse d'obturation minimale est souvent recommandée (règle approximative) ?",
+      "options": [
+        "Toujours 1/1000s",
+        "Au moins 1 / (longueur focale de l'objectif) secondes (ex: 1/50s pour un 50mm)",
+        "Toujours 1 seconde",
+        "Au moins 1/15s"
+      ],
+      "correct": "Au moins 1 / (longueur focale de l'objectif) secondes (ex: 1/50s pour un 50mm)",
+      "explanation": "Cette règle empirique (à adapter selon le capteur et la stabilisation) aide à choisir une vitesse suffisamment rapide pour compenser les tremblements avec une focale donnée."
+    },
+    {
+      "question": "Qu'est-ce que la 'température de couleur', souvent exprimée en Kelvins (K) ?",
+      "options": [
+        "La température réelle de l'appareil photo",
+        "Une mesure caractérisant la dominante de couleur d'une source lumineuse (basse température = lumière chaude/jaune/rouge, haute température = lumière froide/bleue)",
+        "La sensibilité ISO",
+        "La vitesse d'obturation"
+      ],
+      "correct": "Une mesure caractérisant la dominante de couleur d'une source lumineuse (basse température = lumière chaude/jaune/rouge, haute température = lumière froide/bleue)",
+      "explanation": "La balance des blancs vise à neutraliser l'effet de la température de couleur de la source lumineuse sur les couleurs de l'image."
+    },
+    {
+      "question": "Quel terme désigne la modification d'une image pour tromper le spectateur, parfois de manière malveillante ?",
+      "options": [
+        "Le recadrage",
+        "La retouche (légère)",
+        "La manipulation d'image ou la falsification",
+        "L'application d'un filtre artistique"
+      ],
+      "correct": "La manipulation d'image ou la falsification",
+      "explanation": "Alors que la retouche vise souvent à améliorer l'esthétique, la manipulation cherche à altérer le sens ou la véracité de l'image, posant des problèmes éthiques."
+    }
+  ]
+}

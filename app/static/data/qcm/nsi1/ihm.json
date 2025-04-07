@@ -1,0 +1,1005 @@
+{
+  "interactions_homme_machine_web": [
+    {
+      "question": "Dans l'architecture client-serveur du Web, quel est le rôle principal du client ?",
+      "options": [
+        "Héberger le site web",
+        "Stocker les bases de données",
+        "Envoyer des requêtes au serveur et afficher les réponses reçues",
+        "Gérer la sécurité du réseau"
+      ],
+      "correct": "Envoyer des requêtes au serveur et afficher les réponses reçues",
+      "explanation": "Le client (généralement un navigateur web) demande des ressources (pages web, images) au serveur et interprète/affiche les réponses pour l'utilisateur."
+    },
+    {
+      "question": "Quel logiciel est l'exemple le plus courant de client web ?",
+      "options": [
+        "Un serveur Apache",
+        "Un système de gestion de base de données (SGBD)",
+        "Un navigateur web (Chrome, Firefox, Edge...)",
+        "Un éditeur de texte"
+      ],
+      "correct": "Un navigateur web (Chrome, Firefox, Edge...)",
+      "explanation": "Le navigateur est l'application utilisée par l'utilisateur final pour interagir avec les serveurs web et afficher les pages."
+    },
+    {
+      "question": "Dans l'architecture client-serveur du Web, quel est le rôle principal du serveur ?",
+      "options": [
+        "Afficher les pages web à l'utilisateur",
+        "Stocker les ressources (fichiers HTML, CSS, JS, images...) et traiter les requêtes du client",
+        "Exécuter le code JavaScript côté client",
+        "Gérer la connexion Internet de l'utilisateur"
+      ],
+      "correct": "Stocker les ressources (fichiers HTML, CSS, JS, images...) et traiter les requêtes du client",
+      "explanation": "Le serveur attend les requêtes des clients, localise ou génère les ressources demandées, et les renvoie au client."
+    },
+    {
+      "question": "Quel protocole de communication est principalement utilisé entre un client web et un serveur web ?",
+      "options": [
+        "FTP (File Transfer Protocol)",
+        "SMTP (Simple Mail Transfer Protocol)",
+        "HTTP (HyperText Transfer Protocol) ou HTTPS",
+        "DNS (Domain Name System)"
+      ],
+      "correct": "HTTP (HyperText Transfer Protocol) ou HTTPS",
+      "explanation": "HTTP(S) est le protocole définissant comment les requêtes et les réponses sont formatées et échangées sur le Web."
+    },
+    {
+      "question": "Que signifie l'acronyme HTTP ?",
+      "options": [
+        "HyperText Transfer Protocol",
+        "Hyperlink Text Translation Process",
+        "High Traffic Transmission Protocol",
+        "Hypermedia Transfer Type Protocol"
+      ],
+      "correct": "HyperText Transfer Protocol",
+      "explanation": "HTTP est le protocole fondamental pour la communication sur le World Wide Web."
+    },
+    {
+      "question": "Quelle est la différence principale entre HTTP et HTTPS ?",
+      "options": [
+        "HTTPS est plus rapide",
+        "HTTPS utilise un port différent",
+        "HTTPS ajoute une couche de sécurité (chiffrement SSL/TLS) aux communications HTTP",
+        "HTTP ne peut transférer que du texte, HTTPS transfère aussi des images"
+      ],
+      "correct": "HTTPS ajoute une couche de sécurité (chiffrement SSL/TLS) aux communications HTTP",
+      "explanation": "Le 'S' dans HTTPS signifie 'Secure'. Les données échangées sont chiffrées, protégeant leur confidentialité et leur intégrité."
+    },
+    {
+      "question": "Quelle méthode HTTP est typiquement utilisée par un navigateur pour demander une ressource (ex: une page web) à un serveur ?",
+      "options": [
+        "POST",
+        "PUT",
+        "DELETE",
+        "GET"
+      ],
+      "correct": "GET",
+      "explanation": "La méthode GET est utilisée pour récupérer des informations depuis le serveur. Les paramètres sont souvent visibles dans l'URL."
+    },
+    {
+      "question": "Quelle méthode HTTP est typiquement utilisée pour envoyer des données (ex: formulaire de connexion, création de compte) d'un client vers un serveur ?",
+      "options": [
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "correct": "POST",
+      "explanation": "La méthode POST envoie les données dans le corps de la requête HTTP, elles ne sont pas visibles directement dans l'URL."
+    },
+    {
+      "question": "Quel code de statut HTTP indique que la requête a réussi et que la ressource demandée a été trouvée ?",
+      "options": [
+        "200 OK",
+        "301 Moved Permanently",
+        "404 Not Found",
+        "500 Internal Server Error"
+      ],
+      "correct": "200 OK",
+      "explanation": "Un code 2xx indique un succès. 200 OK est le code standard pour une requête GET réussie."
+    },
+    {
+      "question": "Quel code de statut HTTP indique que la ressource demandée n'a pas été trouvée sur le serveur ?",
+      "options": [
+        "200 OK",
+        "302 Found",
+        "403 Forbidden",
+        "404 Not Found"
+      ],
+      "correct": "404 Not Found",
+      "explanation": "Un code 4xx indique une erreur côté client. 404 est le code classique pour une URL invalide ou une ressource supprimée."
+    },
+    {
+      "question": "Quel code de statut HTTP indique une erreur interne du serveur lors du traitement de la requête ?",
+      "options": [
+        "201 Created",
+        "401 Unauthorized",
+        "404 Not Found",
+        "500 Internal Server Error"
+      ],
+      "correct": "500 Internal Server Error",
+      "explanation": "Un code 5xx indique une erreur côté serveur. 500 est un code générique signifiant que le serveur a rencontré un problème inattendu."
+    },
+    {
+      "question": "Que signifie URL ?",
+      "options": [
+        "Universal Resource Link",
+        "Uniform Resource Locator",
+        "Unique Reference Language",
+        "Unified Resource Listing"
+      ],
+      "correct": "Uniform Resource Locator",
+      "explanation": "Une URL est l'adresse unique utilisée pour identifier et localiser une ressource sur le Web (page, image...)."
+    },
+    {
+      "question": "Dans l'URL `https://www.example.com/path/page.html`, quelle partie représente le protocole ?",
+      "options": [
+        "https",
+        "www.example.com",
+        "/path/page.html",
+        "example"
+      ],
+      "correct": "https",
+      "explanation": "La première partie de l'URL, avant '://', indique le protocole à utiliser (ici, HTTPS)."
+    },
+    {
+      "question": "Dans l'URL `https://www.example.com/path/page.html`, quelle partie représente le nom de domaine ?",
+      "options": [
+        "https",
+        "www.example.com",
+        "/path/page.html",
+        "page.html"
+      ],
+      "correct": "www.example.com",
+      "explanation": "Le nom de domaine identifie le serveur hôte sur lequel se trouve la ressource."
+    },
+    {
+      "question": "Dans l'URL `https://www.example.com/path/page.html`, quelle partie représente le chemin vers la ressource sur le serveur ?",
+      "options": [
+        "https",
+        "www.example.com",
+        "/path/page.html",
+        ".html"
+      ],
+      "correct": "/path/page.html",
+      "explanation": "Le chemin indique l'emplacement spécifique de la ressource (fichier) dans l'arborescence du serveur."
+    },
+    {
+      "question": "Quel système permet de traduire un nom de domaine lisible (ex: www.google.com) en une adresse IP numérique utilisable par les machines ?",
+      "options": [
+        "HTTP",
+        "HTML",
+        "DNS (Domain Name System)",
+        "DHCP (Dynamic Host Configuration Protocol)"
+      ],
+      "correct": "DNS (Domain Name System)",
+      "explanation": "Le DNS fonctionne comme un annuaire du Web, associant les noms de domaine aux adresses IP des serveurs correspondants."
+    },
+    {
+      "question": "Qu'est-ce qu'une adresse IP ?",
+      "options": [
+        "L'adresse postale du serveur",
+        "Un numéro d'identification unique attribué à chaque appareil connecté à un réseau utilisant l'Internet Protocol",
+        "Le nom du propriétaire du site web",
+        "Un type de protocole de sécurité"
+      ],
+      "correct": "Un numéro d'identification unique attribué à chaque appareil connecté à un réseau utilisant l'Internet Protocol",
+      "explanation": "L'adresse IP (ex: 192.168.1.1 ou 2001:db8::1) permet d'identifier et de localiser les machines sur le réseau pour l'acheminement des données."
+    },
+    {
+      "question": "Quel langage est utilisé pour décrire la structure et le contenu sémantique d'une page web ?",
+      "options": [
+        "CSS",
+        "JavaScript",
+        "HTML (HyperText Markup Language)",
+        "Python"
+      ],
+      "correct": "HTML (HyperText Markup Language)",
+      "explanation": "HTML utilise des balises (tags) pour définir les éléments comme les titres, paragraphes, liens, images, listes, etc."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour définir le titre principal d'une page ?",
+      "options": [
+        "<p>",
+        "<h1>",
+        "<a>",
+        "<img>"
+      ],
+      "correct": "<h1>",
+      "explanation": "La balise <h1> est utilisée pour le titre de niveau 1, le plus important de la page. Il existe aussi <h2>, <h3>, ..., <h6> pour les sous-titres."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour définir un paragraphe de texte ?",
+      "options": [
+        "<p>",
+        "<div>",
+        "<span>",
+        "<br>"
+      ],
+      "correct": "<p>",
+      "explanation": "La balise <p> (paragraph) encadre un bloc de texte formant un paragraphe."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour créer un lien hypertexte ?",
+      "options": [
+        "<link>",
+        "<img>",
+        "<href>",
+        "<a>"
+      ],
+      "correct": "<a>",
+      "explanation": "La balise <a> (anchor) crée un lien. L'attribut `href` spécifie l'URL de destination. Exemple : <a href='https://example.com'>Lien</a>."
+    },
+    {
+      "question": "Quel attribut de la balise <a> spécifie l'URL de destination du lien ?",
+      "options": [
+        "src",
+        "link",
+        "href",
+        "url"
+      ],
+      "correct": "href",
+      "explanation": "L'attribut `href` (Hypertext Reference) contient l'adresse web vers laquelle le lien pointe."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour insérer une image ?",
+      "options": [
+        "<image>",
+        "<pic>",
+        "<img>",
+        "<figure>"
+      ],
+      "correct": "<img>",
+      "explanation": "La balise <img> est une balise auto-fermante (ou vide). L'attribut `src` spécifie le chemin vers le fichier image, et l'attribut `alt` fournit un texte alternatif."
+    },
+    {
+      "question": "Quel attribut de la balise <img> spécifie le chemin (URL) du fichier image ?",
+      "options": [
+        "href",
+        "link",
+        "alt",
+        "src"
+      ],
+      "correct": "src",
+      "explanation": "L'attribut `src` (source) indique l'emplacement du fichier image à afficher."
+    },
+    {
+      "question": "Quel attribut de la balise <img> fournit un texte descriptif alternatif pour l'image (important pour l'accessibilité et le SEO) ?",
+      "options": [
+        "title",
+        "alt",
+        "src",
+        "description"
+      ],
+      "correct": "alt",
+      "explanation": "L'attribut `alt` (alternative text) décrit l'image pour les utilisateurs qui ne peuvent pas la voir (lecteurs d'écran) ou si l'image ne se charge pas."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour créer une liste non ordonnée (à puces) ?",
+      "options": [
+        "<ol>",
+        "<ul>",
+        "<li>",
+        "<dl>"
+      ],
+      "correct": "<ul>",
+      "explanation": "La balise <ul> (Unordered List) contient les éléments de la liste, définis par des balises <li>."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour créer une liste ordonnée (numérotée) ?",
+      "options": [
+        "<ol>",
+        "<ul>",
+        "<li>",
+        "<nl>"
+      ],
+      "correct": "<ol>",
+      "explanation": "La balise <ol> (Ordered List) contient les éléments de la liste, définis par des balises <li>, qui seront numérotés automatiquement."
+    },
+    {
+      "question": "Quelle balise HTML définit un élément individuel dans une liste (ordonnée ou non ordonnée) ?",
+      "options": [
+        "<item>",
+        "<ul>",
+        "<ol>",
+        "<li>"
+      ],
+      "correct": "<li>",
+      "explanation": "La balise <li> (List Item) représente chaque élément au sein d'une liste <ul> ou <ol>."
+    },
+    {
+      "question": "Quelle section d'un document HTML contient les métadonnées, le titre de la page (balise <title>) et les liens vers les fichiers CSS/JS ?",
+      "options": [
+        "<body>",
+        "<footer>",
+        "<header>",
+        "<head>"
+      ],
+      "correct": "<head>",
+      "explanation": "La section <head> contient des informations sur le document qui ne sont pas directement affichées dans le contenu principal de la page."
+    },
+    {
+      "question": "Quelle section d'un document HTML contient le contenu visible de la page web (textes, images, liens...) ?",
+      "options": [
+        "<head>",
+        "<body>",
+        "<meta>",
+        "<style>"
+      ],
+      "correct": "<body>",
+      "explanation": "La balise <body> encadre tout le contenu qui sera affiché par le navigateur dans la fenêtre principale."
+    },
+    {
+      "question": "Quel langage est utilisé pour décrire la présentation et le style visuel (couleurs, polices, mise en page) des éléments HTML ?",
+      "options": [
+        "HTML",
+        "JavaScript",
+        "CSS (Cascading Style Sheets)",
+        "SQL"
+      ],
+      "correct": "CSS (Cascading Style Sheets)",
+      "explanation": "CSS permet de séparer le style de la structure (HTML), rendant le design et la maintenance plus faciles."
+    },
+    {
+      "question": "Comment cible-t-on tous les éléments de paragraphe (<p>) en CSS pour leur appliquer un style ?",
+      "options": [
+        ".p { ... }",
+        "#p { ... }",
+        "p { ... }",
+        "<p> { ... }"
+      ],
+      "correct": "p { ... }",
+      "explanation": "En CSS, on utilise le nom de la balise (sélecteur de type) pour cibler tous les éléments de ce type. Ex: `p { color: blue; }` mettrait tous les paragraphes en bleu."
+    },
+    {
+      "question": "En CSS, quelle syntaxe est utilisée pour cibler un élément HTML ayant un attribut `id` spécifique (ex: id='titre-principal') ?",
+      "options": [
+        ".titre-principal { ... }",
+        "titre-principal { ... }",
+        "#titre-principal { ... }",
+        "id=titre-principal { ... }"
+      ],
+      "correct": "#titre-principal { ... }",
+      "explanation": "Le sélecteur d'ID utilise le symbole dièse (#) suivi de la valeur de l'attribut `id`. Un ID doit être unique dans la page."
+    },
+    {
+      "question": "En CSS, quelle syntaxe est utilisée pour cibler tous les éléments HTML ayant un attribut `class` spécifique (ex: class='important') ?",
+      "options": [
+        "#important { ... }",
+        ".important { ... }",
+        "important { ... }",
+        "class=important { ... }"
+      ],
+      "correct": ".important { ... }",
+      "explanation": "Le sélecteur de classe utilise un point (.) suivi du nom de la classe. Plusieurs éléments peuvent partager la même classe."
+    },
+    {
+      "question": "Quelle propriété CSS est utilisée pour changer la couleur du texte ?",
+      "options": [
+        "background-color",
+        "font-size",
+        "color",
+        "text-align"
+      ],
+      "correct": "color",
+      "explanation": "La propriété `color` définit la couleur de premier plan du contenu textuel d'un élément."
+    },
+    {
+      "question": "Quelle propriété CSS est utilisée pour changer la couleur de l'arrière-plan d'un élément ?",
+      "options": [
+        "color",
+        "background-color",
+        "border-color",
+        "font-color"
+      ],
+      "correct": "background-color",
+      "explanation": "La propriété `background-color` définit la couleur de fond d'un élément."
+    },
+    {
+      "question": "Quelle propriété CSS est utilisée pour changer la taille de la police de caractères ?",
+      "options": [
+        "font-family",
+        "font-weight",
+        "font-size",
+        "text-size"
+      ],
+      "correct": "font-size",
+      "explanation": "La propriété `font-size` permet de spécifier la taille du texte (ex: 16px, 1.2em)."
+    },
+    {
+      "question": "Comment lier un fichier CSS externe nommé `style.css` à un document HTML ?",
+      "options": [
+        "Dans la section <body> : <style src='style.css'></style>",
+        "Dans la section <head> : <link rel='stylesheet' href='style.css'>",
+        "Dans la section <head> : <script src='style.css'></script>",
+        "Dans la section <body> : <import url='style.css'>"
+      ],
+      "correct": "Dans la section <head> : <link rel='stylesheet' href='style.css'>",
+      "explanation": "La balise <link> avec l'attribut rel='stylesheet' et href pointant vers le fichier CSS est la méthode standard pour appliquer des styles externes."
+    },
+    {
+      "question": "Quel langage de programmation est principalement utilisé côté client (dans le navigateur) pour ajouter de l'interactivité, manipuler le contenu de la page et réagir aux actions de l'utilisateur ?",
+      "options": [
+        "HTML",
+        "CSS",
+        "PHP",
+        "JavaScript"
+      ],
+      "correct": "JavaScript",
+      "explanation": "JavaScript permet de rendre les pages web dynamiques et interactives sans avoir à recharger toute la page depuis le serveur."
+    },
+    {
+      "question": "Qu'est-ce que le DOM (Document Object Model) ?",
+      "options": [
+        "Un langage de style comme CSS",
+        "Une représentation structurée (sous forme d'arbre) du document HTML, que JavaScript peut manipuler pour modifier le contenu et le style de la page",
+        "Un protocole réseau sécurisé",
+        "Un format de fichier image"
+      ],
+      "correct": "Une représentation structurée (sous forme d'arbre) du document HTML, que JavaScript peut manipuler pour modifier le contenu et le style de la page",
+      "explanation": "Le DOM est l'interface qui permet à JavaScript d'interagir avec les éléments de la page HTML."
+    },
+    {
+      "question": "Comment inclure du code JavaScript externe (fichier `script.js`) dans une page HTML ?",
+      "options": [
+        "Avec la balise <link>",
+        "Avec la balise <style>",
+        "Avec la balise <script src='script.js'></script>",
+        "Avec la balise <javascript file='script.js'>"
+      ],
+      "correct": "Avec la balise <script src='script.js'></script>",
+      "explanation": "La balise <script> avec l'attribut `src` permet de charger et d'exécuter un fichier JavaScript externe. Elle est souvent placée juste avant la fin du <body>."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'événement' (event) en JavaScript dans le contexte du Web ?",
+      "options": [
+        "Une erreur dans le code",
+        "Une action qui se produit dans le navigateur ou sur un élément HTML, à laquelle on peut réagir (ex: clic de souris, soumission de formulaire, fin de chargement de la page)",
+        "Une variable globale",
+        "Une fonction CSS"
+      ],
+      "correct": "Une action qui se produit dans le navigateur ou sur un élément HTML, à laquelle on peut réagir (ex: clic de souris, soumission de formulaire, fin de chargement de la page)",
+      "explanation": "La programmation événementielle permet à JavaScript de rendre les pages interactives en répondant aux actions de l'utilisateur ou du navigateur."
+    },
+    {
+      "question": "Comment appelle-t-on le code JavaScript qui s'exécute en réponse à un événement ?",
+      "options": [
+        "Un sélecteur CSS",
+        "Un attribut HTML",
+        "Un gestionnaire d'événement (event handler) ou écouteur d'événement (event listener)",
+        "Une requête HTTP"
+      ],
+      "correct": "Un gestionnaire d'événement (event handler) ou écouteur d'événement (event listener)",
+      "explanation": "On attache une fonction (le gestionnaire) à un événement sur un élément pour définir ce qui doit se passer lorsque l'événement se produit."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour créer un formulaire permettant à l'utilisateur de saisir des données ?",
+      "options": [
+        "<div>",
+        "<form>",
+        "<input>",
+        "<button>"
+      ],
+      "correct": "<form>",
+      "explanation": "La balise <form> englobe les différents champs de saisie (input, textarea, select...) et le bouton de soumission."
+    },
+    {
+      "question": "Quel attribut de la balise <form> spécifie l'URL du script côté serveur qui traitera les données soumises ?",
+      "options": [
+        "method",
+        "target",
+        "action",
+        "enctype"
+      ],
+      "correct": "action",
+      "explanation": "L'attribut `action` contient l'adresse de la page ou du script serveur qui recevra et traitera les données du formulaire."
+    },
+    {
+      "question": "Quel attribut de la balise <form> spécifie la méthode HTTP (GET ou POST) à utiliser pour envoyer les données ?",
+      "options": [
+        "method",
+        "action",
+        "type",
+        "protocol"
+      ],
+      "correct": "method",
+      "explanation": "L'attribut `method` indique comment les données du formulaire seront envoyées au serveur (généralement 'GET' ou 'POST')."
+    },
+    {
+      "question": "Quelle balise HTML est utilisée pour créer différents types de champs de saisie dans un formulaire (texte, mot de passe, case à cocher, bouton radio...) ?",
+      "options": [
+        "<form>",
+        "<label>",
+        "<input>",
+        "<button>"
+      ],
+      "correct": "<input>",
+      "explanation": "La balise <input> est très polyvalente. Son comportement est défini par l'attribut `type` (ex: type='text', type='password', type='checkbox', type='radio', type='submit')."
+    },
+    {
+      "question": "Quel attribut de la balise <input> définit le type de champ de saisie ?",
+      "options": [
+        "name",
+        "value",
+        "type",
+        "id"
+      ],
+      "correct": "type",
+      "explanation": "L'attribut `type` détermine si le champ sera une zone de texte, un mot de passe, une case à cocher, etc."
+    },
+    {
+      "question": "Quel attribut des champs de formulaire (<input>, <textarea>, <select>) est utilisé par le serveur pour identifier la donnée envoyée ?",
+      "options": [
+        "id",
+        "class",
+        "value",
+        "name"
+      ],
+      "correct": "name",
+      "explanation": "L'attribut `name` associe un nom à la donnée saisie dans le champ. C'est ce nom qui sera utilisé comme clé côté serveur pour récupérer la valeur."
+    },
+    {
+      "question": "Lorsqu'un formulaire est soumis avec la méthode GET, où apparaissent les données (paires nom=valeur) ?",
+      "options": [
+        "Dans le corps de la requête HTTP",
+        "Elles ne sont pas envoyées",
+        "Ajoutées à la fin de l'URL dans l'attribut 'action', après un point d'interrogation (?)",
+        "Dans les cookies"
+      ],
+      "correct": "Ajoutées à la fin de l'URL dans l'attribut 'action', après un point d'interrogation (?)",
+      "explanation": "Exemple : `page.php?nom=Dupont&age=30`. Les données sont visibles dans l'URL, ce qui limite la taille et n'est pas adapté aux données sensibles."
+    },
+    {
+      "question": "Lorsqu'un formulaire est soumis avec la méthode POST, où sont envoyées les données ?",
+      "options": [
+        "Dans l'URL",
+        "Dans le corps (body) de la requête HTTP",
+        "Dans les en-têtes HTTP",
+        "Elles sont chiffrées dans l'URL"
+      ],
+      "correct": "Dans le corps (body) de la requête HTTP",
+      "explanation": "Les données envoyées par POST ne sont pas visibles dans l'URL, ce qui permet d'envoyer des données plus volumineuses ou sensibles (mots de passe)."
+    },
+    {
+      "question": "Quelle méthode (GET ou POST) est préférable pour envoyer des données sensibles comme un mot de passe ?",
+      "options": [
+        "GET",
+        "POST",
+        "Les deux sont équivalentes pour la sécurité",
+        "Aucune des deux, il faut utiliser une autre méthode"
+      ],
+      "correct": "POST",
+      "explanation": "Bien que POST ne chiffre pas les données par défaut (HTTPS est nécessaire pour cela), il évite au moins que le mot de passe n'apparaisse en clair dans l'URL ou l'historique du navigateur."
+    },
+    {
+      "question": "Quel encodage est appliqué aux caractères spéciaux (espaces, accents...) dans les paramètres d'une URL ?",
+      "options": [
+        "Base64",
+        "UTF-8",
+        "Encodage URL (percent-encoding)",
+        "ASCII"
+      ],
+      "correct": "Encodage URL (percent-encoding)",
+      "explanation": "Les caractères non autorisés dans une URL sont remplacés par un '%' suivi de leur code hexadécimal (ex: l'espace devient %20)."
+    },
+    {
+      "question": "Que sont les cookies HTTP ?",
+      "options": [
+        "Des petits fichiers exécutables téléchargés par le navigateur",
+        "Des petits fichiers texte stockés par le navigateur sur l'ordinateur de l'utilisateur, envoyés par le serveur et renvoyés par le client lors des requêtes suivantes vers le même serveur",
+        "Des images publicitaires",
+        "Des historiques de navigation"
+      ],
+      "correct": "Des petits fichiers texte stockés par le navigateur sur l'ordinateur de l'utilisateur, envoyés par le serveur et renvoyés par le client lors des requêtes suivantes vers le même serveur",
+      "explanation": "Les cookies permettent au serveur de mémoriser des informations sur l'utilisateur entre différentes visites (panier d'achat, préférences, suivi)."
+    },
+    {
+      "question": "À quoi servent principalement les cookies de session ?",
+      "options": [
+        "À suivre l'utilisateur sur plusieurs sites différents",
+        "À maintenir l'état de connexion d'un utilisateur pendant sa visite sur un site web",
+        "À stocker les préférences de langue de manière permanente",
+        "À accélérer le chargement des pages"
+      ],
+      "correct": "À maintenir l'état de connexion d'un utilisateur pendant sa visite sur un site web",
+      "explanation": "Comme HTTP est sans état, les cookies de session permettent au serveur de reconnaître l'utilisateur connecté d'une requête à l'autre pendant une même session de navigation."
+    },
+    {
+      "question": "Où sont stockées les informations de session côté serveur ?",
+      "options": [
+        "Dans le navigateur du client",
+        "Dans un fichier ou une base de données sur le serveur, associé à un identifiant de session unique",
+        "Elles ne sont pas stockées",
+        "Dans l'URL"
+      ],
+      "correct": "Dans un fichier ou une base de données sur le serveur, associé à un identifiant de session unique",
+      "explanation": "Le serveur stocke les données de session (ex: nom d'utilisateur, panier) et envoie seulement un identifiant de session (via un cookie) au client. C'est plus sécurisé que de tout stocker dans le cookie."
+    },
+    {
+      "question": "Quel est l'inconvénient potentiel des cookies tiers (third-party cookies) ?",
+      "options": [
+        "Ils ralentissent la connexion",
+        "Ils permettent à des domaines autres que celui visité (ex: régies publicitaires) de suivre la navigation de l'utilisateur sur plusieurs sites, posant des problèmes de vie privée",
+        "Ils expirent trop rapidement",
+        "Ils ne fonctionnent que sur certains navigateurs"
+      ],
+      "correct": "Ils permettent à des domaines autres que celui visité (ex: régies publicitaires) de suivre la navigation de l'utilisateur sur plusieurs sites, posant des problèmes de vie privée",
+      "explanation": "Les cookies tiers sont souvent utilisés pour le ciblage publicitaire comportemental et font l'objet de restrictions croissantes par les navigateurs."
+    },
+    {
+      "question": "Quel terme désigne la facilité avec laquelle un utilisateur peut utiliser une interface pour atteindre ses objectifs ?",
+      "options": [
+        "L'accessibilité",
+        "L'ergonomie (ou utilisabilité)",
+        "La sécurité",
+        "La performance"
+      ],
+      "correct": "L'ergonomie (ou utilisabilité)",
+      "explanation": "Une bonne ergonomie signifie que l'interface est facile à apprendre, efficace à utiliser, et agréable."
+    },
+    {
+      "question": "Quel terme désigne la conception d'interfaces utilisables par le plus grand nombre de personnes possible, y compris celles en situation de handicap ?",
+      "options": [
+        "L'utilisabilité",
+        "L'accessibilité",
+        "Le design responsive",
+        "L'esthétique"
+      ],
+      "correct": "L'accessibilité",
+      "explanation": "L'accessibilité web vise à rendre les contenus et fonctionnalités compréhensibles et utilisables par tous (contrastes suffisants, alternatives textuelles aux images, navigation clavier...)."
+    },
+    {
+      "question": "Pourquoi est-il important de fournir un attribut `alt` descriptif pour les images (balise <img>) ?",
+      "options": [
+        "Pour améliorer la vitesse de chargement",
+        "Pour l'accessibilité : permettre aux utilisateurs de lecteurs d'écran (malvoyants) de comprendre le contenu de l'image",
+        "Pour changer la couleur de l'image",
+        "Pour ajouter un lien sur l'image"
+      ],
+      "correct": "Pour l'accessibilité : permettre aux utilisateurs de lecteurs d'écran (malvoyants) de comprendre le contenu de l'image",
+      "explanation": "L'attribut `alt` est lu par les technologies d'assistance et affiché si l'image ne se charge pas."
+    },
+    {
+      "question": "Qu'est-ce qu'une page web 'statique' ?",
+      "options": [
+        "Une page qui ne contient que du texte",
+        "Une page dont le contenu est le même pour tous les utilisateurs et ne change pas, sauf si le fichier HTML est modifié manuellement sur le serveur",
+        "Une page qui ne bouge pas à l'écran",
+        "Une page sans images"
+      ],
+      "correct": "Une page dont le contenu est le même pour tous les utilisateurs et ne change pas, sauf si le fichier HTML est modifié manuellement sur le serveur",
+      "explanation": "Le serveur se contente de renvoyer le fichier HTML tel quel. Le contenu n'est pas personnalisé ni généré à la volée."
+    },
+    {
+      "question": "Qu'est-ce qu'une page web 'dynamique' ?",
+      "options": [
+        "Une page avec des animations JavaScript",
+        "Une page dont le contenu est généré par le serveur au moment de la requête, souvent en fonction de paramètres, de données en base ou de l'utilisateur connecté",
+        "Une page qui change de couleur",
+        "Une page qui se recharge automatiquement"
+      ],
+      "correct": "Une page dont le contenu est généré par le serveur au moment de la requête, souvent en fonction de paramètres, de données en base ou de l'utilisateur connecté",
+      "explanation": "Les pages dynamiques permettent d'afficher des informations personnalisées ou à jour (forums, réseaux sociaux, e-commerce)."
+    },
+    {
+      "question": "Lequel de ces langages est souvent utilisé côté serveur pour générer des pages web dynamiques ?",
+      "options": [
+        "HTML",
+        "CSS",
+        "PHP, Python (avec Flask/Django), Ruby (avec Rails), Node.js (JavaScript)",
+        "JavaScript (côté client uniquement)"
+      ],
+      "correct": "PHP, Python (avec Flask/Django), Ruby (avec Rails), Node.js (JavaScript)",
+      "explanation": "Ces langages s'exécutent sur le serveur pour interagir avec des bases de données, gérer des sessions et construire la page HTML qui sera envoyée au client."
+    },
+    {
+      "question": "Quel est le rôle d'une base de données dans une application web dynamique ?",
+      "options": [
+        "Styliser la page web",
+        "Rendre la page interactive côté client",
+        "Stocker de manière persistante et organisée les données utilisées par l'application (utilisateurs, produits, messages...)",
+        "Compresser les images"
+      ],
+      "correct": "Stocker de manière persistante et organisée les données utilisées par l'application (utilisateurs, produits, messages...)",
+      "explanation": "La base de données permet de conserver les informations entre les visites et de les retrouver/modifier efficacement."
+    },
+    {
+      "question": "Quel langage est standardisé pour interroger et manipuler les données dans les bases de données relationnelles ?",
+      "options": [
+        "HTML",
+        "JavaScript",
+        "SQL (Structured Query Language)",
+        "CSS"
+      ],
+      "correct": "SQL (Structured Query Language)",
+      "explanation": "SQL permet de lire (SELECT), insérer (INSERT), mettre à jour (UPDATE) et supprimer (DELETE) des données dans les tables."
+    },
+    {
+      "question": "Quelle technique malveillante consiste à insérer du code (souvent SQL ou JavaScript) dans les données envoyées par un formulaire pour tenter de tromper l'application serveur ou le navigateur client ?",
+      "options": [
+        "Le phishing",
+        "L'attaque par déni de service (DDoS)",
+        "L'injection de code (SQL injection, Cross-Site Scripting - XSS)",
+        "Le brute force"
+      ],
+      "correct": "L'injection de code (SQL injection, Cross-Site Scripting - XSS)",
+      "explanation": "Si les données reçues ne sont pas correctement validées et échappées, un attaquant peut injecter du code qui sera exécuté par le serveur (SQLi) ou par le navigateur d'autres utilisateurs (XSS)."
+    },
+    {
+      "question": "Pourquoi est-il crucial de ne jamais faire confiance aux données reçues du client (formulaire, URL) ?",
+      "options": [
+        "Parce que les clients mentent toujours",
+        "Parce qu'un utilisateur malveillant peut facilement manipuler les données envoyées depuis son navigateur pour tenter d'exploiter des failles de sécurité",
+        "Parce que les données sont souvent corrompues pendant le transfert",
+        "Parce que les données du client sont toujours au mauvais format"
+      ],
+      "correct": "Parce qu'un utilisateur malveillant peut facilement manipuler les données envoyées depuis son navigateur pour tenter d'exploiter des failles de sécurité",
+      "explanation": "Il est impératif de toujours valider, nettoyer et échapper les données reçues côté serveur avant de les utiliser (ex: dans une requête SQL ou en les affichant dans une page)."
+    },
+    {
+      "question": "Comment les mots de passe des utilisateurs doivent-ils être stockés en base de données pour des raisons de sécurité ?",
+      "options": [
+        "En clair (texte brut)",
+        "Chiffrés avec une clé secrète simple",
+        "Sous forme de 'hachage' (hash) cryptographique, idéalement avec un 'sel' (salt)",
+        "Ils ne doivent pas être stockés"
+      ],
+      "correct": "Sous forme de 'hachage' (hash) cryptographique, idéalement avec un 'sel' (salt)",
+      "explanation": "Le hachage transforme le mot de passe en une empreinte non réversible. Même si la base est compromise, les mots de passe ne sont pas directement lisibles. Le sel rend les attaques par tables arc-en-ciel plus difficiles."
+    },
+    {
+      "question": "Que signifie 'requête asynchrone' en JavaScript (souvent réalisée avec AJAX ou l'API Fetch) ?",
+      "options": [
+        "Une requête qui bloque le navigateur jusqu'à la réponse",
+        "Une requête envoyée au serveur en arrière-plan, sans recharger toute la page, permettant de mettre à jour une partie de la page avec la réponse reçue",
+        "Une requête qui n'attend pas de réponse",
+        "Une requête envoyée uniquement en méthode GET"
+      ],
+      "correct": "Une requête envoyée au serveur en arrière-plan, sans recharger toute la page, permettant de mettre à jour une partie de la page avec la réponse reçue",
+      "explanation": "Les requêtes asynchrones sont la base des applications web modernes (Single Page Applications) qui offrent une expérience utilisateur plus fluide."
+    },
+    {
+      "question": "Quel format de données léger est très couramment utilisé pour l'échange de données entre le client (JavaScript) et le serveur lors de requêtes asynchrones ?",
+      "options": [
+        "HTML",
+        "XML",
+        "JSON (JavaScript Object Notation)",
+        "CSV"
+      ],
+      "correct": "JSON (JavaScript Object Notation)",
+      "explanation": "JSON est facile à générer côté serveur et à interpréter ('parser') en JavaScript côté client."
+    },
+    {
+      "question": "Qu'est-ce que le 'Responsive Web Design' ?",
+      "options": [
+        "Un design qui répond rapidement aux clics",
+        "Une approche de conception web qui vise à créer des sites s'adaptant automatiquement à la taille et à l'orientation de l'écran de l'appareil utilisé (ordinateur, tablette, smartphone)",
+        "Un design utilisant beaucoup de JavaScript",
+        "Un design accessible uniquement"
+      ],
+      "correct": "Une approche de conception web qui vise à créer des sites s'adaptant automatiquement à la taille et à l'orientation de l'écran de l'appareil utilisé (ordinateur, tablette, smartphone)",
+      "explanation": "Le responsive design utilise des techniques CSS (media queries, grilles flexibles) pour offrir une expérience optimale sur tous les appareils."
+    },
+    {
+      "question": "Quelle technique CSS permet d'appliquer des styles différents en fonction des caractéristiques de l'appareil (ex: largeur de l'écran) ?",
+      "options": [
+        "Les sélecteurs d'ID",
+        "Les sélecteurs de classe",
+        "Les media queries",
+        "Les variables CSS"
+      ],
+      "correct": "Les media queries",
+      "explanation": "Les media queries (ex: `@media (max-width: 600px) { ... }`) permettent d'adapter la mise en page et les styles pour différentes tailles d'écran."
+    },
+    {
+      "question": "Quel élément HTML5 est destiné à contenir la navigation principale d'un site ?",
+      "options": [
+        "<header>",
+        "<footer>",
+        "<nav>",
+        "<aside>"
+      ],
+      "correct": "<nav>",
+      "explanation": "La balise sémantique <nav> est utilisée pour regrouper les liens de navigation principaux."
+    },
+    {
+      "question": "Quel élément HTML5 est destiné à contenir des informations introductives ou des aides à la navigation (logo, titre du site, menu principal...) ?",
+      "options": [
+        "<header>",
+        "<footer>",
+        "<article>",
+        "<section>"
+      ],
+      "correct": "<header>",
+      "explanation": "La balise <header> représente généralement l'en-tête d'une page ou d'une section."
+    },
+    {
+      "question": "Quel élément HTML5 représente un contenu autonome et indépendant (ex: un article de blog, un message de forum) ?",
+      "options": [
+        "<section>",
+        "<article>",
+        "<aside>",
+        "<div>"
+      ],
+      "correct": "<article>",
+      "explanation": "Un <article> doit pouvoir être compris et distribué indépendamment du reste de la page."
+    },
+    {
+      "question": "Quel élément HTML5 représente une section thématique générique d'un document ?",
+      "options": [
+        "<section>",
+        "<article>",
+        "<nav>",
+        "<div>"
+      ],
+      "correct": "<section>",
+      "explanation": "Une <section> regroupe des contenus liés thématiquement, ayant généralement un titre."
+    },
+    {
+      "question": "Quel élément HTML5 est destiné à contenir des informations de bas de page (auteur, copyright, liens annexes...) ?",
+      "options": [
+        "<header>",
+        "<footer>",
+        "<bottom>",
+        "<aside>"
+      ],
+      "correct": "<footer>",
+      "explanation": "La balise <footer> représente le pied de page d'une section ou du document entier."
+    },
+    {
+      "question": "Quelle est l'utilité des balises sémantiques HTML5 (<header>, <nav>, <article>, <section>, <footer>...) ?",
+      "options": [
+        "Uniquement pour le style visuel",
+        "Donner plus de sens à la structure du document, améliorant l'accessibilité (pour les lecteurs d'écran) et le référencement (SEO)",
+        "Rendre le code HTML plus court",
+        "Exécuter du code JavaScript"
+      ],
+      "correct": "Donner plus de sens à la structure du document, améliorant l'accessibilité (pour les lecteurs d'écran) et le référencement (SEO)",
+      "explanation": "Elles décrivent le rôle du contenu qu'elles encadrent, par opposition à des balises génériques comme <div> ou <span>."
+    },
+    {
+      "question": "Quel attribut booléen peut-on ajouter à une balise <input> pour indiquer que le champ doit obligatoirement être rempli ?",
+      "options": [
+        "mandatory",
+        "needed",
+        "required",
+        "validate"
+      ],
+      "correct": "required",
+      "explanation": "L'attribut `required` permet une validation simple côté navigateur, empêchant la soumission du formulaire si le champ est vide."
+    },
+    {
+      "question": "Quel type d'<input> permet à l'utilisateur de sélectionner une date ?",
+      "options": [
+        "<input type='text'>",
+        "<input type='number'>",
+        "<input type='date'>",
+        "<input type='datetime'>"
+      ],
+      "correct": "<input type='date'>",
+      "explanation": "Le type `date` affiche généralement un calendrier pour faciliter la sélection de la date par l'utilisateur."
+    },
+    {
+      "question": "Quel type d'<input> crée un bouton qui, lorsqu'il est cliqué, soumet le formulaire ?",
+      "options": [
+        "<input type='button'>",
+        "<input type='reset'>",
+        "<input type='submit'>",
+        "<input type='image'>"
+      ],
+      "correct": "<input type='submit'>",
+      "explanation": "Le bouton de type `submit` déclenche l'envoi des données du formulaire vers l'URL spécifiée dans l'attribut `action`."
+    },
+    {
+      "question": "Quelle balise HTML permet de regrouper logiquement plusieurs champs d'un formulaire, souvent avec une légende (balise <legend>) ?",
+      "options": [
+        "<fieldset>",
+        "<group>",
+        "<div>",
+        "<section>"
+      ],
+      "correct": "<fieldset>",
+      "explanation": "<fieldset> améliore la structure et l'accessibilité des formulaires longs en groupant les champs liés."
+    },
+    {
+      "question": "Quel concept d'ergonomie web suggère qu'un utilisateur doit pouvoir accomplir une tâche en un minimum de clics ?",
+      "options": [
+        "La loi de Fitts",
+        "La règle des trois clics (bien que souvent débattue)",
+        "Le principe de proximité",
+        "La loi de Hick"
+      ],
+      "correct": "La règle des trois clics (bien que souvent débattue)",
+      "explanation": "Bien que sa validité universelle soit discutée, l'idée sous-jacente est de minimiser l'effort de navigation pour trouver une information ou accomplir une action."
+    },
+    {
+      "question": "Pourquoi est-il important que les liens hypertextes soient clairement identifiables (souvent soulignés et/ou d'une couleur différente) ?",
+      "options": [
+        "Pour des raisons esthétiques uniquement",
+        "Pour l'ergonomie : permettre à l'utilisateur de repérer facilement les éléments cliquables et interactifs",
+        "Pour ralentir la navigation",
+        "Pour améliorer le référencement"
+      ],
+      "correct": "Pour l'ergonomie : permettre à l'utilisateur de repérer facilement les éléments cliquables et interactifs",
+      "explanation": "Une distinction visuelle claire des liens améliore grandement l'utilisabilité d'une page web."
+    },
+    {
+      "question": "Quelle pratique consiste à s'assurer qu'il y a un contraste suffisant entre la couleur du texte et la couleur de l'arrière-plan ?",
+      "options": [
+        "Le responsive design",
+        "Le référencement naturel (SEO)",
+        "Une bonne pratique d'accessibilité (WCAG)",
+        "La validation HTML"
+      ],
+      "correct": "Une bonne pratique d'accessibilité (WCAG)",
+      "explanation": "Un contraste suffisant est essentiel pour les personnes malvoyantes ou lisant dans des conditions difficiles (soleil). Les règles WCAG définissent des ratios de contraste minimaux."
+    },
+    {
+      "question": "Quel risque prend un site web qui stocke des informations sensibles dans les cookies sans précautions ?",
+      "options": [
+        "Le site devient plus rapide",
+        "Les informations peuvent être volées si l'ordinateur de l'utilisateur est compromis ou si les cookies sont interceptés (en HTTP)",
+        "Les cookies expirent trop vite",
+        "Le navigateur refuse de stocker les cookies"
+      ],
+      "correct": "Les informations peuvent être volées si l'ordinateur de l'utilisateur est compromis ou si les cookies sont interceptés (en HTTP)",
+      "explanation": "Il faut éviter de stocker des données sensibles directement dans les cookies et préférer les sessions côté serveur ou chiffrer/signer les cookies."
+    },
+    {
+      "question": "Que se passe-t-il généralement si un utilisateur désactive les cookies dans son navigateur ?",
+      "options": [
+        "Les sites web se chargent plus vite",
+        "De nombreuses fonctionnalités nécessitant une identification ou une mémorisation d'état (connexion, panier d'achat) risquent de ne plus fonctionner",
+        "Le navigateur plante",
+        "Aucune différence notable"
+      ],
+      "correct": "De nombreuses fonctionnalités nécessitant une identification ou une mémorisation d'état (connexion, panier d'achat) risquent de ne plus fonctionner",
+      "explanation": "Beaucoup de sites reposent sur les cookies (notamment de session) pour gérer l'état de l'utilisateur."
+    },
+    {
+      "question": "Quel est l'ordre typique d'exécution et d'interprétation des technologies web par le navigateur ?",
+      "options": [
+        "CSS -> JavaScript -> HTML",
+        "JavaScript -> HTML -> CSS",
+        "HTML -> CSS -> JavaScript",
+        "CSS -> HTML -> JavaScript"
+      ],
+      "correct": "HTML -> CSS -> JavaScript",
+      "explanation": "Le navigateur analyse d'abord le HTML pour construire le DOM, applique ensuite les styles CSS, puis exécute le JavaScript qui peut manipuler le DOM et les styles."
+    },
+    {
+      "question": "Que désigne le terme 'framework' (ex: React, Angular, Vue.js pour JavaScript ; Django, Flask pour Python ; Symfony, Laravel pour PHP) ?",
+      "options": [
+        "Un type de navigateur web",
+        "Un ensemble cohérent de bibliothèques, d'outils et de conventions qui facilitent le développement d'applications complexes en fournissant une structure et des composants réutilisables",
+        "Un langage de programmation",
+        "Un protocole réseau"
+      ],
+      "correct": "Un ensemble cohérent de bibliothèques, d'outils et de conventions qui facilitent le développement d'applications complexes en fournissant une structure et des composants réutilisables",
+      "explanation": "Les frameworks aident à organiser le code, à accélérer le développement et à promouvoir de bonnes pratiques."
+    },
+    {
+      "question": "Quel est le rôle d'un moteur de rendu (rendering engine) dans un navigateur web (ex: Blink pour Chrome/Edge, Gecko pour Firefox, WebKit pour Safari) ?",
+      "options": [
+        "Exécuter le code JavaScript",
+        "Interpréter le code HTML et CSS pour calculer la mise en page et afficher (dessiner) la page web à l'écran",
+        "Gérer les connexions réseau",
+        "Stocker les cookies"
+      ],
+      "correct": "Interpréter le code HTML et CSS pour calculer la mise en page et afficher (dessiner) la page web à l'écran",
+      "explanation": "Le moteur de rendu est le composant principal responsable de la transformation du code source en une représentation visuelle."
+    },
+    {
+      "question": "Quel outil intégré aux navigateurs permet aux développeurs d'inspecter le code HTML/CSS, de déboguer le JavaScript, d'analyser les requêtes réseau, etc. ?",
+      "options": [
+        "Le gestionnaire de mots de passe",
+        "Les outils de développement (Developer Tools ou DevTools)",
+        "L'historique de navigation",
+        "Le mode de navigation privée"
+      ],
+      "correct": "Les outils de développement (Developer Tools ou DevTools)",
+      "explanation": "Les DevTools (souvent ouverts avec F12) sont indispensables pour comprendre, tester et corriger le fonctionnement d'une page web."
+    }
+  ]
+}

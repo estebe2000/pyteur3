@@ -1,0 +1,1082 @@
+{
+  "reseaux_sociaux": [
+    {
+      "question": "Quand les réseaux sociaux ont-ils été inventés en France, coïncidant avec l'introduction d'Internet ?",
+      "options": [
+        "1995",
+        "2000",
+        "1990",
+        "2005"
+      ],
+      "correct": "1995",
+      "explanation": "Les réseaux sociaux ont été inventés en même temps que l’introduction d’Internet en France, en 1995 [1, 2]."
+    },
+    {
+      "question": "Quel était l'objectif initial des premiers réseaux sociaux comme Classmates et Facebook ?",
+      "options": [
+        "Entretenir des relations entre élèves des grandes écoles",
+        "Faciliter les rencontres amoureuses en ligne",
+        "Promouvoir des événements locaux",
+        "Partager des photos de vacances"
+      ],
+      "correct": "Entretenir des relations entre élèves des grandes écoles",
+      "explanation": "Au départ, les réseaux sociaux étaient conçus pour entretenir des relations entre élèves des grandes écoles (Classmates, Facebook) ou les liens professionnels (Linkedin, Myspace) [1, 2]."
+    },
+    {
+      "question": "Quel réseau social est principalement destiné aux liens professionnels et aux CV ?",
+      "options": [
+        "Facebook",
+        "Instagram",
+        "LinkedIn",
+        "Twitter"
+      ],
+      "correct": "LinkedIn",
+      "explanation": "LinkedIn est un réseau social à vocation professionnelle [1-3]."
+    },
+    {
+      "question": "En 2019, quel était le réseau social avec le plus grand nombre d'abonnés actifs au monde selon Statista ?",
+      "options": [
+        "YouTube",
+        "Facebook",
+        "WhatsApp",
+        "Instagram"
+      ],
+      "correct": "Facebook",
+      "explanation": "En 2019, Facebook était le réseau social avec le plus grand nombre d’abonnés actifs au monde, avec 2 234 millions [4, 5]."
+    },
+    {
+      "question": "Quelle est la fonction principale de YouTube selon le classement de 2019 ?",
+      "options": [
+        "MicroBlogging",
+        "Partage de photos/vidéo",
+        "Partage de vidéo",
+        "Messagerie"
+      ],
+      "correct": "Partage de vidéo",
+      "explanation": "Selon le classement de 2019, la fonction principale de YouTube est le partage de vidéo [4, 5]."
+    },
+    {
+      "question": "À quel groupe appartiennent Facebook, WhatsApp et Instagram en 2019 ?",
+      "options": [
+        "Google",
+        "Microsoft",
+        "Facebook (Meta)",
+        "Apple"
+      ],
+      "correct": "Facebook (Meta)",
+      "explanation": "En 2019, WhatsApp et Instagram appartenaient également au groupe Facebook [6-8]. Le groupe Facebook a été renommé Meta en 2021."
+    },
+    {
+      "question": "Quel type d'informations peuvent être échangées sur les réseaux sociaux ?",
+      "options": [
+        "Textes, photos, vidéos, liens, documents",
+        "Uniquement des messages textuels courts",
+        "Seulement des photos",
+        "Exclusivement des vidéos en direct"
+      ],
+      "correct": "Textes, photos, vidéos, liens, documents",
+      "explanation": "Les différents réseaux sociaux permettent l’échange d’informations de natures variées : textes, photos, vidéos, liens hypertextes, documents, etc. [9]."
+    },
+    {
+      "question": "Que proposent la plupart des réseaux sociaux concernant la confidentialité des données ?",
+      "options": [
+        "Aucun réglage de confidentialité",
+        "Des réglages de confidentialité pour limiter l'accès aux données",
+        "Un partage automatique de toutes les données avec le public",
+        "Une suppression définitive des données après publication"
+      ],
+      "correct": "Des réglages de confidentialité pour limiter l'accès aux données",
+      "explanation": "Chaque réseau social propose des réglages de confidentialités afin que vos données ne soient pas accessibles à tout le monde, mais uniquement pour vous et vos amis (en théorie) [10, 11]."
+    },
+    {
+      "question": "Quelle action est vitale lors de l'ouverture d'un compte sur un réseau social concernant la confidentialité ?",
+      "options": [
+        "Publier le maximum d'informations personnelles",
+        "Ignorer les paramètres de confidentialité",
+        "Régler les paramètres de confidentialité offerts",
+        "Accepter toutes les conditions d'utilisation sans les lire"
+      ],
+      "correct": "Régler les paramètres de confidentialité offerts",
+      "explanation": "À l’ouverture d’un compte, il est vital de commencer par régler les paramètres offerts afin de ne pas exposer vos informations au vu et au su de tous [10, 11]."
+    },
+    {
+      "question": "Pourquoi est-il conseillé de ne pas exposer son compte de réseau social aux moteurs de recherche ?",
+      "options": [
+        "Pour éviter le spam",
+        "Pour augmenter la vitesse de navigation",
+        "Pour que votre futur employeur ne trouve pas vos informations personnelles facilement",
+        "Pour économiser de la batterie sur votre appareil"
+      ],
+      "correct": "Pour que votre futur employeur ne trouve pas vos informations personnelles facilement",
+      "explanation": "Il est fortement conseillé de ne pas exposer votre compte aux moteurs de recherche afin que votre futur employeur ne puisse pas trouver ce que vous faites de votre temps personnel à travers une simple recherche Google [12, 13]."
+    },
+    {
+      "question": "Quelle directive européenne de 2018 a forcé certains réseaux sociaux à proposer des réglages de confidentialité plus stricts ?",
+      "options": [
+        "La directive sur le commerce électronique",
+        "La directive sur les droits d'auteur",
+        "Le RGPD (Règlement Général sur la Protection des Données)",
+        "La directive sur la protection des consommateurs"
+      ],
+      "correct": "Le RGPD (Règlement Général sur la Protection des Données)",
+      "explanation": "Certains réseaux sociaux ont été forcés par la directive sur la protection de la vie privée prise par l’Union européenne en 2018, le RGPD [14, 15]."
+    },
+    {
+      "question": "Quel slogan symbolise le modèle économique de nombreux réseaux sociaux gratuits ?",
+      "options": [
+        "L'information est libre",
+        "Si c'est gratuit, c'est vous le produit",
+        "La publicité finance le contenu",
+        "Les données sont le nouvel or noir"
+      ],
+      "correct": "Si c'est gratuit, c'est vous le produit",
+      "explanation": "Les affaires de fuite de données personnelles mettent en avant les questions liées aux modèles économiques des applications de réseautage social symbolisés par le slogan « quand c’est gratuit, c’est vous le produit » [16-18]."
+    },
+    {
+      "question": "Quelle est la principale source de revenus de Facebook (Meta) ?",
+      "options": [
+        "Les abonnements payants des utilisateurs",
+        "La vente de matériel informatique (casques VR)",
+        "La publicité ciblée",
+        "Les dons des utilisateurs"
+      ],
+      "correct": "La publicité ciblée",
+      "explanation": "Les revenus de Facebook (Meta) proviennent principalement de la publicité ciblée qui s’affiche sur ses plateformes. Cette publicité est sélectionnée en fonction de vos habitudes de navigation, de vos publications, de vos interactions, etc. [19, 20]."
+    },
+    {
+      "question": "Quel scandale a mis en lumière la possibilité pour les réseaux sociaux de vendre les données de leurs utilisateurs à des fins de manipulation politique et économique ?",
+      "options": [
+        "Le scandale WikiLeaks",
+        "Le scandale des Panama Papers",
+        "Le scandale Cambridge Analytica",
+        "Le scandale Snowden"
+      ],
+      "correct": "Le scandale Cambridge Analytica",
+      "explanation": "Certains scandales récents, comme celui de Cambridge Analytica, donnent à croire que les réseaux sociaux peuvent également vendre les données de leurs utilisateurs à des fins, très lucratives, de manipulations politiques et économiques [21-24]."
+    },
+    {
+      "question": "Dans le contexte des réseaux sociaux, comment peut-on représenter le réseau de relations entre utilisateurs ?",
+      "options": [
+        "Par un tableau de données",
+        "Par un organigramme hiérarchique",
+        "Par un graphe où chaque personne est un sommet et chaque lien une arête",
+        "Par une liste alphabétique des membres"
+      ],
+      "correct": "Par un graphe où chaque personne est un sommet et chaque lien une arête",
+      "explanation": "Sur les réseaux sociaux, un réseau se forme entre les « amis » et ce réseau peut être représenté par un graphe où chaque personne est un sommet et chaque lien est une arête [25-28]."
+    },
+    {
+      "question": "Dans un graphe de réseau social, qu'est-ce qu'une chaîne ?",
+      "options": [
+        "Un groupe d'amis proches",
+        "Une suite de publications sur un même sujet",
+        "Une suite de sommets (personnes) connectés par des arêtes (liens) pour aller d’une personne à une autre",
+        "Un ensemble de communautés d'intérêts"
+      ],
+      "correct": "Une suite de sommets (personnes) connectés par des arêtes (liens) pour aller d’une personne à une autre",
+      "explanation": "Une chaîne est alors une suite de sommets pour aller d’une personne à une autre en suivant les liens (arêtes) du réseau [25, 26]."
+    },
+    {
+      "question": "Comment les informations visibles sur les réseaux sociaux sont-elles fortement conditionnées ?",
+      "options": [
+        "Par des algorithmes de tri aléatoire",
+        "Par le cercle « d’amis » auxquels on est relié et les algorithmes de recommandation",
+        "Par la censure gouvernementale uniquement",
+        "Par la popularité globale des publications uniquement"
+      ],
+      "correct": "Par le cercle « d’amis » auxquels on est relié et les algorithmes de recommandation",
+      "explanation": "Les informations visibles sur les réseaux sociaux sont fortement conditionnées par le cercle « d’amis » auxquels on est relié, ainsi que par les algorithmes qui choisissent ce qui est affiché dans le fil d'actualité [29-32]."
+    },
+    {
+      "question": "Quel est un effet pervers des réseaux sociaux qui amplifie l'impact des agissements malveillants ?",
+      "options": [
+        "L'anonymat relatif des utilisateurs",
+        "La limitation de la taille des messages",
+        "L'amplification rapide et large de l'impact des harcèlements ou fausses informations",
+        "La difficulté de partager des informations privées"
+      ],
+      "correct": "L'amplification rapide et large de l'impact des harcèlements ou fausses informations",
+      "explanation": "Un autre effet pervers des réseaux sociaux est l’amplification de l’impact des harcèlements ou de la désinformation, qui peuvent se propager très rapidement à une large audience [18, 28, 33, 34]."
+    },
+    {
+      "question": "Comment est puni le harcèlement numérique par le code pénal français (article 222-33-2-2) ?",
+      "options": [
+        "Par un simple avertissement",
+        "Par une amende maximale de 1 000 euros",
+        "Par un maximum de 30 000 euros d’amende et deux ans de prison (peines aggravées dans certains cas)",
+        "Par une exclusion temporaire du réseau social"
+      ],
+      "correct": "Par un maximum de 30 000 euros d’amende et deux ans de prison (peines aggravées dans certains cas)",
+      "explanation": "Le harcèlement numérique est puni par le code pénal français (article 222-33-2-2) d’un maximum de 30 000 euros d’amende et deux ans de prison. Ces peines peuvent être aggravées si la victime est mineure ou particulièrement vulnérable [28, 33, 34]."
+    },
+    {
+      "question": "Quel site gouvernemental français est dédié à la lutte contre le harcèlement, notamment en milieu scolaire ?",
+      "options": [
+        "www.service-public.fr",
+        "www.nonauharcelement.education.gouv.fr",
+        "www.interieur.gouv.fr",
+        "www.justice.fr"
+      ],
+      "correct": "www.nonauharcelement.education.gouv.fr",
+      "explanation": "Il est conseillé de consulter le site du gouvernement sur le sujet du harcèlement : https://www.nonauharcelement.education.gouv.fr/ [35-37]."
+    },
+    {
+      "question": "Quelles sont les conséquences potentielles d'une mauvaise gestion de la confidentialité sur les réseaux sociaux ?",
+      "options": [
+        "Amélioration de la réputation en ligne",
+        "Augmentation du nombre d'amis",
+        "Employés renvoyés, espionnage industriel, localisation de personnes en danger, usurpation d'identité",
+        "Protection accrue contre les virus informatiques"
+      ],
+      "correct": "Employés renvoyés, espionnage industriel, localisation de personnes en danger, usurpation d'identité",
+      "explanation": "De nombreuses « affaires » sont liées à la confidentialité des données mal réglée : employés renvoyés, espionnage industriel avec une photo prise dans un bureau d’étude et posté sur un réseau social, localisation de militaires en mission par les réseaux sociaux, cambriolage de maison que l’on sait vide par les messages publics, usurpation d'identité… [14, 15]."
+    },
+    {
+      "question": "Comment les réseaux sociaux peuvent-ils influencer l'opinion des utilisateurs ?",
+      "options": [
+        "En fournissant uniquement des informations neutres et objectives",
+        "En limitant l'accès à diverses perspectives (bulles de filtres)",
+        "En formatant leurs messages publicitaires en fonction des profils utilisateurs",
+        "En encourageant activement le débat contradictoire"
+      ],
+      "correct": "En limitant l'accès à diverses perspectives (bulles de filtres)",
+      "explanation": "Les réseaux sociaux ont une forte tendance à enfermer les individus dans leurs idées (ou celles de leur cercle d’amis) via les algorithmes de recommandation, créant des 'bulles de filtres'. Ceci peut renforcer les convictions existantes et limiter l'exposition à des points de vue divergents [38, 39]."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'e-réputation' et pourquoi est-il important de la surveiller sur les réseaux sociaux ?",
+      "options": [
+        "La quantité de 'likes' et de partages sur les publications ; pour gagner en popularité.",
+        "L'image et la perception en ligne d'une personne ou d'une entité ; car elle peut influencer les opportunités personnelles et professionnelles.",
+        "Le nombre de contacts professionnels sur LinkedIn ; pour développer son réseau.",
+        "La fréquence des publications sur les différents réseaux ; pour rester actif en ligne."
+      ],
+      "correct": "L'image et la perception en ligne d'une personne ou d'une entité ; car elle peut influencer les opportunités personnelles et professionnelles.",
+      "explanation": "De plus en plus d’employeurs explorent les réseaux sociaux de leurs futurs employés. L'e-réputation, ou réputation numérique, est l'image que renvoie une personne sur Internet. Il est important de la surveiller et de la maîtriser [40, 41]."
+    },
+    {
+      "question": "Quels éléments sont utilisés par la publicité ciblée sur les réseaux sociaux pour sélectionner les annonces ?",
+      "options": [
+        "Uniquement l'âge et le sexe de l'utilisateur",
+        "Les habitudes de navigation, les publications, les 'likes', les interactions, les informations de profil, les données de localisation, etc.",
+        "L'emplacement géographique exact de l'utilisateur en temps réel uniquement",
+        "Les informations financières de l'utilisateur uniquement"
+      ],
+      "correct": "Les habitudes de navigation, les publications, les 'likes', les interactions, les informations de profil, les données de localisation, etc.",
+      "explanation": "La publicité sur les réseaux sociaux est ciblée grâce à une multitude de données : habitudes de navigation (via cookies et trackers), informations du profil, publications, 'likes', partages, commentaires, interactions avec d'autres publicités, localisation, etc. [19, 20]."
+    },
+    {
+      "question": "Pourquoi les réseaux sociaux mettent-ils en place des fonctionnements 'addictifs' ?",
+      "options": [
+        "Pour améliorer l'expérience utilisateur et le bien-être",
+        "Pour réduire le temps passé par les utilisateurs sur leur plateforme",
+        "Afin d’augmenter le temps d'utilisation et l'engagement pour maximiser la collecte de données et l'exposition publicitaire",
+        "Pour simplifier la navigation et l'accès aux informations"
+      ],
+      "correct": "Afin d’augmenter le temps d'utilisation et l'engagement pour maximiser la collecte de données et l'exposition publicitaire",
+      "explanation": "Afin d’augmenter le nombre de données qu’ils peuvent récupérer et le nombre de publicités vues, les réseaux sociaux utilisent des mécanismes conçus pour capter l'attention et inciter les utilisateurs à passer le plus de temps possible sur leur plateforme (notifications, défilement infini, récompenses variables...) [21, 22]."
+    },
+    {
+      "question": "Qu'est-ce que l'interconnexion des réseaux sociaux permet généralement aux grandes entreprises comme Facebook (Meta) et Google ?",
+      "options": [
+        "De garantir une meilleure sécurité des données",
+        "De limiter la collecte d'informations personnelles",
+        "De croiser les données provenant de différentes plateformes et services pour affiner les profils utilisateurs",
+        "De faciliter la suppression des comptes utilisateurs"
+      ],
+      "correct": "De croiser les données provenant de différentes plateformes et services pour affiner les profils utilisateurs",
+      "explanation": "L’interconnexion (par exemple, utiliser son compte Facebook pour se connecter à un autre site) permet souvent aux GAFAM (Google, Amazon, Facebook/Meta, Apple, Microsoft) de collecter et croiser des données sur les activités des utilisateurs à travers différents services, enrichissant ainsi leurs profils pour le ciblage publicitaire ou d'autres usages [42, 43]."
+    },
+    {
+      "question": "Comment l'utilisation d'applications tierces (jeux, quizz...) sur les réseaux sociaux peut-elle menacer les données confidentielles ?",
+      "options": [
+        "Elles chiffrent systématiquement les données pour les protéger",
+        "Elles n'ont jamais accès aux données personnelles",
+        "Elles demandent souvent des autorisations étendues pour accéder aux données du profil et parfois à celles des amis",
+        "Elles améliorent la confidentialité des comptes en vérifiant l'identité"
+      ],
+      "correct": "Elles demandent souvent des autorisations étendues pour accéder aux données du profil et parfois à celles des amis",
+      "explanation": "L’utilisation d’applications tierces (jeux, quizz…) nécessite souvent d'accorder des permissions. Ces applications peuvent alors collecter des données personnelles de l'utilisateur et parfois de ses contacts, ce qui représente une menace pour la confidentialité si ces données sont mal utilisées ou compromises [23, 24, 44]."
+    },
+    {
+      "question": "Dans la théorie du 'petit monde' appliquée aux réseaux sociaux, qu'est-ce qui conditionne fortement les informations visibles par un utilisateur ?",
+      "options": [
+        "Le nombre total d'utilisateurs sur la plateforme",
+        "Les algorithmes de recommandation globale uniquement",
+        "Le cercle d'amis et de relations directes et indirectes de l'utilisateur",
+        "Les tendances et les sujets populaires du moment uniquement"
+      ],
+      "correct": "Le cercle d'amis et de relations directes et indirectes de l'utilisateur",
+      "explanation": "La notion de « petit monde » suggère que nous sommes tous reliés par de courtes chaînes de connaissances. Sur les réseaux sociaux, cela implique que les informations visibles sont fortement conditionnées par le cercle « d’amis » et les connexions de ces amis, en plus des algorithmes [29-32]."
+    },
+    {
+      "question": "Quel concept décrit le renforcement des liens existants au sein d'un même groupe homogène sur les réseaux sociaux ?",
+      "options": [
+        "Bridging (création de ponts)",
+        "Bonding (consolidation de liens)",
+        "Networking (réseautage)",
+        "Community building (construction de communauté)"
+      ],
+      "correct": "Bonding (consolidation de liens)",
+      "explanation": "Le 'Bonding' fait référence au renforcement des liens forts et de la cohésion au sein d'un groupe existant partageant des caractéristiques similaires (amis proches, famille, communauté d'intérêt très spécifique) [31]."
+    },
+    {
+      "question": "Quel concept décrit la construction de nouveaux liens entre des groupes différents ou des individus moins connectés sur les réseaux sociaux ?",
+      "options": [
+        "Bonding (consolidation de liens)",
+        "Bridging (création de ponts)",
+        "Connecting (connexion)",
+        "Associating (association)"
+      ],
+      "correct": "Bridging (création de ponts)",
+      "explanation": "Le 'Bridging' fait référence à la création de liens plus faibles entre des individus ou des groupes différents, permettant l'accès à de nouvelles informations ou opportunités (par exemple, contacts professionnels, personnes d'horizons variés) [31]."
+    },
+    {
+      "question": "Quel est l'objectif annoncé des applications de réseautage social concernant les relations entre individus ?",
+      "options": [
+        "De vendre des données personnelles",
+        "De limiter la liberté d'expression",
+        "De faciliter la connexion et l'interaction entre les individus",
+        "De manipuler les opinions politiques"
+      ],
+      "correct": "De faciliter la connexion et l'interaction entre les individus",
+      "explanation": "L’objectif premier et affiché des applications de réseautage social est de permettre aux individus de se connecter, de maintenir et de développer des relations sociales ou professionnelles [31]."
+    },
+    {
+      "question": "Quel réseau social, racheté par Elon Musk en 2022, est connu pour ses messages courts (originellement 140 caractères) et son fil d'actualité en temps réel ?",
+      "options": [
+        "Facebook",
+        "Instagram",
+        "LinkedIn",
+        "Twitter (X)"
+      ],
+      "correct": "Twitter (X)",
+      "explanation": "Twitter, renommé X en 2023 après son rachat par Elon Musk, est une plateforme de microblogging caractérisée par des messages courts appelés 'tweets'."
+    },
+    {
+      "question": "Quel type de contenu est principalement mis en avant sur Instagram ?",
+      "options": [
+        "Les articles de blog longs",
+        "Les vidéos longues (plus d'une heure)",
+        "Les photos et les vidéos courtes (Reels, Stories)",
+        "Les messages textuels uniquement"
+      ],
+      "correct": "Les photos et les vidéos courtes (Reels, Stories)",
+      "explanation": "Instagram est une plateforme axée sur le partage visuel, privilégiant les photos et les formats vidéo courts comme les Stories (éphémères) et les Reels."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'cookie' dans le contexte de la navigation web et des réseaux sociaux ?",
+      "options": [
+        "Un petit gâteau offert lors de l'inscription",
+        "Un logiciel malveillant qui vole les mots de passe",
+        "Un petit fichier texte stocké par le navigateur web pour mémoriser des informations sur l'utilisateur",
+        "Une fonctionnalité pour bloquer les publicités"
+      ],
+      "correct": "Un petit fichier texte stocké par le navigateur web pour mémoriser des informations sur l'utilisateur",
+      "explanation": "Les cookies sont de petits fichiers que les sites web (y compris les réseaux sociaux) placent sur l'appareil d'un utilisateur pour se souvenir de ses préférences, de son état de connexion, ou pour le suivre à des fins publicitaires."
+    },
+    {
+      "question": "Que signifie l'acronyme GAFAM ?",
+      "options": [
+        "Groupement des Associations Françaises des Amis des Musées",
+        "Google, Apple, Facebook, Amazon, Microsoft",
+        "Génération Active Française d'Artistes Modernes",
+        "Gestion Automatisée des Fichiers et Archives Multimédia"
+      ],
+      "correct": "Google, Apple, Facebook, Amazon, Microsoft",
+      "explanation": "GAFAM est un acronyme désignant les cinq géants américains du numérique : Google (Alphabet), Apple, Facebook (Meta), Amazon, et Microsoft, qui dominent le marché technologique mondial."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'bulle de filtres' (filter bubble) sur les réseaux sociaux ?",
+      "options": [
+        "Une option pour nettoyer son fil d'actualité",
+        "Un phénomène où l'algorithme isole l'utilisateur en lui montrant principalement du contenu qui correspond à ses opinions passées",
+        "Un groupe privé sur un réseau social",
+        "Une technique pour vérifier la véracité des informations"
+      ],
+      "correct": "Un phénomène où l'algorithme isole l'utilisateur en lui montrant principalement du contenu qui correspond à ses opinions passées",
+      "explanation": "La bulle de filtres décrit comment les algorithmes de personnalisation peuvent limiter l'exposition d'un utilisateur à des informations et points de vue variés, renforçant ses croyances existantes."
+    },
+    {
+      "question": "Quel est le principal risque associé au partage excessif d'informations personnelles (oversharing) sur les réseaux sociaux ?",
+      "options": [
+        "Recevoir trop de messages d'anniversaire",
+        "L'usurpation d'identité, le harcèlement, ou l'utilisation des informations à des fins malveillantes",
+        "Avoir un profil trop populaire",
+        "Manquer d'espace de stockage sur son téléphone"
+      ],
+      "correct": "L'usurpation d'identité, le harcèlement, ou l'utilisation des informations à des fins malveillantes",
+      "explanation": "Partager trop d'informations personnelles peut faciliter l'usurpation d'identité, le cyberharcèlement, le cambriolage (en indiquant une absence), ou nuire à sa réputation."
+    },
+    {
+      "question": "Qu'est-ce que l'authentification à deux facteurs (2FA) souvent proposée par les réseaux sociaux ?",
+      "options": [
+        "Devoir se connecter depuis deux appareils différents",
+        "Une méthode de sécurité qui requiert deux preuves d'identité différentes pour se connecter (ex: mot de passe + code SMS)",
+        "Avoir deux mots de passe différents pour le même compte",
+        "Un système qui vérifie l'âge de l'utilisateur deux fois"
+      ],
+      "correct": "Une méthode de sécurité qui requiert deux preuves d'identité différentes pour se connecter (ex: mot de passe + code SMS)",
+      "explanation": "L'authentification à deux facteurs (ou validation en deux étapes) ajoute une couche de sécurité supplémentaire en demandant non seulement le mot de passe mais aussi un code (souvent envoyé par SMS ou généré par une application) pour accéder à un compte."
+    },
+    {
+      "question": "Quel terme désigne la propagation rapide et massive d'une information (vraie ou fausse) sur les réseaux sociaux ?",
+      "options": [
+        "La mise en cache",
+        "La viralité",
+        "Le cryptage",
+        "La modération"
+      ],
+      "correct": "La viralité",
+      "explanation": "La viralité décrit le phénomène par lequel un contenu (texte, image, vidéo) se propage très rapidement d'utilisateur en utilisateur sur les réseaux sociaux, à la manière d'un virus."
+    },
+    {
+      "question": "Quel droit fondamental est garanti par le RGPD concernant les données personnelles collectées par les réseaux sociaux ?",
+      "options": [
+        "Le droit de publier anonymement",
+        "Le droit d'accès, de rectification, et de suppression de ses données personnelles",
+        "Le droit d'utiliser le réseau social gratuitement à vie",
+        "Le droit de modérer le contenu des autres utilisateurs"
+      ],
+      "correct": "Le droit d'accès, de rectification, et de suppression de ses données personnelles",
+      "explanation": "Le RGPD accorde aux citoyens européens plusieurs droits sur leurs données, notamment le droit de savoir quelles données sont collectées (accès), de les corriger si elles sont inexactes (rectification), et de demander leur effacement (droit à l'oubli)."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'troll' dans le contexte d'Internet et des réseaux sociaux ?",
+      "options": [
+        "Un personnage de jeu vidéo populaire",
+        "Un utilisateur qui publie des messages provocateurs ou hors sujet dans le but de susciter des réactions négatives ou de perturber une discussion",
+        "Un modérateur de forum bénévole",
+        "Un expert en sécurité informatique"
+      ],
+      "correct": "Un utilisateur qui publie des messages provocateurs ou hors sujet dans lebut de susciter des réactions négatives ou de perturber une discussion",
+      "explanation": "Un 'troll' cherche intentionnellement à créer la polémique, à irriter les autres utilisateurs ou à détourner une conversation en ligne par des messages provocateurs ou inappropriés."
+    },
+    {
+      "question": "Quel réseau social est particulièrement axé sur le partage de centres d'intérêt visuels sous forme de 'tableaux' (boards) ?",
+      "options": [
+        "LinkedIn",
+        "WhatsApp",
+        "Pinterest",
+        "Snapchat"
+      ],
+      "correct": "Pinterest",
+      "explanation": "Pinterest fonctionne comme un catalogue d'idées visuelles où les utilisateurs 'épinglent' (pin) des images et des liens sur des tableaux thématiques pour trouver de l'inspiration (décoration, recettes, voyages...)."
+    },
+    {
+      "question": "Que désigne le terme 'cyberharcèlement' ?",
+      "options": [
+        "Le fait de passer trop de temps sur les réseaux sociaux",
+        "Un type de virus informatique",
+        "Le harcèlement (insultes, menaces, moqueries répétées) effectué via les outils numériques (réseaux sociaux, messageries, jeux en ligne...)",
+        "Une campagne publicitaire agressive en ligne"
+      ],
+      "correct": "Le harcèlement (insultes, menaces, moqueries répétées) effectué via les outils numériques (réseaux sociaux, messageries, jeux en ligne...)",
+      "explanation": "Le cyberharcèlement est une forme de harcèlement qui utilise Internet et les technologies numériques pour nuire à une personne de manière répétée et intentionnelle."
+    },
+    {
+      "question": "Quel est le numéro national français gratuit pour signaler une situation de harcèlement, notamment en milieu scolaire ?",
+      "options": [
+        "Le 15 (SAMU)",
+        "Le 18 (Pompiers)",
+        "Le 3018 (anciennement 3020 pour le harcèlement scolaire)",
+        "Le 112 (Numéro d'urgence européen)"
+      ],
+      "correct": "Le 3018 (anciennement 3020 pour le harcèlement scolaire)",
+      "explanation": "Le 3018 est le numéro national gratuit et anonyme pour les jeunes victimes ou témoins de harcèlement et de violences numériques. Il a remplacé et étendu les missions du 3020."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'fake news' ou infox ?",
+      "options": [
+        "Une information satirique publiée par un journal humoristique",
+        "Une information vérifiée par plusieurs sources fiables",
+        "Une information délibérément fausse conçue pour tromper le lecteur et souvent diffusée massivement",
+        "Une opinion personnelle exprimée sur un blog"
+      ],
+      "correct": "Une information délibérément fausse conçue pour tromper le lecteur et souvent diffusée massivement",
+      "explanation": "Une 'fake news' (ou infox en français) est une fausse information fabriquée dans le but de tromper, souvent pour des raisons politiques ou économiques, et qui imite les codes du journalisme."
+    },
+    {
+      "question": "Pourquoi est-il important de vérifier la source d'une information avant de la partager sur les réseaux sociaux ?",
+      "options": [
+        "Pour augmenter le nombre de 'likes'",
+        "Pour ne pas contribuer à la désinformation et à la propagation de fausses nouvelles",
+        "Parce que les réseaux sociaux le demandent",
+        "Pour éviter les virus"
+      ],
+      "correct": "Pour ne pas contribuer à la désinformation et à la propagation de fausses nouvelles",
+      "explanation": "Partager une information sans vérifier sa source et sa véracité peut amplifier la diffusion de fausses nouvelles, nuisant ainsi au débat public et pouvant avoir des conséquences réelles."
+    },
+    {
+      "question": "Quel réseau social, populaire chez les jeunes, est basé sur l'envoi de photos et vidéos éphémères qui disparaissent après avoir été vues ?",
+      "options": [
+        "Facebook",
+        "LinkedIn",
+        "Pinterest",
+        "Snapchat"
+      ],
+      "correct": "Snapchat",
+      "explanation": "Snapchat s'est fait connaître par son concept de messages (photos, vidéos appelés 'snaps') qui s'autodétruisent après une courte période, ainsi que par ses filtres ludiques."
+    },
+    {
+      "question": "Qu'appelle-t-on 'l'empreinte numérique' ?",
+      "options": [
+        "La marque de doigt sur l'écran tactile",
+        "L'ensemble des traces (données, publications, commentaires, historique...) laissées par une personne lors de son utilisation d'Internet",
+        "La taille mémoire occupée par les applications de réseaux sociaux",
+        "Un code unique d'identification de l'ordinateur"
+      ],
+      "correct": "L'ensemble des traces (données, publications, commentaires, historique...) laissées par une personne lors de son utilisation d'Internet",
+      "explanation": "L'empreinte numérique est la somme de toutes les informations qu'un individu laisse derrière lui en ligne, volontairement (publications) ou involontairement (données de navigation collectées)."
+    },
+    {
+      "question": "Quel est l'inconvénient majeur de la permanence des informations publiées sur les réseaux sociaux ?",
+      "options": [
+        "Elles prennent trop de place sur les serveurs",
+        "Il est difficile de les retrouver plus tard",
+        "Des contenus anciens ou regrettés peuvent refaire surface et nuire à la réputation longtemps après leur publication",
+        "Elles ne peuvent pas être modifiées"
+      ],
+      "correct": "Des contenus anciens ou regrettés peuvent refaire surface et nuire à la réputation longtemps après leur publication",
+      "explanation": "Ce qui est publié en ligne peut être difficile, voire impossible, à effacer complètement. Des publications anciennes (photos, commentaires) peuvent être retrouvées et avoir des conséquences négatives des années plus tard (ex: recherche d'emploi)."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'hashtag' (#) sur les réseaux sociaux comme Twitter ou Instagram ?",
+      "options": [
+        "Un symbole pour marquer un message comme important",
+        "Un mot-clé précédé du symbole # qui permet de regrouper les publications sur un même sujet et de faciliter leur découverte",
+        "Un lien vers un autre profil utilisateur",
+        "Une émoticône spéciale"
+      ],
+      "correct": "Un mot-clé précédé du symbole # qui permet de regrouper les publications sur un même sujet et de faciliter leur découverte",
+      "explanation": "Les hashtags sont utilisés pour catégoriser le contenu. Cliquer sur un hashtag permet de voir d'autres publications utilisant le même mot-clé, facilitant ainsi la recherche et le suivi de sujets spécifiques."
+    },
+    {
+      "question": "Quel type de réseau social est principalement représenté par WhatsApp ou Telegram ?",
+      "options": [
+        "Réseau de microblogging",
+        "Réseau de partage de vidéos",
+        "Réseau de messagerie instantanée",
+        "Réseau professionnel"
+      ],
+      "correct": "Réseau de messagerie instantanée",
+      "explanation": "WhatsApp, Telegram, Signal ou Messenger (Facebook) sont avant tout des applications de messagerie instantanée, permettant des conversations privées ou de groupe, même si elles intègrent des fonctionnalités sociales."
+    },
+    {
+      "question": "Qu'est-ce que le 'FOMO' (Fear Of Missing Out) souvent associé aux réseaux sociaux ?",
+      "options": [
+        "La peur d'oublier son mot de passe",
+        "L'angoisse de rater quelque chose d'intéressant ou d'important qui se passe en ligne ou auquel les autres participent",
+        "La peur d'être victime de harcèlement",
+        "La crainte de ne pas avoir assez de 'likes'"
+      ],
+      "correct": "L'angoisse de rater quelque chose d'intéressant ou d'important qui se passe en ligne ou auquel les autres participent",
+      "explanation": "Le FOMO est l'anxiété sociale liée à la peur de manquer une expérience gratifiante que d'autres vivent, souvent exacerbée par la vision des activités des autres sur les réseaux sociaux."
+    },
+    {
+      "question": "Quelle précaution simple permet de mieux contrôler qui voit vos publications sur la plupart des réseaux sociaux ?",
+      "options": [
+        "Publier uniquement la nuit",
+        "Utiliser beaucoup de hashtags",
+        "Régler les paramètres de confidentialité pour limiter l'audience (ex: 'Amis seulement' au lieu de 'Public')",
+        "Identifier le plus de personnes possible"
+      ],
+      "correct": "Régler les paramètres de confidentialité pour limiter l'audience (ex: 'Amis seulement' au lieu de 'Public')",
+      "explanation": "Le réglage de l'audience des publications (souvent possible pour chaque post ou par défaut) est essentiel pour contrôler qui peut voir ce que vous partagez (tout le monde, vos amis, certains groupes, etc.)."
+    },
+    {
+      "question": "Qu'est-ce que le 'droit à l'oubli' (ou droit à l'effacement) dans le contexte du RGPD ?",
+      "options": [
+        "Le droit d'oublier ses anciens mots de passe",
+        "Le droit pour une personne de demander la suppression de ses données personnelles détenues par un organisme (sous conditions)",
+        "Le droit de ne pas se souvenir des publicités vues",
+        "Le droit pour une entreprise d'effacer les comptes inactifs"
+      ],
+      "correct": "Le droit pour une personne de demander la suppression de ses données personnelles détenues par un organisme (sous conditions)",
+      "explanation": "Le droit à l'effacement permet à un individu de demander qu'une organisation supprime ses données personnelles si elles ne sont plus nécessaires, si le consentement est retiré, ou dans d'autres cas prévus par le RGPD."
+    },
+    {
+      "question": "Comment appelle-t-on le fait de créer un faux profil sur un réseau social en utilisant l'identité d'une autre personne ?",
+      "options": [
+        "Le trolling",
+        "Le partage excessif (oversharing)",
+        "L'usurpation d'identité",
+        "Le réseautage"
+      ],
+      "correct": "L'usurpation d'identité",
+      "explanation": "L'usurpation d'identité consiste à utiliser les informations personnelles d'une autre personne (nom, photo, etc.) sans son consentement, souvent dans le but de nuire ou de commettre des fraudes. C'est un délit."
+    },
+    {
+      "question": "Quel est l'un des objectifs principaux des algorithmes de fil d'actualité des réseaux sociaux ?",
+      "options": [
+        "Afficher les publications dans l'ordre chronologique strict",
+        "Maximiser l'engagement de l'utilisateur (temps passé, interactions) en lui montrant le contenu jugé le plus pertinent pour lui",
+        "Limiter le nombre de publicités vues par l'utilisateur",
+        "Promouvoir uniquement les contenus éducatifs"
+      ],
+      "correct": "Maximiser l'engagement de l'utilisateur (temps passé, interactions) en lui montrant le contenu jugé le plus pertinent pour lui",
+      "explanation": "Les algorithmes analysent le comportement de l'utilisateur pour prédire quel contenu est le plus susceptible de le faire réagir (liker, commenter, partager) et de le maintenir sur la plateforme."
+    },
+    {
+      "question": "Quelle pratique consiste à vérifier des informations en croisant plusieurs sources fiables et indépendantes ?",
+      "options": [
+        "Le plagiat",
+        "Le fact-checking (vérification des faits)",
+        "Le brainstorming",
+        "Le partage viral"
+      ],
+      "correct": "Le fact-checking (vérification des faits)",
+      "explanation": "Le fact-checking est une démarche journalistique ou citoyenne qui consiste à vérifier la véracité des affirmations et des informations qui circulent, notamment dans les médias et sur les réseaux sociaux, en s'appuyant sur des sources fiables."
+    },
+    {
+      "question": "Quel danger représente le 'phishing' (hameçonnage) sur les réseaux sociaux ?",
+      "options": [
+        "Recevoir trop de notifications",
+        "Être incité par un message ou un lien frauduleux à révéler des informations confidentielles (mot de passe, coordonnées bancaires...)",
+        "Voir son compte suspendu temporairement",
+        "Avoir des difficultés à se déconnecter"
+      ],
+      "correct": "Être incité par un message ou un lien frauduleux à révéler des informations confidentielles (mot de passe, coordonnées bancaires...)",
+      "explanation": "Le phishing est une technique de fraude où des attaquants se font passer pour une entité légitime (le réseau social lui-même, une banque...) afin de soutirer des informations sensibles aux utilisateurs via des messages ou des faux sites web."
+    },
+    {
+      "question": "Que peut entraîner une forte dépendance aux réseaux sociaux sur la santé mentale ?",
+      "options": [
+        "Une amélioration de la concentration",
+        "Une augmentation de l'anxiété, de la dépression, une baisse de l'estime de soi, des troubles du sommeil",
+        "Un renforcement des liens sociaux réels",
+        "Une meilleure gestion du temps"
+      ],
+      "correct": "Une augmentation de l'anxiété, de la dépression, une baisse de l'estime de soi, des troubles du sommeil",
+      "explanation": "Une utilisation excessive ou problématique des réseaux sociaux peut avoir des impacts négatifs sur la santé mentale, liés notamment à la comparaison sociale, au cyberharcèlement, au FOMO et à la perturbation du sommeil."
+    },
+    {
+      "question": "Quelle est la fonction d'un 'modérateur' sur une plateforme en ligne (forum, réseau social...) ?",
+      "options": [
+        "Créer du contenu viral",
+        "Vérifier que les utilisateurs respectent les règles de la communauté et supprimer les contenus inappropriés ou illicites",
+        "Développer de nouvelles fonctionnalités pour l'application",
+        "Gérer la publicité sur la plateforme"
+      ],
+      "correct": "Vérifier que les utilisateurs respectent les règles de la communauté et supprimer les contenus inappropriés ou illicites",
+      "explanation": "La modération consiste à surveiller les contenus publiés par les utilisateurs pour s'assurer qu'ils respectent la loi et les conditions d'utilisation de la plateforme (ex: pas d'incitation à la haine, de harcèlement, de spam...)."
+    },
+    {
+      "question": "À quoi servent les 'Conditions Générales d'Utilisation' (CGU) que l'on doit accepter en s'inscrivant sur un réseau social ?",
+      "options": [
+        "À donner des conseils pour bien utiliser l'application",
+        "À définir les règles d'utilisation de la plateforme, les droits et obligations de l'utilisateur et de l'entreprise",
+        "À lister les autres utilisateurs du réseau",
+        "À garantir la protection totale de la vie privée"
+      ],
+      "correct": "À définir les règles d'utilisation de la plateforme, les droits et obligations de l'utilisateur et de l'entreprise",
+      "explanation": "Les CGU constituent le contrat entre l'utilisateur et le service. Elles décrivent comment le service fonctionne, ce que l'utilisateur a le droit de faire ou non, comment ses données peuvent être utilisées, etc. Il est important de les lire (ou au moins les résumés)."
+    },
+    {
+      "question": "Quel phénomène décrit la tendance des utilisateurs à présenter une version idéalisée de leur vie sur les réseaux sociaux ?",
+      "options": [
+        "La transparence radicale",
+        "La mise en scène de soi",
+        "L'anonymat complet",
+        "Le partage brut"
+      ],
+      "correct": "La mise en scène de soi",
+      "explanation": "Les utilisateurs choisissent souvent de ne montrer que les aspects positifs ou avantageux de leur vie, créant une image idéalisée qui peut ne pas refléter la réalité. Cela contribue à la pression sociale et à la comparaison."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'bot' informatique dans le contexte des réseaux sociaux ?",
+      "options": [
+        "Un utilisateur très populaire",
+        "Un compte automatisé (logiciel) programmé pour effectuer certaines actions (publier, liker, suivre...) de manière répétitive",
+        "Un modérateur humain",
+        "Une faute de frappe courante"
+      ],
+      "correct": "Un compte automatisé (logiciel) programmé pour effectuer certaines actions (publier, liker, suivre...) de manière répétitive",
+      "explanation": "Les bots peuvent être utilisés à diverses fins sur les réseaux sociaux, certaines légitimes (service client automatisé) et d'autres malveillantes (diffusion de spam, manipulation de l'opinion, amplification artificielle de messages)."
+    },
+    {
+      "question": "Comment appelle-t-on les publicités qui s'intègrent dans le fil d'actualité et ressemblent aux publications normales des utilisateurs ?",
+      "options": [
+        "Bannières publicitaires",
+        "Pop-ups",
+        "Contenus sponsorisés ou publicités natives",
+        "Spam"
+      ],
+      "correct": "Contenus sponsorisés ou publicités natives",
+      "explanation": "Les publicités natives (ou contenus sponsorisés) sont conçues pour s'intégrer de manière fluide au contenu environnant, imitant le format des publications organiques pour être moins intrusives, bien qu'elles doivent être signalées comme publicitaires."
+    },
+    {
+      "question": "Quel organisme français est chargé de la protection des données personnelles et du respect du RGPD ?",
+      "options": [
+        "L'ARCOM (ex-CSA et Hadopi)",
+        "L'ANSSI (Agence nationale de la sécurité des systèmes d'information)",
+        "La CNIL (Commission Nationale de l'Informatique et des Libertés)",
+        "La DGCCRF (Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes)"
+      ],
+      "correct": "La CNIL (Commission Nationale de l'Informatique et des Libertés)",
+      "explanation": "La CNIL est l'autorité administrative indépendante en France chargée de veiller à ce que l'informatique soit au service du citoyen et qu'elle ne porte atteinte ni à l'identité humaine, ni aux droits de l'homme, ni à la vie privée, ni aux libertés individuelles ou publiques."
+    },
+    {
+      "question": "Pourquoi est-il recommandé d'utiliser des mots de passe différents et complexes pour chaque compte en ligne, y compris les réseaux sociaux ?",
+      "options": [
+        "Pour se souvenir plus facilement de tous ses mots de passe",
+        "Pour éviter qu'une fuite de données sur un site ne compromette tous les autres comptes",
+        "Parce que les réseaux sociaux l'exigent pour l'inscription",
+        "Pour accélérer la connexion"
+      ],
+      "correct": "Pour éviter qu'une fuite de données sur un site ne compromette tous les autres comptes",
+      "explanation": "Si un site web subit une fuite de données et que vous utilisez le même mot de passe ailleurs, les pirates peuvent accéder à vos autres comptes. Utiliser des mots de passe uniques et forts pour chaque service est une mesure de sécurité essentielle."
+    },
+    {
+      "question": "Qu'est-ce que la 'neutralité du Net' ?",
+      "options": [
+        "Naviguer sur Internet sans exprimer d'opinion",
+        "Un principe qui garantit que les fournisseurs d'accès à Internet traitent tout le trafic de données de manière égale, sans discrimination ni favoritisme",
+        "Utiliser uniquement des navigateurs web neutres",
+        "Une certification pour les sites web respectueux de la vie privée"
+      ],
+      "correct": "Un principe qui garantit que les fournisseurs d'accès à Internet traitent tout le trafic de données de manière égale, sans discrimination ni favoritisme",
+      "explanation": "La neutralité du Net interdit aux FAI de bloquer, ralentir ou d'accélérer l'accès à certains sites ou services en ligne par rapport à d'autres, assurant un accès ouvert et non discriminatoire à Internet."
+    },
+    {
+      "question": "Comment la géolocalisation activée sur un smartphone peut-elle être utilisée par les réseaux sociaux ?",
+      "options": [
+        "Uniquement pour afficher la météo locale",
+        "Pour suggérer des amis à proximité, taguer des lieux sur les photos, proposer des publicités locales, mais aussi collecter des données sur les déplacements",
+        "Pour recharger la batterie du téléphone",
+        "Pour améliorer la qualité des appels vidéo"
+      ],
+      "correct": "Pour suggérer des amis à proximité, taguer des lieux sur les photos, proposer des publicités locales, mais aussi collecter des données sur les déplacements",
+      "explanation": "Les applications de réseaux sociaux demandent souvent l'accès à la localisation pour offrir des fonctionnalités contextuelles, mais ces données de localisation peuvent aussi être utilisées pour le ciblage publicitaire et l'analyse comportementale."
+    },
+    {
+      "question": "Quel est le risque principal lié aux 'challenges' (défis) parfois lancés sur les réseaux sociaux ?",
+      "options": [
+        "De gagner trop de popularité",
+        "Certains défis peuvent être dangereux, stupides ou illégaux, entraînant des blessures ou des problèmes avec la loi",
+        "De devoir passer trop de temps à regarder les vidéos des autres",
+        "D'améliorer ses compétences créatives"
+      ],
+      "correct": "Certains défis peuvent être dangereux, stupides ou illégaux, entraînant des blessures ou des problèmes avec la loi",
+      "explanation": "Si certains challenges sont inoffensifs et amusants, d'autres qui deviennent viraux peuvent inciter à des comportements à risque (mise en danger physique, harcèlement, vandalisme...) et avoir de graves conséquences."
+    },
+    {
+      "question": "Que signifie 'paramétrer son profil en mode privé' sur un réseau social comme Instagram ?",
+      "options": [
+        "Le compte est supprimé",
+        "Seuls les abonnés que l'utilisateur a approuvés peuvent voir ses publications",
+        "Le profil n'est visible que par l'utilisateur lui-même",
+        "Les publicités sont désactivées"
+      ],
+      "correct": "Seuls les abonnés que l'utilisateur a approuvés peuvent voir ses publications",
+      "explanation": "Passer un compte en mode privé signifie que les publications ne sont plus publiques. Les nouveaux utilisateurs doivent envoyer une demande d'abonnement que le propriétaire du compte doit accepter pour qu'ils puissent voir le contenu."
+    },
+    {
+      "question": "Quel conseil est primordial avant de publier une photo ou une vidéo où d'autres personnes sont reconnaissables ?",
+      "options": [
+        "Les identifier systématiquement pour augmenter la visibilité",
+        "Appliquer un filtre amusant",
+        "Leur demander leur autorisation avant de publier (droit à l'image)",
+        "Vérifier la qualité de l'image"
+      ],
+      "correct": "Leur demander leur autorisation avant de publier (droit à l'image)",
+      "explanation": "Chaque personne dispose d'un droit à l'image. Il est donc essentiel d'obtenir le consentement des personnes reconnaissables avant de diffuser leur image sur les réseaux sociaux ou ailleurs."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'influenceur' sur les réseaux sociaux ?",
+      "options": [
+        "Un modérateur employé par la plateforme",
+        "Une personne ayant acquis une certaine notoriété et une large audience, capable d'influencer les opinions ou les comportements de ses abonnés",
+        "Un expert en sécurité informatique",
+        "Un algorithme de recommandation"
+      ],
+      "correct": "Une personne ayant acquis une certaine notoriété et une large audience, capable d'influencer les opinions ou les comportements de ses abonnés",
+      "explanation": "Les influenceurs utilisent leur présence en ligne pour partager du contenu, donner leur avis, et souvent collaborer avec des marques pour promouvoir des produits ou services auprès de leur communauté."
+    },
+    {
+      "question": "Comment les réseaux sociaux peuvent-ils être utilisés de manière positive pour des causes sociales ou citoyennes ?",
+      "options": [
+        "Uniquement pour partager des photos de vacances",
+        "Pour organiser des mobilisations, diffuser des informations, sensibiliser le public, collecter des fonds pour des associations",
+        "En limitant leur utilisation au strict minimum",
+        "En créant des groupes privés pour discuter entre amis"
+      ],
+      "correct": "Pour organiser des mobilisations, diffuser des informations, sensibiliser le public, collecter des fonds pour des associations",
+      "explanation": "Les réseaux sociaux sont aussi des outils puissants pour l'activisme, la solidarité et l'engagement citoyen, permettant de relayer rapidement des informations et de mobiliser des communautés autour de causes communes."
+    },
+    {
+      "question": "Quel est le terme utilisé pour désigner l'ensemble des techniques visant à améliorer la visibilité d'un site web dans les moteurs de recherche ?",
+      "options": [
+        "Le Social Media Marketing (SMM)",
+        "Le Search Engine Optimization (SEO)",
+        "Le Community Management",
+        "Le Branding"
+      ],
+      "correct": "Le Search Engine Optimization (SEO)",
+      "explanation": "Le SEO, ou optimisation pour les moteurs de recherche, regroupe les pratiques visant à positionner un site web le plus haut possible dans les résultats naturels (non payants) des moteurs de recherche comme Google."
+    },
+    {
+      "question": "Dans quel but principal les entreprises utilisent-elles les réseaux sociaux ?",
+      "options": [
+        "Uniquement pour surveiller leurs employés",
+        "Pour communiquer avec leurs clients, promouvoir leurs produits/services, gérer leur image de marque (e-réputation), et recruter",
+        "Pour bloquer l'accès à leurs concurrents",
+        "Pour publier des offres d'emploi uniquement sur LinkedIn"
+      ],
+      "correct": "Pour communiquer avec leurs clients, promouvoir leurs produits/services, gérer leur image de marque (e-réputation), et recruter",
+      "explanation": "Les réseaux sociaux sont devenus des outils marketing et de communication incontournables pour les entreprises afin d'interagir avec leur public, d'améliorer leur notoriété et de développer leurs activités."
+    },
+    {
+      "question": "Qu'est-ce que le 'shadow banning' (bannissement fantôme) sur certains réseaux sociaux ?",
+      "options": [
+        "Une interdiction totale et visible du compte",
+        "Une réduction secrète de la visibilité des publications d'un utilisateur sans qu'il en soit informé",
+        "Un avertissement avant bannissement",
+        "Le fait de masquer les publicités"
+      ],
+      "correct": "Une réduction secrète de la visibilité des publications d'un utilisateur sans qu'il en soit informé",
+      "explanation": "Le shadow banning est une pratique controversée où une plateforme limite la portée des contenus d'un compte (ils apparaissent moins dans les fils d'actualité ou les recherches) sans le notifier, souvent pour lutter contre le spam ou les comportements jugés problématiques."
+    },
+    {
+      "question": "Quel type de contenu est roi sur la plateforme Twitch, initialement axée sur les jeux vidéo ?",
+      "options": [
+        "Les articles de blog",
+        "Les photos de voyage",
+        "Le streaming vidéo en direct (live streaming)",
+        "Les messages audio courts"
+      ],
+      "correct": "Le streaming vidéo en direct (live streaming)",
+      "explanation": "Twitch est la principale plateforme de diffusion vidéo en direct, où les créateurs ('streamers') interagissent avec leur public en temps réel, principalement autour du jeu vidéo mais aussi sur de nombreux autres sujets ('Just Chatting', musique, art...)."
+    },
+    {
+      "question": "Que désigne le terme 'nomophobie' ?",
+      "options": [
+        "La peur des noms compliqués",
+        "La peur excessive d'être séparé de son téléphone mobile ou de ne pas pouvoir l'utiliser",
+        "La peur des espaces ouverts (agoraphobie)",
+        "La peur des nouvelles technologies"
+      ],
+      "correct": "La peur excessive d'être séparé de son téléphone mobile ou de ne pas pouvoir l'utiliser",
+      "explanation": "La nomophobie ('no mobile phobia') est une forme d'anxiété liée à la dépendance au smartphone et à la peur d'être déconnecté ou injoignable."
+    },
+    {
+      "question": "Pourquoi la 'pensée critique' est-elle essentielle face aux informations rencontrées sur les réseaux sociaux ?",
+      "options": [
+        "Pour critiquer systématiquement tout ce qui est publié",
+        "Pour évaluer la fiabilité des sources, distinguer les faits des opinions, repérer les biais et les tentatives de manipulation",
+        "Pour accepter automatiquement les informations partagées par ses amis",
+        "Pour écrire des commentaires plus longs"
+      ],
+      "correct": "Pour évaluer la fiabilité des sources, distinguer les faits des opinions, repérer les biais et les tentatives de manipulation",
+      "explanation": "La pensée critique permet d'analyser l'information de manière objective, de questionner sa provenance et sa validité avant de l'accepter comme vraie ou de la partager, ce qui est crucial dans un environnement où circulent beaucoup de fausses informations."
+    },
+    {
+      "question": "Quel réseau social racheté par Facebook (Meta) est principalement axé sur la messagerie instantanée et les appels ?",
+      "options": [
+        "Twitter (X)",
+        "LinkedIn",
+        "Snapchat",
+        "WhatsApp"
+      ],
+      "correct": "WhatsApp",
+      "explanation": "WhatsApp est une application de messagerie multiplateforme très populaire qui permet d'envoyer des messages texte, des photos, des vidéos, des documents, ainsi que de passer des appels vocaux et vidéo via Internet. Elle appartient à Meta (Facebook)."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'communauté en ligne' ?",
+      "options": [
+        "Tous les habitants d'une même ville connectés à Internet",
+        "Un groupe de personnes qui interagissent et partagent des intérêts communs via une plateforme numérique (forum, groupe Facebook, serveur Discord...)",
+        "Les employés d'une même entreprise utilisant un réseau social interne",
+        "L'ensemble des utilisateurs d'un réseau social"
+      ],
+      "correct": "Un groupe de personnes qui interagissent et partagent des intérêts communs via une plateforme numérique (forum, groupe Facebook, serveur Discord...)",
+      "explanation": "Une communauté en ligne se forme autour d'un sujet, d'une passion, d'un projet ou d'une identité partagée, permettant aux membres d'échanger, de s'entraider et de créer du lien social."
+    },
+    {
+      "question": "Quel est l'avantage principal d'utiliser un gestionnaire de mots de passe ?",
+      "options": [
+        "Il choisit des mots de passe très simples à retenir",
+        "Il permet de générer et stocker de manière sécurisée des mots de passe uniques et complexes pour chaque site, sans avoir à les mémoriser tous",
+        "Il partage automatiquement vos mots de passe avec vos amis",
+        "Il supprime le besoin d'utiliser des mots de passe"
+      ],
+      "correct": "Il permet de générer et stocker de manière sécurisée des mots de passe uniques et complexes pour chaque site, sans avoir à les mémoriser tous",
+      "explanation": "Un gestionnaire de mots de passe est un outil (logiciel ou service en ligne) qui aide à créer des mots de passe forts et différents pour chaque compte et les conserve chiffrés. L'utilisateur n'a qu'à retenir un seul mot de passe maître."
+    },
+    {
+      "question": "Sur quel principe repose la technologie 'blockchain', parfois évoquée pour de futurs réseaux sociaux décentralisés ?",
+      "options": [
+        "Un serveur central unique qui stocke toutes les données",
+        "Un registre distribué, sécurisé et transparent, où les transactions (ou informations) sont enregistrées de manière immuable dans des blocs liés les uns aux autres",
+        "L'intelligence artificielle qui devine les préférences des utilisateurs",
+        "La suppression automatique des données après 24 heures"
+      ],
+      "correct": "Un registre distribué, sécurisé et transparent, où les transactions (ou informations) sont enregistrées de manière immuable dans des blocs liés les uns aux autres",
+      "explanation": "La blockchain est une technologie de stockage et de transmission d'informations sans organe de contrôle central. Elle repose sur une base de données distribuée, sécurisée par cryptographie, rendant les enregistrements difficiles à falsifier (connue surtout pour les cryptomonnaies comme le Bitcoin)."
+    },
+    {
+      "question": "Que faut-il faire si l'on est témoin de cyberharcèlement sur un réseau social ?",
+      "options": [
+        "Ignorer la situation",
+        "Partager la publication pour la dénoncer publiquement",
+        "Ne pas participer, soutenir la victime, et signaler le contenu ou le compte à la plateforme et éventuellement à un adulte de confiance ou aux autorités compétentes (ex: 3018)",
+        "Insulter le harceleur en retour"
+      ],
+      "correct": "Ne pas participer, soutenir la victime, et signaler le contenu ou le compte à la plateforme et éventuellement à un adulte de confiance ou aux autorités compétentes (ex: 3018)",
+      "explanation": "Face au cyberharcèlement, il est important de ne pas rester passif ni d'envenimer la situation. Soutenir la victime (message privé, écoute), et utiliser les outils de signalement de la plateforme sont les premières étapes. Signaler aux autorités (parents, école, police/gendarmerie, 3018) est crucial si la situation est grave."
+    },
+    {
+      "question": "Quel type de biais peut être introduit par les algorithmes de recommandation des réseaux sociaux ?",
+      "options": [
+        "Biais de confirmation (renforcer les croyances existantes)",
+        "Biais de popularité (mettre en avant ce qui est déjà populaire)",
+        "Biais discriminatoires (reproduire ou amplifier des stéréotypes)",
+        "Tous les biais mentionnés ci-dessus"
+      ],
+      "correct": "Tous les biais mentionnés ci-dessus",
+      "explanation": "Les algorithmes, conçus par des humains et entraînés sur des données existantes, peuvent introduire divers biais : renforcer les opinions (biais de confirmation), surreprésenter les contenus viraux (biais de popularité), ou même refléter et amplifier des discriminations présentes dans la société."
+    },
+    {
+      "question": "Qu'est-ce que le 'sharenting' ?",
+      "options": [
+        "Le partage de nourriture sur Instagram",
+        "La pratique des parents qui partagent de manière excessive des informations, photos ou vidéos de leurs enfants sur les réseaux sociaux",
+        "Le partage de compte entre plusieurs utilisateurs",
+        "Une technique de codage informatique"
+      ],
+      "correct": "La pratique des parents qui partagent de manière excessive des informations, photos ou vidéos de leurs enfants sur les réseaux sociaux",
+      "explanation": "Le 'sharenting' (mot-valise de 'share' - partager et 'parenting' - parentalité) soulève des questions sur le respect de la vie privée et du droit à l'image de l'enfant, ainsi que sur les risques potentiels liés à la diffusion de ces informations."
+    },
+    {
+      "question": "Quelle fonctionnalité permet souvent de signaler un contenu inapproprié (harcèlement, haine, fausse information...) sur un réseau social ?",
+      "options": [
+        "Le bouton 'J'aime'",
+        "Le bouton 'Partager'",
+        "Une option 'Signaler' ou 'Report' associée à la publication ou au profil",
+        "La fonction de blocage d'utilisateur"
+      ],
+      "correct": "Une option 'Signaler' ou 'Report' associée à la publication ou au profil",
+      "explanation": "La plupart des plateformes proposent une fonction de signalement qui permet aux utilisateurs d'alerter les équipes de modération sur des contenus qui enfreignent les règles de la communauté ou la loi."
+    },
+    {
+      "question": "Quel était le nom du premier réseau social largement reconnu, lancé en 1997, qui permettait de créer un profil et de lister ses amis ?",
+      "options": [
+        "MySpace",
+        "Friendster",
+        "SixDegrees.com",
+        "Facebook"
+      ],
+      "correct": "SixDegrees.com",
+      "explanation": "Bien que d'autres formes de communautés en ligne existaient avant, SixDegrees.com (lancé en 1997) est souvent considéré comme le premier véritable réseau social car il combinait la création de profil, la liste d'amis et la possibilité de naviguer dans les connexions d'amis."
+    },
+    {
+      "question": "En plus de la publicité, quelle autre source de revenus importante Facebook (Meta) développe-t-elle activement ?",
+      "options": [
+        "La vente de logiciels antivirus",
+        "Les abonnements aux jeux en ligne",
+        "Le matériel et les logiciels liés au métavers (casques VR Oculus/Meta Quest, plateformes Horizon Worlds)",
+        "La location de films en streaming"
+      ],
+      "correct": "Le matériel et les logiciels liés au métavers (casques VR Oculus/Meta Quest, plateformes Horizon Worlds)",
+      "explanation": "Depuis son changement de nom en Meta, l'entreprise investit massivement dans le développement du métavers, un univers virtuel persistant, avec la vente de casques de réalité virtuelle (Meta Quest) et la création de plateformes sociales virtuelles."
+    },
+    {
+      "question": "Quel est l'objectif de la 'vérification' de compte (badge bleu ou similaire) sur les réseaux sociaux comme Twitter ou Instagram ?",
+      "options": [
+        "Donner accès à des fonctionnalités secrètes",
+        "Confirmer l'authenticité d'un compte d'intérêt public (personnalité, marque, média...) pour éviter l'usurpation d'identité",
+        "Augmenter automatiquement le nombre d'abonnés",
+        "Garantir que le compte ne publie que des informations vraies"
+      ],
+      "correct": "Confirmer l'authenticité d'un compte d'intérêt public (personnalité, marque, média...) pour éviter l'usurpation d'identité",
+      "explanation": "Le badge de vérification sert à indiquer qu'un compte est bien celui qu'il prétend être, notamment pour les personnalités publiques, les célébrités ou les marques, afin de les distinguer des faux comptes ou des comptes de fans."
+    },
+    {
+      "question": "Comment appelle-t-on une attaque informatique qui vise à rendre un service en ligne (comme un réseau social) indisponible en le submergeant de trafic ?",
+      "options": [
+        "Phishing (hameçonnage)",
+        "Ransomware (rançongiciel)",
+        "Attaque par déni de service (DDoS - Distributed Denial of Service)",
+        "Spyware (logiciel espion)"
+      ],
+      "correct": "Attaque par déni de service (DDoS - Distributed Denial of Service)",
+      "explanation": "Une attaque DDoS utilise souvent un réseau de machines compromises (botnet) pour envoyer simultanément un très grand nombre de requêtes à un serveur cible, le saturant et le rendant incapable de répondre aux requêtes légitimes des utilisateurs."
+    },
+    {
+      "question": "Quel réseau social met l'accent sur les relations professionnelles, le recrutement et le partage de contenu lié au monde du travail ?",
+      "options": [
+        "TikTok",
+        "Instagram",
+        "LinkedIn",
+        "Pinterest"
+      ],
+      "correct": "LinkedIn",
+      "explanation": "LinkedIn est le principal réseau social professionnel, utilisé pour construire son réseau, chercher des opportunités d'emploi, partager son expertise et suivre l'actualité de son secteur d'activité."
+    },
+    {
+      "question": "Quelle technologie d'intelligence artificielle permet de créer des vidéos ou des sons truqués très réalistes (par exemple, faire dire quelque chose à une personnalité qu'elle n'a jamais dit) ?",
+      "options": [
+        "La reconnaissance faciale",
+        "Le Deepfake",
+        "L'algorithme de recommandation",
+        "Le traitement automatique du langage naturel (NLP)"
+      ],
+      "correct": "Le Deepfake",
+      "explanation": "Le 'deepfake' (hypertrucage) utilise l'apprentissage profond (deep learning) pour synthétiser des images, des vidéos ou des sons. Cette technologie peut être utilisée à des fins créatives mais aussi malveillantes (désinformation, usurpation d'identité, vengeance pornographique)."
+    },
+    {
+      "question": "Quel comportement consiste à vérifier de manière compulsive son téléphone ou ses notifications de réseaux sociaux ?",
+      "options": [
+        "Le multitâche",
+        "L'hyperconnexion ou l'usage problématique",
+        "La procrastination",
+        "La navigation privée"
+      ],
+      "correct": "L'hyperconnexion ou l'usage problématique",
+      "explanation": "L'hyperconnexion se caractérise par une utilisation excessive et souvent compulsive des outils numériques, notamment des smartphones et des réseaux sociaux, pouvant entraîner une dépendance et interférer avec d'autres aspects de la vie."
+    },
+    {
+      "question": "Outre le harcèlement, quel autre risque majeur lié à la diffusion de fausses informations les réseaux sociaux doivent-ils gérer ?",
+      "options": [
+        "La violation des droits d'auteur",
+        "La manipulation de l'opinion publique et l'ingérence dans les processus démocratiques",
+        "La surcharge des serveurs",
+        "La concurrence entre plateformes"
+      ],
+      "correct": "La manipulation de l'opinion publique et l'ingérence dans les processus démocratiques",
+      "explanation": "La propagation rapide et ciblée de désinformation ('fake news', propagande) sur les réseaux sociaux peut influencer les électeurs, polariser la société et déstabiliser les démocraties, comme l'ont montré plusieurs affaires récentes."
+    },
+    {
+      "question": "Quel est le terme général désignant l'utilisation des réseaux sociaux à des fins marketing ?",
+      "options": [
+        "Le SEO (Search Engine Optimization)",
+        "Le SMM (Social Media Marketing)",
+        "Le CRM (Customer Relationship Management)",
+        "L'UX Design (User Experience Design)"
+      ],
+      "correct": "Le SMM (Social Media Marketing)",
+      "explanation": "Le Social Media Marketing englobe toutes les actions marketing menées sur les réseaux sociaux : création de contenu, publicité, gestion de communauté, marketing d'influence, etc., dans le but d'atteindre des objectifs commerciaux (notoriété, ventes, engagement...)."
+    },
+    {
+      "question": "Quelle est la différence fondamentale entre un 'ami' sur Facebook et un 'abonné' (follower) sur Twitter ou Instagram ?",
+      "options": [
+        "Il n'y a aucune différence",
+        "Sur Facebook, la relation d'amitié est généralement réciproque (les deux s'acceptent), tandis que sur Twitter/Instagram, on peut suivre quelqu'un sans qu'il nous suive en retour.",
+        "Les 'amis' voient plus de publicités que les 'abonnés'",
+        "Seuls les 'amis' peuvent envoyer des messages privés"
+      ],
+      "correct": "Sur Facebook, la relation d'amitié est généralement réciproque (les deux s'acceptent), tandis que sur Twitter/Instagram, on peut suivre quelqu'un sans qu'il nous suive en retour.",
+      "explanation": "Facebook repose sur un modèle de connexion symétrique ('amis'), alors que Twitter, Instagram, TikTok reposent majoritairement sur un modèle asymétrique ('suivre'/'abonné'), permettant de suivre des personnalités ou des créateurs sans interaction réciproque obligatoire."
+    },
+    {
+      "question": "Que désigne le 'cyber-flâneur' (Lurker) dans une communauté en ligne ?",
+      "options": [
+        "Un utilisateur très actif qui publie beaucoup",
+        "Un utilisateur qui lit les contenus mais participe peu ou pas du tout aux discussions",
+        "Un modérateur anonyme",
+        "Un compte bot qui publie automatiquement"
+      ],
+      "correct": "Un utilisateur qui lit les contenus mais participe peu ou pas du tout aux discussions",
+      "explanation": "Le 'lurker' est un membre d'une communauté en ligne (forum, groupe) qui observe les échanges sans y contribuer activement par des publications ou des commentaires. C'est un comportement courant et pas nécessairement négatif."
+    }
+  ]
+}

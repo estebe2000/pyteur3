@@ -1,0 +1,1016 @@
+{
+  "algorithmique": [
+    {
+      "question": "Qu'est-ce qu'un algorithme ?",
+      "options": [
+        "Un langage de programmation",
+        "Un programme informatique compilé",
+        "Une suite finie et non ambiguë d'instructions permettant de résoudre un problème donné",
+        "Un composant matériel de l'ordinateur"
+      ],
+      "correct": "Une suite finie et non ambiguë d'instructions permettant de résoudre un problème donné",
+      "explanation": "Un algorithme est une méthode, une recette précise pour accomplir une tâche ou résoudre un problème, indépendamment du langage de programmation."
+    },
+    {
+      "question": "Laquelle de ces qualités n'est PAS une propriété essentielle d'un algorithme ?",
+      "options": [
+        "Il doit se terminer en un temps fini (terminaison)",
+        "Il doit être non ambigu (chaque instruction doit être claire)",
+        "Il doit être écrit dans un langage de programmation spécifique",
+        "Il doit être correct (produire le résultat attendu)"
+      ],
+      "correct": "Il doit être écrit dans un langage de programmation spécifiques",
+      "explanation": "Un algorithme peut être décrit en langage naturel, en pseudocode ou via un organigramme, avant d'être traduit dans un langage de programmation."
+    },
+    {
+      "question": "Que signifie la 'terminaison' d'un algorithme ?",
+      "options": [
+        "Qu'il est écrit correctement",
+        "Qu'il utilise peu de mémoire",
+        "Qu'il s'arrête après un nombre fini d'étapes pour toute entrée valide",
+        "Qu'il est très rapide"
+      ],
+      "correct": "Qu'il s'arrête après un nombre fini d'étapes pour toute entrée valide",
+      "explanation": "Un algorithme qui ne se termine pas (boucle infinie) n'est pas considéré comme valide."
+    },
+    {
+      "question": "Qu'est-ce que le pseudocode ?",
+      "options": [
+        "Un code machine directement exécutable",
+        "Une manière de décrire un algorithme en utilisant un langage informel, proche du langage naturel mais structuré comme un programme",
+        "Un langage de programmation très ancien",
+        "Un code source contenant volontairement des erreurs"
+      ],
+      "correct": "Une manière de décrire un algorithme en utilisant un langage informel, proche du langage naturel mais structuré comme un programme",
+      "explanation": "Le pseudocode permet de se concentrer sur la logique de l'algorithme sans se soucier de la syntaxe exacte d'un langage particulier."
+    },
+    {
+      "question": "Quelle structure algorithmique décrit une suite d'instructions exécutées les unes après les autres dans l'ordre ?",
+      "options": [
+        "La structure conditionnelle (alternative)",
+        "La structure répétitive (boucle)",
+        "La structure séquentielle (séquence)",
+        "La structure récursive"
+      ],
+      "correct": "La structure séquentielle (séquence)",
+      "explanation": "La séquence est la structure de base où les actions sont effectuées dans l'ordre où elles sont écrites."
+    },
+    {
+      "question": "Quelle structure algorithmique permet d'exécuter un bloc d'instructions différent en fonction d'une condition ?",
+      "options": [
+        "La structure conditionnelle (alternative)",
+        "La structure répétitive (boucle)",
+        "La structure séquentielle (séquence)",
+        "L'affectation"
+      ],
+      "correct": "La structure conditionnelle (alternative)",
+      "explanation": "Les structures comme 'Si ... Alors ... Sinon ...' (If ... Then ... Else ...) permettent de faire des choix dans l'algorithme."
+    },
+    {
+      "question": "Quelle structure algorithmique permet de répéter un bloc d'instructions plusieurs fois ?",
+      "options": [
+        "La structure conditionnelle (alternative)",
+        "La structure répétitive (boucle)",
+        "La structure séquentielle (séquence)",
+        "La déclaration de variable"
+      ],
+      "correct": "La structure répétitive (boucle)",
+      "explanation": "Les boucles (Pour, Tant Que / For, While) permettent d'exécuter un même traitement un certain nombre de fois ou tant qu'une condition est vraie."
+    },
+    {
+      "question": "En pseudocode, quelle instruction est typiquement utilisée pour une boucle qui répète un traitement tant qu'une condition est vraie ?",
+      "options": [
+        "POUR i ALLANT DE 1 A N FAIRE",
+        "SI condition ALORS",
+        "TANT QUE condition FAIRE",
+        "REPETER ... JUSQU'A condition"
+      ],
+      "correct": "TANT QUE condition FAIRE",
+      "explanation": "La boucle 'Tant Que' (While) évalue la condition avant chaque itération et continue tant qu'elle est vraie."
+    },
+    {
+      "question": "En pseudocode, quelle instruction est typiquement utilisée pour une boucle qui répète un traitement un nombre défini de fois ?",
+      "options": [
+        "POUR variable ALLANT DE debut A fin FAIRE",
+        "SI condition ALORS",
+        "TANT QUE condition FAIRE",
+        "CAS variable EST"
+      ],
+      "correct": "POUR variable ALLANT DE debut A fin FAIRE",
+      "explanation": "La boucle 'Pour' (For) est utilisée quand on connaît à l'avance le nombre d'itérations ou qu'on veut parcourir une séquence d'éléments."
+    },
+    {
+      "question": "Qu'est-ce qu'une variable dans un algorithme ?",
+      "options": [
+        "Une constante qui ne change jamais",
+        "Une instruction de l'algorithme",
+        "Un nom symbolique qui référence une valeur stockée en mémoire, pouvant changer au cours de l'exécution",
+        "Le résultat final de l'algorithme"
+      ],
+      "correct": "Un nom symbolique qui référence une valeur stockée en mémoire, pouvant changer au cours de l'exécution",
+      "explanation": "Les variables permettent de stocker et de manipuler des données intermédiaires ou des résultats."
+    },
+    {
+      "question": "Quelle opération consiste à donner une valeur à une variable ?",
+      "options": [
+        "La comparaison",
+        "La déclaration",
+        "L'affectation",
+        "L'itération"
+      ],
+      "correct": "L'affectation",
+      "explanation": "L'affectation (souvent notée `<-` en pseudocode ou `=` en Python) stocke une valeur dans l'emplacement mémoire associé à la variable."
+    },
+    {
+      "question": "Considérons l'algorithme : `a <- 5 ; b <- a + 2 ; a <- b`. Quelle est la valeur finale de `a` ?",
+      "options": [
+        "5",
+        "2",
+        "7",
+        "Impossible à déterminer"
+      ],
+      "correct": "7",
+      "explanation": "1. a vaut 5. 2. b vaut a+2, soit 5+2=7. 3. a prend la valeur de b, soit 7. La valeur finale de a est 7."
+    },
+    {
+      "question": "Qu'est-ce que le 'type' d'une variable ?",
+      "options": [
+        "Son nom",
+        "La nature de la valeur qu'elle peut contenir (entier, réel, booléen, chaîne...)",
+        "Sa position dans l'algorithme",
+        "Sa visibilité"
+      ],
+      "correct": "La nature de la valeur qu'elle peut contenir (entier, réel, booléen, chaîne...)",
+      "explanation": "Le type détermine les valeurs possibles pour la variable et les opérations qui peuvent être effectuées dessus."
+    },
+    {
+      "question": "Quel type de données utiliseriez-vous pour stocker le nombre d'élèves dans une classe ?",
+      "options": [
+        "Réel (Flottant)",
+        "Booléen",
+        "Entier",
+        "Chaîne de caractères"
+      ],
+      "correct": "Entier",
+      "explanation": "Le nombre d'élèves est un nombre entier non négatif."
+    },
+    {
+      "question": "Quel type de données utiliseriez-vous pour stocker le résultat d'une comparaison (Vrai ou Faux) ?",
+      "options": [
+        "Réel (Flottant)",
+        "Booléen",
+        "Entier",
+        "Chaîne de caractères"
+      ],
+      "correct": "Booléen",
+      "explanation": "Les booléens sont spécifiquement conçus pour représenter les valeurs logiques Vrai et Faux."
+    },
+    {
+      "question": "Que représente une structure de données de type 'tableau' ou 'liste' ?",
+      "options": [
+        "Une valeur unique",
+        "Une collection ordonnée d'éléments, généralement accessibles par un indice",
+        "Une association clé-valeur",
+        "Un arbre binaire"
+      ],
+      "correct": "Une collection ordonnée d'éléments, généralement accessibles par un indice",
+      "explanation": "Les tableaux/listes permettent de stocker plusieurs valeurs (de même type ou non) sous un seul nom."
+    },
+    {
+      "question": "Si `T` est un tableau/liste indexé à partir de 0, comment accéder au premier élément ?",
+      "options": [
+        "T(0)",
+        "T(1)",
+        "T[0]",
+        "T[1]"
+      ],
+      "correct": "T[0]",
+      "explanation": "L'indexation commence conventionnellement à 0. Le premier élément est donc à l'indice 0."
+    },
+    {
+      "question": "Si `T` est un tableau/liste de longueur `n`, quel est l'indice du dernier élément ?",
+      "options": [
+        "n",
+        "n+1",
+        "n-1",
+        "0"
+      ],
+      "correct": "n-1",
+      "explanation": "Les indices vont de 0 à n-1 pour un tableau de n éléments."
+    },
+    {
+      "question": "Quel algorithme simple permet de rechercher un élément dans une liste non triée en la parcourant séquentiellement ?",
+      "options": [
+        "La recherche dichotomique",
+        "Le tri par sélection",
+        "La recherche séquentielle (ou linéaire)",
+        "Le tri par insertion"
+      ],
+      "correct": "La recherche séquentielle (ou linéaire)",
+      "explanation": "On examine chaque élément de la liste l'un après l'autre jusqu'à trouver l'élément cherché ou atteindre la fin de la liste."
+    },
+    {
+      "question": "Dans le pire des cas, combien de comparaisons effectue la recherche séquentielle pour trouver un élément dans une liste de taille n ?",
+      "options": [
+        "1",
+        "log2(n)",
+        "n",
+        "n^2"
+      ],
+      "correct": "n",
+      "explanation": "Dans le pire cas, l'élément cherché est le dernier de la liste ou n'est pas présent, nécessitant de comparer avec les n éléments."
+    },
+    {
+      "question": "Quel algorithme de recherche efficace ne peut être utilisé que sur une liste préalablement triée ?",
+      "options": [
+        "La recherche séquentielle",
+        "La recherche dichotomique",
+        "Le parcours en largeur",
+        "Le parcours en profondeur"
+      ],
+      "correct": "La recherche dichotomique",
+      "explanation": "La recherche dichotomique compare l'élément cherché avec l'élément médian et élimine la moitié de la liste à chaque étape."
+    },
+    {
+      "question": "Comment fonctionne la recherche dichotomique dans une liste triée ?",
+      "options": [
+        "Elle compare l'élément à chaque extrémité de la liste",
+        "Elle compare l'élément cherché avec l'élément au milieu de la portion restante de la liste et élimine la moitié où l'élément ne peut pas se trouver",
+        "Elle parcourt la liste deux fois",
+        "Elle trie d'abord la liste (même si elle est déjà triée)"
+      ],
+      "correct": "Elle compare l'élément cherché avec l'élément au milieu de la portion restante de la liste et élimine la moitié où l'élément ne peut pas se trouver",
+      "explanation": "Ce processus de division par deux est répété jusqu'à trouver l'élément ou déterminer qu'il n'est pas présent."
+    },
+    {
+      "question": "Dans le pire des cas, quelle est la complexité temporelle (approximative) de la recherche dichotomique dans une liste de taille n ?",
+      "options": [
+        "O(1) (Constant)",
+        "O(log n) (Logarithmique)",
+        "O(n) (Linéaire)",
+        "O(n^2) (Quadratique)"
+      ],
+      "correct": "O(log n) (Logarithmique)",
+      "explanation": "À chaque étape, la taille de la zone de recherche est divisée par deux. Le nombre d'étapes est donc proportionnel au logarithme (base 2) de n, ce qui est beaucoup plus rapide que O(n) pour les grandes listes."
+    },
+    {
+      "question": "Quel est l'objectif principal d'un algorithme de tri ?",
+      "options": [
+        "Rechercher un élément spécifique",
+        "Réorganiser les éléments d'une collection (liste, tableau) selon un ordre défini (croissant ou décroissant)",
+        "Supprimer les doublons",
+        "Calculer la moyenne des éléments"
+      ],
+      "correct": "Réorganiser les éléments d'une collection (liste, tableau) selon un ordre défini (croissant ou décroissant)",
+      "explanation": "Le tri est une opération fondamentale pour faciliter la recherche ou la présentation des données."
+    },
+    {
+      "question": "Comment fonctionne le tri par sélection ?",
+      "options": [
+        "Il compare les éléments adjacents et les échange s'ils sont dans le désordre",
+        "Il trouve le plus petit élément restant dans la partie non triée et l'échange avec l'élément au début de la partie non triée",
+        "Il insère chaque élément à sa place correcte dans la partie déjà triée",
+        "Il divise la liste en deux et trie récursivement chaque moitié"
+      ],
+      "correct": "Il trouve le plus petit élément restant dans la partie non triée et l'échange avec l'élément au début de la partie non triée",
+      "explanation": "À chaque passe, le tri par sélection place le plus petit élément (ou le plus grand, selon l'ordre) à sa position finale."
+    },
+    {
+      "question": "Quelle est la complexité temporelle (dans le pire cas) du tri par sélection pour une liste de taille n ?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n^2)",
+      "explanation": "Le tri par sélection nécessite environ n passages, et chaque passage recherche le minimum parmi les éléments restants (en moyenne n/2 comparaisons), menant à une complexité quadratique."
+    },
+    {
+      "question": "Comment fonctionne le tri par insertion ?",
+      "options": [
+        "Il trouve le plus petit élément et le met au début",
+        "Il parcourt la liste et, pour chaque élément, le décale vers la gauche jusqu'à ce qu'il soit à sa place correcte dans la partie déjà triée",
+        "Il échange les éléments adjacents s'ils sont mal placés",
+        "Il utilise une table de hachage pour trier"
+      ],
+      "correct": "Il parcourt la liste et, pour chaque élément, le décale vers la gauche jusqu'à ce qu'il soit à sa place correcte dans la partie déjà triée",
+      "explanation": "Le tri par insertion construit progressivement la liste triée en insérant chaque nouvel élément au bon endroit parmi ceux déjà triés."
+    },
+    {
+      "question": "Quelle est la complexité temporelle dans le pire cas du tri par insertion pour une liste de taille n ?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n^2)",
+      "explanation": "Dans le pire cas (liste triée en ordre inverse), chaque insertion peut nécessiter de décaler tous les éléments précédents, menant à une complexité quadratique."
+    },
+    {
+      "question": "Quel est l'avantage du tri par insertion sur une liste presque déjà triée ?",
+      "options": [
+        "Il devient encore plus lent",
+        "Il devient beaucoup plus rapide, proche de O(n)",
+        "Il utilise moins de mémoire",
+        "Il devient instable"
+      ],
+      "correct": "Il devient beaucoup plus rapide, proche de O(n)",
+      "explanation": "Si la liste est presque triée, chaque élément n'a besoin que de quelques décalages (voire aucun) pour trouver sa place, rendant le tri par insertion efficace dans ce cas."
+    },
+    {
+      "question": "Qu'est-ce qu'une fonction (ou procédure, ou sous-programme) dans un algorithme ?",
+      "options": [
+        "Une variable globale",
+        "Un bloc d'instructions nommé, qui peut être appelé depuis d'autres parties de l'algorithme pour effectuer une tâche spécifique",
+        "Une boucle infinie",
+        "Une condition"
+      ],
+      "correct": "Un bloc d'instructions nommé, qui peut être appelé depuis d'autres parties de l'algorithme pour effectuer une tâche spécifique",
+      "explanation": "Les fonctions permettent la modularité, la réutilisation du code et la simplification de la logique principale."
+    },
+    {
+      "question": "Comment appelle-t-on les variables définies dans l'en-tête d'une fonction, qui reçoivent les valeurs passées lors de l'appel ?",
+      "options": [
+        "Variables globales",
+        "Arguments",
+        "Paramètres",
+        "Constantes"
+      ],
+      "correct": "Paramètres",
+      "explanation": "Les paramètres sont les 'variables d'entrée' de la fonction."
+    },
+    {
+      "question": "Comment appelle-t-on les valeurs réelles passées à une fonction lors de son appel ?",
+      "options": [
+        "Paramètres",
+        "Variables locales",
+        "Arguments",
+        "Types de retour"
+      ],
+      "correct": "Arguments",
+      "explanation": "Les arguments sont les valeurs fournies à la fonction pour qu'elle puisse travailler."
+    },
+    {
+      "question": "Que signifie 'valeur de retour' d'une fonction ?",
+      "options": [
+        "La première instruction de la fonction",
+        "Le nom de la fonction",
+        "La valeur que la fonction renvoie à l'endroit où elle a été appelée après avoir terminé son exécution",
+        "Le nombre de paramètres de la fonction"
+      ],
+      "correct": "La valeur que la fonction renvoie à l'endroit où elle a été appelée après avoir terminé son exécution",
+      "explanation": "Une fonction peut retourner un résultat (ex: le carré d'un nombre) qui peut être utilisé dans la suite de l'algorithme."
+    },
+    {
+      "question": "Quelle est la portée (scope) d'une variable définie à l'intérieur d'une fonction ?",
+      "options": [
+        "Globale (accessible partout)",
+        "Locale (accessible uniquement à l'intérieur de cette fonction)",
+        "Partagée (accessible par toutes les fonctions)",
+        "Constante"
+      ],
+      "correct": "Locale (accessible uniquement à l'intérieur de cette fonction)",
+      "explanation": "Les variables locales sont temporaires et isolées, elles n'interfèrent pas avec les variables du même nom en dehors de la fonction (sauf si global est utilisé)."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'spécification' de fonction ?",
+      "options": [
+        "Le code interne de la fonction",
+        "Une description précise de ce que la fonction fait, ses préconditions (ce qu'elle attend en entrée), et ses postconditions (ce qu'elle garantit en sortie)",
+        "Un exemple d'appel de la fonction",
+        "Le nombre de lignes de code de la fonction"
+      ],
+      "correct": "Une description précise de ce que la fonction fait, ses préconditions (ce qu'elle attend en entrée), et ses postconditions (ce qu'elle garantit en sortie)",
+      "explanation": "La spécification définit le contrat de la fonction, essentiel pour son utilisation correcte et la vérification de sa correction."
+    },
+    {
+      "question": "Qu'est-ce qu'une précondition pour une fonction ?",
+      "options": [
+        "Le résultat retourné par la fonction",
+        "Une condition qui doit être vérifiée avant d'appeler la fonction pour qu'elle fonctionne correctement",
+        "Une condition garantie après l'exécution de la fonction",
+        "Le type de la valeur de retour"
+      ],
+      "correct": "Une condition qui doit être vérifiée avant d'appeler la fonction pour qu'elle fonctionne correctement",
+      "explanation": "Ex: pour une fonction division(a, b), une précondition est b != 0."
+    },
+    {
+      "question": "Qu'est-ce qu'une postcondition pour une fonction ?",
+      "options": [
+        "Les paramètres d'entrée de la fonction",
+        "Une condition qui doit être vérifiée avant l'appel",
+        "Une propriété du résultat ou de l'état du programme qui est garantie après l'exécution de la fonction (si les préconditions étaient vraies)",
+        "Le nom de la fonction"
+      ],
+      "correct": "Une propriété du résultat ou de l'état du programme qui est garantie après l'exécution de la fonction (si les préconditions étaient vraies)",
+      "explanation": "Ex: pour une fonction tri(liste), une postcondition est que la liste retournée contient les mêmes éléments mais dans l'ordre croissant."
+    },
+    {
+      "question": "Quel est l'intérêt de découper un algorithme complexe en plusieurs fonctions ?",
+      "options": [
+        "Rendre l'algorithme plus difficile à comprendre",
+        "Augmenter la répétition du code",
+        "Améliorer la lisibilité, faciliter le test et le débogage de chaque partie, et permettre la réutilisation des fonctions",
+        "Ralentir l'exécution"
+      ],
+      "correct": "Améliorer la lisibilité, faciliter le test et le débogage de chaque partie, et permettre la réutilisation des fonctions",
+      "explanation": "C'est le principe de modularité : diviser pour mieux régner."
+    },
+    {
+      "question": "Qu'est-ce que la récursivité en algorithmique ?",
+      "options": [
+        "Utiliser des boucles `for` imbriquées",
+        "Une technique où une fonction s'appelle elle-même pour résoudre une version plus petite du même problème",
+        "Trier une liste",
+        "Utiliser des variables globales"
+      ],
+      "correct": "Une technique où une fonction s'appelle elle-même pour résoudre une version plus petite du même problème",
+      "explanation": "La récursivité est une approche élégante pour certains problèmes (ex: factorielle, Fibonacci, parcours d'arbres)."
+    },
+    {
+      "question": "Quels sont les deux éléments essentiels d'une fonction récursive correcte ?",
+      "options": [
+        "Une boucle `for` et une boucle `while`",
+        "Un cas de base (condition d'arrêt) et un appel récursif qui se rapproche du cas de base",
+        "Des variables globales et des variables locales",
+        "Des paramètres et une valeur de retour"
+      ],
+      "correct": "Un cas de base (condition d'arrêt) et un appel récursif qui se rapproche du cas de base",
+      "explanation": "Le cas de base arrête la récursion. L'appel récursif doit traiter un problème plus simple pour garantir la terminaison."
+    },
+    {
+      "question": "Considérons la fonction récursive : `f(n): SI n == 0 ALORS RETOURNER 1 SINON RETOURNER n * f(n-1)`. Que calcule cette fonction pour n >= 0 ?",
+      "options": [
+        "La somme des n premiers entiers",
+        "La factorielle de n (n!)",
+        "La puissance n-ième de 2",
+        "Le n-ième nombre de Fibonacci"
+      ],
+      "correct": "La factorielle de n (n!)",
+      "explanation": "Cas de base f(0)=1. Appel récursif f(n) = n * f(n-1). C'est la définition récursive de la factorielle."
+    },
+    {
+      "question": "Quel est le risque principal d'une fonction récursive mal écrite (ex: cas de base manquant ou appel récursif incorrect) ?",
+      "options": [
+        "Elle retourne toujours 0",
+        "Elle s'exécute trop rapidement",
+        "Elle peut conduire à une récursion infinie et à un dépassement de la pile d'appels (stack overflow)",
+        "Elle modifie les variables globales"
+      ],
+      "correct": "Elle peut conduire à une récursion infinie et à un dépassement de la pile d'appels (stack overflow)",
+      "explanation": "Si la fonction s'appelle sans cesse sans atteindre le cas de base, la mémoire allouée pour les appels de fonction s'épuise."
+    },
+    {
+      "question": "Qu'est-ce que la 'complexité' d'un algorithme ?",
+      "options": [
+        "Le nombre de lignes de code",
+        "La difficulté à comprendre l'algorithme",
+        "Une mesure (souvent asymptotique) des ressources (temps d'exécution ou espace mémoire) utilisées par l'algorithme en fonction de la taille de l'entrée",
+        "Le nombre de bugs dans l'algorithme"
+      ],
+      "correct": "Une mesure (souvent asymptotique) des ressources (temps d'exécution ou espace mémoire) utilisées par l'algorithme en fonction de la taille de l'entrée",
+      "explanation": "L'analyse de complexité permet de comparer l'efficacité des algorithmes, surtout pour de grandes tailles d'entrée."
+    },
+    {
+      "question": "Que signifie une complexité temporelle en O(n) (linéaire) ?",
+      "options": [
+        "Le temps d'exécution est constant",
+        "Le temps d'exécution est proportionnel à la taille de l'entrée n",
+        "Le temps d'exécution est proportionnel au carré de la taille de l'entrée (n^2)",
+        "Le temps d'exécution est proportionnel au logarithme de la taille de l'entrée (log n)"
+      ],
+      "correct": "Le temps d'exécution est proportionnel à la taille de l'entrée n",
+      "explanation": "Exemple : la recherche séquentielle. Si la taille de la liste double, le temps d'exécution double (en moyenne ou dans le pire cas)."
+    },
+    {
+      "question": "Que signifie une complexité temporelle en O(n^2) (quadratique) ?",
+      "options": [
+        "Le temps d'exécution est constant",
+        "Le temps d'exécution est proportionnel à n",
+        "Le temps d'exécution est proportionnel au carré de n (si n double, le temps est multiplié par 4)",
+        "Le temps d'exécution est proportionnel à log n"
+      ],
+      "correct": "Le temps d'exécution est proportionnel au carré de n (si n double, le temps est multiplié par 4)",
+      "explanation": "Exemple : les tris par sélection ou insertion ont une complexité quadratique dans le pire cas. Ils deviennent lents pour de grandes entrées."
+    },
+    {
+      "question": "Que signifie une complexité temporelle en O(log n) (logarithmique) ?",
+      "options": [
+        "Le temps d'exécution augmente très rapidement avec n",
+        "Le temps d'exécution augmente très lentement avec n (il augmente d'une unité constante quand n double)",
+        "Le temps d'exécution est proportionnel à n",
+        "Le temps d'exécution est constant"
+      ],
+      "correct": "Le temps d'exécution augmente très lentement avec n (il augmente d'une unité constante quand n double)",
+      "explanation": "Exemple : la recherche dichotomique. C'est très efficace pour de grandes tailles d'entrée."
+    },
+    {
+      "question": "Quel algorithme est généralement le plus efficace (en termes de complexité temporelle) pour rechercher un élément dans une grande liste triée ?",
+      "options": [
+        "Recherche séquentielle (O(n))",
+        "Recherche dichotomique (O(log n))",
+        "Tri par sélection (O(n^2))",
+        "Tri par insertion (O(n^2))"
+      ],
+      "correct": "Recherche dichotomique (O(log n))",
+      "explanation": "La complexité logarithmique est bien meilleure que la complexité linéaire pour de grandes valeurs de n."
+    },
+    {
+      "question": "Laquelle de ces complexités temporelles est la plus souhaitable pour un algorithme traitant de grandes quantités de données ?",
+      "options": [
+        "O(2^n) (Exponentielle)",
+        "O(n^2) (Quadratique)",
+        "O(n) (Linéaire)",
+        "O(log n) (Logarithmique)"
+      ],
+      "correct": "O(log n) (Logarithmique)",
+      "explanation": "L'ordre d'efficacité (du meilleur au pire) est généralement : O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(n^3) < O(2^n)."
+    },
+    {
+      "question": "Qu'est-ce que le 'cas le pire' (worst case) pour l'analyse de complexité ?",
+      "options": [
+        "Le temps d'exécution le plus rapide possible",
+        "Le temps d'exécution moyen sur toutes les entrées possibles",
+        "Le temps d'exécution maximal que l'algorithme peut prendre pour une entrée d'une taille donnée",
+        "Le cas où l'algorithme ne termine pas"
+      ],
+      "correct": "Le temps d'exécution maximal que l'algorithme peut prendre pour une entrée d'une taille donnée",
+      "explanation": "L'analyse dans le pire cas donne une garantie sur les performances maximales de l'algorithme."
+    },
+    {
+      "question": "Qu'est-ce que le 'cas moyen' (average case) pour l'analyse de complexité ?",
+      "options": [
+        "Le temps d'exécution minimal",
+        "Le temps d'exécution maximal",
+        "Le temps d'exécution espéré en moyenne sur toutes les entrées possibles d'une taille donnée (souvent plus difficile à calculer)",
+        "Le cas où l'entrée est vide"
+      ],
+      "correct": "Le temps d'exécution espéré en moyenne sur toutes les entrées possibles d'une taille donnée (souvent plus difficile à calculer)",
+      "explanation": "Le cas moyen donne une idée des performances typiques, mais repose sur des hypothèses sur la distribution des entrées."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de l'accès à un élément par son indice dans une liste ou un tableau ?",
+      "options": [
+        "O(1) (Constant)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(1) (Constant)",
+      "explanation": "L'accès par indice (ex: T[i]) est direct et prend un temps constant, quelle que soit la taille de la liste."
+    },
+    {
+      "question": "Quelle est la complexité temporelle (dans le pire cas) de l'insertion ou de la suppression d'un élément au début d'une liste Python (implémentée comme un tableau dynamique) ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Insérer ou supprimer au début nécessite de décaler tous les autres éléments de la liste, ce qui prend un temps proportionnel à la taille n de la liste."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de l'ajout d'un élément à la fin d'une liste Python (méthode append()) en moyenne (cas amorti) ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(1)",
+      "explanation": "Grâce à l'allocation d'espace supplémentaire, l'ajout en fin de liste est en moyenne très rapide (temps constant amorti), même s'il faut parfois réallouer et copier toute la liste (ce qui coûte O(n) mais arrive rarement)."
+    },
+    {
+      "question": "Quel algorithme faut-il utiliser pour calculer la somme de tous les éléments d'une liste de nombres ?",
+      "options": [
+        "Recherche dichotomique",
+        "Tri par insertion",
+        "Parcourir la liste avec une boucle et accumuler la somme dans une variable",
+        "Recherche séquentielle"
+      ],
+      "correct": "Parcourir la liste avec une boucle et accumuler la somme dans une variable",
+      "explanation": "Initialiser une variable `somme` à 0, puis pour chaque élément de la liste, ajouter cet élément à `somme`."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de l'algorithme qui calcule la somme des éléments d'une liste de taille n ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Il faut parcourir chaque élément de la liste une fois, donc le temps est proportionnel à n."
+    },
+    {
+      "question": "Comment trouver la valeur maximale dans une liste non triée ?",
+      "options": [
+        "Prendre le premier élément",
+        "Prendre le dernier élément",
+        "Parcourir la liste en maintenant une variable `max_courant` initialisée avec le premier élément, et la mettre à jour si on trouve un élément plus grand",
+        "Trier la liste puis prendre le dernier élément"
+      ],
+      "correct": "Parcourir la liste en maintenant une variable `max_courant` initialisée avec le premier élément, et la mettre à jour si on trouve un élément plus grand",
+      "explanation": "Cet algorithme compare chaque élément au maximum trouvé jusqu'à présent."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de l'algorithme qui trouve le maximum dans une liste non triée de taille n ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Il faut examiner chaque élément de la liste une fois pour être sûr de trouver le maximum."
+    },
+    {
+      "question": "Si on utilise la méthode 'diviser pour régner' (divide and conquer), comment résout-on un problème ?",
+      "options": [
+        "En le résolvant directement pour la taille maximale",
+        "En le décomposant en sous-problèmes plus petits du même type, en résolvant récursivement ces sous-problèmes, puis en combinant leurs solutions",
+        "En le testant avec toutes les entrées possibles",
+        "En utilisant une boucle `while` uniquement"
+      ],
+      "correct": "En le décomposant en sous-problèmes plus petits du même type, en résolvant récursivement ces sous-problèmes, puis en combinant leurs solutions",
+      "explanation": "C'est une stratégie algorithmique puissante utilisée par exemple dans le tri fusion ou la recherche dichotomique."
+    },
+    {
+      "question": "Quel algorithme de tri utilise la stratégie 'diviser pour régner' ?",
+      "options": [
+        "Tri par sélection",
+        "Tri par insertion",
+        "Tri fusion (Merge Sort)",
+        "Tri à bulles (Bubble Sort)"
+      ],
+      "correct": "Tri fusion (Merge Sort)",
+      "explanation": "Le tri fusion divise la liste en deux, trie récursivement chaque moitié, puis fusionne les deux moitiés triées."
+    },
+    {
+      "question": "Quelle est la complexité temporelle (dans le pire cas) du tri fusion pour une liste de taille n ?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n log n)",
+      "explanation": "Le tri fusion a une complexité de O(n log n) dans tous les cas, ce qui est meilleur que O(n^2) pour les tris par sélection ou insertion."
+    },
+    {
+      "question": "Qu'est-ce qu'un invariant de boucle ?",
+      "options": [
+        "Une variable qui ne change jamais de valeur",
+        "Une propriété qui est vraie avant la première itération de la boucle et qui reste vraie après chaque itération",
+        "Une condition qui arrête la boucle",
+        "Le nombre d'itérations de la boucle"
+      ],
+      "correct": "Une propriété qui est vraie avant la première itération de la boucle et qui reste vraie après chaque itération",
+      "explanation": "Les invariants de boucle sont utilisés pour prouver la correction des algorithmes itératifs (notamment que la boucle produit le résultat attendu à la fin)."
+    },
+    {
+      "question": "Dans le tri par insertion, quelle propriété est un invariant de boucle au début de chaque itération `i` ?",
+      "options": [
+        "La liste entière est triée",
+        "Le sous-tableau T[0...i-1] est trié",
+        "L'élément T[i] est le plus petit",
+        "Le sous-tableau T[i...n-1] est trié"
+      ],
+      "correct": "Le sous-tableau T[0...i-1] est trié",
+      "explanation": "Au début de l'itération `i`, les éléments précédents (de 0 à i-1) ont déjà été placés correctement les uns par rapport aux autres. L'itération insère T[i] dans ce sous-tableau trié."
+    },
+    {
+      "question": "Qu'est-ce qu'un variant de boucle ?",
+      "options": [
+        "Une variable locale à la boucle",
+        "Une expression entière positive qui décroît strictement à chaque itération de la boucle",
+        "Une condition qui reste toujours vraie",
+        "Le résultat de la boucle"
+      ],
+      "correct": "Une expression entière positive qui décroît strictement à chaque itération de la boucle",
+      "explanation": "L'existence d'un variant de boucle permet de prouver la terminaison de la boucle (car une quantité entière positive ne peut pas décroître indéfiniment)."
+    },
+    {
+      "question": "Dans une boucle `POUR i ALLANT DE 0 A n-1 FAIRE`, quelle quantité peut servir de variant de boucle ?",
+      "options": [
+        "i",
+        "n",
+        "n - i",
+        "n + i"
+      ],
+      "correct": "n - i",
+      "explanation": "Si n est la borne supérieure (exclue), alors `i` va de 0 à n-1. La quantité `n - i` vaut `n` au début, puis `n-1`, ..., jusqu'à `1` à la dernière itération. Elle est entière, positive et décroît strictement."
+    },
+    {
+      "question": "Qu'appelle-t-on un 'test de boîte noire' (black-box testing) ?",
+      "options": [
+        "Tester un algorithme dont on connaît le code source",
+        "Tester une fonction ou un programme en se basant uniquement sur sa spécification (entrées/sorties attendues), sans connaître son implémentation interne",
+        "Tester un algorithme dans l'obscurité",
+        "Tester un algorithme qui ne produit aucune sortie"
+      ],
+      "correct": "Tester une fonction ou un programme en se basant uniquement sur sa spécification (entrées/sorties attendues), sans connaître son implémentation interne",
+      "explanation": "On vérifie que pour des entrées données, la sortie est conforme à ce qui est spécifié, sans regarder comment le résultat est obtenu."
+    },
+    {
+      "question": "Qu'appelle-t-on un 'test de boîte blanche' (white-box testing) ?",
+      "options": [
+        "Tester un algorithme en se basant uniquement sur sa spécification",
+        "Tester un algorithme en examinant son code source interne pour s'assurer que toutes les branches (if/else), boucles et instructions sont correctement exécutées et testées",
+        "Tester un algorithme avec une interface blanche",
+        "Tester un algorithme qui ne prend pas d'entrée"
+      ],
+      "correct": "Tester un algorithme en examinant son code source interne pour s'assurer que toutes les branches (if/else), boucles et instructions sont correctement exécutées et testées",
+      "explanation": "La connaissance du code permet de concevoir des tests qui ciblent spécifiquement les différents chemins d'exécution possibles."
+    },
+    {
+      "question": "Pourquoi est-il important de tester les 'cas limites' (edge cases) lors de la vérification d'un algorithme ?",
+      "options": [
+        "Parce qu'ils sont les plus faciles à tester",
+        "Parce que les erreurs se produisent souvent pour des entrées particulières (liste vide, liste avec un seul élément, valeur maximale/minimale...)",
+        "Parce qu'ils représentent le cas moyen",
+        "Ce n'est pas important"
+      ],
+      "correct": "Parce que les erreurs se produisent souvent pour des entrées particulières (liste vide, liste avec un seul élément, valeur maximale/minimale...)",
+      "explanation": "Tester les cas limites permet de vérifier la robustesse de l'algorithme dans des situations potentiellement problématiques."
+    },
+    {
+      "question": "Si une fonction attend un entier positif en entrée (précondition), que devrait faire un bon test ?",
+      "options": [
+        "Tester uniquement avec des entiers positifs",
+        "Tester avec un entier positif, mais aussi avec 0 et un entier négatif pour vérifier le comportement (gestion d'erreur ou respect de la précondition)",
+        "Tester uniquement avec des nombres négatifs",
+        "Tester avec une chaîne de caractères"
+      ],
+      "correct": "Tester avec un entier positif, mais aussi avec 0 et un entier négatif pour vérifier le comportement (gestion d'erreur ou respect de la précondition)",
+      "explanation": "Il faut tester les cas valides (conformes à la spécification) et les cas invalides (non conformes) pour s'assurer que la fonction réagit correctement ou comme attendu."
+    },
+    {
+      "question": "Quel est le but de l'instruction `assert` en Python ?",
+      "options": [
+        "Afficher un message",
+        "Arrêter le programme",
+        "Vérifier qu'une condition est vraie pendant l'exécution. Si la condition est fausse, une erreur (AssertionError) est levée.",
+        "Définir une fonction"
+      ],
+      "correct": "Vérifier qu'une condition est vraie pendant l'exécution. Si la condition est fausse, une erreur (AssertionError) est levée.",
+      "explanation": "`assert` est utile pour vérifier des préconditions, des postconditions ou des invariants pendant le développement et les tests."
+    },
+    {
+      "question": "Peut-on toujours trouver un algorithme pour résoudre n'importe quel problème ?",
+      "options": [
+        "Oui, l'informatique peut tout résoudre",
+        "Non, il existe des problèmes dits 'indécidables' pour lesquels aucun algorithme ne peut fournir une réponse correcte dans tous les cas (ex: le problème de l'arrêt)",
+        "Oui, mais certains algorithmes sont très lents",
+        "Non, seulement pour les problèmes mathématiques"
+      ],
+      "correct": "Non, il existe des problèmes dits 'indécidables' pour lesquels aucun algorithme ne peut fournir une réponse correcte dans tous les cas (ex: le problème de l'arrêt)",
+      "explanation": "La théorie de la calculabilité (initiée par Turing, Church...) a montré les limites fondamentales de ce qui peut être calculé par un algorithme."
+    },
+    {
+      "question": "Qu'est-ce que le problème de l'arrêt ?",
+      "options": [
+        "Savoir quand un programme va s'arrêter de s'améliorer",
+        "Le problème de déterminer si un programme donné finira par s'arrêter (terminer) ou tournera indéfiniment pour une entrée donnée",
+        "Arrêter un programme en cours d'exécution",
+        "Savoir combien de temps un programme va s'exécuter"
+      ],
+      "correct": "Le problème de déterminer si un programme donné finira par s'arrêter (terminer) ou tournera indéfiniment pour une entrée donnée",
+      "explanation": "Alan Turing a prouvé qu'il n'existe pas d'algorithme général capable de résoudre le problème de l'arrêt pour tous les programmes et toutes les entrées possibles."
+    },
+    {
+      "question": "L'efficacité d'un algorithme dépend-elle de l'ordinateur sur lequel il s'exécute ?",
+      "options": [
+        "Oui, uniquement",
+        "Non, jamais",
+        "Le temps d'exécution réel dépend de la machine, mais la complexité asymptotique (ex: O(n), O(n^2)) décrit comment le temps évolue avec la taille de l'entrée, indépendamment de la vitesse de la machine",
+        "Seulement si l'algorithme est compilé"
+      ],
+      "correct": "Le temps d'exécution réel dépend de la machine, mais la complexité asymptotique (ex: O(n), O(n^2)) décrit comment le temps évolue avec la taille de l'entrée, indépendamment de la vitesse de la machine",
+      "explanation": "L'analyse de complexité permet de comparer les algorithmes de manière abstraite, en se concentrant sur leur comportement pour de grandes entrées."
+    },
+    {
+      "question": "Quel type d'algorithme est souvent utilisé pour des problèmes d'optimisation où l'on fait à chaque étape le choix qui semble le meilleur localement, sans garantie d'obtenir la meilleure solution globale ?",
+      "options": [
+        "Algorithme récursif",
+        "Algorithme glouton (greedy algorithm)",
+        "Algorithme diviser pour régner",
+        "Algorithme de tri"
+      ],
+      "correct": "Algorithme glouton (greedy algorithm)",
+      "explanation": "Les algorithmes gloutons sont souvent simples et rapides, mais ne donnent pas toujours la solution optimale (ex: problème du rendu de monnaie)."
+    },
+    {
+      "question": "Dans le problème du rendu de monnaie avec un système de pièces standard (ex: euros), l'algorithme glouton (donner la plus grande pièce possible à chaque étape) donne-t-il toujours la solution optimale (le moins de pièces) ?",
+      "options": [
+        "Non, jamais",
+        "Oui, pour le système d'euros et de nombreux systèmes standards (système canonique)",
+        "Seulement si le montant à rendre est petit",
+        "Seulement s'il n'y a pas de pièces de 1"
+      ],
+      "correct": "Oui, pour le système d'euros et de nombreux systèmes standards (système canonique)",
+      "explanation": "Heureusement, pour nos systèmes de monnaie usuels, la stratégie gloutonne fonctionne et est optimale."
+    },
+    {
+      "question": "Quelle est la complexité mémoire (space complexity) d'un algorithme ?",
+      "options": [
+        "Le temps qu'il prend pour s'exécuter",
+        "La quantité de mémoire (RAM) supplémentaire utilisée par l'algorithme en fonction de la taille de l'entrée",
+        "Le nombre de lignes de code",
+        "La taille du fichier exécutable"
+      ],
+      "correct": "La quantité de mémoire (RAM) supplémentaire utilisée par l'algorithme en fonction de la taille de l'entrée",
+      "explanation": "On s'intéresse souvent à l'espace mémoire additionnel utilisé par l'algorithme, en plus de l'espace nécessaire pour stocker l'entrée elle-même."
+    },
+    {
+      "question": "Le tri par sélection a une complexité temporelle de O(n^2). Quelle est sa complexité mémoire typique (espace supplémentaire utilisé) ?",
+      "options": [
+        "O(n^2)",
+        "O(n log n)",
+        "O(n)",
+        "O(1) (Constant)"
+      ],
+      "correct": "O(1) (Constant)",
+      "explanation": "Le tri par sélection trie la liste 'en place', en n'utilisant qu'un nombre constant de variables supplémentaires (pour les indices, le minimum temporaire), indépendamment de la taille n de la liste."
+    },
+    {
+      "question": "Le tri fusion a une complexité temporelle de O(n log n). Quelle est sa complexité mémoire typique dans une implémentation simple ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct": "O(n)",
+      "explanation": "L'étape de fusion nécessite souvent un tableau auxiliaire de taille n pour stocker temporairement les éléments fusionnés, entraînant une complexité mémoire linéaire."
+    },
+    {
+      "question": "Quelle structure de données peut être utilisée pour représenter les appels de fonctions récursives ?",
+      "options": [
+        "Une file (queue)",
+        "Une pile (stack)",
+        "Un tableau",
+        "Un dictionnaire"
+      ],
+      "correct": "Une pile (stack)",
+      "explanation": "La pile d'appels (call stack) gère les appels de fonctions imbriqués. Chaque appel ajoute un cadre sur la pile, et le retour d'une fonction dépile le cadre correspondant."
+    },
+    {
+      "question": "Comment s'appelle la conception d'algorithmes qui explore toutes les solutions possibles de manière systématique (souvent coûteux en temps) ?",
+      "options": [
+        "Algorithme glouton",
+        "Algorithme diviser pour régner",
+        "Recherche exhaustive (brute force)",
+        "Heuristique"
+      ],
+      "correct": "Recherche exhaustive (brute force)",
+      "explanation": "La force brute essaie toutes les combinaisons pour trouver la solution, ce qui n'est réalisable que pour des problèmes de petite taille."
+    },
+    {
+      "question": "Quelle approche algorithmique utilise des règles empiriques ou des approximations pour trouver une solution 'suffisamment bonne' (mais pas forcément optimale) à un problème difficile, en un temps raisonnable ?",
+      "options": [
+        "Recherche exhaustive",
+        "Algorithme glouton",
+        "Heuristique",
+        "Algorithme exact"
+      ],
+      "correct": "Heuristique",
+      "explanation": "Les heuristiques sont utilisées quand trouver la solution optimale est trop coûteux en temps (ex: problème du voyageur de commerce pour un grand nombre de villes)."
+    },
+    {
+      "question": "Qu'est-ce qu'un organigramme (flowchart) dans le contexte de l'algorithmique ?",
+      "options": [
+        "Un graphique montrant la complexité",
+        "Une représentation graphique d'un algorithme utilisant des symboles normalisés (rectangles pour les actions, losanges pour les conditions, flèches pour le flux)",
+        "Le code source du programme",
+        "La spécification de l'algorithme"
+      ],
+      "correct": "Une représentation graphique d'un algorithme utilisant des symboles normalisés (rectangles pour les actions, losanges pour les conditions, flèches pour le flux)",
+      "explanation": "Les organigrammes offrent une visualisation du déroulement et de la logique d'un algorithme."
+    },
+    {
+      "question": "Quel symbole est typiquement utilisé dans un organigramme pour représenter une décision (structure conditionnelle) ?",
+      "options": [
+        "Un rectangle",
+        "Un cercle",
+        "Un losange",
+        "Un ovale"
+      ],
+      "correct": "Un losange",
+      "explanation": "Le losange contient la condition, et deux flèches sortantes (Vrai/Faux ou Oui/Non) indiquent les chemins possibles."
+    },
+    {
+      "question": "Quel symbole est typiquement utilisé dans un organigramme pour représenter une action ou une instruction ?",
+      "options": [
+        "Un rectangle",
+        "Un cercle",
+        "Un losange",
+        "Un parallélogramme"
+      ],
+      "correct": "Un rectangle",
+      "explanation": "Le rectangle contient l'opération à effectuer (ex: affectation, calcul)."
+    },
+    {
+      "question": "Quel symbole est typiquement utilisé dans un organigramme pour représenter le début ou la fin de l'algorithme ?",
+      "options": [
+        "Un rectangle",
+        "Un ovale (ou rectangle aux coins arrondis)",
+        "Un losange",
+        "Un triangle"
+      ],
+      "correct": "Un ovale (ou rectangle aux coins arrondis)",
+      "explanation": "Les symboles de début ('Start') et de fin ('End' ou 'Stop') encadrent l'organigramme."
+    },
+    {
+      "question": "Pourquoi est-il utile de commenter son code lorsqu'on implémente un algorithme ?",
+      "options": [
+        "Pour ralentir l'exécution",
+        "Pour expliquer la logique de l'algorithme, le rôle des variables ou des parties complexes du code, facilitant ainsi sa compréhension et sa maintenance",
+        "Pour ajouter des erreurs",
+        "Ce n'est pas utile"
+      ],
+      "correct": "Pour expliquer la logique de l'algorithme, le rôle des variables ou des parties complexes du code, facilitant ainsi sa compréhension et sa maintenance",
+      "explanation": "Les commentaires sont ignorés par l'interpréteur/compilateur mais essentiels pour les humains qui lisent le code."
+    },
+    {
+      "question": "Quelle structure de données est basée sur le principe LIFO (Last-In, First-Out) ?",
+      "options": [
+        "Une file (Queue)",
+        "Une pile (Stack)",
+        "Une liste (List)",
+        "Un dictionnaire (Dictionary)"
+      ],
+      "correct": "Une pile (Stack)",
+      "explanation": "Dans une pile, le dernier élément ajouté est le premier à être retiré (comme une pile d'assiettes)."
+    },
+    {
+      "question": "Quelle structure de données est basée sur le principe FIFO (First-In, First-Out) ?",
+      "options": [
+        "Une pile (Stack)",
+        "Une file (Queue)",
+        "Un ensemble (Set)",
+        "Un tuple (Tuple)"
+      ],
+      "correct": "Une file (Queue)",
+      "explanation": "Dans une file, le premier élément ajouté est le premier à être retiré (comme une file d'attente)."
+    },
+    {
+      "question": "L'appel récursif de fonctions utilise implicitement quelle structure de données pour mémoriser les appels en attente ?",
+      "options": [
+        "Une file",
+        "Une pile (la pile d'appels)",
+        "Un tableau",
+        "Un arbre"
+      ],
+      "correct": "Une pile (la pile d'appels)",
+      "explanation": "Chaque appel de fonction empile un contexte (variables locales, adresse de retour). Lorsque la fonction retourne, son contexte est dépilé."
+    },
+    {
+      "question": "Quel terme désigne la traduction d'un algorithme en un langage de programmation spécifique ?",
+      "options": [
+        "La spécification",
+        "L'implémentation (ou codage)",
+        "La compilation",
+        "Le débogage"
+      ],
+      "correct": "L'implémentation (ou codage)",
+      "explanation": "L'implémentation consiste à écrire le code source qui réalise l'algorithme."
+    },
+    {
+      "question": "Quelle est la complexité temporelle d'un algorithme qui effectue une boucle imbriquée, où chaque boucle parcourt n éléments ?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n^2)",
+        "O(1)"
+      ],
+      "correct": "O(n^2)",
+      "explanation": "Si la boucle externe s'exécute n fois, et pour chaque itération externe, la boucle interne s'exécute n fois, le nombre total d'opérations est proportionnel à n * n = n^2."
+    },
+    {
+      "question": "Peut-on avoir plusieurs algorithmes différents pour résoudre le même problème ?",
+      "options": [
+        "Non, il n'y a qu'un seul algorithme par problème",
+        "Oui, et ces algorithmes peuvent avoir des efficacités (complexités) différentes",
+        "Oui, mais ils auront tous la même efficacité",
+        "Seulement si le problème est très simple"
+      ],
+      "correct": "Oui, et ces algorithmes peuvent avoir des efficacités (complexités) différentes",
+      "explanation": "Le choix du bon algorithme est crucial pour obtenir des performances acceptables, surtout pour de grandes tailles de données."
+    },
+    {
+      "question": "Qu'est-ce que l'instruction `pass` en Python ?",
+      "options": [
+        "Elle arrête le programme",
+        "Elle affiche un message",
+        "C'est une instruction nulle qui ne fait rien. Elle est utilisée comme bouche-trou là où une instruction est syntaxiquement requise mais où aucune action n'est nécessaire.",
+        "Elle saute l'itération suivante d'une boucle"
+      ],
+      "correct": "C'est une instruction nulle qui ne fait rien. Elle est utilisée comme bouche-trou là où une instruction est syntaxiquement requise mais où aucune action n'est nécessaire.",
+      "explanation": "On peut l'utiliser par exemple dans le corps d'une fonction ou d'un `if` qu'on n'a pas encore implémenté."
+    }
+  ]
+}

@@ -1,0 +1,1027 @@
+{
+  "donnees_structurees": [
+    {
+      "question": "Qu'est-ce qu'une donnée dans le contexte numérique ?",
+      "options": [
+        "Une opinion personnelle",
+        "Une information brute ou une mesure avant traitement",
+        "Un logiciel installé sur un ordinateur",
+        "Une connexion Internet"
+      ],
+      "correct": "Une information brute ou une mesure avant traitement",
+      "explanation": "Une donnée est une description élémentaire, souvent numérique ou textuelle (mesure, observation), qui n'a pas encore été interprétée ou mise en contexte."
+    },
+    {
+      "question": "Quelle est la principale différence entre données structurées et non structurées ?",
+      "options": [
+        "La taille des données",
+        "Leur format (texte ou image)",
+        "Leur organisation prédéfinie dans un format fixe (structurées) ou non (non structurées)",
+        "Leur vitesse de collecte"
+      ],
+      "correct": "Leur organisation prédéfinie dans un format fixe (structurées) ou non (non structurées)",
+      "explanation": "Les données structurées suivent un modèle de données prédéfini (ex: table de base de données), tandis que les données non structurées n'ont pas de structure interne explicite (ex: texte libre, image)."
+    },
+    {
+      "question": "Lequel de ces exemples représente typiquement des données structurées ?",
+      "options": [
+        "Le contenu d'un email",
+        "Une vidéo sur YouTube",
+        "Une table dans une base de données relationnelle",
+        "Un fichier audio MP3"
+      ],
+      "correct": "Une table dans une base de données relationnelle",
+      "explanation": "Une table de base de données est organisée en lignes et colonnes avec des types de données définis, ce qui est la caractéristique des données structurées."
+    },
+    {
+      "question": "Quel format de fichier est couramment utilisé pour stocker des données structurées sous forme de texte, où les valeurs sont séparées par un délimiteur ?",
+      "options": [
+        "DOCX",
+        "MP4",
+        "CSV",
+        "JPEG"
+      ],
+      "correct": "CSV",
+      "explanation": "CSV (Comma-Separated Values) est un format texte simple pour représenter des données tabulaires, avec des virgules (ou autres délimiteurs comme des points-virgules) séparant les valeurs."
+    },
+    {
+      "question": "Que signifie l'acronyme CSV ?",
+      "options": [
+        "Computer System Validation",
+        "Comma-Separated Values",
+        "Central Storage Volume",
+        "Customer Service Verification"
+      ],
+      "correct": "Comma-Separated Values",
+      "explanation": "CSV signifie 'Comma-Separated Values' (Valeurs Séparées par des Virgules), bien que d'autres délimiteurs puissent être utilisés."
+    },
+    {
+      "question": "Dans un fichier CSV, comment sont généralement représentées les différentes lignes d'une table ?",
+      "options": [
+        "Par des tabulations",
+        "Par des sauts de ligne",
+        "Par des espaces",
+        "Par des accolades"
+      ],
+      "correct": "Par des sauts de ligne",
+      "explanation": "Chaque ligne du fichier CSV correspond généralement à une ligne (ou enregistrement) de la table de données."
+    },
+    {
+      "question": "Quel caractère est le plus souvent utilisé comme délimiteur dans un fichier CSV 'standard' ?",
+      "options": [
+        "Le point-virgule (;)",
+        "La tabulation (\\t)",
+        "La virgule (,)",
+        "L'espace ( )"
+      ],
+      "correct": "La virgule (,)",
+      "explanation": "Par convention internationale, la virgule est le délimiteur standard du format CSV, même si en France, le point-virgule est fréquent à cause des paramètres régionaux."
+    },
+    {
+      "question": "Quel logiciel est couramment utilisé pour ouvrir et manipuler facilement des fichiers CSV ?",
+      "options": [
+        "Un lecteur vidéo",
+        "Un navigateur web",
+        "Un tableur (comme Excel, LibreOffice Calc, Google Sheets)",
+        "Un éditeur d'images"
+      ],
+      "correct": "Un tableur (comme Excel, LibreOffice Calc, Google Sheets)",
+      "explanation": "Les tableurs sont conçus pour travailler avec des données tabulaires et peuvent importer/exporter facilement des fichiers CSV."
+    },
+    {
+      "question": "Qu'appelle-t-on 'métadonnée' ?",
+      "options": [
+        "Une donnée très volumineuse",
+        "Une donnée personnelle sensible",
+        "Une donnée décrivant une autre donnée (ex: auteur, date de création, type de fichier)",
+        "Une donnée non structurée"
+      ],
+      "correct": "Une donnée décrivant une autre donnée (ex: auteur, date de création, type de fichier)",
+      "explanation": "Les métadonnées fournissent des informations contextuelles sur les données elles-mêmes, comme leur structure, leur origine, leur signification."
+    },
+    {
+      "question": "Quel est l'intérêt principal des métadonnées ?",
+      "options": [
+        "Augmenter la taille des fichiers",
+        "Rendre les données illisibles",
+        "Faciliter la recherche, la compréhension et la gestion des données",
+        "Crypter les données"
+      ],
+      "correct": "Faciliter la recherche, la compréhension et la gestion des données",
+      "explanation": "Les métadonnées aident à organiser, retrouver et interpréter correctement les données en fournissant un contexte essentiel."
+    },
+    {
+      "question": "Dans une base de données relationnelle, comment appelle-t-on une ligne d'une table ?",
+      "options": [
+        "Un attribut",
+        "Un champ",
+        "Un enregistrement (ou tuple)",
+        "Une clé primaire"
+      ],
+      "correct": "Un enregistrement (ou tuple)",
+      "explanation": "Chaque ligne d'une table représente un enregistrement unique (ou tuple) de données."
+    },
+    {
+      "question": "Dans une base de données relationnelle, comment appelle-t-on une colonne d'une table ?",
+      "options": [
+        "Un enregistrement",
+        "Une table",
+        "Un champ (ou attribut)",
+        "Une clé étrangère"
+      ],
+      "correct": "Un champ (ou attribut)",
+      "explanation": "Chaque colonne représente un champ (ou attribut) spécifique, qui décrit une caractéristique des enregistrements (ex: nom, âge, ville)."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'clé primaire' (primary key) dans une table de base de données ?",
+      "options": [
+        "La colonne la plus importante",
+        "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque enregistrement de la table",
+        "Une colonne contenant uniquement du texte",
+        "Une colonne qui relie deux tables"
+      ],
+      "correct": "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque enregistrement de la table",
+      "explanation": "La clé primaire garantit l'unicité de chaque ligne dans une table. Elle ne peut pas contenir de valeur nulle."
+    },
+    {
+      "question": "Quel est le rôle d'une 'clé étrangère' (foreign key) dans une base de données relationnelle ?",
+      "options": [
+        "Identifier de manière unique un enregistrement dans la même table",
+        "Crypter les données de la colonne",
+        "Établir et garantir un lien logique entre deux tables",
+        "Contenir des informations sur des pays étrangers"
+      ],
+      "correct": "Établir et garantir un lien logique entre deux tables",
+      "explanation": "Une clé étrangère dans une table référence la clé primaire d'une autre table, créant ainsi une relation entre elles."
+    },
+    {
+      "question": "Quel langage est standardisé pour interroger et manipuler les bases de données relationnelles ?",
+      "options": [
+        "Python",
+        "HTML",
+        "SQL",
+        "Java"
+      ],
+      "correct": "SQL",
+      "explanation": "SQL (Structured Query Language) est le langage standard pour gérer les données stockées dans les systèmes de gestion de bases de données relationnelles (SGBDR)."
+    },
+    {
+      "question": "Quelle commande SQL est utilisée pour sélectionner des données dans une table ?",
+      "options": [
+        "INSERT",
+        "UPDATE",
+        "DELETE",
+        "SELECT"
+      ],
+      "correct": "SELECT",
+      "explanation": "La commande `SELECT` permet d'extraire des données d'une ou plusieurs tables."
+    },
+    {
+      "question": "Dans une requête SQL `SELECT`, quelle clause spécifie la table d'où proviennent les données ?",
+      "options": [
+        "WHERE",
+        "FROM",
+        "ORDER BY",
+        "GROUP BY"
+      ],
+      "correct": "FROM",
+      "explanation": "La clause `FROM` est utilisée pour indiquer la ou les tables sources des données à sélectionner."
+    },
+    {
+      "question": "Dans une requête SQL `SELECT`, quelle clause permet de filtrer les enregistrements selon une condition ?",
+      "options": [
+        "FROM",
+        "ORDER BY",
+        "WHERE",
+        "SELECT"
+      ],
+      "correct": "WHERE",
+      "explanation": "La clause `WHERE` sert à spécifier les critères que les enregistrements doivent satisfaire pour être inclus dans le résultat."
+    },
+    {
+      "question": "Que signifie 'trier' des données ?",
+      "options": [
+        "Supprimer les données inutiles",
+        "Les organiser dans un ordre spécifique (alphabétique, numérique, chronologique)",
+        "Les crypter pour la sécurité",
+        "Les copier dans un autre fichier"
+      ],
+      "correct": "Les organiser dans un ordre spécifique (alphabétique, numérique, chronologique)",
+      "explanation": "Le tri consiste à ranger les données selon une ou plusieurs colonnes, en ordre croissant ou décroissant."
+    },
+    {
+      "question": "Quelle opération consiste à sélectionner un sous-ensemble de données basé sur des critères spécifiques ?",
+      "options": [
+        "Le tri",
+        "L'agrégation",
+        "Le filtrage",
+        "La jointure"
+      ],
+      "correct": "Le filtrage",
+      "explanation": "Le filtrage permet d'extraire uniquement les données qui répondent à certaines conditions (ex: tous les clients habitant Paris)."
+    },
+    {
+      "question": "Qu'est-ce que l'agrégation de données ?",
+      "options": [
+        "Relier deux tables entre elles",
+        "Calculer des résumés statistiques sur un ensemble de données (ex: somme, moyenne, nombre)",
+        "Supprimer les doublons",
+        "Convertir les données dans un autre format"
+      ],
+      "correct": "Calculer des résumés statistiques sur un ensemble de données (ex: somme, moyenne, nombre)",
+      "explanation": "L'agrégation combine plusieurs valeurs pour obtenir une seule valeur de synthèse (ex: calculer le chiffre d'affaires total, l'âge moyen)."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de compter le nombre d'enregistrements ?",
+      "options": [
+        "SUM()",
+        "AVG()",
+        "COUNT()",
+        "MAX()"
+      ],
+      "correct": "COUNT()",
+      "explanation": "La fonction `COUNT()` retourne le nombre de lignes qui correspondent aux critères spécifiés."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de calculer la moyenne d'une colonne numérique ?",
+      "options": [
+        "SUM()",
+        "AVG()",
+        "COUNT()",
+        "MIN()"
+      ],
+      "correct": "AVG()",
+      "explanation": "La fonction `AVG()` (average) calcule la valeur moyenne d'une colonne numérique."
+    },
+    {
+      "question": "Quel type de données représente un nombre entier (sans partie décimale) ?",
+      "options": [
+        "Chaîne de caractères (String)",
+        "Booléen (Boolean)",
+        "Nombre à virgule flottante (Float)",
+        "Entier (Integer)"
+      ],
+      "correct": "Entier (Integer)",
+      "explanation": "Le type 'Entier' (Integer) est utilisé pour stocker des nombres entiers positifs, négatifs ou nuls."
+    },
+    {
+      "question": "Quel type de données représente une séquence de caractères (texte) ?",
+      "options": [
+        "Entier (Integer)",
+        "Booléen (Boolean)",
+        "Nombre à virgule flottante (Float)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Chaîne de caractères (String)",
+      "explanation": "Le type 'Chaîne de caractères' (String ou parfois TEXT, VARCHAR) est utilisé pour stocker du texte."
+    },
+    {
+      "question": "Quel type de données ne peut prendre que deux valeurs, Vrai ou Faux ?",
+      "options": [
+        "Entier (Integer)",
+        "Booléen (Boolean)",
+        "Nombre à virgule flottante (Float)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Booléen (Boolean)",
+      "explanation": "Le type 'Booléen' (Boolean) représente une valeur logique, typiquement Vrai (True) or Faux (False)."
+    },
+    {
+      "question": "Quel type de données est utilisé pour représenter des nombres avec une partie décimale ?",
+      "options": [
+        "Entier (Integer)",
+        "Booléen (Boolean)",
+        "Nombre à virgule flottante (Float / Real)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Nombre à virgule flottante (Float / Real)",
+      "explanation": "Les types 'Float' ou 'Real' (ou DECIMAL, NUMERIC selon la précision) sont utilisés pour stocker des nombres réels, incluant une partie décimale."
+    },
+    {
+      "question": "Qu'est-ce que le 'nettoyage de données' (data cleaning) ?",
+      "options": [
+        "La suppression de toutes les données",
+        "Le processus d'identification et de correction (ou suppression) des erreurs, incohérences et valeurs manquantes dans un jeu de données",
+        "Le tri des données par ordre alphabétique",
+        "La visualisation des données sous forme de graphiques"
+      ],
+      "correct": "Le processus d'identification et de correction (ou suppression) des erreurs, incohérences et valeurs manquantes dans un jeu de données",
+      "explanation": "Le nettoyage est une étape cruciale pour garantir la qualité et la fiabilité des données avant leur analyse."
+    },
+    {
+      "question": "Pourquoi le nettoyage des données est-il important ?",
+      "options": [
+        "Pour rendre les données plus volumineuses",
+        "Pour introduire des erreurs aléatoires",
+        "Pour améliorer la précision des analyses et éviter les conclusions erronées",
+        "Pour ralentir le traitement des données"
+      ],
+      "correct": "Pour améliorer la précision des analyses et éviter les conclusions erronées",
+      "explanation": "Des données de mauvaise qualité (erronées, incomplètes) peuvent conduire à des résultats d'analyse incorrects et à de mauvaises décisions."
+    },
+    {
+      "question": "Que désigne le terme 'Open Data' ?",
+      "options": [
+        "Des données protégées par mot de passe",
+        "Des données accessibles uniquement aux employés d'une entreprise",
+        "Des données qui sont accessibles, utilisables, modifiables et partageables par tous, souvent sous une licence ouverte",
+        "Des données non structurées"
+      ],
+      "correct": "Des données qui sont accessibles, utilisables, modifiables et partageables par tous, souvent sous une licence ouverte",
+      "explanation": "L'Open Data vise à rendre les données (souvent publiques) disponibles pour favoriser la transparence, l'innovation et la participation citoyenne."
+    },
+    {
+      "question": "Quel type d'organisme publie fréquemment des données en Open Data ?",
+      "options": [
+        "Des réseaux sociaux privés",
+        "Des entreprises commerciales pour leurs secrets industriels",
+        "Des administrations publiques et des gouvernements",
+        "Des utilisateurs anonymes sur des forums"
+      ],
+      "correct": "Des administrations publiques et des gouvernements",
+      "explanation": "Les gouvernements et collectivités locales sont de grands pourvoyeurs d'Open Data (données de transport, budget, démographie, etc.) pour la transparence."
+    },
+    {
+      "question": "Quel format est souvent privilégié pour la publication d'Open Data en raison de sa simplicité et de son interopérabilité ?",
+      "options": [
+        "PDF",
+        "DOCX",
+        "CSV",
+        "PPTX"
+      ],
+      "correct": "CSV",
+      "explanation": "Le format CSV est facile à générer et à traiter par des machines, ce qui le rend idéal pour partager des données ouvertes structurées."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'donnée personnelle' selon le RGPD ?",
+      "options": [
+        "Toute information technique sur un ordinateur",
+        "Une opinion politique exprimée anonymement",
+        "Toute information se rapportant à une personne physique identifiée ou identifiable",
+        "Le nom d'une entreprise"
+      ],
+      "correct": "Toute information se rapportant à une personne physique identifiée ou identifiable",
+      "explanation": "Cela inclut le nom, l'adresse, le numéro de téléphone, l'email, la localisation, l'adresse IP, etc., dès qu'elle permet d'identifier une personne."
+    },
+    {
+      "question": "Que signifie l'acronyme RGPD ?",
+      "options": [
+        "Règlement Général pour le Développement Personnel",
+        "Réseau Global des Partenaires Digitaux",
+        "Règlement Général sur la Protection des Données",
+        "Rapport Généré par les Données Publiques"
+      ],
+      "correct": "Règlement Général sur la Protection des Données",
+      "explanation": "Le RGPD (GDPR en anglais) est un règlement européen qui encadre le traitement des données personnelles sur le territoire de l'Union européenne."
+    },
+    {
+      "question": "Quel est l'un des droits fondamentaux accordés aux individus par le RGPD concernant leurs données personnelles ?",
+      "options": [
+        "Le droit de vendre les données des autres",
+        "Le droit d'ignorer comment leurs données sont utilisées",
+        "Le droit d'accès, de rectification et de suppression de leurs données",
+        "Le droit de publier anonymement n'importe quelle information"
+      ],
+      "correct": "Le droit d'accès, de rectification et de suppression de leurs données",
+      "explanation": "Le RGPD renforce les droits des personnes sur leurs données, leur permettant de savoir ce qui est collecté, de corriger les erreurs et de demander l'effacement."
+    },
+    {
+      "question": "Qu'est-ce que l'anonymisation des données ?",
+      "options": [
+        "Le chiffrement des données",
+        "La suppression totale des données",
+        "Le processus qui modifie les données personnelles de manière irréversible afin qu'il ne soit plus possible d'identifier la personne concernée",
+        "L'ajout de fausses informations"
+      ],
+      "correct": "Le processus qui modifie les données personnelles de manière irréversible afin qu'il ne soit plus possible d'identifier la personne concernée",
+      "explanation": "L'anonymisation permet d'utiliser des jeux de données à des fins statistiques ou de recherche sans compromettre la vie privée des individus."
+    },
+    {
+      "question": "Pourquoi l'anonymisation est-elle importante dans le traitement des données personnelles ?",
+      "options": [
+        "Pour augmenter la taille des données",
+        "Pour permettre l'analyse et le partage de données tout en protégeant la vie privée des individus",
+        "Pour rendre les données inutilisables",
+        "Pour identifier plus facilement les personnes"
+      ],
+      "correct": "Pour permettre l'analyse et le partage de données tout en protégeant la vie privée des individus",
+      "explanation": "Une fois correctement anonymisées, les données ne sont plus considérées comme personnelles au sens du RGPD et peuvent être utilisées plus librement."
+    },
+    {
+      "question": "Quel type de graphique est adapté pour montrer l'évolution d'une valeur numérique au fil du temps ?",
+      "options": [
+        "Diagramme circulaire (camembert)",
+        "Diagramme en barres",
+        "Graphique linéaire (courbe)",
+        "Nuage de points"
+      ],
+      "correct": "Graphique linéaire (courbe)",
+      "explanation": "Un graphique linéaire est idéal pour visualiser des tendances et des évolutions sur une période donnée."
+    },
+    {
+      "question": "Quel type de graphique est le mieux adapté pour comparer des quantités entre différentes catégories ?",
+      "options": [
+        "Graphique linéaire (courbe)",
+        "Diagramme circulaire (camembert)",
+        "Diagramme en barres",
+        "Histogramme"
+      ],
+      "correct": "Diagramme en barres",
+      "explanation": "Le diagramme en barres (ou bâtons) permet de comparer facilement les valeurs associées à différentes catégories discrètes."
+    },
+    {
+      "question": "Quel type de graphique est utilisé pour montrer la proportion de chaque catégorie dans un ensemble total (représentant 100%) ?",
+      "options": [
+        "Graphique linéaire (courbe)",
+        "Diagramme en barres",
+        "Diagramme circulaire (camembert)",
+        "Nuage de points"
+      ],
+      "correct": "Diagramme circulaire (camembert)",
+      "explanation": "Le diagramme circulaire montre comment un total est divisé en parts, chaque part représentant une proportion du tout."
+    },
+    {
+      "question": "Quel est le principal objectif de la visualisation de données ?",
+      "options": [
+        "Rendre les données plus complexes",
+        "Présenter les données de manière claire et compréhensible pour en extraire des informations et des tendances",
+        "Masquer les informations importantes",
+        "Augmenter le volume des données"
+      ],
+      "correct": "Présenter les données de manière claire et compréhensible pour en extraire des informations et des tendances",
+      "explanation": "La visualisation transforme les données brutes en représentations graphiques pour faciliter leur interprétation par le cerveau humain."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'descripteur' dans le contexte des données structurées ?",
+      "options": [
+        "La valeur d'une donnée",
+        "Le nom d'une colonne ou d'un attribut qui décrit le type d'information contenue",
+        "Le nombre total de lignes",
+        "Le type de graphique utilisé pour la visualisation"
+      ],
+      "correct": "Le nom d'une colonne ou d'un attribut qui décrit le type d'information contenue",
+      "explanation": "Les descripteurs (ou noms de champs/attributs) donnent un sens aux colonnes d'une table (ex: 'Nom', 'Prénom', 'Date de naissance')."
+    },
+    {
+      "question": "Dans un tableur, à quoi correspond une 'cellule' ?",
+      "options": [
+        "À une ligne entière",
+        "À une colonne entière",
+        "À l'intersection d'une ligne et d'une colonne, contenant une seule donnée",
+        "Au nom du fichier"
+      ],
+      "correct": "À l'intersection d'une ligne et d'une colonne, contenant une seule donnée",
+      "explanation": "La cellule est l'unité de base d'une feuille de calcul, identifiée par sa référence (ex: A1, B5)."
+    },
+    {
+      "question": "Quel type d'opération permet de combiner des données provenant de deux tables différentes basées sur une colonne commune ?",
+      "options": [
+        "Le filtrage",
+        "Le tri",
+        "L'agrégation",
+        "La jointure"
+      ],
+      "correct": "La jointure",
+      "explanation": "La jointure (JOIN en SQL) permet de fusionner des lignes de deux tables ou plus en se basant sur une condition de liaison (souvent l'égalité entre clé primaire et clé étrangère)."
+    },
+    {
+      "question": "Que signifie 'donnée manquante' (missing data) ?",
+      "options": [
+        "Une donnée incorrecte",
+        "Une donnée trop grande pour être stockée",
+        "L'absence de valeur pour un attribut donné et un enregistrement donné",
+        "Une donnée dupliquée"
+      ],
+      "correct": "L'absence de valeur pour un attribut donné et un enregistrement donné",
+      "explanation": "Les données manquantes sont fréquentes et nécessitent une attention particulière lors du nettoyage et de l'analyse (ex: ignorer, remplacer par une moyenne)."
+    },
+    {
+      "question": "Quelle est une méthode simple pour traiter les données manquantes dans une colonne numérique ?",
+      "options": [
+        "Supprimer toute la colonne",
+        "Remplacer les valeurs manquantes par zéro",
+        "Remplacer les valeurs manquantes par la moyenne ou la médiane de la colonne",
+        "Laisser les valeurs manquantes telles quelles"
+      ],
+      "correct": "Remplacer les valeurs manquantes par la moyenne ou la médiane de la colonne",
+      "explanation": "L'imputation par la moyenne ou la médiane est une technique courante pour remplacer les valeurs numériques manquantes, bien qu'elle ait des limites."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'doublon' dans un jeu de données ?",
+      "options": [
+        "Une valeur très élevée",
+        "Une valeur manquante",
+        "Un enregistrement (ligne) qui est identique à un autre enregistrement dans la même table",
+        "Une colonne vide"
+      ],
+      "correct": "Un enregistrement (ligne) qui est identique à un autre enregistrement dans la même table",
+      "explanation": "Les doublons peuvent fausser les analyses (ex: compter deux fois la même personne) et doivent souvent être identifiés et supprimés lors du nettoyage."
+    },
+    {
+      "question": "Quel format de fichier utilise une structure hiérarchique avec des balises ouvrantes et fermantes pour organiser les données ?",
+      "options": [
+        "CSV",
+        "TXT",
+        "XML",
+        "JPEG"
+      ],
+      "correct": "XML",
+      "explanation": "XML (Extensible Markup Language) utilise des balises pour définir la structure et la signification des données, de manière similaire à HTML mais plus flexible."
+    },
+    {
+      "question": "Quel format de fichier, souvent utilisé pour les API web, représente les données sous forme d'objets (paires clé-valeur) et de tableaux ?",
+      "options": [
+        "CSV",
+        "XML",
+        "JSON",
+        "HTML"
+      ],
+      "correct": "JSON",
+      "explanation": "JSON (JavaScript Object Notation) est un format léger d'échange de données, facile à lire pour les humains et à analyser pour les machines."
+    },
+    {
+      "question": "Dans JSON, comment sont représentées les paires clé-valeur ?",
+      "options": [
+        "Clé = Valeur",
+        "\"Clé\": Valeur",
+        "Clé -> Valeur",
+        "Clé(Valeur)"
+      ],
+      "correct": "\"Clé\": Valeur",
+      "explanation": "Une clé (toujours une chaîne de caractères entre guillemets) est associée à une valeur (chaîne, nombre, booléen, tableau ou autre objet) par un deux-points (:)."
+    },
+    {
+      "question": "Comment sont délimitées les listes ou tableaux (arrays) en JSON ?",
+      "options": [
+        "Par des parenthèses ()",
+        "Par des accolades {}",
+        "Par des crochets []",
+        "Par des chevrons <>"
+      ],
+      "correct": "Par des crochets []",
+      "explanation": "Un tableau JSON contient une liste ordonnée de valeurs, séparées par des virgules et encadrées par des crochets."
+    },
+    {
+      "question": "Comment sont délimités les objets en JSON ?",
+      "options": [
+        "Par des parenthèses ()",
+        "Par des accolades {}",
+        "Par des crochets []",
+        "Par des chevrons <>"
+      ],
+      "correct": "Par des accolades {}",
+      "explanation": "Un objet JSON est une collection non ordonnée de paires clé-valeur, encadrée par des accolades."
+    },
+    {
+      "question": "Que représente le 'Volume' dans les 3V (ou plus) caractéristiques du Big Data ?",
+      "options": [
+        "La vitesse à laquelle les données sont générées",
+        "La diversité des types de données",
+        "La quantité massive de données générées et stockées",
+        "La véracité et la fiabilité des données"
+      ],
+      "correct": "La quantité massive de données générées et stockées",
+      "explanation": "Le Big Data se caractérise d'abord par des volumes de données dépassant les capacités des outils traditionnels (Téraoctets, Pétaoctets)."
+    },
+    {
+      "question": "Que représente la 'Vitesse' (Velocity) dans les caractéristiques du Big Data ?",
+      "options": [
+        "La taille des fichiers",
+        "La rapidité à laquelle les nouvelles données sont générées et doivent être traitées (souvent en temps réel)",
+        "Le nombre de types de données différents",
+        "Le coût de stockage des données"
+      ],
+      "correct": "La rapidité à laquelle les nouvelles données sont générées et doivent être traitées (souvent en temps réel)",
+      "explanation": "Le Big Data implique souvent des flux continus de données arrivant à grande vitesse (streaming de réseaux sociaux, capteurs IoT)."
+    },
+    {
+      "question": "Que représente la 'Variété' dans les caractéristiques du Big Data ?",
+      "options": [
+        "Le grand nombre d'utilisateurs",
+        "La vitesse de traitement",
+        "La diversité des formats de données (structurées, non structurées, semi-structurées: texte, image, vidéo, logs...)",
+        "Le volume total des données"
+      ],
+      "correct": "La diversité des formats de données (structurées, non structurées, semi-structurées: texte, image, vidéo, logs...)",
+      "explanation": "Le Big Data englobe une grande variété de types de données provenant de sources multiples, ce qui complexifie leur traitement."
+    },
+    {
+      "question": "Quel est l'un des principaux défis posés par le Big Data ?",
+      "options": [
+        "Le manque de données à analyser",
+        "La simplicité du traitement",
+        "Le stockage, le traitement et l'analyse efficaces de ces grands volumes de données variées et rapides",
+        "La facilité de garantir la vie privée"
+      ],
+      "correct": "Le stockage, le traitement et l'analyse efficaces de ces grands volumes de données variées et rapides",
+      "explanation": "Les outils et infrastructures traditionnels sont souvent insuffisants pour gérer les caractéristiques du Big Data, nécessitant de nouvelles approches."
+    },
+    {
+      "question": "Quel type de base de données est souvent utilisé pour gérer des données non structurées ou semi-structurées, typiques du Big Data ?",
+      "options": [
+        "Base de données relationnelle (SQL)",
+        "Fichier CSV",
+        "Base de données NoSQL",
+        "Tableur Excel"
+      ],
+      "correct": "Base de données NoSQL",
+      "explanation": "Les bases NoSQL (Not Only SQL) offrent plus de flexibilité dans les schémas de données et sont souvent conçues pour la scalabilité horizontale, adaptée au Big Data."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'catalogue de données' ?",
+      "options": [
+        "Un fichier contenant toutes les données brutes",
+        "Un inventaire organisé des actifs de données d'une organisation, incluant des métadonnées",
+        "Un type de base de données NoSQL",
+        "Un graphique montrant la distribution des données"
+      ],
+      "correct": "Un inventaire organisé des actifs de données d'une organisation, incluant des métadonnées",
+      "explanation": "Un catalogue de données aide les utilisateurs à trouver, comprendre et faire confiance aux données disponibles au sein d'une organisation."
+    },
+    {
+      "question": "Quel principe de base doit-on respecter lors de la collecte de données personnelles selon le RGPD ?",
+      "options": [
+        "Collecter le maximum de données possibles, au cas où",
+        "Collecter uniquement les données nécessaires et pertinentes pour l'objectif défini (minimisation des données)",
+        "Collecter les données sans informer la personne",
+        "Vendre immédiatement les données collectées"
+      ],
+      "correct": "Collecter uniquement les données nécessaires et pertinentes pour l'objectif défini (minimisation des données)",
+      "explanation": "Le principe de minimisation impose de limiter la collecte de données personnelles à ce qui est strictement nécessaire au regard de la finalité du traitement."
+    },
+    {
+      "question": "Quelle est la différence entre 'données' et 'informations' ?",
+      "options": [
+        "Il n'y a pas de différence",
+        "Les données sont structurées, l'information ne l'est pas",
+        "L'information est le résultat de l'interprétation, de l'organisation et de la mise en contexte des données brutes",
+        "Les données sont textuelles, l'information est numérique"
+      ],
+      "correct": "L'information est le résultat de l'interprétation, de l'organisation et de la mise en contexte des données brutes",
+      "explanation": "Les données deviennent de l'information lorsqu'elles sont traitées et présentées de manière à avoir un sens et une utilité. Donnée -> Traitement -> Information."
+    },
+    {
+      "question": "Quel outil simple peut-on utiliser pour effectuer des tris, des filtres et des calculs simples sur des données structurées ?",
+      "options": [
+        "Un éditeur de texte (ex: Notepad)",
+        "Un logiciel de présentation (ex: PowerPoint)",
+        "Un tableur (ex: Excel, Calc)",
+        "Un lecteur PDF"
+      ],
+      "correct": "Un tableur (ex: Excel, Calc)",
+      "explanation": "Les tableurs offrent des fonctionnalités intégrées pour manipuler et analyser facilement des jeux de données de taille modeste."
+    },
+    {
+      "question": "Comment s'appelle l'opération qui consiste à changer le type d'une donnée (ex: convertir une chaîne '123' en nombre entier 123) ?",
+      "options": [
+        "Le tri",
+        "Le filtrage",
+        "La conversion de type (ou 'casting')",
+        "L'agrégation"
+      ],
+      "correct": "La conversion de type (ou 'casting')",
+      "explanation": "La conversion de type est souvent nécessaire lors du traitement pour s'assurer que les données sont dans le format approprié pour les opérations suivantes."
+    },
+    {
+      "question": "Dans un fichier CSV, que fait-on généralement si une valeur textuelle contient le caractère délimiteur (ex: une virgule dans un champ 'description') ?",
+      "options": [
+        "On supprime la virgule",
+        "On met l'ensemble de la valeur textuelle entre guillemets",
+        "On change le délimiteur pour tout le fichier",
+        "On ne peut pas inclure ce caractère"
+      ],
+      "correct": "On met l'ensemble de la valeur textuelle entre guillemets",
+      "explanation": "Encadrer la valeur par des guillemets (ex: \"Texte, avec virgule\") permet d'indiquer que la virgule fait partie de la valeur et n'est pas un séparateur."
+    },
+    {
+      "question": "Quelle est la première ligne d'un fichier CSV bien formé ?",
+      "options": [
+        "La ligne contenant les totaux",
+        "Une ligne vide",
+        "La ligne d'en-tête (header) contenant les noms des colonnes (descripteurs)",
+        "Le premier enregistrement de données"
+      ],
+      "correct": "La ligne d'en-tête (header) contenant les noms des colonnes (descripteurs)",
+      "explanation": "La ligne d'en-tête est cruciale car elle fournit les métadonnées (noms des champs) nécessaires pour interpréter correctement les données des lignes suivantes."
+    },
+    {
+      "question": "Quel type de licence est souvent associé à l'Open Data pour garantir sa libre réutilisation ?",
+      "options": [
+        "Une licence propriétaire restrictive",
+        "Aucune licence",
+        "Une licence ouverte (ex: Creative Commons, Licence Ouverte)",
+        "Un brevet"
+      ],
+      "correct": "Une licence ouverte (ex: Creative Commons, Licence Ouverte)",
+      "explanation": "Les licences ouvertes définissent clairement les conditions de réutilisation (souvent très permissives) des données, favorisant ainsi leur partage et leur exploitation."
+    },
+    {
+      "question": "Quel danger représente une mauvaise interprétation des données visualisées ?",
+      "options": [
+        "Aucun danger, les graphiques sont toujours clairs",
+        "Prendre de mauvaises décisions basées sur une compréhension erronée des tendances ou des comparaisons",
+        "Améliorer la qualité des données",
+        "Ralentir l'ordinateur"
+      ],
+      "correct": "Prendre de mauvaises décisions basées sur une compréhension erronée des tendances ou des comparaisons",
+      "explanation": "Une visualisation trompeuse (échelle mal choisie, type de graphique inadapté) peut conduire à des conclusions fausses, d'où l'importance de la rigueur."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'requête' dans le contexte des bases de données ?",
+      "options": [
+        "La sauvegarde de la base de données",
+        "Une question posée à la base de données pour extraire, modifier ou ajouter des informations",
+        "Le nom de la base de données",
+        "Un type d'erreur fréquent"
+      ],
+      "correct": "Une question posée à la base de données pour extraire, modifier ou ajouter des informations",
+      "explanation": "Les requêtes (souvent écrites en SQL) sont le moyen d'interagir avec les données stockées dans une base de données."
+    },
+    {
+      "question": "Dans quel cas utiliserait-on principalement une base de données plutôt qu'un simple fichier CSV ?",
+      "options": [
+        "Pour stocker une petite liste de contacts simple",
+        "Quand les données sont très volumineuses, nécessitent des accès concurrents, des relations complexes et des requêtes sophistiquées",
+        "Pour envoyer des données par email",
+        "Pour des données non structurées comme des images"
+      ],
+      "correct": "Quand les données sont très volumineuses, nécessitent des accès concurrents, des relations complexes et des requêtes sophistiquées",
+      "explanation": "Les bases de données offrent des fonctionnalités avancées de gestion, de sécurité, de performance et d'interrogation qui dépassent celles des simples fichiers plats."
+    },
+    {
+      "question": "Comment appelle-t-on l'ensemble des règles qui définissent la structure d'une base de données relationnelle (tables, colonnes, types, clés) ?",
+      "options": [
+        "La requête",
+        "Le schéma",
+        "L'index",
+        "La sauvegarde"
+      ],
+      "correct": "Le schéma",
+      "explanation": "Le schéma de la base de données est le plan qui décrit l'organisation logique des données."
+    },
+    {
+      "question": "Quelle opération SQL permet d'ajouter de nouvelles lignes (enregistrements) dans une table ?",
+      "options": [
+        "SELECT",
+        "UPDATE",
+        "INSERT INTO",
+        "DELETE"
+      ],
+      "correct": "INSERT INTO",
+      "explanation": "La commande `INSERT INTO` est utilisée pour insérer de nouvelles données dans une table."
+    },
+    {
+      "question": "Quelle opération SQL permet de modifier des données existantes dans une table ?",
+      "options": [
+        "SELECT",
+        "UPDATE",
+        "INSERT INTO",
+        "DELETE"
+      ],
+      "correct": "UPDATE",
+      "explanation": "La commande `UPDATE` permet de mettre à jour les valeurs des enregistrements qui satisfont une certaine condition."
+    },
+    {
+      "question": "Quelle opération SQL permet de supprimer des lignes (enregistrements) d'une table ?",
+      "options": [
+        "SELECT",
+        "UPDATE",
+        "INSERT INTO",
+        "DELETE FROM"
+      ],
+      "correct": "DELETE FROM",
+      "explanation": "La commande `DELETE FROM` est utilisée pour supprimer des enregistrements d'une table, généralement en fonction d'une clause `WHERE`."
+    },
+    {
+      "question": "Quel est l'avantage d'utiliser des identifiants numériques uniques (comme des clés primaires entières auto-incrémentées) ?",
+      "options": [
+        "Ils prennent plus de place en mémoire",
+        "Ils sont plus faciles à retenir pour les utilisateurs",
+        "Ils sont efficaces pour les jointures et garantissent l'unicité de manière fiable et non ambiguë",
+        "Ils peuvent contenir des espaces et des caractères spéciaux"
+      ],
+      "correct": "Ils sont efficaces pour les jointures et garantissent l'unicité de manière fiable et non ambiguë",
+      "explanation": "Les identifiants numériques sont compacts, rapides à comparer et évitent les problèmes liés à la modification potentielle d'identifiants basés sur des données réelles (ex: nom)."
+    },
+    {
+      "question": "Qu'appelle-t-on 'encodage de caractères' (ex: UTF-8, ISO-8859-1) ?",
+      "options": [
+        "Le cryptage des données",
+        "La manière dont les caractères (lettres, symboles) sont représentés sous forme numérique (octets) dans un fichier",
+        "Le type de police utilisé pour afficher le texte",
+        "La compression du fichier"
+      ],
+      "correct": "La manière dont les caractères (lettres, symboles) sont représentés sous forme numérique (octets) dans un fichier",
+      "explanation": "Un mauvais encodage (ou une mauvaise détection de l'encodage) peut entraîner l'affichage incorrect des caractères, notamment les accents."
+    },
+    {
+      "question": "Quel encodage de caractères est aujourd'hui le plus universellement recommandé pour éviter les problèmes d'affichage des caractères spéciaux et des différentes langues ?",
+      "options": [
+        "ASCII",
+        "ISO-8859-1 (Latin-1)",
+        "UTF-8",
+        "EBCDIC"
+      ],
+      "correct": "UTF-8",
+      "explanation": "UTF-8 est capable de représenter la quasi-totalité des caractères de toutes les langues du monde et est devenu le standard de facto sur le Web et dans de nombreux systèmes."
+    },
+    {
+      "question": "Que signifie 'collecte passive' de données ?",
+      "options": [
+        "Demander explicitement des informations via un formulaire",
+        "Collecter des données sans action directe de l'utilisateur (ex: logs de connexion, cookies de suivi, capteurs)",
+        "Ne pas collecter de données du tout",
+        "Supprimer les données après la collecte"
+      ],
+      "correct": "Collecter des données sans action directe de l'utilisateur (ex: logs de connexion, cookies de suivi, capteurs)",
+      "explanation": "La collecte passive génère des données sur l'activité ou l'environnement de l'utilisateur sans qu'il ait à les fournir consciemment."
+    },
+    {
+      "question": "Quel type de données peut être collecté par les 'cookies' déposés par les sites web ?",
+      "options": [
+        "Uniquement le nom de l'utilisateur",
+        "Des informations sur les habitudes de navigation, les préférences, le contenu du panier d'achat, l'identifiant de session",
+        "Le mot de passe de l'utilisateur en clair",
+        "Des virus informatiques"
+      ],
+      "correct": "Des informations sur les habitudes de navigation, les préférences, le contenu du panier d'achat, l'identifiant de session",
+      "explanation": "Les cookies sont de petits fichiers texte utilisés pour mémoriser des informations sur l'utilisateur entre différentes visites ou pages, souvent utilisés pour le suivi publicitaire."
+    },
+    {
+      "question": "Quelle structure de données simple permet de stocker une collection d'éléments ordonnés, accessibles par un indice ?",
+      "options": [
+        "Un objet JSON",
+        "Une table de base de données",
+        "Une liste (ou tableau / array)",
+        "Une chaîne de caractères"
+      ],
+      "correct": "Une liste (ou tableau / array)",
+      "explanation": "Les listes (arrays en anglais) sont fondamentales en programmation pour stocker des séquences d'éléments (nombres, textes, etc.)."
+    },
+    {
+      "question": "Dans la plupart des langages de programmation, quel est l'indice du premier élément d'une liste ?",
+      "options": [
+        "1",
+        "0",
+        "-1",
+        "Cela dépend de la taille de la liste"
+      ],
+      "correct": "0",
+      "explanation": "L'indexation 'zéro-basée' est la convention la plus courante : le premier élément est à l'indice 0, le deuxième à l'indice 1, etc."
+    },
+    {
+      "question": "Quelle technologie permet de localiser géographiquement un appareil (et donc potentiellement son utilisateur) ?",
+      "options": [
+        "Le Bluetooth",
+        "Le Wi-Fi",
+        "Le GPS (Global Positioning System)",
+        "Le NFC (Near Field Communication)"
+      ],
+      "correct": "Le GPS (Global Positioning System)",
+      "explanation": "Le GPS utilise des signaux satellites pour déterminer la position d'un récepteur. Ces données de localisation sont des données personnelles."
+    },
+    {
+      "question": "Comment les données de localisation peuvent-elles être utilisées ?",
+      "options": [
+        "Uniquement pour les applications de cartographie",
+        "Pour la navigation, les services basés sur la proximité, le ciblage publicitaire géolocalisé, l'analyse des déplacements",
+        "Pour améliorer la vitesse de connexion Internet",
+        "Pour augmenter l'autonomie de la batterie"
+      ],
+      "correct": "Pour la navigation, les services basés sur la proximité, le ciblage publicitaire géolocalisé, l'analyse des déplacements",
+      "explanation": "Les données de localisation ont de nombreuses applications mais soulèvent aussi d'importantes questions de vie privée."
+    },
+    {
+      "question": "Qu'est-ce que la 'pseudonymisation' selon le RGPD ?",
+      "options": [
+        "L'anonymisation complète des données",
+        "Le traitement de données personnelles de telle façon que celles-ci ne puissent plus être attribuées à une personne précise sans avoir recours à des informations supplémentaires",
+        "L'utilisation de faux noms dans les formulaires",
+        "Le cryptage des données"
+      ],
+      "correct": "Le traitement de données personnelles de telle façon que celles-ci ne puissent plus être attribuées à une personne précise sans avoir recours à des informations supplémentaires",
+      "explanation": "La pseudonymisation (ex: remplacer le nom par un identifiant unique) réduit les risques mais reste une donnée personnelle car le lien peut être refait avec la clé de correspondance."
+    },
+    {
+      "question": "Quel type de représentation visuelle est adapté pour montrer la relation entre deux variables numériques ?",
+      "options": [
+        "Diagramme circulaire",
+        "Diagramme en barres",
+        "Nuage de points (Scatter plot)",
+        "Histogramme"
+      ],
+      "correct": "Nuage de points (Scatter plot)",
+      "explanation": "Un nuage de points affiche chaque observation comme un point dont les coordonnées correspondent aux valeurs des deux variables, permettant de visualiser des corrélations."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'histogramme' ?",
+      "options": [
+        "Un diagramme en barres pour comparer des catégories",
+        "Un graphique montrant l'évolution dans le temps",
+        "Une représentation graphique de la distribution d'une variable numérique continue, montrant la fréquence des données dans des intervalles (classes)",
+        "Un diagramme circulaire"
+      ],
+      "correct": "Une représentation graphique de la distribution d'une variable numérique continue, montrant la fréquence des données dans des intervalles (classes)",
+      "explanation": "L'histogramme permet de visualiser la forme de la distribution des données (symétrique, asymétrique, etc.) en regroupant les valeurs en classes."
+    },
+    {
+      "question": "Quelle étape du traitement de données implique de vérifier si les valeurs sont dans des plages attendues (ex: un âge ne peut pas être négatif) ?",
+      "options": [
+        "Le tri",
+        "La validation ou le contrôle de cohérence",
+        "L'agrégation",
+        "La visualisation"
+      ],
+      "correct": "La validation ou le contrôle de cohérence",
+      "explanation": "La validation fait partie du nettoyage et vise à identifier les données aberrantes ou manifestement incorrectes en fonction de règles métier ou logiques."
+    },
+    {
+      "question": "Quel est le format d'une date standardisé internationalement pour faciliter les échanges et les tris ?",
+      "options": [
+        "JJ/MM/AAAA (format français)",
+        "MM/JJ/AAAA (format américain)",
+        "AAAA-MM-JJ (ISO 8601)",
+        "JJ Mois AAAA (ex: 15 Mars 2023)"
+      ],
+      "correct": "AAAA-MM-JJ (ISO 8601)",
+      "explanation": "Le format ISO 8601 (ex: 2023-10-27) est non ambigu et permet un tri chronologique correct par simple tri alphabétique."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'API' (Application Programming Interface) dans le contexte de l'accès aux données ?",
+      "options": [
+        "Un type de base de données",
+        "Un logiciel de visualisation de données",
+        "Une interface qui permet à deux logiciels de communiquer entre eux, souvent utilisée pour accéder à des données ou des fonctionnalités d'un service externe (ex: API météo, API Twitter)",
+        "Un format de fichier compressé"
+      ],
+      "correct": "Une interface qui permet à deux logiciels de communiquer entre eux, souvent utilisée pour accéder à des données ou des fonctionnalités d'un service externe (ex: API météo, API Twitter)",
+      "explanation": "Les API sont essentielles pour l'échange de données structurées (souvent en JSON) entre applications sur Internet."
+    },
+    {
+      "question": "Quelle bibliothèque Python est très largement utilisée pour la manipulation et l'analyse de données structurées ?",
+      "options": [
+        "Matplotlib",
+        "NumPy",
+        "Pandas",
+        "Scikit-learn"
+      ],
+      "correct": "Pandas",
+      "explanation": "Pandas fournit des structures de données puissantes et flexibles (DataFrame, Series) et des fonctions pour lire, écrire, nettoyer, transformer et analyser des données."
+    },
+    {
+      "question": "Dans Pandas (Python), quelle structure de données principale est utilisée pour représenter une table de données à deux dimensions (lignes et colonnes) ?",
+      "options": [
+        "Series",
+        "List",
+        "Dictionary",
+        "DataFrame"
+      ],
+      "correct": "DataFrame",
+      "explanation": "Le DataFrame Pandas est l'équivalent en mémoire d'une table SQL ou d'une feuille de calcul, optimisé pour la manipulation de données."
+    },
+    {
+      "question": "Quel type de licence logicielle garantit la liberté d'utiliser, d'étudier, de modifier et de distribuer le logiciel ?",
+      "options": [
+        "Licence propriétaire",
+        "Shareware",
+        "Licence libre ou Open Source",
+        "Freeware"
+      ],
+      "correct": "Licence libre ou Open Source",
+      "explanation": "Les licences libres (comme GPL, MIT) sont fondamentales pour l'écosystème du logiciel libre et de l'open source, favorisant le partage et la collaboration."
+    },
+    {
+      "question": "Pourquoi est-il important de citer la source des données que l'on utilise, notamment en Open Data ?",
+      "options": [
+        "Pour augmenter la taille du rapport",
+        "Pour permettre la vérification, reconnaître le travail des producteurs de données et comprendre le contexte de la collecte",
+        "Ce n'est pas important si les données sont ouvertes",
+        "Pour cacher d'où proviennent les données"
+      ],
+      "correct": "Pour permettre la vérification, reconnaître le travail des producteurs de données et comprendre le contexte de la collecte",
+      "explanation": "La traçabilité et la transparence sur l'origine des données sont essentielles pour évaluer leur fiabilité et leur pertinence."
+    },
+    {
+      "question": "Comment appelle-t-on la pratique consistant à extraire automatiquement des données depuis des pages web ?",
+      "options": [
+        "Le phishing",
+        "Le web scraping (ou moissonnage du web)",
+        "L'injection SQL",
+        "Le cloud computing"
+      ],
+      "correct": "Le web scraping (ou moissonnage du web)",
+      "explanation": "Le web scraping utilise des scripts pour parcourir le code HTML des pages web et en extraire les informations structurées ou non structurées souhaitées."
+    },
+    {
+      "question": "Quelle considération éthique est primordiale lors du traitement de données, en particulier si elles concernent des individus ?",
+      "options": [
+        "Maximiser les profits à tout prix",
+        "Le respect de la vie privée, l'équité (éviter les biais discriminatoires) et la transparence",
+        "La vitesse de traitement avant tout",
+        "Utiliser les données pour influencer secrètement les opinions"
+      ],
+      "correct": "Le respect de la vie privée, l'équité (éviter les biais discriminatoires) et la transparence",
+      "explanation": "L'éthique des données implique de réfléchir aux impacts potentiels des traitements sur les individus et la société, et d'agir de manière responsable."
+    }
+  ]
+}

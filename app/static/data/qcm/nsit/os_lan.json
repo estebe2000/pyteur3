@@ -1,0 +1,917 @@
+{
+  "archi_os_reseaux": [
+    {
+      "question": "Quel modèle d'architecture d'ordinateur sépare physiquement la mémoire des instructions et la mémoire des données, permettant des accès simultanés ?",
+      "options": [
+        "Architecture de von Neumann",
+        "Architecture Harvard",
+        "Architecture distribuée",
+        "Architecture client-serveur"
+      ],
+      "correct": "Architecture Harvard",
+      "explanation": "L'architecture Harvard utilise des bus distincts pour les instructions et les données, ce qui permet au processeur de lire la prochaine instruction pendant qu'il accède aux données de l'instruction courante (pipelining facilité)."
+    },
+    {
+      "question": "Dans l'architecture de von Neumann, quel inconvénient est connu sous le nom de 'goulot d'étranglement de von Neumann' ?",
+      "options": [
+        "La mémoire est trop lente",
+        "Le processeur est trop complexe",
+        "Le bus unique partagé entre les instructions et les données limite le débit global",
+        "Les périphériques sont trop lents"
+      ],
+      "correct": "Le bus unique partagé entre les instructions et les données limite le débit global",
+      "explanation": "Le fait que le CPU ne puisse pas chercher une instruction et accéder aux données en même temps via le même bus crée une limitation de performance."
+    },
+    {
+      "question": "Quelle partie du CPU est responsable de l'exécution des opérations arithmétiques (ex: +, -) et logiques (ex: AND, OR, NOT) ?",
+      "options": [
+        "Unité de Contrôle (UC)",
+        "Unité Arithmétique et Logique (UAL / ALU)",
+        "Registres",
+        "Mémoire Cache"
+      ],
+      "correct": "Unité Arithmétique et Logique (UAL / ALU)",
+      "explanation": "L'UAL (ALU en anglais) effectue tous les calculs demandés par les instructions."
+    },
+    {
+      "question": "Quelle partie du CPU interprète les instructions et génère les signaux de commande pour les autres composants ?",
+      "options": [
+        "Unité Arithmétique et Logique (UAL)",
+        "Registres",
+        "Bus de données",
+        "Unité de Contrôle (UC)"
+      ],
+      "correct": "Unité de Contrôle (UC)",
+      "explanation": "L'UC (Control Unit) orchestre le cycle d'exécution des instructions (Fetch-Decode-Execute)."
+    },
+    {
+      "question": "Quel registre du CPU contient l'adresse de la prochaine instruction à exécuter ?",
+      "options": [
+        "Registre d'Instruction (RI)",
+        "Accumulateur",
+        "Compteur Ordinal (PC - Program Counter)",
+        "Registre d'Adresse Mémoire (MAR)"
+      ],
+      "correct": "Compteur Ordinal (PC - Program Counter)",
+      "explanation": "Le PC pointe toujours vers l'instruction suivante dans le flux normal d'exécution."
+    },
+    {
+      "question": "Quel registre du CPU contient l'instruction en cours de décodage et d'exécution ?",
+      "options": [
+        "Compteur Ordinal (PC)",
+        "Registre d'Instruction (RI)",
+        "Registre de Données Mémoire (MDR)",
+        "Registre d'État"
+      ],
+      "correct": "Registre d'Instruction (RI)",
+      "explanation": "L'instruction lue depuis la mémoire est chargée dans le RI pour être analysée par l'Unité de Contrôle."
+    },
+    {
+      "question": "Qu'est-ce que le cycle 'Fetch-Decode-Execute' ?",
+      "options": [
+        "Le cycle de vie d'un processus",
+        "Les étapes de la compilation",
+        "Le cycle fondamental d'exécution d'une instruction par le CPU : chercher l'instruction, la décoder, l'exécuter",
+        "Le processus de démarrage de l'OS"
+      ],
+      "correct": "Le cycle fondamental d'exécution d'une instruction par le CPU : chercher l'instruction, la décoder, l'exécuter",
+      "explanation": "Ce cycle est répété continuellement par le CPU pour exécuter un programme."
+    },
+    {
+      "question": "Quelle technique d'optimisation des CPU consiste à découper l'exécution d'une instruction en plusieurs étapes et à chevaucher l'exécution de ces étapes pour différentes instructions ?",
+      "options": [
+        "Le multi-coeur",
+        "Le pipelining",
+        "La mémoire cache",
+        "La virtualisation"
+      ],
+      "correct": "Le pipelining",
+      "explanation": "Le pipeline permet d'augmenter le débit d'instructions en traitant plusieurs instructions en parallèle à différentes étapes de leur exécution (comme une chaîne de montage)."
+    },
+    {
+      "question": "Quel est l'avantage principal d'un processeur multi-coeurs ?",
+      "options": [
+        "Il consomme moins d'énergie",
+        "Il est plus simple à fabriquer",
+        "Il permet d'exécuter plusieurs threads ou processus réellement en parallèle, améliorant les performances pour les tâches parallélisables",
+        "Il augmente la vitesse d'horloge maximale"
+      ],
+      "correct": "Il permet d'exécuter plusieurs threads ou processus réellement en parallèle, améliorant les performances pour les tâches parallélisables",
+      "explanation": "Avoir plusieurs coeurs (unités de traitement) permet de traiter plus d'instructions simultanément."
+    },
+    {
+      "question": "Comment s'appelle la mémoire rapide, de petite taille, située entre le CPU et la RAM, servant à stocker les données/instructions fréquemment utilisées ?",
+      "options": [
+        "ROM",
+        "Disque Dur",
+        "Mémoire Cache (L1, L2, L3)",
+        "Registres"
+      ],
+      "correct": "Mémoire Cache (L1, L2, L3)",
+      "explanation": "La mémoire cache réduit la latence moyenne des accès mémoire en exploitant la localité temporelle et spatiale des accès."
+    },
+    {
+      "question": "Quel type de bus relie le CPU à la mémoire principale (RAM) ?",
+      "options": [
+        "Bus USB",
+        "Bus PCI Express",
+        "Bus système (FSB ou équivalent moderne comme DMI/QPI)",
+        "Bus SATA"
+      ],
+      "correct": "Bus système (FSB ou équivalent moderne comme DMI/QPI)",
+      "explanation": "Le bus système (comprenant bus d'adresses, de données et de contrôle) est le canal principal entre le CPU et la RAM."
+    },
+    {
+      "question": "Quel type de bus est principalement utilisé pour connecter des cartes d'extension rapides (carte graphique, carte réseau haute vitesse, SSD NVMe) à la carte mère ?",
+      "options": [
+        "Bus ISA",
+        "Bus PCI",
+        "Bus PCI Express (PCIe)",
+        "Bus AGP"
+      ],
+      "correct": "Bus PCI Express (PCIe)",
+      "explanation": "PCIe est un bus série à haute vitesse qui a largement remplacé les anciens bus parallèles PCI et AGP."
+    },
+    {
+      "question": "Qu'est-ce qu'une interruption matérielle (hardware interrupt) ?",
+      "options": [
+        "Une erreur dans un programme",
+        "Un signal envoyé par un périphérique matériel au CPU pour l'informer qu'il a besoin d'attention (ex: donnée prête, erreur)",
+        "Une coupure de courant",
+        "Un appel système"
+      ],
+      "correct": "Un signal envoyé par un périphérique matériel au CPU pour l'informer qu'il a besoin d'attention (ex: donnée prête, erreur)",
+      "explanation": "Les interruptions permettent aux périphériques d'interrompre le travail courant du CPU pour traiter un événement urgent, évitant au CPU d'attendre activement (polling)."
+    },
+    {
+      "question": "Comment le système d'exploitation gère-t-il une interruption matérielle ?",
+      "options": [
+        "Il l'ignore",
+        "Il arrête l'ordinateur",
+        "Il sauvegarde le contexte du processus courant, exécute une routine de service d'interruption (ISR) spécifique à la source de l'interruption, puis restaure le contexte du processus interrompu",
+        "Il redémarre le périphérique"
+      ],
+      "correct": "Il sauvegarde le contexte du processus courant, exécute une routine de service d'interruption (ISR) spécifique à la source de l'interruption, puis restaure le contexte du processus interrompu",
+      "explanation": "La gestion des interruptions est un mécanisme clé pour la communication asynchrone entre le matériel et l'OS."
+    },
+    {
+      "question": "Quel est le rôle principal du Système d'Exploitation (OS) ?",
+      "options": [
+        "Exécuter une seule application à la fois",
+        "Fournir une interface entre le matériel et les applications, gérer les ressources (CPU, mémoire, E/S) et offrir des services aux utilisateurs et aux programmes",
+        "Optimiser la vitesse de la connexion Internet",
+        "Compiler les programmes"
+      ],
+      "correct": "Fournir une interface entre le matériel et les applications, gérer les ressources (CPU, mémoire, E/S) et offrir des services aux utilisateurs et aux programmes",
+      "explanation": "L'OS agit comme un chef d'orchestre et une couche d'abstraction pour simplifier l'utilisation du matériel."
+    },
+    {
+      "question": "Comment s'appelle la partie centrale de l'OS, responsable des fonctions essentielles et interagissant directement avec le matériel ?",
+      "options": [
+        "Le Shell",
+        "L'Interface Graphique",
+        "Le Noyau (Kernel)",
+        "Le Pilote (Driver)"
+      ],
+      "correct": "Le Noyau (Kernel)",
+      "explanation": "Le noyau gère la gestion des processus, de la mémoire, des interruptions, des appels système, etc."
+    },
+    {
+      "question": "Qu'est-ce qu'un processus pour le système d'exploitation ?",
+      "options": [
+        "Un fichier sur le disque",
+        "Un programme en cours d'exécution, avec son propre espace d'adressage virtuel, son état et ses ressources",
+        "Un thread",
+        "Un périphérique matériel"
+      ],
+      "correct": "Un programme en cours d'exécution, avec son propre espace d'adressage virtuel, son état et ses ressources",
+      "explanation": "L'OS gère le cycle de vie et l'exécution des processus."
+    },
+    {
+      "question": "Quel état décrit un processus qui attend une ressource (ex: fin d'E/S, verrou) ?",
+      "options": [
+        "Prêt (Ready)",
+        "Élu / En cours (Running)",
+        "Bloqué / En attente (Blocked / Waiting)",
+        "Terminé (Terminated)"
+      ],
+      "correct": "Bloqué / En attente (Blocked / Waiting)",
+      "explanation": "Un processus bloqué ne peut pas s'exécuter tant que l'événement attendu ne s'est pas produit."
+    },
+    {
+      "question": "Quel composant de l'OS décide quel processus prêt obtient le CPU ?",
+      "options": [
+        "Le gestionnaire de mémoire",
+        "Le gestionnaire de fichiers",
+        "L'ordonnanceur (Scheduler)",
+        "Le gestionnaire d'interruptions"
+      ],
+      "correct": "L'ordonnanceur (Scheduler)",
+      "explanation": "L'ordonnanceur applique un algorithme (FIFO, Round Robin, priorités...) pour allouer le temps CPU."
+    },
+    {
+      "question": "Qu'est-ce que le 'quantum de temps' dans l'ordonnancement Round Robin ?",
+      "options": [
+        "Le temps total d'exécution d'un processus",
+        "La durée maximale pendant laquelle un processus peut utiliser le CPU avant d'être préempté et remis dans la file des processus prêts",
+        "Le temps nécessaire pour changer de contexte",
+        "La priorité du processus"
+      ],
+      "correct": "La durée maximale pendant laquelle un processus peut utiliser le CPU avant d'être préempté et remis dans la file des processus prêts",
+      "explanation": "Le quantum permet un partage équitable du CPU entre les processus interactifs."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'thread' (fil d'exécution) ?",
+      "options": [
+        "Un synonyme de processus",
+        "Une unité d'exécution légère au sein d'un processus, partageant le même espace mémoire mais ayant son propre compteur ordinal et sa propre pile d'exécution",
+        "Une connexion réseau",
+        "Un fichier système"
+      ],
+      "correct": "Une unité d'exécution légère au sein d'un processus, partageant le même espace mémoire mais ayant son propre compteur ordinal et sa propre pile d'exécution",
+      "explanation": "Les threads permettent la concurrence à l'intérieur d'un même programme, utile pour les tâches parallèles ou les interfaces réactives."
+    },
+    {
+      "question": "Quel est l'avantage principal des threads par rapport aux processus pour la concurrence au sein d'une même application ?",
+      "options": [
+        "Ils sont plus sécurisés car totalement isolés",
+        "La communication et le partage de données entre threads sont plus faciles et rapides car ils partagent le même espace mémoire",
+        "La création d'un thread est plus coûteuse que celle d'un processus",
+        "Ils ne peuvent pas s'exécuter en parallèle"
+      ],
+      "correct": "La communication et le partage de données entre threads sont plus faciles et rapides car ils partagent le même espace mémoire",
+      "explanation": "Cependant, ce partage mémoire introduit aussi des risques de conflits d'accès (race conditions) nécessitant une synchronisation."
+    },
+    {
+      "question": "Quel problème de concurrence se produit lorsque plusieurs threads/processus accèdent et modifient une ressource partagée en même temps, conduisant à un résultat incorrect dépendant de l'ordre d'exécution ?",
+      "options": [
+        "Interblocage (Deadlock)",
+        "Famine (Starvation)",
+        "Condition de course (Race condition)",
+        "Fragmentation"
+      ],
+      "correct": "Condition de course (Race condition)",
+      "explanation": "Les sections critiques (accès aux ressources partagées) doivent être protégées par des mécanismes de synchronisation (mutex, sémaphores)."
+    },
+    {
+      "question": "Quel mécanisme de synchronisation permet de garantir qu'un seul thread à la fois peut accéder à une section critique (exclusion mutuelle) ?",
+      "options": [
+        "Un compteur",
+        "Une variable booléenne simple",
+        "Un mutex (ou verrou)",
+        "Une file d'attente"
+      ],
+      "correct": "Un mutex (ou verrou)",
+      "explanation": "Un thread acquiert le verrou avant d'entrer dans la section critique et le relâche après, empêchant les autres threads d'y entrer pendant ce temps."
+    },
+    {
+      "question": "Qu'est-ce que l'interblocage (Deadlock) ?",
+      "options": [
+        "Un processus qui termine son exécution",
+        "Une situation où deux processus ou plus sont bloqués indéfiniment, chacun attendant une ressource détenue par l'autre",
+        "Une condition de course",
+        "Une erreur de segmentation mémoire"
+      ],
+      "correct": "Une situation où deux processus ou plus sont bloqués indéfiniment, chacun attendant une ressource détenue par l'autre",
+      "explanation": "Exemple classique : Processus A détient Ressource 1 et attend Ressource 2, tandis que Processus B détient Ressource 2 et attend Ressource 1."
+    },
+    {
+      "question": "Quelle technique de gestion de la mémoire permet d'exécuter des programmes plus grands que la RAM disponible en utilisant le disque dur comme extension ?",
+      "options": [
+        "Segmentation",
+        "Pagination",
+        "Mémoire virtuelle (utilisant souvent la pagination et/ou la segmentation)",
+        "Allocation contiguë"
+      ],
+      "correct": "Mémoire virtuelle (utilisant souvent la pagination et/ou la segmentation)",
+      "explanation": "La mémoire virtuelle gère le transfert de pages/segments entre la RAM et le disque (swap) de manière transparente pour les processus."
+    },
+    {
+      "question": "Dans la gestion par pagination, comment sont divisés l'espace d'adressage virtuel et la mémoire physique ?",
+      "options": [
+        "En segments de taille variable",
+        "En blocs de taille fixe appelés 'pages' (virtuelles) et 'cadres' ou 'frames' (physiques)",
+        "En fichiers",
+        "En processus"
+      ],
+      "correct": "En blocs de taille fixe appelés 'pages' (virtuelles) et 'cadres' ou 'frames' (physiques)",
+      "explanation": "L'OS maintient une table de pages pour traduire les adresses de pages virtuelles en adresses de cadres physiques en RAM."
+    },
+    {
+      "question": "Que se passe-t-il lors d'un 'défaut de page' (page fault) ?",
+      "options": [
+        "Le programme a commis une erreur et s'arrête",
+        "L'OS détecte que la page virtuelle accédée par le processus n'est pas actuellement en RAM. Il doit alors la charger depuis le disque vers un cadre libre en RAM (en remplaçant éventuellement une autre page)",
+        "La page est corrompue",
+        "La mémoire RAM est pleine"
+      ],
+      "correct": "L'OS détecte que la page virtuelle accédée par le processus n'est pas actuellement en RAM. Il doit alors la charger depuis le disque vers un cadre libre en RAM (en remplaçant éventuellement une autre page)",
+      "explanation": "Le défaut de page est un mécanisme normal de la mémoire virtuelle, bien qu'il introduise une latence."
+    },
+    {
+      "question": "Quel est le rôle du système de fichiers (File System) ?",
+      "options": [
+        "Gérer les processus",
+        "Organiser le stockage persistant des données sous forme de fichiers et de répertoires sur les disques",
+        "Allouer la mémoire RAM",
+        "Contrôler la connexion réseau"
+      ],
+      "correct": "Organiser le stockage persistant des données sous forme de fichiers et de répertoires sur les disques",
+      "explanation": "Il fournit une abstraction (fichiers, dossiers) par-dessus le stockage physique (blocs sur le disque)."
+    },
+    {
+      "question": "Comment s'appelle la structure de données sur disque qui contient les informations sur un fichier (permissions, taille, dates, pointeurs vers les blocs de données) dans les systèmes de type Unix ?",
+      "options": [
+        "FAT (File Allocation Table)",
+        "MBR (Master Boot Record)",
+        "Inode (Index Node)",
+        "Bloc de données"
+      ],
+      "correct": "Inode (Index Node)",
+      "explanation": "Chaque fichier et répertoire est associé à un inode qui stocke ses métadonnées."
+    },
+    {
+      "question": "Qu'est-ce qu'un chemin absolu ?",
+      "options": [
+        "Le chemin relatif au répertoire courant",
+        "Le chemin complet vers un fichier ou un répertoire en partant du répertoire racine du système de fichiers",
+        "Le nom du fichier uniquement",
+        "Un chemin qui n'existe pas"
+      ],
+      "correct": "Le chemin complet vers un fichier ou un répertoire en partant du répertoire racine du système de fichiers",
+      "explanation": "Exemple (Linux): `/home/user/file.txt`. Exemple (Windows): `C:\\Users\\user\\file.txt`."
+    },
+    {
+      "question": "Qu'est-ce qu'un chemin relatif ?",
+      "options": [
+        "Le chemin absolu",
+        "Un chemin qui ne commence pas par la racine et qui est interprété par rapport au répertoire de travail courant",
+        "Un chemin très court",
+        "Un chemin contenant des liens symboliques"
+      ],
+      "correct": "Un chemin qui ne commence pas par la racine et qui est interprété par rapport au répertoire de travail courant",
+      "explanation": "Exemple : si le répertoire courant est `/home/user`, le chemin relatif `documents/file.txt` désigne `/home/user/documents/file.txt`."
+    },
+    {
+      "question": "Sous Unix/Linux, que représente `.` (un seul point) dans un chemin ?",
+      "options": [
+        "Le répertoire racine",
+        "Le répertoire parent",
+        "Le répertoire personnel",
+        "Le répertoire courant"
+      ],
+      "correct": "Le répertoire courant",
+      "explanation": "`.` est une référence au dossier dans lequel on se trouve actuellement."
+    },
+    {
+      "question": "Sous Unix/Linux, que représente `..` (deux points) dans un chemin ?",
+      "options": [
+        "Le répertoire courant",
+        "Le répertoire racine",
+        "Le répertoire parent (le répertoire juste au-dessus dans la hiérarchie)",
+        "Le répertoire personnel"
+      ],
+      "correct": "Le répertoire parent (le répertoire juste au-dessus dans la hiérarchie)",
+      "explanation": "`..` permet de remonter dans l'arborescence des répertoires."
+    },
+    {
+      "question": "Que permettent de définir les droits d'accès (permissions) sur un fichier sous Unix/Linux (r, w, x) ?",
+      "options": [
+        "Sa taille maximale",
+        "Qui peut lire (r), écrire/modifier (w) ou exécuter (x) le fichier, séparément pour le propriétaire, le groupe et les autres",
+        "Sa date de modification",
+        "Son type (fichier, répertoire...)"
+      ],
+      "correct": "Qui peut lire (r), écrire/modifier (w) ou exécuter (x) le fichier, séparément pour le propriétaire, le groupe et les autres",
+      "explanation": "C'est le mécanisme de base pour contrôler l'accès aux fichiers."
+    },
+    {
+      "question": "Quelle commande permet de changer les permissions d'un fichier sous Linux ?",
+      "options": [
+        "chown",
+        "chgrp",
+        "chmod",
+        "ls"
+      ],
+      "correct": "chmod",
+      "explanation": "`chmod` (change mode) modifie les bits de permission d'un fichier ou d'un répertoire."
+    },
+    {
+      "question": "Qu'est-ce qu'un Shell ?",
+      "options": [
+        "Le noyau de l'OS",
+        "L'interface (souvent en ligne de commande) qui permet à l'utilisateur d'interagir avec le système d'exploitation en lançant des commandes",
+        "Un type de périphérique",
+        "Un langage de programmation"
+      ],
+      "correct": "L'interface (souvent en ligne de commande) qui permet à l'utilisateur d'interagir avec le système d'exploitation en lançant des commandes",
+      "explanation": "Le Shell interprète les commandes de l'utilisateur et les transmet au noyau pour exécution (ex: bash, zsh, PowerShell)."
+    },
+    {
+      "question": "Que fait la redirection `>` dans une commande shell (ex: `ls > fichier.txt`) ?",
+      "options": [
+        "Elle lit l'entrée depuis `fichier.txt`",
+        "Elle redirige la sortie standard de la commande `ls` vers le fichier `fichier.txt` (en écrasant son contenu précédent)",
+        "Elle ajoute la sortie de `ls` à la fin de `fichier.txt`",
+        "Elle exécute `fichier.txt`"
+      ],
+      "correct": "Elle redirige la sortie standard de la commande `ls` vers le fichier `fichier.txt` (en écrasant son contenu précédent)",
+      "explanation": "`>` redirige la sortie vers un fichier."
+    },
+    {
+      "question": "Que fait la redirection `>>` dans une commande shell (ex: `echo \"texte\" >> fichier.txt`) ?",
+      "options": [
+        "Elle redirige la sortie en écrasant le fichier",
+        "Elle lit l'entrée depuis le fichier",
+        "Elle ajoute (append) la sortie de la commande à la fin du fichier `fichier.txt` sans écraser le contenu existant",
+        "Elle supprime le fichier"
+      ],
+      "correct": "Elle ajoute (append) la sortie de la commande à la fin du fichier `fichier.txt` sans écraser le contenu existant",
+      "explanation": "`>>` ajoute la sortie à la fin d'un fichier."
+    },
+    {
+      "question": "Que fait le 'pipe' `|` dans une commande shell (ex: `ls -l | grep .txt`) ?",
+      "options": [
+        "Il exécute les deux commandes en parallèle",
+        "Il redirige la sortie standard de la commande de gauche (`ls -l`) pour qu'elle devienne l'entrée standard de la commande de droite (`grep .txt`)",
+        "Il compare les sorties des deux commandes",
+        "Il arrête la première commande si la seconde échoue"
+      ],
+      "correct": "Il redirige la sortie standard de la commande de gauche (`ls -l`) pour qu'elle devienne l'entrée standard de la commande de droite (`grep .txt`)",
+      "explanation": "Le pipe permet d'enchaîner des commandes, où la sortie de l'une devient l'entrée de la suivante, créant des traitements complexes."
+    },
+    {
+      "question": "Quel modèle d'organisation de réseau informatique oppose des machines qui demandent des services (clients) à des machines qui fournissent ces services (serveurs) ?",
+      "options": [
+        "Peer-to-peer (P2P)",
+        "Client-Serveur",
+        "Réseau en bus",
+        "Réseau en anneau"
+      ],
+      "correct": "Client-Serveur",
+      "explanation": "C'est le modèle dominant pour de nombreuses applications Internet (Web, email, bases de données...)."
+    },
+    {
+      "question": "Quel modèle d'organisation de réseau informatique permet à chaque machine (pair) d'agir à la fois comme client et comme serveur, partageant directement des ressources avec les autres pairs ?",
+      "options": [
+        "Client-Serveur",
+        "Peer-to-peer (P2P)",
+        "Réseau hiérarchique",
+        "Réseau en étoile"
+      ],
+      "correct": "Peer-to-peer (P2P)",
+      "explanation": "Les réseaux P2P sont utilisés par exemple pour le partage de fichiers (BitTorrent) ou certaines messageries."
+    },
+    {
+      "question": "Quel ensemble de protocoles forme la base de la communication sur Internet, souvent représenté par un modèle en couches ?",
+      "options": [
+        "OSI",
+        "HTTP/HTML/CSS",
+        "TCP/IP",
+        "Ethernet/Wi-Fi"
+      ],
+      "correct": "TCP/IP",
+      "explanation": "La suite TCP/IP (Transmission Control Protocol / Internet Protocol) définit les règles pour découper, adresser, acheminer et réassembler les données sur Internet."
+    },
+    {
+      "question": "Dans le modèle TCP/IP simplifié, quelle couche est responsable de l'adressage logique (adresses IP) et du routage des paquets à travers les réseaux ?",
+      "options": [
+        "Couche Application",
+        "Couche Transport",
+        "Couche Internet (ou Réseau)",
+        "Couche Accès réseau (ou Liaison)"
+      ],
+      "correct": "Couche Internet (ou Réseau)",
+      "explanation": "La couche Internet, avec le protocole IP, gère l'acheminement des paquets de leur source à leur destination finale à travers différents réseaux."
+    },
+    {
+      "question": "Dans le modèle TCP/IP simplifié, quelle couche est responsable de la communication de bout en bout entre les applications, en fournissant soit un service fiable et connecté (TCP), soit un service rapide mais non fiable (UDP) ?",
+      "options": [
+        "Couche Application",
+        "Couche Transport",
+        "Couche Internet",
+        "Couche Accès réseau"
+      ],
+      "correct": "Couche Transport",
+      "explanation": "La couche Transport (TCP ou UDP) gère la segmentation des données, le contrôle de flux et d'erreur (pour TCP) et utilise les numéros de port pour distinguer les applications."
+    },
+    {
+      "question": "Quel protocole de la couche Transport garantit une livraison fiable, ordonnée et avec contrôle d'erreurs des données (utilisé par HTTP, SMTP, FTP...) ?",
+      "options": [
+        "IP (Internet Protocol)",
+        "UDP (User Datagram Protocol)",
+        "TCP (Transmission Control Protocol)",
+        "ICMP (Internet Control Message Protocol)"
+      ],
+      "correct": "TCP (Transmission Control Protocol)",
+      "explanation": "TCP établit une connexion, numérote les segments, gère les accusés de réception et les retransmissions pour assurer la fiabilité, au prix d'une certaine surcharge."
+    },
+    {
+      "question": "Quel protocole de la couche Transport fournit un service rapide et léger, sans garantie de livraison ni d'ordre (utilisé par DNS, streaming vidéo, jeux en ligne...) ?",
+      "options": [
+        "IP",
+        "TCP",
+        "UDP (User Datagram Protocol)",
+        "ARP (Address Resolution Protocol)"
+      ],
+      "correct": "UDP (User Datagram Protocol)",
+      "explanation": "UDP est sans connexion et envoie les datagrammes sans vérifier leur arrivée ou leur ordre, ce qui est plus rapide mais moins fiable que TCP."
+    },
+    {
+      "question": "Dans le modèle TCP/IP, quelle couche contient les protocoles utilisés directement par les applications (ex: HTTP, DNS, SMTP) ?",
+      "options": [
+        "Couche Application",
+        "Couche Transport",
+        "Couche Internet",
+        "Couche Accès réseau"
+      ],
+      "correct": "Couche Application",
+      "explanation": "La couche Application définit les protocoles spécifiques aux services utilisés par l'utilisateur (web, email, transfert de fichiers...)."
+    },
+    {
+      "question": "Quelle couche du modèle TCP/IP est responsable de la transmission physique des bits sur le média réseau local (câble Ethernet, Wi-Fi) et utilise les adresses MAC ?",
+      "options": [
+        "Couche Application",
+        "Couche Transport",
+        "Couche Internet",
+        "Couche Accès réseau (ou Liaison de données)"
+      ],
+      "correct": "Couche Accès réseau (ou Liaison de données)",
+      "explanation": "Cette couche gère l'accès au média physique et l'adressage local (MAC)."
+    },
+    {
+      "question": "Qu'est-ce qu'une adresse MAC ?",
+      "options": [
+        "Une adresse IP privée",
+        "L'adresse du système d'exploitation Apple",
+        "Un identifiant physique unique attribué à une carte réseau (NIC) par son fabricant",
+        "Une adresse de site web"
+      ],
+      "correct": "Un identifiant physique unique attribué à une carte réseau (NIC) par son fabricant",
+      "explanation": "L'adresse MAC (Media Access Control) est utilisée pour la communication au sein d'un même réseau local (LAN)."
+    },
+    {
+      "question": "Quelle est la différence principale entre une adresse IP et une adresse MAC ?",
+      "options": [
+        "L'adresse IP est physique, l'adresse MAC est logique",
+        "L'adresse MAC identifie la machine de manière unique et permanente (physique), tandis que l'adresse IP identifie la connexion de la machine au réseau et peut changer (logique)",
+        "L'adresse IP est utilisée localement, l'adresse MAC pour Internet",
+        "Il n'y a pas de différence"
+      ],
+      "correct": "L'adresse MAC identifie la machine de manière unique et permanente (physique), tandis que l'adresse IP identifie la connexion de la machine au réseau et peut changer (logique)",
+      "explanation": "L'adresse MAC est utilisée au niveau de la couche Liaison (ex: Ethernet), l'adresse IP au niveau de la couche Internet pour le routage global."
+    },
+    {
+      "question": "À quoi servent les numéros de port dans les protocoles TCP et UDP ?",
+      "options": [
+        "À identifier physiquement la machine",
+        "À identifier l'application ou le service spécifique sur la machine de destination auquel les données sont destinées",
+        "À numéroter les paquets IP",
+        "À vérifier l'intégrité des données"
+      ],
+      "correct": "À identifier l'application ou le service spécifique sur la machine de destination auquel les données sont destinées",
+      "explanation": "Les ports (ex: port 80 pour HTTP, 443 pour HTTPS, 25 pour SMTP) permettent à plusieurs applications de communiquer sur la même machine via la même adresse IP."
+    },
+    {
+      "question": "Quel dispositif réseau examine les adresses IP de destination des paquets et les achemine vers le réseau approprié pour atteindre leur destination finale ?",
+      "options": [
+        "Hub (Concentrateur)",
+        "Switch (Commutateur)",
+        "Router (Routeur)",
+        "Modem"
+      ],
+      "correct": "Router (Routeur)",
+      "explanation": "Les routeurs opèrent au niveau de la couche Internet (IP) et prennent des décisions de routage basées sur les adresses IP et leur table de routage."
+    },
+    {
+      "question": "Quel dispositif réseau connecte des appareils sur un même réseau local (LAN) et transmet les trames uniquement vers le port de destination concerné, en utilisant les adresses MAC ?",
+      "options": [
+        "Hub (Concentrateur)",
+        "Switch (Commutateur)",
+        "Router (Routeur)",
+        "Repeater (Répéteur)"
+      ],
+      "correct": "Switch (Commutateur)",
+      "explanation": "Un switch opère au niveau de la couche Liaison et apprend les adresses MAC connectées à ses ports pour optimiser la communication locale, contrairement au hub qui répète tout sur tous les ports."
+    },
+    {
+      "question": "Quel dispositif réseau simple répétait simplement le signal électrique reçu sur un port vers tous les autres ports, créant un domaine de collision unique ?",
+      "options": [
+        "Switch (Commutateur)",
+        "Router (Routeur)",
+        "Hub (Concentrateur)",
+        "Bridge (Pont)"
+      ],
+      "correct": "Hub (Concentrateur)",
+      "explanation": "Les hubs sont obsolètes car inefficaces et générateurs de collisions. Ils ont été remplacés par les switches."
+    },
+    {
+      "question": "Qu'est-ce qu'un LAN (Local Area Network) ?",
+      "options": [
+        "Le réseau Internet mondial",
+        "Un réseau informatique couvrant une zone géographique limitée (ex: maison, bureau, campus)",
+        "Un réseau sans fil uniquement",
+        "Un réseau peer-to-peer"
+      ],
+      "correct": "Un réseau informatique couvrant une zone géographique limitée (ex: maison, bureau, campus)",
+      "explanation": "Un LAN permet aux appareils proches de communiquer entre eux et de partager des ressources."
+    },
+    {
+      "question": "Qu'est-ce qu'un WAN (Wide Area Network) ?",
+      "options": [
+        "Un réseau local sans fil",
+        "Un réseau couvrant une large zone géographique (ville, pays, continent), interconnectant souvent plusieurs LANs",
+        "Un réseau utilisant uniquement des câbles",
+        "Un réseau pour un seul utilisateur"
+      ],
+      "correct": "Un réseau couvrant une large zone géographique (ville, pays, continent), interconnectant souvent plusieurs LANs",
+      "explanation": "Internet est l'exemple le plus vaste de WAN."
+    },
+    {
+      "question": "Quelle technologie permet à plusieurs appareils sur un réseau local privé (utilisant des adresses IP privées comme 192.168.x.x) de partager une seule adresse IP publique pour accéder à Internet ?",
+      "options": [
+        "DHCP",
+        "DNS",
+        "NAT (Network Address Translation)",
+        "VPN (Virtual Private Network)"
+      ],
+      "correct": "NAT (Network Address Translation)",
+      "explanation": "Le NAT, souvent implémenté sur le routeur domestique (box), traduit les adresses IP privées en adresse IP publique unique pour les communications sortantes vers Internet, et inversement."
+    },
+    {
+      "question": "Quel protocole est utilisé par un appareil pour obtenir automatiquement une adresse IP et d'autres informations de configuration réseau (masque, passerelle, DNS) auprès d'un serveur ?",
+      "options": [
+        "DNS",
+        "NAT",
+        "DHCP (Dynamic Host Configuration Protocol)",
+        "ARP"
+      ],
+      "correct": "DHCP (Dynamic Host Configuration Protocol)",
+      "explanation": "DHCP simplifie l'administration réseau en attribuant automatiquement les configurations IP aux clients."
+    },
+    {
+      "question": "Quel protocole permet de trouver l'adresse MAC correspondant à une adresse IP sur un réseau local ?",
+      "options": [
+        "DHCP",
+        "DNS",
+        "ARP (Address Resolution Protocol)",
+        "ICMP"
+      ],
+      "correct": "ARP (Address Resolution Protocol)",
+      "explanation": "Lorsqu'une machine veut envoyer une trame à une autre machine sur le même LAN dont elle connaît l'IP, elle utilise ARP pour demander l'adresse MAC correspondante."
+    },
+    {
+      "question": "Quel est le rôle principal des serveurs DNS ?",
+      "options": [
+        "Stocker les pages web",
+        "Attribuer les adresses IP",
+        "Traduire les noms de domaine (ex: www.google.com) en adresses IP",
+        "Router les paquets sur Internet"
+      ],
+      "correct": "Traduire les noms de domaine (ex: www.google.com) en adresses IP",
+      "explanation": "Le DNS agit comme un annuaire distribué pour faciliter la navigation par nom plutôt que par adresse IP numérique."
+    },
+    {
+      "question": "Qu'est-ce que le 'ping' ?",
+      "options": [
+        "Un protocole de transfert de fichiers",
+        "Un utilitaire réseau qui envoie une requête ICMP 'echo request' à une machine distante pour tester sa joignabilité et mesurer le temps aller-retour",
+        "Un type de serveur web",
+        "Un mécanisme de chiffrement"
+      ],
+      "correct": "Un utilitaire réseau qui envoie une requête ICMP 'echo request' à une machine distante pour tester sa joignabilité et mesurer le temps aller-retour",
+      "explanation": "`ping` est un outil de diagnostic réseau de base."
+    },
+    {
+      "question": "Qu'est-ce que la commande `traceroute` (ou `tracert` sous Windows) ?",
+      "options": [
+        "Elle mesure la bande passante",
+        "Elle affiche le chemin (la liste des routeurs intermédiaires) emprunté par les paquets pour atteindre une destination distante",
+        "Elle configure l'adresse IP",
+        "Elle résout un nom de domaine"
+      ],
+      "correct": "Elle affiche le chemin (la liste des routeurs intermédiaires) emprunté par les paquets pour atteindre une destination distante",
+      "explanation": "`traceroute` est utile pour diagnostiquer les problèmes de connectivité ou de latence sur le chemin réseau."
+    },
+    {
+      "question": "Quelle commande permet d'afficher la configuration IP actuelle de sa machine sous Windows ?",
+      "options": [
+        "ifconfig",
+        "ipconfig",
+        "netstat",
+        "ping"
+      ],
+      "correct": "ipconfig",
+      "explanation": "`ipconfig` (ou `ipconfig /all` pour plus de détails) affiche l'adresse IP, le masque de sous-réseau, la passerelle, etc."
+    },
+    {
+      "question": "Quelle commande permet d'afficher la configuration IP actuelle de sa machine sous Linux/macOS ?",
+      "options": [
+        "ipconfig",
+        "ip addr (ou ifconfig, bien que obsolète)",
+        "netstat",
+        "route"
+      ],
+      "correct": "ip addr (ou ifconfig, bien que obsolète)",
+      "explanation": "La commande `ip addr` (ou l'ancienne `ifconfig`) affiche les informations des interfaces réseau."
+    },
+    {
+      "question": "Qu'est-ce que la 'bande passante' (bandwidth) d'un réseau ?",
+      "options": [
+        "Le temps de latence",
+        "La capacité maximale de transfert de données du réseau, souvent mesurée en bits par seconde (bps, Mbps, Gbps)",
+        "Le nombre d'appareils connectés",
+        "Le type de câble utilisé"
+      ],
+      "correct": "La capacité maximale de transfert de données du réseau, souvent mesurée en bits par seconde (bps, Mbps, Gbps)",
+      "explanation": "La bande passante représente le 'débit' maximal théorique du lien réseau."
+    },
+    {
+      "question": "Qu'est-ce que la 'latence' (latency) d'un réseau ?",
+      "options": [
+        "Le débit maximal",
+        "Le délai ou temps de transmission d'un paquet de données de la source à la destination",
+        "Le nombre d'erreurs de transmission",
+        "La distance physique du câble"
+      ],
+      "correct": "Le délai ou temps de transmission d'un paquet de données de la source à la destination",
+      "explanation": "La latence (souvent mesurée par le ping) est critique pour les applications interactives (jeux, visioconférence)."
+    },
+    {
+      "question": "Quel type de câble est le plus couramment utilisé pour les réseaux locaux Ethernet filaires ?",
+      "options": [
+        "Câble coaxial",
+        "Fibre optique",
+        "Câble à paires torsadées (avec connecteur RJ45)",
+        "Câble téléphonique"
+      ],
+      "correct": "Câble à paires torsadées (avec connecteur RJ45)",
+      "explanation": "Les câbles Ethernet (Cat 5e, Cat 6, etc.) utilisent des paires de fils torsadées pour réduire les interférences."
+    },
+    {
+      "question": "Quelle technologie utilise la lumière pour transmettre des données à très haute vitesse sur de longues distances ?",
+      "options": [
+        "Ethernet (cuivre)",
+        "Wi-Fi",
+        "Fibre optique",
+        "Bluetooth"
+      ],
+      "correct": "Fibre optique",
+      "explanation": "La fibre optique offre une bande passante et une portée bien supérieures aux câbles en cuivre, elle est utilisée pour les dorsales Internet et le FTTH."
+    },
+    {
+      "question": "Quel standard définit les réseaux locaux sans fil (WLAN) ?",
+      "options": [
+        "Ethernet (IEEE 802.3)",
+        "Bluetooth (IEEE 802.15)",
+        "Wi-Fi (IEEE 802.11)",
+        "TCP/IP"
+      ],
+      "correct": "Wi-Fi (IEEE 802.11)",
+      "explanation": "La famille de normes IEEE 802.11 (802.11a/b/g/n/ac/ax...) spécifie le fonctionnement des réseaux Wi-Fi."
+    },
+    {
+      "question": "Quel mécanisme de sécurité Wi-Fi est actuellement recommandé pour protéger un réseau sans fil domestique ?",
+      "options": [
+        "WEP",
+        "WPA",
+        "WPA2 (avec AES)",
+        "WPA3"
+      ],
+      "correct": "WPA3",
+      "explanation": "WEP est totalement obsolète et non sécurisé. WPA a des faiblesses. WPA2 (avec chiffrement AES) était le standard, mais WPA3 offre des améliorations de sécurité significatives et est recommandé si les appareils le supportent."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'serveur proxy' ?",
+      "options": [
+        "Le serveur DNS principal",
+        "Un serveur intermédiaire qui agit comme un relais entre un client et un autre serveur (ex: serveur web)",
+        "Un serveur de fichiers local",
+        "Un serveur DHCP"
+      ],
+      "correct": "Un serveur intermédiaire qui agit comme un relais entre un client et un autre serveur (ex: serveur web)",
+      "explanation": "Les proxys peuvent être utilisés pour la mise en cache, le filtrage de contenu, l'anonymisation ou la sécurité."
+    },
+    {
+      "question": "Qu'est-ce qu'un pare-feu (firewall) réseau ?",
+      "options": [
+        "Un dispositif pour accélérer la connexion",
+        "Un système de sécurité (matériel ou logiciel) qui contrôle le trafic réseau entrant et sortant en fonction de règles prédéfinies, pour bloquer les accès non autorisés",
+        "Un serveur d'authentification",
+        "Un outil de mesure de bande passante"
+      ],
+      "correct": "Un système de sécurité (matériel ou logiciel) qui contrôle le trafic réseau entrant et sortant en fonction de règles prédéfinies, pour bloquer les accès non autorisés",
+      "explanation": "Le pare-feu agit comme une barrière de protection entre un réseau privé et un réseau extérieur (Internet)."
+    },
+    {
+      "question": "Comment le protocole TCP gère-t-il la perte de paquets ?",
+      "options": [
+        "Il ignore les paquets perdus",
+        "Il demande à l'application de renvoyer les données",
+        "Il utilise des numéros de séquence et des accusés de réception (ACK). Si un ACK n'est pas reçu dans un certain délai, l'émetteur retransmet le segment manquant",
+        "Il ralentit simplement la transmission"
+      ],
+      "correct": "Il utilise des numéros de séquence et des accusés de réception (ACK). Si un ACK n'est pas reçu dans un certain délai, l'émetteur retransmet le segment manquant",
+      "explanation": "Ce mécanisme garantit la livraison fiable des données."
+    },
+    {
+      "question": "Qu'est-ce que le 'three-way handshake' de TCP ?",
+      "options": [
+        "Le processus de chiffrement des données",
+        "Le processus d'établissement d'une connexion TCP entre un client et un serveur, impliquant l'échange de trois segments (SYN, SYN-ACK, ACK)",
+        "La manière de fermer une connexion TCP",
+        "Le mécanisme de contrôle de flux"
+      ],
+      "correct": "Le processus d'établissement d'une connexion TCP entre un client et un serveur, impliquant l'échange de trois segments (SYN, SYN-ACK, ACK)",
+      "explanation": "Cette poignée de main à trois temps synchronise les numéros de séquence et confirme que les deux parties sont prêtes à communiquer."
+    },
+    {
+      "question": "Quel est le rôle du masque de sous-réseau (subnet mask) associé à une adresse IP ?",
+      "options": [
+        "Chiffrer l'adresse IP",
+        "Identifier la partie de l'adresse IP qui représente le réseau et la partie qui représente l'hôte au sein de ce réseau",
+        "Traduire l'adresse IP en nom de domaine",
+        "Attribuer l'adresse IP"
+      ],
+      "correct": "Identifier la partie de l'adresse IP qui représente le réseau et la partie qui représente l'hôte au sein de ce réseau",
+      "explanation": "Le masque permet à une machine de déterminer si une adresse IP de destination est sur le même réseau local ou s'il faut passer par la passerelle (routeur)."
+    },
+    {
+      "question": "Quelle adresse IP spéciale (IPv4) est utilisée pour désigner la machine locale (localhost) ?",
+      "options": [
+        "0.0.0.0",
+        "255.255.255.255",
+        "192.168.1.1",
+        "127.0.0.1"
+      ],
+      "correct": "127.0.0.1",
+      "explanation": "L'adresse de loopback 127.0.0.1 permet à une machine de communiquer avec elle-même via la pile TCP/IP, utile pour les tests locaux."
+    },
+    {
+      "question": "Quelle plage d'adresses IP privées est couramment utilisée pour les réseaux domestiques ?",
+      "options": [
+        "10.0.0.0 à 10.255.255.255",
+        "172.16.0.0 à 172.31.255.255",
+        "192.168.0.0 à 192.168.255.255",
+        "Toutes ces plages sont des plages d'adresses privées"
+      ],
+      "correct": "Toutes ces plages sont des plages d'adresses privées",
+      "explanation": "Ces trois plages (RFC 1918) sont réservées à un usage interne et ne sont pas routables sur Internet. La plage 192.168.x.x est très fréquente pour les réseaux domestiques."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'paquet' dans le contexte du protocole IP ?",
+      "options": [
+        "Un fichier complet",
+        "Une unité de données formatée pour être transmise sur un réseau IP, contenant des informations d'en-tête (adresses IP source/destination...) et les données utiles (payload)",
+        "Une trame Ethernet",
+        "Une connexion TCP"
+      ],
+      "correct": "Une unité de données formatée pour être transmise sur un réseau IP, contenant des informations d'en-tête (adresses IP source/destination...) et les données utiles (payload)",
+      "explanation": "IP fonctionne en mode paquet (sans connexion), chaque paquet étant routé indépendamment."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'trame' (frame) dans le contexte de la couche liaison (ex: Ethernet) ?",
+      "options": [
+        "Un paquet IP",
+        "Une unité de données formatée pour la transmission sur un segment de réseau local, contenant des en-têtes avec les adresses MAC source/destination et les données (souvent un paquet IP encapsulé)",
+        "Un segment TCP",
+        "Un bit"
+      ],
+      "correct": "Une unité de données formatée pour la transmission sur un segment de réseau local, contenant des en-têtes avec les adresses MAC source/destination et les données (souvent un paquet IP encapsulé)",
+      "explanation": "La trame est l'unité de donnée au niveau de la couche liaison (niveau 2)."
+    },
+    {
+      "question": "Quel mécanisme permet de découper un grand message de la couche application en unités plus petites (segments ou datagrammes) gérables par la couche transport ?",
+      "options": [
+        "Le routage",
+        "La segmentation (par TCP) ou fragmentation (par IP)",
+        "L'encapsulation",
+        "Le multiplexage"
+      ],
+      "correct": "La segmentation (par TCP) ou fragmentation (par IP)",
+      "explanation": "TCP segmente le flux de données en segments. IP peut fragmenter des paquets s'ils sont trop grands pour le réseau sous-jacent (MTU)."
+    },
+    {
+      "question": "Quel processus consiste à ajouter des informations d'en-tête à chaque couche du modèle TCP/IP lorsque les données descendent les couches ?",
+      "options": [
+        "La désencapsulation",
+        "L'encapsulation",
+        "La fragmentation",
+        "Le routage"
+      ],
+      "correct": "L'encapsulation",
+      "explanation": "Chaque couche ajoute son propre en-tête (contenant les informations nécessaires à cette couche) avant de passer les données à la couche inférieure."
+    },
+    {
+      "question": "Quel processus se produit à la réception lorsque chaque couche retire et interprète l'en-tête ajouté par la couche correspondante de l'émetteur ?",
+      "options": [
+        "L'encapsulation",
+        "La segmentation",
+        "Le multiplexage",
+        "La désencapsulation"
+      ],
+      "correct": "La désencapsulation",
+      "explanation": "À mesure que les données remontent les couches à la réception, les en-têtes sont retirés pour extraire les données de la couche supérieure."
+    }
+  ]
+}

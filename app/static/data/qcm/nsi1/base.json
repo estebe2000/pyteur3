@@ -1,0 +1,1049 @@
+{
+  "representation_donnees_base": [
+    {
+      "question": "Quelle est l'unité d'information la plus élémentaire en informatique ?",
+      "options": [
+        "L'octet (Byte)",
+        "Le mot (Word)",
+        "Le bit (Binary Digit)",
+        "Le caractère"
+      ],
+      "correct": "Le bit (Binary Digit)",
+      "explanation": "Le bit est l'unité fondamentale d'information, pouvant prendre la valeur 0 ou 1."
+    },
+    {
+      "question": "Combien de valeurs différentes peut représenter un bit ?",
+      "options": [
+        "1",
+        "2",
+        "8",
+        "10"
+      ],
+      "correct": "2",
+      "explanation": "Un bit peut représenter deux états distincts, généralement notés 0 et 1."
+    },
+    {
+      "question": "Combien de bits y a-t-il généralement dans un octet (Byte) ?",
+      "options": [
+        "1",
+        "4",
+        "8",
+        "16"
+      ],
+      "correct": "8",
+      "explanation": "Un octet est un groupement de 8 bits."
+    },
+    {
+      "question": "Combien de valeurs différentes peut représenter un octet ?",
+      "options": [
+        "8",
+        "16",
+        "256",
+        "1024"
+      ],
+      "correct": "256",
+      "explanation": "Avec 8 bits, on peut représenter 2^8 = 256 combinaisons différentes (de 0 à 255)."
+    },
+    {
+      "question": "Dans quel système de numération les ordinateurs représentent-ils nativement les informations ?",
+      "options": [
+        "Système décimal (base 10)",
+        "Système binaire (base 2)",
+        "Système hexadécimal (base 16)",
+        "Système octal (base 8)"
+      ],
+      "correct": "Système binaire (base 2)",
+      "explanation": "Le système binaire, utilisant uniquement 0 et 1, est directement adaptable aux composants électroniques (tension basse/haute)."
+    },
+    {
+      "question": "Comment écrit-on le nombre décimal 5 en binaire ?",
+      "options": [
+        "101",
+        "110",
+        "010",
+        "111"
+      ],
+      "correct": "101",
+      "explanation": "En binaire, 5 = 1*2^2 + 0*2^1 + 1*2^0 = 4 + 0 + 1 = 5."
+    },
+    {
+      "question": "Comment écrit-on le nombre binaire 1101 en décimal ?",
+      "options": [
+        "11",
+        "13",
+        "15",
+        "9"
+      ],
+      "correct": "13",
+      "explanation": "1101 (binaire) = 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0 = 8 + 4 + 0 + 1 = 13 (décimal)."
+    },
+    {
+      "question": "Quel est le résultat de l'addition binaire 101 + 011 ?",
+      "options": [
+        "1000",
+        "110",
+        "1010",
+        "111"
+      ],
+      "correct": "1000",
+      "explanation": "101 (5) + 011 (3) = 1000 (8). Addition bit à bit avec retenue : 1+1=0 (retenue 1), 0+1+1=0 (retenue 1), 1+0+1=0 (retenue 1) -> 1000."
+    },
+    {
+      "question": "Combien de bits sont nécessaires pour représenter le nombre décimal 10 ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct": "4",
+      "explanation": "10 en décimal s'écrit 1010 en binaire, ce qui nécessite 4 bits."
+    },
+    {
+      "question": "Quel est le plus grand nombre entier non signé que l'on peut représenter sur 4 bits ?",
+      "options": [
+        "8",
+        "15",
+        "16",
+        "7"
+      ],
+      "correct": "15",
+      "explanation": "Avec 4 bits, on peut représenter 2^4 = 16 valeurs (de 0 à 15). Le plus grand est 1111 en binaire, soit 15 en décimal."
+    },
+    {
+      "question": "Quel est le plus grand nombre entier non signé que l'on peut représenter sur n bits ?",
+      "options": [
+        "2^n",
+        "n^2",
+        "2^(n-1) - 1",
+        "2^n - 1"
+      ],
+      "correct": "2^n - 1",
+      "explanation": "Avec n bits, on a 2^n combinaisons possibles. En non signé, elles représentent les nombres de 0 à 2^n - 1."
+    },
+    {
+      "question": "Quel système de numération utilise les chiffres de 0 à 9 et les lettres de A à F ?",
+      "options": [
+        "Décimal",
+        "Binaire",
+        "Octal",
+        "Hexadécimal"
+      ],
+      "correct": "Hexadécimal",
+      "explanation": "L'hexadécimal (base 16) utilise 16 symboles : 0-9 pour les valeurs 0-9, et A-F pour les valeurs 10-15."
+    },
+    {
+      "question": "Pourquoi le système hexadécimal est-il souvent utilisé en informatique ?",
+      "options": [
+        "Parce qu'il est plus facile à comprendre que le décimal",
+        "Parce qu'il permet une représentation plus compacte des nombres binaires (conversion facile)",
+        "Parce que les ordinateurs calculent directement en hexadécimal",
+        "Parce qu'il utilise moins de symboles"
+      ],
+      "correct": "Parce qu'il permet une représentation plus compacte des nombres binaires (conversion facile)",
+      "explanation": "Un chiffre hexadécimal correspond exactement à 4 bits (un quartet), ce qui rend la conversion entre binaire et hexadécimal très directe et la lecture plus aisée."
+    },
+    {
+      "question": "Comment écrit-on le nombre binaire 1110 en hexadécimal ?",
+      "options": [
+        "A",
+        "C",
+        "E",
+        "F"
+      ],
+      "correct": "E",
+      "explanation": "1110 en binaire correspond à 1*8 + 1*4 + 1*2 + 0*1 = 14 en décimal. La valeur 14 est représentée par la lettre E en hexadécimal."
+    },
+    {
+      "question": "Comment écrit-on le nombre hexadécimal A3 en binaire ?",
+      "options": [
+        "10100011",
+        "10000011",
+        "10100010",
+        "11000101"
+      ],
+      "correct": "10100011",
+      "explanation": "A (hexa) = 10 (dec) = 1010 (bin). 3 (hexa) = 3 (dec) = 0011 (bin). En combinant, on obtient 1010 0011."
+    },
+    {
+      "question": "Comment écrit-on le nombre hexadécimal 1F en décimal ?",
+      "options": [
+        "15",
+        "16",
+        "31",
+        "32"
+      ],
+      "correct": "31",
+      "explanation": "1F (hexa) = 1 * 16^1 + F * 16^0 = 1 * 16 + 15 * 1 = 16 + 15 = 31 (décimal)."
+    },
+    {
+      "question": "Comment écrit-on le nombre décimal 26 en hexadécimal ?",
+      "options": [
+        "1A",
+        "19",
+        "26",
+        "A1"
+      ],
+      "correct": "1A",
+      "explanation": "26 divisé par 16 donne 1 avec un reste de 10. Le reste 10 correspond à A en hexadécimal. Donc 26 (dec) = 1A (hexa)."
+    },
+    {
+      "question": "Quel préfixe est souvent utilisé pour indiquer qu'un nombre est écrit en hexadécimal ?",
+      "options": [
+        "0b",
+        "0o",
+        "0d",
+        "0x"
+      ],
+      "correct": "0x",
+      "explanation": "Le préfixe '0x' (parfois aussi '#') est une convention courante en programmation pour signifier qu'un nombre est en base 16 (ex: 0xA3)."
+    },
+    {
+      "question": "Quel préfixe est souvent utilisé pour indiquer qu'un nombre est écrit en binaire ?",
+      "options": [
+        "0b",
+        "0o",
+        "0x",
+        "0d"
+      ],
+      "correct": "0b",
+      "explanation": "Le préfixe '0b' est utilisé dans certains langages pour indiquer la base 2 (ex: 0b10100011)."
+    },
+    {
+      "question": "Quelle méthode est couramment utilisée pour représenter les nombres entiers négatifs en informatique ?",
+      "options": [
+        "Signe et valeur absolue",
+        "Complément à 1",
+        "Complément à 2",
+        "Excès de N"
+      ],
+      "correct": "Complément à 2",
+      "explanation": "Le complément à 2 est la méthode la plus répandue car elle simplifie les opérations arithmétiques (l'addition fonctionne de la même manière pour les positifs et les négatifs)."
+    },
+    {
+      "question": "En complément à 2 sur 8 bits, comment est généralement interprété le bit de poids le plus fort (le bit de gauche) ?",
+      "options": [
+        "Comme un bit de données normal",
+        "Comme le bit de signe (0 pour positif, 1 pour négatif)",
+        "Comme un bit de parité",
+        "Il n'est pas utilisé"
+      ],
+      "correct": "Comme le bit de signe (0 pour positif, 1 pour négatif)",
+      "explanation": "Le bit le plus à gauche indique le signe du nombre dans la représentation en complément à 2."
+    },
+    {
+      "question": "Comment calcule-t-on l'opposé d'un nombre en complément à 2 ?",
+      "options": [
+        "En changeant juste le bit de signe",
+        "En inversant tous les bits",
+        "En inversant tous les bits puis en ajoutant 1",
+        "En ajoutant 1 puis en inversant tous les bits"
+      ],
+      "correct": "En inversant tous les bits puis en ajoutant 1",
+      "explanation": "Cette procédure (calcul du complément à 1 puis ajout de 1) permet d'obtenir la représentation de l'opposé en complément à 2."
+    },
+    {
+      "question": "Quelle est la représentation en complément à 2 sur 4 bits du nombre décimal 3 ?",
+      "options": [
+        "0011",
+        "1101",
+        "1011",
+        "0100"
+      ],
+      "correct": "0011",
+      "explanation": "3 est positif, son bit de signe est 0. 3 en binaire est 011. Sur 4 bits, c'est 0011."
+    },
+    {
+      "question": "Quelle est la représentation en complément à 2 sur 4 bits du nombre décimal -3 ?",
+      "options": [
+        "1011",
+        "1100",
+        "1101",
+        "0011"
+      ],
+      "correct": "1101",
+      "explanation": "Pour -3 : on prend +3 (0011), on inverse les bits (1100), on ajoute 1 (1101)."
+    },
+    {
+      "question": "Quel nombre décimal représente le code binaire 1010 en complément à 2 sur 4 bits ?",
+      "options": [
+        "10",
+        "-6",
+        "-5",
+        "-2"
+      ],
+      "correct": "-6",
+      "explanation": "Le bit de signe est 1 (négatif). Pour trouver la valeur absolue : inverser les bits (0101), ajouter 1 (0110). 0110 vaut 6. Donc 1010 représente -6."
+    },
+    {
+      "question": "Quel est l'intervalle de nombres entiers que l'on peut représenter en complément à 2 sur 8 bits ?",
+      "options": [
+        "0 à 255",
+        "-127 à 127",
+        "-128 à 127",
+        "-255 à 0"
+      ],
+      "correct": "-128 à 127",
+      "explanation": "Sur n bits en complément à 2, l'intervalle est [-2^(n-1), 2^(n-1) - 1]. Pour n=8, c'est [-128, 127]."
+    },
+    {
+      "question": "Quel est le problème principal de la représentation 'signe et valeur absolue' pour les nombres négatifs ?",
+      "options": [
+        "Elle ne peut pas représenter les négatifs",
+        "Elle a deux représentations pour zéro (+0 et -0)",
+        "Elle est trop compliquée à calculer",
+        "Elle ne fonctionne que sur 8 bits"
+      ],
+      "correct": "Elle a deux représentations pour zéro (+0 et -0)",
+      "explanation": "Le fait d'avoir un zéro positif (ex: 0000) et un zéro négatif (ex: 1000 sur 4 bits) complique les comparaisons et les opérations arithmétiques."
+    },
+    {
+      "question": "Comment les ordinateurs représentent-ils généralement les nombres réels (nombres à virgule) ?",
+      "options": [
+        "Exactement comme en mathématiques",
+        "En utilisant la représentation en complément à 2",
+        "En utilisant la représentation en virgule flottante (signe, exposant, mantisse)",
+        "En les arrondissant toujours à l'entier le plus proche"
+      ],
+      "correct": "En utilisant la représentation en virgule flottante (signe, exposant, mantisse)",
+      "explanation": "La notation en virgule flottante (ex: norme IEEE 754) permet de représenter des nombres sur une large plage de grandeurs avec une précision limitée."
+    },
+    {
+      "question": "Dans la représentation en virgule flottante (type signe, exposant, mantisse), à quoi sert la mantisse ?",
+      "options": [
+        "À indiquer le signe du nombre",
+        "À indiquer l'ordre de grandeur (la position de la virgule)",
+        "À stocker les chiffres significatifs du nombre",
+        "À vérifier l'exactitude du nombre"
+      ],
+      "correct": "À stocker les chiffres significatifs du nombre",
+      "explanation": "La mantisse (ou significande) contient les chiffres qui donnent la précision du nombre, normalisée sous une forme comme 1,xxxx."
+    },
+    {
+      "question": "Dans la représentation en virgule flottante, à quoi sert l'exposant ?",
+      "options": [
+        "À indiquer le signe du nombre",
+        "À indiquer l'ordre de grandeur (la position de la virgule)",
+        "À stocker les chiffres significatifs",
+        "À indiquer le nombre de bits utilisés"
+      ],
+      "correct": "À indiquer l'ordre de grandeur (la position de la virgule)",
+      "explanation": "L'exposant (souvent stocké avec un décalage/biais) multiplie la mantisse par une puissance de 2 pour positionner la virgule binaire."
+    },
+    {
+      "question": "Quel est le principal inconvénient de la représentation des nombres réels en virgule flottante ?",
+      "options": [
+        "Elle ne peut pas représenter les nombres négatifs",
+        "Elle est limitée en grandeur (elle ne peut pas représenter de très grands nombres)",
+        "Elle introduit des erreurs d'arrondi et ne peut pas représenter exactement tous les nombres réels (même certains nombres décimaux simples)",
+        "Elle prend trop de place en mémoire"
+      ],
+      "correct": "Elle introduit des erreurs d'arrondi et ne peut pas représenter exactement tous les nombres réels (même certains nombres décimaux simples)",
+      "explanation": "Le nombre fini de bits pour la mantisse et l'exposant limite la précision et l'ensemble des nombres représentables, conduisant à des erreurs d'arrondi dans les calculs."
+    },
+    {
+      "question": "Pourquoi l'addition de 0.1 + 0.2 ne donne-t-elle pas exactement 0.3 en virgule flottante dans de nombreux langages ?",
+      "options": [
+        "C'est une erreur du processeur",
+        "Parce que 0.1 et 0.2 (en base 10) n'ont pas de représentation binaire finie exacte en virgule flottante, entraînant de petites erreurs d'arrondi",
+        "Parce que l'addition est mal implémentée",
+        "C'est un bug spécifique à certains langages"
+      ],
+      "correct": "Parce que 0.1 et 0.2 (en base 10) n'ont pas de représentation binaire finie exacte en virgule flottante, entraînant de petites erreurs d'arrondi",
+      "explanation": "Tout comme 1/3 ne peut être écrit avec un nombre fini de décimales, 1/10 (0.1) ne peut l'être avec un nombre fini de 'binimales'. L'ordinateur stocke une approximation."
+    },
+    {
+      "question": "Quelle norme définit les formats de représentation des nombres en virgule flottante (simple précision, double précision) utilisés par la plupart des ordinateurs ?",
+      "options": [
+        "ASCII",
+        "Unicode",
+        "IEEE 754",
+        "ISO 8601"
+      ],
+      "correct": "IEEE 754",
+      "explanation": "La norme IEEE 754 standardise la manière dont les nombres flottants sont stockés (nombre de bits pour signe, exposant, mantisse) et comment les opérations sont effectuées."
+    },
+    {
+      "question": "Combien de bits sont généralement utilisés pour représenter un nombre en 'simple précision' selon la norme IEEE 754 ?",
+      "options": [
+        "8 bits",
+        "16 bits",
+        "32 bits",
+        "64 bits"
+      ],
+      "correct": "32 bits",
+      "explanation": "Le format simple précision (float) utilise 1 bit pour le signe, 8 bits pour l'exposant et 23 bits pour la mantisse."
+    },
+    {
+      "question": "Combien de bits sont généralement utilisés pour représenter un nombre en 'double précision' selon la norme IEEE 754 ?",
+      "options": [
+        "16 bits",
+        "32 bits",
+        "64 bits",
+        "128 bits"
+      ],
+      "correct": "64 bits",
+      "explanation": "Le format double précision (double) utilise 1 bit pour le signe, 11 bits pour l'exposant et 52 bits pour la mantisse, offrant une plus grande précision et une plus grande plage de valeurs."
+    },
+    {
+      "question": "Quel type de donnée permet de représenter une valeur logique, typiquement Vrai ou Faux ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float)",
+        "Booléen (Boolean)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Booléen (Boolean)",
+      "explanation": "Le type booléen, nommé d'après George Boole, ne peut prendre que deux valeurs : Vrai (True) ou Faux (False)."
+    },
+    {
+      "question": "Quelle est la valeur de l'expression booléenne (True AND False) ?",
+      "options": [
+        "True",
+        "False",
+        "0",
+        "1"
+      ],
+      "correct": "False",
+      "explanation": "L'opérateur logique AND (ET) retourne True uniquement si les deux opérandes sont True."
+    },
+    {
+      "question": "Quelle est la valeur de l'expression booléenne (True OR False) ?",
+      "options": [
+        "True",
+        "False",
+        "0",
+        "1"
+      ],
+      "correct": "True",
+      "explanation": "L'opérateur logique OR (OU) retourne True si au moins l'un des opérandes est True."
+    },
+    {
+      "question": "Quelle est la valeur de l'expression booléenne (NOT True) ?",
+      "options": [
+        "True",
+        "False",
+        "0",
+        "1"
+      ],
+      "correct": "False",
+      "explanation": "L'opérateur logique NOT (NON) inverse la valeur booléenne de son opérande."
+    },
+    {
+      "question": "Comment est souvent représentée la valeur booléenne 'False' en mémoire ?",
+      "options": [
+        "Par la valeur entière 1",
+        "Par la valeur entière 0",
+        "Par la valeur entière -1",
+        "Par une chaîne vide"
+      ],
+      "correct": "Par la valeur entière 0",
+      "explanation": "Conventionnellement, Faux est associé à 0 et Vrai est associé à 1 (ou toute autre valeur non nulle)."
+    },
+    {
+      "question": "Comment sont représentés les caractères (lettres, chiffres, symboles) dans un ordinateur ?",
+      "options": [
+        "Par des images de ces caractères",
+        "Par des codes numériques uniques associés à chaque caractère",
+        "Par leur prononciation",
+        "Par leur position sur le clavier"
+      ],
+      "correct": "Par des codes numériques uniques associés à chaque caractère",
+      "explanation": "Des tables de codage (comme ASCII ou Unicode) définissent la correspondance entre un caractère et son code numérique."
+    },
+    {
+      "question": "Qu'est-ce que le code ASCII (American Standard Code for Information Interchange) ?",
+      "options": [
+        "Un code pour représenter les couleurs",
+        "Un code pour représenter les nombres flottants",
+        "Un code de caractères historique basé sur 7 bits, représentant les lettres anglaises (majuscules/minuscules), les chiffres, la ponctuation et des caractères de contrôle",
+        "Un code universel pour toutes les langues du monde"
+      ],
+      "correct": "Un code de caractères historique basé sur 7 bits, représentant les lettres anglaises (majuscules/minuscules), les chiffres, la ponctuation et des caractères de contrôle",
+      "explanation": "ASCII (sur 7 bits, 128 caractères) a été fondamental mais insuffisant pour représenter les caractères accentués et les alphabets non latins."
+    },
+    {
+      "question": "Quelle est la principale limitation du code ASCII ?",
+      "options": [
+        "Il est trop complexe",
+        "Il ne peut pas représenter les chiffres",
+        "Il ne peut représenter qu'un nombre limité de caractères (128 ou 256 en ASCII étendu), insuffisant pour toutes les langues du monde",
+        "Il prend trop de place en mémoire"
+      ],
+      "correct": "Il ne peut représenter qu'un nombre limité de caractères (128 ou 256 en ASCII étendu), insuffisant pour toutes les langues du monde",
+      "explanation": "ASCII a été conçu pour l'anglais et ne couvre pas les caractères accentués, les idéogrammes, etc."
+    },
+    {
+      "question": "Quel standard a été développé pour surmonter les limitations d'ASCII et représenter les caractères de pratiquement toutes les écritures du monde ?",
+      "options": [
+        "EBCDIC",
+        "Unicode",
+        "Code Morse",
+        "Code Baudot"
+      ],
+      "correct": "Unicode",
+      "explanation": "Unicode attribue un code numérique unique (point de code) à chaque caractère, indépendamment de la plateforme ou du langage."
+    },
+    {
+      "question": "Qu'est-ce que l'UTF-8 ?",
+      "options": [
+        "Une ancienne version d'Unicode",
+        "Un format de codage de caractères à largeur variable qui permet de représenter tous les points de code Unicode de manière efficace",
+        "Un code de caractères utilisant toujours 8 bits",
+        "Un standard pour les nombres flottants"
+      ],
+      "correct": "Un format de codage de caractères à largeur variable qui permet de représenter tous les points de code Unicode de manière efficace",
+      "explanation": "UTF-8 code les caractères ASCII sur 1 octet (compatibilité) et les autres caractères Unicode sur 2, 3 ou 4 octets. C'est l'encodage dominant sur le Web."
+    },
+    {
+      "question": "Quel est l'avantage d'UTF-8 par rapport à des codages Unicode à largeur fixe comme UTF-32 ?",
+      "options": [
+        "Il est plus simple à implémenter",
+        "Il utilise moins d'espace pour les textes contenant majoritairement des caractères ASCII",
+        "Il peut représenter plus de caractères",
+        "Il est plus rapide à traiter"
+      ],
+      "correct": "Il utilise moins d'espace pour les textes contenant majoritairement des caractères ASCII",
+      "explanation": "En UTF-8, un caractère ASCII prend 1 octet, comme en ASCII, alors qu'en UTF-32 il prendrait 4 octets. C'est plus compact pour les textes en langues occidentales."
+    },
+    {
+      "question": "Quel est le code ASCII (décimal) de la lettre majuscule 'A' ?",
+      "options": [
+        "41",
+        "65",
+        "97",
+        "48"
+      ],
+      "correct": "65",
+      "explanation": "Dans la table ASCII, le code décimal de 'A' est 65 (soit 41 en hexadécimal)."
+    },
+    {
+      "question": "Quel est le code ASCII (décimal) de la lettre minuscule 'a' ?",
+      "options": [
+        "65",
+        "97",
+        "41",
+        "61"
+      ],
+      "correct": "97",
+      "explanation": "Dans la table ASCII, le code décimal de 'a' est 97 (soit 61 en hexadécimal). Il y a un décalage de 32 entre majuscules et minuscules."
+    },
+    {
+      "question": "Quel est le code ASCII (décimal) du chiffre '0' ?",
+      "options": [
+        "0",
+        "10",
+        "48",
+        "65"
+      ],
+      "correct": "48",
+      "explanation": "Dans la table ASCII, le code décimal du caractère '0' est 48 (soit 30 en hexadécimal)."
+    },
+    {
+      "question": "Comment est représentée une chaîne de caractères (String) en mémoire ?",
+      "options": [
+        "Comme un seul grand nombre",
+        "Comme une image des caractères",
+        "Comme une séquence d'octets représentant les codes (ASCII, UTF-8...) des caractères qui la composent",
+        "Comme une valeur booléenne"
+      ],
+      "correct": "Comme une séquence d'octets représentant les codes (ASCII, UTF-8...) des caractères qui la composent",
+      "explanation": "Une chaîne est un tableau de caractères, chaque caractère étant codé par un ou plusieurs octets selon l'encodage utilisé."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'transtypage' (ou casting) ?",
+      "options": [
+        "Une erreur de programmation",
+        "La conversion explicite d'une valeur d'un type de donnée vers un autre type (ex: entier vers flottant, caractère vers entier)",
+        "L'addition de deux nombres",
+        "La suppression d'une variable"
+      ],
+      "correct": "La conversion explicite d'une valeur d'un type de donnée vers un autre type (ex: entier vers flottant, caractère vers entier)",
+      "explanation": "Le transtypage permet de changer le type d'une donnée pour effectuer certaines opérations, mais peut parfois entraîner une perte d'information."
+    },
+    {
+      "question": "Que se passe-t-il généralement si l'on essaie de stocker un nombre entier trop grand pour le type de donnée utilisé (ex: > 255 dans un entier non signé sur 8 bits) ?",
+      "options": [
+        "Le programme s'arrête avec une erreur",
+        "Le nombre est automatiquement converti en flottant",
+        "Il se produit un dépassement de capacité ('overflow'), et le nombre 'revient' souvent au début de l'intervalle (ex: 256 devient 0)",
+        "Le nombre est stocké correctement"
+      ],
+      "correct": "Il se produit un dépassement de capacité ('overflow'), et le nombre 'revient' souvent au début de l'intervalle (ex: 256 devient 0)",
+      "explanation": "Le dépassement de capacité est dû au nombre fini de bits. Le comportement exact peut varier, mais l'arithmétique modulo 2^n est courante pour les entiers non signés."
+    },
+    {
+      "question": "Dans le contexte des types de base, que représente 'None' ou 'null' ?",
+      "options": [
+        "La valeur entière 0",
+        "La valeur booléenne False",
+        "Une valeur spéciale indiquant l'absence de valeur ou une référence invalide",
+        "Une chaîne de caractères vide"
+      ],
+      "correct": "Une valeur spéciale indiquant l'absence de valeur ou une référence invalide",
+      "explanation": "'None' (Python) ou 'null' (Java, C++) est utilisé pour représenter l'absence d'objet ou de valeur significative."
+    },
+    {
+      "question": "Comment la couleur d'un pixel est-elle souvent représentée en hexadécimal dans le développement web (ex: CSS) ?",
+      "options": [
+        "Par 3 nombres décimaux (R, V, B)",
+        "Par un code hexadécimal sur 6 chiffres précédé de '#' (ex: #FF0000 pour rouge)",
+        "Par le nom de la couleur en anglais",
+        "Par les coordonnées du pixel"
+      ],
+      "correct": "Par un code hexadécimal sur 6 chiffres précédé de '#' (ex: #FF0000 pour rouge)",
+      "explanation": "Le format #RRGGBB utilise deux chiffres hexadécimaux (00 à FF) pour chaque composante Rouge, Verte et Bleue."
+    },
+    {
+      "question": "Quelle est la valeur hexadécimale correspondant au blanc pur (#RRGGBB) ?",
+      "options": [
+        "#000000",
+        "#FFFFFF",
+        "#FF0000",
+        "#00FF00"
+      ],
+      "correct": "#FFFFFF",
+      "explanation": "FF en hexadécimal correspond à 255 en décimal. #FFFFFF signifie R=255, G=255, B=255, soit le blanc."
+    },
+    {
+      "question": "Quel est l'inconvénient d'utiliser un codage à largeur fixe (comme UCS-2 ou UTF-32) par rapport à UTF-8 pour du texte majoritairement ASCII ?",
+      "options": [
+        "Il ne peut pas représenter tous les caractères Unicode",
+        "Il est moins compatible avec les anciens systèmes",
+        "Il prend plus de place en mémoire car chaque caractère occupe toujours 2 ou 4 octets, même les caractères ASCII",
+        "Il est plus difficile à manipuler pour le processeur"
+      ],
+      "correct": "Il prend plus de place en mémoire car chaque caractère occupe toujours 2 ou 4 octets, même les caractères ASCII",
+      "explanation": "UTF-8 est plus efficace en espace pour les textes utilisant principalement des caractères présents dans ASCII."
+    },
+    {
+      "question": "Quel problème peut survenir si un fichier texte est lu avec un encodage différent de celui avec lequel il a été enregistré ?",
+      "options": [
+        "Le fichier est supprimé",
+        "Les caractères (surtout accentués ou spéciaux) peuvent s'afficher de manière incorrecte (mojibake)",
+        "Le fichier devient plus volumineux",
+        "Le fichier est automatiquement converti"
+      ],
+      "correct": "Les caractères (surtout accentués ou spéciaux) peuvent s'afficher de manière incorrecte (mojibake)",
+      "explanation": "L'interprétation incorrecte des octets selon le mauvais schéma de codage conduit à l'affichage de caractères erronés."
+    },
+    {
+      "question": "Quelle est la valeur (approximative) de 1 Kio (Kibioctet) ?",
+      "options": [
+        "1000 octets",
+        "1024 octets",
+        "1 million d'octets",
+        "1 milliard d'octets"
+      ],
+      "correct": "1024 octets",
+      "explanation": "Les préfixes binaires (Kibi, Mebi, Gibi...) utilisent des puissances de 2. 1 Kio = 2^10 octets = 1024 octets. (Attention : 1 ko = 1000 octets)."
+    },
+    {
+      "question": "Quelle est la valeur (approximative) de 1 Mio (Mébioctet) ?",
+      "options": [
+        "1000 Kio",
+        "1024 Kio",
+        "1000 octets",
+        "1 million d'octets"
+      ],
+      "correct": "1024 Kio",
+      "explanation": "1 Mio = 1024 Kio = 1024 * 1024 octets = 2^20 octets (environ 1 million)."
+    },
+    {
+      "question": "Quelle est la valeur (approximative) de 1 Gio (Gibioctet) ?",
+      "options": [
+        "1000 Mio",
+        "1024 Mio",
+        "1 milliard d'octets",
+        "1 million d'octets"
+      ],
+      "correct": "1024 Mio",
+      "explanation": "1 Gio = 1024 Mio = 2^30 octets (environ 1 milliard)."
+    },
+    {
+      "question": "Si un entier est codé sur 16 bits en complément à 2, quelle est la plus petite valeur négative représentable ?",
+      "options": [
+        "-32767",
+        "-32768",
+        "-65535",
+        "-65536"
+      ],
+      "correct": "-32768",
+      "explanation": "Sur n bits en complément à 2, la plus petite valeur est -2^(n-1). Pour n=16, c'est -2^15 = -32768."
+    },
+    {
+      "question": "Si un entier est codé sur 16 bits en complément à 2, quelle est la plus grande valeur positive représentable ?",
+      "options": [
+        "32767",
+        "32768",
+        "65535",
+        "65536"
+      ],
+      "correct": "32767",
+      "explanation": "Sur n bits en complément à 2, la plus grande valeur est 2^(n-1) - 1. Pour n=16, c'est 2^15 - 1 = 32767."
+    },
+    {
+      "question": "L'addition binaire 0111 + 0001 sur 4 bits en complément à 2 donne 1000. Si on interprète le résultat, quel phénomène s'est produit ?",
+      "options": [
+        "Un dépassement de capacité ('overflow')",
+        "Un calcul correct (7 + 1 = -8)",
+        "Une erreur de retenue",
+        "Un arrondi"
+      ],
+      "correct": "Un dépassement de capacité ('overflow')",
+      "explanation": "0111 représente +7, 0001 représente +1. L'addition donne 1000 qui représente -8. Le résultat +8 ne peut pas être représenté sur 4 bits en complément à 2 (intervalle [-8, 7]). Il y a eu dépassement."
+    },
+    {
+      "question": "Quel est le principal avantage de la représentation en complément à 2 pour l'unité arithmétique et logique (UAL) ?",
+      "options": [
+        "Elle prend moins de place",
+        "Elle permet d'utiliser le même circuit additionneur pour les additions et les soustractions (en additionnant l'opposé)",
+        "Elle est plus facile à lire pour les humains",
+        "Elle évite les erreurs d'arrondi"
+      ],
+      "correct": "Elle permet d'utiliser le même circuit additionneur pour les additions et les soustractions (en additionnant l'opposé)",
+      "explanation": "La soustraction A - B devient A + (-B), où -B est l'opposé de B en complément à 2. Cela simplifie la conception matérielle de l'UAL."
+    },
+    {
+      "question": "Quel type de donnée est le plus approprié pour stocker l'âge d'une personne en années révolues ?",
+      "options": [
+        "Flottant (Float)",
+        "Booléen (Boolean)",
+        "Entier (Integer)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Entier (Integer)",
+      "explanation": "L'âge en années révolues est un nombre entier non négatif."
+    },
+    {
+      "question": "Quel type de donnée est le plus approprié pour stocker le prix d'un article avec des centimes ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float) ou un type décimal spécifique",
+        "Booléen (Boolean)",
+        "Caractère (Char)"
+      ],
+      "correct": "Flottant (Float) ou un type décimal spécifique",
+      "explanation": "Un prix peut avoir une partie décimale. Les flottants sont une option, mais pour éviter les erreurs d'arrondi en finance, des types décimaux spécifiques ou le stockage en centimes (entiers) sont préférables."
+    },
+    {
+      "question": "Quel type de donnée est le plus approprié pour stocker le nom d'une personne ?",
+      "options": [
+        "Entier (Integer)",
+        "Booléen (Boolean)",
+        "Flottant (Float)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Chaîne de caractères (String)",
+      "explanation": "Un nom est une séquence de caractères."
+    },
+    {
+      "question": "Quel type de donnée est le plus approprié pour indiquer si un utilisateur est connecté ou non ?",
+      "options": [
+        "Entier (Integer)",
+        "Booléen (Boolean)",
+        "Flottant (Float)",
+        "Chaîne de caractères (String)"
+      ],
+      "correct": "Booléen (Boolean)",
+      "explanation": "L'état connecté/déconnecté correspond bien aux valeurs Vrai/Faux d'un booléen."
+    },
+    {
+      "question": "Comment un ordinateur compare-t-il deux chaînes de caractères (ex: pour le tri alphabétique) ?",
+      "options": [
+        "En comparant leur longueur",
+        "En comparant les codes numériques (ASCII, Unicode) de leurs caractères, caractère par caractère",
+        "En les convertissant en nombres",
+        "De manière aléatoire"
+      ],
+      "correct": "En comparant les codes numériques (ASCII, Unicode) de leurs caractères, caractère par caractère",
+      "explanation": "L'ordre lexicographique est basé sur l'ordre des codes des caractères dans la table de codage utilisée."
+    },
+    {
+      "question": "Quel est le code hexadécimal (ASCII) du caractère 'espace' ?",
+      "options": [
+        "0x0A",
+        "0x0D",
+        "0x20",
+        "0x00"
+      ],
+      "correct": "0x20",
+      "explanation": "Le caractère 'espace' a le code décimal 32, soit 20 en hexadécimal."
+    },
+    {
+      "question": "Si la couleur d'un pixel est #00FF00, de quelle couleur s'agit-il ?",
+      "options": [
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc"
+      ],
+      "correct": "Vert",
+      "explanation": "#00FF00 signifie R=00, G=FF (255), B=00. La composante verte est à son maximum, les autres sont nulles."
+    },
+    {
+      "question": "Si la couleur d'un pixel est #FF00FF, de quelle couleur s'agit-il ?",
+      "options": [
+        "Jaune",
+        "Cyan",
+        "Magenta",
+        "Gris"
+      ],
+      "correct": "Magenta",
+      "explanation": "#FF00FF signifie R=FF (255), G=00, B=FF (255). Le mélange de rouge et de bleu produit du magenta."
+    },
+    {
+      "question": "Combien d'octets sont nécessaires pour stocker un caractère dans l'encodage UTF-32 ?",
+      "options": [
+        "1 octet",
+        "2 octets",
+        "4 octets",
+        "Variable (1 à 4 octets)"
+      ],
+      "correct": "4 octets",
+      "explanation": "UTF-32 est un encodage à largeur fixe où chaque point de code Unicode est représenté sur 4 octets (32 bits)."
+    },
+    {
+      "question": "Combien d'octets sont nécessaires pour stocker le caractère '€' (Euro) en UTF-8 ?",
+      "options": [
+        "1 octet",
+        "2 octets",
+        "3 octets",
+        "4 octets"
+      ],
+      "correct": "3 octets",
+      "explanation": "Le caractère Euro (€), U+20AC, est représenté sur 3 octets en UTF-8 (spécifiquement E2 82 AC en hexadécimal)."
+    },
+    {
+      "question": "Quel est le résultat de l'opération booléenne (NOT (True AND False)) ?",
+      "options": [
+        "True",
+        "False",
+        "0",
+        "Erreur"
+      ],
+      "correct": "True",
+      "explanation": "True AND False vaut False. NOT False vaut True."
+    },
+    {
+      "question": "Quelle est l'opération binaire qui retourne 1 si les deux bits sont différents, et 0 sinon ?",
+      "options": [
+        "AND (ET)",
+        "OR (OU)",
+        "XOR (OU exclusif)",
+        "NOT (NON)"
+      ],
+      "correct": "XOR (OU exclusif)",
+      "explanation": "XOR (eXclusive OR) est vrai si et seulement si une seule des entrées est vraie. 0 XOR 0 = 0, 0 XOR 1 = 1, 1 XOR 0 = 1, 1 XOR 1 = 0."
+    },
+    {
+      "question": "Quel est le résultat de 0101 XOR 1100 en binaire ?",
+      "options": [
+        "1001",
+        "0100",
+        "1011",
+        "1101"
+      ],
+      "correct": "1001",
+      "explanation": "Bit à bit : 0^1=1, 1^1=0, 0^0=0, 1^0=1. Résultat : 1001."
+    },
+    {
+      "question": "Quelle opération peut être utilisée pour mettre à zéro certains bits d'un nombre binaire ?",
+      "options": [
+        "OR avec un masque de zéros",
+        "AND avec un masque de zéros aux positions voulues",
+        "XOR avec un masque de uns",
+        "NOT"
+      ],
+      "correct": "AND avec un masque de zéros aux positions voulues",
+      "explanation": "L'opération AND avec 0 donne toujours 0 (X AND 0 = 0), tandis que AND avec 1 laisse le bit inchangé (X AND 1 = X). Un masque comme 11110000 permet de conserver les 4 bits de gauche et mettre à zéro les 4 de droite."
+    },
+    {
+      "question": "Quelle opération peut être utilisée pour mettre à un certains bits d'un nombre binaire ?",
+      "options": [
+        "AND avec un masque de uns",
+        "OR avec un masque de uns aux positions voulues",
+        "XOR avec un masque de zéros",
+        "NOT"
+      ],
+      "correct": "OR avec un masque de uns aux positions voulues",
+      "explanation": "L'opération OR avec 1 donne toujours 1 (X OR 1 = 1), tandis que OR avec 0 laisse le bit inchangé (X OR 0 = X). Un masque comme 00001111 permet de mettre à 1 les 4 bits de droite et conserver les 4 de gauche."
+    },
+    {
+      "question": "Quel est le problème posé par la représentation des très grands nombres entiers (dépassant 64 bits) ?",
+      "options": [
+        "Ils ne peuvent pas être représentés du tout",
+        "Ils nécessitent des bibliothèques logicielles spécifiques pour les manipuler (arithmétique multiprécision)",
+        "Ils sont automatiquement convertis en flottants",
+        "Leur signe ne peut pas être déterminé"
+      ],
+      "correct": "Ils nécessitent des bibliothèques logicielles spécifiques pour les manipuler (arithmétique multiprécision)",
+      "explanation": "Les types entiers matériels ont une taille fixe. Pour manipuler des nombres plus grands, il faut utiliser des représentations logicielles (ex: listes de chiffres) et des algorithmes adaptés."
+    },
+    {
+      "question": "Comment est généralement représentée une image en noir et blanc (niveaux de gris) ?",
+      "options": [
+        "Comme une image RVB avec R=V=B",
+        "Chaque pixel est représenté par une seule valeur indiquant son niveau de gris (souvent sur 8 bits, de 0=noir à 255=blanc)",
+        "Uniquement avec des pixels noirs (0) ou blancs (1)",
+        "Avec une composante de couleur unique (ex: rouge uniquement)"
+      ],
+      "correct": "Chaque pixel est représenté par une seule valeur indiquant son niveau de gris (souvent sur 8 bits, de 0=noir à 255=blanc)",
+      "explanation": "Une seule valeur par pixel suffit pour coder l'intensité lumineuse, sans information de couleur."
+    },
+    {
+      "question": "Combien d'octets occupe une image en niveaux de gris de 100x100 pixels, si chaque pixel est codé sur 8 bits ?",
+      "options": [
+        "100 octets",
+        "10 000 octets",
+        "30 000 octets",
+        "80 000 octets"
+      ],
+      "correct": "10 000 octets",
+      "explanation": "Nombre total de pixels = 100 * 100 = 10 000. Chaque pixel occupe 8 bits = 1 octet. Taille totale = 10 000 * 1 = 10 000 octets."
+    },
+    {
+      "question": "Combien d'octets occupe une image couleur RVB de 100x100 pixels, si chaque composante (R, V, B) est codée sur 8 bits ?",
+      "options": [
+        "10 000 octets",
+        "20 000 octets",
+        "30 000 octets",
+        "240 000 octets"
+      ],
+      "correct": "30 000 octets",
+      "explanation": "Nombre total de pixels = 100 * 100 = 10 000. Chaque pixel occupe 3 * 8 bits = 24 bits = 3 octets. Taille totale = 10 000 * 3 = 30 000 octets."
+    },
+    {
+      "question": "Si on utilise 1 bit pour coder le niveau de gris d'un pixel, combien de niveaux de gris peut-on représenter ?",
+      "options": [
+        "1 (noir seulement)",
+        "2 (noir et blanc)",
+        "8",
+        "256"
+      ],
+      "correct": "2 (noir et blanc)",
+      "explanation": "Avec 1 bit, on ne peut coder que deux valeurs : 0 (noir) et 1 (blanc). C'est une image binaire (bitmap)."
+    },
+    {
+      "question": "Quelle représentation est utilisée si on veut stocker un son numérisé ?",
+      "options": [
+        "Une séquence d'images",
+        "Une séquence d'échantillons numériques représentant l'amplitude du signal sonore à intervalles de temps réguliers",
+        "Un texte décrivant le son",
+        "Une valeur booléenne"
+      ],
+      "correct": "Une séquence d'échantillons numériques représentant l'amplitude du signal sonore à intervalles de temps réguliers",
+      "explanation": "La numérisation du son (échantillonnage et quantification) transforme l'onde sonore analogique en une suite de nombres."
+    },
+    {
+      "question": "Quel paramètre de la numérisation du son détermine le nombre d'échantillons pris par seconde ?",
+      "options": [
+        "La résolution (quantification)",
+        "La fréquence d'échantillonnage (Hz)",
+        "Le débit binaire (bitrate)",
+        "Le nombre de canaux (mono/stéréo)"
+      ],
+      "correct": "La fréquence d'échantillonnage (Hz)",
+      "explanation": "Une fréquence d'échantillonnage plus élevée (ex: 44.1 kHz pour les CD) permet de capturer des fréquences sonores plus élevées."
+    },
+    {
+      "question": "Quel paramètre de la numérisation du son détermine le nombre de bits utilisés pour coder l'amplitude de chaque échantillon ?",
+      "options": [
+        "La fréquence d'échantillonnage",
+        "La résolution ou quantification (bits)",
+        "Le débit binaire",
+        "La durée du son"
+      ],
+      "correct": "La résolution ou quantification (bits)",
+      "explanation": "Une résolution plus élevée (ex: 16 bits pour les CD) permet de représenter plus finement les nuances d'amplitude (dynamique)."
+    },
+    {
+      "question": "Quel type de compression réduit la taille d'un fichier audio en éliminant des informations jugées peu audibles par l'oreille humaine ?",
+      "options": [
+        "Compression sans perte (lossless)",
+        "Compression avec perte (lossy)",
+        "Aucune compression",
+        "Chiffrement"
+      ],
+      "correct": "Compression avec perte (lossy)",
+      "explanation": "Les formats comme MP3 ou AAC utilisent des modèles psychoacoustiques pour supprimer des données et réduire la taille, au prix d'une perte de qualité (souvent imperceptible)."
+    },
+    {
+      "question": "Quel format de fichier audio utilise une compression sans perte ?",
+      "options": [
+        "MP3",
+        "AAC",
+        "FLAC ou ALAC",
+        "WAV (non compressé généralement)"
+      ],
+      "correct": "FLAC ou ALAC",
+      "explanation": "FLAC (Free Lossless Audio Codec) et ALAC (Apple Lossless Audio Codec) réduisent la taille du fichier sans aucune perte de qualité par rapport à l'original."
+    },
+    {
+      "question": "La représentation binaire 0110 0001 correspond à quel caractère ASCII ?",
+      "options": [
+        "A",
+        "a",
+        "1",
+        "!"
+      ],
+      "correct": "a",
+      "explanation": "0110 0001 en binaire correspond à 97 en décimal, qui est le code ASCII de la lettre minuscule 'a'."
+    },
+    {
+      "question": "Comment est représenté le nombre décimal -1 en complément à 2 sur 8 bits ?",
+      "options": [
+        "10000001",
+        "11111110",
+        "11111111",
+        "00000001"
+      ],
+      "correct": "11111111",
+      "explanation": "Pour -1 : on prend +1 (00000001), on inverse les bits (11111110), on ajoute 1 (11111111)."
+    },
+    {
+      "question": "Quelle est la valeur maximale d'un entier non signé sur 16 bits ?",
+      "options": [
+        "32767",
+        "32768",
+        "65535",
+        "65536"
+      ],
+      "correct": "65535",
+      "explanation": "Sur 16 bits non signés, les valeurs vont de 0 à 2^16 - 1 = 65536 - 1 = 65535."
+    },
+    {
+      "question": "Quel type de données utiliseriez-vous pour représenter le nombre de 'likes' sur une publication, sachant qu'il ne peut pas être négatif ?",
+      "options": [
+        "Entier signé",
+        "Entier non signé",
+        "Flottant",
+        "Booléen"
+      ],
+      "correct": "Entier non signé",
+      "explanation": "Puisque le nombre de 'likes' est toujours positif ou nul, un entier non signé est approprié et permet d'utiliser toute la plage de valeurs pour des nombres positifs."
+    },
+    {
+      "question": "Le nombre binaire 11.01 correspond à quel nombre décimal ?",
+      "options": [
+        "3.5",
+        "3.25",
+        "6.5",
+        "1.75"
+      ],
+      "correct": "3.25",
+      "explanation": "Partie entière : 11 (bin) = 3 (dec). Partie fractionnaire : 0*2^(-1) + 1*2^(-2) = 0 + 1/4 = 0.25. Total = 3 + 0.25 = 3.25."
+    },
+    {
+      "question": "Qu'arrive-t-il si on transtype (cast) un nombre flottant comme 3.7 en entier ?",
+      "options": [
+        "Il devient 4 (arrondi)",
+        "Il devient 3 (partie entière tronquée)",
+        "Cela provoque une erreur",
+        "Il reste 3.7"
+      ],
+      "correct": "Il devient 3 (partie entière tronquée)",
+      "explanation": "La conversion standard d'un flottant en entier dans la plupart des langages tronque la partie décimale (ne conserve que la partie entière)."
+    }
+  ]
+}

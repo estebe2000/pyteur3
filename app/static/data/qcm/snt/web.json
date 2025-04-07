@@ -1,0 +1,1874 @@
+{
+  "Web": [
+    {
+      "question": "Qui est largement crédité de l'invention du World Wide Web ?",
+      "options": [
+        "Tim Berners-Lee",
+        "Vinton Cerf",
+        "Robert Kahn",
+        "Steve Jobs"
+      ],
+      "correct": "Tim Berners-Lee",
+      "explanation": "**Tim Berners-Lee**, chercheur au CERN, est largement crédité de la naissance du Web en 1989 [1]."
+    },
+    {
+      "question": "En quelle année le World Wide Web a-t-il été mis dans le domaine public ?",
+      "options": [
+        "1991",
+        "1993",
+        "1995",
+        "1998"
+      ],
+      "correct": "1993",
+      "explanation": "Le Web a été mis dans le domaine public en **1993**, avec la disponibilité du premier navigateur Mosaic [1]."
+    },
+    {
+      "question": "Quel est le rôle principal d'un navigateur web ?",
+      "options": [
+        "Afficher les pages web chez l'utilisateur",
+        "Stocker les fichiers des sites web",
+        "Sécuriser les transactions en ligne",
+        "Créer des pages web"
+      ],
+      "correct": "Afficher les pages web chez l'utilisateur",
+      "explanation": "L'**affichage des pages est réalisé chez l'utilisateur par un programme appelé navigateur** [2]."
+    },
+    {
+      "question": "Que signifie l'acronyme HTML ?",
+      "options": [
+        "HyperText Markup Language",
+        "Hyper Transfer Mode Language",
+        "High-level Text Management Language",
+        "Home Tool Markup Language"
+      ],
+      "correct": "HyperText Markup Language",
+      "explanation": "**HTML signifie HypertextMarkupLanguage**, un langage de balises pour les pages Web [3]."
+    },
+    {
+      "question": "Quel est le langage utilisé pour définir le style graphique des pages Web ?",
+      "options": [
+        "CSS",
+        "HTML",
+        "JavaScript",
+        "PHP"
+      ],
+      "correct": "CSS",
+      "explanation": "Leur **style graphique est défini dans le langage CSS (Cascading Style Sheets)** [3]."
+    },
+    {
+      "question": "Qu'est-ce qu'un hypertexte ?",
+      "options": [
+        "Un texte augmenté de renvois automatiques à d'autres contenus",
+        "Un protocole de communication sur le web",
+        "Un langage de programmation web",
+        "Un type de serveur web"
+      ],
+      "correct": "Un texte augmenté de renvois automatiques à d'autres contenus",
+      "explanation": "Un **hypertexte est un texte augmenté de renvois automatiques à des textes, des images ou des sons** [2]."
+    },
+    {
+      "question": "Qu'est-ce qu'une URL (Uniform Resource Locator) ?",
+      "options": [
+        "L'adresse unique d'une page web",
+        "Le nom du serveur web",
+        "Le protocole utilisé pour accéder à une page",
+        "Le langage dans lequel une page est écrite"
+      ],
+      "correct": "L'adresse unique d'une page web",
+      "explanation": "Les pages Web ont une **adresse unique, nommée URL (Uniform Ressource Locator)** [2]."
+    },
+    {
+      "question": "Quel protocole est couramment utilisé pour accéder aux pages web ?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "SMTP",
+        "TCP/IP"
+      ],
+      "correct": "HTTP",
+      "explanation": "Elles sont accessibles via internet en utilisant le **protocole HTTP (Hypertext Transfer Protocol)** [2]."
+    },
+    {
+      "question": "Quelle est la version sécurisée du protocole HTTP ?",
+      "options": [
+        "HTTPS",
+        "HTTP/2",
+        "SHTTP",
+        "HTTP-S"
+      ],
+      "correct": "HTTPS",
+      "explanation": "...ou sa **version sécurisée HTTPS qui crypte les échanges** [2]."
+    },
+    {
+      "question": "Qu'est-ce que le W3C (World Wide Web Consortium) ?",
+      "options": [
+        "Un consortium mondial qui normalise les formats du web",
+        "Une organisation qui gère les noms de domaine",
+        "Un moteur de recherche majeur",
+        "Une entreprise de développement de navigateurs web"
+      ],
+      "correct": "Un consortium mondial qui normalise les formats du web",
+      "explanation": "Sur le Web, les formats sont normalisés par un **consortium mondial (W3C : World Wide Web Consortium)** [3]."
+    },
+    {
+      "question": "Quel est le rôle des moteurs de recherche sur le web ?",
+      "options": [
+        "Permettre de trouver des informations dans des pages dont on ne connaît pas l'adresse",
+        "Héberger des sites web",
+        "Assurer la sécurité des transactions en ligne",
+        "Créer des liens hypertextes entre les pages"
+      ],
+      "correct": "Permettre de trouver des informations dans des pages dont on ne connaît pas l'adresse",
+      "explanation": "Les **moteurs de recherche permettent de trouver des informations dans des pages dont on ne connaît pas l’adresse** [4]."
+    },
+    {
+      "question": "Comment les moteurs de recherche collectent-ils les informations des pages web ?",
+      "options": [
+        "Par un parcours automatique du Web effectué par des robots",
+        "Par la soumission manuelle des sites par leurs propriétaires",
+        "Par l'analyse des requêtes des utilisateurs",
+        "Par l'indexation des noms de domaine"
+      ],
+      "correct": "Par un parcours automatique du Web effectué par des robots",
+      "explanation": "La méthode de recherche appelée référencement naturel se décompose en trois grandes activités, réalisées par les moteurs de recherche : (1) le **parcours automatique du Web pour collecter les pages visitées (aspiration des pages Web effectuée par des robots)** [4]."
+    },
+    {
+      "question": "Qu'est-ce que l'indexation des pages web par un moteur de recherche ?",
+      "options": [
+        "L'analyse du contenu des pages et leur association aux mots qu'elles contiennent",
+        "Le classement des pages en fonction de leur popularité",
+        "La vérification de la validité du code HTML des pages",
+        "Le stockage des adresses URL des pages visitées"
+      ],
+      "correct": "L'analyse du contenu des pages et leur association aux mots qu'elles contiennent",
+      "explanation": "(2) l’**analyse du contenu des pages et leur indexation sur les mots qu’elles contiennent** (constitution d’un annuaire inversé qui associe à chaque terme les URL des pages où il apparaît) [4, 5]."
+    },
+    {
+      "question": "Sur quoi se base principalement le classement des résultats par un moteur de recherche ?",
+      "options": [
+        "La popularité des pages, leur pertinence aux mots clés et l'ordre des termes de la requête",
+        "La date de publication des pages",
+        "La localisation géographique de l'utilisateur",
+        "Le type d'appareil utilisé pour la recherche"
+      ],
+      "correct": "La popularité des pages, leur pertinence aux mots clés et l'ordre des termes de la requête",
+      "explanation": "(3) la troisième activité, réalisée à chaque fois qu’un internaute fait une requête, construit une liste ordonnée des pages (**classement**) comportant les mots clés de la requête. Leur ordre dépend notamment de leur **popularité (principe des liens), de leur pertinence (aux mots de la requête), et de l’ordre des termes de la requête** [5]."
+    },
+    {
+      "question": "Comment appelle-t-on l'ensemble des techniques pour améliorer la visibilité d'un site web dans les résultats des moteurs de recherche ?",
+      "options": [
+        "Référencement (SEO)",
+        "Webdesign",
+        "Webmarketing",
+        "Développement web"
+      ],
+      "correct": "Référencement (SEO)",
+      "explanation": "Les concepteurs de site Web peuvent **améliorer le référencement de leurs pages en choisissant bien les mots et en les plaçant à des endroits stratégiques dans les pages** [5]."
+    },
+    {
+      "question": "Quel modèle d'interaction sous-tend le fonctionnement du Web ?",
+      "options": [
+        "Client/serveur",
+        "Pair-à-pair",
+        "Bus",
+        "Étoile"
+      ],
+      "correct": "Client/serveur",
+      "explanation": "Le **Web s’appuie sur le dialogue entre clients et serveurs** [6]."
+    },
+    {
+      "question": "Qui initie l'interaction dans le modèle client/serveur du Web ?",
+      "options": [
+        "Les clients (navigateurs)",
+        "Les serveurs web",
+        "Les moteurs de recherche",
+        "Les routeurs internet"
+      ],
+      "correct": "Les clients (navigateurs)",
+      "explanation": "L’**interaction est à l’initiative des clients (les applications qui se connectent au Web, dont les navigateurs)**, qui envoient des requêtes HTTP aux serveurs [6]."
+    },
+    {
+      "question": "Que renvoient les serveurs web en réponse aux requêtes HTTP des clients ?",
+      "options": [
+        "Des pages web stockées ou créées dynamiquement",
+        "Des messages d'erreur",
+        "Des adresses IP",
+        "Des cookies"
+      ],
+      "correct": "Des pages web stockées ou créées dynamiquement",
+      "explanation": "Ces derniers **renvoient leur résultat : des pages qu’ils ont stockées ou qu’ils créent dynamiquement en fonction de la requête formulée** [6]."
+    },
+    {
+      "question": "Quel langage de programmation est souvent exécuté côté client dans un navigateur web pour ajouter de l'interactivité ?",
+      "options": [
+        "JavaScript",
+        "PHP",
+        "Python",
+        "Java"
+      ],
+      "correct": "JavaScript",
+      "explanation": "Les pages reçues par les clients peuvent contenir des codes exécutables (**souvent en JavaScript**) qui permettent aux clients d’effectuer des traitements... [6]."
+    },
+    {
+      "question": "Qu'est-ce qu'un cookie dans le contexte de la navigation web ?",
+      "options": [
+        "Un petit fichier stocké localement contenant des informations sur les interactions avec un site web",
+        "Un programme malveillant qui espionne l'activité de l'utilisateur",
+        "Un protocole de sécurité pour crypter les communications",
+        "Une extension de navigateur qui bloque les publicités"
+      ],
+      "correct": "Un petit fichier stocké localement contenant des informations sur les interactions avec un site web",
+      "explanation": "...il peut communiquer des informations personnelles à son insu à des serveurs qui en gardent une trace, à distance ou localement **par des cookies**... [7]."
+    },
+    {
+      "question": "Qu'est-ce que l'hameçonnage (phishing) sur le web ?",
+      "options": [
+        "L'utilisation de fausses pages pour tromper les utilisateurs et obtenir leurs informations personnelles",
+        "Une technique pour améliorer le référencement d'un site web",
+        "Un type d'attaque informatique qui surcharge un serveur",
+        "Une méthode pour crypter les communications entre un navigateur et un serveur"
+      ],
+      "correct": "L'utilisation de fausses pages pour tromper les utilisateurs et obtenir leurs informations personnelles",
+      "explanation": "**De fausses pages peuvent encore être utilisées pour l’hameçonnage des utilisateurs** [7]."
+    },
+    {
+      "question": "Pourquoi est-il important d'examiner l'adresse web d'un lien avant de cliquer dessus ?",
+      "options": [
+        "Un nom de lien peut cacher une adresse Web malveillante",
+        "Pour vérifier la vitesse de chargement de la page",
+        "Pour s'assurer que le lien est toujours actif",
+        "Pour connaître le type de contenu de la page"
+      ],
+      "correct": "Un nom de lien pouvant cacher une adresse Web malveillante, il faut examiner cette adresse avant de l’activer par un clic [7].",
+      "explanation": "**Un nom de lien pouvant cacher une adresse Web malveillante, il faut examiner cette adresse avant de l’activer par un clic** [7]."
+    },
+    {
+      "question": "Qu'est-ce que la neutralité du Net ?",
+      "options": [
+        "L'idée que les routeurs doivent transmettre les paquets indépendamment de leur contenu",
+        "Le principe selon lequel tous les contenus sur internet doivent être gratuits",
+        "L'obligation pour les fournisseurs d'accès de garantir une vitesse de connexion égale pour tous les utilisateurs",
+        "La règle qui interdit la censure de contenu sur internet"
+      ],
+      "correct": "L’idée que les routeurs doivent transmettre les paquets indépendamment du type de leur contenu",
+      "explanation": "La **neutralité du Net**, présente dès l’origine du réseau, exprime l’idée que les routeurs doivent transmettre les paquets indépendamment du type de leur contenu : texte, vidéo, etc. [8]."
+    },
+    {
+      "question": "Quel est l'impact du Web sur la possibilité de publier des informations ?",
+      "options": [
+        "Il a ouvert à tous la possibilité et le droit de publier",
+        "Il a limité la diffusion d'informations aux seules entreprises",
+        "Il a rendu la publication plus coûteuse et complexe",
+        "Il n'a pas fondamentalement changé les pratiques de publication"
+      ],
+      "correct": "Il a ouvert à tous la possibilité et le droit de publier",
+      "explanation": "Dans l’histoire de la communication, le Web est une révolution : **il a ouvert à tous la possibilité et le droit de publier** [9]."
+    },
+    {
+      "question": "Qu'est-ce que le droit à l'oubli dans le contexte du Web ?",
+      "options": [
+        "La possibilité pour un individu de demander la suppression d'informations personnelles accessibles en ligne",
+        "Le droit de ne pas se souvenir des informations consultées sur le web",
+        "L'obligation pour les sites web de supprimer automatiquement les données après une certaine période",
+        "La protection des données personnelles contre toute utilisation non autorisée"
+      ],
+      "correct": "La possibilité pour un individu de demander la suppression d'informations personnelles accessibles en ligne",
+      "explanation": "Il conserve des informations, parfois personnelles, accessibles partout sur de longues durées sans qu’il soit facile de les effacer, ce qui pose la question du **droit à l’oubli** [9]."
+    },
+    {
+      "question": "Comment certains sites web acquièrent-ils de la visibilité sur la première page des résultats des moteurs de recherche ?",
+      "options": [
+        "En achetant de la publicité qui apparaît parmi les liens promotionnels",
+        "En ayant le plus grand nombre de liens entrants",
+        "En publiant le contenu le plus récent",
+        "En utilisant des mots-clés secrets"
+      ],
+      "correct": "En achetant de la publicité qui apparaîtra parmi les liens promotionnels",
+      "explanation": "En particulier, des moteurs de recherche permettent à certains sites d’acquérir de la visibilité sur la première page des résultats de recherche **en achetant de la publicité qui apparaîtra parmi les liens promotionnels** [9]."
+    },
+    {
+      "question": "Quelle année marque la naissance au CERN par Tim Berners Lee du concept du Web ?",
+      "options": [
+        "1985",
+        "1989",
+        "1993",
+        "1995"
+      ],
+      "correct": "1989",
+      "explanation": "**1989 : naissance au CERN par Tim Berners Lee** [1]."
+    },
+    {
+      "question": "Quelle année a vu la mise à disposition de technologies pour le développement de sites Web interactif (langage JavaScript) et dynamique (langage PHP) ?",
+      "options": [
+        "1990",
+        "1993",
+        "1995",
+        "2000"
+      ],
+      "correct": "1995",
+      "explanation": "**1995 : mise à disposition de technologies pour le développement de site Web interactif (langage JavaScript) et dynamique (langage PHP)** [1]."
+    },
+    {
+      "question": "Que signifie DOM dans le contexte du Web et en quelle année a-t-il été standardisé ?",
+      "options": [
+        "Document Object Model, 2001",
+        "Domain Object Model, 1998",
+        "Dynamic Object Manipulation, 2001",
+        "Data Object Management, 1998"
+      ],
+      "correct": "Document Object Model, 2001",
+      "explanation": "**2001 : standardisation des pages grâce au DOM (Document Object Model)** [3]."
+    },
+    {
+      "question": "À quoi servent principalement les liens hypertextes sur le Web ?",
+      "options": [
+        "Relier des données entre elles et permettre la navigation non linéaire",
+        "Sécuriser les communications entre les navigateurs et les serveurs",
+        "Mettre en forme le contenu des pages web",
+        "Stocker des informations sur les utilisateurs"
+      ],
+      "correct": "Relier des données entre elles et permettre la navigation non linéaire",
+      "explanation": "Un hypertexte est un texte augmenté de renvois automatiques à des textes, des images ou des sons... Dans une page Web, ce renvoi se fait sur n’importe quelle machine du réseau internet... La toile d’araignée construite par les liens peut être représentée sous la forme d’un graphe qui matérialise la structure du Web [2]."
+    },
+    {
+      "question": "Comment le Web est-il souvent représenté en raison de ses nombreuses connexions ?",
+      "options": [
+        "Sous la forme d'un graphe ou d'une toile d'araignée",
+        "Sous la forme d'un arbre",
+        "Sous la forme d'une liste linéaire",
+        "Sous la forme d'un réseau en étoile"
+      ],
+      "correct": "Sous la forme d'un graphe ou d'une toile d'araignée",
+      "explanation": "La toile d’araignée construite par les liens peut être **représentée sous la forme d’un graphe qui matérialise la structure du Web** [2]."
+    },
+    {
+      "question": "Quelles sont les trois grandes activités réalisées par les moteurs de recherche pour le référencement naturel ?",
+      "options": [
+        "Parcours du Web, analyse et indexation du contenu, classement des résultats",
+        "Analyse des mots-clés, optimisation des sites, achat de publicité",
+        "Soumission des sites, création de liens, partage sur les réseaux sociaux",
+        "Collecte des données utilisateurs, analyse comportementale, ciblage publicitaire"
+      ],
+      "correct": "Parcours du Web, analyse et indexation du contenu, classement des résultats",
+      "explanation": "La méthode de recherche appelée référencement naturel se décompose en trois grandes activités, réalisées par les moteurs de recherche : **(1) le parcours automatique du Web pour collecter les pages visitées (aspiration des pages Web effectuée par des robots) ; (2) l’analyse du contenu des pages et leur indexation sur les mots qu’elles contiennent... ; (3) ...construit une liste ordonnée des pages (classement) comportant les mots clés de la requête** [4, 5]."
+    },
+    {
+      "question": "Quels sont les deux types de codes qui peuvent être contenus dans les pages web reçues par les clients et qui permettent des traitements locaux et l'interaction avec les serveurs ?",
+      "options": [
+        "Codes exécutables (souvent en JavaScript)",
+        "Balises HTML",
+        "Feuilles de style CSS",
+        "Requêtes HTTP"
+      ],
+      "correct": "Codes exécutables (souvent en JavaScript)",
+      "explanation": "Les pages reçues par les clients peuvent contenir des **codes exécutables (souvent en JavaScript) qui permettent aux clients d’effectuer des traitements en accédant aux ressources de son ordinateur et en interagissant avec les serveurs** [6]."
+    },
+    {
+      "question": "Quels risques l'utilisateur prend-il en formulant des requêtes sur des sites Web dynamiques et en laissant des programmes s'exécuter sur sa machine ?",
+      "options": [
+        "Communication involontaire d'informations personnelles, enregistrement des traces, chargement de programmes malveillants",
+        "Surcharge du processeur, ralentissement de la connexion internet, blocage du navigateur",
+        "Modification des paramètres du système d'exploitation, suppression de fichiers locaux, perte de données",
+        "Affichage de publicités intempestives, redirection vers des sites non désirés, infection par des virus"
+      ],
+      "correct": "Communication involontaire d'informations personnelles, enregistrement des traces, chargement de programmes malveillants",
+      "explanation": "En formulant des requêtes sur des sites Web dynamiques et en laissant des programmes s’exécuter sur sa machine, l’utilisateur prend des risques : **il peut communiquer des informations personnelles à son insu à des serveurs qui en gardent une trace, à distance ou localement par des cookies, ou encore charger des pages contenant des programmes malveillants**... [7]."
+    },
+    {
+      "question": "Que peut faire un navigateur concernant l'historique des interactions web de l'utilisateur ?",
+      "options": [
+        "Garder un historique accessible aux sites connectés",
+        "Supprimer automatiquement l'historique après chaque session",
+        "Crypter l'historique pour le rendre illisible",
+        "Partager l'historique avec les moteurs de recherche"
+      ],
+      "correct": "Garder un historique accessible aux sites connectés",
+      "explanation": "Par ailleurs, un **navigateur peut garder un historique de toutes les interactions, et le laisser accessible aux sites connectés** [7]."
+    },
+    {
+      "question": "Quelles actions un utilisateur peut-il entreprendre pour limiter le suivi de ses interactions sur le web ?",
+      "options": [
+        "Utiliser des services qui s'engagent à ne pas garder de traces, paramétrer son navigateur pour ne pas enregistrer l'historique",
+        "Naviguer uniquement en mode privé, désactiver complètement les cookies, utiliser un VPN",
+        "Installer un antivirus puissant, utiliser un pare-feu, mettre à jour régulièrement son navigateur",
+        "N'utiliser que des sites web en HTTPS, vérifier les certificats de sécurité, ne jamais enregistrer ses mots de passe"
+      ],
+      "correct": "Utiliser des services qui s'engagent à ne pas garder de traces, paramétrer son navigateur pour ne pas enregistrer l'historique",
+      "explanation": "L’utilisateur peut **utiliser des services qui s’engagent à ne pas garder de traces de ses interactions, par exemple certains moteurs de recherche. Il peut aussi paramétrer son navigateur de façon à ce que celui-ci n’enregistre pas d’historique des interactions** [7]."
+    },
+    {
+      "question": "Quels sont les impacts positifs majeurs du Web sur les pratiques humaines dans l'histoire de la communication ?",
+      "options": [
+        "Ouverture de la publication à tous, coopération nouvelle, communication universelle avec les objets connectés",
+        "Réduction des coûts de communication, augmentation de la vitesse de transmission, amélioration de la qualité de l'information",
+        "Centralisation de l'information, contrôle accru des contenus, facilitation de la surveillance des individus",
+        "Standardisation des formats de communication, simplification de l'accès à l'information, développement de nouveaux outils de création de contenu"
+      ],
+      "correct": "Ouverture de la publication à tous, coopération nouvelle, communication universelle avec les objets connectés",
+      "explanation": "Dans l’histoire de la communication, le Web est une révolution : **il a ouvert à tous la possibilité et le droit de publier ; il permet une coopération d’une nature nouvelle entre individus et entre organisations... ; il devient universel pour communiquer avec les objets connectés** [9]."
+    },
+    {
+      "question": "Quels sont les principaux défis ou inconvénients associés à la diffusion d'informations sur le Web ?",
+      "options": [
+        "Manque de garantie de qualité, de pertinence et de véracité, difficulté de vérification des sources",
+        "Coût élevé de la publication, complexité technique de la diffusion, limitations de la portée géographique",
+        "Absence de formats standardisés, difficultés d'accès pour certaines populations, risques de perte de données",
+        "Surabondance d'informations fiables, facilité de vérification des sources, protection efficace contre la désinformation"
+      ],
+      "correct": "Manque de garantie de qualité, de pertinence et de véracité, difficulté de vérification des sources",
+      "explanation": "Le Web permet aussi de diffuser toutes sortes d’informations dont **ni la qualité, ni la pertinence, ni la véracité ne sont garanties et dont la vérification des sources n’est pas toujours facile** [9]."
+    },
+    {
+      "question": "Quelles sont les préoccupations concernant la conservation des informations, y compris personnelles, sur le Web ?",
+      "options": [
+        "Accessibilité à long terme et difficulté d'effacement, question du droit à l'oubli",
+        "Risques de perte ou de corruption des données, nécessité de sauvegardes fréquentes, coûts de stockage élevés",
+        "Difficulté de partage des informations, limitations de l'accès en fonction des droits d'auteur, problèmes de compatibilité des formats",
+        "Transparence totale de l'information, facilité de correction des erreurs, garantie de la protection des données personnelles"
+      ],
+      "correct": "Accessibilité à long terme et difficulté d'effacement, question du droit à l'oubli",
+      "explanation": "Il conserve des informations, parfois personnelles, **accessibles partout sur de longues durées sans qu’il soit facile de les effacer, ce qui pose la question du droit à l’oubli** [9]."
+    },
+    {
+      "question": "Comment l'exploitation des données des utilisateurs sur le Web peut-elle avoir des conséquences sociétales ?",
+      "options": [
+        "Recommandations commerciales, bulles informationnelles",
+        "Amélioration des services personnalisés, facilitation de la communication, renforcement des liens sociaux",
+        "Démocratisation de l'accès à l'information, promotion de la diversité culturelle, développement de l'esprit critique",
+        "Protection accrue de la vie privée, limitation de la diffusion de fausses informations, responsabilisation des plateformes en ligne"
+      ],
+      "correct": "Recommandations commerciales, bulles informationnelles",
+      "explanation": "Il permet une exploitation de ses données, dont les conséquences sociétales sont encore difficiles à estimer : **recommandation à des fins commerciales, bulles informationnelles**, etc. [9]."
+    },
+    {
+      "question": "Quel était le premier grand fournisseur d'accès au réseau aux États-Unis ?",
+      "options": [
+        "CompuServe",
+        "AOL",
+        "Prodigy",
+        "The Source"
+      ],
+      "correct": "CompuServe",
+      "explanation": "Le réseau s’ouvre progressivement... à partir de 1979, aux États-Unis avec le **premier grand fournisseur d’accès au réseau : CompuServe** [10, 11]."
+    },
+    {
+      "question": "Quand l'utilisation d'Internet par le grand public a-t-elle débuté en France ?",
+      "options": [
+        "Fin des années 1980",
+        "Fin de l'année 1993",
+        "Milieu des années 1990",
+        "Début des années 2000"
+      ],
+      "correct": "Fin de l'année 1993",
+      "explanation": "**Internet fait partie de notre vie quotidienne et pourtant son début d’utilisation par le grand public en France ne remonte qu’à la fin de l’année 1993** [12, 13]."
+    },
+    {
+      "question": "Quel était le nom du réseau développé par la DARPA pour relier les centres de recherches ?",
+      "options": [
+        "ARPANET",
+        "NSFNET",
+        "MILNET",
+        "BITNET"
+      ],
+      "correct": "ARPANET",
+      "explanation": "En 1971, les services de recherches de l’armée américaine, la DARPA, poussent au développement d’**ARPANET** pour relier les différents centres de recherches... [10, 11]."
+    },
+    {
+      "question": "Quel protocole de communication, encore utilisé aujourd'hui, a été mis au point en 1973 ?",
+      "options": [
+        "TCP/IP",
+        "HTTP",
+        "FTP",
+        "SMTP"
+      ],
+      "correct": "TCP/IP",
+      "explanation": "En 1973 est mis au point le **protocole de communication TCP/IP, encore utilisé aujourd’hui** [10, 11]."
+    },
+    {
+      "question": "Quels nouveaux services ont été créés avec le développement d'Internet ?",
+      "options": [
+        "Courrier électronique, forums de discussion, partage de fichiers",
+        "Télévision en ligne, réseaux sociaux, jeux vidéo multijoueurs",
+        "Systèmes d'exploitation en réseau, bases de données distribuées, impression à distance",
+        "Messagerie instantanée, visioconférence, stockage en nuage"
+      ],
+      "correct": "Courrier électronique, forums de discussion, partage de fichiers",
+      "explanation": "De nouveaux services sont créés pour utiliser ce réseau : **courrier électronique, forums de discussion, partage de fichiers** [10, 11]."
+    },
+    {
+      "question": "Quel est le type d'architecture réseau principal sur lequel Internet a été initialement pensé ?",
+      "options": [
+        "Client/serveur",
+        "Pair-à-pair",
+        "Hybride",
+        "Décentralisé"
+      ],
+      "correct": "Client/serveur",
+      "explanation": "À l’origine, **Internet a été pensé principalement comme un réseau de type client/serveur**... [14, 15]."
+    },
+    {
+      "question": "Quel est le rôle d'un serveur DNS dans le contexte du Web ?",
+      "options": [
+        "Enregistrer les serveurs avec une adresse compréhensible",
+        "Stocker le contenu des pages web",
+        "Sécuriser les communications entre clients et serveurs",
+        "Gérer le routage des paquets de données"
+      ],
+      "correct": "Enregistrer les serveurs avec une adresse compréhensible",
+      "explanation": "Comme nous l’avons vu plus haut, ce type de fonctionnement demande à ce que les **serveurs soient enregistrés avec une adresse compréhensible sur un serveur DNS** [14, 15]."
+    },
+    {
+      "question": "Quels sont les inconvénients potentiels d'un système client/serveur sur Internet ?",
+      "options": [
+        "Dépendance à la disponibilité du serveur, risque d'inaccessibilité en cas de piratage ou de surcharge",
+        "Complexité de la gestion des clients, nécessité de mises à jour fréquentes des navigateurs, coûts élevés pour les utilisateurs",
+        "Difficulté de partage d'informations entre clients, limitations de la bande passante, problèmes de compatibilité des systèmes d'exploitation",
+        "Faible sécurité des données stockées sur les serveurs, risque élevé de perte d'informations personnelles, vulnérabilité aux attaques de virus"
+      ],
+      "correct": "Dépendance à la disponibilité du serveur, risque d'inaccessibilité en cas de piratage ou de surcharge",
+      "explanation": "Dans un système client/serveur, l’apport d’information dépend de ce dernier. Si quelqu’un **pirate le serveur ou le bloque avec une surcharge de requête, l’information devient inaccessible** [16, 17]."
+    },
+    {
+      "question": "À partir du début des années 2000, quel type de protocoles de communication a vu le jour pour permettre aux clients de communiquer directement entre eux ?",
+      "options": [
+        "Pair-à-pair",
+        "Client-serveur distribué",
+        "Réseau maillé",
+        "Diffusion"
+      ],
+      "correct": "Pair-à-pair",
+      "explanation": "C’est pourquoi, à partir du début des années 2000, des **protocoles de communications pair-à-pair ont vu le jour**. Ils permettent aux clients de communiquer directement entre eux... [16, 17]."
+    },
+    {
+      "question": "Quels nouveaux usages sur Internet ont été rendus possibles par les protocoles pair-à-pair ?",
+      "options": [
+        "Logiciels de messageries en ligne, téléphonie par internet (VoIP), distribution décentralisée de logiciels",
+        "Navigation web plus rapide, streaming vidéo haute définition, jeux en ligne massivement multijoueurs",
+        "Stockage de fichiers en nuage, sauvegarde automatique des données, impression à distance",
+        "Commerce électronique sécurisé, transactions bancaires en ligne, systèmes de paiement numérique"
+      ],
+      "correct": "Logiciels de messageries en ligne, téléphonie par internet (VoIP), distribution décentralisée de logiciels",
+      "explanation": "...ont ouvert la voie à de nouveaux usages sur Internet : **logiciels de messageries en ligne, téléphonie par internet (skype, voip), distribution décentralisées de logiciels (Linux, Battle.net…)** [16, 17]."
+    },
+    {
+      "question": "Comment fonctionne un système décentralisé pair-à-pair pour transmettre l'information ?",
+      "options": [
+        "Chaque ordinateur est un nœud du réseau et connaît les nœuds autour de lui pour transmettre l'information",
+        "Un serveur centralisé gère toutes les communications entre les clients",
+        "L'information est diffusée à tous les ordinateurs du réseau simultanément",
+        "Les ordinateurs se connectent séquentiellement pour relayer l'information"
+      ],
+      "correct": "Chaque ordinateur est un nœud du réseau et connaît les nœuds autour de lui pour transmettre l'information",
+      "explanation": "Dans un système décentralisé pair-à-pair, **chaque ordinateur est un nœud du réseau et connaît les nœuds autour de lui afin de transmettre l’information** [18, 19]."
+    },
+    {
+      "question": "Quel est un inconvénient de la recherche d'information dans un système pair-à-pair décentralisé ?",
+      "options": [
+        "La vitesse de recherche est fortement ralentie",
+        "Le risque de surcharge des serveurs est élevé",
+        "La communication directe entre les clients est impossible",
+        "La sécurité des données échangées est faible"
+      ],
+      "correct": "La vitesse de recherche est très fortement ralentie",
+      "explanation": "La **vitesse de recherche d’information en est très fortement ralentie**... [18, 19]."
+    },
+    {
+      "question": "Quels types d'usages illicites ont été favorisés par les réseaux pair-à-pair ?",
+      "options": [
+        "Streaming illégal, partage de films et de musiques (torrent)",
+        "Attaques par déni de service, diffusion de virus informatiques, vol d'informations personnelles",
+        "Création de réseaux de botnets, exploitation de failles de sécurité, distribution de logiciels malveillants",
+        "Spamming massif, diffusion de publicités non sollicitées, usurpation d'identité en ligne"
+      ],
+      "correct": "Streaming illégal, partage de films et de musiques (torrent)",
+      "explanation": "Cela a aussi ouvert la voie à des usages illicites comme le **streaming illégal ou le partage de films et de musiques (torrent en particuliers)** [18, 19]."
+    },
+    {
+      "question": "Sur quel type de réseaux s'est bâti le réseau internet souterrain (dark web) ?",
+      "options": [
+        "Pair-à-pair",
+        "Client/serveur centralisé",
+        "Réseau intranet",
+        "Réseau téléphonique commuté"
+      ],
+      "correct": "Pair-à-pair",
+      "explanation": "C’est également sur ce type de réseaux que s’est bâti le **réseau internet souterrain (dark web)**... [18, 19]."
+    },
+    {
+      "question": "Quels systèmes sont utilisés pour faire fonctionner le dark web en assurant l'anonymat ?",
+      "options": [
+        "Tor ou Freenet",
+        "HTTP ou HTTPS",
+        "DNS ou TCP/IP",
+        "VPN ou Pare-feu"
+      ],
+      "correct": "Tor ou Freenet",
+      "explanation": "...qui repose sur des systèmes comme **Tor ou Freenet** [18, 19]."
+    },
+    {
+      "question": "Pourquoi les systèmes comme Tor ou Freenet sont-ils combattus par les autorités de la plupart des pays ?",
+      "options": [
+        "Pour protéger les ayants droit des œuvres (films, musiques, livres)",
+        "Pour empêcher la communication entre les citoyens",
+        "Pour contrôler l'accès à l'information en ligne",
+        "Pour augmenter la vitesse de navigation sur Internet"
+      ],
+      "correct": "Pour protéger les ayants droit des œuvres (films, musiques, livres)",
+      "explanation": "Ces systèmes sont combattus par les autorités de la plupart des pays **pour protéger les ayants droit des œuvres (films, musiques, livres)**... [18, 19]."
+    },
+    {
+      "question": "Quel rôle peuvent jouer les réseaux du type dark web pour certains citoyens ou activités dans des pays dominés par des régimes autoritaires ?",
+      "options": [
+        "Servir de moyens d'expression",
+        "Faciliter le commerce international",
+        "Promouvoir le tourisme",
+        "Améliorer l'éducation en ligne"
+      ],
+      "correct": "Servir de moyens d'expression",
+      "explanation": "...mais servent aussi de **moyens d’expression pour des activités ou des citoyens dans des pays dominés par des régimes autoritaires** [18, 19]."
+    },
+    {
+      "question": "Quels moyens de communication ont facilité les échanges entre les chercheurs à partir du milieu du XIXe siècle, préparant le terrain pour le développement du web ?",
+      "options": [
+        "Développement des transports (trains, bateaux à vapeur, etc.) et des moyens de communication (télégraphe, téléphone)",
+        "Essor de l'imprimerie et de la diffusion des livres",
+        "Création des premières universités et bibliothèques",
+        "Invention de l'électricité et des premiers ordinateurs"
+      ],
+      "correct": "Développement des transports (trains, bateaux à vapeur, etc.) et des moyens de communication (télégraphe, téléphone)",
+      "explanation": "À partir du milieu du XIXe siècle, les échanges entre « savants » (chercheurs) du monde entier sont devenus de plus en plus faciles avec le **développement des transports (trains, bateaux à vapeur, moteur à essence, voiture, avions…) et des moyens de communication (télégraphe, téléphone et internet)** [20, 21]."
+    },
+    {
+      "question": "Quel rêve animaient les chercheurs lors du développement des réseaux informatiques dans la seconde moitié du XXe siècle ?",
+      "options": [
+        "Pouvoir accéder aux informations du monde entier sans se déplacer",
+        "Développer des ordinateurs de plus en plus rapides",
+        "Créer des langages de programmation universels",
+        "Établir une communication instantanée entre tous les scientifiques"
+      ],
+      "correct": "Pouvoir accéder aux informations du monde entier sans se déplacer",
+      "explanation": "Quand les réseaux informatiques se développent dans la seconde moitié du XXe siècle, les chercheurs rêvent de **pouvoir accéder aux informations du monde entier sans avoir à bouger de leurs bureaux**... [20, 22]."
+    },
+    {
+      "question": "Sur quelle association Tim Berners-Lee a-t-il commencé à travailler en 1989 pour créer le Web ?",
+      "options": [
+        "Hypertexte et internet (liant hypertexte, TCP et DNS)",
+        "Intelligence artificielle et réseaux neuronaux",
+        "Cryptographie et sécurité des données",
+        "Compression de données et transmission rapide"
+      ],
+      "correct": "Hypertexte et internet (liant hypertexte, TCP et DNS)",
+      "explanation": "En 1989 Tim Berners-Lee... commence à travailler sur l’**association entre hypertexte et internet en liant hypertexte, TCP et DNS** [22, 23]."
+    },
+    {
+      "question": "En quelle année Tim Berners-Lee a-t-il créé l'expression 'World Wide Web' et développé les bases du Web avec Robert Cailliau ?",
+      "options": [
+        "1990",
+        "1985",
+        "1995",
+        "2000"
+      ],
+      "correct": "1990",
+      "explanation": "En **1990** il crée l’expression **World Wide Web (www)** et développe, avec Robert Cailliau les adresses web (url), l’hypertexte transfer protocol (HTTP) et l’hypertexte markup langage (html)... [23, 24]."
+    },
+    {
+      "question": "Quels éléments fondamentaux du Web Tim Berners-Lee et Robert Cailliau ont-ils créés en 1990 ?",
+      "options": [
+        "Adresses web (URL), protocole HTTP, langage HTML",
+        "Navigateurs web, serveurs web, moteurs de recherche",
+        "Protocoles TCP/IP, DNS, FTP",
+        "Langages JavaScript, CSS, PHP"
+      ],
+      "correct": "Adresses web (URL), protocole HTTP, langage HTML",
+      "explanation": "...développe... les **adresses web (url), l’hypertexte transfer protocol (HTTP) et l’hypertexte markup langage (html)** [23, 24]."
+    },
+    {
+      "question": "Qu'ont également créé Tim Berners-Lee et Robert Cailliau en plus des URL, HTTP et HTML ?",
+      "options": [
+        "Un navigateur web, un éditeur et un serveur HTTP",
+        "Un moteur de recherche et un langage de programmation",
+        "Un système d'exploitation et une base de données",
+        "Un réseau de communication et un protocole de sécurité"
+      ],
+      "correct": "Un navigateur web, un éditeur et un serveur HTTP",
+      "explanation": "Ils créent également un **navigateur web, un éditeur et un serveur HTTP**. L’ensemble est lancé en 1991 [23, 24]."
+    },
+    {
+      "question": "Quel impact les liens hypertextes ont-ils eu sur la lecture de documents numériques ?",
+      "options": [
+        "La lecture n'est plus linéaire, permettant une navigation en fonction des envies",
+        "La lecture est devenue plus lente et plus complexe",
+        "La lecture est restée fondamentalement la même mais avec des liens vers des sources externes",
+        "La lecture est devenue entièrement dépendante de l'ordre des liens"
+      ],
+      "correct": "La lecture n'est plus linéaire, permettant une navigation en fonction des envies",
+      "explanation": "Avec les liens hypertextes, la **lecture n’est plus linéaire, mais le lecteur peut parcourir un ouvrage numérique en fonction de ses envies et de ce qu’il veut approfondir** [25, 26]."
+    },
+    {
+      "question": "Sur quel système Tim Berners-Lee s'est-il basé pour étendre l'hypertexte au réseau Internet naissant ?",
+      "options": [
+        "Le système d'hypertexte initial",
+        "Les réseaux de communication préexistants",
+        "Les bases de données en ligne",
+        "Les langages de programmation de l'époque"
+      ],
+      "correct": "Le système d'hypertexte initial",
+      "explanation": "C’est sur ce système que s’est basé **Tim Berners-Lee en l’étendant au réseau Internet naissant** [25, 26]."
+    },
+    {
+      "question": "Que signifie l'acronyme HTML ?",
+      "options": [
+        "HyperText Markup Language",
+        "High Transfer Method Language",
+        "Hyperlink and Text Management Language",
+        "Home Text Manipulation Language"
+      ],
+      "correct": "HyperText Markup Language",
+      "explanation": "**HTML signifie HyperText Markup Language**, donc langage de description de textes liée avec des balises [25, 27]."
+    },
+    {
+      "question": "Comment une page HTML est-elle interprétée par le navigateur web ?",
+      "options": [
+        "Comme un code source simple texte",
+        "Comme un programme exécutable",
+        "Comme une base de données structurée",
+        "Comme une image numérique"
+      ],
+      "correct": "Comme un code source simple texte",
+      "explanation": "Une **page HTML est un code source qui sera interprété par le navigateur web. C’est un simple texte** [27, 28]."
+    },
+    {
+      "question": "Quelle est la structure principale d'un document HTML ?",
+      "options": [
+        "En arborescence avec deux blocs principaux : en-tête et corps",
+        "En liste séquentielle de balises",
+        "En tableau avec des lignes et des colonnes",
+        "En blocs flottants positionnés librement"
+      ],
+      "correct": "En arborescence avec deux blocs principaux : en-tête et corps",
+      "explanation": "Il est **structuré en arborescence avec deux blocs principaux : en-tête et corps** [27, 28]."
+    },
+    {
+      "question": "Quand la structure en arborescence du HTML est-elle devenue particulièrement visible ?",
+      "options": [
+        "En HTML5 avec l'utilisation des divisions par contenus (div)",
+        "Avec l'introduction des feuilles de style CSS",
+        "Lors de la création des premiers navigateurs web",
+        "Avec l'ajout du langage JavaScript"
+      ],
+      "correct": "En HTML5 avec l'utilisation des divisions par contenus (div)",
+      "explanation": "La **structure en arborescence est surtout visible en HTML5 quand on utilise les divisions par contenus (div)** [27, 28]."
+    },
+    {
+      "question": "Quelles fonctionnalités manquaient au HTML des premières années du web et ont été progressivement complétées par le trio HTML+CSS+Javascript ?",
+      "options": [
+        "Formulaires interactifs, achats en ligne, mise en forme avancée du texte",
+        "Gestion des images, intégration de vidéos, lecture de musique",
+        "Création de graphiques, animation de contenu, interaction avec des bases de données",
+        "Support des liens hypertextes, structuration des documents, affichage sur différents écrans"
+      ],
+      "correct": "Formulaires interactifs, achats en ligne, mise en forme avancée du texte",
+      "explanation": "Dans le HTML des premières années du web, il manquait de nombreuses fonctions qui ont été progressivement complétées par le trio HTML+CSS+Javascript : **Formulaires interactifs, Achats en ligne..., Mettre des textes en forme, ajouter couleur et mise en valeur…** [29, 30]."
+    },
+    {
+      "question": "Qu'est-ce qui n'était pas possible de créer facilement avec le HTML seul dans les premières années du web ?",
+      "options": [
+        "De l'interactivité avec l'utilisateur pour des jeux, de la musique, des vidéos, des animations",
+        "Des documents structurés avec des liens hypertextes",
+        "Des pages web avec du texte et des images",
+        "Des formulaires simples pour la collecte d'informations"
+      ],
+      "correct": "De l'interactivité avec l'utilisateur pour des jeux, de la musique, des vidéos, des animations",
+      "explanation": "MAIS il n’était pas possible de créer facilement de l’**interactivité avec l’utilisateur pour faire des jeux, écouter de la musique, visionner une vidéo, réaliser une animation pour expliquer un phénomène…** [29, 30]."
+    },
+    {
+      "question": "Comment accédait-on aux fonctions interactives, de lecture de musique ou de visionnage de vidéos dans les navigateurs web des premières années ?",
+      "options": [
+        "Grâce à des greffons (plug-ins) installés dans le navigateur web",
+        "Directement avec le code HTML",
+        "En utilisant des feuilles de style CSS animées",
+        "Avec des langages de script côté serveur"
+      ],
+      "correct": "Grâce à des greffons (plug-ins) installés dans le navigateur web",
+      "explanation": "**Des greffons (plug-ins) installés dans le navigateur web permettaient d’accéder à ces fonctions**. Les plus connus et populaires étaient Flash..., Silverlight... et Java [29, 31]."
+    },
+    {
+      "question": "Quels étaient les greffons les plus connus et populaires utilisés dans les navigateurs web pour étendre leurs fonctionnalités ?",
+      "options": [
+        "Flash, Silverlight et Java",
+        "Adobe Reader, QuickTime et Windows Media Player",
+        "RealPlayer, Shockwave et DivX",
+        "ActiveX, VLC et GIF Animator"
+      ],
+      "correct": "Flash, Silverlight et Java",
+      "explanation": "Les plus connus et populaires étaient **Flash** (racheté par adobe), **Silverlight** (créé par Microsoft) et **Java** [29, 31]."
+    },
+    {
+      "question": "Dans quelle zone d'une page web les greffons pouvaient-ils fonctionner ?",
+      "options": [
+        "Dans une zone prédéfinie de la page",
+        "Sur toute la surface de la page",
+        "En arrière-plan de la page",
+        "Dans une fenêtre pop-up séparée"
+      ],
+      "correct": "Dans une zone prédéfinie de la page",
+      "explanation": "Ces greffons ne pouvaient fonctionner que dans une **zone prédéfinie de la page** [29, 31]."
+    },
+    {
+      "question": "Quel était un inconvénient majeur des greffons, en particulier Flash ?",
+      "options": [
+        "Ils devenaient de plus en plus lourds en temps de téléchargement et de traitement machine",
+        "Ils étaient difficiles à installer et à mettre à jour",
+        "Ils étaient incompatibles avec la plupart des navigateurs web",
+        "Ils offraient peu de fonctionnalités et étaient limités dans leurs capacités"
+      ],
+      "correct": "Ils devenaient de plus en plus lourds en temps de téléchargement et de traitement machine",
+      "explanation": "Les greffons, et particulièrement Flash... sont devenus de plus en plus puissants et versatiles, mais aussi de plus en plus **lourds en temps de téléchargement et de traitement machine** [31]."
+    },
+    {
+      "question": "Quelle évolution a cherché à apporter HTML5 en remplacement des greffons ?",
+      "options": [
+        "Intégrer directement dans le HTML les fonctionnalités des greffons et en ajouter d'innovantes",
+        "Rendre le HTML plus compatible avec les greffons existants",
+        "Limiter l'utilisation des fonctionnalités interactives sur les pages web",
+        "Développer de nouveaux greffons plus performants et moins gourmands en ressources"
+      ],
+      "correct": "Intégrer directement dans le HTML les fonctionnalités des greffons et en ajouter d'innovantes",
+      "explanation": "Dès lors il fallait trouver une manière de faire tout ce que faisaient ces greffons **directement avec le HTML, en y ajoutant d’autres fonctions innovantes** pour gérer la multitude de nouveaux écrans accessibles [32]."
+    },
+    {
+      "question": "Quelles sont quelques nouvelles structures de pages introduites par HTML5 pour la hiérarchisation du contenu ?",
+      "options": [
+        "<section>, <header>, <footer>, <nav>, <article>, <aside>, <figure>",
+        "<div>, <span>, <a>, <img>, <p>, <h1> à <h6>",
+        "<table>, <tr>, <td>, <th>, <thead>, <tbody>, <tfoot>",
+        "<form>, <input>, <textarea>, <button>, <select>, <option>"
+      ],
+      "correct": "<section>, <header>, <footer>, <nav>, <article>, <aside>, <figure>",
+      "explanation": "**Nouvelles structures de pages pour la hiérarchisation du contenu : <section> <header> <footer> <nav> <article> <aside> <figure>** [32, 33]."
+    },
+    {
+      "question": "Quels sont quelques nouveaux éléments de la page introduits par HTML5 ?",
+      "options": [
+        "<mark>, <time>, <meter>, <progress>",
+        "<audio>, <video>, <canvas>, <svg>",
+        "<datalist>, <keygen>, <output>",
+        "<details>, <summary>, <dialog>"
+      ],
+      "correct": "<mark>, <time>, <meter>, <progress>",
+      "explanation": "**Nouveaux éléments de la page : <mark> <time> <meter> <progress>** [32, 33]."
+    },
+    {
+      "question": "Quels supports ont été améliorés ou introduits par HTML5 pour les pages web dynamiques ?",
+      "options": [
+        "Menus contextuels, tableaux liés à des bases de données, <menu> et <command>",
+        "Animations CSS, transitions, transformations 2D et 3D",
+        "Drag and drop, géolocalisation, stockage local",
+        "WebSockets, Server-Sent Events, WebRTC"
+      ],
+      "correct": "Menus contextuels, tableaux liés à des bases de données, <menu> et <command>",
+      "explanation": "**Supports améliorés et nouveaux pour des pages web dynamiques : menus contextuels, tableaux liés à des bases de données, <menu> et <command>** [33, 34]."
+    },
+    {
+      "question": "Quelle balise HTML5 permet de créer une zone accessible par JavaScript pour réaliser des dessins, graphiques interactifs créés à la volée ?",
+      "options": [
+        "<canvas>",
+        "<svg>",
+        "<graphics>",
+        "<draw>"
+      ],
+      "correct": "<canvas>",
+      "explanation": "**<canvas> pour créer une zone accessible par JavaScript pour y réaliser des dessins, graphes… créés à la volée et interactifs** [33, 34]."
+    },
+    {
+      "question": "Quelles balises HTML5 permettent de lire des vidéos et de jouer de la musique directement dans la page web ?",
+      "options": [
+        "<video> et <audio>",
+        "<media> et <source>",
+        "<embed> et <object>",
+        "<multimedia> et <sound>"
+      ],
+      "correct": "<video> et <audio>",
+      "explanation": "**<video> pour lire une vidéo dans la page web et <audio> pour jouer de la musique** [34]."
+    },
+    {
+      "question": "Quelle amélioration importante a été initiée par HTML4 et étendue par HTML5 concernant l'accès aux pages web ?",
+      "options": [
+        "Une plus grande ouverture à l'accessibilité pour les personnes handicapées et les terminaux de toutes sortes",
+        "Une simplification du code HTML pour les développeurs web",
+        "Une augmentation de la vitesse de chargement des pages web",
+        "Une meilleure intégration des technologies de sécurité"
+      ],
+      "correct": "Une plus grande ouverture à l'accessibilité pour les personnes handicapées et les terminaux de toutes sortes",
+      "explanation": "Et surtout une **ouverture plus grande à l’accessibilité, initiée par HTML 4. Permettant ainsi un accès plus aisé aux personnes handicapées et aux terminaux de toutes sortes** : téléphones portables, tablettes, autoradios, réfrigérateurs… [34]."
+    },
+    {
+      "question": "Depuis quelle année le langage JavaScript est-il standardisé ?",
+      "options": [
+        "1997",
+        "1995",
+        "2000",
+        "2005"
+      ],
+      "correct": "1997",
+      "explanation": "Le **JavaScript est standardisé depuis 1997**. C’est la troisième brique élémentaire du web actuelle (avec HTML et css) [35, 36]."
+    },
+    {
+      "question": "Quel type de langage est JavaScript ?",
+      "options": [
+        "Langage-objet interprété par le navigateur internet",
+        "Langage compilé exécuté par le serveur web",
+        "Langage de balisage pour la structure des documents web",
+        "Langage de style pour la présentation des pages web"
+      ],
+      "correct": "Langage-objet interprété par le navigateur internet",
+      "explanation": "C’est un **langage-objet qui est interprété par le navigateur internet**. Cela permet de lire facilement les sources et de s’inspirer de scripts existants pour ses propres pages web [35, 36]."
+    },
+    {
+      "question": "À quoi sert JavaScript dans le contexte des pages web ?",
+      "options": [
+        "Ajouter de l'interaction par la gestion des événements (souris, clavier, temps...)",
+        "Définir la structure et le contenu des pages web",
+        "Mettre en forme et styliser les éléments des pages web",
+        "Gérer les communications entre le client et le serveur"
+      ],
+      "correct": "Ajouter de l'interaction par la gestion des événements (souris, clavier, temps...)",
+      "explanation": "Les objets sont les éléments d’une page web et le JavaScript permet donc de **rajouter de l’interaction par la gestion des évènements (souris, clavier, temps…)** [35, 36]."
+    },
+    {
+      "question": "Où est généralement placé le code JavaScript dans un fichier séparé par rapport au chargement d'une page web ?",
+      "options": [
+        "En fin de chargement de la page afin d'accélérer son affichage initial",
+        "Au début du fichier HTML pour qu'il soit exécuté en premier",
+        "Dans des balises spécifiques au milieu du contenu HTML",
+        "Directement dans les balises HTML des éléments interactifs"
+      ],
+      "correct": "En fin de chargement de la page afin d'accélérer son affichage initial",
+      "explanation": "Généralement le **code JavaScript est placé dans un fichier à part que l’on prendra soin d’appeler en fin de chargement d’une page afin d’accélérer son affichage initial** [37, 38]."
+    },
+    {
+      "question": "Est-il possible de placer du code JavaScript directement dans une page web ?",
+      "options": [
+        "Oui, n'importe où dans une page web",
+        "Non, il doit toujours être dans un fichier séparé",
+        "Seulement dans la section <head> du document HTML",
+        "Uniquement dans les navigateurs web modernes"
+      ],
+      "correct": "Oui, n'importe où dans une page web",
+      "explanation": "Il est également possible de placer du **code JavaScript n’importe où dans une page web** [37, 38]."
+    },
+    {
+      "question": "Quelle extension de serveur web permet d'exécuter du code JavaScript au niveau serveur et de remplacer ainsi le PHP ?",
+      "options": [
+        "Node.js",
+        "Apache",
+        "Nginx",
+        "IIS"
+      ],
+      "correct": "Node.js",
+      "explanation": "Avec des extensions de serveur web comme **Node.js** il est possible d’exécuter du code JavaScript au niveau serveur et de remplacer ainsi le PHP [37, 38]."
+    },
+    {
+      "question": "Qu'est-il possible de créer en combinant HTML5, CSS et JavaScript ?",
+      "options": [
+        "Des applications entières fonctionnant au sein d'une page web",
+        "Des serveurs web performants",
+        "Des réseaux internet à haut débit",
+        "Des systèmes d'exploitation pour téléphones portables"
+      ],
+      "correct": "Des applications entières fonctionnant au sein d'une page web",
+      "explanation": "En combinant HTML5, CSS et JavaScript, il est possible de créer des **applications entières fonctionnant au sein d’une page web** [38, 39]."
+    },
+    {
+      "question": "Comment est-il possible de transformer des pages web en applications « autonomes » sur téléphone portable (iOS ou Android) ?",
+      "options": [
+        "En utilisant webkit ou chrome pour l'affichage",
+        "En les compilant avec des outils de développement natif",
+        "En les enregistrant comme favoris sur l'écran d'accueil",
+        "En utilisant des émulateurs de navigateur"
+      ],
+      "correct": "En utilisant webkit ou chrome pour l'affichage",
+      "explanation": "Sur téléphone portable (iOS ou Android) il est possible de transformer ces pages web en applications « autonomes » **utilisant webkit ou chrome pour l’affichage** [39, 40]."
+    },
+    {
+      "question": "Que signifie l'acronyme URL ?",
+      "options": [
+        "Uniform Resource Locator",
+        "Universal Retrieval Language",
+        "Unified Rendering Logic",
+        "Ubiquitous Resource Link"
+      ],
+      "correct": "Uniform Resource Locator",
+      "explanation": "L’**URL est un acronyme de Uniform Resource Locator** qui désigne l’adresse d’une ressource sur Internet [41, 42]."
+    },
+    {
+      "question": "Comment l'adresse URL est-elle traitée pour trouver l'information recherchée par l'utilisateur ?",
+      "options": [
+        "Elle se décompose en plusieurs parties qui sont traitées par le serveur visé",
+        "Elle est directement interprétée par le navigateur web",
+        "Elle est traduite en langage machine par le système d'exploitation",
+        "Elle est envoyée à un serveur DNS pour obtenir l'adresse MAC de la ressource"
+      ],
+      "correct": "Elle se décompose en plusieurs parties qui sont traitées par le serveur visé",
+      "explanation": "Cette adresse se décompose en **plusieurs parties qui sont traitées par le serveur visé pour trouver l’information recherchée par l’utilisateur** [41, 42]."
+    },
+    {
+      "question": "Quelle est la première partie d'une URL, comme dans 'https://www.cours.jlrichter.fr/...' ?",
+      "options": [
+        "Le protocole ('https:')",
+        "Le nom de domaine ('www.cours.jlrichter.fr')",
+        "Le chemin d'accès ('/lycee/snt-sciences-numeriques-et-technologie/')",
+        "Le sous-domaine ('www')"
+      ],
+      "correct": "Le protocole ('https:')",
+      "explanation": "On commence par le **préfixe « https: » ici. HTTP signifie « hyperText Transfer Protocole » et indique au serveur que l’on cherche une information qui va être une page web en hypertexte** (donc en HTML la plupart du temps). Cette première information va aussi indiquer avec quel protocole de communication la page va être traitée [43, 44]."
+    },
+    {
+      "question": "Que signifie le 's' qui suit HTTP dans 'https:' ?",
+      "options": [
+        "Indique que le transfert se fera de façon sécurisée et que les informations seront cryptées",
+        "Signifie que le site web utilise un serveur sécurisé",
+        "Indique une version plus rapide du protocole HTTP",
+        "N'a pas de signification particulière"
+      ],
+      "correct": "Indique que le transfert se fera de façon sécurisée et que les informations seront cryptées",
+      "explanation": "Le « s » qui suit le HTTP, **indique que le transfert se fera de façon sécurisée et que les informations qui transitent sur le réseau pourront être cryptées afin de ne pas être interceptées** [45, 46]."
+    },
+    {
+      "question": "Quels sont d'autres exemples de protocoles que l'on peut retrouver au début d'une URL ?",
+      "options": [
+        "FTP (File Transfer Protocol) et mailto:",
+        "DNS (Domain Name System) et TCP/IP",
+        "SMTP (Simple Mail Transfer Protocol) et IMAP",
+        "POP3 et SSH"
+      ],
+      "correct": "FTP (File Transfer Protocol) et mailto:",
+      "explanation": "Il existe de nombreux autres protocoles que l’on peut retrouver en début d’URL. Par exemple le **protocole FTP (File Transfer Protocole) qui est destiné au transfert de fichiers, va commencer avec « ftp: ». l’adresse mail pour l’envoi d’un courrier électronique commencera avec « mailto: »**… [45, 46]."
+    },
+    {
+      "question": "Que représentent les deux antislash '//' dans une URL ?",
+      "options": [
+        "Indiquent que la suite de l'adresse sera le chemin d'accès à la ressource sur le serveur",
+        "Séparent le protocole du nom de domaine",
+        "Marquent le début d'un commentaire dans l'adresse",
+        "Indiquent une redirection vers une autre page"
+      ],
+      "correct": "Indiquent que la suite de l'adresse sera le chemin d'accès à la ressource sur le serveur",
+      "explanation": "Le symbole avec les deux antislash « // » **indique que la suite de l’adresse sera le chemin d’accès à la ressource sur le serveur qui va suivre** [47, 48]."
+    },
+    {
+      "question": "Quelle partie de l'URL 'www.cours.jlrichter.fr' est le nom de domaine du serveur ?",
+      "options": [
+        "www.cours.jlrichter.fr",
+        "www",
+        "cours",
+        "jlrichter.fr"
+      ],
+      "correct": "www.cours.jlrichter.fr",
+      "explanation": "La suite de l’adresse, ici « **www.cours.jlrichter.fr** » est le **nom de domaine du serveur auquel on cherche à accéder** [47, 48]."
+    },
+    {
+      "question": "À quoi un nom de domaine est-il relié ?",
+      "options": [
+        "À une adresse numérique en IPv4 (ou IPv6)",
+        "À un nom d'utilisateur et un mot de passe",
+        "À un numéro de port spécifique",
+        "À un certificat SSL"
+      ],
+      "correct": "À une adresse numérique en IPv4 (ou IPv6)",
+      "explanation": "Ce nom est **relié à une adresse numérique en IPv4 (ou IPv6)** et le navigateur fera une requête DNS pour savoir à quelle adresse numérique correspond l’adresse tapée (ou recherchée) par l’utilisateur [47, 48]."
+    },
+    {
+      "question": "Qu'est-ce que le navigateur fait concernant le nom de domaine saisi par l'utilisateur ?",
+      "options": [
+        "Il fait une requête DNS pour obtenir l'adresse IP correspondante",
+        "Il envoie directement une requête HTTP au serveur avec le nom de domaine",
+        "Il vérifie si le nom de domaine est valide dans un cache local",
+        "Il contacte un annuaire central pour obtenir des informations sur le propriétaire du domaine"
+      ],
+      "correct": "Il fait une requête DNS pour obtenir l'adresse IP correspondante",
+      "explanation": "Le navigateur **fera une requête DNS pour savoir à quelle adresse numérique correspond l’adresse tapée (ou recherchée) par l’utilisateur** [47, 48]."
+    },
+    {
+      "question": "Que représente généralement 'www' au début d'un nom de domaine ?",
+      "options": [
+        "Le sous-domaine par défaut du serveur web",
+        "L'indication que le site est sécurisé",
+        "Un protocole de communication spécifique",
+        "Le nom de l'organisation propriétaire du domaine"
+      ],
+      "correct": "Le sous-domaine par défaut du serveur web",
+      "explanation": "**www : indique que l’on cherche le sous-domaine par défaut du serveur web. C’est le plus souvent le cas** [49, 50]."
+    },
+    {
+      "question": "Dans 'www.cours.jlrichter.fr', que représente 'cours' ?",
+      "options": [
+        "Un sous-domaine spécifique",
+        "Le domaine de second niveau",
+        "Le domaine de premier niveau",
+        "Un répertoire sur le serveur"
+      ],
+      "correct": "Un sous-domaine spécifique",
+      "explanation": "**cours : indique que l’on veut accéder au sous-domaine correspondant**, sur un serveur qui contient un domaine principal (ici jlrichter.fr) et plusieurs sous-domaines [49, 50]."
+    },
+    {
+      "question": "Dans 'www.cours.jlrichter.fr', que représente 'jlrichter.fr' ?",
+      "options": [
+        "Le nom de domaine, dit de second niveau",
+        "Le sous-domaine principal",
+        "L'adresse IP du serveur",
+        "Le nom du fournisseur d'accès internet"
+      ],
+      "correct": "Le nom de domaine, dit de second niveau",
+      "explanation": "**jlrichter : est le nom de domaine, dit de second niveau**, qui est enregistré au niveau des instances internationales et pourra être retrouvé dans les bases de données DNS [49, 50]."
+    },
+    {
+      "question": "Quelle partie de l'URL indique l'emplacement spécifique de l'information recherchée sur le serveur, comme '/lycee/...' ?",
+      "options": [
+        "Le chemin d'accès",
+        "Le nom de fichier",
+        "Les paramètres de requête",
+        "L'ancre de page"
+      ],
+      "correct": "Le chemin d'accès",
+      "explanation": "Enfin il faut trouve l’information en question sur le serveur. Pour cela on utilise la suite de l’adresse, ici « **/lycee/snt-sciences-numeriques-et-technologie/** ». Cela indique que la page recherchée se trouve dans le répertoire « snt-sciences-numeriques-et-technologie » qui est lui-même dans le répertoire « lycee » [51, 52]."
+    },
+    {
+      "question": "Comment sont généralement écrites les adresses URL et y a-t-il une sensibilité à la casse ?",
+      "options": [
+        "En minuscule et il n'y a pas de différentiation majuscule/minuscule",
+        "En respectant la casse et les accents",
+        "Principalement en majuscule",
+        "Avec une alternance de majuscules et de minuscules pour la lisibilité"
+      ],
+      "correct": "En minuscule et il n'y a pas de différentiation majuscule/minuscule",
+      "explanation": "Notez que **toute l’adresse est écrite en minuscule et qu’il n’y a pas de différentiation majuscule/minuscule** : toute majuscule est traitée comme une minuscule. Il n’y a pas non plus d’accents ou de caractères spéciaux [51, 52]."
+    },
+    {
+      "question": "Comment les caractères asiatiques, par exemple, doivent-ils être indiqués dans une adresse URL ?",
+      "options": [
+        "Par leur code hexadécimal précédé du caractère « % »",
+        "En utilisant leur représentation Unicode directe",
+        "En les codant en ASCII étendu",
+        "Ils ne peuvent pas être utilisés directement et doivent être transcrits"
+      ],
+      "correct": "Par leur code hexadécimal précédé du caractère « % »",
+      "explanation": "Si une adresse souhaite faire appel à des caractères asiatiques, par exemple, elle devra indiquer leur **code hexadécimal précédé du caractère « % »** [51, 52]."
+    },
+    {
+      "question": "Quelles autres informations une adresse URL peut-elle contenir ?",
+      "options": [
+        "Un nom d'utilisateur et un mot de passe, un numéro de port spécifique, le nom spécifique d'une page",
+        "La langue préférée de l'utilisateur, le type de navigateur utilisé, la résolution de l'écran",
+        "Des informations sur la localisation GPS, l'adresse MAC de l'appareil, le fuseau horaire",
+        "Le nom du fournisseur d'accès internet, le type de connexion (wifi, ethernet), la version du système d'exploitation"
+      ],
+      "correct": "Un nom d'utilisateur et un mot de passe, un numéro de port spécifique, le nom spécifique d'une page",
+      "explanation": "**Une adresse URL peut aussi contenir d’autres informations. Elle peut, par exemple, commencer avec un nom d’utilisateur et un mot de passe... Elle peut également contenir un numéro de port spécifique... En fin d’adresse on peut aussi trouver le nom spécifique d’une page internet**... [53-56]."
+    },
+    {
+      "question": "Pourquoi l'utilisation d'un nom d'utilisateur et d'un mot de passe directement dans une URL est-elle fortement déconseillée ?",
+      "options": [
+        "Car ces deux informations sont alors lisibles en clair",
+        "Car cela ralentit le chargement de la page",
+        "Car cela rend la connexion moins sécurisée",
+        "Car la plupart des serveurs web ne supportent pas cette méthode"
+      ],
+      "correct": "Car ces deux informations sont alors lisibles en clair",
+      "explanation": "Elle peut, par exemple, commencer avec un nom d’utilisateur et un mot de passe. Mais cette pratique est **fortement déconseillée, car ces deux informations sont alors lisibles en clair** [53, 55]."
+    },
+    {
+      "question": "Quel est le port standard pour une requête HTTPS par défaut ?",
+      "options": [
+        "443",
+        "80",
+        "8080",
+        "21"
+      ],
+      "correct": "443",
+      "explanation": "Par exemple « https://www.monserveur.com:8080 » enverra la requête sur un port non standard, ici 8080, alors que par défaut une requête https va sur le **port 443** (et une requête HTTP sur le port 80) [53, 55]."
+    },
+    {
+      "question": "Quel est le port standard pour une requête HTTP par défaut ?",
+      "options": [
+        "80",
+        "443",
+        "8080",
+        "21"
+      ],
+      "correct": "80",
+      "explanation": "...alors que par défaut une requête https va sur le port 443 (et une requête **HTTP sur le port 80**) [53, 55]."
+    },
+    {
+      "question": "Dans une URL comme 'https://www.monserveur.com/page1.html', que représente 'page1.html' ?",
+      "options": [
+        "Le nom spécifique d'une page internet",
+        "Un répertoire sur le serveur",
+        "Un paramètre de requête",
+        "L'extension du nom de domaine"
+      ],
+      "correct": "Le nom spécifique d'une page internet",
+      "explanation": "En fin d’adresse on peut aussi trouver le **nom spécifique d’une page internet, par exemple « https://www.monserveur.com/page1.html » qui enverra vers le document nommé « page1.html »** au lieu de « index.html » qui serait la page par défaut [54, 56]."
+    },
+    {
+      "question": "Comment des informations complémentaires peuvent-elles être envoyées au serveur dans une URL, par exemple lors d'une recherche ?",
+      "options": [
+        "En utilisant un point d'interrogation « ? » suivi des informations",
+        "En les ajoutant directement après le nom de domaine séparées par des virgules",
+        "En les encodant dans le nom de fichier de la page demandée",
+        "Elles sont automatiquement incluses dans l'en-tête de la requête HTTP"
+      ],
+      "correct": "En utilisant un point d'interrogation « ? » suivi des informations",
+      "explanation": "Enfin on peut profiter de la requête pour envoyer des informations complémentaires au serveur. Par exemple : « https://www.qwant.com/?q=lyc%C3%A9e%20Schwilgu%C3%A9&t=web ». Ici le **point d’interrogation « ? » est suivi d’informations destinées au moteur de recherche Qwant**... [54, 56]."
+    },
+    {
+      "question": "Comment un espace dans une requête URL, comme dans 'lycée Schwilgué', est-il généralement codé ?",
+      "options": [
+        "Par le code « %20 »",
+        "Par un signe plus « + »",
+        "Par un underscore « _ »",
+        "Il est supprimé"
+      ],
+      "correct": "Par le code « %20 »",
+      "explanation": "Notez comme l’espace entre les deux mots a été remplacé par le **code « %20 »**... [54, 56]."
+    },
+    {
+      "question": "Comment les lettres accentuées sont-elles généralement codées dans une URL ?",
+      "options": [
+        "Par leurs codes respectifs précédés du caractère « % » (ex: « %C3%A9 » pour « é »)",
+        "En les remplaçant par leur équivalent non accentué",
+        "Elles ne peuvent pas être utilisées dans les URL",
+        "Elles sont automatiquement converties par le navigateur"
+      ],
+      "correct": "Par leurs codes respectifs précédés du caractère « % » (ex: « %C3%A9 » pour « é »)",
+      "explanation": "...et les lettres accentuées par leurs **codes respectifs « %C3%A9 » pour « é »** [54, 56]."
+    },
+    {
+      "question": "Qu'est-ce qu'une requête HTTP ?",
+      "options": [
+        "Une demande d'information envoyée par un navigateur internet à un serveur",
+        "Une réponse envoyée par un serveur web à un navigateur",
+        "Un protocole de communication entre deux serveurs",
+        "Un type de fichier utilisé pour les pages web"
+      ],
+      "correct": "Une demande d'information envoyée par un navigateur internet à un serveur",
+      "explanation": "Lorsqu’une adresse URL est validée par un navigateur Internet, celui va effectuer une **requête HTTP (HyperText Transfer Protocol) pour demander l’information au serveur** [57, 58]."
+    },
+    {
+      "question": "Quels navigateurs modernes permettent de visualiser le contenu d'une requête HTTP ?",
+      "options": [
+        "Les navigateurs modernes en général",
+        "Uniquement les navigateurs en mode développeur",
+        "Seuls les navigateurs utilisés par les professionnels du web",
+        "Les navigateurs avec des extensions spécifiques"
+      ],
+      "correct": "Les navigateurs modernes en général",
+      "explanation": "Les **navigateurs modernes permettent de visualiser le contenu de cette demande afin de lire ce qui a été demandé** [57, 58]."
+    },
+    {
+      "question": "Quelles sont les deux principales méthodes de requêtes HTTP ?",
+      "options": [
+        "« GET » et « POST »",
+        "« REQUEST » et « RESPONSE »",
+        "« UPLOAD » et « DOWNLOAD »",
+        "« CONNECT » et « DISCONNECT »"
+      ],
+      "correct": "« GET » et « POST »",
+      "explanation": "Il existe **deux principales méthodes de requêtes : « GET » et « POST »** [57, 58]."
+    },
+    {
+      "question": "Dans une requête HTTP, à quoi sert la méthode « GET » ?",
+      "options": [
+        "Demander une ressource au serveur (page, image, feuille de style...)",
+        "Envoyer des informations au serveur (formulaire...)",
+        "Modifier une ressource existante sur le serveur",
+        "Supprimer une ressource du serveur"
+      ],
+      "correct": "Demander une ressource au serveur (page, image, feuille de style...)",
+      "explanation": "« **GET** » pour **demander une ressource au serveur (page, image, feuille de style…)** [57, 58]."
+    },
+    {
+      "question": "Dans une requête HTTP, à quoi sert la méthode « POST » ?",
+      "options": [
+        "Transmettre des informations qui devront être traitées par le serveur (un formulaire de commande par exemple)",
+        "Récupérer des informations du serveur",
+        "Établir une connexion sécurisée avec le serveur",
+        "Tester la disponibilité du serveur"
+      ],
+      "correct": "Transmettre des informations qui devront être traitées par le serveur (un formulaire de commande par exemple)",
+      "explanation": "« **POST** » pour **transmettre des informations qui devront être traitées par le serveur (un formulaire de commande par exemple)**. Cette information apparaît en premier dans la requête [57, 58]."
+    },
+    {
+      "question": "Qu'est-ce qui suit la méthode de communication dans une requête HTTP ?",
+      "options": [
+        "L'URL",
+        "L'en-tête",
+        "Le corps de la requête",
+        "Les cookies"
+      ],
+      "correct": "L'URL",
+      "explanation": "La méthode de communication est **suivie de l’URL** [59, 60]."
+    },
+    {
+      "question": "Qu'est-ce que l'en-tête d'une requête HTTP indique ?",
+      "options": [
+        "La version du protocole HTTP et d'autres paramètres (type de document demandé, compression acceptée, page d'origine)",
+        "Le contenu principal de la requête (données du formulaire, etc.)",
+        "L'adresse IP du client et du serveur",
+        "Le statut de la requête (succès, erreur...)"
+      ],
+      "correct": "La version du protocole HTTP et d'autres paramètres (type de document demandé, compression acceptée, page d'origine)",
+      "explanation": "L’**en-tête indique également la version du protocole HTTP**, 1.1 ici... suivi d’un certain nombre de paramètres : Ces en-têtes indiquent plus précisément **quel type de document est demandé**... si ces informations **peuvent être envoyées sous forme compressée**... ou de **quelle page vient l’utilisateur**... [59, 60]."
+    },
+    {
+      "question": "Qu'est-ce que le modèle client/serveur implique concernant l'exécution du code HTML/CSS/JavaScript ?",
+      "options": [
+        "L'environnement d'exécution côté client (navigateur) est très contrôlé (bac à sable, interdiction d'accès aux fichiers)",
+        "Le serveur exécute directement le code et envoie le résultat brut au client",
+        "Le code est exécuté simultanément sur le client et le serveur pour une meilleure performance",
+        "L'exécution du code dépend entièrement de la configuration du réseau"
+      ],
+      "correct": "L'environnement d'exécution côté client (navigateur) est très contrôlé (bac à sable, interdiction d'accès aux fichiers)",
+      "explanation": "L’**environnement d’exécution du trio HTML/CSS/JavaScript est très contrôlé : bac à sable, interdiction d’accès aux fichiers**… [61, 62]."
+    },
+    {
+      "question": "Pourquoi est-il parfois intéressant de modifier une page web en fonction d'un contexte (utilisateur, données externes) ?",
+      "options": [
+        "Pour personnaliser l'expérience utilisateur et afficher des informations dynamiques",
+        "Pour réduire la taille des pages et accélérer leur chargement",
+        "Pour améliorer la sécurité des pages en les rendant moins statiques",
+        "Pour faciliter la maintenance et la mise à jour des sites web"
+      ],
+      "correct": "Pour personnaliser l'expérience utilisateur et afficher des informations dynamiques",
+      "explanation": "Il peut être intéressant de **modifier une page en fonction d’un contexte (utilisateur, données externes puisées dans une base de données…)** [61, 62]."
+    },
+    {
+      "question": "Comment les pages web dynamiques étaient-elles traditionnellement générées avant d'être envoyées au navigateur du client ?",
+      "options": [
+        "Par des langages de scripts exécutés par le serveur (avant l'envoi)",
+        "Directement par le code HTML enrichi avec des extensions de navigateur",
+        "Par des applications web s'exécutant sur l'ordinateur de l'utilisateur",
+        "En combinant des fichiers HTML statiques avec des requêtes AJAX"
+      ],
+      "correct": "Par des langages de scripts exécutés par le serveur (avant l'envoi)",
+      "explanation": "C’est pourquoi, très tôt dans l’histoire du web, des **langages de scripts ont été développés pour être exécutés par le serveur AVANT d’envoyer la page générée dynamiquement au navigateur du client** [61, 62]."
+    },
+    {
+      "question": "Quel est un exemple d'utilisation de la génération dynamique de pages web côté serveur ?",
+      "options": [
+        "Créer une seule « page » pour un site dont le contenu (commentaires, achats en ligne...) est stocké dans une base de données et affiché selon la demande",
+        "Afficher des animations complexes et des graphiques interactifs en temps réel",
+        "Gérer les connexions sécurisées et le cryptage des données sensibles",
+        "Optimiser les images et les vidéos pour un affichage rapide sur différents appareils"
+      ],
+      "correct": "Créer une seule « page » pour un site dont le contenu (commentaires, achats en ligne...) est stocké dans une base de données et affiché selon la demande",
+      "explanation": "Créer une seule « page » pour le site pour un contenu qui va se trouver dans une **base de données et qui sera appelée selon la demande de l’utilisateur : commentaires, achat en ligne, listes d’élèves…** [63, 64]."
+    },
+    {
+      "question": "Quel langage est souvent utilisé côté serveur pour accéder et manipuler des bases de données afin de générer des pages web dynamiques ?",
+      "options": [
+        "PHP",
+        "JavaScript (via Node.js)",
+        "Python",
+        "Java"
+      ],
+      "correct": "PHP",
+      "explanation": "MAIS : pour accéder aux bases de données il faudra **intégrer des requêtes SQL dans le code PHP** [63, 64]."
+    },
+    {
+      "question": "Qu'est-ce qu'un CMS (Content Management System) ?",
+      "options": [
+        "Un système permettant de se concentrer sur le contenu d'un site web une fois les styles et l'architecture définis",
+        "Un langage de programmation côté serveur pour la gestion de contenu",
+        "Un protocole réseau pour la distribution de contenu web",
+        "Un outil d'analyse du contenu des sites web pour le référencement"
+      ],
+      "correct": "Un système permettant de se concentrer sur le contenu d'un site web une fois les styles et l'architecture définis",
+      "explanation": "Le fait de pouvoir lire et écrire dans des bases de données sur le serveur... a donné naissance à une nouvelle génération de sites internet conçus à l’aide de « **Content Management Systems » (CMS) permettant de se concentrer sur le contenu une fois les styles et architectures du site définies** [63, 64]."
+    },
+    {
+      "question": "Quels sont des exemples de CMS mentionnés dans le texte ?",
+      "options": [
+        "Wordpress, Moodle ou Spip",
+        "Drupal, Joomla, Magento",
+        "Wix, Squarespace, Shopify",
+        "Prestashop, Typo3, Plone"
+      ],
+      "correct": "Wordpress, Moodle ou Spip",
+      "explanation": "**Wordpress, Moodle ou Spip sont des CMS**.. [65, 66]."
+    },
+    {
+      "question": "Qu'est-ce que le concept va encore plus loin aujourd'hui avec l'évolution des technologies web ?",
+      "options": [
+        "L'interactivité permise par html5/css/JavaScript couplé aux scripts serveur permet de concevoir des applications complètes en ligne",
+        "Les sites web sont entièrement générés côté client pour une meilleure performance",
+        "Les bases de données sont directement accessibles depuis les navigateurs web",
+        "Les serveurs web sont remplacés par des réseaux pair-à-pair pour la distribution de contenu"
+      ],
+      "correct": "L'interactivité permise par html5/css/JavaScript couplé aux scripts serveur permet de concevoir des applications complètes en ligne",
+      "explanation": "Le concept va même plus loin aujourd’hui, car l’**interactivité permise par html5/css/JavaScript couplé aux scripts serveur permettent de concevoir des applications complètes en ligne** comme Office 365 de Microsoft, la suite office Apple, les applications Google ou encore.. MBN [65, 66]."
+    },
+    {
+      "question": "Qu'est-ce qui a vraiment révolutionné le web en permettant de retrouver une information précise en peu de temps ?",
+      "options": [
+        "Le moteur de recherche",
+        "Le lien hypertexte",
+        "Le protocole HTTP",
+        "Le langage HTML"
+      ],
+      "correct": "Le moteur de recherche",
+      "explanation": "Le **moteur de recherche est une invention qui a vraiment révolutionné le web** : il permet de retrouver une information précise en peu de temps.. si on sait quelles sont ses limites et comment en tirer le meilleur parti [65, 66]."
+    },
+    {
+      "question": "Qu'est-ce qu'un moteur de recherche d'un point de vue technique ?",
+      "options": [
+        "Un serveur disposant de logiciels fonctionnant en simultané (robots d'indexation)",
+        "Un logiciel installé sur l'ordinateur de l'utilisateur pour explorer le web",
+        "Une base de données centralisée contenant toutes les informations du web",
+        "Un réseau mondial d'ordinateurs partageant des informations"
+      ],
+      "correct": "Un serveur disposant de logiciels fonctionnant en simultané (robots d'indexation)",
+      "explanation": "Un **moteur de recherche est un serveur qui dispose de logiciels fonctionnant en simultanées, nommés « robots d’indexation »** dont le rôle est d’explorer tous les sites internet à intervalle de temps régulier... [67, 68]."
+    },
+    {
+      "question": "Quel est le rôle des « robots d'indexation » (ou spiders) des moteurs de recherche ?",
+      "options": [
+        "Explorer tous les sites internet à intervalle régulier et stocker les mots-clés découverts dans une base de données",
+        "Analyser les requêtes des utilisateurs et leur proposer des résultats pertinents",
+        "Sécuriser les communications entre les utilisateurs et les sites web",
+        "Optimiser le contenu des sites web pour un meilleur référencement"
+      ],
+      "correct": "Explorer tous les sites internet à intervalle régulier et stocker les mots-clés découverts dans une base de données",
+      "explanation": "...dont le rôle est d’**explorer tous les sites internet à intervalle de temps régulier et à stocker les mots clefs découverts dans une base de donnée** [67, 68]."
+    },
+    {
+      "question": "Comment la taille de la base de données d'un moteur de recherche influence-t-elle ses performances ?",
+      "options": [
+        "Plus la base de données est importante, plus la recherche est efficace et la réponse pertinente",
+        "Une base de données trop grande peut ralentir la vitesse de recherche",
+        "La taille de la base de données n'a pas d'impact direct sur la qualité des résultats",
+        "Seule la qualité de l'algorithme de recherche est importante"
+      ],
+      "correct": "Plus la base de données est importante, plus la recherche est efficace et la réponse pertinente",
+      "explanation": "**Plus cette base de données est importante, plus le logiciel de recherche dans cette base est efficace et meilleure sera la réponse du moteur pour trouver une information particulière** [67, 68]."
+    },
+    {
+      "question": "Comment s'effectue la recherche dans la base de données d'un moteur de recherche ?",
+      "options": [
+        "Sur un ensemble de mots-clés saisis par l'utilisateur",
+        "Par l'exploration des liens hypertextes entre les pages",
+        "Par l'analyse des images et des vidéos présentes sur les sites",
+        "Par la consultation d'annuaires web thématiques"
+      ],
+      "correct": "Sur un ensemble de mots-clés saisis par l'utilisateur",
+      "explanation": "La **recherche dans une base de donne d’un moteur de recherche se fait sur un ensemble de mots clefs qui doivent être saisi dans un champ texte** [69, 70]."
+    },
+    {
+      "question": "Comment un moteur de recherche détermine-t-il la pertinence des réponses à une requête ?",
+      "options": [
+        "En fonction d'un algorithme interne, généralement secret, qui met en avant certains sites",
+        "En se basant sur le nombre de visites des sites web",
+        "En tenant compte de la date de dernière mise à jour des pages",
+        "En suivant les recommandations des utilisateurs"
+      ],
+      "correct": "En fonction d'un algorithme interne, généralement secret, qui met en avant certains sites",
+      "explanation": "Le moteur va ensuite donner des réponses pertinentes (ou pas) si les mots clefs sont bien saisis (sans faute) **en fonction d’un algorithme interne, généralement secret, qui va mettre en avant certains sites** [69, 70]."
+    },
+    {
+      "question": "Que se passe-t-il si les mots-clés d'une recherche sont saisis entre guillemets dans un moteur de recherche ?",
+      "options": [
+        "Le moteur recherche l'expression exacte",
+        "Le moteur ignore les mots entre guillemets",
+        "Le moteur recherche chaque mot séparément mais leur donne plus de poids",
+        "Le moteur effectue une recherche dans une catégorie spécifique"
+      ],
+      "correct": "Le moteur recherche l'expression exacte",
+      "explanation": "Si les mots clefs sont saisis **entre guillemets, le moteur de recherche va rechercher l’expression exacte**. Par exemple si on tape simplement « science numérique », un moteur va chercher des sites contenant ces mots dans n’importe quel ordre... Mais « \"science numérique\" » va chercher un site où ces deux mots apparaissent dans cet ordre [69, 70]."
+    },
+    {
+      "question": "Quel effet a le signe moins « - » placé devant un mot dans une requête de moteur de recherche ?",
+      "options": [
+        "Indiquer que l'on cherche un site qui ne contient pas le mot suivant",
+        "Donner plus d'importance au mot suivant",
+        "Rechercher des synonymes du mot suivant",
+        "Spécifier une exclusion de domaine"
+      ],
+      "correct": "Indiquer que l'on cherche un site qui ne contient pas le mot suivant",
+      "explanation": "En plaçant le signe moins « - » devant un mot on indiquera **qu’on cherche un site qui ne contient pas le ou les mots qui suivent** (si on les met entre guillemets) [71, 72]."
+    },
+    {
+      "question": "Que signifie la mention « Annonce » précédant certains liens dans les résultats d'un moteur de recherche comme Google ?",
+      "options": [
+        "Que le site a payé le moteur de recherche pour apparaître en premier dans les recherches",
+        "Que le site est particulièrement pertinent pour la requête",
+        "Que le site est un site officiel ou une source d'information fiable",
+        "Que le site a été récemment mis à jour"
+      ],
+      "correct": "Que ce site a payé le moteur de recherche pour apparaître en premier dans les recherches",
+      "explanation": "Vous remarquez ici que le premier lien donné est précédé du terme « **Annonce** ». Cela signifie que **ce site a payé le moteur de recherche pour apparaître en premier dans les recherches**... [71, 72]."
+    },
+    {
+      "question": "Que convient-il de faire avant de cliquer sur le premier lien affiché comme « Annonce » par un moteur de recherche ?",
+      "options": [
+        "Vérifier que la description correspond à ce que vous cherchez réellement",
+        "S'assurer que le site est sécurisé (HTTPS)",
+        "Comparer l'annonce avec les autres résultats de recherche",
+        "Consulter les avis des utilisateurs sur ce site"
+      ],
+      "correct": "Vérifier que la description correspond à ce que vous cherchez réellement",
+      "explanation": "Ne cliquez donc jamais sur le premier lien sans **vérifier que la description correspond à ce que vous cherchez réellement** [73, 74]."
+    },
+    {
+      "question": "Quelles informations un moteur de recherche comme Google stocke-t-il lors d'une recherche ?",
+      "options": [
+        "Des informations sur la requête dans un cookie du navigateur de l'utilisateur",
+        "L'historique complet de navigation de l'utilisateur",
+        "Les mots de passe et informations de connexion de l'utilisateur",
+        "Les fichiers personnels stockés sur l'ordinateur de l'utilisateur"
+      ],
+      "correct": "Des informations sur la requête dans un cookie du navigateur de l'utilisateur",
+      "explanation": "À chaque fois que vous effectuez une recherche sur Google... celui-ci va **stocker des informations sur cette requête dans un cookie de votre navigateur** [73, 74]."
+    },
+    {
+      "question": "Dans quel but les moteurs de recherche peuvent-ils utiliser les informations stockées lors des requêtes des utilisateurs ?",
+      "options": [
+        "Proposer des publicités liées à cette requête ou revendre des informations à d'autres annonceurs",
+        "Améliorer la qualité de leurs algorithmes de recherche",
+        "Personnaliser les résultats de recherche pour l'utilisateur",
+        "Assurer la sécurité des données de l'utilisateur"
+      ],
+      "correct": "Proposer des publicités liées à cette requête ou revendre des informations à d'autres annonceurs",
+      "explanation": "...permettrons à Google d’**utiliser cette requête par la suite pour proposer des publicités liées à cette requête ou pour revendre des informations à d’autres annonceurs** [75, 76]."
+    },
+    {
+      "question": "Que faut-il respecter concernant l'utilisation des informations trouvées sur Internet ?",
+      "options": [
+        "Les droits d'utilisation de ces informations",
+        "La source de l'information",
+        "La date de publication de l'information",
+        "Le format de l'information"
+      ],
+      "correct": "Les droits d'utilisation de ces informations",
+      "explanation": "Une fois que vous avez trouvé une information sur Internet... **respectez les droits d’utilisation de ces informations** [75, 76]."
+    },
+    {
+      "question": "Dans quelles conditions pouvez-vous réutiliser une information trouvée sur Internet ?",
+      "options": [
+        "Si l'auteur vous en donne le droit",
+        "Si l'information est librement accessible",
+        "Si vous citez la source",
+        "Si l'information est ancienne"
+      ],
+      "correct": "Si l'auteur vous en donne le droit",
+      "explanation": "Vous ne pouvez réutiliser une information puisée sur Internet **que si l’auteur vous en donne le droit** [77, 78]."
+    },
+    {
+      "question": "Où pouvez-vous généralement cibler précisément les informations libres de droits lors d'une requête de recherche ?",
+      "options": [
+        "Sur votre requête de recherche",
+        "Dans les paramètres de votre navigateur",
+        "Dans les conditions d'utilisation du moteur de recherche",
+        "Sur le site web que vous consultez"
+      ],
+      "correct": "Sur votre requête de recherche",
+      "explanation": "Il est généralement possible de **cibler précisément les informations libres de droits sur votre requête de recherche** [77, 78]."
+    },
+    {
+      "question": "Quels organismes pouvez-vous consulter pour en savoir plus sur vos droits concernant l'utilisation des informations et la protection des données ?",
+      "options": [
+        "La CNIL (Commission Nationale Informatique et Liberté) et les documents relatifs au RGPD",
+        "L'AFNIC et l'ICANN",
+        "L'UNESCO et l'OMPI",
+        "L'IEEE et l'ISO"
+      ],
+      "correct": "La CNIL (Commission Nationale Informatique et Liberté) et les documents relatifs au RGPD",
+      "explanation": "Pour en savoir plus sur vos droits, vous pouvez consulter les documents de la **Commission Nationale Informatique et Liberté, la CNIL... et ceux du règlement général sur la protection des données, RGPD**... [77, 78]."
+    },
+    {
+      "question": "Quel type de scandale récent, comme celui de Cambridge Analytica, donne à croire que les réseaux sociaux peuvent vendre les données de leurs utilisateurs ?",
+      "options": [
+        "À des fins lucratives de manipulations politiques et économiques",
+        "Pour améliorer leurs algorithmes de recommandation",
+        "Pour personnaliser l'expérience utilisateur",
+        "Pour assurer la sécurité des données"
+      ],
+      "correct": "À des fins, très lucratives, de manipulations politiques et économiques",
+      "explanation": "Certains scandales récents, comme celui de Cambridge Analytica... donnent à croire que les réseaux sociaux peuvent également vendre les données de leurs utilisateurs **à des fins, très lucratives, de manipulations politiques et économiques** [79, 80]."
+    },
+    {
+      "question": "Dans quel but les réseaux sociaux mettent-ils en place des fonctionnements addictifs ?",
+      "options": [
+        "Afin d'augmenter encore le nombre de données qu'ils peuvent récupérer de la part de leurs utilisateurs",
+        "Pour améliorer l'engagement des utilisateurs et la qualité des interactions",
+        "Pour lutter contre la désinformation et les contenus haineux",
+        "Pour faciliter la communication et le partage d'informations"
+      ],
+      "correct": "Afin d'augmenter encore le nombre de données qu'ils peuvent récupérer de la part de leurs utilisateurs",
+      "explanation": "Afin d’**augmenter encore le nombre de données qu’ils peuvent récupérer de la part de leurs utilisateurs**, tous les réseaux sociaux ont mis en place des fonctionnements addictifs... [79, 80]."
+    },
+    {
+      "question": "Qu'ont démontré plusieurs études récentes concernant l'utilisation excessive des réseaux sociaux (plus de 30 minutes par jour) ?",
+      "options": [
+        "Une augmentation de l'anxiété, de la dépression et du sentiment de solitude",
+        "Une amélioration du bien-être mental et de la satisfaction de la vie",
+        "Une augmentation de la productivité et de la créativité",
+        "Aucun impact significatif sur la santé mentale"
+      ],
+      "correct": "Une augmentation de l'anxiété, de la dépression et du sentiment de solitude",
+      "explanation": "Plusieurs études récentes... ont démontré que l’**utilisation de réseaux sociaux plus de 30 minutes par jour augmente l’anxiété, la dépression et le sentiment de solitude** [79, 80]."
+    },
+    {
+      "question": "Comment l'utilisation d'applications tierces (jeux, quizz...) peut-elle menacer vos données confidentielles sur les réseaux sociaux ?",
+      "options": [
+        "Elles peuvent collecter des données personnelles sans consentement éclairé",
+        "Elles peuvent introduire des virus ou des logiciels malveillants",
+        "Elles peuvent ralentir votre connexion internet",
+        "Elles peuvent afficher des publicités ciblées"
+      ],
+      "correct": "Elles peuvent collecter des données personnelles sans consentement éclairé",
+      "explanation": "L’**utilisation d’applications tierces ( jeux, quizz…) est une autre menace pour vos données confidentielles**. C’est d’ailleurs par l’intermédiaire d’un Quizz sur Facebook que Cambridge Analytica a pu recueillir les données de 30 à 70 millions d’utilisateurs... [81, 82]."
+    },
+    {
+      "question": "Quel type de manipulation l'affaire Cambridge Analytica a-t-elle illustré en 2016 aux États-Unis grâce aux données collectées via un quizz Facebook ?",
+      "options": [
+        "Manipulation de l'opinion publique américaine lors de l'élection présidentielle avec des fausses informations ciblées (fake news)",
+        "Vol de données bancaires et financières des utilisateurs de Facebook",
+        "Censure de contenus politiques jugés subversifs",
+        "Création de profils psychologiques à des fins de recrutement professionnel"
+      ],
+      "correct": "Manipulation de l'opinion publique américaine lors de l'élection présidentielle avec des fausses informations ciblées (fake news)",
+      "explanation": "...données dont ils se sont servis pour **manipuler l’opinion publique américaine lors de l’élection présidentielle de 2016 avec des fausses informations ciblées en fonction du profil de chaque groupe d’utilisateur (fake news)** [81, 82]."
+    },
+    {
+      "question": "Où pouvez-vous trouver des informations et de l'aide concernant le harcèlement en ligne et la cyberviolence ?",
+      "options": [
+        "Sur le site du gouvernement : https://www.nonauharcelement.education.gouv.fr/",
+        "Sur les sites des principaux réseaux sociaux",
+        "Dans les conditions générales d'utilisation des applications de messagerie",
+        "Auprès de votre fournisseur d'accès internet"
+      ],
+      "correct": "Sur le site du gouvernement : https://www.nonauharcelement.education.gouv.fr/",
+      "explanation": "**N’hésitez pas à consulter le site du gouvernement sur ce sujet : https://www.nonauharcelement.education.gouv.fr/ et à porter plainte systématiquement** [83, 84]."
+    },
+    {
+      "question": "Où pouvez-vous télécharger un guide de prévention contre la cyberviolence ?",
+      "options": [
+        "http://cache.media.education.gouv.fr/file/11_-_novembre/10/2/2016_non_harcelement_guide_prevention_cyberviolence_WEB_65 4102.pdf",
+        "Sur le site de la CNIL",
+        "Sur le site de l'ANSSI",
+        "Dans la documentation de votre logiciel antivirus"
+      ],
+      "correct": "http://cache.media.education.gouv.fr/file/11_-_novembre/10/2/2016_non_harcelement_guide_prevention_cyberviolence_WEB_65 4102.pdf",
+      "explanation": "**Vous pouvez également télécharger le guide de prévention contre la cyberviolence : http://cache.media.education.gouv.fr/file/11_-_novembre/10/2/2016_non_harcelement_guide_prevention_cyberviolence_WEB_65 4102.pdf** [83, 84]."
+    },
+    {
+      "question": "Qu'est-ce qui constitue la matière première de toute activité numérique et nécessite d'être conservé de manière persistante pour être réutilisé ?",
+      "options": [
+        "Les données",
+        "Les algorithmes",
+        "Les interfaces utilisateur",
+        "Les réseaux"
+      ],
+      "correct": "Les données",
+      "explanation": "**Les données constituent la matière première de toute activité numérique**. Afin de permettre leur réutilisation, il est nécessaire de les conserver de manière persistante [85]."
+    },
+    {
+      "question": "Quel type de données, bien que non structurées, peut également être exploité, notamment par les moteurs de recherche ?",
+      "options": [
+        "Les données non structurées",
+        "Les métadonnées",
+        "Les données relationnelles",
+        "Les données tabulaires"
+      ],
+      "correct": "Les données non structurées",
+      "explanation": "Cependant, **les données non structurées peuvent aussi être exploitées, par exemple par les moteurs de recherche** [85]."
+    },
+    {
+      "question": "Qu'est-ce qui stocke des serveurs mettant à disposition les données et des applications les exploitant, et nécessite des ressources importantes (eau, électricité, métaux rares) ?",
+      "options": [
+        "Les centres de données (datacenter)",
+        "Les réseaux locaux",
+        "Les terminaux utilisateurs",
+        "Les routeurs internet"
+      ],
+      "correct": "Les centres de données (datacenter)",
+      "explanation": "**Les centres de données (datacenter) stockent des serveurs mettant à disposition les données et des applications les exploitant**. Leur fonctionnement nécessite des ressources (en eau pour le refroidissement des machines, en électricité pour leur fonctionnement, en métaux rares pour leur fabrication)... [86]."
+    },
+    {
+      "question": "Quels sont les impacts environnementaux du fonctionnement des centres de données ?",
+      "options": [
+        "Consommation de ressources (eau, électricité, métaux rares) et génération de pollution",
+        "Production d'énergie renouvelable et réduction des émissions de CO2",
+        "Amélioration de la qualité de l'air et de la biodiversité",
+        "Recyclage efficace des déchets électroniques et réduction de l'empreinte écologique"
+      ],
+      "correct": "Consommation de ressources (eau, électricité, métaux rares) et génération de pollution",
+      "explanation": "Leur fonctionnement nécessite des ressources (en eau pour le refroidissement des machines, en électricité pour leur fonctionnement, en métaux rares pour leur fabrication) et **génère de la pollution** (manipulation de substances dangereuses lors de la fabrication, de la destruction ou du recyclage) [86]."
+    },
+    {
+      "question": "Dans quelle perspective nos usages numériques doivent-ils être pensés compte tenu des impacts environnementaux des centres de données ?",
+      "options": [
+        "De façon à limiter la transformation des écosystèmes (notamment le réchauffement climatique) et à protéger la santé humaine",
+        "De façon à maximiser l'efficacité et la vitesse de traitement des données",
+        "De façon à encourager l'innovation technologique sans considération environnementale",
+        "De façon à privilégier le stockage local des données plutôt que dans le nuage"
+      ],
+      "correct": "De façon à limiter la transformation des écosystèmes (notamment le réchauffement climatique) et à protéger la santé humaine",
+      "explanation": "De ce fait, les **usages numériques doivent être pensés de façon à limiter la transformation des écosystèmes (notamment le réchauffement climatique) et à protéger la santé humaine** [86]."
+    },
+    {
+      "question": "Qu'est-ce que le « nuage » (ou « cloud ») en informatique ?",
+      "options": [
+        "L'image d'Internet vu comme une couverture mondiale accessible de partout et tout le temps",
+        "Un logiciel de stockage de données sur un ordinateur personnel",
+        "Un réseau local de serveurs dans une entreprise",
+        "Un type de connexion internet sans fil"
+      ],
+      "correct": "L’image d’Internet vu comme une couverture mondiale (nuageuse) accessible de partout, tout le temps et avec de nombreux types d’appareils différents",
+      "explanation": "Le « **nuage** » (ou « cloud ») est basé sur l’image d’Internet vu comme une **couverture mondiale (nuageuse) accessible de partout, tout le temps et avec de nombreux types d’appareils différents**. Les serveurs qui y sont connectés sont accessibles en permanence [87, 88]."
+    },
+    {
+      "question": "Initialement, à quoi servaient principalement les serveurs connectés au « nuage » ?",
+      "options": [
+        "À héberger des sites internet, des mails et d'autres types de fichiers précis",
+        "À exécuter des applications complexes à distance",
+        "À stocker des sauvegardes de données personnelles",
+        "À faciliter le partage de fichiers volumineux entre utilisateurs"
+      ],
+      "correct": "À héberger des sites internet, des mails et d'autres types de fichiers précis",
+      "explanation": "**Ces serveurs ont d’abord servi à héberger des sites internet, des mails et d’autres types de fichiers précis** [89, 90]."
+    },
+    {
+      "question": "Qu'est-ce qui a permis le développement du stockage des données « dans le nuage » par des sociétés ?",
+      "options": [
+        "L'augmentation importante des débits internet dans le monde",
+        "La diminution du coût des serveurs et du stockage de données",
+        "La mise en place de normes de sécurité pour les données en ligne",
+        "La généralisation des appareils mobiles connectés à internet"
+      ],
+      "correct": "L’augmentation importante des débits internet dans le monde",
+      "explanation": "Avec l’**augmentation importante des débits internet dans le monde**, des sociétés ont commencé à proposer d’utiliser des serveurs afin de proposer un stockage des données « dans le nuage », hors de chez vous et avec un accès à Internet [89, 90]."
+    },
+    {
+      "question": "Quels sont des exemples de prestataires proposant des services de stockage dans le nuage ?",
+      "options": [
+        "Apple (iCloud), Microsoft (OneDrive), DropBox",
+        "Google (Search), Amazon (AWS), Facebook (Meta)",
+        "Orange, SFR, Bouygues Telecom",
+        "Intel, AMD, Nvidia"
+      ],
+      "correct": "Apple (iCloud), Microsoft (OneDrive), DropBox",
+      "explanation": "De nombreux prestataires proposent maintenant ces services, comme **Apple (iCloud) et Microsoft (OneDrive)** qui les ont intégrés dans leurs systèmes d’exploitation, ou des sociétés tierces comme **DropBox** qui offrent ce service moyennant un abonnement annuel [89, 90]."
+    },
+    {
+      "question": "Comment accède-t-on généralement aux données stockées dans le nuage depuis un ordinateur ?",
+      "options": [
+        "Il est généralement nécessaire d'installer un logiciel sur l'ordinateur",
+        "L'accès se fait directement via un navigateur web sans installation",
+        "Uniquement via des applications mobiles spécifiques",
+        "En connectant physiquement un disque dur externe aux serveurs du cloud"
+      ],
+      "correct": "Il est généralement nécessaire d’installer un logiciel sur l’ordinateur et c’est lui qui va se charger de gérer l’accès aux données",
+      "explanation": "**Il est généralement nécessaire d’installer un logiciel sur l’ordinateur et c’est lui qui va se charger de gérer l’accès aux données** [91, 92]."
+    },
+    {
+      "question": "De quoi dépend généralement le tarif de l'abonnement aux services de stockage dans le nuage ?",
+      "options": [
+        "De la quantité de données que l'on souhaite stocker",
+        "De la vitesse de connexion internet de l'utilisateur",
+        "Du type d'appareils utilisés pour accéder aux données",
+        "Du nombre de fonctionnalités offertes par le service"
+      ],
+      "correct": "De la quantité de données que l'on souhaite stocker",
+      "explanation": "Le **tarif de l’abonnement va ensuite dépendre de la quantité de données que l’on souhaite stocker** [91, 92]."
+    },
+    {
+      "question": "Pourquoi les services de stockage dans le nuage sont-ils de plus en plus utilisés en entreprise ?",
+      "options": [
+        "Ils permettent de déporter les fichiers volumineux et facilitent le travail collaboratif",
+        "Ils offrent une sécurité infaillible contre la perte de données",
+        "Ils réduisent considérablement les coûts informatiques",
+        "Ils garantissent une bande passante internet illimitée"
+      ],
+      "correct": "Ils permettent de déporter les fichiers volumineux de certains serveurs web vers des serveurs ayant de grosses capacités de stockage et des grands débits internet",
+      "explanation": "Ces services sont de plus en plus utilisés en entreprise et ils **permettent aussi de déporter les fichiers volumineux de certains serveurs web vers des serveurs ayant de grosses capacités de stockage et des grands débits internet** [91, 92]."
+    },
+    {
+      "question": "Quelles sociétés proposent des stockages rapides et sécurisés pour de très gros clients comme Microsoft, Apple ou Google (Youtube) ?",
+      "options": [
+        "Akamai ou Amazon",
+        "OVH ou Scaleway",
+        "IBM ou HP",
+        "Dell ou Lenovo"
+      ],
+      "correct": "Akamai ou Amazon",
+      "explanation": "Des sociétés comme **Akamai ou Amazon proposent ainsi des stockages rapides et sécurisées pour de très gros clients comme Microsoft, Apple ou Google (Youtube)** [91, 92]."
+    },
+    {
+      "question": "Quel est l'un des problèmes les plus alarmants de notre usage du numérique, lié au stockage sur des serveurs allumés en permanence ?",
+      "options": [
+        "La grosse consommation d'énergie",
+        "Le risque de cyberattaques massives",
+        "La production excessive de déchets électroniques",
+        "La dépendance croissante aux géants du numérique"
+      ],
+      "correct": "La grosse consommation d'énergie",
+      "explanation": "Qui dit stockage sur des serveurs allumés en permanence, dit aussi **grosse consommation d’énergie. C’est l’un des problèmes les plus alarmants de notre usage du numérique**... [93, 94]."
+    },
+    {
+      "question": "Quelle part de la production d'énergie mondiale est consommée par notre usage du numérique ?",
+      "options": [
+        "Plus de 10%",
+        "Environ 5%",
+        "Moins de 1%",
+        "Environ 25%"
+      ],
+      "correct": "Plus de 10%",
+      "explanation": "...qui **consomme plus de 10% de la production d’énergie dans le monde** [93, 94]."
+    },
+    {
+      "question": "Quelle part de cette énergie consommée par le numérique est due au fonctionnement des serveurs ?",
+      "options": [
+        "30%",
+        "40%",
+        "50%",
+        "60%"
+      ],
+      "correct": "30%",
+      "explanation": "**30% de cette énergie part dans le fonctionnement des serveurs** et 40% dans le fonctionnement d’internet en lui-même... [93, 94]."
+    },
+    {
+      "question": "Quelle part de l'énergie consommée par le numérique est due au fonctionnement d'internet lui-même (relais, routeurs...) ?",
+      "options": [
+        "40%",
+        "30%",
+        "20%",
+        "50%"
+      ],
+      "correct": "40%",
+      "explanation": "30% de cette énergie part dans le fonctionnement des serveurs et **40% dans le fonctionnement d’internet en lui-même** (relais, routeurs, convertisseurs fibre-optique…) [93, 94]."
+    },
+    {
+      "question": "Selon Françoise Berthoud, à quelle émission de CO2 correspond l'envoi d'un mail de 1Mo environ ?",
+      "options": [
+        "20g de CO2",
+        "7g de CO2",
+        "100g de CO2",
+        "1g de CO2"
+      ],
+      "correct": "20g de CO2",
+      "explanation": "Selon Françoise Berthoud... l’envoi d’un mail de 1Mo correspond à l’**émission de 20g de CO2**... [93, 94]."
+    },
+    {
+      "question": "Selon Françoise Berthoud, à quelle émission de CO2 correspond une requête sur Internet environ ?",
+      "options": [
+        "7g de CO2",
+        "20g de CO2",
+        "50g de CO2",
+        "0.5g de CO2"
+      ],
+      "correct": "7g de CO2",
+      "explanation": "...et une **requête sur Internet correspond à 7g de CO2 émis** [93, 94]."
+    }
+  ]
+}

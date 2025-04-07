@@ -1,0 +1,1533 @@
+{
+  "Internet": [
+    {
+      "question": "Qu'est-ce qu'un ensemble d'ordinateurs connectés entre eux ?",
+      "options": [
+        "Un réseau informatique",
+        "Un logiciel pour naviguer sur Internet",
+        "Une base de données en ligne",
+        "Un programme permettant d'envoyer des emails"
+      ],
+      "correct": "Un réseau informatique",
+      "explanation": "Un réseau informatique est un ensemble d'ordinateurs et de périphériques interconnectés pour partager des ressources et des informations [1]."
+    },
+    {
+      "question": "Que signifie l'acronyme WWW ?",
+      "options": [
+        "World Wide Web",
+        "Wireless Wide World",
+        "Web World Wide",
+        "Wide Web World"
+      ],
+      "correct": "World Wide Web",
+      "explanation": "WWW signifie World Wide Web. Il s'agit d'un système hypertexte public fonctionnant sur Internet [conversation history]."
+    },
+    {
+      "question": "Quel service permet de trouver des informations sur Internet ?",
+      "options": [
+        "Un moteur de recherche",
+        "Un navigateur web",
+        "Une adresse IP",
+        "Un nom de domaine"
+      ],
+      "correct": "Un moteur de recherche",
+      "explanation": "Un moteur de recherche (comme Google) permet d'explorer le Web et de trouver des pages correspondant à une requête [2, 3]."
+    },
+    {
+      "question": "Que permet le cloud computing ?",
+      "options": [
+        "Stocker des données et exécuter des programmes à distance",
+        "D'accélérer la connexion Internet",
+        "De créer des réseaux locaux",
+        "De protéger contre les virus"
+      ],
+      "correct": "Stocker des données et exécuter des programmes à distance",
+      "explanation": "Le cloud computing permet de stocker des données et d'exécuter des programmes sur des serveurs distants accessibles via Internet [4, 5]."
+    },
+    {
+      "question": "Qu'est-ce qu'une adresse textuelle correspondant à une adresse IP ?",
+      "options": [
+        "Un nom de domaine",
+        "Une URL",
+        "Un protocole HTTP",
+        "Un pare-feu"
+      ],
+      "correct": "Un nom de domaine",
+      "explanation": "Un nom de domaine est une adresse lisible par l'homme qui correspond à une adresse IP pour accéder à un site web [4]."
+    },
+    {
+      "question": "Quel service permet d'envoyer et de recevoir des emails ?",
+      "options": [
+        "La messagerie électronique",
+        "Le transfert de fichiers (FTP)",
+        "La navigation web (HTTP)",
+        "Le système de noms de domaine (DNS)"
+      ],
+      "correct": "La messagerie électronique",
+      "explanation": "La messagerie électronique (email) est un service permettant d'envoyer et de recevoir des messages électroniques via Internet [conversation history]."
+    },
+    {
+      "question": "Quel est le rôle du DNS ?",
+      "options": [
+        "Associer un nom de domaine à une adresse IP",
+        "Protéger les sites web contre les cyberattaques",
+        "Augmenter la vitesse d'Internet",
+        "Gérer les emails"
+      ],
+      "correct": "Associer un nom de domaine à une adresse IP",
+      "explanation": "Le DNS (Domain Name System) traduit les noms de domaine en adresses IP [6-9]."
+    },
+    {
+      "question": "Que signifie le terme 'phishing' ?",
+      "options": [
+        "Une tentative de vol d'informations en ligne",
+        "Un logiciel antivirus",
+        "Un protocole de sécurité",
+        "Une méthode de compression de fichiers"
+      ],
+      "correct": "Une tentative de vol d'informations en ligne",
+      "explanation": "Le phishing est une technique utilisée par les cybercriminels pour obtenir des informations sensibles en se faisant passer pour une entité de confiance [10]."
+    },
+    {
+      "question": "Quel est le rôle d'un pare-feu (firewall) ?",
+      "options": [
+        "Protéger un réseau des intrusions",
+        "Accélérer la connexion Internet",
+        "Analyser les emails",
+        "Traduire les noms de domaine en adresses IP"
+      ],
+      "correct": "Protéger un réseau des intrusions",
+      "explanation": "Un pare-feu (firewall) a pour rôle de protéger un réseau des intrusions non autorisées [10]."
+    },
+    {
+      "question": "Comment les machines sont-elles identifiées sur un réseau local physique ?",
+      "options": [
+        "Par une adresse MAC",
+        "Par une adresse IP",
+        "Par un nom de domaine",
+        "Par une URL"
+      ],
+      "correct": "Par une adresse MAC",
+      "explanation": "Chaque machine va posséder une adresse (MAC) physique qui permet de l’identifier sur le réseau local physique [11, 12]."
+    },
+    {
+      "question": "Comment l'émetteur et le destinataire sont-ils identifiés sur Internet ?",
+      "options": [
+        "Par une adresse IP",
+        "Par une adresse MAC",
+        "Par un nom de domaine",
+        "Par une URL"
+      ],
+      "correct": "Par une adresse IP",
+      "explanation": "L’émetteur et le destinataire sont ensuite identifiés sur Internet par une adresse IP (Internet Protocol) [11, 12]."
+    },
+    {
+      "question": "Sous quelle forme se présente une adresse IP (version 4) ?",
+      "options": [
+        "Une série de nombres séparés par des points (ex: 216.58.206.228)",
+        "Une adresse textuelle (ex: google.com)",
+        "Une combinaison de lettres et de chiffres séparés par des tirets",
+        "Un code binaire sur 128 bits"
+      ],
+      "correct": "Une série de nombres séparés par des points (ex: 216.58.206.228)",
+      "explanation": "Une adresse IP en version 4 (IPv4) est codée sur 32 bits et se présente sous la forme d'une série de nombres séparés par des points, comme 216.58.206.228 [11-14]."
+    },
+    {
+      "question": "Combien d'adresses possibles offre théoriquement l'IPv4 ?",
+      "options": [
+        "Un peu plus de 4 milliards",
+        "Environ 340 sextillions",
+        "Des milliards de milliards",
+        "Un nombre illimité"
+      ],
+      "correct": "Un peu plus de 4 milliards",
+      "explanation": "L’IPv4 est codée sur 32 bits et offre théoriquement un peu plus de 4 milliards d’adresses possibles [13, 14]."
+    },
+    {
+      "question": "Sur combien de bits est codée l'IPv6 ?",
+      "options": [
+        "128 bits",
+        "32 bits",
+        "64 bits",
+        "256 bits"
+      ],
+      "correct": "128 bits",
+      "explanation": "L’IPv6 est codée sur 128 bits [7, 8]."
+    },
+    {
+      "question": "Combien d'adresses possibles offre théoriquement l'IPv6 ?",
+      "options": [
+        "Environ 3,4 x 10^38",
+        "Un peu plus de 4 milliards",
+        "Des milliers de milliards",
+        "Un nombre limité mais très grand"
+      ],
+      "correct": "Environ 3,4 x 10^38",
+      "explanation": "L’IPv6 est codée sur 128 bits et offre théoriquement 3,4.10^38 adresses possibles [7, 8]."
+    },
+    {
+      "question": "Pourquoi est-il plus facile de se souvenir d'un nom de domaine que d'une adresse IP ?",
+      "options": [
+        "Les noms de domaine sont des adresses lisibles par l'homme",
+        "Les adresses IP changent fréquemment",
+        "Les noms de domaine sont plus courts que les adresses IP",
+        "Les adresses IP ne sont pas utilisées pour accéder aux sites web"
+      ],
+      "correct": "Les noms de domaine sont des adresses lisibles par l'homme",
+      "explanation": "Les adresses IP sont des adresses numériques difficiles à retenir pour les humains, qui auront moins de mal à se souvenir d’une adresse de type google.com que de sa forme IP [7, 8]."
+    },
+    {
+      "question": "Quel est le rôle d'un serveur DNS (Domain Name Server) ?",
+      "options": [
+        "Faire la correspondance entre les adresses IP et les noms de domaine",
+        "Stocker les pages web des sites Internet",
+        "Sécuriser les transactions en ligne",
+        "Gérer le routage des paquets de données"
+      ],
+      "correct": "Faire la correspondance entre les adresses IP et les noms de domaine",
+      "explanation": "Le DNS (Domain Name Server) est un annuaire qui fait la correspondance entre les adresses IP et les noms compréhensibles pour les sites Internet [7, 8]."
+    },
+    {
+      "question": "Selon le modèle client/serveur, quel rôle jouent les ordinateurs et smartphones ?",
+      "options": [
+        "Ils demandent des informations aux serveurs centralisés (clients)",
+        "Ils fournissent des informations aux autres appareils (serveurs)",
+        "Ils agissent à la fois comme clients et serveurs de manière égale",
+        "Ils ne sont pas impliqués directement dans l'échange d'informations"
+      ],
+      "correct": "Ils demandent des informations aux serveurs centralisés (clients)",
+      "explanation": "À l’origine, Internet a été pensé principalement comme un réseau de type client/serveur, dans lequel les clients (ordinateurs, smartphones…) demandent des informations (texte, vidéo, images…) des serveurs centralisés [15, 16]."
+    },
+    {
+      "question": "Quelles sont les obligations liées à la possession d'un serveur Internet ?",
+      "options": [
+        "Branchement continu 24h/24h, renouvellement de l’adresse sur le serveur DNS, maintenance du matériel, coût de l’énergie",
+        "Mise à jour des logiciels une fois par mois, sauvegarde des données une fois par semaine",
+        "Surveillance du réseau en permanence, installation de mises à jour de sécurité quotidiennes",
+        "Aucune obligation particulière en dehors du paiement de la connexion Internet"
+      ],
+      "correct": "Branchement continu 24h/24h, renouvellement de l’adresse sur le serveur DNS, maintenance du matériel, coût de l’énergie",
+      "explanation": "Posséder un serveur entraîne des obligations : branchement continu 24h sur 24h, renouvellement de l’adresse sur le serveur DNS, maintenance du matériel, coût de l’énergie pour le faire fonctionner [17, 18]."
+    },
+    {
+      "question": "Que se passe-t-il si un serveur dans un système client/serveur est piraté ou bloqué par une surcharge de requêtes ?",
+      "options": [
+        "L’information devient inaccessible",
+        "Les clients peuvent toujours accéder aux informations via d'autres serveurs",
+        "Le réseau bascule automatiquement vers un système pair-à-pair",
+        "Seules les nouvelles requêtes sont bloquées, les informations déjà chargées restent accessibles"
+      ],
+      "correct": "L’information devient inaccessible",
+      "explanation": "Dans un système client/serveur, l’apport d’information dépend de ce dernier. Si quelqu’un pirate le serveur ou le bloque avec une surcharge de requête, l’information devient inaccessible [17, 18]."
+    },
+    {
+      "question": "Quand les protocoles de communications pair-à-pair ont-ils vu le jour sur Internet ?",
+      "options": [
+        "À partir du début des années 2000",
+        "Dès la création d'Internet dans les années 1960",
+        "Principalement dans les années 1990 avec le développement du web",
+        "Récemment, avec l'essor des technologies blockchain"
+      ],
+      "correct": "À partir du début des années 2000",
+      "explanation": "C’est pourquoi, à partir du début des années 2000, des protocoles de communications pair-à-pair ont vu le jour [17, 18]."
+    },
+    {
+      "question": "Qu'est-ce qu'un navigateur web ?",
+      "options": [
+        "Un logiciel interprétant le code source des pages web (HTML)",
+        "Un moteur permettant de trouver des informations sur Internet",
+        "Un protocole de communication pour le transfert de fichiers",
+        "Un serveur stockant les pages web des sites Internet"
+      ],
+      "correct": "Un logiciel interprétant le code source des pages web (HTML)",
+      "explanation": "Une page HTML est un code source qui sera interprété par le navigateur web [19, 20]."
+    },
+    {
+      "question": "Dans la structure d'une page HTML, quels sont les deux blocs principaux ?",
+      "options": [
+        "En-tête et corps",
+        "Début et fin",
+        "Navigation et contenu",
+        "Style et script"
+      ],
+      "correct": "En-tête et corps",
+      "explanation": "Une page HTML est structurée en arborescence avec deux blocs principaux : en-tête et corps [19, 20]."
+    },
+    {
+      "question": "Quels langages sont généralement utilisés pour compléter le HTML afin de rendre les pages web plus interactives et dynamiques ?",
+      "options": [
+        "CSS et JavaScript",
+        "PHP et SQL",
+        "Python et Java",
+        "XML et JSON"
+      ],
+      "correct": "CSS et JavaScript",
+      "explanation": "Le HTML a été progressivement complété par le trio HTML+CSS+Javascript pour ajouter des fonctionnalités [19, 21]."
+    },
+    {
+      "question": "Quel langage est principalement responsable de la mise en forme et du style graphique des pages web ?",
+      "options": [
+        "CSS (Cascading Style Sheets)",
+        "HTML (HyperText Markup Language)",
+        "JavaScript",
+        "PHP"
+      ],
+      "correct": "CSS (Cascading Style Sheets)",
+      "explanation": "Leur style graphique est défini dans le langage CSS (Cascading Style Sheets) [22]."
+    },
+    {
+      "question": "Quel langage permet d'ajouter de l'interactivité et de gérer les événements sur une page web ?",
+      "options": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "PHP"
+      ],
+      "correct": "JavaScript",
+      "explanation": "Le JavaScript permet donc de rajouter de l’interaction par la gestion des évènements (souris, clavier, temps…) [23]."
+    },
+    {
+      "question": "Où est généralement placé le code JavaScript dans une page web pour optimiser l'affichage initial ?",
+      "options": [
+        "Dans un fichier à part appelé en fin de chargement de la page",
+        "Directement dans l'en-tête du fichier HTML",
+        "Au début du corps du fichier HTML",
+        "Dans des balises spécifiques à l'intérieur du CSS"
+      ],
+      "correct": "Dans un fichier à part appelé en fin de chargement de la page",
+      "explanation": "Généralement le code JavaScript est placé dans un fichier à part que l’on prendra soin d’appeler en fin de chargement d’une page afin d’accélérer son affichage initial [24, 25]."
+    },
+    {
+      "question": "Avec quelle extension de serveur web est-il possible d'exécuter du code JavaScript côté serveur ?",
+      "options": [
+        "Node.js",
+        "Apache",
+        "PHP",
+        "MySQL"
+      ],
+      "correct": "Node.js",
+      "explanation": "Avec des extensions de serveur web comme Node.js il est possible d’exécuter du code JavaScript au niveau serveur et de remplacer ainsi le PHP [24, 25]."
+    },
+    {
+      "question": "Qu'est-il possible de créer en combinant HTML5, CSS et JavaScript ?",
+      "options": [
+        "Des applications entières fonctionnant au sein d’une page web",
+        "Uniquement des sites web statiques",
+        "Des serveurs web",
+        "Des systèmes d'exploitation"
+      ],
+      "correct": "Des applications entières fonctionnant au sein d’une page web",
+      "explanation": "En combinant HTML5, CSS et JavaScript, il est possible de créer des applications entières fonctionnant au sein d’une page web [25, 26]."
+    },
+    {
+      "question": "Comment une adresse URL est-elle lue, généralement ?",
+      "options": [
+        "De gauche à droite",
+        "De droite à gauche",
+        "De haut en bas",
+        "De bas en haut"
+      ],
+      "correct": "De gauche à droite",
+      "explanation": "L’adresse va être lue de gauche à droite [27, 28]."
+    },
+    {
+      "question": "Que signifie le préfixe 'https://' au début d'une URL ?",
+      "options": [
+        "HyperText Transfer Protocol Secure, indiquant une connexion sécurisée",
+        "HyperText Transfer Protocol, indiquant un protocole de transfert de fichiers",
+        "HyperText Text Protocol, indiquant un format de page web en texte brut",
+        "Hyper Transfer Protocol System, indiquant un système de transfert hyper rapide"
+      ],
+      "correct": "HyperText Transfer Protocol Secure, indiquant une connexion sécurisée",
+      "explanation": "HTTP signifie « hyperText Transfer Protocole » et le « s » qui suit indique que le transfert se fera de façon sécurisée et que les informations qui transitent sur le réseau pourront être cryptées [27-30]."
+    },
+    {
+      "question": "Quel protocole est destiné au transfert de fichiers et commence généralement une URL par 'ftp:' ?",
+      "options": [
+        "FTP (File Transfer Protocole)",
+        "HTTP (HyperText Transfer Protocole)",
+        "SMTP (Simple Mail Transfer Protocole)",
+        "DNS (Domain Name System)"
+      ],
+      "correct": "FTP (File Transfer Protocole)",
+      "explanation": "Par exemple le protocole FTP (File Transfer Protocole) qui est destiné au transfert de fichiers, va commencer avec « ftp: » [29, 30]."
+    },
+    {
+      "question": "Que représente le symbole '//' dans une adresse URL ?",
+      "options": [
+        "Il indique que la suite de l’adresse sera le chemin d’accès à la ressource sur le serveur",
+        "Il sépare le protocole du nom de domaine",
+        "Il indique un commentaire dans l'adresse",
+        "Il n'a pas de signification particulière"
+      ],
+      "correct": "Il indique que la suite de l’adresse sera le chemin d’accès à la ressource sur le serveur",
+      "explanation": "Le symbole avec les deux antislash « // » indique que la suite de l’adresse sera le chemin d’accès à la ressource sur le serveur qui va suivre [31, 32]."
+    },
+    {
+      "question": "Dans l'URL 'www.cours.jlrichter.fr', quelle partie est le nom de domaine de second niveau ?",
+      "options": [
+        "jlrichter",
+        "fr",
+        "cours",
+        "www"
+      ],
+      "correct": "jlrichter",
+      "explanation": "Dans « www.cours.jlrichter.fr », jlrichter est le nom de domaine, dit de second niveau, qui est enregistré au niveau des instances internationales et pourra être retrouvé dans les bases de données DNS [33, 34]."
+    },
+    {
+      "question": "Dans l'URL 'https://www.cours.jlrichter.fr/lycee/snt-sciences-numeriques-et-technologie/', quelle partie représente le chemin d'accès à la ressource sur le serveur ?",
+      "options": [
+        "/lycee/snt-sciences-numeriques-et-technologie/",
+        "www.cours.jlrichter.fr",
+        "https://",
+        "fr"
+      ],
+      "correct": "/lycee/snt-sciences-numeriques-et-technologie/",
+      "explanation": "La suite de l’adresse, ici « /lycee/snt-sciences-numeriques-et-technologie/ », indique que la page recherchée se trouve dans le répertoire « snt-sciences-numeriques-et-technologie » qui est lui-même dans le répertoire « lycee » [35, 36]."
+    },
+    {
+      "question": "Comment sont généralement écrites les adresses URL en termes de casse ?",
+      "options": [
+        "En minuscules, sans différenciation majuscule/minuscule",
+        "En respectant la casse originale du nom du fichier et des répertoires sur le serveur",
+        "La casse n'a pas d'importance pour le protocole HTTP",
+        "Généralement en majuscules"
+      ],
+      "correct": "En minuscules, sans différenciation majuscule/minuscule",
+      "explanation": "Toute l’adresse est écrite en minuscule et qu’il n’y a pas de différentiation majuscule/minuscule : toute majuscule est traitée comme une minuscule [35, 36]."
+    },
+    {
+      "question": "Que doit-on utiliser dans une adresse URL pour représenter des caractères asiatiques, par exemple ?",
+      "options": [
+        "Leur code hexadécimal précédé du caractère « % »",
+        "Leur transcription phonétique en caractères latins",
+        "Des caractères spéciaux Unicode directement insérés",
+        "Un système de codage spécifique intégré au navigateur"
+      ],
+      "correct": "Leur code hexadécimal précédé du caractère « % »",
+      "explanation": "Si une adresse souhaite faire appel à des caractères asiatiques, par exemple, elle devra indiquer leur code hexadécimal précédé du caractère « % » [35, 36]."
+    },
+    {
+      "question": "Quelle pratique concernant l'inclusion d'informations d'identification dans une URL est fortement déconseillée en raison de problèmes de sécurité ?",
+      "options": [
+        "Inclure un nom d'utilisateur et un mot de passe directement dans l'URL",
+        "Utiliser des noms de domaine complexes et difficiles à deviner",
+        "Chiffrer l'URL avec un protocole sécurisé comme HTTPS",
+        "Limiter la longueur de l'URL"
+      ],
+      "correct": "Inclure un nom d'utilisateur et un mot de passe directement dans l'URL",
+      "explanation": "Elle peut, par exemple, commencer avec un nom d’utilisateur et un mot de passe. Mais cette pratique est fortement déconseillée, car ces deux informations sont alors lisibles en clair [37, 38]."
+    },
+    {
+      "question": "Quel est le port par défaut pour une requête HTTPS ?",
+      "options": [
+        "443",
+        "80",
+        "21",
+        "25"
+      ],
+      "correct": "443",
+      "explanation": "Par défaut une requête https va sur le port 443 [37, 38]."
+    },
+    {
+      "question": "Quel est le port par défaut pour une requête HTTP ?",
+      "options": [
+        "80",
+        "443",
+        "21",
+        "25"
+      ],
+      "correct": "80",
+      "explanation": "Par défaut une requête HTTP va sur le port 80 [37, 38]."
+    },
+    {
+      "question": "Que peut-on trouver en fin d'adresse URL après le dernier slash ('/') ?",
+      "options": [
+        "Le nom spécifique d’une page internet (ex: page1.html)",
+        "Des informations d'identification (nom d'utilisateur et mot de passe)",
+        "Un numéro de port spécifique",
+        "Le nom de domaine du serveur"
+      ],
+      "correct": "Le nom spécifique d’une page internet (ex: page1.html)",
+      "explanation": "En fin d’adresse on peut aussi trouver le nom spécifique d’une page internet, par exemple « https://www.monserveur.com/page1.html » [39, 40]."
+    },
+    {
+      "question": "Quel caractère est généralement utilisé dans une URL pour envoyer des informations complémentaires au serveur, suivi des paramètres ?",
+      "options": [
+        "Le point d'interrogation « ? »",
+        "Le signe égal « = »",
+        "L'esperluette « & »",
+        "Le dièse « # »"
+      ],
+      "correct": "Le point d'interrogation « ? »",
+      "explanation": "Le point d’interrogation « ? » est suivi d’informations destinées au moteur de recherche Qwant et indique que l’on recherche la page web du « lycée Schwilgué » [39, 40]."
+    },
+    {
+      "question": "Comment un espace entre deux mots est-il généralement codé dans une URL ?",
+      "options": [
+        "Par le code « %20 »",
+        "Par un signe plus « + »",
+        "Par un tiret « - »",
+        "Directement par un espace"
+      ],
+      "correct": "Par le code « %20 »",
+      "explanation": "Notez comme l’espace entre les deux mots a été remplacé par le code « %20 » [39, 40]."
+    },
+    {
+      "question": "Que se passe-t-il lorsqu'un navigateur valide une adresse URL ?",
+      "options": [
+        "Il effectue une requête HTTP pour demander l’information au serveur",
+        "Il vérifie la validité du nom de domaine auprès du serveur DNS",
+        "Il télécharge tous les fichiers liés à cette URL sur l'ordinateur de l'utilisateur",
+        "Il enregistre l'URL dans l'historique de navigation"
+      ],
+      "correct": "Il effectue une requête HTTP pour demander l’information au serveur",
+      "explanation": "Lorsqu’une adresse URL est validée par un navigateur Internet, celui-ci va effectuer une requête HTTP (HyperText Transfer Protocol) pour demander l’information au serveur [41, 42]."
+    },
+    {
+      "question": "Quelles sont les deux principales méthodes de requêtes HTTP ?",
+      "options": [
+        "GET et POST",
+        "HEAD et PUT",
+        "DELETE et CONNECT",
+        "OPTIONS et TRACE"
+      ],
+      "correct": "GET et POST",
+      "explanation": "Il existe deux principales méthodes de requêtes : « GET » pour demander une ressource au serveur et « POST » pour transmettre des informations qui devront être traitées par le serveur [41, 42]."
+    },
+    {
+      "question": "Dans une requête HTTP, à quoi sert la méthode 'GET' ?",
+      "options": [
+        "Demander une ressource au serveur (page, image, feuille de style…)",
+        "Envoyer des informations au serveur (formulaire…)",
+        "Supprimer une ressource sur le serveur",
+        "Récupérer les en-têtes de la ressource demandée"
+      ],
+      "correct": "Demander une ressource au serveur (page, image, feuille de style…)",
+      "explanation": "La méthode « GET » sert à demander une ressource au serveur (page, image, feuille de style…) [41, 42]."
+    },
+    {
+      "question": "Dans une requête HTTP, à quoi sert la méthode 'POST' ?",
+      "options": [
+        "Transmettre des informations qui devront être traitées par le serveur (formulaire…)",
+        "Récupérer une ressource du serveur",
+        "Mettre à jour une ressource sur le serveur",
+        "Demander des informations sur le serveur"
+      ],
+      "correct": "Transmettre des informations qui devront être traitées par le serveur (formulaire…)",
+      "explanation": "La méthode « POST » sert à transmettre des informations qui devront être traitées par le serveur (un formulaire de commande par exemple) [41, 42]."
+    },
+    {
+      "question": "Que contient généralement l'en-tête d'une requête HTTP ?",
+      "options": [
+        "La version du protocole HTTP, le type de document attendu, les informations de compression, la page d'origine de l'utilisateur",
+        "Uniquement l'URL de la ressource demandée",
+        "Les données envoyées via la méthode POST",
+        "Le code source HTML de la page web"
+      ],
+      "correct": "La version du protocole HTTP, le type de document attendu, les informations de compression, la page d'origine de l'utilisateur",
+      "explanation": "L’en-tête indique également la version du protocole HTTP, suivi d’un certain nombre de paramètres qui précisent le type de document demandé, si les informations peuvent être envoyées sous forme compressée ou de quelle page vient l’utilisateur [43, 44]."
+    },
+    {
+      "question": "Dans le modèle client/serveur, où s'exécute principalement le trio HTML/CSS/JavaScript ?",
+      "options": [
+        "Dans le navigateur du client",
+        "Sur le serveur web",
+        "À la fois sur le client et le serveur de manière égale",
+        "Dans le système d'exploitation de l'utilisateur"
+      ],
+      "correct": "Dans le navigateur du client",
+      "explanation": "L’environnement d’exécution du trio HTML/CSS/JavaScript est très contrôlé : bac à sable, interdiction d’accès aux fichiers… [45, 46]."
+    },
+    {
+      "question": "Pourquoi des langages de scripts comme PHP ont-ils été développés pour être exécutés par le serveur ?",
+      "options": [
+        "Pour modifier une page en fonction d’un contexte (utilisateur, données externes…)",
+        "Pour accélérer le chargement des pages web sur le navigateur du client",
+        "Pour sécuriser les communications entre le client et le serveur",
+        "Pour permettre au client d'accéder directement aux fichiers du serveur"
+      ],
+      "correct": "Pour modifier une page en fonction d’un contexte (utilisateur, données externes…)",
+      "explanation": "Il peut être intéressant de modifier une page en fonction d’un contexte (utilisateur, données externes puisées dans une base de données…). C’est pourquoi, très tôt dans l’histoire du web, des langages de scripts ont été développés pour être exécutés par le serveur AVANT d’envoyer la page générée dynamiquement au navigateur du client [45, 46]."
+    },
+    {
+      "question": "Qu'est-ce que PHP (PHP Hypertext Preprocessor) ?",
+      "options": [
+        "Un langage de script Open Source principalement utilisé côté serveur",
+        "Un langage de balisage pour la structure des pages web",
+        "Un langage de style pour la présentation des pages web",
+        "Un langage de programmation pour l'interactivité des pages web côté client"
+      ],
+      "correct": "Un langage de script Open Source principalement utilisé côté serveur",
+      "explanation": "Le PHP pour PHP Hypertext Preprocessor est Open Source et domine l’utilisation sur les serveurs internet depuis sa création en 1994 [47, 48]."
+    },
+    {
+      "question": "Où se trouve le code source PHP ?",
+      "options": [
+        "Sur le serveur, mais il n'est pas visible par le client",
+        "Directement dans le code HTML de la page et visible par le client",
+        "Dans des fichiers JavaScript séparés téléchargés par le navigateur",
+        "Crypté et accessible uniquement par l'administrateur du site"
+      ],
+      "correct": "Sur le serveur, mais il n'est pas visible par le client",
+      "explanation": "Le code se trouve donc dans la page source sur le serveur, mais ne sera pas visible par le client (qui reçoit la page interprétée) [47, 48]."
+    },
+    {
+      "question": "Quel serveur web Open Source est souvent associé à PHP et MySQL pour le développement web ?",
+      "options": [
+        "Apache",
+        "Nginx",
+        "IIS",
+        "Tomcat"
+      ],
+      "correct": "Apache",
+      "explanation": "Le serveur le plus simple, et Open Source est Apache. On l’associe au plug-in PHP pour exécuter des scripts côté serveur et à MySQL pour gérer des bases de données sur le serveur [47, 48]."
+    },
+    {
+      "question": "Quels outils peut-on installer sous Windows pour développer en PHP en local ?",
+      "options": [
+        "WAMP et EasyPHP",
+        "LAMP et MAMP",
+        "XAMPP et Docker",
+        "Node.js et NPM"
+      ],
+      "correct": "WAMP et EasyPHP",
+      "explanation": "Pour développer sous Windows on peut installer WAMP ou EasyPHP [49, 50]."
+    },
+    {
+      "question": "Qu'est-ce qu'un CMS (Content Management System) comme WordPress, Moodle ou Spip ?",
+      "options": [
+        "Un système de gestion de contenu permettant de se concentrer sur le contenu d'un site web une fois les styles et architectures définis",
+        "Un langage de programmation côté serveur utilisé pour créer des sites web dynamiques",
+        "Une base de données utilisée pour stocker le contenu des sites web",
+        "Un outil d'analyse du trafic web et du comportement des utilisateurs"
+      ],
+      "correct": "Un système de gestion de contenu permettant de se concentrer sur le contenu d'un site web une fois les styles et architectures définies",
+      "explanation": "Le fait de pouvoir lire et écrire dans des bases de données sur le serveur, y téléverser des fichiers et en créer de nouveaux par des commandes en PHP a donné naissance à une nouvelle génération de sites internet conçus à l’aide de « Content Management Systems » (CMS) permettant de se concentrer sur le contenu une fois les styles et architectures du site définies [51, 52]."
+    },
+    {
+      "question": "Comment un moteur de recherche permet-il de retrouver une information précise sur le web ?",
+      "options": [
+        "En indexant le contenu des pages web et en le classant selon la pertinence des mots clés de la requête",
+        "En accédant directement aux bases de données des sites web",
+        "En utilisant l'intelligence artificielle pour deviner l'intention de l'utilisateur",
+        "En parcourant en temps réel toutes les pages web existantes"
+      ],
+      "correct": "En indexant le contenu des pages web et en le classant selon la pertinence des mots clés de la requête",
+      "explanation": "Le moteur de recherche est une invention qui a vraiment révolutionné le web : il permet de retrouver une information précise en peu de temps.. si on sait quelles sont ses limites et comment en tirer le meilleur parti [3, 53]."
+    },
+    {
+      "question": "Comment indiquer à un moteur de recherche que l'on ne souhaite pas qu'un certain mot apparaisse dans les résultats de la recherche ?",
+      "options": [
+        "En plaçant le signe moins « - » devant ce mot",
+        "En utilisant l'opérateur « NOT » suivi du mot",
+        "En mettant le mot entre guillemets précédé du signe moins",
+        "En utilisant un filtre dans les options de recherche avancée"
+      ],
+      "correct": "En plaçant le signe moins « - » devant un mot",
+      "explanation": "En plaçant le signe moins « - » devant un mot on indiquera qu’on cherche un site qui ne contient pas le ou les mots qui suivent (si on les met entre guillemets) [54, 55]."
+    },
+    {
+      "question": "Que signifie le terme « Annonce » qui précède certains résultats dans un moteur de recherche comme Google ?",
+      "options": [
+        "Le site a payé le moteur de recherche pour apparaître en premier dans les recherches",
+        "Le site est particulièrement pertinent pour la recherche effectuée",
+        "Le site est recommandé par les utilisateurs du moteur de recherche",
+        "Le site est un site officiel ou une source d'information fiable"
+      ],
+      "correct": "Le site a payé le moteur de recherche pour apparaître en premier dans les recherches",
+      "explanation": "Vous remarquez ici que le premier lien donné est précédé du terme « Annonce ». Cela signifie que ce site a payé le moteur de recherche pour apparaître en premier dans les recherches et indique donc à coup sûr que celui-ci cherche à se rémunérer sur ses visiteurs [54, 55]."
+    },
+    {
+      "question": "Qu'est-ce qu'un cookie dans le contexte de la navigation sur Internet ?",
+      "options": [
+        "Un petit fichier texte stocké par le navigateur contenant des informations sur la navigation de l'utilisateur",
+        "Un logiciel malveillant qui enregistre les activités de l'utilisateur",
+        "Un protocole de sécurité pour authentifier les utilisateurs sur les sites web",
+        "Une image invisible utilisée pour suivre l'activité de l'utilisateur"
+      ],
+      "correct": "Un petit fichier texte stocké par le navigateur contenant des informations sur la navigation de l'utilisateur",
+      "explanation": "À chaque fois que vous effectuez une recherche sur Google ou un autre moteur de recherche, celui-ci va stocker des informations sur cette requête dans un cookie de votre navigateur [56, 57]."
+    },
+    {
+      "question": "Concernant le réutilisation d'informations trouvées sur Internet, que doit-on respecter principalement ?",
+      "options": [
+        "Le droit d'auteur et les conditions de licence accordées par l'auteur",
+        "La source de l'information, même si elle est en libre accès",
+        "Les règles de citation académiques",
+        "Le fait que l'information soit accessible publiquement signifie qu'elle est libre de droits"
+      ],
+      "correct": "Le droit d'auteur et les conditions de licence accordées par l'auteur",
+      "explanation": "Vous ne pouvez réutiliser une information puisée sur Internet que si l’auteur vous en donne le droit [58, 59]."
+    },
+    {
+      "question": "Qu'est-ce que la CNIL (Commission Nationale de l'Informatique et des Libertés) ?",
+      "options": [
+        "Une autorité administrative indépendante française chargée de veiller à la protection des données personnelles",
+        "Une association de défense des consommateurs sur Internet",
+        "Un organisme international de normalisation des technologies de l'information",
+        "Un fournisseur d'accès à Internet français"
+      ],
+      "correct": "Une autorité administrative indépendante française chargée de veiller à la protection des données personnelles",
+      "explanation": "Pour en savoir plus sur vos droits, vous pouvez consulter les documents de la Commission Nationale Informatique et Liberté, la CNIL [58, 59]."
+    },
+    {
+      "question": "Que signifie RGPD ?",
+      "options": [
+        "Règlement Général sur la Protection des Données",
+        "Répertoire Général des Programmes Disponibles",
+        "Réseau Global de Protection des Données",
+        "Registre Général des Personnes Déclarées"
+      ],
+      "correct": "Règlement Général sur la Protection des Données",
+      "explanation": "Vous pouvez consulter les documents du règlement général sur la protection des données, RGPD [58, 59]."
+    },
+    {
+      "question": "Quel est l'objectif principal des réglages de confidentialité proposés par les réseaux sociaux ?",
+      "options": [
+        "Que vos données ne soient pas accessibles à tout le monde, mais uniquement pour vous et vos amis (en théorie)",
+        "De rendre votre profil visible par le plus grand nombre de personnes possible",
+        "D'empêcher la diffusion de fausses informations",
+        "D'améliorer le ciblage publicitaire"
+      ],
+      "correct": "Que vos données ne soient pas accessibles à tout le monde, mais uniquement pour vous et vos amis (en théorie)",
+      "explanation": "Chaque réseau social propose des réglages de confidentialités afin que vos données ne soient pas accessibles à tout le monde, mais uniquement pour vous et vos amis (en théorie, mais nous y reviendrons) [60, 61]."
+    },
+    {
+      "question": "Quelle action est vitale lors de l'ouverture d'un compte sur un réseau social pour protéger ses informations ?",
+      "options": [
+        "Commencer par régler les paramètres de confidentialité offerts",
+        "Ajouter un maximum d'amis le plus rapidement possible",
+        "Partager le plus d'informations personnelles possibles pour se connecter avec d'autres",
+        "Accepter toutes les conditions d'utilisation sans les lire attentivement"
+      ],
+      "correct": "Commencer par régler les paramètres de confidentialité offerts",
+      "explanation": "À l’ouverture d’un compte, il est vital de commencer par régler les paramètres offerts afin de ne pas exposer vos informations au vu et au su de tous [60, 61]."
+    },
+    {
+      "question": "Qu'est-ce que le 'nuage' (cloud) dans le contexte du stockage de données ?",
+      "options": [
+        "Basé sur l’image d’Internet vu comme une couverture mondiale accessible de partout, tout le temps et avec de nombreux types d’appareils différents, où les serveurs connectés sont accessibles en permanence",
+        "Un ensemble de serveurs physiques situés dans un lieu unique et sécurisé",
+        "Un logiciel installé sur l'ordinateur de l'utilisateur pour stocker ses fichiers localement",
+        "Une technologie de sauvegarde des données sur des disques durs externes"
+      ],
+      "correct": "Basé sur l’image d’Internet vu comme une couverture mondiale accessible de partout, tout le temps et avec de nombreux types d’appareils différents, où les serveurs connectés sont accessibles en permanence",
+      "explanation": "Le « nuage » (ou « cloud ») est basé sur l’image d’Internet vu comme une couverture mondiale (nuageuse) accessible de partout, tout le temps et avec de nombreux types d’appareils différents. Les serveurs qui y sont connectés sont accessibles en permanence [5, 62]."
+    },
+    {
+      "question": "Comment accède-t-on généralement aux données stockées dans le cloud ?",
+      "options": [
+        "Il est généralement nécessaire d'installer un logiciel sur l’ordinateur qui gère l’accès aux données",
+        "On y accède directement via le navigateur web sans installation de logiciel",
+        "Uniquement via des applications mobiles spécifiques fournies par le prestataire de service cloud",
+        "L'accès nécessite une connexion physique directe aux serveurs du prestataire cloud"
+      ],
+      "correct": "Il est généralement nécessaire d'installer un logiciel sur l’ordinateur qui gère l’accès aux données",
+      "explanation": "Il est généralement nécessaire d’installer un logiciel sur l’ordinateur et c’est lui qui va se charger de gérer l’accès aux données [63, 64]."
+    },
+    {
+      "question": "De quoi dépend généralement le tarif d'un abonnement à un service de stockage dans le cloud ?",
+      "options": [
+        "De la quantité de données que l’on souhaite stocker",
+        "Du nombre d’appareils connectés au compte",
+        "De la vitesse de la connexion Internet de l’utilisateur",
+        "Des fonctionnalités supplémentaires offertes par le service"
+      ],
+      "correct": "De la quantité de données que l’on souhaite stocker",
+      "explanation": "Le tarif de l’abonnement va ensuite dépendre de la quantité de données que l’on souhaite stocker [63, 64]."
+    },
+    {
+      "question": "Qu'est-ce qui est généralement dupliqué lorsque des données sont stockées dans le 'nuage' (cloud) et que l'on a une connexion Internet ?",
+      "options": [
+        "Les données sont généralement aussi dupliquées sur l’espace de stockage local de l'utilisateur (si celui-ci le souhaite et si l'espace est suffisant)",
+        "Seules les métadonnées des fichiers sont stockées localement, les données restant uniquement sur le serveur distant",
+        "Les données sont divisées en plusieurs parties et stockées sur différents serveurs, sans copie locale",
+        "Une version compressée des données est stockée localement pour un accès plus rapide"
+      ],
+      "correct": "Les données sont généralement aussi dupliquées sur l’espace de stockage local de l'utilisateur (si celui-ci le souhaite et si l'espace est suffisant)",
+      "explanation": "Lorsque les données sont stockées « dans le nuage », elles sont généralement aussi dupliquées sur votre espace de stockage local (si celui est assez volumineux et si vous le souhaitez) [65, 66]."
+    },
+    {
+      "question": "Quel avantage principal offre la synchronisation des données avec le 'nuage' en cas de perte ou de dommage de l'appareil local (ordinateur, téléphone) ?",
+      "options": [
+        "Assure que vos données ne soient pas perdues",
+        "Permet de retrouver plus facilement l'appareil perdu",
+        "Augmente la vitesse de traitement des données sur l'appareil local",
+        "Protège l'appareil contre les virus et les logiciels malveillants"
+      ],
+      "correct": "Assure que vos données ne soient pas perdues",
+      "explanation": "Cela assure que vos données ne soient pas perdues si vous vous faites voler (ou si vous cassez) votre ordinateur portable ou votre téléphone [65, 66]."
+    },
+    {
+      "question": "Que s'engage généralement à effectuer le prestataire d'un service de stockage dans le cloud concernant les données de ses clients ?",
+      "options": [
+        "Effectuer des sauvegardes régulières des données",
+        "Partager les données avec des tiers à des fins publicitaires",
+        "Supprimer définitivement les données après une certaine période d'inactivité",
+        "Modifier le contenu des fichiers stockés pour optimiser l'espace de stockage"
+      ],
+      "correct": "Effectuer des sauvegardes régulières des données",
+      "explanation": "Le prestataire que vous avez payé s’engage également à effectuer des sauvegardes régulières de vos données afin qu’il n’y ait pas de risque qu’elles soient perdues en cas de panne du serveur [65, 66]."
+    },
+    {
+      "question": "Que peut permettre l'accès à d'anciennes versions de fichiers dans certains services de 'cloud' en cas de modifications malencontreuses ?",
+      "options": [
+        "De revenir à une version antérieure du fichier",
+        "De comparer les différentes versions du fichier côte à côte",
+        "De fusionner les modifications de différentes versions",
+        "D'empêcher toute modification ultérieure du fichier"
+      ],
+      "correct": "De revenir à une version antérieure du fichier",
+      "explanation": "Ces sauvegardes sont parfois multiples et vous permettent d’accéder à d’anciennes versions de vos fichiers en cas de modifications malencontreuses (cela dépend du « cloud » choisi) [65, 66]."
+    },
+    {
+      "question": "Qu'est-ce que Géoportail (https://www.geoportail.gouv.fr) selon les sources ?",
+      "options": [
+        "Une des références cartographiques les plus complètes en France, donnant accès à de nombreuses cartes et données géographiques",
+        "Un moteur de recherche spécialisé dans la localisation d'adresses en France",
+        "Un réseau social permettant de partager des informations géographiques avec d'autres utilisateurs",
+        "Un logiciel de navigation GPS pour les appareils mobiles"
+      ],
+      "correct": "Une des références cartographiques les plus complètes en France, donnant accès à de nombreuses cartes et données géographiques",
+      "explanation": "Une des références cartographiques les plus complètes en France est le site « géoportail » de l’Institut Géographique National français (IGN) [67, 68]."
+    },
+    {
+      "question": "Quels types d'informations sont accessibles sur Géoportail selon les sources ?",
+      "options": [
+        "Fonds IGN dessinés, photos satellites, cadastre, restriction des drones de loisirs, réseau hydrographique, sites archéologiques, et même des cartes anciennes de certaines zones",
+        "Uniquement des cartes routières et des itinéraires",
+        "Des informations météorologiques en temps réel et des prévisions",
+        "Des annuaires d'entreprises et de services publics"
+      ],
+      "correct": "Fonds IGN dessinés, photos satellites, cadastre, restriction des drones de loisirs, réseau hydrographique, sites archéologiques, et même des cartes anciennes de certaines zones",
+      "explanation": "Géoportail donne accès à de nombreuses cartes : fonds IGN dessinés, photos satellites, cadastre, restriction des drones de loisirs, réseau hydrographique, sites archéologiques… Il y a même des cartes anciennes de certaines zones pour les cours d’histoire [67, 68]."
+    },
+    {
+      "question": "Que signifie l'acronyme SNT dans le contexte de ce cours ?",
+      "options": [
+        "Sciences Numériques et Technologie",
+        "Systèmes Numériques et Télécommunications",
+        "Sécurité des Nouvelles Technologies",
+        "Stratégie Nationale du Numérique"
+      ],
+      "correct": "Sciences Numériques et Technologie",
+      "explanation": "Ce cours en ligne est destiné à l'enseignement de Seconde Générale SNT (Sciences Numériques et Technologie) [titres des sources]."
+    },
+    {
+      "question": "Dans le contexte d'Internet, que manipule-t-on comme deux types d'informations principales ?",
+      "options": [
+        "Les contenus envoyés et les adresses de l'émetteur et du destinataire",
+        "Les noms de domaine et les adresses IP",
+        "Les protocoles TCP et IP",
+        "Les requêtes HTTP et les réponses des serveurs"
+      ],
+      "correct": "Les contenus envoyés et les adresses de l'émetteur et du destinataire",
+      "explanation": "Internet manipule deux types d’information : les contenus envoyés et les adresses du destinataire et de l’émetteur [9]."
+    },
+    {
+      "question": "Comment les informations sur Internet sont-elles généralement regroupées pour la transmission ?",
+      "options": [
+        "Dans des paquets de taille fixe, de façon uniforme et indépendante du type de données transportées",
+        "Dans des flux continus de données",
+        "Dans des fichiers compressés avant l'envoi",
+        "Sous forme de signaux analogiques"
+      ],
+      "correct": "Dans des paquets de taille fixe, de façon uniforme et indépendante du type de données transportées",
+      "explanation": "Ces deux types d’information (contenus et adresses) sont regroupés dans des paquets de taille fixe, de façon uniforme et indépendante du type de données transportées : texte, images, sons, vidéos, etc. [9]."
+    },
+    {
+      "question": "Quel système transforme une adresse symbolique (comme wikipedia.fr) en adresse numérique (adresse IP) ?",
+      "options": [
+        "Le système DNS (Domain Name System)",
+        "Le protocole HTTP",
+        "Le protocole TCP/IP",
+        "Le système de routage"
+      ],
+      "correct": "Le système DNS (Domain Name System)",
+      "explanation": "Le système DNS (Domain Name System) transforme une adresse symbolique en adresse numérique [9]."
+    },
+    {
+      "question": "Par quoi est réalisé le système DNS ?",
+      "options": [
+        "Un grand nombre d’ordinateurs répartis sur le réseau et constamment mis à jour",
+        "Un serveur central unique géré par une organisation internationale",
+        "Les navigateurs web des utilisateurs",
+        "Les routeurs du réseau Internet"
+      ],
+      "correct": "Un grand nombre d’ordinateurs répartis sur le réseau et constamment mis à jour",
+      "explanation": "Il (le système DNS) est réalisé par un grand nombre d’ordinateurs répartis sur le réseau et constamment mis à jour [9]."
+    },
+    {
+      "question": "Qu'est-ce qui peut arriver à un paquet de données lors du routage s'il atteint un nombre maximal de routeurs à traverser ?",
+      "options": [
+        "Il est détruit pour ne pas encombrer le réseau",
+        "Il est renvoyé à l'émetteur avec un message d'erreur",
+        "Il est stocké temporairement dans un routeur en attendant une meilleure voie",
+        "Il est ralenti pour éviter la congestion du réseau"
+      ],
+      "correct": "Il est détruit pour ne pas encombrer le réseau",
+      "explanation": "Chaque paquet contient l’information d’un nombre maximal de routeurs à traverser : pour ne pas encombrer le réseau, il est détruit si ce nombre est atteint [69]."
+    },
+    {
+      "question": "Quel protocole fiabilise la communication sur Internet en redemandant les paquets manquants ?",
+      "options": [
+        "Le protocole TCP (Transmission Control Protocol)",
+        "Le protocole IP (Internet Protocol)",
+        "Le protocole HTTP (HyperText Transfer Protocol)",
+        "Le protocole DNS (Domain Name System)"
+      ],
+      "correct": "Le protocole TCP (Transmission Control Protocol)",
+      "explanation": "C’est le protocole TCP qui fiabilise la communication en redemandant les paquets manquants [69]."
+    },
+    {
+      "question": "Que garantit le protocole TCP concernant l'arrivée des paquets ?",
+      "options": [
+        "Que tout paquet finira par arriver, sauf panne matérielle incontournable",
+        "Que les paquets arriveront dans l'ordre exact d'envoi",
+        "Que les paquets arriveront dans un délai maximal garanti",
+        "Qu'il n'y aura jamais de perte de paquets"
+      ],
+      "correct": "Que tout paquet finira par arriver, sauf panne matérielle incontournable",
+      "explanation": "Il (le protocole TCP) garantit que tout paquet finira par arriver, sauf panne matérielle incontournable [69]."
+    },
+    {
+      "question": "Quelle est une limite d'Internet et du protocole TCP qui peut nuire à la qualité du streaming audio ou vidéo et de la téléconférence ?",
+      "options": [
+        "L’absence de garantie temporelle d’arrivée des paquets",
+        "La limitation de la taille des paquets de données",
+        "La complexité du protocole de routage",
+        "La dépendance vis-à-vis du réseau physique sous-jacent"
+      ],
+      "correct": "L’absence de garantie temporelle d’arrivée des paquets",
+      "explanation": "Mais ni internet ni TCP ne possèdent de garantie temporelle d’arrivée des paquets, ce qui nuit à la qualité du streaming du son ou des vidéos et de la téléconférence [69]."
+    },
+    {
+      "question": "Quels sont les deux rôles principaux à distinguer concernant les protocoles TCP/IP ?",
+      "options": [
+        "Le rôle du protocole IP pour l'adressage et le routage, et le rôle du protocole TCP pour la fiabilité de la transmission",
+        "Le rôle du protocole TCP pour la sécurité des données et le rôle du protocole IP pour la compression des données",
+        "Le rôle du protocole HTTP pour la navigation web et le rôle du protocole FTP pour le transfert de fichiers",
+        "Le rôle du protocole DNS pour la traduction des noms de domaine et le rôle du protocole IP pour la gestion des erreurs de transmission"
+      ],
+      "correct": "Le rôle du protocole IP pour l'adressage et le routage, et le rôle du protocole TCP pour la fiabilité de la transmission",
+      "explanation": "Distinguer le rôle des protocoles IP et TCP [70]."
+    },
+    {
+      "question": "Quels sont les principes à caractériser concernant le routage des paquets sur Internet ?",
+      "options": [
+        "Le chemin suivi par les paquets et les limites liées aux pannes et à la destruction des paquets",
+        "La priorité donnée à certains types de données et la gestion de la bande passante",
+        "Le chiffrement des données pendant le transit et l'authentification des routeurs",
+        "La centralisation du contrôle du réseau et la garantie de temps de latence minimum"
+      ],
+      "correct": "Le chemin suivi par les paquets et les limites liées aux pannes et à la destruction des paquets",
+      "explanation": "Caractériser les principes du routage et ses limites [70]."
+    },
+    {
+      "question": "Quelle distinction importante faut-il faire concernant la transmission des données sur Internet avec le protocole TCP/IP ?",
+      "options": [
+        "La fiabilité de transmission (les paquets finissent par arriver) et l’absence de garantie temporelle (délai d'arrivée non garanti)",
+        "La garantie de la sécurité des données et l'absence de garantie de l'intégrité des données",
+        "La rapidité de transmission pour les textes et la lenteur pour les images et les vidéos",
+        "La connexion permanente et la déconnexion fréquente en cas d'inactivité"
+      ],
+      "correct": "La fiabilité de transmission (les paquets finissent par arriver) et l’absence de garantie temporelle (délai d'arrivée non garanti)",
+      "explanation": "Distinguer la fiabilité de transmission et l’absence de garantie temporelle [70]."
+    },
+    {
+      "question": "Sur des exemples réels, que faut-il savoir faire concernant les adresses symboliques et les serveurs DNS ?",
+      "options": [
+        "Retrouver une adresse IP à partir d’une adresse symbolique et inversement",
+        "Modifier les enregistrements DNS d'un nom de domaine",
+        "Installer et configurer un serveur DNS local",
+        "Analyser le trafic DNS d'un réseau"
+      ],
+      "correct": "Retrouver une adresse IP à partir d’une adresse symbolique et inversement",
+      "explanation": "Sur des exemples réels, retrouver une adresse IP à partir d’une adresse symbolique et inversement [70]."
+    },
+    {
+      "question": "Qu'est-il important de décrire concernant les réseaux pair-à-pair (P2P) ?",
+      "options": [
+        "L’intérêt de ces réseaux (communication directe entre clients) ainsi que les usages illicites qu’on peut en faire",
+        "Les protocoles techniques utilisés pour établir les connexions P2P et les mécanismes de sécurité intégrés",
+        "La comparaison de leurs performances en termes de vitesse de transfert et de fiabilité par rapport aux réseaux client/serveur traditionnels",
+        "Les aspects légaux concernant le partage de fichiers sur les réseaux P2P et les sanctions encourues en cas de violation du droit d'auteur"
+      ],
+      "correct": "L’intérêt de ces réseaux (communication directe entre clients) ainsi que les usages illicites qu’on peut en faire",
+      "explanation": "Décrire l’intérêt des réseaux pair-à-pair ainsi que les usages illicites qu’on peut en faire [70]."
+    },
+    {
+      "question": "Quelle est une caractéristique fondamentale d'Internet par rapport au réseau physique sous-jacent ?",
+      "options": [
+        "L'indépendance d'internet par rapport au réseau physique",
+        "La dépendance totale d'internet vis-à-vis d'un seul type de réseau physique",
+        "La nécessité d'une infrastructure physique centralisée pour le fonctionnement d'internet",
+        "L'intégration directe des protocoles internet au niveau de la couche physique du réseau"
+      ],
+      "correct": "L'indépendance d'internet par rapport au réseau physique",
+      "explanation": "Indépendance d’internet par rapport au réseau physique [70]."
+    },
+    {
+      "question": "Que faut-il savoir caractériser concernant les types de réseaux physiques utilisés pour accéder à Internet ?",
+      "options": [
+        "Quelques types de réseaux physiques : obsolètes ou actuels, rapides ou lents, filaires ou non",
+        "L'ensemble des normes et des spécifications techniques de chaque type de réseau physique",
+        "Les coûts d'installation et de maintenance des différentes infrastructures de réseau physique",
+        "Les aspects réglementaires et les politiques de déploiement des réseaux physiques par les opérateurs"
+      ],
+      "correct": "Quelques types de réseaux physiques : obsolètes ou actuels, rapides ou lents, filaires ou non",
+      "explanation": "Caractériser quelques types de réseaux physiques : obsolètes ou actuels, rapides ou lents, filaires ou non [71]."
+    },
+    {
+      "question": "Qu'est-il important de caractériser concernant le trafic de données sur Internet ?",
+      "options": [
+        "L’ordre de grandeur du trafic de données sur internet et son évolution",
+        "La répartition du trafic de données par type d'application (streaming, navigation, etc.)",
+        "Les prévisions de croissance du trafic de données pour les prochaines années",
+        "Les mesures prises par les opérateurs pour gérer la congestion du réseau"
+      ],
+      "correct": "L’ordre de grandeur du trafic de données sur internet et son évolution",
+      "explanation": "Caractériser l’ordre de grandeur du trafic de données sur internet et son évolution [71]."
+    },
+    {
+      "question": "Que faut-il illustrer concernant le fonctionnement du routage et du protocole TCP ?",
+      "options": [
+        "Le fonctionnement du routage et de TCP par des activités débranchées ou à l’aide de logiciels dédiés, en tenant compte de la destruction de paquets",
+        "Les algorithmes de routage complexes utilisés par les routeurs et les mécanismes de contrôle de flux de TCP en détail",
+        "Les vulnérabilités de sécurité potentielles au niveau du routage et du protocole TCP et les contre-mesures existantes",
+        "L'impact des différents paramètres de configuration du routage et de TCP sur les performances du réseau"
+      ],
+      "correct": "Le fonctionnement du routage et de TCP par des activités débranchées ou à l’aide de logiciels dédiés, en tenant compte de la destruction de paquets",
+      "explanation": "- Illustrer le fonctionnement du routage et de TCP par des activités débranchées ou à l’aide de logiciels dédiés, en tenant compte de la destruction de paquets [71]."
+    },
+    {
+      "question": "Que faut-il déterminer sur un réseau local ?",
+      "options": [
+        "L’adresse IP d’un équipement et l’adresse du DNS",
+        "Le modèle de chaque équipement connecté et la version de son système d'exploitation",
+        "Le volume de données échangé par chaque équipement et les sites web consultés",
+        "Les mots de passe de connexion de chaque équipement et les clés de chiffrement utilisées"
+      ],
+      "correct": "L’adresse IP d’un équipement et l’adresse du DNS",
+      "explanation": "- Déterminer l’adresse IP d’un équipement et l’adresse du DNS sur un réseau [71]."
+    },
+    {
+      "question": "Qu'est-il suggéré d'analyser sur son réseau local ?",
+      "options": [
+        "Pour observer ce qui y est connecté",
+        "Pour identifier les éventuelles failles de sécurité",
+        "Pour optimiser la configuration des différents équipements",
+        "Pour mesurer la qualité de la connexion internet"
+      ],
+      "correct": "Pour observer ce qui y est connecté",
+      "explanation": "- Analyser son réseau local pour observer ce qui y est connecté [71]."
+    },
+    {
+      "question": "Qu'est-il possible de faire pour suivre le chemin d'un courriel en utilisant un protocole IP ?",
+      "options": [
+        "Utiliser une commande du protocole IP",
+        "Analyser les en-têtes du courriel",
+        "Consulter les logs du serveur de messagerie",
+        "Utiliser un logiciel de capture de paquets réseau"
+      ],
+      "correct": "Utiliser une commande du protocole IP",
+      "explanation": "- Suivre le chemin d’un courriel en utilisant une commande du protocole IP [71]."
+    },
+    {
+      "question": "En quelle année a eu lieu la standardisation des pages web grâce au DOM (Document Object Model) ?",
+      "options": [
+        "2001",
+        "1995",
+        "2010",
+        "2015"
+      ],
+      "correct": "2001",
+      "explanation": " 2001 : standardisation des pages grâce au DOM (Document Object Model) [22]."
+    },
+    {
+      "question": "En quelle année des technologies pour le développement d'applications sur mobiles ont-elles été mises à disposition ?",
+      "options": [
+        "2010",
+        "2001",
+        "1990",
+        "2005"
+      ],
+      "correct": "2010",
+      "explanation": " 2010 : mise à disposition de technologies pour le développement d’applications sur mobiles [22]."
+    },
+    {
+      "question": "Par qui sont normalisés les formats des textes, photos, vidéos, etc. sur le Web, permettant une circulation standardisée de ces informations ?",
+      "options": [
+        "Par un consortium mondial (W3C : World Wide Web Consortium)",
+        "Par l'Internet Engineering Task Force (IETF)",
+        "Par l'Organisation Internationale de Normalisation (ISO)",
+        "Par les principaux fabricants de navigateurs web"
+      ],
+      "correct": "Par un consortium mondial (W3C : World Wide Web Consortium)",
+      "explanation": "Sur le Web, les textes, photos, vidéos, graphiques, sons, programmes sont exprimés et assemblés dans divers formats normalisés par un consortium mondial (W3C : World Wide Web Consortium) [22]."
+    },
+    {
+      "question": "Dans quel langage de balises les pages Web sont-elles écrites pour leur contenu ?",
+      "options": [
+        "HTML (HypertextMarkupLanguage)",
+        "CSS (Cascading Style Sheets)",
+        "JavaScript",
+        "XML (Extensible Markup Language)"
+      ],
+      "correct": "HTML (HypertextMarkupLanguage)",
+      "explanation": "Les pages Web sont écrites dans le langage de balises HTML (HypertextMarkupLanguage) [22]."
+    },
+    {
+      "question": "Dans quel langage est défini le style graphique (présentation) des pages Web ?",
+      "options": [
+        "CSS (Cascading Style Sheets)",
+        "HTML (HypertextMarkupLanguage)",
+        "JavaScript",
+        "SVG (Scalable Vector Graphics)"
+      ],
+      "correct": "CSS (Cascading Style Sheets)",
+      "explanation": "Leur style graphique est défini dans le langage CSS (Cascading Style Sheets) [22]."
+    },
+    {
+      "question": "Que faut-il distinguer concernant les langages HTML et CSS ?",
+      "options": [
+        "Ce qui relève du contenu d’une page et de son style de présentation",
+        "Les balises HTML de base et les propriétés CSS avancées",
+        "Le code exécuté côté client et le code interprété côté serveur",
+        "La structure logique du document et les interactions avec l'utilisateur"
+      ],
+      "correct": "Ce qui relève du contenu d’une page et de son style de présentation",
+      "explanation": "Distinguer ce qui relève du contenu d’une page et de son style de présentation [72]."
+    },
+    {
+      "question": "Que faut-il savoir faire avec une page HTML simple ?",
+      "options": [
+        "Étudier et modifier une page HTML simple",
+        "Créer une page HTML complexe avec des formulaires et des animations",
+        "Héberger une page HTML sur un serveur web",
+        "Compiler une page HTML pour améliorer ses performances"
+      ],
+      "correct": "Étudier et modifier une page HTML simple",
+      "explanation": "Étudier et modifier une page HTML simple [72]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant l'URL d'une page web ?",
+      "options": [
+        "Décomposer l’URL d’une page",
+        "Créer des URL courtes et optimisées pour le référencement",
+        "Chiffrer une URL pour sécuriser l'accès à la page",
+        "Tracer l'origine géographique d'une URL"
+      ],
+      "correct": "Décomposer l’URL d’une page",
+      "explanation": "URL Décomposer l’URL d’une page [73]."
+    },
+    {
+      "question": "Que faut-il savoir reconnaître concernant les pages web ?",
+      "options": [
+        "Reconnaître les pages sécurisées",
+        "Identifier les pages contenant des logiciels malveillants",
+        "Évaluer la fiabilité du contenu d'une page",
+        "Déterminer la date de la dernière mise à jour d'une page"
+      ],
+      "correct": "Reconnaître les pages sécurisées",
+      "explanation": "Reconnaître les pages sécurisées [73]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant une requête HTTP ?",
+      "options": [
+        "Décomposer le contenu d’une requête HTTP et identifier les paramètres passés",
+        "Intercepter et modifier une requête HTTP en transit",
+        "Simuler l'envoi d'une requête HTTP à un serveur",
+        "Analyser les performances d'une requête HTTP"
+      ],
+      "correct": "Décomposer le contenu d’une requête HTTP et identifier les paramètres passés",
+      "explanation": "Requête HTTP Décomposer le contenu d’une requête HTTP et identifier les paramètres passés [73]."
+    },
+    {
+      "question": "Dans le modèle client/serveur, que faut-il savoir faire concernant le code d'une page web ?",
+      "options": [
+        "Inspecter le code d’une page hébergée par un serveur et distinguer ce qui est exécuté par le client et par le serveur",
+        "Modifier le code exécuté côté serveur pour changer le comportement de la page",
+        "Télécharger le code source complet d'un site web hébergé sur un serveur",
+        "Comparer l'efficacité du code client et du code serveur pour différentes tâches"
+      ],
+      "correct": "Inspecter le code d’une page hébergée par un serveur et distinguer ce qui est exécuté par le client et par le serveur",
+      "explanation": "Modèle client/serveur Inspecter le code d’une page hébergée par un serveur et distinguer ce qui est exécuté par le client et par le serveur [73]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant les résultats fournis par un moteur de recherche ?",
+      "options": [
+        "Mener une analyse critique des résultats fournis par un moteur de recherche",
+        "Optimiser ses requêtes pour obtenir des résultats plus pertinents",
+        "Identifier les algorithmes de classement utilisés par les différents moteurs de recherche",
+        "Signaler les résultats de recherche inappropriés ou trompeurs"
+      ],
+      "correct": "Mener une analyse critique des résultats fournis par un moteur de recherche",
+      "explanation": "Moteurs de recherche : principes et usages Mener une analyse critique des résultats fournis par un moteur de recherche [73]."
+    },
+    {
+      "question": "Que faut-il comprendre concernant la publication d'informations sur Internet ?",
+      "options": [
+        "Comprendre les enjeux de la publication d’informations",
+        "Maîtriser les outils de publication de contenu en ligne",
+        "Évaluer l'impact de la publication d'informations sur sa e-réputation",
+        "Connaître les lois et réglementations concernant la publication en ligne"
+      ],
+      "correct": "Comprendre les enjeux de la publication d’informations",
+      "explanation": "Comprendre les enjeux de la publication d’informations [73]."
+    },
+    {
+      "question": "Que faut-il savoir configurer dans un navigateur web pour la sécurité ?",
+      "options": [
+        "Paramètres de sécurité d’un navigateur",
+        "Les extensions et les plug-ins du navigateur",
+        "Les options d'affichage des pages web",
+        "Les paramètres de langue et de traduction"
+      ],
+      "correct": "Paramètres de sécurité d’un navigateur",
+      "explanation": "Paramètres de sécurité d’un navigateur [73]."
+    },
+    {
+      "question": "Concernant les moteurs de recherche, que faut-il comprendre sur le fonctionnement de l'indexation des pages web ?",
+      "options": [
+        "Comprendre le principe de l’indexation des pages (construction d’un index associant à chaque terme les URL des pages où il apparaît)",
+        "Savoir comment optimiser son site web pour être mieux indexé par les moteurs de recherche",
+        "Identifier les différents types de robots d'indexation utilisés par les moteurs de recherche",
+        "Analyser la fréquence d'indexation des pages web par les principaux moteurs de recherche"
+      ],
+      "correct": "Comprendre le principe de l’indexation des pages (construction d’un index associant à chaque terme les URL des pages où il apparaît)",
+      "explanation": "Comprendre le principe de l’indexation des pages (construction d’un index associant à chaque terme les URL des pages où il apparaît) [74]."
+    },
+    {
+      "question": "Quelle est la troisième activité réalisée par un moteur de recherche à chaque requête d'un internaute ?",
+      "options": [
+        "La construction d’une liste ordonnée des pages (classement) comportant les mots clés de la requête",
+        "L'analyse grammaticale et sémantique de la requête de l'utilisateur",
+        "La vérification de la disponibilité et de la validité des URL indexées",
+        "La personnalisation des résultats en fonction de l'historique de l'utilisateur"
+      ],
+      "correct": "La construction d’une liste ordonnée des pages (classement) comportant les mots clés de la requête",
+      "explanation": "La troisième activité, réalisée à chaque fois qu’un internaute fait une requête, construit une liste ordonnée des pages (classement) comportant les mots clés de la requête [74]."
+    },
+    {
+      "question": "De quoi dépend notamment l'ordre des pages dans les résultats d'un moteur de recherche (classement) ?",
+      "options": [
+        "De leur popularité (principe des liens), de leur pertinence (aux mots de la requête), et de l’ordre des termes de la requête",
+        "De la date de publication des pages et de la fréquence de leur mise à jour",
+        "De la qualité technique du site web et de sa conformité aux normes du W3C",
+        "De la localisation géographique de l'utilisateur et de la langue de la requête"
+      ],
+      "correct": "De leur popularité (principe des liens), de leur pertinence (aux mots de la requête), et de l’ordre des termes de la requête",
+      "explanation": "Leur ordre (des pages dans le classement) dépend notamment de leur popularité (principe des liens), de leur pertinence (aux mots de la requête), et de l’ordre des termes de la requête [74]."
+    },
+    {
+      "question": "Que peuvent faire les concepteurs de site Web pour améliorer le référencement de leurs pages ?",
+      "options": [
+        "En choisissant bien les mots et en les plaçant à des endroits stratégiques dans les pages",
+        "En augmentant artificiellement le nombre de liens pointant vers leur site",
+        "En utilisant des techniques de 'black hat SEO' pour tromper les moteurs de recherche",
+        "En payant directement les moteurs de recherche pour un meilleur classement"
+      ],
+      "correct": "En choisissant bien les mots et en les plaçant à des endroits stratégiques dans les pages",
+      "explanation": "Les concepteurs de site Web peuvent améliorer le référencement de leurs pages en choisissant bien les mots et en les plaçant à des endroits stratégiques dans les pages [74]."
+    },
+    {
+      "question": "Que faut-il connaître concernant les étapes du développement du Web (repas historiques) ?",
+      "options": [
+        "Connaître les étapes du développement du Web",
+        "Savoir utiliser les outils de développement web les plus récents",
+        "Comprendre l'impact historique du Web sur la société",
+        "Être capable de coder un site web en utilisant les technologies du début du Web"
+      ],
+      "correct": "Connaître les étapes du développement du Web",
+      "explanation": "Repères historiques Connaître les étapes du développement du Web [72]."
+    },
+    {
+      "question": "Que faut-il connaître concernant les notions juridiques liées au Web ?",
+      "options": [
+        "Connaître certaines notions juridiques (licence, droit d’auteur, droit d’usage, valeur d’un bien)",
+        "Être capable de rédiger des contrats de licence pour des contenus web",
+        "Savoir comment déposer un brevet pour une invention liée au Web",
+        "Connaître l'ensemble des lois internationales régissant l'utilisation d'Internet"
+      ],
+      "correct": "Connaître certaines notions juridiques (licence, droit d’auteur, droit d’usage, valeur d’un bien)",
+      "explanation": "Notions juridiques Connaître certaines notions juridiques (licence, droit d’auteur, droit d’usage, valeur d’un bien) [72]."
+    },
+    {
+      "question": "Que faut-il maîtriser concernant l'hypertexte sur le Web ?",
+      "options": [
+        "Maîtriser les renvois d’un texte à différents contenus (liens hypertextes)",
+        "Comprendre l'histoire et l'évolution du concept d'hypertexte",
+        "Être capable de créer des systèmes hypertextes complexes",
+        "Analyser l'impact de l'hypertexte sur la lecture et la navigation en ligne"
+      ],
+      "correct": "Maîtriser les renvois d’un texte à différents contenus (liens hypertextes)",
+      "explanation": "Hypertexte Maîtriser les renvois d’un texte à différents contenus [72]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant l'indexation de quelques textes sur quelques mots lors de l'étude des moteurs de recherche ?",
+      "options": [
+        "Réaliser à la main l’indexation de quelques textes sur quelques mots puis choisir les textes correspondant à une requête",
+        "Programmer un algorithme d'indexation simple en Python",
+        "Comparer l'efficacité de différentes techniques d'indexation",
+        "Analyser les limites et les biais des systèmes d'indexation actuels"
+      ],
+      "correct": "Réaliser à la main l’indexation de quelques textes sur quelques mots puis choisir les textes correspondant à une requête",
+      "explanation": "- Réaliser à la main l’indexation de quelques textes sur quelques mots puis choisir les textes correspondant à une requête [75]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant le calcul de la popularité d'une page web ?",
+      "options": [
+        "Calculer la popularité d’une page à l’aide d’un graphe simple puis programmer l’algorithme",
+        "Utiliser des outils en ligne pour analyser la popularité d'un site web",
+        "Comprendre les différents indicateurs de popularité utilisés par les moteurs de recherche",
+        "Discuter de l'influence de la popularité sur le classement des résultats de recherche"
+      ],
+      "correct": "Calculer la popularité d’une page à l’aide d’un graphe simple puis programmer l’algorithme",
+      "explanation": "- Calculer la popularité d’une page à l’aide d’un graphe simple puis programmer l’algorithme [75]."
+    },
+    {
+      "question": "Que faut-il savoir paramétrer dans un navigateur web pour interdire l'exécution de programmes côté client ?",
+      "options": [
+        "Paramétrer un navigateur de manière qu’il interdise l’exécution d’un programme sur le client",
+        "Installer des extensions de sécurité pour bloquer les scripts malveillants",
+        "Configurer le pare-feu de son système d'exploitation pour bloquer le trafic web suspect",
+        "Utiliser un navigateur web axé sur la protection de la vie privée et la sécurité"
+      ],
+      "correct": "Paramétrer un navigateur de manière qu’il interdise l’exécution d’un programme sur le client",
+      "explanation": "- Paramétrer un navigateur de manière qu’il interdise l’exécution d’un programme sur le client [75]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant les politiques des moteurs de recherche quant à la conservation des informations sur les utilisateurs ?",
+      "options": [
+        "Comparer les politiques des moteurs de recherche quant à la conservation des informations sur les utilisateurs",
+        "Savoir comment supprimer son historique de recherche sur les différents moteurs de recherche",
+        "Comprendre les enjeux éthiques liés à la collecte et à l'utilisation des données des utilisateurs par les moteurs de recherche",
+        "Évaluer l'impact de la conservation des données sur la vie privée des utilisateurs"
+      ],
+      "correct": "Comparer les politiques des moteurs de recherche quant à la conservation des informations sur les utilisateurs",
+      "explanation": "- Comparer les politiques des moteurs de recherche quant à la conservation des informations sur les utilisateurs [75]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant l'historique de navigation et les cookies d'un navigateur ?",
+      "options": [
+        "Effacer l’historique du navigateur, consulter les cookies, paramétrer le navigateur afin qu’il...",
+        "Modifier le contenu des cookies pour personnaliser sa navigation",
+        "Utiliser des logiciels tiers pour analyser son historique de navigation",
+        "Partager son historique de navigation avec des moteurs de recherche pour obtenir des résultats plus pertinents"
+      ],
+      "correct": "Effacer l’historique du navigateur, consulter les cookies, paramétrer le navigateur afin qu’il... [75]",
+      "explanation": "La phrase est incomplète dans la source, mais elle indique l'importance de savoir gérer l'historique et les cookies."
+    },
+    {
+      "question": "Que faut-il savoir distinguer concernant les réseaux sociaux existants ?",
+      "options": [
+        "Distinguer plusieurs réseaux sociaux selon leurs caractéristiques, y compris un ordre de grandeur de leurs nombres d’abonnés",
+        "Maîtriser les fonctionnalités avancées des principaux réseaux sociaux",
+        "Analyser l'impact des réseaux sociaux sur la société et la politique",
+        "Créer et gérer une communauté en ligne sur un réseau social"
+      ],
+      "correct": "Distinguer plusieurs réseaux sociaux selon leurs caractéristiques, y compris un ordre de grandeur de leurs nombres d’abonnés",
+      "explanation": "Réseaux sociaux existants Distinguer plusieurs réseaux sociaux selon leurs caractéristiques, y compris un ordre de grandeur de leurs nombres d’abonnés [76]."
+    },
+    {
+      "question": "Que faut-il savoir paramétrer concernant ses abonnements sur les réseaux sociaux ?",
+      "options": [
+        "Paramétrer des abonnements pour assurer la confidentialité de données personnelles",
+        "Gérer efficacement ses flux d'informations et ses notifications",
+        "Identifier les algorithmes de recommandation de contenu des réseaux sociaux",
+        "Analyser l'influence de ses abonnements sur sa 'bulle de filtres'"
+      ],
+      "correct": "Paramétrer des abonnements pour assurer la confidentialité de données personnelles",
+      "explanation": "Paramétrer des abonnements pour assurer la confidentialité de données personnelles [76]."
+    },
+    {
+      "question": "Que faut-il identifier concernant le modèle économique des réseaux sociaux ?",
+      "options": [
+        "Identifier les sources de revenus des entreprises de réseautage social",
+        "Comparer les différents modèles économiques des réseaux sociaux",
+        "Analyser la viabilité économique des réseaux sociaux",
+        "Discuter des alternatives aux modèles économiques actuels des réseaux sociaux"
+      ],
+      "correct": "Identifier les sources de revenus des entreprises de réseautage social",
+      "explanation": "Modèle économique des réseaux sociaux Identifier les sources de revenus des entreprises de réseautage social [76]."
+    },
+    {
+      "question": "Quelle expérience célèbre illustre la notion de « petit monde » dans le contexte des réseaux sociaux ?",
+      "options": [
+        "L'expérience de Milgram",
+        "L'effet Dunning-Kruger",
+        "La théorie des jeux",
+        "L'expérience de Stanford Prison"
+      ],
+      "correct": "Expérience de Milgram",
+      "explanation": "Notion de « petit monde » Expérience de Milgram [76]."
+    },
+    {
+      "question": "Que faut-il savoir décrire concernant la manière dont l'information est présentée par les réseaux sociaux ?",
+      "options": [
+        "Décrire comment l’information présentée par les réseaux sociaux est conditionnée par le choix préalable de ses amis",
+        "Analyser les techniques de persuasion et de manipulation utilisées sur les réseaux sociaux",
+        "Identifier les sources d'information fiables et non fiables sur les réseaux sociaux",
+        "Comparer la qualité de l'information sur les différents réseaux sociaux"
+      ],
+      "correct": "Décrire comment l’information présentée par les réseaux sociaux est conditionnée par le choix préalable de ses amis",
+      "explanation": "Décrire comment l’information présentée par les réseaux sociaux est conditionnée par le choix préalable de ses amis [76]."
+    },
+    {
+      "question": "Que faut-il connaître concernant la cyberviolence, notamment l'article 222-33-2-2 du code pénal ?",
+      "options": [
+        "Connaître les dispositions de l’article 222-33-2-2 du code pénal",
+        "Savoir comment porter plainte en cas de cyberviolence",
+        "Identifier les différentes formes de cyberviolence et leurs conséquences juridiques",
+        "Analyser les politiques des plateformes en ligne contre la cyberviolence"
+      ],
+      "correct": "Connaître les dispositions de l’article 222-33-2-2 du code pénal",
+      "explanation": "Cyberviolence Connaître les dispositions de l’article 222-33-2-2 du code pénal [77]."
+    },
+    {
+      "question": "Quelles différentes formes de cyberviolence faut-il connaître (harcèlement, discrimination, etc.) ainsi que les ressources disponibles pour lutter contre celle-ci ?",
+      "options": [
+        "Connaître les différentes formes de cyberviolence (harcèlement, discrimination, sexting...) et les ressources disponibles pour lutter contre la cyberviolence",
+        "Savoir comment identifier les auteurs de cyberviolence en ligne",
+        "Comprendre les motivations psychologiques des auteurs de cyberviolence",
+        "Évaluer l'efficacité des différentes stratégies de lutte contre la cyberviolence"
+      ],
+      "correct": "Connaître les différentes formes de cyberviolence (harcèlement, discrimination, sexting...) et les ressources disponibles pour lutter contre la cyberviolence",
+      "explanation": "Connaître les différentes formes de cyberviolence (harcèlement, discrimination, sexting...) et les ressources disponibles pour lutter contre la cyberviolence [77]."
+    },
+    {
+      "question": "Que faut-il faire concernant le site nonauharcelement.education.gouv.fr dans le cadre de l'étude de la cyberviolence ?",
+      "options": [
+        "Consulter le site nonauharcelement.education.gouv.fr",
+        "Télécharger et diffuser les contenus du site",
+        "Participer aux forums de discussion du site",
+        "Signaler les cas de harcèlement rencontrés sur le site"
+      ],
+      "correct": "Consulter le site nonauharcelement.education.gouv.fr",
+      "explanation": "- Consulter le site nonauharcelement.education.gouv.fr [78]."
+    },
+    {
+      "question": "Dans le domaine du Web, qu'est-ce qu'une donnée personnelle ?",
+      "options": [
+        "Une information permettant d’identifier une personne, comme son nom ou son adresse [6]",
+        "Toute information présente sur Internet concernant une personne",
+        "Les données de navigation d'un utilisateur sur un site web",
+        "Les informations publiques disponibles sur les réseaux sociaux"
+      ],
+      "correct": "Une information permettant d’identifier une personne, comme son nom ou son adresse [6]",
+      "explanation": "Définir une donnée personnelle [79]. Selon une des sources, les données personnelles sont des informations permettant d'identifier une personne, comme son nom ou son adresse [6]."
+    },
+    {
+      "question": "Que faut-il identifier concernant les différents descripteurs d'un objet dans le contexte des données structurées ?",
+      "options": [
+        "Identifier les différents descripteurs d’un objet",
+        "Créer des descripteurs pertinents pour différents types de données",
+        "Comparer l'efficacité de différents systèmes de descripteurs",
+        "Analyser l'évolution des normes de description des données"
+      ],
+      "correct": "Identifier les différents descripteurs d’un objet",
+      "explanation": "Données structurées Identifier les différents descripteurs d’un objet [79]."
+    },
+    {
+      "question": "Que faut-il savoir distinguer concernant une donnée structurée ?",
+      "options": [
+        "Distinguer la valeur d’une donnée de son descripteur",
+        "Identifier les différents types de données structurées (tableaux, fichiers CSV, etc.)",
+        "Savoir comment manipuler des données structurées avec un tableur",
+        "Comprendre l'intérêt des données structurées pour l'analyse et le traitement de l'information"
+      ],
+      "correct": "Distinguer la valeur d’une donnée de son descripteur",
+      "explanation": "Distinguer la valeur d’une donnée de son descripteur [79]."
+    },
+    {
+      "question": "Que faut-il savoir faire avec un site de données ouvertes ?",
+      "options": [
+        "Utiliser un site de données ouvertes, pour sélectionner et récupérer des données",
+        "Contribuer à l'enrichissement des données ouvertes disponibles en ligne",
+        "Évaluer la qualité et la fiabilité des données ouvertes",
+        "Analyser les licences d'utilisation des données ouvertes"
+      ],
+      "correct": "Utiliser un site de données ouvertes, pour sélectionner et récupérer des données",
+      "explanation": "Utiliser un site de données ouvertes, pour sélectionner et récupérer des données [79]."
+    },
+    {
+      "question": "Que faut-il savoir réaliser comme opérations sur une ou plusieurs tables de données structurées ?",
+      "options": [
+        "Réaliser des opérations de recherche, filtre, tri ou calcul",
+        "Créer des relations entre différentes tables de données",
+        "Visualiser des données sous forme de graphiques pertinents",
+        "Automatiser le traitement de données structurées à l'aide de scripts"
+      ],
+      "correct": "Réaliser des opérations de recherche, filtre, tri ou calcul",
+      "explanation": "Traitement de données structurées Réaliser des opérations de recherche, filtre, tri ou calcul sur une ou plusieurs tables [79]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant les métadonnées d'un fichier personnel ?",
+      "options": [
+        "Retrouver les métadonnées d’un fichier personnel",
+        "Modifier les métadonnées d'un fichier pour y ajouter des informations",
+        "Comprendre l'importance des métadonnées pour la gestion et l'organisation des fichiers",
+        "Analyser les différents types de métadonnées associés aux fichiers numériques"
+      ],
+      "correct": "Retrouver les métadonnées d’un fichier personnel",
+      "explanation": "Métadonnées Retrouver les métadonnées d’un fichier personnel [79]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant le stockage de données dans le 'nuage' (cloud) ?",
+      "options": [
+        "Utiliser un support de stockage dans le nuage",
+        "Administrer un service de stockage dans le nuage",
+        "Comparer les offres des différents prestataires de stockage cloud",
+        "Sécuriser l'accès à ses données stockées dans le cloud"
+      ],
+      "correct": "Utiliser un support de stockage dans le nuage",
+      "explanation": "Données dans le nuage (cloud) Utiliser un support de stockage dans le nuage [80]."
+    },
+    {
+      "question": "Que faut-il savoir faire concernant le partage de fichiers et les modes de synchronisation dans le cloud ?",
+      "options": [
+        "Partager des fichiers, paramétrer des modes de synchronisation",
+        "Restreindre l'accès aux fichiers partagés et gérer les permissions",
+        "Comprendre les enjeux de la synchronisation des données entre différents appareils",
+        "Résoudre les problèmes de synchronisation de fichiers dans le cloud"
+      ],
+      "correct": "Partager des fichiers, paramétrer des modes de synchronisation",
+      "explanation": "Partager des fichiers, paramétrer des modes de synchronisation [80]."
+    },
+    {
+      "question": "Que faut-il identifier concernant la consommation énergétique des centres de données (datacenter) ?",
+      "options": [
+        "Identifier les principales causes de la consommation énergétique des centres de données ainsi que leur ordre de grandeur",
+        "Calculer l'empreinte carbone d'un centre de données",
+        "Proposer des solutions pour réduire la consommation énergétique des datacenters",
+        "Analyser l'impact environnemental global du numérique"
+      ],
+      "correct": "Identifier les principales causes de la consommation énergétique des centres de données ainsi que leur ordre de grandeur",
+      "explanation": "Identifier les principales causes de la consommation énergétique des centres de données ainsi que leur ordre de grandeur [80]."
+    },
+    {
+      "question": "Quelles métadonnées faut-il savoir repérer dans les fichiers correspondant à différentes informations ?",
+      "options": [
+        "Repérer celles collectées par un dispositif et celles renseignées par l’utilisateur",
+        "Comparer les métadonnées de différents types de fichiers",
+        "Modifier les métadonnées à l'aide d'un éditeur dédié",
+        "Analyser l'impact des métadonnées sur la taille des fichiers"
+      ],
+      "correct": "Repérer celles collectées par un dispositif et celles renseignées par l’utilisateur",
+      "explanation": "- Consulter les métadonnées de fichiers correspondant à des informations différentes et repérer celles collectées par un dispositif et celles renseignées par l’utilisateur [80]."
+    },
+    {
+      "question": "Que faut-il faire avec des données ouvertes sous forme de fichier CSV ?",
+      "options": [
+        "Observer les différences de traitements possibles selon le logiciel choisi pour lire le fichier : programme Python, tableur, éditeur de textes ou encore outils spécialisés en ligne",
+        "Convertir le fichier CSV dans différents formats de données",
+        "Nettoyer et préparer les données pour l'analyse",
+        "Visualiser les données sous forme de graphiques interactifs"
+      ],
+      "correct": "Observer les différences de traitements possibles selon le logiciel choisi pour lire le fichier : programme Python, tableur, éditeur de textes ou encore outils spécialisés en ligne",
+      "explanation": "- Télécharger des données ouvertes (sous forme d’un fichier au format CSV avec les métadonnées associées), observer les différences de traitements possibles selon le logiciel choisi pour lire le fichier : programme Python, tableur, éditeur de textes ou encore outils spécialisés en ligne [80]."
+    }
+  ]
+}

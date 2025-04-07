@@ -1,0 +1,675 @@
+{
+  "langages_programmation_term": [
+    {
+      "question": "Qu'est-ce qu'un paradigme de programmation ?",
+      "options": [
+        "Un langage de programmation spécifique",
+        "Un style ou une approche fondamentale pour structurer et écrire du code",
+        "Un type d'erreur de compilation",
+        "Une bibliothèque de fonctions"
+      ],
+      "correct": "Un style ou une approche fondamentale pour structurer et écrire du code",
+      "explanation": "Un paradigme définit une manière de penser la programmation (ex: impératif, orienté objet, fonctionnel)."
+    },
+    {
+      "question": "Lequel de ces paradigmes se concentre sur la description du 'comment' faire, en utilisant une séquence d'instructions qui modifient l'état du programme ?",
+      "options": [
+        "Fonctionnel",
+        "Logique",
+        "Impératif",
+        "Déclaratif"
+      ],
+      "correct": "Impératif",
+      "explanation": "La programmation impérative (incluant procédurale et orientée objet) décrit les étapes à suivre pour atteindre un résultat."
+    },
+    {
+      "question": "Quel paradigme de programmation modélise le programme comme un ensemble d'objets qui interagissent entre eux via des méthodes ?",
+      "options": [
+        "Procédural",
+        "Fonctionnel",
+        "Orienté objet (OOP)",
+        "Logique"
+      ],
+      "correct": "Orienté objet (OOP)",
+      "explanation": "L'OOP se base sur les concepts de classes, objets, attributs, méthodes, héritage, etc."
+    },
+    {
+      "question": "Quel paradigme de programmation traite le calcul comme l'évaluation de fonctions mathématiques et met l'accent sur l'immutabilité et l'absence d'effets de bord ?",
+      "options": [
+        "Impératif",
+        "Orienté objet",
+        "Fonctionnel",
+        "Procédural"
+      ],
+      "correct": "Fonctionnel",
+      "explanation": "La programmation fonctionnelle favorise les fonctions pures et la composition de fonctions."
+    },
+    {
+      "question": "Python est souvent décrit comme un langage multi-paradigme. Qu'est-ce que cela signifie ?",
+      "options": [
+        "Il ne supporte qu'un seul paradigme très flexible",
+        "Il mélange tous les paradigmes en un seul",
+        "Il permet aux développeurs d'utiliser des éléments de différents paradigmes (impératif, orienté objet, fonctionnel) dans leurs programmes",
+        "Il est difficile de déterminer son paradigme principal"
+      ],
+      "correct": "Il permet aux développeurs d'utiliser des éléments de différents paradigmes (impératif, orienté objet, fonctionnel) dans leurs programmes",
+      "explanation": "Python intègre des caractéristiques de plusieurs paradigmes, offrant une grande flexibilité."
+    },
+    {
+      "question": "Qu'est-ce qu'une spécification d'une fonction ou d'un programme ?",
+      "options": [
+        "Le code source complet",
+        "Une description précise de ce que la fonction/programme doit faire (entrées, sorties, comportement) indépendamment de son implémentation",
+        "Les commentaires dans le code",
+        "Les tests unitaires associés"
+      ],
+      "correct": "Une description précise de ce que la fonction/programme doit faire (entrées, sorties, comportement) indépendamment de son implémentation",
+      "explanation": "La spécification sert de contrat entre l'utilisateur et l'implémenteur."
+    },
+    {
+      "question": "Que représente une précondition dans la spécification d'une fonction ?",
+      "options": [
+        "Ce que la fonction garantit à la fin",
+        "Une condition qui doit être vraie *avant* l'appel de la fonction pour qu'elle fonctionne comme prévu",
+        "Le type de la valeur retournée",
+        "Une variable locale à la fonction"
+      ],
+      "correct": "Une condition qui doit être vraie *avant* l'appel de la fonction pour qu'elle fonctionne comme prévu",
+      "explanation": "Les préconditions définissent les exigences sur les entrées ou l'état du programme avant l'appel."
+    },
+    {
+      "question": "Que représente une postcondition dans la spécification d'une fonction ?",
+      "options": [
+        "Une condition requise avant l'appel",
+        "Une propriété qui est garantie être vraie *après* l'exécution de la fonction (si les préconditions étaient satisfaites)",
+        "Le nom des paramètres",
+        "La complexité de la fonction"
+      ],
+      "correct": "Une propriété qui est garantie être vraie *après* l'exécution de la fonction (si les préconditions étaient satisfaites)",
+      "explanation": "Les postconditions décrivent le résultat ou l'effet attendu de la fonction."
+    },
+    {
+      "question": "En Python, qu'est-ce qu'une docstring ?",
+      "options": [
+        "Un commentaire simple (#)",
+        "Une chaîne de caractères multiligne placée juste après la définition d'une fonction/classe/module pour la documenter",
+        "Une variable globale",
+        "Un type d'erreur"
+      ],
+      "correct": "Une chaîne de caractères multiligne placée juste après la définition d'une fonction/classe/module pour la documenter",
+      "explanation": "La docstring (entre `\"\"\"` ou `'''`) sert de spécification et de documentation intégrée, accessible via `help()` ou `__doc__`."
+    },
+    {
+      "question": "Qu'est-ce qu'un test unitaire ?",
+      "options": [
+        "Un test manuel de l'ensemble de l'application",
+        "Un test qui vérifie le fonctionnement correct d'une petite unité isolée du code (souvent une fonction ou une méthode)",
+        "Un test de performance",
+        "Un test de sécurité"
+      ],
+      "correct": "Un test qui vérifie le fonctionnement correct d'une petite unité isolée du code (souvent une fonction ou une méthode)",
+      "explanation": "Les tests unitaires sont automatisés et permettent de détecter rapidement les régressions."
+    },
+    {
+      "question": "Quel est l'objectif principal de l'instruction `assert` en Python ?",
+      "options": [
+        "Afficher un message de débogage",
+        "Arrêter le programme si une condition spécifiée est fausse, souvent utilisé dans les tests ou pour vérifier des invariants",
+        "Définir une variable",
+        "Ignorer une partie du code"
+      ],
+      "correct": "Arrêter le programme si une condition spécifiée est fausse, souvent utilisé dans les tests ou pour vérifier des invariants",
+      "explanation": "`assert condition` lève une AssertionError si `condition` est False, indiquant un problème."
+    },
+    {
+      "question": "Que sont les doctests en Python ?",
+      "options": [
+        "Des tests écrits dans des fichiers séparés",
+        "Des exemples d'utilisation interactifs inclus dans la docstring d'une fonction, qui peuvent être exécutés automatiquement pour vérifier la correction",
+        "Des commentaires expliquant les tests",
+        "Des tests pour la documentation elle-même"
+      ],
+      "correct": "Des exemples d'utilisation interactifs inclus dans la docstring d'une fonction, qui peuvent être exécutés automatiquement pour vérifier la correction",
+      "explanation": "Les doctests combinent documentation et tests simples. Ex: `>>> ma_fonction(2)\n4` dans la docstring."
+    },
+    {
+      "question": "Qu'est-ce que la récursivité ?",
+      "options": [
+        "Une boucle `while`",
+        "Le fait qu'une fonction s'appelle elle-même pour résoudre un problème",
+        "L'utilisation de variables globales",
+        "Le tri d'une liste"
+      ],
+      "correct": "Le fait qu'une fonction s'appelle elle-même pour résoudre un problème",
+      "explanation": "La récursivité décompose le problème en sous-problèmes similaires plus petits."
+    },
+    {
+      "question": "Quel élément est indispensable pour garantir la terminaison d'une fonction récursive ?",
+      "options": [
+        "Un paramètre de type entier",
+        "Un appel récursif",
+        "Un cas de base (ou condition d'arrêt)",
+        "Une valeur de retour"
+      ],
+      "correct": "Un cas de base (ou condition d'arrêt)",
+      "explanation": "Le cas de base est une condition pour laquelle la fonction retourne un résultat directement, sans faire d'appel récursif, stoppant ainsi la chaîne d'appels."
+    },
+    {
+      "question": "Dans une fonction récursive, comment l'appel récursif doit-il être formulé par rapport au problème initial ?",
+      "options": [
+        "Il doit traiter un problème de taille identique",
+        "Il doit traiter un problème plus complexe",
+        "Il doit traiter une version plus simple (plus petite) du problème, se rapprochant du cas de base",
+        "Il doit toujours appeler la fonction avec les mêmes arguments"
+      ],
+      "correct": "Il doit traiter une version plus simple (plus petite) du problème, se rapprochant du cas de base",
+      "explanation": "Cette réduction de la taille du problème à chaque appel garantit que le cas de base sera finalement atteint."
+    },
+    {
+      "question": "Quelle structure de données est utilisée implicitement par le système pour gérer les appels de fonctions (y compris récursifs) ?",
+      "options": [
+        "Une file",
+        "Une pile (la pile d'appels / call stack)",
+        "Un dictionnaire",
+        "Une liste chaînée"
+      ],
+      "correct": "Une pile (la pile d'appels / call stack)",
+      "explanation": "Chaque appel de fonction empile son contexte (paramètres, variables locales, adresse de retour). Le retour d'une fonction dépile le contexte."
+    },
+    {
+      "question": "Quel est le risque si une fonction récursive n'atteint jamais son cas de base ?",
+      "options": [
+        "Elle retourne une valeur aléatoire",
+        "Elle s'arrête immédiatement",
+        "Elle provoque un dépassement de la pile d'appels (stack overflow)",
+        "Elle devient très rapide"
+      ],
+      "correct": "Elle provoque un dépassement de la pile d'appels (stack overflow)",
+      "explanation": "Les appels récursifs s'empilent sans fin jusqu'à épuisement de la mémoire allouée à la pile."
+    },
+    {
+      "question": "Quelle est la différence entre la récursivité et l'itération ?",
+      "options": [
+        "La récursivité utilise des fonctions, l'itération non",
+        "La récursivité résout un problème en s'appelant elle-même sur des sous-problèmes, l'itération utilise des boucles (while, for) pour répéter un traitement",
+        "La récursivité est toujours plus rapide",
+        "L'itération est toujours plus facile à écrire"
+      ],
+      "correct": "La récursivité résout un problème en s'appelant elle-même sur des sous-problèmes, l'itération utilise des boucles (while, for) pour répéter un traitement",
+      "explanation": "Tout algorithme récursif peut être transformé en algorithme itératif (parfois au prix d'une complexité accrue du code), et inversement (moins courant)."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'classe' en programmation orientée objet ?",
+      "options": [
+        "Une instance spécifique d'un objet",
+        "Une fonction spéciale",
+        "Un modèle ou un 'plan' qui définit les propriétés (attributs) et les comportements (méthodes) communs à un ensemble d'objets",
+        "Une variable globale"
+      ],
+      "correct": "Un modèle ou un 'plan' qui définit les propriétés (attributs) et les comportements (méthodes) communs à un ensemble d'objets",
+      "explanation": "La classe est la définition abstraite, l'objet en est une réalisation concrète."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'objet' (ou 'instance') en programmation orientée objet ?",
+      "options": [
+        "La définition de la classe",
+        "Une réalisation concrète d'une classe, possédant ses propres valeurs pour les attributs définis par la classe",
+        "Une méthode de la classe",
+        "Un type de donnée primitif"
+      ],
+      "correct": "Une réalisation concrète d'une classe, possédant ses propres valeurs pour les attributs définis par la classe",
+      "explanation": "Si 'Voiture' est une classe, alors 'ma_voiture_rouge' peut être un objet (une instance) de cette classe."
+    },
+    {
+      "question": "Comment appelle-t-on les 'variables' associées à un objet, qui stockent son état ?",
+      "options": [
+        "Méthodes",
+        "Classes",
+        "Attributs (ou propriétés, champs, membres)",
+        "Paramètres"
+      ],
+      "correct": "Attributs (ou propriétés, champs, membres)",
+      "explanation": "Exemples : l'attribut `couleur` d'un objet `Voiture`, l'attribut `solde` d'un objet `CompteBancaire`."
+    },
+    {
+      "question": "Comment appelle-t-on les 'fonctions' associées à une classe, qui définissent le comportement des objets de cette classe ?",
+      "options": [
+        "Attributs",
+        "Méthodes",
+        "Constructeurs",
+        "Variables globales"
+      ],
+      "correct": "Méthodes",
+      "explanation": "Exemples : la méthode `accelerer()` d'un objet `Voiture`, la méthode `deposer()` d'un objet `CompteBancaire`."
+    },
+    {
+      "question": "Quel mot-clé est utilisé en Python pour définir une classe ?",
+      "options": [
+        "def",
+        "object",
+        "class",
+        "struct"
+      ],
+      "correct": "class",
+      "explanation": "La définition commence par `class NomDeLaClasse:`."
+    },
+    {
+      "question": "Quelle méthode spéciale est appelée automatiquement lorsqu'on crée un nouvel objet (instance) d'une classe en Python, souvent utilisée pour initialiser ses attributs ?",
+      "options": [
+        "__new__",
+        "__init__",
+        "__create__",
+        "__start__"
+      ],
+      "correct": "__init__",
+      "explanation": "Le constructeur `__init__(self, ...)` initialise l'état de l'objet nouvellement créé."
+    },
+    {
+      "question": "Dans la définition des méthodes d'une classe en Python, quel est le nom conventionnel du premier paramètre, qui représente l'instance (l'objet) elle-même ?",
+      "options": [
+        "this",
+        "object",
+        "instance",
+        "self"
+      ],
+      "correct": "self",
+      "explanation": "Le paramètre `self` est implicitement passé lors de l'appel d'une méthode sur un objet (`mon_objet.ma_methode()`) et permet à la méthode d'accéder aux attributs et autres méthodes de cet objet via `self.attribut` ou `self.autre_methode()`."
+    },
+    {
+      "question": "Comment définir un attribut d'instance `couleur` avec la valeur 'rouge' dans le constructeur `__init__` d'une classe `Voiture` ?",
+      "options": [
+        "couleur = 'rouge'",
+        "Voiture.couleur = 'rouge'",
+        "self.couleur = 'rouge'",
+        "init.couleur = 'rouge'"
+      ],
+      "correct": "self.couleur = 'rouge'",
+      "explanation": "À l'intérieur des méthodes (y compris `__init__`), on utilise `self.` pour accéder ou définir les attributs spécifiques à l'instance courante."
+    },
+    {
+      "question": "Qu'est-ce que l'encapsulation en programmation orientée objet ?",
+      "options": [
+        "Rendre tous les attributs publics",
+        "Le principe de regrouper les données (attributs) et les opérations qui les manipulent (méthodes) au sein d'un même objet, et de contrôler l'accès aux données internes",
+        "L'héritage entre classes",
+        "La création de plusieurs instances d'une classe"
+      ],
+      "correct": "Le principe de regrouper les données (attributs) et les opérations qui les manipulent (méthodes) au sein d'un même objet, et de contrôler l'accès aux données internes",
+      "explanation": "L'encapsulation vise à masquer les détails d'implémentation et à protéger l'état interne de l'objet via une interface publique (méthodes)."
+    },
+    {
+      "question": "En Python, quelle convention de nommage indique qu'un attribut ou une méthode est 'privé' (destiné à un usage interne à la classe, bien que non strictement imposé) ?",
+      "options": [
+        "Commencer par une majuscule (ex: MonAttribut)",
+        "Utiliser des underscores avant et après (ex: __attribut__)",
+        "Commencer par un seul underscore (ex: _attribut)",
+        "Écrire tout en majuscules (ex: ATTRIBUT)"
+      ],
+      "correct": "Commencer par un seul underscore (ex: _attribut)",
+      "explanation": "Un seul underscore est une convention indiquant que l'attribut/méthode n'est pas censé être utilisé directement depuis l'extérieur de la classe."
+    },
+    {
+      "question": "En Python, que fait la convention de nommage avec deux underscores au début (ex: `__attribut_prive`) ?",
+      "options": [
+        "Rend l'attribut accessible publiquement",
+        "Déclenche un mécanisme de 'décoration de nom' (name mangling) pour le rendre plus difficile d'accès depuis l'extérieur et éviter les conflits de noms dans l'héritage",
+        "Transforme l'attribut en méthode",
+        "Supprime l'attribut"
+      ],
+      "correct": "Déclenche un mécanisme de 'décoration de nom' (name mangling) pour le rendre plus difficile d'accès depuis l'extérieur et éviter les conflits de noms dans l'héritage",
+      "explanation": "Python renomme `__attribut_prive` en `_NomDeLaClasse__attribut_prive`. Ce n'est pas une vraie protection, mais une dissuasion."
+    },
+    {
+      "question": "Qu'est-ce que l'héritage en programmation orientée objet ?",
+      "options": [
+        "La copie d'une classe",
+        "Le mécanisme par lequel une classe (classe fille ou sous-classe) peut acquérir les propriétés (attributs) et comportements (méthodes) d'une autre classe (classe mère ou superclasse)",
+        "La création d'une instance",
+        "La suppression d'une classe"
+      ],
+      "correct": "Le mécanisme par lequel une classe (classe fille ou sous-classe) peut acquérir les propriétés (attributs) et comportements (méthodes) d'une autre classe (classe mère ou superclasse)",
+      "explanation": "L'héritage permet la réutilisation de code et la création de hiérarchies de classes (relation 'est un')."
+    },
+    {
+      "question": "En Python, comment définir une classe `VoitureElectrique` qui hérite de la classe `Voiture` ?",
+      "options": [
+        "class VoitureElectrique extends Voiture:",
+        "class VoitureElectrique inherits Voiture:",
+        "class VoitureElectrique(Voiture):",
+        "class Voiture(VoitureElectrique):"
+      ],
+      "correct": "class VoitureElectrique(Voiture):",
+      "explanation": "On indique la classe mère entre parenthèses après le nom de la classe fille."
+    },
+    {
+      "question": "Que signifie 'redéfinir' (override) une méthode dans une classe fille ?",
+      "options": [
+        "Supprimer la méthode de la classe mère",
+        "Fournir une nouvelle implémentation pour une méthode déjà définie dans la classe mère, spécifique à la classe fille",
+        "Renommer la méthode",
+        "Rendre la méthode privée"
+      ],
+      "correct": "Fournir une nouvelle implémentation pour une méthode déjà définie dans la classe mère, spécifique à la classe fille",
+      "explanation": "Cela permet de spécialiser le comportement hérité."
+    },
+    {
+      "question": "Comment appeler la méthode `methode_parente()` de la classe mère depuis une méthode redéfinie dans la classe fille en Python ?",
+      "options": [
+        "parent.methode_parente()",
+        "mother.methode_parente()",
+        "super().methode_parente()",
+        "self.methode_parente()"
+      ],
+      "correct": "super().methode_parente()",
+      "explanation": "La fonction `super()` permet d'accéder aux méthodes de la classe parente, souvent utilisée dans le constructeur `__init__` ou les méthodes redéfinies."
+    },
+    {
+      "question": "Qu'est-ce que le polymorphisme (dans le contexte d'OOP souvent lié à l'héritage ou aux interfaces/duck typing) ?",
+      "options": [
+        "Avoir plusieurs constructeurs",
+        "La capacité pour des objets de types différents de répondre au même message (appel de méthode) de manière différente, adaptée à leur type",
+        "Utiliser plusieurs processeurs",
+        "Stocker plusieurs types de données dans une variable"
+      ],
+      "correct": "La capacité pour des objets de types différents de répondre au même message (appel de méthode) de manière différente, adaptée à leur type",
+      "explanation": "Ex: si `Chat` et `Chien` héritent de `Animal` et redéfinissent `crier()`, un appel à `mon_animal.crier()` produira 'Miaou' ou 'Wouf' selon le type réel de `mon_animal`."
+    },
+    {
+      "question": "Qu'est-ce qu'une fonction 'pure' en programmation fonctionnelle ?",
+      "options": [
+        "Une fonction très courte",
+        "Une fonction qui n'utilise que des entiers",
+        "Une fonction qui, pour les mêmes entrées, retourne toujours le même résultat et n'a pas d'effets de bord (ne modifie pas d'état extérieur)",
+        "Une fonction qui ne prend pas d'arguments"
+      ],
+      "correct": "Une fonction qui, pour les mêmes entrées, retourne toujours le même résultat et n'a pas d'effets de bord (ne modifie pas d'état extérieur)",
+      "explanation": "Les fonctions pures sont plus faciles à tester, à raisonner et à paralléliser."
+    },
+    {
+      "question": "Que sont les 'effets de bord' (side effects) qu'une fonction pure évite ?",
+      "options": [
+        "Retourner une valeur",
+        "Prendre des arguments",
+        "Modifier une variable globale, modifier un argument mutable, afficher quelque chose à l'écran, lire/écrire dans un fichier...",
+        "Utiliser des boucles"
+      ],
+      "correct": "Modifier une variable globale, modifier un argument mutable, afficher quelque chose à l'écran, lire/écrire dans un fichier...",
+      "explanation": "Les effets de bord rendent le comportement de la fonction dépendant du contexte ou modifient l'état du programme en dehors de sa valeur de retour."
+    },
+    {
+      "question": "Qu'est-ce qu'une expression 'lambda' en Python ?",
+      "options": [
+        "Une fonction définie avec le mot-clé `def`",
+        "Une petite fonction anonyme définie en une seule expression",
+        "Un type de donnée",
+        "Une structure de contrôle"
+      ],
+      "correct": "Une petite fonction anonyme définie en une seule expression",
+      "explanation": "Syntaxe : `lambda arguments: expression`. Elles sont souvent utilisées comme arguments pour des fonctions comme `map`, `filter`, `sorted`."
+    },
+    {
+      "question": "Soit `L = [1, 2, 3, 4]`. Que produit `list(map(lambda x: x * 2, L))` ?",
+      "options": [
+        "[1, 2, 3, 4]",
+        "[2, 4, 6, 8]",
+        "[1, 4, 9, 16]",
+        "True"
+      ],
+      "correct": "[2, 4, 6, 8]",
+      "explanation": "`map` applique la fonction lambda (qui multiplie par 2) à chaque élément de la liste L, et `list()` convertit le résultat en une nouvelle liste."
+    },
+    {
+      "question": "Soit `L = [1, 2, 3, 4, 5, 6]`. Que produit `list(filter(lambda x: x % 2 == 0, L))` ?",
+      "options": [
+        "[1, 3, 5]",
+        "[2, 4, 6]",
+        "[False, True, False, True, False, True]",
+        "[1, 2, 3, 4, 5, 6]"
+      ],
+      "correct": "[2, 4, 6]",
+      "explanation": "`filter` applique la fonction lambda (qui teste si x est pair) à chaque élément de L et ne conserve que ceux pour lesquels la fonction retourne True. `list()` crée la liste résultat."
+    },
+    {
+      "question": "Quelle est la principale utilité de la structure `try...except` en Python ?",
+      "options": [
+        "Définir des fonctions",
+        "Répéter du code",
+        "Gérer les erreurs (exceptions) qui peuvent se produire pendant l'exécution d'un bloc de code, pour éviter que le programme ne plante",
+        "Effectuer des tests unitaires"
+      ],
+      "correct": "Gérer les erreurs (exceptions) qui peuvent se produire pendant l'exécution d'un bloc de code, pour éviter que le programme ne plante",
+      "explanation": "Le code dans le bloc `try` est exécuté. Si une exception se produit, le code dans le bloc `except` correspondant est exécuté."
+    },
+    {
+      "question": "Quel type d'exception est levé en Python lorsqu'on essaie de diviser par zéro ?",
+      "options": [
+        "TypeError",
+        "ValueError",
+        "IndexError",
+        "ZeroDivisionError"
+      ],
+      "correct": "ZeroDivisionError",
+      "explanation": "C'est l'exception spécifique à la division par zéro."
+    },
+    {
+      "question": "Quel type d'exception est levé en Python lorsqu'on applique une opération à un objet d'un type inapproprié ?",
+      "options": [
+        "ZeroDivisionError",
+        "TypeError",
+        "ValueError",
+        "NameError"
+      ],
+      "correct": "TypeError",
+      "explanation": "Exemple : essayer d'additionner un entier et une chaîne de caractères (`5 + 'a'`)."
+    },
+    {
+      "question": "Quel type d'exception est levé en Python lorsqu'une fonction reçoit un argument du bon type mais avec une valeur incorrecte ?",
+      "options": [
+        "TypeError",
+        "ValueError",
+        "IndexError",
+        "KeyError"
+      ],
+      "correct": "ValueError",
+      "explanation": "Exemple : `int('abc')` lève une ValueError car 'abc' ne peut pas être converti en entier."
+    },
+    {
+      "question": "Quel type d'exception est levé en Python lorsqu'on essaie d'accéder à un indice invalide dans une liste ou un tuple ?",
+      "options": [
+        "KeyError",
+        "ValueError",
+        "TypeError",
+        "IndexError"
+      ],
+      "correct": "IndexError",
+      "explanation": "Exemple : si `L = [1, 2]`, `L[2]` lève une IndexError."
+    },
+    {
+      "question": "Quel type d'exception est levé en Python lorsqu'on essaie d'accéder à une clé inexistante dans un dictionnaire en utilisant les crochets `[]` ?",
+      "options": [
+        "IndexError",
+        "KeyError",
+        "ValueError",
+        "AttributeError"
+      ],
+      "correct": "KeyError",
+      "explanation": "Exemple : si `d = {'a': 1}`, `d['b']` lève une KeyError."
+    },
+    {
+      "question": "Quel bloc optionnel peut-on ajouter à une structure `try...except` pour exécuter du code que l'exception se produise ou non (souvent pour le nettoyage) ?",
+      "options": [
+        "else",
+        "catch",
+        "finally",
+        "cleanup"
+      ],
+      "correct": "finally",
+      "explanation": "Le bloc `finally` est exécuté à la fin, que le bloc `try` se termine normalement ou qu'une exception soit levée (et éventuellement attrapée)."
+    },
+    {
+      "question": "Quelle instruction Python utiliser pour déclencher (lever) manuellement une exception ?",
+      "options": [
+        "assert",
+        "try",
+        "raise",
+        "except"
+      ],
+      "correct": "raise",
+      "explanation": "`raise TypeException(\"message\")` permet de signaler une condition d'erreur spécifique dans le code."
+    },
+    {
+      "question": "Quelle fonction utiliser pour ouvrir un fichier en mode lecture ?",
+      "options": [
+        "open('fichier.txt', 'w')",
+        "open('fichier.txt', 'a')",
+        "open('fichier.txt', 'r') (ou simplement open('fichier.txt'))",
+        "read('fichier.txt')"
+      ],
+      "correct": "open('fichier.txt', 'r') (ou simplement open('fichier.txt'))",
+      "explanation": "Le mode 'r' (read) est le mode par défaut pour ouvrir un fichier en lecture."
+    },
+    {
+      "question": "Quelle fonction utiliser pour ouvrir un fichier en mode écriture (en écrasant le contenu existant) ?",
+      "options": [
+        "open('fichier.txt', 'r')",
+        "open('fichier.txt', 'a')",
+        "open('fichier.txt', 'w')",
+        "write('fichier.txt')"
+      ],
+      "correct": "open('fichier.txt', 'w')",
+      "explanation": "Le mode 'w' (write) ouvre le fichier en écriture. S'il existe, son contenu est effacé. S'il n'existe pas, il est créé."
+    },
+    {
+      "question": "Quelle fonction utiliser pour ouvrir un fichier en mode ajout (pour écrire à la fin du fichier sans écraser) ?",
+      "options": [
+        "open('fichier.txt', 'r')",
+        "open('fichier.txt', 'w')",
+        "open('fichier.txt', 'a')",
+        "append('fichier.txt')"
+      ],
+      "correct": "open('fichier.txt', 'a')",
+      "explanation": "Le mode 'a' (append) ouvre le fichier pour ajouter des données à la fin. Le fichier est créé s'il n'existe pas."
+    },
+    {
+      "question": "Quelle est la manière recommandée en Python pour ouvrir un fichier, garantissant qu'il sera fermé automatiquement même en cas d'erreur ?",
+      "options": [
+        "f = open(...); ... ; f.close()",
+        "try: f = open(...); ... finally: f.close()",
+        "with open(...) as f: ...",
+        "simplement f = open(...)"
+      ],
+      "correct": "with open(...) as f: ...",
+      "explanation": "L'instruction `with` gère automatiquement la fermeture du fichier (via la méthode `__exit__` de l'objet fichier) à la sortie du bloc `with`, ce qui est plus sûr et plus concis."
+    },
+    {
+      "question": "Si `f` est un objet fichier ouvert en lecture, quelle méthode lit l'intégralité du contenu du fichier en une seule chaîne de caractères ?",
+      "options": [
+        "f.readline()",
+        "f.readlines()",
+        "f.read()",
+        "f.get()"
+      ],
+      "correct": "f.read()",
+      "explanation": "`read()` lit tout le reste du fichier. Attention avec les gros fichiers."
+    },
+    {
+      "question": "Si `f` est un objet fichier ouvert en lecture, quelle méthode lit une seule ligne du fichier (jusqu'au prochain `\\n`) ?",
+      "options": [
+        "f.readline()",
+        "f.readlines()",
+        "f.read()",
+        "f.getline()"
+      ],
+      "correct": "f.readline()",
+      "explanation": "`readline()` lit et retourne la ligne suivante, y compris le caractère de fin de ligne `\\n`."
+    },
+    {
+      "question": "Si `f` est un objet fichier ouvert en lecture, quelle méthode lit toutes les lignes restantes du fichier et les retourne sous forme d'une liste de chaînes de caractères ?",
+      "options": [
+        "f.readline()",
+        "f.readlines()",
+        "f.read()",
+        "f.getlines()"
+      ],
+      "correct": "f.readlines()",
+      "explanation": "`readlines()` retourne une liste où chaque élément est une ligne du fichier (avec son `\\n`)."
+    },
+    {
+      "question": "Quelle est la manière la plus idiomatique en Python pour lire un fichier texte ligne par ligne ?",
+      "options": [
+        "Utiliser f.readlines() et parcourir la liste",
+        "Utiliser une boucle `while True:` avec `f.readline()` et tester si la ligne est vide",
+        "Itérer directement sur l'objet fichier : `for ligne in f:`",
+        "Utiliser f.read().splitlines()"
+      ],
+      "correct": "Itérer directement sur l'objet fichier : `for ligne in f:`",
+      "explanation": "L'objet fichier est itérable ligne par ligne, c'est la manière la plus simple et efficace en mémoire pour traiter un fichier ligne à ligne."
+    },
+    {
+      "question": "Si `f` est un objet fichier ouvert en écriture, quelle méthode écrit une chaîne de caractères dans le fichier ?",
+      "options": [
+        "f.print(chaine)",
+        "f.write(chaine)",
+        "f.append(chaine)",
+        "f.put(chaine)"
+      ],
+      "correct": "f.write(chaine)",
+      "explanation": "`write()` écrit la chaîne spécifiée. Attention, elle n'ajoute pas automatiquement de saut de ligne (`\\n`)."
+    },
+    {
+      "question": "Quel module Python fournit des fonctions pour lire et écrire facilement des fichiers au format CSV ?",
+      "options": [
+        "os",
+        "sys",
+        "csv",
+        "json"
+      ],
+      "correct": "csv",
+      "explanation": "Le module `csv` contient des objets `reader` et `writer` qui gèrent automatiquement les délimiteurs, les guillemets, etc."
+    },
+    {
+      "question": "Pourquoi est-il important de fermer un fichier (`f.close()`) après l'avoir utilisé (surtout en écriture), si on n'utilise pas `with open` ?",
+      "options": [
+        "Pour libérer de l'espace disque",
+        "Pour s'assurer que toutes les données en mémoire tampon (buffer) ont été écrites physiquement sur le disque et pour libérer les ressources système associées au fichier",
+        "Pour renommer le fichier",
+        "Ce n'est pas important"
+      ],
+      "correct": "Pour s'assurer que toutes les données en mémoire tampon (buffer) ont été écrites physiquement sur le disque et pour libérer les ressources système associées au fichier",
+      "explanation": "Oublier de fermer un fichier (surtout en écriture) peut entraîner une perte de données."
+    },
+    {
+      "question": "Quel est l'objectif de la POO (Programmation Orientée Objet) par rapport à la programmation procédurale ?",
+      "options": [
+        "Supprimer l'utilisation des fonctions",
+        "Mieux organiser le code en regroupant données et comportements liés au sein d'objets, favorisant la réutilisabilité et la maintenance",
+        "Rendre les programmes obligatoirement plus courts",
+        "Utiliser uniquement des variables globales"
+      ],
+      "correct": "Mieux organiser le code en regroupant données et comportements liés au sein d'objets, favorisant la réutilisabilité et la maintenance",
+      "explanation": "L'OOP offre une manière différente (souvent jugée plus intuitive pour modéliser le monde réel) de structurer des applications complexes."
+    },
+    {
+      "question": "Qu'est-ce qu'une API (Application Programming Interface) ?",
+      "options": [
+        "Un langage de programmation",
+        "Un ensemble de définitions (fonctions, classes, protocoles) qui spécifie comment des composants logiciels doivent interagir entre eux",
+        "Un type de base de données",
+        "Un algorithme de chiffrement"
+      ],
+      "correct": "Un ensemble de définitions (fonctions, classes, protocoles) qui spécifie comment des composants logiciels doivent interagir entre eux",
+      "explanation": "Une API définit l'interface publique d'une bibliothèque ou d'un service, permettant à d'autres programmes de l'utiliser sans connaître les détails de son implémentation."
+    },
+    {
+      "question": "Dans le contexte des bibliothèques/modules, que représente l'API ?",
+      "options": [
+        "Le code source interne de la bibliothèque",
+        "La documentation complète",
+        "L'ensemble des fonctions, classes et constantes publiques que la bibliothèque expose et que l'utilisateur peut appeler",
+        "Le fichier compilé de la bibliothèque"
+      ],
+      "correct": "L'ensemble des fonctions, classes et constantes publiques que la bibliothèque expose et que l'utilisateur peut appeler",
+      "explanation": "L'API est le contrat d'utilisation de la bibliothèque."
+    }
+  ]
+}

@@ -1,0 +1,1082 @@
+{
+  "types_construits": [
+    {
+      "question": "Qu'est-ce qu'un type construit en programmation ?",
+      "options": [
+        "Un type de base comme entier ou flottant",
+        "Un type de donnée qui est composé à partir d'autres types (de base ou construits)",
+        "Un synonyme pour le type chaîne de caractères",
+        "Un type de donnée immuable uniquement"
+      ],
+      "correct": "Un type de donnée qui est composé à partir d'autres types (de base ou construits)",
+      "explanation": "Les types construits permettent de structurer et d'organiser des données complexes en regroupant plusieurs valeurs, contrairement aux types de base qui représentent des valeurs atomiques."
+    },
+    {
+      "question": "Lequel de ces types est un type construit couramment utilisé en Python ?",
+      "options": [
+        "Integer (int)",
+        "Float (float)",
+        "Boolean (bool)",
+        "List (list)"
+      ],
+      "correct": "List (list)",
+      "explanation": "Les listes (list), tuples (tuple) et dictionnaires (dict) sont des exemples de types construits en Python. Les entiers, flottants et booléens sont des types de base."
+    },
+    {
+      "question": "Quelle est la caractéristique principale d'un p-uplet (tuple) en Python ?",
+      "options": [
+        "Il est modifiable après sa création",
+        "Il ne peut contenir que des nombres",
+        "C'est une séquence non modifiable (immuable) d'éléments",
+        "Il est utilisé pour stocker des paires clé-valeur"
+      ],
+      "correct": "C'est une séquence non modifiable (immuable) d'éléments",
+      "explanation": "L'immutabilité est la propriété clé des tuples : une fois créé, on ne peut ni modifier, ni ajouter, ni supprimer d'éléments."
+    },
+    {
+      "question": "Comment déclare-t-on généralement un tuple en Python ?",
+      "options": [
+        "En utilisant des crochets [ ]",
+        "En utilisant des accolades { }",
+        "En utilisant des parenthèses ( ) ou simplement des virgules",
+        "En utilisant des guillemets \" \""
+      ],
+      "correct": "En utilisant des parenthèses ( ) ou simplement des virgules",
+      "explanation": "Exemple : mon_tuple = (1, 2, 3) ou autre_tuple = 1, 2, 3. Les parenthèses sont souvent nécessaires pour éviter les ambiguïtés."
+    },
+    {
+      "question": "Comment créer un tuple contenant un seul élément en Python ?",
+      "options": [
+        "(42)",
+        "[42,]",
+        "42,",
+        "{42}"
+      ],
+      "correct": "42,",
+      "explanation": "Pour créer un tuple avec un seul élément, il faut ajouter une virgule après l'élément, sinon Python interprète (42) comme l'entier 42. Exemple : t = (42,) ou t = 42,"
+    },
+    {
+      "question": "Soit le tuple t = (10, 20, 30, 40). Comment accéder au deuxième élément (valeur 20) ?",
+      "options": [
+        "t(1)",
+        "t[1]",
+        "t{1}",
+        "t.get(1)"
+      ],
+      "correct": "t[1]",
+      "explanation": "L'accès aux éléments d'un tuple (comme pour les listes) se fait par indexation avec des crochets [ ]. L'indexation commence à 0, donc le deuxième élément a l'indice 1."
+    },
+    {
+      "question": "Soit le tuple t = (10, 20, 30, 40). Que renvoie t[-1] ?",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "40"
+      ],
+      "correct": "40",
+      "explanation": "L'indexation négative permet d'accéder aux éléments à partir de la fin. t[-1] correspond au dernier élément."
+    },
+    {
+      "question": "Peut-on modifier un élément d'un tuple après sa création ? (Ex: t = (1, 2, 3); t[0] = 5)",
+      "options": [
+        "Oui, sans problème",
+        "Oui, mais seulement si le tuple contient des nombres",
+        "Non, car les tuples sont immuables",
+        "Non, sauf si on utilise une méthode spéciale"
+      ],
+      "correct": "Non, car les tuples sont immuables",
+      "explanation": "Tenter de modifier un élément d'un tuple via son indice provoquera une erreur (TypeError). C'est la définition de l'immutabilité."
+    },
+    {
+      "question": "Quelle fonction utiliser pour obtenir le nombre d'éléments dans un tuple ?",
+      "options": [
+        "size(t)",
+        "length(t)",
+        "len(t)",
+        "count(t)"
+      ],
+      "correct": "len(t)",
+      "explanation": "La fonction intégrée len() retourne la longueur (le nombre d'éléments) de nombreuses séquences, y compris les tuples."
+    },
+    {
+      "question": "Soit t1 = (1, 2) et t2 = (3, 4). Que produit l'opération t1 + t2 ?",
+      "options": [
+        "Une erreur",
+        "Le tuple (4, 6)",
+        "Le tuple (1, 2, 3, 4)",
+        "Le tuple ([1, 3], [2, 4])"
+      ],
+      "correct": "Le tuple (1, 2, 3, 4)",
+      "explanation": "L'opérateur '+' appliqué aux tuples effectue une concaténation : il crée un nouveau tuple contenant les éléments des deux tuples mis bout à bout."
+    },
+    {
+      "question": "Soit t = (0,) * 3. Quel tuple est créé ?",
+      "options": [
+        "(0, 0, 0)",
+        "(0)",
+        "(3)",
+        "Une erreur"
+      ],
+      "correct": "(0, 0, 0)",
+      "explanation": "L'opérateur '*' appliqué à un tuple et un entier effectue une répétition : il crée un nouveau tuple contenant les éléments du tuple initial répétés n fois."
+    },
+    {
+      "question": "Dans quel cas est-il pertinent d'utiliser un tuple plutôt qu'une liste ?",
+      "options": [
+        "Quand on a besoin de modifier fréquemment les éléments",
+        "Quand on veut représenter une collection de données qui ne doit pas changer (ex: coordonnées d'un point, couleur RGB)",
+        "Quand la collection doit être triée",
+        "Quand on veut supprimer des éléments"
+      ],
+      "correct": "Quand on veut représenter une collection de données qui ne doit pas changer (ex: coordonnées d'un point, couleur RGB)",
+      "explanation": "L'immutabilité des tuples les rend adaptés pour représenter des ensembles fixes de valeurs. Ils sont aussi légèrement plus efficaces en mémoire et peuvent être utilisés comme clés de dictionnaire."
+    },
+    {
+      "question": "Quelle est la caractéristique principale d'une liste (list) en Python ?",
+      "options": [
+        "Elle est immuable",
+        "C'est une séquence modifiable (mutable) d'éléments",
+        "Elle ne peut contenir que des éléments du même type",
+        "Elle stocke des paires clé-valeur"
+      ],
+      "correct": "C'est une séquence modifiable (mutable) d'éléments",
+      "explanation": "Contrairement aux tuples, les listes sont mutables : on peut modifier, ajouter ou supprimer des éléments après leur création."
+    },
+    {
+      "question": "Comment déclare-t-on généralement une liste en Python ?",
+      "options": [
+        "En utilisant des parenthèses ( )",
+        "En utilisant des accolades { }",
+        "En utilisant des crochets [ ]",
+        "En utilisant des chevrons < >"
+      ],
+      "correct": "En utilisant des crochets [ ]",
+      "explanation": "Exemple : ma_liste = [10, 'hello', True]."
+    },
+    {
+      "question": "Soit L = [5, 10, 15, 20]. Comment accéder au premier élément (valeur 5) ?",
+      "options": [
+        "L(0)",
+        "L.first()",
+        "L[0]",
+        "L{0}"
+      ],
+      "correct": "L[0]",
+      "explanation": "L'accès aux éléments d'une liste se fait par indexation avec des crochets [ ], en commençant à l'indice 0."
+    },
+    {
+      "question": "Soit L = [5, 10, 15, 20]. Comment modifier le troisième élément pour qu'il vaille 16 ?",
+      "options": [
+        "L(2) = 16",
+        "L[2] = 16",
+        "L.set(2, 16)",
+        "Impossible, les listes sont immuables"
+      ],
+      "correct": "L[2] = 16",
+      "explanation": "Comme les listes sont mutables, on peut affecter une nouvelle valeur à un élément existant via son indice. Le troisième élément a l'indice 2."
+    },
+    {
+      "question": "Quelle méthode permet d'ajouter un élément à la fin d'une liste ?",
+      "options": [
+        "L.add(element)",
+        "L.insert(element)",
+        "L.append(element)",
+        "L.push(element)"
+      ],
+      "correct": "L.append(element)",
+      "explanation": "La méthode append() ajoute l'élément passé en argument à la fin de la liste existante."
+    },
+    {
+      "question": "Soit L = [1, 2, 3]. Quelle instruction permet d'insérer la valeur 10 à l'indice 1 (entre 1 et 2) ?",
+      "options": [
+        "L.append(1, 10)",
+        "L.add(1, 10)",
+        "L[1] = 10",
+        "L.insert(1, 10)"
+      ],
+      "correct": "L.insert(1, 10)",
+      "explanation": "La méthode insert(index, element) insère l'élément à la position spécifiée par l'index, décalant les éléments suivants."
+    },
+    {
+      "question": "Quelle méthode permet de supprimer et de retourner le dernier élément d'une liste ?",
+      "options": [
+        "L.remove()",
+        "L.delete()",
+        "L.pop()",
+        "L.extract()"
+      ],
+      "correct": "L.pop()",
+      "explanation": "Par défaut, pop() enlève et renvoie le dernier élément. On peut aussi lui passer un indice pour enlever un élément spécifique : L.pop(index)."
+    },
+    {
+      "question": "Soit L = [10, 20, 30, 20]. Quelle instruction supprime la première occurrence de la valeur 20 ?",
+      "options": [
+        "L.pop(20)",
+        "del L[1]",
+        "L.remove(20)",
+        "L.delete(20)"
+      ],
+      "correct": "L.remove(20)",
+      "explanation": "La méthode remove(valeur) cherche la première occurrence de la valeur spécifiée et la supprime de la liste."
+    },
+    {
+      "question": "Comment supprimer l'élément à l'indice 2 de la liste L ?",
+      "options": [
+        "L.remove(2)",
+        "del L[2]",
+        "L.pop(element_at_index_2)",
+        "L.delete(2)"
+      ],
+      "correct": "del L[2]",
+      "explanation": "L'instruction `del` suivie de l'élément indexé (ex: del L[2]) supprime l'élément à cet indice spécifique."
+    },
+    {
+      "question": "Soit L = [10, 20, 30, 40, 50]. Que renvoie le 'slicing' (tranchage) L[1:3] ?",
+      "options": [
+        "[10, 20, 30]",
+        "[20, 30]",
+        "[20, 30, 40]",
+        "[10, 30]"
+      ],
+      "correct": "[20, 30]",
+      "explanation": "Le slicing L[start:stop] extrait une sous-liste de l'indice 'start' (inclus) jusqu'à l'indice 'stop' (exclu). Ici, de l'indice 1 (valeur 20) à l'indice 3 (exclu)."
+    },
+    {
+      "question": "Soit L = [10, 20, 30, 40, 50]. Que renvoie le slicing L[:2] ?",
+      "options": [
+        "[10, 20]",
+        "[30, 40, 50]",
+        "[10, 20, 30]",
+        "Une erreur"
+      ],
+      "correct": "[10, 20]",
+      "explanation": "Si l'indice de début est omis, le slicing commence au début de la liste. L[:2] va donc du début jusqu'à l'indice 2 (exclu)."
+    },
+    {
+      "question": "Soit L = [10, 20, 30, 40, 50]. Que renvoie le slicing L[3:] ?",
+      "options": [
+        "[10, 20, 30]",
+        "[30, 40, 50]",
+        "[40, 50]",
+        "Une erreur"
+      ],
+      "correct": "[40, 50]",
+      "explanation": "Si l'indice de fin est omis, le slicing va de l'indice de début jusqu'à la fin de la liste. L[3:] va donc de l'indice 3 (inclus) jusqu'à la fin."
+    },
+    {
+      "question": "Comment créer une copie superficielle (shallow copy) d'une liste L1 dans une nouvelle liste L2 ?",
+      "options": [
+        "L2 = L1",
+        "L2 = L1[:]",
+        "L2 = copy(L1)",
+        "L2 = list(L1)"
+      ],
+      "correct": "L2 = L1[:]",
+      "explanation": "L2 = L1 fait que L2 référence la même liste que L1. L2 = L1[:] (ou L2 = list(L1) ou L2 = L1.copy()) crée une nouvelle liste contenant les mêmes éléments (une copie superficielle)."
+    },
+    {
+      "question": "Qu'est-ce qu'une liste imbriquée (ou liste de listes) ?",
+      "options": [
+        "Une liste qui contient des tuples",
+        "Une liste triée",
+        "Une liste dont les éléments sont eux-mêmes des listes",
+        "Une liste vide"
+      ],
+      "correct": "Une liste dont les éléments sont eux-mêmes des listes",
+      "explanation": "Les listes imbriquées sont souvent utilisées pour représenter des structures bidimensionnelles comme des matrices ou des tableaux."
+    },
+    {
+      "question": "Soit matrice = [[1, 2], [3, 4]]. Comment accéder à l'élément 4 ?",
+      "options": [
+        "matrice[1][1]",
+        "matrice[4]",
+        "matrice[2, 2]",
+        "matrice[1, 1]"
+      ],
+      "correct": "matrice[1][1]",
+      "explanation": "matrice[1] accède à la deuxième sous-liste [3, 4]. Ensuite, [1] dans cette sous-liste accède à son deuxième élément, qui est 4."
+    },
+    {
+      "question": "Quelle est la différence principale entre une liste et un tuple concernant la mutabilité ?",
+      "options": [
+        "Les listes sont immuables, les tuples sont mutables",
+        "Les deux sont immuables",
+        "Les listes sont mutables (modifiables), les tuples sont immuables (non modifiables)",
+        "Les deux sont mutables"
+      ],
+      "correct": "Les listes sont mutables (modifiables), les tuples sont immuables (non modifiables)",
+      "explanation": "C'est la distinction fondamentale : on peut changer le contenu d'une liste après sa création, mais pas celui d'un tuple."
+    },
+    {
+      "question": "Quelle syntaxe concise permet de créer une nouvelle liste en appliquant une opération à chaque élément d'une autre séquence ?",
+      "options": [
+        "Boucle for standard",
+        "Fonction map()",
+        "List comprehension (liste en compréhension)",
+        "Méthode append()"
+      ],
+      "correct": "List comprehension (liste en compréhension)",
+      "explanation": "Exemple : carres = [x*x for x in range(5)] crée la liste [0, 1, 4, 9, 16]. C'est une syntaxe pythonique efficace."
+    },
+    {
+      "question": "Qu'est-ce qu'un dictionnaire (dict) en Python ?",
+      "options": [
+        "Une séquence ordonnée d'éléments",
+        "Une collection non ordonnée (avant Python 3.7) ou ordonnée (depuis 3.7) de paires clé-valeur",
+        "Une liste immuable",
+        "Un type de fichier texte"
+      ],
+      "correct": "Une collection non ordonnée (avant Python 3.7) ou ordonnée (depuis 3.7) de paires clé-valeur",
+      "explanation": "Les dictionnaires permettent d'associer une valeur à une clé unique, offrant un accès rapide aux valeurs via leur clé."
+    },
+    {
+      "question": "Comment déclare-t-on généralement un dictionnaire en Python ?",
+      "options": [
+        "Avec des crochets [ ]",
+        "Avec des parenthèses ( )",
+        "Avec des accolades { } contenant des paires clé: valeur",
+        "Avec des guillemets \" \""
+      ],
+      "correct": "Avec des accolades { } contenant des paires clé: valeur",
+      "explanation": "Exemple : d = {'nom': 'Alice', 'age': 30}."
+    },
+    {
+      "question": "Dans un dictionnaire, qu'est-ce qu'une clé ?",
+      "options": [
+        "La valeur associée à un élément",
+        "L'identifiant unique (et immuable) qui permet d'accéder à une valeur",
+        "L'indice numérique de l'élément",
+        "Le type de la valeur"
+      ],
+      "correct": "L'identifiant unique (et immuable) qui permet d'accéder à une valeur",
+      "explanation": "Chaque clé dans un dictionnaire doit être unique et d'un type immuable (comme un nombre, une chaîne, ou un tuple)."
+    },
+    {
+      "question": "Dans un dictionnaire, qu'est-ce qu'une valeur ?",
+      "options": [
+        "L'identifiant unique de l'élément",
+        "La donnée associée à une clé",
+        "Toujours un nombre",
+        "Toujours une chaîne de caractères"
+      ],
+      "correct": "La donnée associée à une clé",
+      "explanation": "La valeur peut être de n'importe quel type (nombre, chaîne, liste, autre dictionnaire...)."
+    },
+    {
+      "question": "Soit d = {'nom': 'Bob', 'ville': 'Paris'}. Comment accéder à la valeur associée à la clé 'ville' ?",
+      "options": [
+        "d('ville')",
+        "d['ville']",
+        "d.get('ville')",
+        "Les deux options d['ville'] et d.get('ville') sont possibles"
+      ],
+      "correct": "Les deux options d['ville'] et d.get('ville') sont possibles",
+      "explanation": "d['ville'] accède à la valeur mais lève une erreur si la clé n'existe pas. d.get('ville') renvoie la valeur ou None (ou une valeur par défaut) si la clé n'existe pas."
+    },
+    {
+      "question": "Soit d = {'a': 1, 'b': 2}. Comment ajouter une nouvelle paire clé-valeur ('c', 3) ?",
+      "options": [
+        "d.append('c': 3)",
+        "d.insert('c', 3)",
+        "d['c'] = 3",
+        "d.add('c', 3)"
+      ],
+      "correct": "d['c'] = 3",
+      "explanation": "Si la clé 'c' n'existe pas, l'affectation d['c'] = 3 crée la nouvelle paire clé-valeur."
+    },
+    {
+      "question": "Soit d = {'a': 1, 'b': 2}. Comment modifier la valeur associée à la clé 'a' pour qu'elle vaille 10 ?",
+      "options": [
+        "d.update('a', 10)",
+        "d.set('a', 10)",
+        "d('a') = 10",
+        "d['a'] = 10"
+      ],
+      "correct": "d['a'] = 10",
+      "explanation": "Si la clé 'a' existe déjà, l'affectation d['a'] = 10 met à jour la valeur associée à cette clé."
+    },
+    {
+      "question": "Comment vérifier si une clé 'k' existe dans un dictionnaire 'd' ?",
+      "options": [
+        "d.exists('k')",
+        "d.contains('k')",
+        "'k' in d",
+        "d['k'] != None"
+      ],
+      "correct": "'k' in d",
+      "explanation": "L'opérateur `in` teste l'appartenance de la clé dans le dictionnaire et renvoie True ou False."
+    },
+    {
+      "question": "Quelle méthode retourne une vue (une sorte de liste) de toutes les clés d'un dictionnaire ?",
+      "options": [
+        "d.keys()",
+        "d.values()",
+        "d.items()",
+        "d.getkeys()"
+      ],
+      "correct": "d.keys()",
+      "explanation": "d.keys() renvoie un objet de type dict_keys contenant les clés du dictionnaire."
+    },
+    {
+      "question": "Quelle méthode retourne une vue de toutes les valeurs d'un dictionnaire ?",
+      "options": [
+        "d.keys()",
+        "d.values()",
+        "d.items()",
+        "d.getvalues()"
+      ],
+      "correct": "d.values()",
+      "explanation": "d.values() renvoie un objet de type dict_values contenant les valeurs du dictionnaire."
+    },
+    {
+      "question": "Quelle méthode retourne une vue des paires (clé, valeur) d'un dictionnaire ?",
+      "options": [
+        "d.keys()",
+        "d.values()",
+        "d.items()",
+        "d.pairs()"
+      ],
+      "correct": "d.items()",
+      "explanation": "d.items() renvoie un objet de type dict_items contenant des tuples (clé, valeur)."
+    },
+    {
+      "question": "Comment supprimer la paire clé-valeur associée à la clé 'k' d'un dictionnaire 'd' ?",
+      "options": [
+        "d.remove('k')",
+        "del d['k']",
+        "d.delete('k')",
+        "d.pop('k', None)"
+      ],
+      "correct": "del d['k']",
+      "explanation": "L'instruction `del d['k']` supprime la clé 'k' et sa valeur associée. d.pop('k') fait la même chose mais retourne en plus la valeur supprimée."
+    },
+    {
+      "question": "Comment itérer (parcourir) sur les clés d'un dictionnaire 'd' ?",
+      "options": [
+        "for key in d:",
+        "for key in d.values():",
+        "for key in d.items():",
+        "for i in range(len(d)):"
+      ],
+      "correct": "for key in d:",
+      "explanation": "Par défaut, itérer directement sur un dictionnaire (for key in d:) parcourt ses clés."
+    },
+    {
+      "question": "Comment itérer sur les valeurs d'un dictionnaire 'd' ?",
+      "options": [
+        "for value in d:",
+        "for value in d.keys():",
+        "for value in d.values():",
+        "for value in d.items():"
+      ],
+      "correct": "for value in d.values():",
+      "explanation": "Il faut explicitement utiliser la méthode .values() pour parcourir uniquement les valeurs."
+    },
+    {
+      "question": "Comment itérer sur les paires (clé, valeur) d'un dictionnaire 'd' ?",
+      "options": [
+        "for k, v in d:",
+        "for k, v in d.keys():",
+        "for k, v in d.values():",
+        "for k, v in d.items():"
+      ],
+      "correct": "for k, v in d.items():",
+      "explanation": "La méthode .items() renvoie des tuples (clé, valeur) qui peuvent être dépaquetés dans deux variables dans la boucle for."
+    },
+    {
+      "question": "Peut-on utiliser une liste comme clé dans un dictionnaire Python ?",
+      "options": [
+        "Oui, toujours",
+        "Non, car les listes sont mutables",
+        "Oui, mais seulement si la liste est vide",
+        "Seulement si la liste ne contient que des nombres"
+      ],
+      "correct": "Non, car les listes sont mutables",
+      "explanation": "Les clés de dictionnaire doivent être immuables (non modifiables) pour garantir leur unicité et leur hachage. Les listes étant mutables, elles ne peuvent pas servir de clés."
+    },
+    {
+      "question": "Peut-on utiliser un tuple comme clé dans un dictionnaire Python ?",
+      "options": [
+        "Non, jamais",
+        "Oui, si le tuple ne contient que des éléments immuables",
+        "Oui, seulement si le tuple est vide",
+        "Seulement si le tuple ne contient que des nombres"
+      ],
+      "correct": "Oui, si le tuple ne contient que des éléments immuables",
+      "explanation": "Les tuples, étant immuables, peuvent servir de clés de dictionnaire, à condition qu'ils ne contiennent pas eux-mêmes d'éléments mutables (comme des listes)."
+    },
+    {
+      "question": "Quel type construit est le plus adapté pour représenter les informations d'un étudiant (nom, prénom, notes) où chaque information est accessible par un nom (ex: 'nom', 'notes') ?",
+      "options": [
+        "Une liste",
+        "Un tuple",
+        "Un dictionnaire",
+        "Un entier"
+      ],
+      "correct": "Un dictionnaire",
+      "explanation": "Un dictionnaire est idéal car il permet d'associer des valeurs (le nom, le prénom, la liste des notes) à des clés descriptives ('nom', 'prénom', 'notes')."
+    },
+    {
+      "question": "Quel type construit est le plus adapté pour représenter une séquence ordonnée de températures relevées, qu'on pourrait vouloir modifier ou allonger ?",
+      "options": [
+        "Une liste",
+        "Un tuple",
+        "Un dictionnaire",
+        "Un booléen"
+      ],
+      "correct": "Une liste",
+      "explanation": "Une liste convient bien pour une séquence ordonnée dont la taille ou le contenu peut évoluer."
+    },
+    {
+      "question": "Quel type construit est adapté pour retourner plusieurs valeurs depuis une fonction, sans risque qu'elles soient modifiées par l'appelant ?",
+      "options": [
+        "Une liste",
+        "Un tuple",
+        "Un dictionnaire",
+        "Une chaîne de caractères"
+      ],
+      "correct": "Un tuple",
+      "explanation": "Les tuples sont souvent utilisés pour retourner un ensemble fixe de résultats d'une fonction, profitant de leur immutabilité."
+    },
+    {
+      "question": "Que signifie 'mutable' pour un type de donnée ?",
+      "options": [
+        "Qu'il peut être utilisé comme clé de dictionnaire",
+        "Que sa valeur peut être modifiée après sa création sans changer son identité",
+        "Qu'il ne peut contenir que des nombres",
+        "Qu'il est automatiquement trié"
+      ],
+      "correct": "Que sa valeur peut être modifiée après sa création sans changer son identité",
+      "explanation": "Les listes et les dictionnaires sont mutables en Python. Modifier L.append(4) change la liste L elle-même."
+    },
+    {
+      "question": "Que signifie 'immuable' (ou 'non mutable') pour un type de donnée ?",
+      "options": [
+        "Qu'il ne peut pas être utilisé dans une liste",
+        "Que sa valeur ne peut pas être modifiée après sa création",
+        "Qu'il est très lent",
+        "Qu'il contient toujours la même valeur"
+      ],
+      "correct": "Que sa valeur ne peut pas être modifiée après sa création",
+      "explanation": "Les entiers, flottants, booléens, chaînes et tuples sont immuables. Toute opération qui semble les modifier crée en réalité un nouvel objet."
+    },
+    {
+      "question": "Soit L = [[]] * 3. Que contient L après L[0].append(1) ?",
+      "options": [
+        "[[1], [], []]",
+        "[[1], [1], [1]]",
+        "[[], [], [], [1]]",
+        "Une erreur"
+      ],
+      "correct": "[[1], [1], [1]]",
+      "explanation": "L'opération L = [[]] * 3 crée une liste contenant 3 références vers LA MÊME liste vide. Modifier cette unique liste vide via L[0] la modifie donc aussi pour L[1] et L[2]."
+    },
+    {
+      "question": "Comment créer correctement une liste de 3 listes vides distinctes ?",
+      "options": [
+        "[[]] * 3",
+        "[ [], [], [] ]",
+        "list([] for _ in range(3))",
+        "Les deux options [ [], [], [] ] et list([] for _ in range(3)) sont correctes"
+      ],
+      "correct": "Les deux options [ [], [], [] ] et list([] for _ in range(3)) sont correctes",
+      "explanation": "En créant explicitement trois listes vides distinctes, ou en utilisant une compréhension de liste qui crée une nouvelle liste vide à chaque itération, on évite le piège de la multiplication de références."
+    },
+    {
+      "question": "Quel est le type de la valeur retournée par d.keys() sur un dictionnaire d ?",
+      "options": [
+        "list",
+        "tuple",
+        "dict_keys",
+        "str"
+      ],
+      "correct": "dict_keys",
+      "explanation": "d.keys() retourne une vue dynamique sur les clés. Si on a besoin d'une vraie liste, il faut la convertir explicitement : list(d.keys())."
+    },
+    {
+      "question": "Soit t = (1, [2, 3], 4). Peut-on modifier ce tuple ?",
+      "options": [
+        "Non, car les tuples sont immuables",
+        "Oui, on peut changer n'importe quel élément",
+        "On ne peut pas changer les éléments 1 ou 4, mais on peut modifier la liste [2, 3] qui est un élément du tuple",
+        "Oui, on peut le transformer en liste"
+      ],
+      "correct": "On ne peut pas changer les éléments 1 ou 4, mais on peut modifier la liste [2, 3] qui est un élément du tuple",
+      "explanation": "Le tuple lui-même est immuable (on ne peut pas remplacer la référence à la liste par autre chose), mais si un de ses éléments est mutable (comme une liste), cet élément peut être modifié en place. Ex: t[1].append(0) est valide et modifie la liste dans le tuple."
+    },
+    {
+      "question": "Comment parcourir une liste L en obtenant à la fois l'indice et la valeur de chaque élément ?",
+      "options": [
+        "for i in range(len(L)): ... L[i] ...",
+        "for element in L: ... L.index(element) ...",
+        "for i, element in enumerate(L):",
+        "Impossible directement"
+      ],
+      "correct": "for i, element in enumerate(L):",
+      "explanation": "La fonction enumerate() est la manière pythonique de parcourir une séquence en ayant accès à l'indice et à la valeur simultanément."
+    },
+    {
+      "question": "Quel est l'avantage d'utiliser d.get(key) plutôt que d[key] pour accéder à une valeur dans un dictionnaire ?",
+      "options": [
+        "d.get() est plus rapide",
+        "d.get() permet de fournir une valeur par défaut si la clé n'existe pas, évitant ainsi une erreur (KeyError)",
+        "d.get() modifie le dictionnaire",
+        "d.get() retourne toujours une chaîne de caractères"
+      ],
+      "correct": "d.get() permet de fournir une valeur par défaut si la clé n'existe pas, évitant ainsi une erreur (KeyError)",
+      "explanation": "Exemple : age = d.get('age', 0) renvoie la valeur de 'age' si elle existe, ou 0 sinon, sans planter si la clé 'age' est absente."
+    },
+    {
+      "question": "Soit L = [3, 1, 4, 1, 5, 9, 2]. Quelle méthode modifie la liste L pour la trier en ordre croissant ?",
+      "options": [
+        "sorted(L)",
+        "L.sort()",
+        "L.sorted()",
+        "sort(L)"
+      ],
+      "correct": "L.sort()",
+      "explanation": "La méthode L.sort() trie la liste L *en place* (modifie L directement) et ne retourne rien (None). La fonction sorted(L) retourne une *nouvelle* liste triée sans modifier L."
+    },
+    {
+      "question": "Soit L = [3, 1, 4]. Que fait la fonction sorted(L) ?",
+      "options": [
+        "Elle trie la liste L en place",
+        "Elle retourne une nouvelle liste triée [1, 3, 4] sans modifier L",
+        "Elle retourne le premier élément (1)",
+        "Elle génère une erreur car L n'est pas un tuple"
+      ],
+      "correct": "Elle retourne une nouvelle liste triée [1, 3, 4] sans modifier L",
+      "explanation": "sorted() est une fonction intégrée qui prend un itérable et renvoie une nouvelle liste triée. La liste originale L reste [3, 1, 4]."
+    },
+    {
+      "question": "Comment inverser l'ordre des éléments d'une liste L *en place* ?",
+      "options": [
+        "reversed(L)",
+        "L.reverse()",
+        "L.reversed()",
+        "reverse(L)"
+      ],
+      "correct": "L.reverse()",
+      "explanation": "La méthode L.reverse() inverse l'ordre des éléments dans la liste L elle-même et ne retourne rien (None)."
+    },
+    {
+      "question": "Si on a une liste de tuples représentant des points (x, y), comment trier cette liste selon la coordonnée y ?",
+      "options": [
+        "points.sort()",
+        "points.sort(key=lambda point: point[1])",
+        "sorted(points, index=1)",
+        "Impossible de trier selon le deuxième élément"
+      ],
+      "correct": "points.sort(key=lambda point: point[1])",
+      "explanation": "L'argument `key` des fonctions de tri permet de spécifier une fonction qui sera appelée sur chaque élément avant la comparaison. Ici, `lambda point: point[1]` extrait la coordonnée y (indice 1) de chaque tuple `point` pour le tri."
+    },
+    {
+      "question": "Quel est le type de l'objet `range(5)` en Python 3 ?",
+      "options": [
+        "list",
+        "tuple",
+        "range",
+        "int"
+      ],
+      "correct": "range",
+      "explanation": "En Python 3, `range()` retourne un objet 'range' immuable qui représente une séquence d'entiers, sans les stocker tous en mémoire immédiatement (contrairement à Python 2). Pour obtenir une liste, il faut faire list(range(5))."
+    },
+    {
+      "question": "Soit le tuple `t = (5)`. Quel est le type de `t` ?",
+      "options": [
+        "tuple",
+        "int",
+        "list",
+        "str"
+      ],
+      "correct": "int",
+      "explanation": "Sans virgule finale, les parenthèses sont interprétées comme des parenthèses mathématiques standard. `t = (5)` est équivalent à `t = 5`. Pour un tuple d'un seul élément, il faut écrire `t = (5,)`."
+    },
+    {
+      "question": "Comment initialiser un dictionnaire vide ?",
+      "options": [
+        "d = []",
+        "d = ()",
+        "d = {}",
+        "d = dict[]"
+      ],
+      "correct": "d = {}",
+      "explanation": "Les accolades vides `{}` créent un dictionnaire vide. On peut aussi utiliser `d = dict()`."
+    },
+    {
+      "question": "Comment initialiser une liste vide ?",
+      "options": [
+        "L = {}",
+        "L = ()",
+        "L = []",
+        "L = list{}"
+      ],
+      "correct": "L = []",
+      "explanation": "Les crochets vides `[]` créent une liste vide. On peut aussi utiliser `L = list()`."
+    },
+    {
+      "question": "Comment initialiser un tuple vide ?",
+      "options": [
+        "t = []",
+        "t = {}",
+        "t = ()",
+        "t = tuple[]"
+      ],
+      "correct": "t = ()",
+      "explanation": "Les parenthèses vides `()` créent un tuple vide. On peut aussi utiliser `t = tuple()`."
+    },
+    {
+      "question": "Soit d = {'a': 1}. Si on exécute `d['b'] = 2`, que devient d ?",
+      "options": [
+        "{'a': 1}",
+        "{'b': 2}",
+        "{'a': 1, 'b': 2}",
+        "Une erreur"
+      ],
+      "correct": "{'a': 1, 'b': 2}",
+      "explanation": "Comme la clé 'b' n'existait pas, l'affectation l'ajoute au dictionnaire avec sa valeur associée."
+    },
+    {
+      "question": "Soit `L = [1, 2, 3]`. Que renvoie `L * 2` ?",
+      "options": [
+        "[2, 4, 6]",
+        "[1, 2, 3, 1, 2, 3]",
+        "[[1, 2, 3], [1, 2, 3]]",
+        "Une erreur"
+      ],
+      "correct": "[1, 2, 3, 1, 2, 3]",
+      "explanation": "Comme pour les tuples, l'opérateur `*` avec un entier effectue une répétition des éléments de la liste."
+    },
+    {
+      "question": "Peut-on avoir des types de données différents dans une même liste Python ?",
+      "options": [
+        "Non, tous les éléments doivent être du même type",
+        "Oui, une liste peut contenir des éléments de types différents",
+        "Seulement si ce sont des nombres (entiers et flottants)",
+        "Seulement si la liste est créée comme un tuple"
+      ],
+      "correct": "Oui, une liste peut contenir des éléments de types différents",
+      "explanation": "Python est dynamiquement typé, et ses listes sont hétérogènes : L = [1, 'deux', 3.0, True] est une liste valide."
+    },
+    {
+      "question": "Peut-on avoir des types de données différents dans un même tuple Python ?",
+      "options": [
+        "Non, tous les éléments doivent être du même type",
+        "Oui, un tuple peut contenir des éléments de types différents",
+        "Seulement si ce sont des nombres",
+        "Seulement si le tuple est mutable"
+      ],
+      "correct": "Oui, un tuple peut contenir des éléments de types différents",
+      "explanation": "Comme les listes, les tuples peuvent contenir des éléments de types variés : t = (1, 'deux', 3.0, False) est valide."
+    },
+    {
+      "question": "Dans un dictionnaire Python, les valeurs associées aux clés peuvent-elles être de types différents ?",
+      "options": [
+        "Non, toutes les valeurs doivent être du même type",
+        "Oui, les valeurs peuvent être de n'importe quel type et de types différents dans un même dictionnaire",
+        "Seulement si les clés sont des chaînes de caractères",
+        "Seulement si les valeurs sont des nombres"
+      ],
+      "correct": "Oui, les valeurs peuvent être de n'importe quel type et de types différents dans un même dictionnaire",
+      "explanation": "Exemple : d = {'nom': 'Alice', 'age': 30, 'notes': [15, 12]} est un dictionnaire valide avec des valeurs de types str, int, et list."
+    },
+    {
+      "question": "Soit `notes = [12, 15, 9, 18]`. Comment calculer la moyenne de ces notes ?",
+      "options": [
+        "avg(notes)",
+        "notes.mean()",
+        "sum(notes) / len(notes)",
+        "mean(notes)"
+      ],
+      "correct": "sum(notes) / len(notes)",
+      "explanation": "Il faut utiliser la fonction `sum()` pour additionner tous les éléments, puis diviser par le nombre d'éléments obtenu avec `len()`."
+    },
+    {
+      "question": "Quelle structure de données est la plus appropriée pour représenter un plateau de jeu de morpion (3x3) ?",
+      "options": [
+        "Un tuple de 9 éléments",
+        "Une liste imbriquée (liste de 3 listes de 3 éléments)",
+        "Un dictionnaire avec des clés comme 'A1', 'B2', etc.",
+        "Une chaîne de 9 caractères"
+      ],
+      "correct": "Une liste imbriquée (liste de 3 listes de 3 éléments)",
+      "explanation": "Une liste de listes permet de représenter facilement la structure 2D du plateau (lignes et colonnes) et d'accéder/modifier les cases par leurs coordonnées [ligne][colonne]."
+    },
+    {
+      "question": "Soit `t = ('a', 'b', 'c')`. Comment transformer ce tuple en liste ?",
+      "options": [
+        "t.toList()",
+        "list(t)",
+        "[t]",
+        "t[:]"
+      ],
+      "correct": "list(t)",
+      "explanation": "Le constructeur `list()` peut prendre un itérable (comme un tuple) en argument et retourne une nouvelle liste contenant les éléments de cet itérable."
+    },
+    {
+      "question": "Soit `L = ['a', 'b', 'c']`. Comment transformer cette liste en tuple ?",
+      "options": [
+        "tuple(L)",
+        "L.toTuple()",
+        "(L)",
+        "L[:]"
+      ],
+      "correct": "tuple(L)",
+      "explanation": "Le constructeur `tuple()` peut prendre un itérable (comme une liste) en argument et retourne un nouveau tuple contenant les éléments de cet itérable."
+    },
+    {
+      "question": "Quel est le principal avantage des dictionnaires par rapport aux listes pour retrouver une information ?",
+      "options": [
+        "Les dictionnaires sont toujours triés",
+        "L'accès à une valeur via sa clé est généralement très rapide (proche d'un temps constant), indépendamment de la taille du dictionnaire",
+        "Les dictionnaires utilisent moins de mémoire",
+        "Les dictionnaires peuvent contenir plus d'éléments"
+      ],
+      "correct": "L'accès à une valeur via sa clé est généralement très rapide (proche d'un temps constant), indépendamment de la taille du dictionnaire",
+      "explanation": "Retrouver un élément dans une liste par sa valeur nécessite de la parcourir (temps linéaire), alors que l'accès par clé dans un dictionnaire est optimisé grâce au hachage."
+    },
+    {
+      "question": "Considérons la structure `data = [{'nom': 'A', 'val': 10}, {'nom': 'B', 'val': 5}]`. Quel type de structure est `data` ?",
+      "options": [
+        "Une liste de tuples",
+        "Un dictionnaire de listes",
+        "Une liste de dictionnaires",
+        "Un tuple de listes"
+      ],
+      "correct": "Une liste de dictionnaires",
+      "explanation": "`data` est une liste (`[]`) dont chaque élément est un dictionnaire (`{}`). C'est une structure courante pour représenter une collection d'enregistrements."
+    },
+    {
+      "question": "Avec `data = [{'nom': 'A', 'val': 10}, {'nom': 'B', 'val': 5}]`, comment accéder à la valeur 5 ?",
+      "options": [
+        "data[1]['val']",
+        "data['B']['val']",
+        "data[5]",
+        "data['val'][1]"
+      ],
+      "correct": "data[1]['val']",
+      "explanation": "data[1] accède au deuxième dictionnaire {'nom': 'B', 'val': 5}. Ensuite, ['val'] accède à la valeur associée à la clé 'val' dans ce dictionnaire."
+    },
+    {
+      "question": "Quel est l'indice du dernier élément d'une liste `L` de longueur `n` ?",
+      "options": [
+        "n",
+        "n+1",
+        "n-1",
+        "0"
+      ],
+      "correct": "n-1",
+      "explanation": "L'indexation commençant à 0, le premier élément est à l'indice 0 et le n-ième (dernier) élément est à l'indice n-1."
+    },
+    {
+      "question": "Si `L1 = [1, 2]` et `L2 = [3, 4]`, que fait `L1.append(L2)` ?",
+      "options": [
+        "L1 devient `[1, 2, 3, 4]`",
+        "L1 devient `[1, 2, [3, 4]]`",
+        "L1 reste `[1, 2]` et une erreur se produit",
+        "L1 devient `[[1, 2], [3, 4]]`"
+      ],
+      "correct": "L1 devient `[1, 2, [3, 4]]`",
+      "explanation": "La méthode `append()` ajoute son argument comme un seul élément à la fin de la liste. Ici, l'argument est la liste L2 elle-même."
+    },
+    {
+      "question": "Si `L1 = [1, 2]` et `L2 = [3, 4]`, que fait `L1.extend(L2)` (ou `L1 += L2`) ?",
+      "options": [
+        "L1 devient `[1, 2, 3, 4]`",
+        "L1 devient `[1, 2, [3, 4]]`",
+        "L1 reste `[1, 2]` et une erreur se produit",
+        "L1 devient `[[1, 2], [3, 4]]`"
+      ],
+      "correct": "L1 devient `[1, 2, 3, 4]`",
+      "explanation": "La méthode `extend()` (ou l'opérateur `+=`) ajoute chaque élément de l'itérable fourni (ici L2) à la fin de la liste L1."
+    },
+    {
+      "question": "Quel type de boucle est le plus adapté pour effectuer une action sur chaque élément d'une liste, sans avoir besoin de l'indice ?",
+      "options": [
+        "Boucle `while` avec un compteur",
+        "Boucle `for element in liste:`",
+        "Boucle `for i in range(len(liste)):`",
+        "Récursion"
+      ],
+      "correct": "Boucle `for element in liste:`",
+      "explanation": "Cette forme de boucle `for` (boucle 'for each') est plus directe et lisible quand on a seulement besoin de la valeur de chaque élément."
+    },
+    {
+      "question": "Quand est-il nécessaire d'utiliser une boucle `for i in range(len(liste)):` plutôt qu'une boucle `for element in liste:` ?",
+      "options": [
+        "Jamais, la deuxième forme est toujours préférable",
+        "Quand on a besoin de modifier les éléments de la liste pendant le parcours via leur indice",
+        "Quand la liste contient des chaînes de caractères",
+        "Quand la liste est très longue"
+      ],
+      "correct": "Quand on a besoin de modifier les éléments de la liste pendant le parcours via leur indice",
+      "explanation": "Si l'on veut faire `liste[i] = nouvelle_valeur`, on a besoin de l'indice `i` fourni par `range(len(liste))`."
+    },
+    {
+      "question": "Soit `t = (('a', 1), ('b', 2))`. Comment convertir ce tuple de paires en dictionnaire ?",
+      "options": [
+        "dict(t)",
+        "{t}",
+        "list(t)",
+        "Impossible"
+      ],
+      "correct": "dict(t)",
+      "explanation": "Le constructeur `dict()` peut accepter un itérable de paires (clé, valeur), comme une liste de tuples ou un tuple de tuples, pour créer un dictionnaire."
+    },
+    {
+      "question": "Quel est le résultat de `list('abc')` ?",
+      "options": [
+        "('a', 'b', 'c')",
+        "['abc']",
+        "['a', 'b', 'c']",
+        "Une erreur"
+      ],
+      "correct": "['a', 'b', 'c']",
+      "explanation": "Le constructeur `list()` appliqué à une chaîne de caractères crée une liste où chaque caractère de la chaîne devient un élément de la liste."
+    },
+    {
+      "question": "Comment vérifier si deux variables `a` et `b` référencent exactement le même objet en mémoire (et pas seulement des objets ayant la même valeur) ?",
+      "options": [
+        "a == b",
+        "a is b",
+        "a = b",
+        "type(a) == type(b)"
+      ],
+      "correct": "a is b",
+      "explanation": "L'opérateur `==` teste l'égalité des valeurs, tandis que l'opérateur `is` teste l'identité des objets (s'ils pointent vers la même adresse mémoire)."
+    },
+    {
+      "question": "Soit `a = [1, 2]` et `b = [1, 2]`. Que renvoie `a == b` ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correct": "True",
+      "explanation": "`a == b` compare les valeurs des éléments des deux listes. Comme elles contiennent les mêmes éléments dans le même ordre, l'égalité de valeur est vraie."
+    },
+    {
+      "question": "Soit `a = [1, 2]` et `b = [1, 2]`. Que renvoie `a is b` ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correct": "False",
+      "explanation": "`a` et `b` sont deux objets listes distincts en mémoire, même s'ils ont le même contenu. `a is b` teste si ce sont le même objet, ce qui est faux ici."
+    },
+    {
+      "question": "Soit `a = [1, 2]` et `b = a`. Que renvoie `a is b` ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correct": "True",
+      "explanation": "Ici, `b = a` fait que la variable `b` référence le même objet liste que la variable `a`. Elles pointent donc vers la même adresse mémoire, `a is b` est vrai."
+    },
+    {
+      "question": "Si on modifie `b[0] = 10` dans le cas où `a = [1, 2]` et `b = a`, quelle sera la valeur de `a` après ?",
+      "options": [
+        "[1, 2]",
+        "[10, 2]",
+        "Erreur",
+        "[1, 10]"
+      ],
+      "correct": "[10, 2]",
+      "explanation": "Comme `a` et `b` référencent le même objet liste mutable, modifier la liste via `b` affecte aussi ce que `a` référence. C'est le concept d'alias."
+    },
+    {
+      "question": "Pourquoi dit-on que les affectations de types mutables (listes, dictionnaires) créent des alias ?",
+      "options": [
+        "Parce qu'elles créent une copie complète",
+        "Parce que plusieurs variables peuvent faire référence (être des 'noms' ou 'alias') au même objet mutable en mémoire",
+        "Parce qu'elles sont toujours lentes",
+        "Parce qu'elles changent le type de la variable"
+      ],
+      "correct": "Parce que plusieurs variables peuvent faire référence (être des 'noms' ou 'alias') au même objet mutable en mémoire",
+      "explanation": "L'affectation `b = a` pour une liste `a` ne copie pas la liste, mais juste la référence. Modifier l'objet via un alias (`b`) est visible via l'autre (`a`)."
+    },
+    {
+      "question": "Quelle structure de données est utilisée implicitement pour implémenter les dictionnaires en Python afin d'assurer un accès rapide par clé ?",
+      "options": [
+        "Une liste triée",
+        "Un arbre binaire de recherche",
+        "Une table de hachage",
+        "Une file d'attente"
+      ],
+      "correct": "Une table de hachage",
+      "explanation": "Les tables de hachage utilisent une fonction de hachage sur la clé pour calculer un indice (ou 'hash') permettant de retrouver rapidement la valeur associée, d'où la nécessité pour les clés d'être hachables (et donc immuables)."
+    },
+    {
+      "question": "Quel est le terme qui désigne une collection non ordonnée d'éléments uniques et immuables ?",
+      "options": [
+        "Liste (list)",
+        "Tuple (tuple)",
+        "Dictionnaire (dict)",
+        "Ensemble (set)"
+      ],
+      "correct": "Ensemble (set)",
+      "explanation": "Les ensembles (déclarés avec `{}` mais sans paires clé:valeur, ou `set()`) sont utiles pour tester rapidement l'appartenance et effectuer des opérations ensemblistes (union, intersection)."
+    },
+    {
+      "question": "Soit S = {1, 2, 3, 2}. Que contient S ?",
+      "options": [
+        "{1, 2, 3, 2}",
+        "{1, 2, 3}",
+        "[1, 2, 3]",
+        "(1, 2, 3)"
+      ],
+      "correct": "{1, 2, 3}",
+      "explanation": "Les ensembles ne stockent que des éléments uniques. La valeur 2 ajoutée une deuxième fois est simplement ignorée."
+    },
+    {
+      "question": "Quel type construit est souvent utilisé pour représenter les pixels d'une image en couleur RVB ?",
+      "options": [
+        "Une liste de 3 entiers",
+        "Un tuple de 3 entiers (R, G, B)",
+        "Un dictionnaire {'R': val, 'G': val, 'B': val}",
+        "Une chaîne de caractères"
+      ],
+      "correct": "Un tuple de 3 entiers (R, G, B)",
+      "explanation": "Un tuple (ex: (255, 0, 0) pour rouge) est adapté car une couleur RVB est un ensemble fixe de 3 valeurs qui ne devrait pas être modifié individuellement par erreur."
+    },
+    {
+      "question": "Comment accéder au dernier élément d'un tuple `t` sans utiliser d'indice négatif ?",
+      "options": [
+        "t[len(t)]",
+        "t[len(t) - 1]",
+        "t.last()",
+        "t[0]"
+      ],
+      "correct": "t[len(t) - 1]",
+      "explanation": "La longueur `len(t)` donne le nombre d'éléments. L'indice du dernier élément étant `n-1`, on peut y accéder avec `t[len(t) - 1]`."
+    },
+    {
+      "question": "Laquelle de ces structures garantit que l'ordre des éléments est préservé ?",
+      "options": [
+        "Ensemble (set)",
+        "Dictionnaire (dict) avant Python 3.7",
+        "Liste (list) et Tuple (tuple)",
+        "Toutes ces structures garantissent l'ordre"
+      ],
+      "correct": "Liste (list) et Tuple (tuple)",
+      "explanation": "Les listes et les tuples sont des séquences ordonnées par définition. Les dictionnaires préservent l'ordre d'insertion depuis Python 3.7, mais ce n'était pas garanti avant. Les ensembles sont non ordonnés."
+    },
+    {
+      "question": "Peut-on utiliser un dictionnaire comme valeur dans un autre dictionnaire ?",
+      "options": [
+        "Non, les valeurs ne peuvent être que des types de base",
+        "Oui, les valeurs d'un dictionnaire peuvent être de n'importe quel type, y compris d'autres dictionnaires",
+        "Seulement si le dictionnaire interne est vide",
+        "Seulement si les clés sont des entiers"
+      ],
+      "correct": "Oui, les valeurs d'un dictionnaire peuvent être de n'importe quel type, y compris d'autres dictionnaires",
+      "explanation": "Cela permet de créer des structures de données imbriquées complexes. Exemple : `{'personne1': {'nom': 'A', 'age': 20}, 'personne2': {'nom': 'B', 'age': 25}}`."
+    }
+  ]
+}

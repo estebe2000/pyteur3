@@ -1,0 +1,906 @@
+{
+  "traitement_tables": [
+    {
+      "question": "Qu'est-ce qu'une 'table' dans le contexte du traitement de données ?",
+      "options": [
+        "Un meuble physique",
+        "Une structure de données organisée en lignes et colonnes",
+        "Un type de graphique",
+        "Un fichier audio"
+      ],
+      "correct": "Une structure de données organisée en lignes et colonnes",
+      "explanation": "Une table est une manière structurée de représenter des données, où chaque ligne correspond à un enregistrement et chaque colonne à un attribut ou champ."
+    },
+    {
+      "question": "Dans une table de données, comment appelle-t-on une ligne ?",
+      "options": [
+        "Un champ",
+        "Un descripteur",
+        "Un enregistrement (ou tuple, ou entrée)",
+        "Une colonne"
+      ],
+      "correct": "Un enregistrement (ou tuple, ou entrée)",
+      "explanation": "Chaque ligne d'une table représente un enregistrement unique d'informations relatives à un élément (ex: un élève, un produit)."
+    },
+    {
+      "question": "Dans une table de données, comment appelle-t-on une colonne ?",
+      "options": [
+        "Un enregistrement",
+        "Une valeur",
+        "Un champ (ou attribut)",
+        "Une ligne"
+      ],
+      "correct": "Un champ (ou attribut)",
+      "explanation": "Chaque colonne représente un champ ou attribut spécifique qui décrit une caractéristique des enregistrements (ex: nom, âge, prix)."
+    },
+    {
+      "question": "Comment appelle-t-on les noms des colonnes (ou champs) d'une table ?",
+      "options": [
+        "Les enregistrements",
+        "Les valeurs",
+        "Les descripteurs (ou attributs, ou en-têtes)",
+        "Les clés"
+      ],
+      "correct": "Les descripteurs (ou attributs, ou en-têtes)",
+      "explanation": "Les descripteurs donnent un nom et un sens à chaque colonne (ex: 'Nom', 'Prénom', 'DateNaissance')."
+    },
+    {
+      "question": "Que signifie l'acronyme CSV ?",
+      "options": [
+        "Comma-Separated Values",
+        "Computer System Validation",
+        "Columnar Storage Values",
+        "Common Software Version"
+      ],
+      "correct": "Comma-Separated Values",
+      "explanation": "CSV signifie 'Valeurs Séparées par des Virgules'. C'est un format texte simple pour représenter des données tabulaires."
+    },
+    {
+      "question": "Dans un fichier CSV, quel caractère est le plus souvent utilisé pour séparer les valeurs (champs) sur une même ligne ?",
+      "options": [
+        "L'espace",
+        "La tabulation",
+        "La virgule (,) ou le point-virgule (;)",
+        "Le saut de ligne"
+      ],
+      "correct": "La virgule (,) ou le point-virgule (;)",
+      "explanation": "Le caractère qui sépare les champs est appelé délimiteur. La virgule est standard internationalement, mais le point-virgule est fréquent en France."
+    },
+    {
+      "question": "Quel est le rôle de la première ligne dans un fichier CSV bien formé ?",
+      "options": [
+        "Elle est toujours vide",
+        "Elle contient le premier enregistrement de données",
+        "Elle contient la ligne d'en-tête (header) avec les descripteurs (noms des colonnes)",
+        "Elle contient des commentaires"
+      ],
+      "correct": "Elle contient la ligne d'en-tête (header) avec les descripteurs (noms des colonnes)",
+      "explanation": "La ligne d'en-tête est essentielle pour comprendre la signification de chaque colonne dans les lignes de données suivantes."
+    },
+    {
+      "question": "Comment sont généralement séparés les enregistrements (lignes) dans un fichier CSV ?",
+      "options": [
+        "Par des virgules",
+        "Par des tabulations",
+        "Par des sauts de ligne",
+        "Par des points-virgules"
+      ],
+      "correct": "Par des sauts de ligne",
+      "explanation": "Chaque ligne du fichier CSV correspond à un enregistrement de la table."
+    },
+    {
+      "question": "Si une valeur dans un champ CSV contient le caractère délimiteur (ex: une virgule dans une description), comment est-elle typiquement gérée ?",
+      "options": [
+        "Le délimiteur est supprimé",
+        "La valeur entière est mise entre guillemets (quotes)",
+        "Le fichier devient invalide",
+        "On utilise un autre délimiteur"
+      ],
+      "correct": "La valeur entière est mise entre guillemets (quotes)",
+      "explanation": "Les guillemets permettent d'indiquer que les caractères à l'intérieur, y compris le délimiteur, font partie de la valeur du champ."
+    },
+    {
+      "question": "Quel type de logiciel est particulièrement adapté pour ouvrir, visualiser et manipuler des fichiers CSV ?",
+      "options": [
+        "Un traitement de texte",
+        "Un navigateur web",
+        "Un tableur (ex: Excel, LibreOffice Calc, Google Sheets)",
+        "Un lecteur vidéo"
+      ],
+      "correct": "Un tableur (ex: Excel, LibreOffice Calc, Google Sheets)",
+      "explanation": "Les tableurs interprètent la structure tabulaire des fichiers CSV et offrent des outils pour les trier, filtrer, etc."
+    },
+    {
+      "question": "Quelle opération consiste à sélectionner uniquement certaines colonnes (champs) d'une table ?",
+      "options": [
+        "Le tri",
+        "Le filtrage (ou sélection)",
+        "La projection",
+        "La jointure"
+      ],
+      "correct": "La projection",
+      "explanation": "La projection permet de ne conserver que les colonnes d'intérêt dans une table."
+    },
+    {
+      "question": "Quelle opération consiste à sélectionner uniquement certaines lignes (enregistrements) d'une table en fonction d'un critère ?",
+      "options": [
+        "La projection",
+        "Le tri",
+        "Le filtrage (ou sélection)",
+        "L'agrégation"
+      ],
+      "correct": "Le filtrage (ou sélection)",
+      "explanation": "Le filtrage (ou sélection) permet d'extraire les enregistrements qui satisfont une condition donnée (ex: tous les élèves ayant plus de 15 de moyenne)."
+    },
+    {
+      "question": "Soit une table 'Eleves' avec les colonnes 'Nom', 'Prenom', 'Age'. Quelle opération effectuer pour ne voir que les colonnes 'Nom' et 'Prenom' ?",
+      "options": [
+        "Filtrer sur 'Nom' et 'Prenom'",
+        "Trier par 'Nom'",
+        "Projeter sur les colonnes 'Nom' et 'Prenom'",
+        "Joindre avec une autre table"
+      ],
+      "correct": "Projeter sur les colonnes 'Nom' et 'Prenom'",
+      "explanation": "Il s'agit de ne garder que les colonnes souhaitées, ce qui correspond à une projection."
+    },
+    {
+      "question": "Soit une table 'Eleves' avec les colonnes 'Nom', 'Prenom', 'Age'. Quelle opération effectuer pour ne voir que les élèves ayant 16 ans ?",
+      "options": [
+        "Projeter sur la colonne 'Age'",
+        "Filtrer les lignes où la valeur du champ 'Age' est égale à 16",
+        "Trier par 'Age'",
+        "Calculer l'âge moyen"
+      ],
+      "correct": "Filtrer les lignes où la valeur du champ 'Age' est égale à 16",
+      "explanation": "Il s'agit de sélectionner les enregistrements qui remplissent une condition, ce qui correspond à un filtrage."
+    },
+    {
+      "question": "Quelle opération consiste à réorganiser les lignes (enregistrements) d'une table selon les valeurs d'une ou plusieurs colonnes ?",
+      "options": [
+        "Le filtrage",
+        "La projection",
+        "Le tri",
+        "La suppression"
+      ],
+      "correct": "Le tri",
+      "explanation": "Le tri permet d'ordonner les enregistrements, par exemple par ordre alphabétique de nom ou par ordre croissant/décroissant de prix."
+    },
+    {
+      "question": "Comment appelle-t-on le tri qui classe les éléments du plus petit au plus grand (ou par ordre alphabétique) ?",
+      "options": [
+        "Tri décroissant",
+        "Tri aléatoire",
+        "Tri croissant (ou ascendant)",
+        "Tri filtrant"
+      ],
+      "correct": "Tri croissant (ou ascendant)",
+      "explanation": "Le tri croissant est l'ordre par défaut le plus courant (A-Z, 0-9)."
+    },
+    {
+      "question": "Comment appelle-t-on le tri qui classe les éléments du plus grand au plus petit ?",
+      "options": [
+        "Tri croissant",
+        "Tri décroissant (ou descendant)",
+        "Tri alphabétique",
+        "Tri par défaut"
+      ],
+      "correct": "Tri décroissant (ou descendant)",
+      "explanation": "Le tri décroissant est utilisé par exemple pour classer des scores du meilleur au moins bon."
+    },
+    {
+      "question": "Soit une table 'Produits' (Nom, Prix). Comment afficher les produits du moins cher au plus cher ?",
+      "options": [
+        "En triant par 'Nom' croissant",
+        "En triant par 'Prix' décroissant",
+        "En triant par 'Prix' croissant",
+        "En filtrant par 'Prix'"
+      ],
+      "correct": "En triant par 'Prix' croissant",
+      "explanation": "Pour classer du moins cher au plus cher, il faut effectuer un tri croissant sur la colonne 'Prix'."
+    },
+    {
+      "question": "Quel type de données est le plus approprié pour représenter le champ 'Nom' d'une personne dans une table ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float)",
+        "Booléen (Boolean)",
+        "Chaîne de caractères (String/Text)"
+      ],
+      "correct": "Chaîne de caractères (String/Text)",
+      "explanation": "Un nom est une séquence de caractères."
+    },
+    {
+      "question": "Quel type de données est le plus approprié pour représenter le champ 'Prix' d'un article ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float) ou Numérique décimal",
+        "Booléen (Boolean)",
+        "Chaîne de caractères (String/Text)"
+      ],
+      "correct": "Flottant (Float) ou Numérique décimal",
+      "explanation": "Un prix a souvent une partie décimale (centimes), nécessitant un type numérique réel."
+    },
+    {
+      "question": "Quel type de données est le plus approprié pour représenter le champ 'QuantiteEnStock' d'un produit ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float)",
+        "Booléen (Boolean)",
+        "Chaîne de caractères (String/Text)"
+      ],
+      "correct": "Entier (Integer)",
+      "explanation": "La quantité en stock est typiquement un nombre entier non négatif."
+    },
+    {
+      "question": "Quel type de données est le plus approprié pour représenter le champ 'EstDisponible' (vrai ou faux) ?",
+      "options": [
+        "Entier (Integer)",
+        "Flottant (Float)",
+        "Booléen (Boolean)",
+        "Chaîne de caractères (String/Text)"
+      ],
+      "correct": "Booléen (Boolean)",
+      "explanation": "Ce champ représente une information logique Vrai/Faux, correspondant au type booléen."
+    },
+    {
+      "question": "Comment représenter une table de données en Python en utilisant uniquement des types construits de base ?",
+      "options": [
+        "Comme une seule chaîne de caractères",
+        "Comme un dictionnaire unique",
+        "Comme une liste de listes (chaque sous-liste est une ligne) ou une liste de dictionnaires (chaque dictionnaire est une ligne)",
+        "Comme un tuple unique"
+      ],
+      "correct": "Comme une liste de listes (chaque sous-liste est une ligne) ou une liste de dictionnaires (chaque dictionnaire est une ligne)",
+      "explanation": "Ces deux structures permettent de représenter la structure 2D d'une table en mémoire."
+    },
+    {
+      "question": "Si une table est représentée par une liste de listes `T = [[1, 'A'], [2, 'B']]`, comment accéder à la valeur 'B' ?",
+      "options": [
+        "T[1][1]",
+        "T[2][2]",
+        "T[B]",
+        "T[1, 1]"
+      ],
+      "correct": "T[1][1]",
+      "explanation": "T[1] accède à la deuxième ligne (['2', 'B']). T[1][1] accède au deuxième élément de cette ligne."
+    },
+    {
+      "question": "Si une table est représentée par une liste de dictionnaires `T = [{'id': 1, 'val': 'A'}, {'id': 2, 'val': 'B'}]`, comment accéder à la valeur 'B' ?",
+      "options": [
+        "T[1][1]",
+        "T[1]['val']",
+        "T['val'][1]",
+        "T[B]"
+      ],
+      "correct": "T[1]['val']",
+      "explanation": "T[1] accède au deuxième dictionnaire ({'id': 2, 'val': 'B'}). T[1]['val'] accède à la valeur associée à la clé 'val' dans ce dictionnaire."
+    },
+    {
+      "question": "Quel est l'avantage principal de la représentation 'liste de dictionnaires' par rapport à 'liste de listes' ?",
+      "options": [
+        "Elle prend moins de place en mémoire",
+        "Elle est plus rapide pour le tri",
+        "L'accès aux valeurs par le nom de colonne (clé du dictionnaire) est plus lisible et moins dépendant de l'ordre des colonnes",
+        "Elle ne permet pas de stocker différents types de données"
+      ],
+      "correct": "L'accès aux valeurs par le nom de colonne (clé du dictionnaire) est plus lisible et moins dépendant de l'ordre des colonnes",
+      "explanation": "Utiliser `enregistrement['Nom']` est plus explicite que `enregistrement[0]` (qui suppose que 'Nom' est toujours la première colonne)."
+    },
+    {
+      "question": "Quelle bibliothèque Python est spécifiquement conçue pour la manipulation et l'analyse de données tabulaires (DataFrames) ?",
+      "options": [
+        "Math",
+        "Random",
+        "Pandas",
+        "Turtle"
+      ],
+      "correct": "Pandas",
+      "explanation": "Pandas fournit la structure DataFrame, très puissante et optimisée pour travailler avec des données en tables."
+    },
+    {
+      "question": "Comment appelle-t-on l'opération qui consiste à combiner les informations de deux tables basées sur une colonne commune ?",
+      "options": [
+        "Le filtrage",
+        "Le tri",
+        "La jointure (ou fusion)",
+        "La projection"
+      ],
+      "correct": "La jointure (ou fusion)",
+      "explanation": "La jointure permet de réunir des données provenant de tables différentes qui partagent une clé commune (ex: ID client)."
+    },
+    {
+      "question": "Soit une table 'Commandes' (ID_Commande, ID_Client, Date) et une table 'Clients' (ID_Client, Nom). Quelle colonne sert de lien pour une jointure ?",
+      "options": [
+        "'ID_Commande'",
+        "'ID_Client'",
+        "'Date'",
+        "'Nom'"
+      ],
+      "correct": "'ID_Client'",
+      "explanation": "La colonne 'ID_Client' est présente dans les deux tables et peut servir de clé de jointure pour associer une commande à son client."
+    },
+    {
+      "question": "Quel est le résultat attendu d'une jointure entre 'Commandes' et 'Clients' sur 'ID_Client' ?",
+      "options": [
+        "Une table avec uniquement les clients",
+        "Une table avec uniquement les commandes",
+        "Une table combinant les informations de chaque commande avec les informations du client correspondant",
+        "Une table vide"
+      ],
+      "correct": "Une table combinant les informations de chaque commande avec les informations du client correspondant",
+      "explanation": "La jointure crée une nouvelle table plus large où chaque ligne contient les colonnes de 'Commandes' et les colonnes de 'Clients' pour les ID_Client correspondants."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'valeur manquante' dans une table ?",
+      "options": [
+        "Une valeur égale à zéro",
+        "Une valeur textuelle vide ('')",
+        "L'absence d'information pour un champ donné dans un enregistrement donné (souvent représentée par NULL, NaN, ou une case vide)",
+        "Une valeur incorrecte"
+      ],
+      "correct": "L'absence d'information pour un champ donné dans un enregistrement donné (souvent représentée par NULL, NaN, ou une case vide)",
+      "explanation": "La gestion des valeurs manquantes est une étape importante du traitement de données."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'doublon' dans une table ?",
+      "options": [
+        "Une valeur manquante",
+        "Un enregistrement (ligne) qui est identique à un autre enregistrement dans la table",
+        "Une colonne répétée",
+        "Une valeur trop élevée"
+      ],
+      "correct": "Un enregistrement (ligne) qui est identique à un autre enregistrement dans la table",
+      "explanation": "La présence de doublons peut fausser les analyses et doit souvent être traitée (identification et suppression)."
+    },
+    {
+      "question": "Quelle fonction d'un tableur permet de calculer la somme des valeurs d'une colonne numérique ?",
+      "options": [
+        "MOYENNE() / AVERAGE()",
+        "NB() / COUNT()",
+        "SOMME() / SUM()",
+        "MAX()"
+      ],
+      "correct": "SOMME() / SUM()",
+      "explanation": "La fonction SOMME (ou SUM en anglais) additionne toutes les valeurs numériques dans la plage de cellules spécifiée."
+    },
+    {
+      "question": "Quelle fonction d'un tableur permet de calculer la moyenne des valeurs d'une colonne numérique ?",
+      "options": [
+        "MOYENNE() / AVERAGE()",
+        "NB() / COUNT()",
+        "SOMME() / SUM()",
+        "MEDIANE()"
+      ],
+      "correct": "MOYENNE() / AVERAGE()",
+      "explanation": "La fonction MOYENNE (ou AVERAGE) calcule la moyenne arithmétique des valeurs dans la plage spécifiée."
+    },
+    {
+      "question": "Quelle fonction d'un tableur permet de compter le nombre de cellules non vides dans une plage ?",
+      "options": [
+        "MOYENNE() / AVERAGE()",
+        "NBVAL() / COUNTA()",
+        "SOMME() / SUM()",
+        "NB.SI() / COUNTIF()"
+      ],
+      "correct": "NBVAL() / COUNTA()",
+      "explanation": "NBVAL (ou COUNTA) compte toutes les cellules qui contiennent une valeur (numérique, texte, etc.), par opposition à NB (COUNT) qui ne compte que les cellules numériques."
+    },
+    {
+      "question": "Quelle fonction d'un tableur permet de compter le nombre de cellules qui respectent un certain critère ?",
+      "options": [
+        "MOYENNE.SI() / AVERAGEIF()",
+        "NBVAL() / COUNTA()",
+        "SOMME.SI() / SUMIF()",
+        "NB.SI() / COUNTIF()"
+      ],
+      "correct": "NB.SI() / COUNTIF()",
+      "explanation": "NB.SI (ou COUNTIF) permet de compter les cellules d'une plage qui correspondent à une condition donnée (ex: compter les cellules contenant 'Paris')."
+    },
+    {
+      "question": "Quel type de graphique est adapté pour visualiser l'évolution d'une valeur numérique (ex: ventes mensuelles) au fil du temps à partir d'une table ?",
+      "options": [
+        "Diagramme circulaire (camembert)",
+        "Graphique linéaire (courbe)",
+        "Diagramme en barres",
+        "Nuage de points"
+      ],
+      "correct": "Graphique linéaire (courbe)",
+      "explanation": "La courbe est idéale pour montrer les tendances et évolutions sur une variable continue comme le temps."
+    },
+    {
+      "question": "Quel type de graphique est adapté pour comparer des valeurs entre différentes catégories (ex: population par ville) à partir d'une table ?",
+      "options": [
+        "Diagramme circulaire (camembert)",
+        "Graphique linéaire (courbe)",
+        "Diagramme en barres (ou histogramme si données groupées)",
+        "Nuage de points"
+      ],
+      "correct": "Diagramme en barres (ou histogramme si données groupées)",
+      "explanation": "Le diagramme en barres permet de comparer facilement les magnitudes associées à des catégories discrètes."
+    },
+    {
+      "question": "Quel problème peut survenir lors de l'import d'un fichier CSV dans un tableur si le mauvais délimiteur est choisi ?",
+      "options": [
+        "Le fichier est supprimé",
+        "Toutes les données d'une ligne peuvent apparaître dans une seule colonne, ou les colonnes sont mal découpées",
+        "Les nombres sont transformés en texte",
+        "Le fichier est automatiquement converti en Excel"
+      ],
+      "correct": "Toutes les données d'une ligne peuvent apparaître dans une seule colonne, ou les colonnes sont mal découpées",
+      "explanation": "Le tableur ne peut pas séparer correctement les champs s'il ne reconnaît pas le bon délimiteur utilisé dans le fichier."
+    },
+    {
+      "question": "Quel problème peut survenir lors de l'import d'un fichier CSV si le mauvais encodage de caractères est utilisé ?",
+      "options": [
+        "Les nombres sont incorrects",
+        "Les caractères accentués ou spéciaux peuvent être mal affichés (remplacés par des symboles étranges)",
+        "Le fichier est trop lourd",
+        "Les lignes sont mélangées"
+      ],
+      "correct": "Les caractères accentués ou spéciaux peuvent être mal affichés (remplacés par des symboles étranges)",
+      "explanation": "Il est crucial de spécifier l'encodage correct (souvent UTF-8 ou ISO-8859-1) pour que le logiciel interprète correctement les octets représentant les caractères."
+    },
+    {
+      "question": "Quelle est la différence principale entre un fichier CSV et un fichier Excel (.xlsx) ?",
+      "options": [
+        "CSV est un format propriétaire, Excel est un format texte",
+        "CSV est un format texte simple, tandis qu'Excel (.xlsx) est un format binaire complexe pouvant stocker formules, mises en forme, graphiques, etc.",
+        "CSV ne peut stocker que des nombres",
+        "Excel ne peut pas être ouvert par d'autres logiciels"
+      ],
+      "correct": "CSV est un format texte simple, tandis qu'Excel (.xlsx) est un format binaire complexe pouvant stocker formules, mises en forme, graphiques, etc.",
+      "explanation": "CSV ne contient que les données brutes tabulaires, alors qu'un fichier Excel contient beaucoup plus d'informations liées à la présentation et aux calculs."
+    },
+    {
+      "question": "Qu'est-ce que la 'validation des données' dans le contexte d'une table ?",
+      "options": [
+        "Le tri des données",
+        "La vérification que les données respectent certaines règles ou contraintes (ex: type correct, plage de valeurs, format)",
+        "La suppression des doublons",
+        "La projection des colonnes"
+      ],
+      "correct": "La vérification que les données respectent certaines règles ou contraintes (ex: type correct, plage de valeurs, format)",
+      "explanation": "La validation permet de s'assurer de la cohérence et de la qualité des données saisies ou importées dans une table."
+    },
+    {
+      "question": "Si on représente une table comme une liste de dictionnaires, que représente chaque dictionnaire ?",
+      "options": [
+        "Une colonne",
+        "Une ligne (un enregistrement)",
+        "Une cellule",
+        "La table entière"
+      ],
+      "correct": "Une ligne (un enregistrement)",
+      "explanation": "Chaque dictionnaire contient les paires 'nom_colonne': valeur pour un enregistrement donné."
+    },
+    {
+      "question": "Si on représente une table comme une liste de listes, que représente chaque sous-liste ?",
+      "options": [
+        "Une colonne",
+        "Une ligne (un enregistrement)",
+        "Une cellule",
+        "La table entière"
+      ],
+      "correct": "Une ligne (un enregistrement)",
+      "explanation": "Chaque sous-liste contient les valeurs des champs pour un enregistrement, dans l'ordre des colonnes."
+    },
+    {
+      "question": "Quel est l'inconvénient de la représentation 'liste de listes' si l'ordre des colonnes change ?",
+      "options": [
+        "La lecture des données devient impossible",
+        "L'accès aux données par indice numérique (ex: ligne[0]) ne correspondra plus au même champ (ex: 'Nom'), rendant le code erroné",
+        "La taille de la liste augmente",
+        "Les types de données sont perdus"
+      ],
+      "correct": "L'accès aux données par indice numérique (ex: ligne[0]) ne correspondra plus au même champ (ex: 'Nom'), rendant le code erroné",
+      "explanation": "Cette représentation est sensible à l'ordre des colonnes, contrairement à la liste de dictionnaires où l'accès se fait par nom de clé."
+    },
+    {
+      "question": "Que signifie 'indexer' une table ?",
+      "options": [
+        "La trier",
+        "Créer une structure de données supplémentaire (un index) qui permet de retrouver rapidement des enregistrements spécifiques sans parcourir toute la table",
+        "Ajouter une colonne d'indices numériques",
+        "Supprimer des colonnes"
+      ],
+      "correct": "Créer une structure de données supplémentaire (un index) qui permet de retrouver rapidement des enregistrements spécifiques sans parcourir toute la table",
+      "explanation": "L'indexation (utilisée dans les bases de données) accélère les opérations de recherche et de filtrage sur les colonnes indexées."
+    },
+    {
+      "question": "Dans une table, qu'est-ce qu'une clé primaire ?",
+      "options": [
+        "La première colonne de la table",
+        "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque enregistrement de la table",
+        "Une colonne contenant uniquement du texte",
+        "La dernière ligne de la table"
+      ],
+      "correct": "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque enregistrement de la table",
+      "explanation": "La clé primaire garantit l'unicité de chaque enregistrement et sert souvent de référence pour lier des tables entre elles."
+    },
+    {
+      "question": "Peut-il y avoir des doublons dans la colonne servant de clé primaire ?",
+      "options": [
+        "Oui, c'est fréquent",
+        "Non, par définition, la clé primaire doit être unique pour chaque enregistrement",
+        "Oui, mais seulement pour les valeurs nulles",
+        "Seulement si la table est très grande"
+      ],
+      "correct": "Non, par définition, la clé primaire doit être unique pour chaque enregistrement",
+      "explanation": "L'unicité de la clé primaire est essentielle pour identifier sans ambiguïté chaque ligne de la table."
+    },
+    {
+      "question": "Comment peut-on calculer le nombre total d'enregistrements dans une table représentée par une liste `T` en Python ?",
+      "options": [
+        "count(T)",
+        "size(T)",
+        "len(T)",
+        "T.length()"
+      ],
+      "correct": "len(T)",
+      "explanation": "Si T est une liste (de listes ou de dictionnaires), len(T) donne le nombre d'éléments dans la liste principale, ce qui correspond au nombre de lignes/enregistrements."
+    },
+    {
+      "question": "Si une table est représentée par une liste de listes `T`, comment obtenir le nombre de champs (colonnes) ?",
+      "options": [
+        "len(T)",
+        "len(T[0]) (si la table n'est pas vide)",
+        "len(T[1])",
+        "Impossible à déterminer"
+      ],
+      "correct": "len(T[0]) (si la table n'est pas vide)",
+      "explanation": "En supposant que toutes les lignes ont le même nombre de colonnes, la longueur de la première ligne (T[0]) donne le nombre de champs."
+    },
+    {
+      "question": "Soit la table `T = [{'nom': 'A', 'val': 10}, {'nom': 'B', 'val': 5}]`. Comment obtenir la liste des noms ?",
+      "options": [
+        "[d['nom'] for d in T]",
+        "T['nom']",
+        "[d.keys() for d in T]",
+        "list(T)"
+      ],
+      "correct": "[d['nom'] for d in T]",
+      "explanation": "Ceci est une liste en compréhension qui parcourt chaque dictionnaire `d` dans la liste `T` et extrait la valeur associée à la clé 'nom'."
+    },
+    {
+      "question": "Soit la table `T = [[1, 'A'], [2, 'B'], [3, 'A']]`. Comment obtenir tous les enregistrements où la deuxième valeur est 'A' ?",
+      "options": [
+        "[ligne for ligne in T if ligne[1] == 'A']",
+        "[ligne[1] for ligne in T]",
+        "T.filter(lambda ligne: ligne[1] == 'A')",
+        "T['A']"
+      ],
+      "correct": "[ligne for ligne in T if ligne[1] == 'A']",
+      "explanation": "C'est une liste en compréhension avec une condition `if` qui ne conserve que les lignes (`ligne`) dont le deuxième élément (`ligne[1]`) est égal à 'A'."
+    },
+    {
+      "question": "Quel format d'échange de données, utilisant une syntaxe proche de Python (dictionnaires, listes), est souvent utilisé pour transmettre des données structurées sur le web ?",
+      "options": [
+        "CSV",
+        "XML",
+        "JSON (JavaScript Object Notation)",
+        "HTML"
+      ],
+      "correct": "JSON (JavaScript Object Notation)",
+      "explanation": "JSON est léger et facile à manipuler pour les machines et les humains, idéal pour les API web. Il peut représenter des données similaires à une liste de dictionnaires."
+    },
+    {
+      "question": "Quelle est la principale différence entre parcourir une table (ex: pour chercher une valeur) et utiliser un index ?",
+      "options": [
+        "Il n'y a pas de différence",
+        "Parcourir la table (scan complet) examine chaque ligne, tandis qu'un index permet d'accéder directement aux lignes pertinentes beaucoup plus rapidement",
+        "L'index examine chaque ligne, le parcours est direct",
+        "L'index ne fonctionne que sur les petites tables"
+      ],
+      "correct": "Parcourir la table (scan complet) examine chaque ligne, tandis qu'un index permet d'accéder directement aux lignes pertinentes beaucoup plus rapidement",
+      "explanation": "Pour les grandes tables, un parcours complet est lent (complexité linéaire O(n)), alors qu'un accès via un index est souvent beaucoup plus rapide (ex: O(log n) ou O(1))."
+    },
+    {
+      "question": "Comment s'appelle l'étape de préparation des données qui consiste à identifier et corriger les erreurs, les incohérences ou les valeurs manquantes dans une table ?",
+      "options": [
+        "La visualisation",
+        "L'indexation",
+        "Le nettoyage de données (Data Cleaning)",
+        "La jointure"
+      ],
+      "correct": "Le nettoyage de données (Data Cleaning)",
+      "explanation": "Le nettoyage est essentiel pour assurer la qualité des données avant toute analyse ou traitement ultérieur."
+    },
+    {
+      "question": "Comment gérer les valeurs manquantes dans une colonne numérique lors d'une analyse ?",
+      "options": [
+        "Toujours les remplacer par 0",
+        "Les ignorer, les supprimer, ou les imputer (remplacer par une valeur estimée comme la moyenne ou la médiane)",
+        "Considérer la ligne comme invalide et la supprimer systématiquement",
+        "Les remplacer par du texte"
+      ],
+      "correct": "Les ignorer, les supprimer, ou les imputer (remplacer par une valeur estimée comme la moyenne ou la médiane)",
+      "explanation": "Le choix de la méthode dépend du contexte, de la quantité de données manquantes et de l'impact potentiel sur l'analyse."
+    },
+    {
+      "question": "Quel type d'opération combine les valeurs d'un groupe d'enregistrements pour obtenir une seule valeur de résumé (ex: somme, moyenne, nombre) ?",
+      "options": [
+        "Filtrage",
+        "Tri",
+        "Projection",
+        "Agrégation"
+      ],
+      "correct": "Agrégation",
+      "explanation": "L'agrégation permet de synthétiser l'information contenue dans plusieurs lignes, souvent après un groupement."
+    },
+    {
+      "question": "Si on a une table de ventes avec les colonnes 'Categorie' et 'Montant', quelle opération permettrait de calculer le montant total des ventes pour chaque catégorie ?",
+      "options": [
+        "Filtrer par catégorie",
+        "Trier par montant",
+        "Grouper par 'Categorie' puis agréger le 'Montant' avec la fonction somme",
+        "Projeter sur 'Montant'"
+      ],
+      "correct": "Grouper par 'Categorie' puis agréger le 'Montant' avec la fonction somme",
+      "explanation": "Il faut d'abord regrouper les lignes par catégorie, puis appliquer une fonction d'agrégation (somme) sur la colonne 'Montant' pour chaque groupe."
+    },
+    {
+      "question": "Quelle est l'utilité principale du format CSV ?",
+      "options": [
+        "Stocker des images de haute qualité",
+        "Permettre un échange simple de données tabulaires entre différents logiciels ou systèmes qui ne partagent pas forcément un format propriétaire commun",
+        "Exécuter des programmes",
+        "Stocker des formules complexes et des mises en forme"
+      ],
+      "correct": "Permettre un échange simple de données tabulaires entre différents logiciels ou systèmes qui ne partagent pas forcément un format propriétaire commun",
+      "explanation": "La simplicité et la nature textuelle du CSV en font un format d'échange de données très répandu et interopérable."
+    },
+    {
+      "question": "Qu'est-ce que la 'cardinalité' d'une table ?",
+      "options": [
+        "Le nombre de colonnes (champs)",
+        "Le nombre de lignes (enregistrements)",
+        "Le type de données de la première colonne",
+        "La taille du fichier en octets"
+      ],
+      "correct": "Le nombre de lignes (enregistrements)",
+      "explanation": "La cardinalité fait référence au nombre d'enregistrements présents dans la table."
+    },
+    {
+      "question": "Qu'est-ce que le 'degré' (ou 'arité') d'une table ?",
+      "options": [
+        "Le nombre de lignes (enregistrements)",
+        "Le nombre de colonnes (champs)",
+        "Le nombre de clés primaires",
+        "Le niveau de complexité des données"
+      ],
+      "correct": "Le nombre de colonnes (champs)",
+      "explanation": "Le degré d'une table correspond au nombre de ses attributs ou champs."
+    },
+    {
+      "question": "Dans un tableur, quelle fonctionnalité permet de masquer temporairement les lignes qui ne correspondent pas à certains critères ?",
+      "options": [
+        "Le tri",
+        "Le filtre automatique",
+        "La mise en forme conditionnelle",
+        "Le graphique"
+      ],
+      "correct": "Le filtre automatique",
+      "explanation": "Le filtrage dans un tableur permet d'afficher uniquement les lignes qui satisfont les conditions choisies sur une ou plusieurs colonnes."
+    },
+    {
+      "question": "Si une colonne 'Date' contient des dates au format 'JJ/MM/AAAA', quel est le type de donnée le plus probable pour cette colonne ?",
+      "options": [
+        "Entier",
+        "Texte (Chaîne de caractères)",
+        "Booléen",
+        "Flottant"
+      ],
+      "correct": "Texte (Chaîne de caractères)",
+      "explanation": "Même si cela représente une date, si le format est 'JJ/MM/AAAA', elle est généralement stockée comme du texte. Les tableurs ou bases de données peuvent avoir un type 'Date' spécifique pour permettre les calculs."
+    },
+    {
+      "question": "Comment rechercher efficacement une information dans une très grande table non triée ?",
+      "options": [
+        "En parcourant la table ligne par ligne depuis le début (recherche séquentielle)",
+        "En utilisant un index si disponible sur la colonne de recherche",
+        "En triant d'abord la table puis en utilisant une recherche dichotomique (si triée)",
+        "Les options utilisant un index ou tri+dichotomie sont plus efficaces que le parcours séquentiel"
+      ],
+      "correct": "Les options utilisant un index ou tri+dichotomie sont plus efficaces que le parcours séquentiel",
+      "explanation": "La recherche séquentielle est simple mais lente (O(n)). L'indexation ou la recherche dichotomique (O(log n)) sont beaucoup plus rapides pour les grandes tables."
+    },
+    {
+      "question": "Qu'est-ce qu'une donnée 'structurée' ?",
+      "options": [
+        "Du texte libre comme dans un email",
+        "Une image ou une vidéo",
+        "Des données organisées selon un modèle prédéfini et fixe, comme dans une table",
+        "Des données audio"
+      ],
+      "correct": "Des données organisées selon un modèle prédéfini et fixe, comme dans une table",
+      "explanation": "Les tables sont l'exemple type de données structurées, où chaque donnée a une place et une signification définies par la ligne et la colonne."
+    },
+    {
+      "question": "Qu'est-ce que l'Open Data ?",
+      "options": [
+        "Des données secrètes d'entreprise",
+        "Des données personnelles protégées",
+        "Des données (souvent publiques) mises à disposition de tous, sans restriction majeure d'accès ou de réutilisation, souvent sous forme de tables (ex: CSV)",
+        "Des données non structurées uniquement"
+      ],
+      "correct": "Des données (souvent publiques) mises à disposition de tous, sans restriction majeure d'accès ou de réutilisation, souvent sous forme de tables (ex: CSV)",
+      "explanation": "L'Open Data favorise la transparence et l'innovation en rendant accessibles des jeux de données (transports, budget, démographie...)."
+    },
+    {
+      "question": "Si vous ouvrez un fichier CSV avec un éditeur de texte simple, que verrez-vous ?",
+      "options": [
+        "Un tableau formaté comme dans un tableur",
+        "Du code binaire illisible",
+        "Les données brutes sous forme de texte, avec les valeurs séparées par des délimiteurs et les lignes par des sauts de ligne",
+        "Uniquement la première ligne"
+      ],
+      "correct": "Les données brutes sous forme de texte, avec les valeurs séparées par des délimiteurs et les lignes par des sauts de ligne",
+      "explanation": "Le format CSV est basé sur du texte simple, ce qui le rend lisible (bien que peu pratique) avec n'importe quel éditeur de texte."
+    },
+    {
+      "question": "Quel caractère est souvent utilisé pour représenter une tabulation comme délimiteur dans une variante de CSV ?",
+      "options": [
+        "',' (virgule)",
+        "';' (point-virgule)",
+        "'\\t' (caractère de tabulation)",
+        "' ' (espace)"
+      ],
+      "correct": "'\\t' (caractère de tabulation)",
+      "explanation": "Les fichiers TSV (Tab-Separated Values) utilisent la tabulation comme délimiteur, ce qui évite les conflits si les données elles-mêmes contiennent des virgules ou points-virgules."
+    },
+    {
+      "question": "Une table contient des informations sur des livres (Titre, Auteur, Année). Si on trie par Année croissante, comment seront classés les livres ?",
+      "options": [
+        "Du plus récent au plus ancien",
+        "Du plus ancien au plus récent",
+        "Par ordre alphabétique de titre",
+        "Par ordre alphabétique d'auteur"
+      ],
+      "correct": "Du plus ancien au plus récent",
+      "explanation": "Un tri croissant sur l'année place les années les plus basses (les plus anciennes) en premier."
+    },
+    {
+      "question": "Quelle opération permet de savoir combien d'élèves ont une note supérieure à 12 dans une table 'Notes' ?",
+      "options": [
+        "Trier par note",
+        "Projeter la colonne 'note'",
+        "Filtrer les lignes où note > 12, puis compter le nombre de lignes résultantes",
+        "Calculer la moyenne des notes"
+      ],
+      "correct": "Filtrer les lignes où note > 12, puis compter le nombre de lignes résultantes",
+      "explanation": "Il faut d'abord sélectionner les enregistrements pertinents (filtre) puis compter combien il y en a."
+    },
+    {
+      "question": "Dans quel but principal utilise-t-on des tables pour organiser des données ?",
+      "options": [
+        "Pour rendre les données illisibles",
+        "Pour faciliter la consultation, la recherche, le tri, le filtrage et l'analyse des informations de manière structurée",
+        "Pour stocker uniquement du texte",
+        "Pour créer des graphiques complexes uniquement"
+      ],
+      "correct": "Pour faciliter la consultation, la recherche, le tri, le filtrage et l'analyse des informations de manière structurée",
+      "explanation": "La structure en table permet d'appliquer des opérations systématiques et efficaces sur les données."
+    },
+    {
+      "question": "Comment s'appelle l'action de lire les données d'un fichier (comme un CSV) pour les charger dans une structure de données en mémoire (comme une liste de listes) ?",
+      "options": [
+        "L'écriture",
+        "La lecture (ou parsing, ou importation)",
+        "Le tri",
+        "Le filtrage"
+      ],
+      "correct": "La lecture (ou parsing, ou importation)",
+      "explanation": "Il faut lire le fichier ligne par ligne, découper chaque ligne selon le délimiteur, et stocker les valeurs dans la structure de données choisie."
+    },
+    {
+      "question": "Comment s'appelle l'action d'enregistrer les données d'une structure en mémoire (liste de listes) dans un fichier (comme un CSV) ?",
+      "options": [
+        "La lecture",
+        "L'écriture (ou exportation)",
+        "La visualisation",
+        "L'agrégation"
+      ],
+      "correct": "L'écriture (ou exportation)",
+      "explanation": "Il faut parcourir la structure de données et écrire chaque enregistrement dans le fichier, en joignant les valeurs avec le délimiteur et en ajoutant des sauts de ligne."
+    },
+    {
+      "question": "Quel est l'avantage d'utiliser des types de données spécifiques (entier, flottant, booléen) plutôt que de tout stocker comme du texte ?",
+      "options": [
+        "Cela prend plus de place",
+        "Cela permet d'effectuer des opérations spécifiques et correctes (calculs arithmétiques sur les nombres, opérations logiques sur les booléens) et assure la cohérence",
+        "Cela rend le tri impossible",
+        "Il n'y a aucun avantage"
+      ],
+      "correct": "Cela permet d'effectuer des opérations spécifiques et correctes (calculs arithmétiques sur les nombres, opérations logiques sur les booléens) et assure la cohérence",
+      "explanation": "Stocker un nombre comme du texte ('123') empêche de faire des additions directement. Utiliser le bon type permet des traitements appropriés."
+    },
+    {
+      "question": "Que sont les métadonnées associées à une table de données ?",
+      "options": [
+        "Les données elles-mêmes",
+        "Des informations sur les données, comme les noms des colonnes, les types de données, la source, la date de création, la description des champs",
+        "Uniquement le nombre de lignes",
+        "Un graphique résumé"
+      ],
+      "correct": "Des informations sur les données, comme les noms des colonnes, les types de données, la source, la date de création, la description des champs",
+      "explanation": "Les métadonnées (données sur les données) sont essentielles pour comprendre et utiliser correctement une table."
+    },
+    {
+      "question": "Pourquoi est-il important de documenter une table de données (par exemple, en décrivant chaque champ) ?",
+      "options": [
+        "Ce n'est pas important",
+        "Pour permettre à d'autres (ou à soi-même plus tard) de comprendre la signification exacte de chaque colonne et comment interpréter les valeurs",
+        "Pour augmenter la taille du fichier",
+        "Pour ralentir l'accès aux données"
+      ],
+      "correct": "Pour permettre à d'autres (ou à soi-même plus tard) de comprendre la signification exacte de chaque colonne et comment interpréter les valeurs",
+      "explanation": "Une bonne documentation (métadonnées) est cruciale pour la réutilisation et la compréhension des jeux de données."
+    },
+    {
+      "question": "Peut-on trier une table selon plusieurs colonnes simultanément (tri multi-niveaux) ?",
+      "options": [
+        "Non, on ne peut trier que sur une seule colonne",
+        "Oui, on peut spécifier un critère de tri principal, puis un critère secondaire pour départager les égalités du premier critère, etc.",
+        "Seulement si toutes les colonnes sont numériques",
+        "Seulement dans les bases de données, pas dans les tableurs"
+      ],
+      "correct": "Oui, on peut spécifier un critère de tri principal, puis un critère secondaire pour départager les égalités du premier critère, etc.",
+      "explanation": "Par exemple, trier les élèves par classe (critère 1) puis par nom alphabétique (critère 2) à l'intérieur de chaque classe."
+    },
+    {
+      "question": "Quel type de graphique serait approprié pour visualiser la relation (corrélation) entre deux variables numériques d'une table (ex: taille et poids) ?",
+      "options": [
+        "Diagramme en barres",
+        "Nuage de points",
+        "Graphique linéaire",
+        "Diagramme circulaire"
+      ],
+      "correct": "Nuage de points",
+      "explanation": "Le nuage de points permet de voir si les points se regroupent selon une tendance (positive, négative, ou absence de corrélation) entre les deux variables."
+    },
+    {
+      "question": "Si vous avez une table avec des milliers de lignes, quelle est la première étape pour trouver rapidement l'enregistrement concernant 'Jean Dupont' ?",
+      "options": [
+        "Lire toutes les lignes une par une",
+        "Trier la table par nom, puis chercher 'Dupont' (éventuellement par recherche dichotomique)",
+        "Filtrer la table pour ne garder que les lignes où le nom est 'Dupont'",
+        "Les options de tri ou de filtrage sont bien plus efficaces que la lecture séquentielle"
+      ],
+      "correct": "Les options de tri ou de filtrage sont bien plus efficaces que la lecture séquentielle",
+      "explanation": "Le filtrage est l'opération la plus directe pour sélectionner les lignes correspondant à un critère spécifique."
+    },
+    {
+      "question": "Lequel de ces éléments n'est PAS un type de base généralement trouvé dans les colonnes d'une table ?",
+      "options": [
+        "Entier (int)",
+        "Chaîne de caractères (str)",
+        "Liste (list)",
+        "Booléen (bool)"
+      ],
+      "correct": "Liste (list)",
+      "explanation": "En général, une cellule d'une table contient une valeur atomique (type de base). Stocker une liste dans une cellule est possible dans certains systèmes mais moins courant et complique la structure tabulaire simple."
+    },
+    {
+      "question": "Comment s'assurer que toutes les valeurs dans une colonne 'CodePostal' respectent le format à 5 chiffres en France ?",
+      "options": [
+        "En triant la colonne",
+        "En utilisant la validation des données pour vérifier que la valeur est un nombre entre 10000 et 99999 ou correspond à un format textuel de 5 chiffres",
+        "En convertissant la colonne en type flottant",
+        "En supprimant la colonne"
+      ],
+      "correct": "En utilisant la validation des données pour vérifier que la valeur est un nombre entre 10000 et 99999 ou correspond à un format textuel de 5 chiffres",
+      "explanation": "La validation des données permet de définir des règles pour garantir la cohérence et le format attendu des informations dans une colonne."
+    },
+    {
+      "question": "Quel est le format le plus portable et universel pour échanger des données tabulaires brutes ?",
+      "options": [
+        ".xlsx (Excel)",
+        ".docx (Word)",
+        ".csv (Comma Separated Values)",
+        ".pptx (PowerPoint)"
+      ],
+      "correct": ".csv (Comma Separated Values)",
+      "explanation": "Le format texte CSV est lisible et importable par la quasi-totalité des logiciels de traitement de données (tableurs, bases de données, langages de programmation)."
+    }
+  ]
+}

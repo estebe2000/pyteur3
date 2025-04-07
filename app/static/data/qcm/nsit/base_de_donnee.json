@@ -1,0 +1,1060 @@
+{
+  "bases_de_donnees": [
+    {
+      "question": "Qu'est-ce qu'une base de données ?",
+      "options": [
+        "Un logiciel de traitement de texte",
+        "Un ensemble structuré et organisé de données, stocké de manière persistante et permettant un accès facile",
+        "Un réseau d'ordinateurs",
+        "Un algorithme de tri"
+      ],
+      "correct": "Un ensemble structuré et organisé de données, stocké de manière persistante et permettant un accès facile",
+      "explanation": "Une base de données sert à stocker et gérer des informations de manière organisée pour les rendre accessibles et exploitables."
+    },
+    {
+      "question": "Qu'est-ce qu'un Système de Gestion de Base de Données (SGBD) ?",
+      "options": [
+        "Les données elles-mêmes",
+        "Un langage de programmation pour le web",
+        "Un logiciel qui permet de créer, gérer et interroger des bases de données (ex: PostgreSQL, MySQL, SQLite)",
+        "Un type de réseau informatique"
+      ],
+      "correct": "Un logiciel qui permet de créer, gérer et interroger des bases de données (ex: PostgreSQL, MySQL, SQLite)",
+      "explanation": "Le SGBD est l'outil logiciel qui sert d'interface entre l'utilisateur (ou les applications) et la base de données physique."
+    },
+    {
+      "question": "Quel modèle de base de données est le plus couramment utilisé et organise les données sous forme de tables (relations) ?",
+      "options": [
+        "Modèle hiérarchique",
+        "Modèle réseau",
+        "Modèle relationnel",
+        "Modèle orienté objet"
+      ],
+      "correct": "Modèle relationnel",
+      "explanation": "Le modèle relationnel, basé sur la théorie des ensembles et la logique des prédicats, structure les données en tables avec des lignes et des colonnes."
+    },
+    {
+      "question": "Dans le modèle relationnel, comment appelle-t-on une table ?",
+      "options": [
+        "Un attribut",
+        "Un tuple",
+        "Une relation",
+        "Un domaine"
+      ],
+      "correct": "Une relation",
+      "explanation": "Le terme formel pour une table dans le modèle relationnel est 'relation'."
+    },
+    {
+      "question": "Dans une table (relation), comment appelle-t-on une ligne ?",
+      "options": [
+        "Un attribut",
+        "Une relation",
+        "Un domaine",
+        "Un tuple (ou enregistrement, ou n-uplet)"
+      ],
+      "correct": "Un tuple (ou enregistrement, ou n-uplet)",
+      "explanation": "Chaque ligne représente un enregistrement ou une instance des données décrites par la table."
+    },
+    {
+      "question": "Dans une table (relation), comment appelle-t-on une colonne ?",
+      "options": [
+        "Un tuple",
+        "Une relation",
+        "Un attribut (ou champ)",
+        "Une clé primaire"
+      ],
+      "correct": "Un attribut (ou champ)",
+      "explanation": "Chaque colonne représente un attribut ou une caractéristique des enregistrements."
+    },
+    {
+      "question": "Qu'est-ce qu'un schéma relationnel ?",
+      "options": [
+        "Les données contenues dans les tables",
+        "La description de la structure des tables d'une base de données (noms des tables, noms et types des attributs, clés)",
+        "Une requête SQL",
+        "Le logiciel SGBD"
+      ],
+      "correct": "La description de la structure des tables d'une base de données (noms des tables, noms et types des attributs, clés)",
+      "explanation": "Le schéma définit la structure logique de la base de données relationnelle."
+    },
+    {
+      "question": "Quel langage standardisé est utilisé pour définir, manipuler et interroger des bases de données relationnelles ?",
+      "options": [
+        "Python",
+        "HTML",
+        "SQL (Structured Query Language)",
+        "Java"
+      ],
+      "correct": "SQL (Structured Query Language)",
+      "explanation": "SQL est le langage standard de facto pour interagir avec les SGBD relationnels."
+    },
+    {
+      "question": "Quelle catégorie de commandes SQL est utilisée pour définir la structure de la base de données (créer, modifier, supprimer des tables) ?",
+      "options": [
+        "LMD (Langage de Manipulation de Données / DML)",
+        "LDD (Langage de Définition de Données / DDL)",
+        "LCD (Langage de Contrôle de Données / DCL)",
+        "LID (Langage d'Interrogation de Données)"
+      ],
+      "correct": "LDD (Langage de Définition de Données / DDL)",
+      "explanation": "Le LDD (DDL en anglais) inclut des commandes comme CREATE TABLE, ALTER TABLE, DROP TABLE."
+    },
+    {
+      "question": "Quelle commande SQL permet de créer une nouvelle table ?",
+      "options": [
+        "INSERT TABLE",
+        "SELECT TABLE",
+        "CREATE TABLE",
+        "UPDATE TABLE"
+      ],
+      "correct": "CREATE TABLE",
+      "explanation": "La commande `CREATE TABLE nom_table (...colonnes...);` est utilisée pour définir une nouvelle table et ses attributs."
+    },
+    {
+      "question": "Lors de la création d'une table avec `CREATE TABLE`, que doit-on spécifier pour chaque colonne (attribut) ?",
+      "options": [
+        "Uniquement le nom de la colonne",
+        "Le nom de la colonne et son type de données (ex: INTEGER, VARCHAR, DATE)",
+        "Uniquement le type de données",
+        "Une valeur par défaut"
+      ],
+      "correct": "Le nom de la colonne et son type de données (ex: INTEGER, VARCHAR, DATE)",
+      "explanation": "Chaque attribut doit avoir un nom unique dans la table et un type de données qui définit les valeurs autorisées (domaine)."
+    },
+    {
+      "question": "Quel type de données SQL est approprié pour stocker des nombres entiers ?",
+      "options": [
+        "VARCHAR",
+        "DATE",
+        "BOOLEAN",
+        "INTEGER (ou INT)"
+      ],
+      "correct": "INTEGER (ou INT)",
+      "explanation": "INTEGER est le type standard pour les nombres entiers."
+    },
+    {
+      "question": "Quel type de données SQL est approprié pour stocker des chaînes de caractères de longueur variable (avec une longueur maximale) ?",
+      "options": [
+        "INTEGER",
+        "FLOAT",
+        "VARCHAR(n)",
+        "BOOLEAN"
+      ],
+      "correct": "VARCHAR(n)",
+      "explanation": "VARCHAR(n) stocke des chaînes de caractères pouvant aller jusqu'à n caractères."
+    },
+    {
+      "question": "Quel type de données SQL est approprié pour stocker une date (année, mois, jour) ?",
+      "options": [
+        "TIMESTAMP",
+        "TIME",
+        "DATE",
+        "TEXT"
+      ],
+      "correct": "DATE",
+      "explanation": "Le type DATE est spécifiquement conçu pour stocker des dates calendaires."
+    },
+    {
+      "question": "Quel type de données SQL est approprié pour stocker des nombres réels (à virgule flottante) ?",
+      "options": [
+        "INTEGER",
+        "TEXT",
+        "FLOAT (ou REAL, ou DECIMAL/NUMERIC)",
+        "DATE"
+      ],
+      "correct": "FLOAT (ou REAL, ou DECIMAL/NUMERIC)",
+      "explanation": "Différents types existent pour les nombres réels, avec des précisions variables (FLOAT, REAL, DOUBLE PRECISION, DECIMAL, NUMERIC)."
+    },
+    {
+      "question": "Quelle commande SQL permet de modifier la structure d'une table existante (ex: ajouter une colonne) ?",
+      "options": [
+        "MODIFY TABLE",
+        "UPDATE TABLE",
+        "ALTER TABLE",
+        "CHANGE TABLE"
+      ],
+      "correct": "ALTER TABLE",
+      "explanation": "`ALTER TABLE nom_table ADD COLUMN ...;` ou `ALTER TABLE nom_table DROP COLUMN ...;` sont des exemples."
+    },
+    {
+      "question": "Quelle commande SQL permet de supprimer une table existante (et toutes ses données) ?",
+      "options": [
+        "DELETE TABLE",
+        "REMOVE TABLE",
+        "DROP TABLE",
+        "ERASE TABLE"
+      ],
+      "correct": "DROP TABLE",
+      "explanation": "Attention, `DROP TABLE nom_table;` supprime définitivement la table et son contenu."
+    },
+    {
+      "question": "Quelle catégorie de commandes SQL est utilisée pour interroger et manipuler les données contenues dans les tables ?",
+      "options": [
+        "LDD (Langage de Définition de Données / DDL)",
+        "LMD (Langage de Manipulation de Données / DML)",
+        "LCD (Langage de Contrôle de Données / DCL)",
+        "LTD (Langage de Transaction de Données)"
+      ],
+      "correct": "LMD (Langage de Manipulation de Données / DML)",
+      "explanation": "Le LMD (DML en anglais) inclut les commandes SELECT, INSERT, UPDATE, DELETE."
+    },
+    {
+      "question": "Quelle commande SQL est utilisée pour extraire des données d'une ou plusieurs tables ?",
+      "options": [
+        "INSERT",
+        "UPDATE",
+        "DELETE",
+        "SELECT"
+      ],
+      "correct": "SELECT",
+      "explanation": "La commande `SELECT` est la commande fondamentale pour lire des données dans une base relationnelle."
+    },
+    {
+      "question": "Dans une requête `SELECT`, quelle clause spécifie les colonnes à afficher ?",
+      "options": [
+        "FROM",
+        "WHERE",
+        "SELECT",
+        "ORDER BY"
+      ],
+      "correct": "SELECT",
+      "explanation": "La partie après `SELECT` liste les colonnes désirées (ou `*` pour toutes les colonnes)."
+    },
+    {
+      "question": "Dans une requête `SELECT`, quelle clause spécifie la table (ou les tables) d'où proviennent les données ?",
+      "options": [
+        "WHERE",
+        "GROUP BY",
+        "FROM",
+        "SELECT"
+      ],
+      "correct": "FROM",
+      "explanation": "La clause `FROM nom_table` indique la source des données."
+    },
+    {
+      "question": "Dans une requête `SELECT`, quelle clause permet de filtrer les lignes en fonction d'une condition ?",
+      "options": [
+        "FROM",
+        "ORDER BY",
+        "WHERE",
+        "GROUP BY"
+      ],
+      "correct": "WHERE",
+      "explanation": "La clause `WHERE condition` ne conserve que les lignes pour lesquelles la condition est vraie."
+    },
+    {
+      "question": "Quelle requête SQL sélectionne tous les attributs de tous les enregistrements de la table 'Produits' ?",
+      "options": [
+        "SELECT ALL FROM Produits;",
+        "GET * FROM Produits;",
+        "SELECT * FROM Produits;",
+        "FROM Produits SELECT *;"
+      ],
+      "correct": "SELECT * FROM Produits;",
+      "explanation": "L'astérisque `*` est un joker signifiant 'toutes les colonnes'."
+    },
+    {
+      "question": "Quelle requête SQL sélectionne uniquement le nom et le prix des produits de la table 'Produits' ?",
+      "options": [
+        "SELECT Produits (nom, prix);",
+        "SELECT nom, prix FROM Produits;",
+        "SELECT * FROM Produits WHERE COLUMNS = nom, prix;",
+        "GET nom, prix FROM Produits;"
+      ],
+      "correct": "SELECT nom, prix FROM Produits;",
+      "explanation": "On liste explicitement les colonnes souhaitées après le mot-clé SELECT."
+    },
+    {
+      "question": "Quelle requête SQL sélectionne le nom des produits dont le prix est supérieur à 100 ?",
+      "options": [
+        "SELECT nom FROM Produits > 100;",
+        "SELECT nom FROM Produits WHERE prix > 100;",
+        "SELECT nom WHERE prix > 100 FROM Produits;",
+        "GET nom FROM Produits IF prix > 100;"
+      ],
+      "correct": "SELECT nom FROM Produits WHERE prix > 100;",
+      "explanation": "La clause WHERE est utilisée pour filtrer les lignes selon la condition `prix > 100`."
+    },
+    {
+      "question": "Quel opérateur SQL est utilisé pour combiner plusieurs conditions dans une clause WHERE, en exigeant que toutes soient vraies ?",
+      "options": [
+        "OR",
+        "NOT",
+        "AND",
+        "XOR"
+      ],
+      "correct": "AND",
+      "explanation": "`WHERE condition1 AND condition2` sélectionne les lignes où condition1 ET condition2 sont vraies."
+    },
+    {
+      "question": "Quel opérateur SQL est utilisé pour combiner plusieurs conditions dans une clause WHERE, en exigeant qu'au moins l'une d'elles soit vraie ?",
+      "options": [
+        "AND",
+        "NOT",
+        "OR",
+        "BETWEEN"
+      ],
+      "correct": "OR",
+      "explanation": "`WHERE condition1 OR condition2` sélectionne les lignes où condition1 OU condition2 (ou les deux) est vraie."
+    },
+    {
+      "question": "Quel opérateur SQL est utilisé pour rechercher une correspondance avec un motif dans une chaîne de caractères ?",
+      "options": [
+        "=",
+        "IN",
+        "LIKE",
+        "BETWEEN"
+      ],
+      "correct": "LIKE",
+      "explanation": "L'opérateur `LIKE` permet d'utiliser des jokers comme '%' (n'importe quelle séquence de caractères) et '_' (n'importe quel caractère unique). Ex: `WHERE nom LIKE 'A%'`."
+    },
+    {
+      "question": "Dans une requête `SELECT`, quelle clause permet de trier les résultats selon une ou plusieurs colonnes ?",
+      "options": [
+        "WHERE",
+        "GROUP BY",
+        "ORDER BY",
+        "SORT BY"
+      ],
+      "correct": "ORDER BY",
+      "explanation": "La clause `ORDER BY nom_colonne [ASC|DESC]` trie les lignes du résultat."
+    },
+    {
+      "question": "Comment trier les résultats d'une requête SELECT par prix décroissant ?",
+      "options": [
+        "ORDER BY prix ASC",
+        "ORDER BY prix DESC",
+        "SORT BY prix DOWN",
+        "ORDER prix DESCENDING"
+      ],
+      "correct": "ORDER BY prix DESC",
+      "explanation": "Le mot-clé `DESC` spécifie un tri descendant (du plus grand au plus petit). `ASC` (ascendant) est souvent le défaut."
+    },
+    {
+      "question": "Quelle commande SQL permet d'ajouter une nouvelle ligne (enregistrement) dans une table ?",
+      "options": [
+        "ADD ROW",
+        "CREATE ROW",
+        "INSERT INTO",
+        "UPDATE"
+      ],
+      "correct": "INSERT INTO",
+      "explanation": "La commande `INSERT INTO nom_table (col1, col2) VALUES (val1, val2);` ajoute un nouvel enregistrement."
+    },
+    {
+      "question": "Quelle commande SQL permet de modifier des données existantes dans une ou plusieurs lignes d'une table ?",
+      "options": [
+        "MODIFY",
+        "CHANGE",
+        "INSERT",
+        "UPDATE"
+      ],
+      "correct": "UPDATE",
+      "explanation": "La commande `UPDATE nom_table SET col1 = val1 WHERE condition;` modifie les valeurs des lignes respectant la condition."
+    },
+    {
+      "question": "Quelle commande SQL permet de supprimer une ou plusieurs lignes d'une table ?",
+      "options": [
+        "DROP",
+        "DELETE FROM",
+        "REMOVE",
+        "ERASE"
+      ],
+      "correct": "DELETE FROM",
+      "explanation": "La commande `DELETE FROM nom_table WHERE condition;` supprime les lignes respectant la condition. Sans clause WHERE, elle supprime toutes les lignes !"
+    },
+    {
+      "question": "Quelle est la différence principale entre `DELETE FROM table` et `DROP TABLE table` ?",
+      "options": [
+        "Aucune différence",
+        "`DELETE` supprime les données (lignes), mais la table existe toujours. `DROP TABLE` supprime la table elle-même (structure et données).",
+        "`DROP TABLE` est plus rapide",
+        "`DELETE` ne peut supprimer qu'une ligne à la fois"
+      ],
+      "correct": "`DELETE` supprime les données (lignes), mais la table existe toujours. `DROP TABLE` supprime la table elle-même (structure et données).",
+      "explanation": "DROP TABLE est une commande DDL (structure), DELETE FROM est une commande DML (données)."
+    },
+    {
+      "question": "Qu'est-ce qu'une clé primaire (Primary Key) ?",
+      "options": [
+        "Une colonne qui contient du texte uniquement",
+        "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque ligne de la table",
+        "La première colonne de la table",
+        "Une clé utilisée pour chiffrer les données"
+      ],
+      "correct": "Une colonne (ou un ensemble de colonnes) dont la valeur identifie de manière unique chaque ligne de la table",
+      "explanation": "La clé primaire garantit l'unicité et sert d'identifiant principal pour un enregistrement."
+    },
+    {
+      "question": "Quelle contrainte SQL garantit qu'une colonne ne peut pas contenir de valeurs dupliquées ?",
+      "options": [
+        "NOT NULL",
+        "UNIQUE",
+        "PRIMARY KEY",
+        "FOREIGN KEY"
+      ],
+      "correct": "UNIQUE",
+      "explanation": "La contrainte UNIQUE assure que toutes les valeurs dans la colonne (ou l'ensemble de colonnes) sont distinctes. Une clé primaire est implicitement UNIQUE."
+    },
+    {
+      "question": "Quelle contrainte SQL garantit qu'une colonne ne peut pas contenir la valeur NULL (absence de valeur) ?",
+      "options": [
+        "NOT NULL",
+        "UNIQUE",
+        "PRIMARY KEY",
+        "CHECK"
+      ],
+      "correct": "NOT NULL",
+      "explanation": "La contrainte NOT NULL oblige à fournir une valeur pour cette colonne lors de l'insertion ou de la mise à jour."
+    },
+    {
+      "question": "Une clé primaire peut-elle contenir la valeur NULL ?",
+      "options": [
+        "Oui, toujours",
+        "Oui, si elle est composée de plusieurs colonnes",
+        "Non, une clé primaire est implicitement UNIQUE et NOT NULL",
+        "Seulement si la table est vide"
+      ],
+      "correct": "Non, une clé primaire est implicitement UNIQUE et NOT NULL",
+      "explanation": "La clé primaire doit identifier chaque ligne de manière unique et non ambiguë, elle ne peut donc pas être nulle."
+    },
+    {
+      "question": "Qu'est-ce qu'une clé étrangère (Foreign Key) ?",
+      "options": [
+        "Une clé primaire d'une table étrangère",
+        "Une colonne (ou un ensemble de colonnes) dans une table qui référence la clé primaire d'une autre table, établissant un lien entre les deux",
+        "Une clé qui n'est pas importante",
+        "Une clé stockée dans un autre pays"
+      ],
+      "correct": "Une colonne (ou un ensemble de colonnes) dans une table qui référence la clé primaire d'une autre table, établissant un lien entre les deux",
+      "explanation": "La clé étrangère est la base des relations entre tables dans le modèle relationnel."
+    },
+    {
+      "question": "À quoi sert principalement une clé étrangère ?",
+      "options": [
+        "À identifier uniquement les lignes de sa propre table",
+        "À garantir l'intégrité référentielle : s'assurer que la valeur de la clé étrangère correspond bien à une valeur existante de la clé primaire dans la table référencée",
+        "À accélérer les requêtes SELECT *",
+        "À stocker des valeurs nulles"
+      ],
+      "correct": "À garantir l'intégrité référentielle : s'assurer que la valeur de la clé étrangère correspond bien à une valeur existante de la clé primaire dans la table référencée",
+      "explanation": "Cela empêche d'avoir des références 'orphelines' (ex: une commande faisant référence à un client qui n'existe pas)."
+    },
+    {
+      "question": "Si la table 'Commandes' a une colonne 'ID_Client' qui est clé étrangère référençant 'ID_Client' (clé primaire) de la table 'Clients', que se passe-t-il si on essaie d'insérer une commande avec un ID_Client qui n'existe pas dans 'Clients' ?",
+      "options": [
+        "L'insertion réussit sans problème",
+        "Un nouveau client est créé automatiquement",
+        "L'insertion échoue à cause de la violation de la contrainte de clé étrangère",
+        "La commande est insérée avec un ID_Client NULL"
+      ],
+      "correct": "L'insertion échoue à cause de la violation de la contrainte de clé étrangère",
+      "explanation": "Le SGBD vérifie que la valeur de la clé étrangère existe bien dans la table parente référencée."
+    },
+    {
+      "question": "Quelle opération SQL permet de combiner les lignes de deux tables (ou plus) en fonction d'une condition de jointure sur des colonnes communes ?",
+      "options": [
+        "UNION",
+        "JOIN",
+        "MERGE",
+        "COMBINE"
+      ],
+      "correct": "JOIN",
+      "explanation": "La clause JOIN (souvent INNER JOIN, LEFT JOIN, RIGHT JOIN) est utilisée dans une requête SELECT pour lier des tables."
+    },
+    {
+      "question": "Quel type de jointure (`JOIN`) ne retourne que les lignes pour lesquelles la condition de jointure est vérifiée dans les deux tables ?",
+      "options": [
+        "LEFT JOIN",
+        "RIGHT JOIN",
+        "FULL OUTER JOIN",
+        "INNER JOIN"
+      ],
+      "correct": "INNER JOIN",
+      "explanation": "INNER JOIN ne conserve que les correspondances exactes entre les deux tables selon la condition spécifiée (souvent l'égalité entre clé primaire et clé étrangère)."
+    },
+    {
+      "question": "Quel type de jointure (`JOIN`) retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite (ou NULL si pas de correspondance) ?",
+      "options": [
+        "LEFT JOIN (ou LEFT OUTER JOIN)",
+        "RIGHT JOIN",
+        "INNER JOIN",
+        "CROSS JOIN"
+      ],
+      "correct": "LEFT JOIN (ou LEFT OUTER JOIN)",
+      "explanation": "LEFT JOIN conserve toutes les lignes de la première table mentionnée (gauche) et y ajoute les infos de la table de droite si une correspondance existe."
+    },
+    {
+      "question": "Quelle requête SQL affiche le nom de chaque client et la date de ses commandes (tables 'Clients' et 'Commandes' liées par 'ID_Client') ?",
+      "options": [
+        "SELECT C.Nom, Cmd.Date FROM Clients C, Commandes Cmd;",
+        "SELECT Clients.Nom, Commandes.Date FROM Clients JOIN Commandes;",
+        "SELECT C.Nom, Cmd.Date FROM Clients C INNER JOIN Commandes Cmd ON C.ID_Client = Cmd.ID_Client;",
+        "SELECT Nom, Date FROM Clients, Commandes WHERE ID_Client;"
+      ],
+      "correct": "SELECT C.Nom, Cmd.Date FROM Clients C INNER JOIN Commandes Cmd ON C.ID_Client = Cmd.ID_Client;",
+      "explanation": "Il faut utiliser une jointure (ici INNER JOIN) et spécifier la condition de jointure (ON C.ID_Client = Cmd.ID_Client) pour lier correctement les lignes."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de compter le nombre de lignes ?",
+      "options": [
+        "SUM()",
+        "AVG()",
+        "COUNT()",
+        "MAX()"
+      ],
+      "correct": "COUNT()",
+      "explanation": "`COUNT(*)` compte toutes les lignes. `COUNT(colonne)` compte les lignes où la colonne n'est pas NULL. `COUNT(DISTINCT colonne)` compte les valeurs distinctes non nulles."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de calculer la somme des valeurs d'une colonne numérique ?",
+      "options": [
+        "COUNT()",
+        "AVG()",
+        "SUM()",
+        "TOTAL()"
+      ],
+      "correct": "SUM()",
+      "explanation": "`SUM(colonne_numerique)` additionne toutes les valeurs non nulles de la colonne."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de calculer la moyenne des valeurs d'une colonne numérique ?",
+      "options": [
+        "COUNT()",
+        "AVG()",
+        "SUM()",
+        "MEAN()"
+      ],
+      "correct": "AVG()",
+      "explanation": "`AVG(colonne_numerique)` calcule la moyenne arithmétique des valeurs non nulles."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de trouver la valeur maximale dans une colonne ?",
+      "options": [
+        "MIN()",
+        "MAX()",
+        "TOP()",
+        "HIGHEST()"
+      ],
+      "correct": "MAX()",
+      "explanation": "`MAX(colonne)` retourne la plus grande valeur non nulle de la colonne."
+    },
+    {
+      "question": "Quelle fonction d'agrégation SQL permet de trouver la valeur minimale dans une colonne ?",
+      "options": [
+        "MIN()",
+        "MAX()",
+        "BOTTOM()",
+        "LOWEST()"
+      ],
+      "correct": "MIN()",
+      "explanation": "`MIN(colonne)` retourne la plus petite valeur non nulle de la colonne."
+    },
+    {
+      "question": "Dans une requête `SELECT`, quelle clause est utilisée pour regrouper les lignes ayant la même valeur dans une ou plusieurs colonnes, afin d'appliquer des fonctions d'agrégation sur chaque groupe ?",
+      "options": [
+        "WHERE",
+        "ORDER BY",
+        "GROUP BY",
+        "HAVING"
+      ],
+      "correct": "GROUP BY",
+      "explanation": "La clause `GROUP BY colonne(s)` regroupe les lignes avant l'application des fonctions d'agrégation (COUNT, SUM, AVG...)."
+    },
+    {
+      "question": "Quelle requête SQL calcule le nombre de clients par ville ?",
+      "options": [
+        "SELECT ville, COUNT(*) FROM Clients;",
+        "SELECT ville, COUNT(*) FROM Clients GROUP BY ville;",
+        "SELECT COUNT(ville) FROM Clients;",
+        "SELECT ville FROM Clients COUNT(*);"
+      ],
+      "correct": "SELECT ville, COUNT(*) FROM Clients GROUP BY ville;",
+      "explanation": "Il faut grouper par ville (`GROUP BY ville`) puis compter (`COUNT(*)`) le nombre de lignes dans chaque groupe."
+    },
+    {
+      "question": "Dans une requête avec `GROUP BY`, quelle clause permet de filtrer les groupes en fonction du résultat d'une fonction d'agrégation ?",
+      "options": [
+        "WHERE",
+        "ORDER BY",
+        "GROUP BY",
+        "HAVING"
+      ],
+      "correct": "HAVING",
+      "explanation": "La clause `HAVING condition_sur_agregat` s'applique après le `GROUP BY` pour filtrer les groupes (ex: `HAVING COUNT(*) > 10`). La clause `WHERE` filtre les lignes *avant* le groupement."
+    },
+    {
+      "question": "Quelle requête SQL affiche les villes ayant plus de 5 clients ?",
+      "options": [
+        "SELECT ville FROM Clients WHERE COUNT(*) > 5;",
+        "SELECT ville FROM Clients GROUP BY ville WHERE COUNT(*) > 5;",
+        "SELECT ville FROM Clients GROUP BY ville HAVING COUNT(*) > 5;",
+        "SELECT ville, COUNT(*) FROM Clients HAVING COUNT(*) > 5;"
+      ],
+      "correct": "SELECT ville FROM Clients GROUP BY ville HAVING COUNT(*) > 5;",
+      "explanation": "Il faut grouper par ville, puis utiliser HAVING pour filtrer les groupes dont le comptage est supérieur à 5."
+    },
+    {
+      "question": "Qu'est-ce qu'une transaction dans une base de données ?",
+      "options": [
+        "Une seule requête SQL SELECT",
+        "Une séquence d'une ou plusieurs opérations SQL (lecture/écriture) traitée comme une unité atomique : soit toutes les opérations réussissent, soit aucune n'est appliquée",
+        "La création d'une table",
+        "Une sauvegarde de la base"
+      ],
+      "correct": "Une séquence d'une ou plusieurs opérations SQL (lecture/écriture) traitée comme une unité atomique : soit toutes les opérations réussissent, soit aucune n'est appliquée",
+      "explanation": "Les transactions garantissent la cohérence de la base de données même en cas d'erreur ou de pannes."
+    },
+    {
+      "question": "Quelles sont les propriétés ACID garanties par les transactions ?",
+      "options": [
+        "Authentification, Chiffrement, Intégrité, Données",
+        "Atomicity, Consistency, Isolation, Durability",
+        "Accès, Contrôle, Indexation, Données",
+        "Application, Code, Interface, Déploiement"
+      ],
+      "correct": "Atomicity, Consistency, Isolation, Durability",
+      "explanation": "ACID : Atomicité (tout ou rien), Cohérence (la BD reste dans un état valide), Isolation (les transactions concurrentes n'interfèrent pas), Durabilité (les changements validés sont permanents)."
+    },
+    {
+      "question": "Que signifie l'Atomicité (A de ACID) ?",
+      "options": [
+        "Les données sont très petites",
+        "Une transaction est une unité indivisible : soit toutes ses opérations sont effectuées, soit aucune ne l'est",
+        "Chaque transaction est unique",
+        "Les données ne peuvent pas être modifiées"
+      ],
+      "correct": "Une transaction est une unité indivisible : soit toutes ses opérations sont effectuées, soit aucune ne l'est",
+      "explanation": "En cas d'erreur au milieu, la transaction est annulée (rollback) et la base revient à son état initial."
+    },
+    {
+      "question": "Que signifie la Cohérence (C de ACID) ?",
+      "options": [
+        "Toutes les données sont identiques",
+        "Une transaction amène la base de données d'un état valide à un autre état valide, en respectant toutes les contraintes d'intégrité",
+        "Les transactions sont toujours exécutées dans le même ordre",
+        "Les données sont chiffrées"
+      ],
+      "correct": "Une transaction amène la base de données d'un état valide à un autre état valide, en respectant toutes les contraintes d'intégrité",
+      "explanation": "La transaction ne doit pas violer les règles définies sur les données (clés, types, etc.)."
+    },
+    {
+      "question": "Que signifie l'Isolation (I de ACID) ?",
+      "options": [
+        "La base de données est déconnectée du réseau",
+        "Chaque transaction s'exécute comme si elle était seule sur le système, sans être affectée par d'autres transactions concurrentes",
+        "Seul un utilisateur peut accéder à la base à la fois",
+        "Les données sont stockées dans des fichiers séparés"
+      ],
+      "correct": "Chaque transaction s'exécute comme si elle était seule sur le système, sans être affectée par d'autres transactions concurrentes",
+      "explanation": "L'isolation empêche les problèmes liés à la concurrence, comme les lectures fantômes ou les écritures perdues."
+    },
+    {
+      "question": "Que signifie la Durabilité (D de ACID) ?",
+      "options": [
+        "La base de données dure longtemps",
+        "Une fois qu'une transaction a été validée (commit), ses modifications sont permanentes et survivront à d'éventuelles pannes ultérieures (ex: crash système)",
+        "Les données ne peuvent jamais être supprimées",
+        "Le SGBD est résistant aux chocs"
+      ],
+      "correct": "Une fois qu'une transaction a été validée (commit), ses modifications sont permanentes et survivront à d'éventuelles pannes ultérieures (ex: crash système)",
+      "explanation": "La durabilité est souvent assurée par l'écriture dans des journaux de transactions avant l'application aux données."
+    },
+    {
+      "question": "Quelle commande SQL valide définitivement les modifications effectuées au sein d'une transaction ?",
+      "options": [
+        "ROLLBACK",
+        "SAVEPOINT",
+        "COMMIT",
+        "END TRANSACTION"
+      ],
+      "correct": "COMMIT",
+      "explanation": "`COMMIT` rend les changements de la transaction permanents et visibles par les autres transactions."
+    },
+    {
+      "question": "Quelle commande SQL annule toutes les modifications effectuées depuis le début de la transaction courante ?",
+      "options": [
+        "COMMIT",
+        "UNDO",
+        "ROLLBACK",
+        "ABORT"
+      ],
+      "correct": "ROLLBACK",
+      "explanation": "`ROLLBACK` annule la transaction et restaure l'état de la base de données tel qu'il était avant le début de la transaction."
+    },
+    {
+      "question": "Qu'est-ce qu'une attaque par injection SQL ?",
+      "options": [
+        "Injecter plus de données que prévu dans une table",
+        "Une technique d'attaque où du code SQL malveillant est inséré dans les données envoyées par l'utilisateur (ex: formulaire) afin d'être exécuté par le SGBD",
+        "Supprimer toutes les tables",
+        "Voler le logiciel SGBD"
+      ],
+      "correct": "Une technique d'attaque où du code SQL malveillant est inséré dans les données envoyées par l'utilisateur (ex: formulaire) afin d'être exécuté par le SGBD",
+      "explanation": "Si les entrées utilisateur ne sont pas correctement validées/échappées, l'attaquant peut manipuler les requêtes SQL et potentiellement lire, modifier ou supprimer des données."
+    },
+    {
+      "question": "Quelle est la meilleure pratique pour se protéger contre les injections SQL ?",
+      "options": [
+        "Ne jamais utiliser de base de données",
+        "Faire confiance à toutes les entrées utilisateur",
+        "Utiliser des requêtes préparées (prepared statements) ou échapper systématiquement toutes les données provenant de l'utilisateur avant de les inclure dans une requête SQL",
+        "Masquer les messages d'erreur SQL"
+      ],
+      "correct": "Utiliser des requêtes préparées (prepared statements) ou échapper systématiquement toutes les données provenant de l'utilisateur avant de les inclure dans une requête SQL",
+      "explanation": "Les requêtes préparées séparent le code SQL des données, empêchant ces dernières d'être interprétées comme du code."
+    },
+    {
+      "question": "Quel modèle est souvent utilisé lors de la phase de conception conceptuelle d'une base de données pour représenter les entités et leurs relations ?",
+      "options": [
+        "Le modèle relationnel",
+        "Le modèle Entité-Association (ou Entité-Relation, E-R)",
+        "Le modèle UML de classes",
+        "Le schéma SQL"
+      ],
+      "correct": "Le modèle Entité-Association (ou Entité-Relation, E-R)",
+      "explanation": "Le modèle E-R permet de décrire les objets importants (entités), leurs propriétés (attributs) et les liens (associations/relations) entre eux de manière graphique et abstraite."
+    },
+    {
+      "question": "Dans un modèle Entité-Association, que représente une 'entité' ?",
+      "options": [
+        "Une relation entre objets",
+        "Une propriété d'un objet",
+        "Un objet ou un concept du monde réel que l'on souhaite représenter et sur lequel on stocke des informations (ex: Client, Produit, Commande)",
+        "Une table de la base de données"
+      ],
+      "correct": "Un objet ou un concept du monde réel que l'on souhaite représenter et sur lequel on stocke des informations (ex: Client, Produit, Commande)",
+      "explanation": "Une entité deviendra typiquement une table dans le modèle relationnel."
+    },
+    {
+      "question": "Dans un modèle Entité-Association, que représente un 'attribut' ?",
+      "options": [
+        "Une relation entre entités",
+        "Une entité principale",
+        "Une propriété ou caractéristique d'une entité (ex: Nom du client, Prix du produit)",
+        "Une clé étrangère"
+      ],
+      "correct": "Une propriété ou caractéristique d'une entité (ex: Nom du client, Prix du produit)",
+      "explanation": "Un attribut deviendra typiquement une colonne dans la table correspondante."
+    },
+    {
+      "question": "Dans un modèle Entité-Association, que représente une 'association' (ou 'relation') ?",
+      "options": [
+        "Une entité elle-même",
+        "Un attribut d'une entité",
+        "Un lien ou une connexion entre deux (ou plusieurs) entités (ex: un Client 'passe' une Commande)",
+        "Une clé primaire"
+      ],
+      "correct": "Un lien ou une connexion entre deux (ou plusieurs) entités (ex: un Client 'passe' une Commande)",
+      "explanation": "Les associations décrivent comment les entités interagissent."
+    },
+    {
+      "question": "Que sont les 'cardinalités' d'une association dans un modèle E-R ?",
+      "options": [
+        "Le nombre d'attributs des entités",
+        "Le nombre d'entités dans le modèle",
+        "Des indications qui précisent combien d'instances d'une entité peuvent (ou doivent) être associées à une instance de l'autre entité (ex: 1,1 ou 0,n)",
+        "Les clés primaires et étrangères"
+      ],
+      "correct": "Des indications qui précisent combien d'instances d'une entité peuvent (ou doivent) être associées à une instance de l'autre entité (ex: 1,1 ou 0,n)",
+      "explanation": "Les cardinalités (minimum, maximum) expriment les règles de gestion (ex: une commande est passée par un et un seul client (1,1), un client peut passer zéro ou plusieurs commandes (0,n))."
+    },
+    {
+      "question": "Comment traduit-on généralement une relation 'un-à-plusieurs' (1,n) du modèle E-R vers le modèle relationnel ?",
+      "options": [
+        "En créant une table séparée pour la relation",
+        "En ajoutant la clé primaire de l'entité côté 'plusieurs' comme clé étrangère dans la table côté 'un'",
+        "En ajoutant la clé primaire de l'entité côté 'un' comme clé étrangère dans la table côté 'plusieurs'",
+        "En fusionnant les deux tables en une seule"
+      ],
+      "correct": "En ajoutant la clé primaire de l'entité côté 'un' comme clé étrangère dans la table côté 'plusieurs'",
+      "explanation": "Exemple : La clé primaire de 'Clients' (ID_Client) est ajoutée comme clé étrangère dans la table 'Commandes'."
+    },
+    {
+      "question": "Comment traduit-on généralement une relation 'plusieurs-à-plusieurs' (n,m) du modèle E-R vers le modèle relationnel ?",
+      "options": [
+        "En ajoutant une clé étrangère dans chaque table pointant vers l'autre",
+        "En créant une nouvelle table (table d'association ou de jointure) contenant les clés primaires des deux entités liées comme clés étrangères",
+        "En fusionnant les deux tables",
+        "Ce type de relation n'existe pas"
+      ],
+      "correct": "En créant une nouvelle table (table d'association ou de jointure) contenant les clés primaires des deux entités liées comme clés étrangères",
+      "explanation": "Exemple : Pour lier 'Etudiants' et 'Cours' (un étudiant suit plusieurs cours, un cours a plusieurs étudiants), on crée une table 'Inscription' (ID_Etudiant, ID_Cours)."
+    },
+    {
+      "question": "Qu'est-ce que la normalisation dans la conception de bases de données relationnelles ?",
+      "options": [
+        "Rendre les noms de tables et colonnes normaux",
+        "Un processus visant à organiser les attributs et les tables pour réduire la redondance des données et améliorer l'intégrité des données (en évitant les anomalies de mise à jour)",
+        "Ajouter des données redondantes pour accélérer les requêtes",
+        "Traduire le modèle E-R en SQL"
+      ],
+      "correct": "Un processus visant à organiser les attributs et les tables pour réduire la redondance des données et améliorer l'intégrité des données (en évitant les anomalies de mise à jour)",
+      "explanation": "La normalisation suit des règles (Formes Normales : 1NF, 2NF, 3NF...) pour décomposer les tables et éliminer les dépendances indésirables."
+    },
+    {
+      "question": "Que stipule la Première Forme Normale (1NF) ?",
+      "options": [
+        "Qu'il ne doit pas y avoir de redondance",
+        "Que toutes les clés primaires doivent être numériques",
+        "Que chaque attribut (cellule) de la table doit contenir une valeur atomique (indivisible) et qu'il ne doit pas y avoir de groupes répétitifs",
+        "Qu'il ne doit pas y avoir de dépendances transitives"
+      ],
+      "correct": "Que chaque attribut (cellule) de la table doit contenir une valeur atomique (indivisible) et qu'il ne doit pas y avoir de groupes répétitifs",
+      "explanation": "La 1NF interdit, par exemple, d'avoir une colonne 'Telephones' contenant plusieurs numéros dans la même cellule."
+    },
+    {
+      "question": "Que stipule la Deuxième Forme Normale (2NF) pour une table déjà en 1NF ?",
+      "options": [
+        "Qu'il n'y a pas de dépendances fonctionnelles partielles des attributs non-clés par rapport à la clé primaire (si celle-ci est composite)",
+        "Qu'il n'y a pas de dépendances transitives",
+        "Que toutes les colonnes sont bien typées",
+        "Qu'il y a une clé étrangère"
+      ],
+      "correct": "Qu'il n'y a pas de dépendances fonctionnelles partielles des attributs non-clés par rapport à la clé primaire (si celle-ci est composite)",
+      "explanation": "La 2NF s'applique aux tables avec clé primaire composite et vise à s'assurer que chaque attribut non-clé dépend de la totalité de la clé primaire, pas seulement d'une partie."
+    },
+    {
+      "question": "Que stipule la Troisième Forme Normale (3NF) pour une table déjà en 2NF ?",
+      "options": [
+        "Qu'il n'y a pas de dépendances partielles",
+        "Qu'il n'y a pas de dépendances transitives des attributs non-clés par rapport à la clé primaire",
+        "Que la clé primaire est un entier",
+        "Que la table contient au moins 3 colonnes"
+      ],
+      "correct": "Qu'il n'y a pas de dépendances transitives des attributs non-clés par rapport à la clé primaire",
+      "explanation": "La 3NF interdit qu'un attribut non-clé dépende d'un autre attribut non-clé (qui dépend lui-même de la clé). Ex: Si ID_Client -> Ville et Ville -> CodePostal, alors la dépendance ID_Client -> CodePostal est transitive et doit être éliminée (en créant une table Villes)."
+    },
+    {
+      "question": "Quel est le principal avantage de la normalisation ?",
+      "options": [
+        "Augmenter la vitesse de toutes les requêtes SELECT",
+        "Réduire la redondance des données, économiser de l'espace et éviter les anomalies de mise à jour (incohérences)",
+        "Simplifier les requêtes de jointure",
+        "Rendre la base de données plus facile à comprendre pour les débutants"
+      ],
+      "correct": "Réduire la redondance des données, économiser de l'espace et éviter les anomalies de mise à jour (incohérences)",
+      "explanation": "En évitant de stocker la même information à plusieurs endroits, on garantit la cohérence lors des modifications."
+    },
+    {
+      "question": "Quel est l'inconvénient potentiel d'une normalisation très poussée ?",
+      "options": [
+        "Elle augmente la redondance",
+        "Elle peut nécessiter plus de jointures pour reconstituer l'information complète, ce qui peut ralentir certaines requêtes complexes",
+        "Elle empêche l'utilisation de clés primaires",
+        "Elle rend les mises à jour plus difficiles"
+      ],
+      "correct": "Elle peut nécessiter plus de jointures pour reconstituer l'information complète, ce qui peut ralentir certaines requêtes complexes",
+      "explanation": "Il y a parfois un compromis à faire entre le niveau de normalisation et les performances de lecture. La dénormalisation contrôlée est parfois utilisée."
+    },
+    {
+      "question": "Quel type de SGBD stocke la base de données dans un unique fichier local, sans nécessiter de processus serveur séparé ?",
+      "options": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "Oracle"
+      ],
+      "correct": "SQLite",
+      "explanation": "SQLite est un SGBD embarqué très populaire, souvent utilisé dans les applications mobiles ou les petits projets web."
+    },
+    {
+      "question": "Quel modèle d'architecture est typique des SGBD comme PostgreSQL ou MySQL, où les applications se connectent à un processus serveur distant pour accéder à la base ?",
+      "options": [
+        "Architecture embarquée",
+        "Architecture client-serveur",
+        "Architecture peer-to-peer",
+        "Architecture monolithique"
+      ],
+      "correct": "Architecture client-serveur",
+      "explanation": "Le serveur SGBD gère les accès concurrents, la sécurité et les données, tandis que les clients envoient des requêtes."
+    },
+    {
+      "question": "Qu'est-ce qu'un index dans une base de données ?",
+      "options": [
+        "Une copie complète de la table",
+        "Une structure de données (souvent basée sur des arbres B+) associée à une ou plusieurs colonnes, qui permet au SGBD de localiser rapidement les lignes correspondantes à certaines valeurs",
+        "La clé primaire de la table",
+        "Un synonyme pour une table"
+      ],
+      "correct": "Une structure de données (souvent basée sur des arbres B+) associée à une ou plusieurs colonnes, qui permet au SGBD de localiser rapidement les lignes correspondantes à certaines valeurs",
+      "explanation": "Les index accélèrent considérablement les requêtes SELECT avec des clauses WHERE ou les jointures sur les colonnes indexées."
+    },
+    {
+      "question": "Quel est l'inconvénient principal des index ?",
+      "options": [
+        "Ils ralentissent les requêtes SELECT",
+        "Ils prennent de l'espace disque supplémentaire et doivent être mis à jour lors des opérations INSERT, UPDATE, DELETE, ce qui ralentit ces opérations",
+        "Ils empêchent les jointures",
+        "Ils ne peuvent être créés que sur la clé primaire"
+      ],
+      "correct": "Ils prennent de l'espace disque supplémentaire et doivent être mis à jour lors des opérations INSERT, UPDATE, DELETE, ce qui ralentit ces opérations",
+      "explanation": "Il faut choisir judicieusement les colonnes à indexer pour équilibrer l'accélération des lectures et le coût des écritures."
+    },
+    {
+      "question": "Quel mécanisme permet de s'assurer que plusieurs utilisateurs accédant à la base de données en même temps ne provoquent pas d'incohérences ?",
+      "options": [
+        "La normalisation",
+        "Les index",
+        "Le contrôle de concurrence (ex: verrouillage, niveaux d'isolation des transactions)",
+        "La sauvegarde"
+      ],
+      "correct": "Le contrôle de concurrence (ex: verrouillage, niveaux d'isolation des transactions)",
+      "explanation": "Le SGBD utilise des mécanismes pour gérer les accès concurrents et garantir les propriétés d'isolation des transactions."
+    },
+    {
+      "question": "Qu'est-ce qu'une vue (VIEW) en SQL ?",
+      "options": [
+        "Une table physique stockant des données",
+        "Une requête SELECT stockée dans la base de données, qui peut être interrogée comme une table virtuelle",
+        "Une copie de sauvegarde d'une table",
+        "Un index sur une table"
+      ],
+      "correct": "Une requête SELECT stockée dans la base de données, qui peut être interrogée comme une table virtuelle",
+      "explanation": "Les vues simplifient les requêtes complexes, masquent la complexité du schéma ou limitent l'accès à certaines données."
+    },
+    {
+      "question": "Quel est l'avantage d'utiliser une vue ?",
+      "options": [
+        "Améliorer les performances des écritures",
+        "Simplifier l'écriture de requêtes répétitives, fournir une couche d'abstraction, et permettre un contrôle d'accès plus fin",
+        "Stocker physiquement des données différentes",
+        "Remplacer les index"
+      ],
+      "correct": "Simplifier l'écriture de requêtes répétitives, fournir une couche d'abstraction, et permettre un contrôle d'accès plus fin",
+      "explanation": "Une vue peut présenter une partie spécifique ou une combinaison de données de manière simplifiée aux utilisateurs."
+    },
+    {
+      "question": "Quel type de base de données, appartenant à la catégorie NoSQL, stocke les données sous forme de documents (souvent JSON ou BSON), sans schéma fixe obligatoire ?",
+      "options": [
+        "Base de données relationnelle",
+        "Base de données orientée document (ex: MongoDB, Couchbase)",
+        "Base de données clé-valeur",
+        "Base de données orientée graphe"
+      ],
+      "correct": "Base de données orientée document (ex: MongoDB, Couchbase)",
+      "explanation": "Les bases orientées document offrent une flexibilité de schéma, chaque document pouvant avoir une structure différente."
+    },
+    {
+      "question": "Quel type de base de données NoSQL est optimisé pour stocker et récupérer rapidement des données simples associées à une clé unique ?",
+      "options": [
+        "Base de données orientée document",
+        "Base de données orientée colonne",
+        "Base de données clé-valeur (ex: Redis, Memcached)",
+        "Base de données orientée graphe"
+      ],
+      "correct": "Base de données clé-valeur (ex: Redis, Memcached)",
+      "explanation": "Ces bases fonctionnent comme un grand dictionnaire et sont très rapides pour les accès par clé (souvent utilisées pour le cache)."
+    },
+    {
+      "question": "Quel type de base de données NoSQL est spécifiquement conçu pour stocker et interroger des données représentant des entités et leurs relations complexes (réseaux sociaux, recommandations...) ?",
+      "options": [
+        "Base de données relationnelle",
+        "Base de données clé-valeur",
+        "Base de données orientée document",
+        "Base de données orientée graphe (ex: Neo4j, ArangoDB)"
+      ],
+      "correct": "Base de données orientée graphe (ex: Neo4j, ArangoDB)",
+      "explanation": "Elles modélisent directement les nœuds (entités) et les arêtes (relations), rendant les requêtes de parcours de relations très efficaces."
+    },
+    {
+      "question": "Quel est l'avantage principal des bases de données NoSQL par rapport aux bases relationnelles pour certaines applications (ex: Big Data, temps réel) ?",
+      "options": [
+        "Garantie des propriétés ACID plus forte",
+        "Flexibilité du schéma, scalabilité horizontale plus facile, et potentiellement meilleures performances pour certains types de requêtes ou de données non structurées",
+        "Support transactionnel plus avancé",
+        "Utilisation universelle de SQL"
+      ],
+      "correct": "Flexibilité du schéma, scalabilité horizontale plus facile, et potentiellement meilleures performances pour certains types de requêtes ou de données non structurées",
+      "explanation": "Les bases NoSQL ont été conçues pour répondre aux limites des bases relationnelles face aux volumes massifs et à la variété des données du web moderne."
+    },
+    {
+      "question": "Quel est l'inconvénient potentiel des bases de données NoSQL par rapport aux bases relationnelles ?",
+      "options": [
+        "Elles sont moins performantes",
+        "Moins de maturité pour certaines, modèles de cohérence parfois moins stricts (cohérence éventuelle), absence d'un langage de requête standardisé universel comme SQL",
+        "Elles ne sont pas scalables",
+        "Elles ne gèrent que des données structurées"
+      ],
+      "correct": "Moins de maturité pour certaines, modèles de cohérence parfois moins stricts (cohérence éventuelle), absence d'un langage de requête standardisé universel comme SQL",
+      "explanation": "Le choix entre SQL et NoSQL dépend fortement des besoins spécifiques de l'application."
+    },
+    {
+      "question": "Dans un SGBD, quel composant est responsable de l'exécution des requêtes SQL et de l'optimisation de leur plan d'exécution ?",
+      "options": [
+        "Le gestionnaire de transactions",
+        "Le gestionnaire de stockage",
+        "Le processeur de requêtes (Query Processor / Optimizer)",
+        "Le gestionnaire de logs"
+      ],
+      "correct": "Le processeur de requêtes (Query Processor / Optimizer)",
+      "explanation": "L'optimiseur analyse la requête SQL et choisit la manière la plus efficace de l'exécuter (ex: utilisation des index, ordre des jointures)."
+    },
+    {
+      "question": "Quel est le rôle du 'schema' ou de la 'base de données' logique dans un serveur SGBD qui peut en héberger plusieurs ?",
+      "options": [
+        "Représenter une table unique",
+        "Fournir un espace de nommage pour regrouper des objets liés (tables, vues...) au sein d'un même serveur",
+        "Contenir uniquement les index",
+        "Gérer la sécurité uniquement"
+      ],
+      "correct": "Fournir un espace de nommage pour regrouper des objets liés (tables, vues...) au sein d'un même serveur",
+      "explanation": "Un serveur PostgreSQL ou MySQL peut héberger plusieurs bases de données logiques distinctes."
+    },
+    {
+      "question": "Quelle est la différence entre `WHERE` et `HAVING` en SQL ?",
+      "options": [
+        "Aucune, elles sont interchangeables",
+        "`WHERE` filtre les lignes individuelles avant l'agrégation/groupement, `HAVING` filtre les groupes après l'agrégation",
+        "`HAVING` filtre les lignes, `WHERE` filtre les groupes",
+        "`WHERE` est pour les chaînes, `HAVING` pour les nombres"
+      ],
+      "correct": "`WHERE` filtre les lignes individuelles avant l'agrégation/groupement, `HAVING` filtre les groupes après l'agrégation",
+      "explanation": "On ne peut pas utiliser une fonction d'agrégation (comme COUNT(*)) dans une clause WHERE, mais on peut l'utiliser dans une clause HAVING."
+    },
+    {
+      "question": "Quel mot-clé SQL permet de sélectionner uniquement des lignes avec des valeurs distinctes pour une ou plusieurs colonnes ?",
+      "options": [
+        "UNIQUE",
+        "DISTINCT",
+        "DIFFERENT",
+        "SINGLE"
+      ],
+      "correct": "DISTINCT",
+      "explanation": "`SELECT DISTINCT colonne FROM table;` ne retournera chaque valeur unique de la colonne qu'une seule fois."
+    },
+    {
+      "question": "Comment sélectionner les 5 produits les plus chers dans une table 'Produits' ?",
+      "options": [
+        "SELECT TOP 5 * FROM Produits ORDER BY Prix DESC;",
+        "SELECT * FROM Produits ORDER BY Prix DESC LIMIT 5;",
+        "SELECT * FROM Produits WHERE ROWNUM <= 5 ORDER BY Prix DESC;",
+        "La syntaxe exacte peut dépendre du SGBD (LIMIT, TOP, ROWNUM...)"
+      ],
+      "correct": "La syntaxe exacte peut dépendre du SGBD (LIMIT, TOP, ROWNUM...)",
+      "explanation": "Bien que l'idée soit de trier par prix décroissant et de prendre les premiers, la syntaxe précise pour limiter le nombre de résultats varie (LIMIT sous MySQL/PostgreSQL, TOP sous SQL Server, ROWNUM sous Oracle...)."
+    },
+    {
+      "question": "Qu'est-ce qu'une sous-requête (subquery) en SQL ?",
+      "options": [
+        "Une requête très rapide",
+        "Une requête imbriquée à l'intérieur d'une autre requête SQL (souvent dans une clause WHERE, FROM ou SELECT)",
+        "Une requête qui retourne une seule valeur",
+        "Une vue"
+      ],
+      "correct": "Une requête imbriquée à l'intérieur d'une autre requête SQL (souvent dans une clause WHERE, FROM ou SELECT)",
+      "explanation": "Les sous-requêtes permettent d'effectuer des sélections ou des calculs intermédiaires utilisés par la requête principale."
+    },
+    {
+      "question": "Comment sélectionner les clients qui ont passé au moins une commande (en utilisant les tables Clients et Commandes liées par ID_Client) ?",
+      "options": [
+        "SELECT Nom FROM Clients WHERE ID_Client IN (SELECT DISTINCT ID_Client FROM Commandes);",
+        "SELECT DISTINCT C.Nom FROM Clients C INNER JOIN Commandes Cmd ON C.ID_Client = Cmd.ID_Client;",
+        "SELECT Nom FROM Clients WHERE EXISTS (SELECT 1 FROM Commandes WHERE Commandes.ID_Client = Clients.ID_Client);",
+        "Toutes ces options sont des manières possibles de le faire"
+      ],
+      "correct": "Toutes ces options sont des manières possibles de le faire",
+      "explanation": "Il existe souvent plusieurs façons d'écrire une requête SQL pour obtenir le même résultat, utilisant des jointures, des sous-requêtes (IN, EXISTS), etc."
+    }
+  ]
+}

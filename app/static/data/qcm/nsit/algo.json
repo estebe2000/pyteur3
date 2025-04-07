@@ -1,0 +1,631 @@
+{
+  "algorithmique_term": [
+    {
+      "question": "Quelle est la caractéristique essentielle d'un algorithme récursif correct ?",
+      "options": [
+        "Il utilise une boucle 'for'",
+        "Il possède au moins un cas de base et un appel récursif se rapprochant du cas de base",
+        "Il modifie des variables globales",
+        "Il est toujours plus rapide qu'un algorithme itératif"
+      ],
+      "correct": "Il possède au moins un cas de base et un appel récursif se rapprochant du cas de base",
+      "explanation": "Sans cas de base, la récursion est infinie. L'appel récursif doit traiter un sous-problème plus petit pour garantir la convergence vers le cas de base et la terminaison."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'variant de boucle' ou 'variant de récursion' ?",
+      "options": [
+        "Une variable qui reste constante",
+        "Une condition toujours vraie",
+        "Une quantité entière positive qui décroît strictement à chaque itération ou appel récursif",
+        "Le résultat final de l'algorithme"
+      ],
+      "correct": "Une quantité entière positive qui décroît strictement à chaque itération ou appel récursif",
+      "explanation": "L'existence d'un variant permet de prouver la terminaison de l'algorithme, car une quantité entière positive ne peut pas décroître indéfiniment."
+    },
+    {
+      "question": "Considérons la fonction factorielle récursive `fact(n)`. Quel est le cas de base ?",
+      "options": [
+        "n > 10",
+        "n < 0",
+        "n == 0 (ou n == 1)",
+        "n % 2 == 0"
+      ],
+      "correct": "n == 0 (ou n == 1)",
+      "explanation": "Le cas de base est la condition d'arrêt. Par définition, fact(0) = 1 (et fact(1) = 1), ce qui arrête la récursion."
+    },
+    {
+      "question": "Quelle structure de données est utilisée implicitement pour gérer la mémoire des appels de fonctions récursives ?",
+      "options": [
+        "File (Queue)",
+        "Tas (Heap)",
+        "Pile (Stack - la pile d'appels)",
+        "Table de hachage"
+      ],
+      "correct": "Pile (Stack - la pile d'appels)",
+      "explanation": "Chaque appel récursif ajoute un cadre (contexte d'exécution) sur la pile. Lorsque la fonction retourne, le cadre est dépilé."
+    },
+    {
+      "question": "Quel problème peut survenir si une fonction récursive est appelée avec une profondeur trop importante ?",
+      "options": [
+        "Dépassement de la pile d'appels (Stack Overflow)",
+        "Division par zéro",
+        "Erreur de syntaxe",
+        "Fuite mémoire"
+      ],
+      "correct": "Dépassement de la pile d'appels (Stack Overflow)",
+      "explanation": "Si la récursion est trop profonde, la pile d'appels système peut manquer d'espace mémoire, provoquant l'arrêt du programme."
+    },
+    {
+      "question": "Comment fonctionne l'algorithme de tri fusion (Merge Sort) ?",
+      "options": [
+        "Il sélectionne le minimum à chaque étape",
+        "Il insère les éléments un par un dans une partie triée",
+        "Il divise récursivement la liste en deux moitiés, trie chaque moitié, puis fusionne les deux moitiés triées",
+        "Il choisit un pivot et partitionne la liste autour"
+      ],
+      "correct": "Il divise récursivement la liste en deux moitiés, trie chaque moitié, puis fusionne les deux moitiés triées",
+      "explanation": "Le tri fusion est un exemple classique de l'approche 'diviser pour régner'."
+    },
+    {
+      "question": "Quelle est l'étape clé et potentiellement coûteuse en mémoire dans l'algorithme du tri fusion ?",
+      "options": [
+        "La division de la liste",
+        "La comparaison des éléments",
+        "La fusion des deux sous-listes triées (nécessite souvent un espace auxiliaire)",
+        "Les appels récursifs"
+      ],
+      "correct": "La fusion des deux sous-listes triées (nécessite souvent un espace auxiliaire)",
+      "explanation": "L'étape de fusion consiste à parcourir les deux sous-listes triées pour construire une nouvelle liste triée, ce qui requiert typiquement un tableau temporaire de taille n."
+    },
+    {
+      "question": "Quelle est la complexité temporelle du tri fusion dans le meilleur, le pire et le cas moyen pour une liste de taille n ?",
+      "options": [
+        "O(n^2)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correct": "O(n log n)",
+      "explanation": "Le tri fusion a une complexité temporelle stable et efficace de O(n log n) quel que soit l'ordre initial des éléments."
+    },
+    {
+      "question": "Quelle est la complexité spatiale (mémoire supplémentaire) typique du tri fusion ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct": "O(n)",
+      "explanation": "En raison de la nécessité d'un tableau auxiliaire pour l'étape de fusion, la complexité mémoire est généralement linéaire."
+    },
+    {
+      "question": "Comment fonctionne l'algorithme de tri rapide (Quick Sort) ?",
+      "options": [
+        "Il fusionne des sous-listes triées",
+        "Il choisit un élément appelé 'pivot', partitionne la liste pour placer les éléments plus petits que le pivot avant lui et les plus grands après, puis trie récursivement les deux sous-listes",
+        "Il construit un tas puis extrait les éléments",
+        "Il insère chaque élément à sa place"
+      ],
+      "correct": "Il choisit un élément appelé 'pivot', partitionne la liste pour placer les éléments plus petits que le pivot avant lui et les plus grands après, puis trie récursivement les deux sous-listes",
+      "explanation": "Le tri rapide est également basé sur 'diviser pour régner', mais la difficulté réside dans l'étape de partitionnement."
+    },
+    {
+      "question": "Quelle est l'étape cruciale et la plus complexe à implémenter correctement dans le tri rapide ?",
+      "options": [
+        "Le choix du pivot",
+        "L'appel récursif",
+        "La partition de la liste autour du pivot",
+        "La fusion des résultats"
+      ],
+      "correct": "La partition de la liste autour du pivot",
+      "explanation": "L'algorithme de partitionnement (ex: Hoare, Lomuto) doit réarranger efficacement les éléments par rapport au pivot."
+    },
+    {
+      "question": "Quelle est la complexité temporelle du tri rapide dans le cas moyen ?",
+      "options": [
+        "O(n^2)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correct": "O(n log n)",
+      "explanation": "En moyenne, si le pivot divise bien la liste, le tri rapide est très efficace avec une complexité de O(n log n)."
+    },
+    {
+      "question": "Quelle est la complexité temporelle du tri rapide dans le pire des cas (ex: pivot mal choisi sur une liste déjà triée) ?",
+      "options": [
+        "O(n log n)",
+        "O(n)",
+        "O(n^2)",
+        "O(log n)"
+      ],
+      "correct": "O(n^2)",
+      "explanation": "Si le pivot est systématiquement le plus petit ou le plus grand élément, la partition est déséquilibrée et la complexité dégénère en O(n^2)."
+    },
+    {
+      "question": "Quel est l'avantage du tri rapide par rapport au tri fusion en termes de complexité spatiale (mémoire) pour une implémentation 'en place' ?",
+      "options": [
+        "Le tri rapide utilise toujours O(n) mémoire",
+        "Le tri rapide (implémenté en place) a une complexité spatiale moyenne de O(log n) (pour la pile récursive) contre O(n) pour le tri fusion",
+        "Le tri rapide utilise O(1) mémoire",
+        "Les deux utilisent O(n log n) mémoire"
+      ],
+      "correct": "Le tri rapide (implémenté en place) a une complexité spatiale moyenne de O(log n) (pour la pile récursive) contre O(n) pour le tri fusion",
+      "explanation": "Le tri rapide peut être implémenté pour trier le tableau 'sur place' sans nécessiter un tableau auxiliaire de taille n, bien que la récursion consomme de l'espace sur la pile (O(n) dans le pire cas, O(log n) en moyenne)."
+    },
+    {
+      "question": "Qu'est-ce qu'un tri 'stable' ?",
+      "options": [
+        "Un tri qui ne plante jamais",
+        "Un tri qui préserve l'ordre relatif des éléments ayant des clés de tri égales",
+        "Un tri qui utilise peu de mémoire",
+        "Un tri qui est toujours en O(n log n)"
+      ],
+      "correct": "Un tri qui préserve l'ordre relatif des éléments ayant des clés de tri égales",
+      "explanation": "Si on trie une liste de personnes par âge, un tri stable garantit que deux personnes du même âge apparaîtront dans la liste triée dans le même ordre qu'elles apparaissaient initialement."
+    },
+    {
+      "question": "Lequel de ces algorithmes de tri est généralement stable ?",
+      "options": [
+        "Tri rapide (Quick Sort) standard",
+        "Tri par sélection",
+        "Tri fusion (Merge Sort)",
+        "Tri par tas (Heap Sort)"
+      ],
+      "correct": "Tri fusion (Merge Sort)",
+      "explanation": "Le tri fusion et le tri par insertion sont des exemples de tris stables. Le tri rapide et le tri par sélection ne le sont généralement pas."
+    },
+    {
+      "question": "Quelle structure de données arborescente est souvent utilisée pour implémenter les files de priorité ?",
+      "options": [
+        "Arbre binaire de recherche",
+        "Tas (Heap)",
+        "Arbre AVL",
+        "Arbre Rouge-Noir"
+      ],
+      "correct": "Tas (Heap)",
+      "explanation": "Un tas (min-heap ou max-heap) est un arbre binaire (quasi) complet qui satisfait la propriété de tas : chaque nœud est plus petit (ou égal) que ses enfants (min-heap) ou plus grand (max-heap)."
+    },
+    {
+      "question": "Quelle est la complexité typique des opérations d'insertion et d'extraction du minimum (ou maximum) dans un tas binaire de taille n ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct": "O(log n)",
+      "explanation": "Ces opérations nécessitent de maintenir la propriété de tas en faisant 'remonter' ou 'descendre' l'élément le long d'un chemin de l'arbre, dont la hauteur est O(log n)."
+    },
+    {
+      "question": "Quel algorithme de tri utilise un tas pour trier une liste en O(n log n) ?",
+      "options": [
+        "Tri rapide",
+        "Tri fusion",
+        "Tri par tas (Heap Sort)",
+        "Tri par insertion"
+      ],
+      "correct": "Tri par tas (Heap Sort)",
+      "explanation": "Heap Sort construit d'abord un tas avec les éléments, puis extrait répétitivement le maximum (ou minimum) du tas pour construire la liste triée."
+    },
+    {
+      "question": "Quelle est la définition d'un Arbre Binaire de Recherche (ABR) ?",
+      "options": [
+        "Un arbre où chaque nœud a au plus deux enfants",
+        "Un arbre binaire où tous les niveaux sont remplis",
+        "Un arbre binaire tel que pour tout nœud, la valeur de sa clé est supérieure ou égale à toutes les clés du sous-arbre gauche et inférieure ou égale à toutes les clés du sous-arbre droit",
+        "Un arbre binaire trié par niveau"
+      ],
+      "correct": "Un arbre binaire tel que pour tout nœud, la valeur de sa clé est supérieure ou égale à toutes les clés du sous-arbre gauche et inférieure ou égale à toutes les clés du sous-arbre droit",
+      "explanation": "Cette propriété récursive permet des recherches efficaces."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de la recherche, insertion et suppression dans un ABR équilibré contenant n nœuds ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct": "O(log n)",
+      "explanation": "Si l'arbre reste équilibré (sa hauteur est proportionnelle à log n), ces opérations sont efficaces."
+    },
+    {
+      "question": "Quel est le principal problème des ABR simples (non auto-équilibrants) ?",
+      "options": [
+        "Ils sont difficiles à parcourir",
+        "Ils peuvent devenir déséquilibrés (dégénérer en liste chaînée) lors d'insertions/suppressions successives, entraînant une complexité O(n) pour les opérations",
+        "Ils ne peuvent stocker que des nombres",
+        "Ils utilisent trop de mémoire"
+      ],
+      "correct": "Ils peuvent devenir déséquilibrés (dégénérer en liste chaînée) lors d'insertions/suppressions successives, entraînant une complexité O(n) pour les opérations",
+      "explanation": "L'ordre d'insertion des clés a un impact majeur sur la structure et donc les performances d'un ABR simple."
+    },
+    {
+      "question": "Quel type d'arbre binaire de recherche maintient automatiquement son équilibre lors des insertions et suppressions pour garantir des performances en O(log n) ?",
+      "options": [
+        "Arbre binaire quelconque",
+        "Arbre binaire complet",
+        "Arbre AVL ou Arbre Rouge-Noir",
+        "Tas binaire"
+      ],
+      "correct": "Arbre AVL ou Arbre Rouge-Noir",
+      "explanation": "Ces structures de données (plus complexes) utilisent des rotations pour rééquilibrer l'arbre après chaque modification."
+    },
+    {
+      "question": "Lors d'un parcours en largeur (BFS) d'un graphe, quelle structure de données est utilisée pour mémoriser les sommets à visiter ?",
+      "options": [
+        "Pile",
+        "File",
+        "Liste triée",
+        "Table de hachage"
+      ],
+      "correct": "File",
+      "explanation": "Le BFS explore les voisins niveau par niveau, ce qui correspond au fonctionnement FIFO d'une file."
+    },
+    {
+      "question": "Lors d'un parcours en profondeur (DFS) d'un graphe (implémentation itérative), quelle structure de données est utilisée pour mémoriser les sommets à visiter ?",
+      "options": [
+        "Pile",
+        "File",
+        "Ensemble",
+        "Dictionnaire"
+      ],
+      "correct": "Pile",
+      "explanation": "Le DFS explore une branche en profondeur d'abord, ce qui correspond au fonctionnement LIFO d'une pile (ou à la pile d'appels de la récursivité)."
+    },
+    {
+      "question": "Quel algorithme est classiquement utilisé pour trouver le plus court chemin (en termes de poids total) entre un sommet source et tous les autres sommets dans un graphe pondéré où tous les poids sont positifs ?",
+      "options": [
+        "Parcours en Largeur (BFS)",
+        "Parcours en Profondeur (DFS)",
+        "Algorithme de Dijkstra",
+        "Algorithme de Kruskal"
+      ],
+      "correct": "Algorithme de Dijkstra",
+      "explanation": "L'algorithme de Dijkstra explore progressivement le graphe en maintenant les distances les plus courtes connues depuis la source et en choisissant le sommet non visité le plus proche."
+    },
+    {
+      "question": "Quelle structure de données est souvent utilisée pour optimiser l'algorithme de Dijkstra (pour trouver rapidement le sommet non visité le plus proche) ?",
+      "options": [
+        "Une pile",
+        "Une file",
+        "Une file de priorité (implémentée avec un tas)",
+        "Une table de hachage"
+      ],
+      "correct": "Une file de priorité (implémentée avec un tas)",
+      "explanation": "La file de priorité permet d'extraire efficacement (en O(log N)) le sommet avec la plus petite distance parmi ceux à explorer."
+    },
+    {
+      "question": "Quelle est la complexité temporelle de l'algorithme de Dijkstra avec une implémentation utilisant une file de priorité (tas binaire) sur un graphe avec N sommets et E arêtes ?",
+      "options": [
+        "O(N^2)",
+        "O(N + E)",
+        "O(E log N)",
+        "O(N log N)"
+      ],
+      "correct": "O(E log N)",
+      "explanation": "Dans cette implémentation courante, chaque arête peut potentiellement entraîner une mise à jour dans la file de priorité (coût O(log N))."
+    },
+    {
+      "question": "L'algorithme de Dijkstra fonctionne-t-il correctement si le graphe contient des poids d'arêtes négatifs ?",
+      "options": [
+        "Oui, toujours",
+        "Non, il peut donner des résultats incorrects en présence de poids négatifs",
+        "Seulement s'il n'y a pas de cycles négatifs",
+        "Seulement si le graphe est non orienté"
+      ],
+      "correct": "Non, il peut donner des résultats incorrects en présence de poids négatifs",
+      "explanation": "L'hypothèse de Dijkstra est que les poids sont non négatifs. Pour les graphes avec poids négatifs (mais sans cycle négatif), il faut utiliser Bellman-Ford."
+    },
+    {
+      "question": "Qu'est-ce qu'un Arbre Couvrant Minimal (ACM ou MST - Minimum Spanning Tree) d'un graphe connexe pondéré non orienté ?",
+      "options": [
+        "Le chemin le plus court entre deux sommets",
+        "Un sous-graphe qui connecte tous les sommets avec le poids total des arêtes le plus faible possible, sans former de cycle",
+        "Un parcours en largeur du graphe",
+        "Un graphe où tous les sommets sont connectés à un sommet central"
+      ],
+      "correct": "Un sous-graphe qui connecte tous les sommets avec le poids total des arêtes le plus faible possible, sans former de cycle",
+      "explanation": "L'ACM est utile par exemple pour concevoir un réseau (routier, électrique) de coût minimal connectant plusieurs points."
+    },
+    {
+      "question": "Quel algorithme glouton construit un Arbre Couvrant Minimal en ajoutant itérativement l'arête la moins chère qui ne forme pas de cycle avec les arêtes déjà sélectionnées ?",
+      "options": [
+        "Algorithme de Dijkstra",
+        "Algorithme de Prim",
+        "Algorithme de Kruskal",
+        "Algorithme de Bellman-Ford"
+      ],
+      "correct": "Algorithme de Kruskal",
+      "explanation": "Kruskal trie d'abord les arêtes par poids croissant et les ajoute si elles ne créent pas de cycle (vérifié souvent avec une structure Union-Find)."
+    },
+    {
+      "question": "Quel algorithme glouton construit un Arbre Couvrant Minimal en partant d'un sommet et en ajoutant itérativement l'arête la moins chère reliant un sommet de l'arbre en construction à un sommet hors de l'arbre ?",
+      "options": [
+        "Algorithme de Dijkstra",
+        "Algorithme de Prim",
+        "Algorithme de Kruskal",
+        "Parcours en largeur"
+      ],
+      "correct": "Algorithme de Prim",
+      "explanation": "Prim fait 'grandir' l'arbre à partir d'un point de départ, en choisissant toujours la connexion la plus proche vers l'extérieur."
+    },
+    {
+      "question": "Quelle stratégie algorithmique consiste à essayer toutes les possibilités de manière systématique, souvent en explorant un arbre de recherche ?",
+      "options": [
+        "Diviser pour régner",
+        "Glouton",
+        "Programmation dynamique",
+        "Recherche exhaustive / Retour sur trace (Backtracking)"
+      ],
+      "correct": "Recherche exhaustive / Retour sur trace (Backtracking)",
+      "explanation": "Le retour sur trace explore un chemin. S'il mène à une impasse ou une solution non valide, il revient en arrière et essaie une autre branche."
+    },
+    {
+      "question": "Quel problème classique est souvent résolu par retour sur trace (backtracking) ?",
+      "options": [
+        "Tri d'une liste",
+        "Recherche du plus court chemin",
+        "Le problème des N reines (placer N reines sur un échiquier NxN sans qu'elles se menacent)",
+        "Calcul de factorielle"
+      ],
+      "correct": "Le problème des N reines (placer N reines sur un échiquier NxN sans qu'elles se menacent)",
+      "explanation": "On essaie de placer une reine colonne par colonne, en vérifiant les contraintes. Si on est bloqué, on revient en arrière pour essayer une autre position."
+    },
+    {
+      "question": "Quelle stratégie algorithmique résout un problème en le décomposant en sous-problèmes qui se chevauchent, en stockant les solutions des sous-problèmes pour éviter de les recalculer ?",
+      "options": [
+        "Glouton",
+        "Diviser pour régner",
+        "Programmation dynamique",
+        "Retour sur trace"
+      ],
+      "correct": "Programmation dynamique",
+      "explanation": "La programmation dynamique (souvent implémentée avec mémoïsation ou tabulation) est efficace pour les problèmes ayant une structure de sous-problèmes optimaux et des sous-problèmes qui se répètent."
+    },
+    {
+      "question": "Le calcul des nombres de Fibonacci peut être optimisé en évitant les recalculs redondants de la version récursive naïve. Quelle technique utilise-t-on alors ?",
+      "options": [
+        "Algorithme glouton",
+        "Programmation dynamique (mémoïsation ou tabulation)",
+        "Recherche dichotomique",
+        "Tri par tas"
+      ],
+      "correct": "Programmation dynamique (mémoïsation ou tabulation)",
+      "explanation": "En stockant les valeurs déjà calculées (ex: F(k-1) et F(k-2)) on évite de les recalculer plusieurs fois, passant d'une complexité exponentielle à linéaire."
+    },
+    {
+      "question": "Qu'est-ce que la mémoïsation (memoization) ?",
+      "options": [
+        "Une technique de tri",
+        "Une technique d'optimisation (souvent utilisée en programmation dynamique ou récursive) qui consiste à stocker les résultats des appels de fonction coûteux et à retourner le résultat mis en cache lorsque les mêmes entrées se présentent à nouveau",
+        "Une manière de documenter le code",
+        "Une méthode de débogage"
+      ],
+      "correct": "Une technique d'optimisation (souvent utilisée en programmation dynamique ou récursive) qui consiste à stocker les résultats des appels de fonction coûteux et à retourner le résultat mis en cache lorsque les mêmes entrées se présentent à nouveau",
+      "explanation": "C'est une approche 'top-down' de la programmation dynamique, basée sur la récursivité avec cache."
+    },
+    {
+      "question": "Qu'est-ce que la tabulation en programmation dynamique ?",
+      "options": [
+        "Utiliser des tabulations pour indenter le code",
+        "Une approche 'bottom-up' où l'on remplit un tableau avec les solutions des sous-problèmes, en commençant par les plus petits, jusqu'à atteindre la solution du problème global",
+        "Créer une table de hachage",
+        "Afficher les résultats sous forme de tableau"
+      ],
+      "correct": "Une approche 'bottom-up' où l'on remplit un tableau avec les solutions des sous-problèmes, en commençant par les plus petits, jusqu'à atteindre la solution du problème global",
+      "explanation": "La tabulation est souvent implémentée avec des boucles itératives."
+    },
+    {
+      "question": "Quelle est la différence fondamentale entre l'approche 'Diviser pour régner' et la 'Programmation dynamique' ?",
+      "options": [
+        "DP utilise la récursivité, pas Diviser pour régner",
+        "Diviser pour régner décompose en sous-problèmes indépendants, tandis que DP traite des sous-problèmes qui se chevauchent (et stocke leurs résultats)",
+        "DP est toujours plus rapide",
+        "Diviser pour régner est utilisé pour le tri, DP pour la recherche"
+      ],
+      "correct": "Diviser pour régner décompose en sous-problèmes indépendants, tandis que DP traite des sous-problèmes qui se chevauchent (et stocke leurs résultats)",
+      "explanation": "Le tri fusion est 'Diviser pour régner' car les tris des deux moitiés sont indépendants. Fibonacci est 'DP' car F(n-1) et F(n-2) recalculeraient de nombreuses valeurs communes sans mémoïsation."
+    },
+    {
+      "question": "Qu'est-ce qu'un invariant dans la preuve de correction d'un algorithme ?",
+      "options": [
+        "Une variable qui ne varie pas",
+        "Une propriété qui reste vraie tout au long de l'exécution de l'algorithme (ou d'une partie, comme une boucle)",
+        "Une condition d'arrêt",
+        "Une mesure de complexité"
+      ],
+      "correct": "Une propriété qui reste vraie tout au long de l'exécution de l'algorithme (ou d'une partie, comme une boucle)",
+      "explanation": "Prouver qu'un invariant est vrai au début et qu'il est préservé par chaque étape permet de déduire des propriétés sur l'état final, et donc la correction."
+    },
+    {
+      "question": "Qu'est-ce qu'une structure de données abstraite (ADT) ?",
+      "options": [
+        "Une implémentation concrète comme une liste Python",
+        "Une spécification mathématique d'une structure de données définissant un ensemble de données et les opérations permises sur ces données, indépendamment de l'implémentation",
+        "Un type de données de base",
+        "Un organigramme"
+      ],
+      "correct": "Une spécification mathématique d'une structure de données définissant un ensemble de données et les opérations permises sur ces données, indépendamment de l'implémentation",
+      "explanation": "Exemple : l'ADT Pile est défini par les opérations Empiler, Dépiler, EstVide, Sommet."
+    },
+    {
+      "question": "Quel type abstrait est défini par les opérations Enfiler, Défiler, EstVide, Tête ?",
+      "options": [
+        "Pile",
+        "File",
+        "Liste",
+        "Dictionnaire"
+      ],
+      "correct": "File",
+      "explanation": "Ces opérations correspondent au comportement FIFO d'une file d'attente."
+    },
+    {
+      "question": "Quelle est la complexité de l'algorithme de recherche séquentielle sur une liste de n éléments ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(n)",
+      "explanation": "Dans le pire cas, il faut examiner les n éléments."
+    },
+    {
+      "question": "Quelle est la complexité de l'algorithme de recherche dichotomique sur une liste triée de n éléments ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(log n)",
+      "explanation": "La taille de la recherche est divisée par deux à chaque étape."
+    },
+    {
+      "question": "Si un algorithme a une complexité O(n^2) et un autre une complexité O(n log n) pour le même problème, lequel est préférable pour de grandes valeurs de n ?",
+      "options": [
+        "O(n^2)",
+        "O(n log n)",
+        "Les deux sont équivalents",
+        "Cela dépend de la machine"
+      ],
+      "correct": "O(n log n)",
+      "explanation": "La croissance de n log n est beaucoup plus lente que celle de n^2. Pour n grand, l'algorithme en O(n log n) sera significativement plus rapide."
+    },
+    {
+      "question": "Quelle notation de complexité décrit une borne supérieure asymptotique (le temps ne croît pas plus vite que...) ?",
+      "options": [
+        "O (Grand O)",
+        "Ω (Oméga)",
+        "Θ (Thêta)",
+        "o (petit o)"
+      ],
+      "correct": "O (Grand O)",
+      "explanation": "f(n) = O(g(n)) signifie que f(n) ne croît pas asymptotiquement plus vite que g(n) (à une constante près)."
+    },
+    {
+      "question": "Quelle notation de complexité décrit une borne inférieure asymptotique (le temps croît au moins aussi vite que...) ?",
+      "options": [
+        "O (Grand O)",
+        "Ω (Oméga)",
+        "Θ (Thêta)",
+        "ω (petit oméga)"
+      ],
+      "correct": "Ω (Oméga)",
+      "explanation": "f(n) = Ω(g(n)) signifie que f(n) croît asymptotiquement au moins aussi vite que g(n)."
+    },
+    {
+      "question": "Quelle notation de complexité décrit une borne asymptotique stricte (le temps croît exactement aussi vite que...) ?",
+      "options": [
+        "O (Grand O)",
+        "Ω (Oméga)",
+        "Θ (Thêta)",
+        "Aucune"
+      ],
+      "correct": "Θ (Thêta)",
+      "explanation": "f(n) = Θ(g(n)) signifie que f(n) croît asymptotiquement comme g(n) (f(n) est à la fois O(g(n)) et Ω(g(n)))."
+    },
+    {
+      "question": "Quelle est la complexité en O() de l'algorithme suivant : `somme = 0; for i in range(n): for j in range(n): somme += i * j` ?",
+      "options": [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(n log n)"
+      ],
+      "correct": "O(n^2)",
+      "explanation": "La boucle externe s'exécute n fois. Pour chaque itération externe, la boucle interne s'exécute n fois. Le nombre total d'opérations est proportionnel à n * n = n^2."
+    },
+    {
+      "question": "Quelle est la complexité en O() de l'algorithme suivant : `i = n; while i > 1: print(i); i = i // 2` ?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n^2)"
+      ],
+      "correct": "O(log n)",
+      "explanation": "La variable `i` est divisée par 2 à chaque itération. Le nombre d'itérations nécessaires pour passer de n à 1 en divisant par 2 est proportionnel à log2(n)."
+    },
+    {
+      "question": "Qu'est-ce que le problème de l'arrêt (Halting Problem) ?",
+      "options": [
+        "Le problème de savoir comment arrêter un programme",
+        "Le problème indécidable de déterminer, pour un programme et une entrée donnés, si ce programme finira par s'arrêter ou tournera indéfiniment",
+        "Le problème d'optimiser la vitesse d'arrêt d'un algorithme",
+        "Le problème de savoir quand un ordinateur va tomber en panne"
+      ],
+      "correct": "Le problème indécidable de déterminer, pour un programme et une entrée donnés, si ce programme finira par s'arrêter ou tournera indéfiniment",
+      "explanation": "Alan Turing a prouvé qu'il n'existe aucun algorithme général capable de résoudre ce problème pour tous les cas."
+    },
+    {
+      "question": "Qu'est-ce que la classe de complexité P ?",
+      "options": [
+        "Les problèmes pouvant être résolus en temps polynomial par une machine de Turing déterministe",
+        "Les problèmes pouvant être résolus en temps polynomial par une machine de Turing non déterministe",
+        "Les problèmes très difficiles (exponentiels)",
+        "Les problèmes impossibles à résoudre"
+      ],
+      "correct": "Les problèmes pouvant être résolus en temps polynomial par une machine de Turing déterministe",
+      "explanation": "Les problèmes dans P sont considérés comme 'efficacement solubles' par un algorithme (complexité O(n^k) pour un k fixe)."
+    },
+    {
+      "question": "Qu'est-ce que la classe de complexité NP ?",
+      "options": [
+        "Les problèmes non polynomiaux",
+        "Les problèmes dont une solution proposée peut être vérifiée en temps polynomial par une machine de Turing déterministe",
+        "Les problèmes résolus uniquement par des algorithmes non déterministes",
+        "Les problèmes qui n'ont pas de solution"
+      ],
+      "correct": "Les problèmes dont une solution proposée peut être vérifiée en temps polynomial par une machine de Turing déterministe",
+      "explanation": "NP signifie 'Non-deterministic Polynomial time'. Si on nous donne une solution candidate, on peut vérifier rapidement si c'est une solution correcte."
+    },
+    {
+      "question": "Quelle est la grande question ouverte concernant les classes P et NP ?",
+      "options": [
+        "Est-ce que P est plus grand que NP ?",
+        "Est-ce que P = NP ?",
+        "Est-ce que NP contient des problèmes indécidables ?",
+        "Est-ce que tous les problèmes sont dans P ?"
+      ],
+      "correct": "Est-ce que P = NP ?",
+      "explanation": "C'est l'un des plus grands problèmes non résolus en informatique et en mathématiques. On sait que P est inclus dans NP, mais on ne sait pas si l'inclusion est stricte. La plupart des experts pensent que P != NP."
+    },
+    {
+      "question": "Que sont les problèmes NP-complets ?",
+      "options": [
+        "Les problèmes les plus faciles de NP",
+        "Les problèmes de P",
+        "Les problèmes les plus difficiles de NP, tels que si on trouve un algorithme polynomial pour l'un d'eux, alors on peut résoudre tous les problèmes de NP en temps polynomial (impliquant P=NP)",
+        "Les problèmes indécidables"
+      ],
+      "correct": "Les problèmes les plus difficiles de NP, tels que si on trouve un algorithme polynomial pour l'un d'eux, alors on peut résoudre tous les problèmes de NP en temps polynomial (impliquant P=NP)",
+      "explanation": "Le problème du voyageur de commerce ou le problème SAT sont des exemples de problèmes NP-complets. Aucun algorithme polynomial efficace n'est connu pour eux."
+    },
+    {
+      "question": "Si P != NP (ce qui est conjecturé), qu'est-ce que cela implique pour les problèmes NP-complets ?",
+      "options": [
+        "Ils peuvent être résolus facilement",
+        "Ils n'admettent pas d'algorithme de résolution en temps polynomial",
+        "Ils sont tous équivalents à P",
+        "Ils n'ont pas de solution"
+      ],
+      "correct": "Ils n'admettent pas d'algorithme de résolution en temps polynomial",
+      "explanation": "Cela signifierait qu'il existe des problèmes dont on peut vérifier rapidement une solution, mais pour lesquels trouver cette solution est intrinsèquement difficile (nécessite un temps exponentiel dans le pire cas)."
+    },
+    {
+      "question": "Pour un problème NP-complet, quelle approche est souvent utilisée en pratique pour trouver une solution approximative ?",
+      "options": [
+        "Recherche exhaustive",
+        "Algorithmes exacts polynomiaux",
+        "Algorithmes d'approximation ou heuristiques",
+        "Ne rien faire"
+      ],
+      "correct": "Algorithmes d'approximation ou heuristiques",
+      "explanation": "Puisqu'on ne connaît pas d'algorithme exact efficace, on se contente souvent de solutions proches de l'optimum trouvées rapidement."
+    }
+  ]
+}

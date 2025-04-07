@@ -1,0 +1,939 @@
+{
+  "langages_programmation": [
+    {
+      "question": "Qu'est-ce qu'un langage de programmation ?",
+      "options": [
+        "Un langage naturel comme le français ou l'anglais",
+        "Un langage formel utilisé pour écrire des instructions qu'un ordinateur peut exécuter",
+        "Un type de matériel informatique",
+        "Un protocole de communication réseau"
+      ],
+      "correct": "Un langage formel utilisé pour écrire des instructions qu'un ordinateur peut exécuter",
+      "explanation": "Un langage de programmation possède une syntaxe et une sémantique précises pour décrire des algorithmes et des structures de données afin de créer des programmes informatiques."
+    },
+    {
+      "question": "Quel est le seul langage directement compréhensible par le processeur (CPU) d'un ordinateur ?",
+      "options": [
+        "Le langage C",
+        "Le langage d'assemblage",
+        "Le langage machine (code binaire)",
+        "Python"
+      ],
+      "correct": "Le langage machine (code binaire)",
+      "explanation": "Le langage machine est constitué d'une suite d'instructions codées en binaire (0 et 1) spécifiques à l'architecture du processeur."
+    },
+    {
+      "question": "Qu'est-ce que le langage d'assemblage (assembleur) ?",
+      "options": [
+        "Un langage de haut niveau très facile à lire",
+        "Un langage symbolique de bas niveau qui représente les instructions machine par des mnémoniques lisibles par l'homme",
+        "Le code binaire exécuté par le CPU",
+        "Un langage utilisé uniquement pour le web"
+      ],
+      "correct": "Un langage symbolique de bas niveau qui représente les instructions machine par des mnémoniques lisibles par l'homme",
+      "explanation": "L'assembleur (ex: MOV, ADD, JMP) est une représentation textuelle du langage machine, spécifique à une architecture de processeur. Il nécessite un assembleur pour être traduit en code machine."
+    },
+    {
+      "question": "Qu'est-ce qu'un langage de haut niveau ?",
+      "options": [
+        "Un langage très proche du langage machine",
+        "Un langage conçu pour être difficile à apprendre",
+        "Un langage de programmation qui offre un haut niveau d'abstraction par rapport au matériel, plus proche du langage humain et plus facile à utiliser (ex: Python, Java, C++)",
+        "Un langage utilisé uniquement pour les calculs complexes"
+      ],
+      "correct": "Un langage de programmation qui offre un haut niveau d'abstraction par rapport au matériel, plus proche du langage humain et plus facile à utiliser (ex: Python, Java, C++)",
+      "explanation": "Les langages de haut niveau masquent les détails du matériel et permettent aux programmeurs de se concentrer sur la logique de l'algorithme."
+    },
+    {
+      "question": "Quel est le processus qui traduit l'intégralité du code source écrit dans un langage de haut niveau en langage machine avant l'exécution ?",
+      "options": [
+        "L'interprétation",
+        "La compilation",
+        "Le débogage",
+        "L'édition"
+      ],
+      "correct": "La compilation",
+      "explanation": "Un compilateur analyse tout le code source et génère un fichier exécutable (ou du bytecode) contenant le code machine correspondant."
+    },
+    {
+      "question": "Quel type de programme effectue la compilation ?",
+      "options": [
+        "Un interpréteur",
+        "Un éditeur de texte",
+        "Un compilateur",
+        "Un système d'exploitation"
+      ],
+      "correct": "Un compilateur",
+      "explanation": "Le compilateur est un programme traducteur spécifique à un langage source et à une architecture cible."
+    },
+    {
+      "question": "Quel est l'avantage principal d'un programme compilé par rapport à un programme interprété ?",
+      "options": [
+        "Il est plus facile à modifier",
+        "Il est plus portable entre différents systèmes",
+        "Son exécution est généralement plus rapide car la traduction a déjà été faite",
+        "Il prend moins de place sur le disque"
+      ],
+      "correct": "Son exécution est généralement plus rapide car la traduction a déjà été faite",
+      "explanation": "Le code machine obtenu après compilation peut être exécuté directement par le processeur, sans étape de traduction à l'exécution."
+    },
+    {
+      "question": "Quel est le processus qui traduit et exécute le code source d'un langage de haut niveau instruction par instruction, sans créer de fichier exécutable séparé ?",
+      "options": [
+        "La compilation",
+        "L'interprétation",
+        "L'assemblage",
+        "L'édition de liens"
+      ],
+      "correct": "L'interprétation",
+      "explanation": "Un interpréteur lit le code source ligne par ligne (ou instruction par instruction) et l'exécute immédiatement."
+    },
+    {
+      "question": "Quel type de programme effectue l'interprétation ?",
+      "options": [
+        "Un compilateur",
+        "Un interpréteur (ou interprète)",
+        "Un assembleur",
+        "Un système de gestion de base de données"
+      ],
+      "correct": "Un interpréteur (ou interprète)",
+      "explanation": "L'interpréteur est nécessaire à chaque exécution du programme pour traduire le code source."
+    },
+    {
+      "question": "Quel est l'avantage principal d'un langage interprété ?",
+      "options": [
+        "L'exécution est toujours plus rapide",
+        "Le développement et le débogage peuvent être plus rapides (pas d'étape de compilation explicite), et la portabilité est souvent plus facile",
+        "Il produit des fichiers exécutables plus petits",
+        "Il nécessite moins de mémoire vive"
+      ],
+      "correct": "Le développement et le débogage peuvent être plus rapides (pas d'étape de compilation explicite), et la portabilité est souvent plus facile",
+      "explanation": "On peut tester le code immédiatement. Pour exécuter le code sur une autre machine, il suffit d'y installer l'interpréteur correspondant."
+    },
+    {
+      "question": "Python est-il principalement considéré comme un langage compilé ou interprété ?",
+      "options": [
+        "Compilé uniquement",
+        "Interprété (bien qu'il y ait une étape de compilation intermédiaire en bytecode)",
+        "Assemblé",
+        "Ni l'un ni l'autre"
+      ],
+      "correct": "Interprété (bien qu'il y ait une étape de compilation intermédiaire en bytecode)",
+      "explanation": "Python est généralement exécuté par un interpréteur. Il compile d'abord le code source en bytecode (fichier .pyc), qui est ensuite exécuté par la machine virtuelle Python (PVM)."
+    },
+    {
+      "question": "Qu'est-ce que le bytecode dans le contexte de langages comme Java ou Python ?",
+      "options": [
+        "Le code source original",
+        "Le langage machine natif du processeur",
+        "Un code intermédiaire, indépendant de la plateforme matérielle, généré par une première compilation et destiné à être exécuté par une machine virtuelle",
+        "Le langage d'assemblage"
+      ],
+      "correct": "Un code intermédiaire, indépendant de la plateforme matérielle, généré par une première compilation et destiné à être exécuté par une machine virtuelle",
+      "explanation": "Le bytecode offre un compromis : il est plus rapide à interpréter que le code source mais reste portable car il n'est pas spécifique à un CPU."
+    },
+    {
+      "question": "Qu'est-ce qu'une variable en programmation ?",
+      "options": [
+        "Une instruction conditionnelle",
+        "Une boucle",
+        "Un nom symbolique associé à une valeur stockée en mémoire, dont la valeur peut potentiellement changer au cours de l'exécution",
+        "Une fonction prédéfinie"
+      ],
+      "correct": "Un nom symbolique associé à une valeur stockée en mémoire, dont la valeur peut potentiellement changer au cours de l'exécution",
+      "explanation": "Les variables permettent de nommer et de manipuler des données dans un programme."
+    },
+    {
+      "question": "Quelle opération permet d'attribuer une valeur à une variable en Python ?",
+      "options": [
+        "L'opérateur d'égalité ==",
+        "L'opérateur d'affectation =",
+        "L'opérateur d'addition +",
+        "La fonction set()"
+      ],
+      "correct": "L'opérateur d'affectation =",
+      "explanation": "L'instruction `nom_variable = valeur` stocke la valeur à droite dans la variable nommée à gauche."
+    },
+    {
+      "question": "Soit l'instruction Python `age = 16`. Quel est le nom de la variable et quelle est sa valeur ?",
+      "options": [
+        "Nom: 16, Valeur: age",
+        "Nom: =, Valeur: 16",
+        "Nom: age, Valeur: 16",
+        "Nom: age, Valeur: '16'"
+      ],
+      "correct": "Nom: age, Valeur: 16",
+      "explanation": "`age` est le nom choisi pour la variable, et `16` est la valeur entière qui lui est affectée."
+    },
+    {
+      "question": "Quel type de donnée est utilisé pour représenter des nombres entiers (sans partie décimale) en Python ?",
+      "options": [
+        "float",
+        "str",
+        "bool",
+        "int"
+      ],
+      "correct": "int",
+      "explanation": "Le type `int` (integer) représente les nombres entiers positifs, négatifs ou nuls."
+    },
+    {
+      "question": "Quel type de donnée est utilisé pour représenter des nombres réels (avec une partie décimale) en Python ?",
+      "options": [
+        "int",
+        "str",
+        "float",
+        "bool"
+      ],
+      "correct": "float",
+      "explanation": "Le type `float` (floating-point number) représente les nombres à virgule flottante."
+    },
+    {
+      "question": "Quel type de donnée est utilisé pour représenter des valeurs logiques (Vrai ou Faux) en Python ?",
+      "options": [
+        "int",
+        "str",
+        "bool",
+        "float"
+      ],
+      "correct": "bool",
+      "explanation": "Le type `bool` (boolean) ne peut prendre que les valeurs `True` ou `False`."
+    },
+    {
+      "question": "Quel type de donnée est utilisé pour représenter des séquences de caractères (texte) en Python ?",
+      "options": [
+        "int",
+        "str",
+        "bool",
+        "float"
+      ],
+      "correct": "str",
+      "explanation": "Le type `str` (string) représente les chaînes de caractères, délimitées par des guillemets simples (' ') ou doubles (\" \")."
+    },
+    {
+      "question": "Python est un langage à 'typage dynamique'. Qu'est-ce que cela signifie ?",
+      "options": [
+        "Le type d'une variable doit être déclaré explicitement avant utilisation",
+        "Le type d'une variable est déterminé automatiquement lors de l'affectation et peut changer au cours du programme",
+        "Toutes les variables sont du même type",
+        "Les types n'existent pas en Python"
+      ],
+      "correct": "Le type d'une variable est déterminé automatiquement lors de l'affectation et peut changer au cours du programme",
+      "explanation": "Contrairement aux langages à typage statique (comme C++ ou Java), on n'a pas besoin de déclarer le type d'une variable en Python. L'interpréteur le déduit de la valeur affectée."
+    },
+    {
+      "question": "Que fait l'instruction `print(\"Bonjour\")` en Python ?",
+      "options": [
+        "Elle lit une saisie de l'utilisateur",
+        "Elle affiche la chaîne de caractères \"Bonjour\" sur la sortie standard (généralement la console)",
+        "Elle stocke \"Bonjour\" dans une variable",
+        "Elle compare \"Bonjour\" à une autre valeur"
+      ],
+      "correct": "Elle affiche la chaîne de caractères \"Bonjour\" sur la sortie standard (généralement la console)",
+      "explanation": "La fonction `print()` est utilisée pour afficher des informations à l'utilisateur."
+    },
+    {
+      "question": "Que fait l'instruction `nom = input(\"Entrez votre nom : \")` en Python ?",
+      "options": [
+        "Elle affiche le contenu de la variable nom",
+        "Elle affiche le message \"Entrez votre nom : \" et attend que l'utilisateur tape quelque chose au clavier. La saisie de l'utilisateur est ensuite stockée sous forme de chaîne de caractères dans la variable nom.",
+        "Elle convertit \"Entrez votre nom : \" en nom de variable",
+        "Elle vérifie si la variable nom existe"
+      ],
+      "correct": "Elle affiche le message \"Entrez votre nom : \" et attend que l'utilisateur tape quelque chose au clavier. La saisie de l'utilisateur est ensuite stockée sous forme de chaîne de caractères dans la variable nom.",
+      "explanation": "La fonction `input()` permet d'obtenir une saisie de l'utilisateur. Important : elle retourne toujours une chaîne de caractères."
+    },
+    {
+      "question": "Si l'utilisateur tape '10' en réponse à `saisie = input()`, quel sera le type de la variable `saisie` ?",
+      "options": [
+        "int",
+        "float",
+        "str",
+        "bool"
+      ],
+      "correct": "str",
+      "explanation": "`input()` retourne toujours une chaîne de caractères, même si l'utilisateur tape des chiffres. Pour obtenir un entier, il faut convertir : `nombre = int(saisie)`."
+    },
+    {
+      "question": "Quelle fonction utiliser en Python pour convertir une chaîne de caractères représentant un entier (ex: '123') en un vrai nombre entier ?",
+      "options": [
+        "str()",
+        "float()",
+        "int()",
+        "bool()"
+      ],
+      "correct": "int()",
+      "explanation": "La fonction `int()` tente de convertir son argument en un entier. Ex: `n = int('123')` mettra la valeur entière 123 dans `n`."
+    },
+    {
+      "question": "Quelle fonction utiliser en Python pour convertir une valeur numérique (entier ou flottant) en chaîne de caractères ?",
+      "options": [
+        "str()",
+        "float()",
+        "int()",
+        "repr()"
+      ],
+      "correct": "str()",
+      "explanation": "La fonction `str()` convertit son argument en sa représentation textuelle. Ex: `message = \"Age : \" + str(16)`."
+    },
+    {
+      "question": "Quel est le résultat de l'opération `5 / 2` en Python 3 ?",
+      "options": [
+        "2",
+        "2.5",
+        "2.0",
+        "Erreur"
+      ],
+      "correct": "2.5",
+      "explanation": "L'opérateur `/` effectue la division réelle (flottante) en Python 3, même si les opérandes sont des entiers."
+    },
+    {
+      "question": "Quel est le résultat de l'opération `5 // 2` en Python ?",
+      "options": [
+        "2",
+        "2.5",
+        "3",
+        "Erreur"
+      ],
+      "correct": "2",
+      "explanation": "L'opérateur `//` effectue la division entière (quotient de la division euclidienne)."
+    },
+    {
+      "question": "Quel est le résultat de l'opération `5 % 2` en Python ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "2.5"
+      ],
+      "correct": "1",
+      "explanation": "L'opérateur `%` (modulo) calcule le reste de la division entière (5 divisé par 2 égale 2 reste 1)."
+    },
+    {
+      "question": "Quel est le résultat de l'opération `2 ** 3` en Python ?",
+      "options": [
+        "5",
+        "6",
+        "8",
+        "9"
+      ],
+      "correct": "8",
+      "explanation": "L'opérateur `**` calcule la puissance (exponentiation). 2 puissance 3 = 2 * 2 * 2 = 8."
+    },
+    {
+      "question": "Quelle est la valeur de l'expression `(10 > 5) and (3 < 1)` ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correct": "False",
+      "explanation": "10 > 5 est True. 3 < 1 est False. True and False vaut False."
+    },
+    {
+      "question": "Quelle est la valeur de l'expression `(10 == 5) or (3 != 1)` ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correct": "True",
+      "explanation": "10 == 5 est False. 3 != 1 est True. False or True vaut True."
+    },
+    {
+      "question": "Quel opérateur est utilisé pour tester l'égalité de valeur entre deux variables ?",
+      "options": [
+        "=",
+        "==",
+        "!=",
+        "is"
+      ],
+      "correct": "==",
+      "explanation": "L'opérateur `==` compare les valeurs. Ne pas confondre avec `=` qui est l'opérateur d'affectation."
+    },
+    {
+      "question": "Quel opérateur est utilisé pour tester la non-égalité de valeur ?",
+      "options": [
+        "<>",
+        "!==",
+        "!=",
+        "not =="
+      ],
+      "correct": "!=",
+      "explanation": "L'opérateur `!=` renvoie True si les valeurs sont différentes, False sinon."
+    },
+    {
+      "question": "Quelle structure de contrôle permet d'exécuter un bloc d'instructions uniquement si une condition est vraie ?",
+      "options": [
+        "Boucle `for`",
+        "Boucle `while`",
+        "Instruction conditionnelle `if`",
+        "Définition de fonction `def`"
+      ],
+      "correct": "Instruction conditionnelle `if`",
+      "explanation": "La structure `if condition:` exécute le bloc indenté suivant seulement si `condition` est évaluée à True."
+    },
+    {
+      "question": "Quelle structure de contrôle complète un `if` et permet d'exécuter un autre bloc d'instructions si la condition initiale est fausse ?",
+      "options": [
+        "elif",
+        "while",
+        "else",
+        "for"
+      ],
+      "correct": "else",
+      "explanation": "La structure `if condition: ... else: ...` exécute le bloc du `if` si la condition est vraie, et le bloc du `else` si elle est fausse."
+    },
+    {
+      "question": "Quelle structure de contrôle permet de tester plusieurs conditions successivement après un `if` ?",
+      "options": [
+        "else if",
+        "elif",
+        "or if",
+        "case"
+      ],
+      "correct": "elif",
+      "explanation": "La structure `if cond1: ... elif cond2: ... elif cond3: ... else: ...` permet de tester plusieurs cas. `elif` est la contraction de 'else if'."
+    },
+    {
+      "question": "Quelle structure de contrôle permet de répéter un bloc d'instructions tant qu'une condition reste vraie ?",
+      "options": [
+        "Boucle `for`",
+        "Boucle `while`",
+        "Instruction `if`",
+        "Instruction `try...except`"
+      ],
+      "correct": "Boucle `while`",
+      "explanation": "La boucle `while condition:` répète le bloc indenté tant que `condition` est True. Attention aux boucles infinies si la condition ne devient jamais False."
+    },
+    {
+      "question": "Quelle structure de contrôle permet de répéter un bloc d'instructions pour chaque élément d'une séquence (liste, tuple, chaîne, range...) ?",
+      "options": [
+        "Boucle `for`",
+        "Boucle `while`",
+        "Instruction `if...else`",
+        "Fonction `def`"
+      ],
+      "correct": "Boucle `for`",
+      "explanation": "La boucle `for variable in sequence:` assigne successivement chaque élément de `sequence` à `variable` et exécute le bloc indenté."
+    },
+    {
+      "question": "Que fait la fonction `range(5)` en Python ?",
+      "options": [
+        "Elle crée la liste [1, 2, 3, 4, 5]",
+        "Elle crée la liste [0, 1, 2, 3, 4, 5]",
+        "Elle crée un objet représentant la séquence d'entiers de 0 inclus à 5 exclu (soit 0, 1, 2, 3, 4)",
+        "Elle génère le nombre aléatoire 5"
+      ],
+      "correct": "Elle crée un objet représentant la séquence d'entiers de 0 inclus à 5 exclu (soit 0, 1, 2, 3, 4)",
+      "explanation": "`range(n)` génère les entiers de 0 à n-1. `range(a, b)` génère de a à b-1. `range(a, b, step)` génère de a à b-1 par pas de 'step'."
+    },
+    {
+      "question": "Comment écrire une boucle `for` qui affiche les nombres de 0 à 9 ?",
+      "options": [
+        "for i in range(9): print(i)",
+        "for i in range(1, 10): print(i)",
+        "for i in range(10): print(i)",
+        "for i = 0 to 9: print(i)"
+      ],
+      "correct": "for i in range(10): print(i)",
+      "explanation": "`range(10)` produit la séquence 0, 1, 2, 3, 4, 5, 6, 7, 8, 9."
+    },
+    {
+      "question": "Quelle instruction permet de sortir prématurément d'une boucle (`for` ou `while`) ?",
+      "options": [
+        "exit",
+        "stop",
+        "break",
+        "continue"
+      ],
+      "correct": "break",
+      "explanation": "L'instruction `break` interrompt immédiatement l'exécution de la boucle la plus interne."
+    },
+    {
+      "question": "Quelle instruction permet de passer directement à l'itération suivante d'une boucle (`for` ou `while`), en sautant le reste du code du bloc pour l'itération courante ?",
+      "options": [
+        "next",
+        "skip",
+        "break",
+        "continue"
+      ],
+      "correct": "continue",
+      "explanation": "`continue` arrête l'itération en cours et passe au début de la prochaine itération de la boucle."
+    },
+    {
+      "question": "Qu'est-ce qu'une fonction en programmation ?",
+      "options": [
+        "Une variable spéciale",
+        "Un bloc de code nommé et réutilisable qui effectue une tâche spécifique",
+        "Une structure de contrôle conditionnelle",
+        "Un type de donnée"
+      ],
+      "correct": "Un bloc de code nommé et réutilisable qui effectue une tâche spécifique",
+      "explanation": "Les fonctions permettent de structurer le code, d'éviter la répétition et de rendre les programmes plus modulaires et lisibles."
+    },
+    {
+      "question": "Quel mot-clé est utilisé en Python pour définir une fonction ?",
+      "options": [
+        "function",
+        "define",
+        "def",
+        "fun"
+      ],
+      "correct": "def",
+      "explanation": "La définition d'une fonction commence par `def nom_fonction(parametres):`."
+    },
+    {
+      "question": "Dans la définition `def carre(x):`, comment appelle-t-on `x` ?",
+      "options": [
+        "Un argument",
+        "Une valeur de retour",
+        "Un paramètre",
+        "Une variable globale"
+      ],
+      "correct": "Un paramètre",
+      "explanation": "Un paramètre est une variable locale à la fonction qui reçoit une valeur lors de l'appel de la fonction."
+    },
+    {
+      "question": "Lors de l'appel `resultat = carre(5)`, comment appelle-t-on la valeur `5` ?",
+      "options": [
+        "Un paramètre",
+        "Un argument (ou valeur d'argument)",
+        "Une variable locale",
+        "Une valeur de retour"
+      ],
+      "correct": "Un argument (ou valeur d'argument)",
+      "explanation": "Un argument est la valeur réelle passée à la fonction lors de son appel, qui sera affectée au paramètre correspondant."
+    },
+    {
+      "question": "Quelle instruction dans une fonction spécifie la valeur qui doit être renvoyée par la fonction à l'endroit où elle a été appelée ?",
+      "options": [
+        "print",
+        "return",
+        "yield",
+        "exit"
+      ],
+      "correct": "return",
+      "explanation": "L'instruction `return valeur` termine l'exécution de la fonction et renvoie `valeur` comme résultat de l'appel."
+    },
+    {
+      "question": "Si une fonction Python n'a pas d'instruction `return` explicite, que renvoie-t-elle par défaut ?",
+      "options": [
+        "0",
+        "True",
+        "Une erreur",
+        "None"
+      ],
+      "correct": "None",
+      "explanation": "En l'absence de `return`, une fonction Python renvoie implicitement la valeur spéciale `None`."
+    },
+    {
+      "question": "Qu'est-ce que la 'portée' (scope) d'une variable ?",
+      "options": [
+        "Le type de la variable",
+        "La partie du programme où une variable est accessible et reconnue",
+        "La valeur maximale de la variable",
+        "La durée de vie de la variable"
+      ],
+      "correct": "La partie du programme où une variable est accessible et reconnue",
+      "explanation": "On distingue principalement la portée locale (variable définie dans une fonction) et la portée globale (variable définie en dehors de toute fonction)."
+    },
+    {
+      "question": "Où une variable définie à l'intérieur d'une fonction (variable locale) est-elle accessible ?",
+      "options": [
+        "Partout dans le programme",
+        "Uniquement à l'intérieur de cette fonction",
+        "Dans toutes les fonctions définies après elle",
+        "Uniquement si elle est déclarée 'global'"
+      ],
+      "correct": "Uniquement à l'intérieur de cette fonction",
+      "explanation": "Les variables locales n'existent que pendant l'exécution de la fonction et ne sont pas visibles depuis l'extérieur."
+    },
+    {
+      "question": "Que faut-il faire pour modifier la valeur d'une variable globale depuis l'intérieur d'une fonction en Python ?",
+      "options": [
+        "Rien de spécial, c'est automatique",
+        "Utiliser le mot-clé `global` avant d'utiliser la variable dans la fonction",
+        "Retourner la nouvelle valeur avec `return`",
+        "C'est impossible de modifier une variable globale depuis une fonction"
+      ],
+      "correct": "Utiliser le mot-clé `global` avant d'utiliser la variable dans la fonction",
+      "explanation": "Sans `global nom_variable`, une affectation à l'intérieur d'une fonction crée une nouvelle variable locale du même nom. `global` indique qu'on veut utiliser la variable globale."
+    },
+    {
+      "question": "Qu'est-ce qu'une spécification pour une fonction ?",
+      "options": [
+        "Le code source exact de la fonction",
+        "Une description précise de ce que fait la fonction, de ses paramètres (nom, type, rôle) et de ce qu'elle retourne, indépendamment de son implémentation",
+        "Un test pour vérifier que la fonction marche",
+        "Le nom de la fonction uniquement"
+      ],
+      "correct": "Une description précise de ce que fait la fonction, de ses paramètres (nom, type, rôle) et de ce qu'elle retourne, indépendamment de son implémentation",
+      "explanation": "La spécification définit le 'contrat' de la fonction : ce qu'elle attend en entrée et ce qu'elle garantit en sortie."
+    },
+    {
+      "question": "Comment appelle-t-on le texte multiligne placé juste après la ligne `def` d'une fonction en Python, servant à documenter son rôle, ses paramètres et sa valeur de retour ?",
+      "options": [
+        "Un commentaire multiligne",
+        "Une spécification formelle",
+        "Une docstring (chaîne de documentation)",
+        "Un doctest"
+      ],
+      "correct": "Une docstring (chaîne de documentation)",
+      "explanation": "La docstring (entourée de triples guillemets `\"\"\" ... \"\"\"` ou `''' ... '''`) est une convention Python pour documenter les fonctions, modules et classes. Elle peut être accédée via l'attribut `__doc__`."
+    },
+    {
+      "question": "Quel est l'objectif principal de la modularité en programmation (découper un programme en fonctions/modules) ?",
+      "options": [
+        "Rendre le programme plus long",
+        "Améliorer la lisibilité, faciliter la maintenance et le débogage, et permettre la réutilisation du code",
+        "Rendre le programme plus rapide à exécuter",
+        "Utiliser moins de variables"
+      ],
+      "correct": "Améliorer la lisibilité, faciliter la maintenance et le débogage, et permettre la réutilisation du code",
+      "explanation": "Décomposer un problème complexe en sous-problèmes plus simples résolus par des fonctions rend le développement plus gérable."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'bug' en informatique ?",
+      "options": [
+        "Un insecte dans l'ordinateur",
+        "Une fonctionnalité avancée",
+        "Une erreur dans un programme qui provoque un comportement incorrect ou inattendu",
+        "Un commentaire dans le code"
+      ],
+      "correct": "Une erreur dans un programme qui provoque un comportement incorrect ou inattendu",
+      "explanation": "Les bugs peuvent être de différentes natures : syntaxe, exécution, logique."
+    },
+    {
+      "question": "Quel type d'erreur empêche un programme d'être compilé ou interprété car il ne respecte pas les règles de grammaire du langage ?",
+      "options": [
+        "Erreur de logique",
+        "Erreur d'exécution (runtime error)",
+        "Erreur de syntaxe",
+        "Erreur de spécification"
+      ],
+      "correct": "Erreur de syntaxe",
+      "explanation": "Exemples : faute de frappe dans un mot-clé, parenthèse manquante, indentation incorrecte en Python."
+    },
+    {
+      "question": "Quel type d'erreur se produit pendant l'exécution d'un programme, le faisant souvent s'arrêter brutalement (ex: division par zéro, accès à un indice de liste invalide) ?",
+      "options": [
+        "Erreur de logique",
+        "Erreur d'exécution (runtime error ou exception)",
+        "Erreur de syntaxe",
+        "Erreur de compilation"
+      ],
+      "correct": "Erreur d'exécution (runtime error ou exception)",
+      "explanation": "Ces erreurs ne sont détectées que lorsque le programme tourne et tente d'effectuer une opération illégale."
+    },
+    {
+      "question": "Quel type d'erreur fait qu'un programme s'exécute sans planter mais produit un résultat incorrect par rapport à ce qui était attendu ?",
+      "options": [
+        "Erreur de logique",
+        "Erreur d'exécution",
+        "Erreur de syntaxe",
+        "Erreur matérielle"
+      ],
+      "correct": "Erreur de logique",
+      "explanation": "L'algorithme lui-même est incorrect ou mal implémenté. Ce sont souvent les erreurs les plus difficiles à trouver."
+    },
+    {
+      "question": "Qu'est-ce que le débogage (debugging) ?",
+      "options": [
+        "Écrire le code source",
+        "Le processus d'identification, de localisation et de correction des erreurs (bugs) dans un programme",
+        "Compiler le programme",
+        "Tester le programme"
+      ],
+      "correct": "Le processus d'identification, de localisation et de correction des erreurs (bugs) dans un programme",
+      "explanation": "Le débogage est une partie essentielle du développement logiciel."
+    },
+    {
+      "question": "Quelle technique de débogage simple consiste à insérer des instructions `print()` dans le code pour afficher les valeurs des variables à différents points de l'exécution ?",
+      "options": [
+        "Utiliser un débogueur",
+        "L'affichage de traces (ou 'print debugging')",
+        "Les tests unitaires",
+        "La relecture de code"
+      ],
+      "correct": "L'affichage de traces (ou 'print debugging')",
+      "explanation": "Bien que basique, cette technique est souvent utile pour suivre le déroulement du programme et l'évolution des variables."
+    },
+    {
+      "question": "Qu'est-ce qu'un débogueur (debugger) ?",
+      "options": [
+        "Un programme qui écrit du code automatiquement",
+        "Un outil logiciel qui permet d'exécuter un programme pas à pas, de poser des points d'arrêt, et d'inspecter l'état des variables et de la mémoire",
+        "Un correcteur orthographique pour le code",
+        "Un compilateur optimisé"
+      ],
+      "correct": "Un outil logiciel qui permet d'exécuter un programme pas à pas, de poser des points d'arrêt, et d'inspecter l'état des variables et de la mémoire",
+      "explanation": "Les débogueurs offrent un contrôle fin sur l'exécution pour analyser le comportement du programme et localiser les erreurs."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'point d'arrêt' (breakpoint) dans un débogueur ?",
+      "options": [
+        "Une erreur qui arrête le programme",
+        "Un endroit dans le code source où l'on demande au débogueur de suspendre l'exécution du programme",
+        "Un commentaire spécial",
+        "La fin du programme"
+      ],
+      "correct": "Un endroit dans le code source où l'on demande au débogueur de suspendre l'exécution du programme",
+      "explanation": "Les points d'arrêt permettent d'arrêter le programme à des endroits stratégiques pour examiner l'état des variables."
+    },
+    {
+      "question": "Qu'est-ce qu'un 'test unitaire' ?",
+      "options": [
+        "Tester l'ensemble du programme manuellement",
+        "Un petit morceau de code qui vérifie automatiquement qu'une partie spécifique du programme (souvent une fonction) fonctionne correctement pour des entrées données",
+        "Un test effectué par les utilisateurs finaux",
+        "Un test de performance"
+      ],
+      "correct": "Un petit morceau de code qui vérifie automatiquement qu'une partie spécifique du programme (souvent une fonction) fonctionne correctement pour des entrées données",
+      "explanation": "Les tests unitaires aident à garantir la correction de chaque composant et à détecter les régressions (erreurs introduites par des modifications ultérieures)."
+    },
+    {
+      "question": "Que signifie 'passer un test' ?",
+      "options": [
+        "Ignorer le test",
+        "Le test s'est exécuté et a produit le résultat attendu (pas d'erreur)",
+        "Le test a échoué",
+        "Le test n'a pas pu s'exécuter"
+      ],
+      "correct": "Le test s'est exécuté et a produit le résultat attendu (pas d'erreur)",
+      "explanation": "Une suite de tests qui passent indique que le code testé se comporte comme prévu pour les cas considérés."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'assertion' (assert) dans le contexte des tests ?",
+      "options": [
+        "Une instruction `print()`",
+        "Une instruction qui vérifie qu'une condition est vraie. Si la condition est fausse, le test échoue (souvent en levant une exception)",
+        "Une boucle `while`",
+        "Une définition de fonction"
+      ],
+      "correct": "Une instruction qui vérifie qu'une condition est vraie. Si la condition est fausse, le test échoue (souvent en levant une exception)",
+      "explanation": "Les assertions (ex: `assert resultat == 42`) sont utilisées dans les tests unitaires pour vérifier que le résultat obtenu est bien celui attendu."
+    },
+    {
+      "question": "Que signifie 'algorithme correct' ?",
+      "options": [
+        "L'algorithme est très rapide",
+        "L'algorithme produit le résultat attendu pour toutes les entrées valides spécifiées",
+        "L'algorithme utilise peu de mémoire",
+        "L'algorithme est écrit en Python"
+      ],
+      "correct": "L'algorithme produit le résultat attendu pour toutes les entrées valides spécifiées",
+      "explanation": "La correction est la propriété fondamentale d'un algorithme : il doit résoudre le problème posé."
+    },
+    {
+      "question": "Que signifie 'terminaison' d'un algorithme ?",
+      "options": [
+        "L'algorithme est correct",
+        "L'algorithme s'arrête en un temps fini pour toutes les entrées valides",
+        "L'algorithme utilise une boucle `while`",
+        "L'algorithme retourne toujours la même valeur"
+      ],
+      "correct": "L'algorithme s'arrête en un temps fini pour toutes les entrées valides",
+      "explanation": "Un algorithme utile doit se terminer. Il faut faire attention aux boucles infinies."
+    },
+    {
+      "question": "Qu'est-ce qu'un paradigme de programmation ?",
+      "options": [
+        "Un type d'erreur de programmation",
+        "Une façon fondamentale d'aborder la conception et l'écriture de programmes (ex: impératif, orienté objet, fonctionnel)",
+        "Un langage de programmation spécifique",
+        "Un outil de débogage"
+      ],
+      "correct": "Une façon fondamentale d'aborder la conception et l'écriture de programmes (ex: impératif, orienté objet, fonctionnel)",
+      "explanation": "Différents paradigmes proposent différentes manières de structurer le code et de penser la résolution de problèmes."
+    },
+    {
+      "question": "Quel paradigme de programmation décrit une séquence d'instructions qui modifient l'état du programme (variables) ?",
+      "options": [
+        "Fonctionnel",
+        "Logique",
+        "Impératif (incluant procédural et orienté objet)",
+        "Déclaratif"
+      ],
+      "correct": "Impératif (incluant procédural et orienté objet)",
+      "explanation": "La programmation impérative se concentre sur le 'comment' faire les choses, en donnant une suite d'ordres à l'ordinateur."
+    },
+    {
+      "question": "La programmation procédurale, une forme d'impératif, met l'accent sur quoi ?",
+      "options": [
+        "Les objets et leurs interactions",
+        "La décomposition du programme en procédures (fonctions) qui effectuent des tâches spécifiques",
+        "Les fonctions mathématiques pures",
+        "Les règles logiques"
+      ],
+      "correct": "La décomposition du programme en procédures (fonctions) qui effectuent des tâches spécifiques",
+      "explanation": "C'est l'approche classique utilisée avec des langages comme C ou Pascal, et une base importante en Python."
+    },
+    {
+      "question": "Qu'est-ce qu'une bibliothèque (library) ou un module en programmation ?",
+      "options": [
+        "Un commentaire dans le code",
+        "Un ensemble de fonctions, classes et variables pré-écrites et regroupées, que l'on peut importer et utiliser dans son propre programme",
+        "Un type de boucle",
+        "Un éditeur de code"
+      ],
+      "correct": "Un ensemble de fonctions, classes et variables pré-écrites et regroupées, que l'on peut importer et utiliser dans son propre programme",
+      "explanation": "Les bibliothèques (ex: `math`, `random`, `turtle` en Python) évitent de réinventer la roue et facilitent le développement."
+    },
+    {
+      "question": "Quelle instruction utiliser en Python pour pouvoir utiliser les fonctions définies dans le module `math` ?",
+      "options": [
+        "include math",
+        "require 'math'",
+        "using math;",
+        "import math"
+      ],
+      "correct": "import math",
+      "explanation": "L'instruction `import` rend les fonctions et variables du module spécifié accessibles dans le programme courant (ex: `math.sqrt(9)`)."
+    },
+    {
+      "question": "Après avoir fait `import math`, comment appeler la fonction racine carrée (square root) sur le nombre 16 ?",
+      "options": [
+        "sqrt(16)",
+        "math.sqrt(16)",
+        "math->sqrt(16)",
+        "math::sqrt(16)"
+      ],
+      "correct": "math.sqrt(16)",
+      "explanation": "Quand on importe un module entier, on accède à ses membres en utilisant la notation `nom_module.nom_membre`."
+    },
+    {
+      "question": "Après avoir fait `from math import sqrt`, comment appeler la fonction racine carrée sur le nombre 16 ?",
+      "options": [
+        "sqrt(16)",
+        "math.sqrt(16)",
+        "from math.sqrt(16)",
+        "math::sqrt(16)"
+      ],
+      "correct": "sqrt(16)",
+      "explanation": "L'instruction `from ... import ...` importe un membre spécifique directement dans l'espace de noms courant, permettant de l'appeler sans préfixer par le nom du module."
+    },
+    {
+      "question": "Quel module Python est couramment utilisé pour générer des nombres aléatoires ?",
+      "options": [
+        "math",
+        "os",
+        "sys",
+        "random"
+      ],
+      "correct": "random",
+      "explanation": "Le module `random` contient des fonctions comme `random.randint(a, b)` (entier aléatoire entre a et b inclus), `random.random()` (flottant entre 0.0 et 1.0), `random.choice(sequence)`."
+    },
+    {
+      "question": "Que signifie 'mettre en commentaire' une ligne de code ?",
+      "options": [
+        "La supprimer définitivement",
+        "La rendre plus importante",
+        "Indiquer à l'interpréteur ou au compilateur d'ignorer cette ligne (souvent utilisé pour ajouter des explications ou désactiver temporairement du code)",
+        "La traduire en anglais"
+      ],
+      "correct": "Indiquer à l'interpréteur ou au compilateur d'ignorer cette ligne (souvent utilisé pour ajouter des explications ou désactiver temporairement du code)",
+      "explanation": "En Python, les commentaires commencent par un `#`."
+    },
+    {
+      "question": "Pourquoi l'indentation est-elle cruciale en Python ?",
+      "options": [
+        "Elle ne l'est pas, c'est juste pour l'esthétique",
+        "Elle est utilisée pour définir les blocs de code (corps des `if`, `for`, `while`, `def`...), remplaçant les accolades ou mots-clés `end` d'autres langages",
+        "Elle détermine le type des variables",
+        "Elle améliore la vitesse d'exécution"
+      ],
+      "correct": "Elle est utilisée pour définir les blocs de code (corps des `if`, `for`, `while`, `def`...), remplaçant les accolades ou mots-clés `end` d'autres langages",
+      "explanation": "Une indentation incorrecte en Python est une erreur de syntaxe."
+    },
+    {
+      "question": "Quel est le rôle d'une spécification (ou d'une docstring bien écrite) pour le travail en équipe ?",
+      "options": [
+        "Elle remplace le code source",
+        "Elle permet aux différents membres de l'équipe de comprendre comment utiliser une fonction sans avoir besoin d'en lire ou d'en comprendre l'implémentation détaillée",
+        "Elle garantit l'absence de bugs",
+        "Elle compile le code automatiquement"
+      ],
+      "correct": "Elle permet aux différents membres de l'équipe de comprendre comment utiliser une fonction sans avoir besoin d'en lire ou d'en comprendre l'implémentation détaillée",
+      "explanation": "La spécification sert de contrat et de documentation pour l'utilisation des composants logiciels."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'précondition' dans la spécification d'une fonction ?",
+      "options": [
+        "Ce que la fonction retourne",
+        "Une condition qui doit être vraie *avant* l'appel de la fonction pour qu'elle garantisse son résultat",
+        "Une condition qui sera vraie *après* l'exécution de la fonction",
+        "Un exemple d'utilisation"
+      ],
+      "correct": "Une condition qui doit être vraie *avant* l'appel de la fonction pour qu'elle garantisse son résultat",
+      "explanation": "Exemple : pour une fonction `racine_carree(x)`, une précondition est `x >= 0`."
+    },
+    {
+      "question": "Qu'est-ce qu'une 'postcondition' dans la spécification d'une fonction ?",
+      "options": [
+        "Ce que la fonction attend en entrée",
+        "Une condition qui doit être vraie *avant* l'appel de la fonction",
+        "Une condition qui est garantie être vraie *après* l'exécution de la fonction, si les préconditions étaient respectées",
+        "Le temps d'exécution de la fonction"
+      ],
+      "correct": "Une condition qui est garantie être vraie *après* l'exécution de la fonction, si les préconditions étaient respectées",
+      "explanation": "Exemple : pour `racine_carree(x)`, une postcondition pourrait être `resultat * resultat` est proche de `x`."
+    },
+    {
+      "question": "Qu'est-ce qu'un algorithme ?",
+      "options": [
+        "Un langage de programmation",
+        "Une suite finie et non ambiguë d'instructions permettant de résoudre un problème ou d'atteindre un objectif",
+        "Un composant matériel",
+        "Une erreur dans un programme"
+      ],
+      "correct": "Une suite finie et non ambiguë d'instructions permettant de résoudre un problème ou d'atteindre un objectif",
+      "explanation": "L'algorithme est la recette, le programme en est l'implémentation dans un langage spécifique."
+    },
+    {
+      "question": "Quel concept informatique est illustré par une recette de cuisine ?",
+      "options": [
+        "La compilation",
+        "Un algorithme",
+        "La mémoire cache",
+        "Un système d'exploitation"
+      ],
+      "correct": "Un algorithme",
+      "explanation": "Une recette décrit une séquence d'étapes claires pour atteindre un résultat (le plat cuisiné), tout comme un algorithme."
+    },
+    {
+      "question": "Laquelle de ces qualités n'est PAS nécessairement celle d'un bon algorithme ?",
+      "options": [
+        "Correction (il donne le bon résultat)",
+        "Terminaison (il s'arrête)",
+        "Efficacité (il utilise raisonnablement le temps et la mémoire)",
+        "Complexité (il doit être très compliqué)"
+      ],
+      "correct": "Complexité (il doit être très compliqué)",
+      "explanation": "Au contraire, un bon algorithme est souvent le plus simple possible tout en étant correct, terminé et efficace."
+    },
+    {
+      "question": "Qu'est-ce que le pseudocode ?",
+      "options": [
+        "Un code qui contient des erreurs",
+        "Un langage de programmation spécifique",
+        "Une manière de décrire un algorithme en utilisant un langage proche du langage naturel mais avec une structure rappelant celle d'un langage de programmation, indépendamment d'une syntaxe précise",
+        "Le code binaire"
+      ],
+      "correct": "Une manière de décrire un algorithme en utilisant un langage proche du langage naturel mais avec une structure rappelant celle d'un langage de programmation, indépendamment d'une syntaxe précise",
+      "explanation": "Le pseudocode facilite la conception et la communication d'algorithmes avant leur implémentation."
+    },
+    {
+      "question": "Quel paradigme de programmation met l'accent sur l'évaluation de fonctions mathématiques pures, sans effets de bord ni état mutable ?",
+      "options": [
+        "Impératif",
+        "Orienté objet",
+        "Fonctionnel",
+        "Procédural"
+      ],
+      "correct": "Fonctionnel",
+      "explanation": "La programmation fonctionnelle (illustrée par des langages comme Haskell ou Lisp, mais aussi possible en Python) traite le calcul comme l'évaluation de fonctions."
+    }
+  ]
+}
