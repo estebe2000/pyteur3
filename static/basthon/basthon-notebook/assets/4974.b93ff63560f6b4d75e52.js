@@ -1,1 +1,0 @@
-(self.webpackChunk_basthon_basthon_notebook=self.webpackChunk_basthon_basthon_notebook||[]).push([[4974],{24695:()=>{},18888:()=>{}}]);

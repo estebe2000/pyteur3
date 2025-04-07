@@ -1,2 +1,0 @@
-(self.webpackChunk_basthon_basthon_console=self.webpackChunk_basthon_basthon_console||[]).push([[143,524],{8937:(s,n,o)=>{"use strict";o.r(n);var a=o(9158),e=o(8069);(0,a.p)(e.w)},8982:()=>{},7790:()=>{},3776:()=>{},1638:()=>{},2668:()=>{},7965:()=>{},6089:()=>{},9368:()=>{},4688:()=>{},1069:()=>{},5340:()=>{},9838:()=>{},6490:()=>{}}]);
-//# sourceMappingURL=524.e0f2376bc1fd3f992355.js.map

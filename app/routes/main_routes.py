@@ -12,7 +12,19 @@ main_bp = Blueprint('main', __name__)
 @login_required
 def home():
     import datetime
-    return render_template('dashboard.html', user=current_user, now=datetime.datetime.now())
+    nb_eleves = User.query.filter_by(role='eleve').count()
+    nb_profs = User.query.filter_by(role='professeur').count()
+    nb_classes = SchoolClass.query.count()
+    nb_exercices = Document.query.filter_by(type='exercise').count()
+    nb_documents = Document.query.filter_by(type='document').count()
+    return render_template('dashboard.html',
+                           user=current_user,
+                           now=datetime.datetime.now(),
+                           nb_eleves=nb_eleves,
+                           nb_profs=nb_profs,
+                           nb_classes=nb_classes,
+                           nb_exercices=nb_exercices,
+                           nb_documents=nb_documents)
 
 @main_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -124,6 +136,24 @@ def upload_exercise():
     return redirect(url_for('main.exercises'))
 
 from app import csrf
+
+@main_bp.route('/settings', methods=['GET', 'POST'])
+@login_required
+def settings():
+    if request.method == 'POST':
+        current_user.nom = request.form.get('nom')
+        current_user.prenom = request.form.get('prenom')
+        current_user.login = request.form.get('login')
+        current_user.email = request.form.get('email')
+        current_user.date_naissance = request.form.get('date_naissance')
+        current_user.besoins_particuliers = request.form.get('besoins_particuliers')
+        password = request.form.get('password')
+        if password:
+            from werkzeug.security import generate_password_hash
+            current_user.password = generate_password_hash(password)
+        db.session.commit()
+        flash('Profil mis à jour avec succès.')
+    return render_template('settings.html', user=current_user)
 
 @csrf.exempt
 @main_bp.route('/delete/<int:doc_id>', methods=['POST'])
@@ -367,3 +397,15 @@ def classes():
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'pdf'}
+
+
+from flask import session, request
+
+@main_bp.route('/set_language/<lang_code>')
+def set_language(lang_code):
+    if lang_code in ['fr', 'en']:
+        session['lang'] = lang_code
+    referrer = request.referrer
+    if referrer:
+        return redirect(referrer)
+    return redirect(url_for('main.home'))

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_basthon_basthon_notebook=self.webpackChunk_basthon_basthon_notebook||[]).push([[8822],{78822:(o,s,b)=>{b.r(s)}}]);

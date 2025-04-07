@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Tableau de Bord{% endblock %}
-{% block page_title %}Tableau de Bord{% endblock %}
+{% block title %}{{ labels['dashboard'] }}{% endblock %}
+{% block page_title %}{{ labels['dashboard'] }}{% endblock %}
 
 {% block breadcrumb %}
-Accueil
+{{ labels['home'] }}
 {% endblock %}
 
 {% block content %}
@@ -12,8 +12,8 @@ Accueil
     <div class="bg-blue-800 rounded-xl p-6 text-white">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-                <h1 class="text-2xl font-bold">Bonjour, {{ current_user.name }}</h1>
-                <p class="mt-2 opacity-90">Bienvenue sur votre tableau de bord</p>
+                <h1 class="text-2xl font-bold">{{ labels['hello'] }}, {{ current_user.name }}</h1>
+                <p class="mt-2 opacity-90">{{ labels['welcome_dashboard'] }}</p>
             </div>
             {% if current_user.role in ['admin', 'professeur'] %}
             <div class="mt-4 md:mt-0 text-right text-sm">
@@ -24,12 +24,76 @@ Accueil
     </div>
 </div>
 
+{% if current_user.role == 'admin' %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-6">
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-500">{{ labels['students'] }}</p>
+                <h3 class="text-2xl font-bold mt-1">{{ nb_eleves }}</h3>
+            </div>
+            <div class="p-3 rounded-full bg-indigo-50 text-primary">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-500">{{ labels['teachers'] }}</p>
+                <h3 class="text-2xl font-bold mt-1">{{ nb_profs }}</h3>
+            </div>
+            <div class="p-3 rounded-full bg-purple-50 text-purple-500">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-500">{{ labels['classes'] }}</p>
+                <h3 class="text-2xl font-bold mt-1">{{ nb_classes }}</h3>
+            </div>
+            <div class="p-3 rounded-full bg-green-50 text-green-500">
+                <i class="fas fa-school"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-500">{{ labels['exercises_count'] }}</p>
+                <h3 class="text-2xl font-bold mt-1">{{ nb_exercices }}</h3>
+            </div>
+            <div class="p-3 rounded-full bg-yellow-50 text-yellow-500">
+                <i class="fas fa-file-alt"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-500">{{ labels['documents_count'] }}</p>
+                <h3 class="text-2xl font-bold mt-1">{{ nb_documents }}</h3>
+            </div>
+            <div class="p-3 rounded-full bg-pink-50 text-pink-500">
+                <i class="fas fa-file"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Card 1 -->
     <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-sm font-medium text-gray-500">Votre rôle</p>
+                <p class="text-sm font-medium text-gray-500">{{ labels['your_role'] }}</p>
                 <h3 class="text-xl font-bold mt-1 capitalize">{{ current_user.role }}</h3>
             </div>
             <div class="p-3 rounded-full bg-indigo-50 text-primary">
@@ -42,7 +106,7 @@ Accueil
     <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-sm font-medium text-gray-500">Email</p>
+                <p class="text-sm font-medium text-gray-500">{{ labels['your_email'] }}</p>
                 <h3 class="text-xl font-bold mt-1">{{ current_user.email }}</h3>
             </div>
             <div class="p-3 rounded-full bg-blue-50 text-blue-500">
@@ -55,8 +119,8 @@ Accueil
     <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-sm font-medium text-gray-500">Dernière connexion</p>
-                <h3 class="text-xl font-bold mt-1">Maintenant</h3>
+                <p class="text-sm font-medium text-gray-500">{{ labels['last_login'] }}</p>
+                <h3 class="text-xl font-bold mt-1">{{ labels['now'] }}</h3>
             </div>
             <div class="p-3 rounded-full bg-green-50 text-green-500">
                 <i class="fas fa-clock"></i>
@@ -67,16 +131,16 @@ Accueil
 
 {% if current_user.role == 'admin' %}
 <div class="mt-6 bg-white rounded-xl shadow-sm p-6">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Actions administrateur</h3>
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">{{ labels['admin_actions'] }}</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <a href="#" class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
-            <p class="font-medium">Gérer les utilisateurs</p>
+            <p class="font-medium">{{ labels['manage_users_action'] }}</p>
         </a>
         <a href="#" class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
-            <p class="font-medium">Statistiques</p>
+            <p class="font-medium">{{ labels['statistics'] }}</p>
         </a>
         <a href="#" class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
-            <p class="font-medium">Paramètres</p>
+            <p class="font-medium">{{ labels['settings'] }}</p>
         </a>
     </div>
 </div>

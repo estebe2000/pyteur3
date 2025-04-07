@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ labels['settings'] }}{% endblock %}
+{% block page_title %}{{ labels['settings'] }}{% endblock %}
+
+{% block breadcrumb %}
+{{ labels['home'] }} / {{ labels['settings'] }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
+    <h2 class="text-xl font-semibold mb-4">{{ labels['modify_info'] }}</h2>
+    <form method="POST">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['name'] }}</label>
+                <input type="text" name="nom" value="{{ user.nom }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['surname'] }}</label>
+                <input type="text" name="prenom" value="{{ user.prenom }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['login'] }}</label>
+                <input type="text" name="login" value="{{ user.login }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['email'] }}</label>
+                <input type="email" name="email" value="{{ user.email }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['date_of_birth'] }}</label>
+                <input type="date" name="date_naissance" value="{{ user.date_naissance }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">{{ labels['special_needs'] }}</label>
+                <input type="text" name="besoins_particuliers" value="{{ user.besoins_particuliers }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-1">{{ labels['new_password'] }}</label>
+                <input type="password" name="password" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+        </div>
+        <div class="mt-4 text-right">
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">{{ labels['save'] }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

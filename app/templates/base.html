@@ -38,35 +38,39 @@
                     <div class="space-y-1">
                         <a href="{{ url_for('main.home') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-tachometer-alt mr-3"></i>
-                            Tableau de bord
+                            {{ labels['dashboard'] }}
                         </a>
                         <a href="{{ url_for('main.documents') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-folder mr-3"></i>
-                            Documents
+                            {{ labels['documents'] }}
                         </a>
                         <a href="{{ url_for('main.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-book mr-3"></i>
-                            Exercices
+                            {{ labels['exercises'] }}
                         </a>
                         <a href="{{ url_for('main.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-flask mr-3"></i>
-                            Bac à sable
+                            {{ labels['sandbox'] }}
                         </a>
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
-                            Classes & Groupes
+                            {{ labels['classes_groups'] }}
+                        </a>
+                        <a href="{{ url_for('main.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                            <i class="fas fa-cog mr-3"></i>
+                            {{ labels['settings'] }}
                         </a>
 {% if current_user.role == 'admin' %}
 <a href="{{ url_for('main.users') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
     <i class="fas fa-users mr-3"></i>
-    Utilisateurs
+    {{ labels['users'] }}
 </a>
 {% endif %}
                     </div>
                     <div class="mt-auto mb-4">
                         <a href="{{ url_for('main.logout') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
                             <i class="fas fa-sign-out-alt mr-3"></i>
-                            Déconnexion
+                            {{ labels['logout'] if 'logout' in labels else 'Déconnexion' }}
                         </a>
                     </div>
                 </div>
@@ -89,10 +93,18 @@
                             <i class="fas fa-bell"></i>
                         </button>
                     </div>
+                    <div class="flex items-center space-x-2">
+                        <a href="/set_language/fr" title="Français">
+                            <img src="{{ url_for('static', filename='img/flags/fr.png') }}" alt="Français" style="height:24px;">
+                        </a>
+                        <a href="/set_language/en" title="English">
+                            <img src="{{ url_for('static', filename='img/flags/gb.png') }}" alt="English" style="height:24px;">
+                        </a>
+                    </div>
                     <div class="relative">
-                        <button class="flex items-center text-gray-700 focus:outline-none">
+                        <a href="{{ url_for('main.settings') }}" class="flex items-center text-gray-700 focus:outline-none hover:underline">
                             <span class="ml-2 text-sm font-medium hidden md:inline">{{ current_user.prenom }} {{ current_user.nom }}</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

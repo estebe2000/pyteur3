@@ -1,1 +1,0 @@
-(self.webpackChunk_basthon_basthon_console=self.webpackChunk_basthon_basthon_console||[]).push([[477,858],{477:()=>{}}]);

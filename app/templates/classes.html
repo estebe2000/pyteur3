@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 
-{% block title %}Gestion des Classes & Groupes{% endblock %}
-{% block page_title %}Classes & Groupes{% endblock %}
+{% block title %}{{ labels['manage_classes'] }}{% endblock %}
+{% block page_title %}{{ labels['classes_groups'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > Classes & Groupes
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['classes_groups'] }}
 {% endblock %}
 
 {% block content %}
-<h2 class="text-xl font-semibold mb-4">Gestion des classes et groupes</h2>
+<h2 class="text-xl font-semibold mb-4">{{ labels['manage_classes'] }}</h2>
 
 <div class="flex gap-6">
     <!-- Colonne 1 : classes -->
     <div class="w-1/4 border-r pr-4">
-        <h3 class="font-semibold mb-2">Classes</h3>
-        <h4 class="font-semibold mb-2">Ajouter une classe</h4>
+        <h3 class="font-semibold mb-2">{{ labels['classes'] }}</h3>
+        <h4 class="font-semibold mb-2">{{ labels['add'] }} une classe</h4>
         <form method="POST" class="flex gap-2 items-center mb-4">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="form_type" value="class">
             <input type="text" name="nom" placeholder="Nom" required class="border rounded px-2 py-1 w-24">
             <select name="niveau" required class="border rounded px-2 py-1 w-24">
-                <option value="">-- Niveau --</option>
-                <option value="6e">6e</option>
-                <option value="5e">5e</option>
-                <option value="4e">4e</option>
-                <option value="3e">3e</option>
-                <option value="2nde">2nde</option>
-                <option value="1ère">1ère</option>
-                <option value="Terminale">Terminale</option>
+                <option value="">{{ labels['select_level'] }}</option>
+                <option value="6e">{{ labels['6e'] }}</option>
+                <option value="5e">{{ labels['5e'] }}</option>
+                <option value="4e">{{ labels['4e'] }}</option>
+                <option value="3e">{{ labels['3e'] }}</option>
+                <option value="2nde">{{ labels['2nde'] }}</option>
+                <option value="1ère">{{ labels['1ere'] }}</option>
+                <option value="Terminale">{{ labels['terminale'] }}</option>
             </select>
-<button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Ajouter</button>
+<button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">{{ labels['add'] }}</button>
         </form>
         <ul class="space-y-2">
 {% for c in classes %}
@@ -68,17 +68,17 @@
     <!-- Colonne 2 : groupes -->
     <div class="w-1/4 border-r pr-4">
         {% if selected_class %}
-        <h3 class="font-semibold mb-2">Groupes de {{ selected_class.nom }} ({{ selected_class.niveau }})</h3>
+        <h3 class="font-semibold mb-2">{{ labels['classes_groups'] }} de {{ selected_class.nom }} ({{ selected_class.niveau }})</h3>
 
         <form method="POST" class="mb-6 space-y-4">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="form_type" value="group">
             <input type="hidden" name="class_id" value="{{ selected_class.id }}">
             <div>
-                <label class="block mb-1">Nom du groupe</label>
+                <label class="block mb-1">{{ labels['name'] }} du groupe</label>
                 <input type="text" name="group_nom" required class="w-full border rounded px-3 py-2">
             </div>
-            <button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Ajouter le groupe</button>
+            <button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">{{ labels['add_group'] }}</button>
         </form>
 
         {% if groups %}
@@ -101,33 +101,33 @@
         {% endfor %}
         </ul>
         {% else %}
-        <p>Aucun groupe pour cette classe.</p>
+        <p>{{ labels['no_groups'] }}</p>
         {% endif %}
         {% else %}
-        <p>Sélectionnez une classe pour voir ses groupes.</p>
+        <p>{{ labels['select_class_groups'] }}</p>
         {% endif %}
     </div>
 
     <!-- Colonne 3 : élèves du groupe -->
     <div class="w-2/4 pl-4">
         {% if selected_group %}
-        <h3 class="font-semibold mb-2">Élèves du groupe {{ selected_group.nom }}</h3>
-        <h4 class="font-semibold mb-2">Ajouter un élève sans groupe</h4>
+        <h3 class="font-semibold mb-2">{{ labels['students'] }} du groupe {{ selected_group.nom }}</h3>
+        <h4 class="font-semibold mb-2">{{ labels['add'] }} un élève sans groupe</h4>
         {% if unassigned_students %}
         <form method="POST" class="flex gap-2 items-center mb-4">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="form_type" value="add_student_to_group">
             <input type="hidden" name="group_id" value="{{ selected_group.id }}">
             <select name="user_id" required class="border rounded px-2 py-1">
-                <option value="">-- Sélectionner un élève --</option>
+                <option value="">{{ labels['select_student'] }}</option>
                 {% for student in unassigned_students %}
                 <option value="{{ student.id }}">{{ student.prenom }} {{ student.nom }}</option>
                 {% endfor %}
             </select>
-<button type="submit" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Ajouter</button>
+<button type="submit" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">{{ labels['add'] }}</button>
         </form>
         {% else %}
-        <p>Aucun élève sans groupe.</p>
+        <p>{{ labels['no_students_no_group'] }}</p>
         {% endif %}
         {% if group_students %}
         <ul class="space-y-1 mb-4">
@@ -142,11 +142,11 @@
 {% endfor %}
         </ul>
         {% else %}
-        <p>Aucun élève dans ce groupe.</p>
+        <p>{{ labels['no_group'] }}</p>
         {% endif %}
 
         {% else %}
-        <p>Sélectionnez un groupe pour voir ses élèves.</p>
+        <p>{{ labels['select_group_students'] }}</p>
         {% endif %}
     </div>
 </div>
