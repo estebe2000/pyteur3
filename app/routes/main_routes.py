@@ -210,7 +210,7 @@ def delete_exercise(ex_id):
         return "Unauthorized", 403
     
     try:
-        os.remove(os.path.join('static', 'uploads', ex.filename))
+        os.remove(os.path.join('app', 'static', 'uploads', ex.filename))
         db.session.delete(ex)
         db.session.commit()
         return '', 204
@@ -301,6 +301,11 @@ def delete_user(id):
 @login_required
 def sandbox():
     return render_template('sandbox.html')
+
+@main_bp.route('/ia')
+@login_required
+def ia():
+    return render_template('ia.html')
 
 @main_bp.route('/groups/remove_student/<int:user_id>', methods=['POST'])
 @login_required
@@ -439,3 +444,31 @@ def set_language(lang_code):
     if referrer:
         return redirect(referrer)
     return redirect(url_for('main.home'))
+
+
+from flask import jsonify
+
+from app import csrf
+
+@csrf.exempt
+@main_bp.route('/api/chat', methods=['POST'])
+@login_required
+def chat_api():
+    try:
+        data = request.get_json(force=True)
+    except Exception as e:
+        return jsonify({'error': f'Erreur parsing JSON: {str(e)}'}), 400
+
+    if data is None:
+        return jsonify({'error': 'Requête JSON invalide ou en-tête Content-Type manquant'}), 400
+
+    user_message = data.get('message', '').strip()
+    if not user_message:
+        return jsonify({'error': 'Message vide'}), 400
+
+    try:
+        from mistral_client import generate_text
+        ai_response = generate_text(user_message)
+        return jsonify({'response': ai_response})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}GROS TEST PAGE IA{% endblock %}
+
+{% block page_title %}GROS TEST PAGE IA{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <h1 class="text-4xl font-extrabold text-red-600 mb-4">GROS TEST PAGE IA</h1>
+    <p>Bienvenue dans la section dédiée à l'intelligence artificielle.</p>
+
+    <div class="mt-6">
+        <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="Écrivez votre question..."></textarea>
+        <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Envoyer</button>
+    </div>
+
+    <div id="response" class="mt-4 p-4 border rounded bg-gray-100"></div>
+</div>
+
+<script>
+document.getElementById('send-btn').addEventListener('click', async () => {
+    const userInput = document.getElementById('user-input').value.trim();
+    if (!userInput) return;
+
+    const responseDiv = document.getElementById('response');
+    responseDiv.textContent = "";
+
+    try {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: userInput })
+        });
+
+        if (!res.ok) {
+            responseDiv.textContent = "Erreur serveur: " + res.status;
+            return;
+        }
+
+        const data = await res.json();
+        if (data.error) {
+            responseDiv.textContent = "Erreur: " + data.error;
+        } else {
+            responseDiv.innerHTML = marked.parse(data.response || "Pas de réponse.");
+        }
+    } catch (error) {
+        responseDiv.textContent = "Erreur: " + error.message;
+    }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+{% endblock %}

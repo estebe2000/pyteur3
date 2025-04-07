@@ -8,12 +8,33 @@
 {% endblock %}
 
 {% block content %}
-<div class="mb-6 flex justify-between items-center">
+<div class="mb-4 flex justify-between items-center">
     <h2 class="text-xl font-semibold">{{ labels['manage_exercises'] }}</h2>
-    <button onclick="document.getElementById('uploadModal').classList.remove('hidden')"
-        class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs">
-        <i class="fas fa-upload mr-2"></i> {{ labels['upload'] }}
-    </button>
+    <div class="flex space-x-2">
+        <button onclick="toggleEditor()" class="btn btn-secondary py-2 px-4 rounded-lg shadow bg-gray-300 hover:bg-gray-400 transition">
+            <i class="fas fa-terminal"></i> Éditeur
+        </button>
+        <button onclick="document.getElementById('uploadModal').classList.remove('hidden')"
+            class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
+            <i class="fas fa-upload mr-2"></i> {{ labels['upload'] }}
+        </button>
+    </div>
+</div>
+
+<div id="editor-container" class="hidden mb-6">
+    <div class="mb-2 flex flex-col md:flex-row md:items-center md:space-x-4 space-y-2 md:space-y-0">
+        <div>
+            <label for="kernel-select" class="mr-2 font-semibold">Choisir un éditeur :</label>
+            <select id="kernel-select" class="border border-gray-300 rounded px-2 py-1" onchange="changeEditorKernel()">
+                <option value="python">Python</option>
+                <option value="sql">SQL</option>
+                <option value="ocaml">OCaml</option>
+                <option value="javascript">JavaScript</option>
+                <option value="xcas">Xcas</option>
+            </select>
+        </div>
+    </div>
+    <iframe id="editor-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" style="width:100%; height:650px; border:1px solid #ccc; border-radius:8px;" sandbox="allow-same-origin allow-scripts"></iframe>
 </div>
 
 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -46,11 +67,11 @@
                     {{ ex.created_at.strftime('%d/%m/%Y') }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button onclick="openInBasthon('{{ url_for('static', filename='uploads/' + ex.filename) }}')" class="btn btn-secondary mr-2">
-                        <i class="fas fa-terminal"></i> Ouvrir dans éditeur
+                    <button onclick="loadExerciseInEditor('{{ url_for('static', filename='uploads/' + ex.filename) }}')" class="btn btn-secondary mr-2">
+                        <i class="fas fa-terminal"></i> {{ labels['open'] }}
                     </button>
                     <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" target="_blank" class="btn btn-primary mr-2">
-                        <i class="fas fa-eye"></i> Voir
+                        <i class="fas fa-eye"></i> {{ labels['view'] }}
                     </a>
                     <button onclick="confirmDeleteExercise('{{ ex.id }}')" 
                             class="text-red-600 hover:text-red-900 mr-3">
@@ -67,6 +88,35 @@
         <p>{{ labels['no_exercises_found'] }}</p>
     </div>
     {% endif %}
+</div>
+
+<!-- Modal Récupérer code -->
+<div id="saveCodeModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Ajouter l'exercice depuis l'éditeur</h3>
+            <button onclick="document.getElementById('saveCodeModal').classList.add('hidden')"
+                class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form id="saveCodeForm" method="POST" action="{{ url_for('main.upload_exercise') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="code" id="hiddenCodeInput">
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Code (copiez-collez depuis l'éditeur si besoin)</label>
+                <textarea name="code_textarea" id="codeTextarea" rows="8" class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Tags (séparés par des virgules)</label>
+                <input type="text" name="tags" placeholder="{{ labels['tags_placeholder_ex'] }}"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <button type="submit" class="btn btn-primary w-full">
+                Ajouter l'exercice
+            </button>
+        </form>
+    </div>
 </div>
 
 <!-- Upload Modal -->
@@ -133,6 +183,36 @@ function openInBasthon(fileUrl) {
             const encoded = encodeURIComponent(code);
             const basthonUrl = `{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=${kernel}&script=${encoded}`;
             window.open(basthonUrl, '_blank');
+        })
+        .catch(err => {
+            alert('Erreur lors du chargement du fichier');
+            console.error(err);
+        });
+}
+
+function toggleEditor() {
+    const container = document.getElementById('editor-container');
+    container.classList.toggle('hidden');
+}
+
+function changeEditorKernel() {
+    const kernel = document.getElementById('kernel-select').value;
+    const iframe = document.getElementById('editor-iframe');
+    iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel;
+}
+
+
+function loadExerciseInEditor(fileUrl) {
+    const container = document.getElementById('editor-container');
+    container.classList.remove('hidden');
+
+    fetch(fileUrl)
+        .then(response => response.text())
+        .then(code => {
+            const encoded = encodeURIComponent(code);
+            const kernel = document.getElementById('kernel-select').value;
+            const iframe = document.getElementById('editor-iframe');
+            iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel + "&script=" + encoded;
         })
         .catch(err => {
             alert('Erreur lors du chargement du fichier');

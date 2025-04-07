@@ -107,4 +107,7 @@ LABELS = {
     "todo": "To-Do",
     "projets": "Projects",
     "drive": "Drive",
+    "open": "Open",
+    "view": "View",
+    "ia": "Artificial Intelligence",
 }
