@@ -131,7 +131,7 @@ function openInBasthon(fileUrl) {
         .then(response => response.text())
         .then(code => {
             const encoded = encodeURIComponent(code);
-            const basthonUrl = `/static/basthon/basthon-console/index.html?kernel=${kernel}&script=${encoded}`;
+            const basthonUrl = `{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=${kernel}&script=${encoded}`;
             window.open(basthonUrl, '_blank');
         })
         .catch(err => {

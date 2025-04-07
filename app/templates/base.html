@@ -44,14 +44,45 @@
                             <i class="fas fa-folder mr-3"></i>
                             {{ labels['documents'] }}
                         </a>
-                        <a href="{{ url_for('main.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-                            <i class="fas fa-book mr-3"></i>
-                            {{ labels['exercises'] }}
-                        </a>
-                        <a href="{{ url_for('main.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-                            <i class="fas fa-flask mr-3"></i>
-                            {{ labels['sandbox'] }}
-                        </a>
+<a href="{{ url_for('main.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-book mr-3"></i>
+    {{ labels['exercises'] }}
+</a>
+
+<a href="{{ url_for('main.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-question-circle mr-3"></i>
+    {{ labels['qcm'] }}
+</a>
+
+<a href="{{ url_for('main.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-chart-bar mr-3"></i>
+    {{ labels['statistiques'] }}
+</a>
+
+<a href="{{ url_for('main.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-envelope mr-3"></i>
+    {{ labels['messagerie'] }}
+</a>
+
+<a href="{{ url_for('main.todo') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-check-circle mr-3"></i>
+    {{ labels['todo'] }}
+</a>
+
+<a href="{{ url_for('main.projets') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-project-diagram mr-3"></i>
+    {{ labels['projets'] }}
+</a>
+
+<a href="{{ url_for('main.drive') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.drive') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-folder mr-3"></i>
+    {{ labels['drive'] }}
+</a>
+
+<a href="{{ url_for('main.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-flask mr-3"></i>
+    {{ labels['sandbox'] }}
+</a>
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
                             {{ labels['classes_groups'] }}

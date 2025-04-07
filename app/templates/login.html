@@ -45,7 +45,9 @@
 </div>
 
 {% set terminal_text -%}
->>> {{ labels['welcome_terminal'] if 'welcome_terminal' in labels else 'Bienvenue sur Pyteur !' }}\n>>> {{ labels['platform_description'] if 'platform_description' in labels else 'La plateforme Python éducative' }}\n>>> {{ labels['please_login'] if 'please_login' in labels else 'Veuillez vous connecter pour continuer...' }}
+>>> {{ labels['welcome_terminal'] if 'welcome_terminal' in labels else 'Bienvenue sur Pyteur !' }}
+>>> {{ labels['platform_description'] if 'platform_description' in labels else 'La plateforme Python éducative' }}
+>>> {{ labels['please_login'] if 'please_login' in labels else 'Veuillez vous connecter pour continuer...' }}
 {%- endset %}
 
 <script>
@@ -56,7 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function typeWriter() {
         if (index < text.length) {
-            target.textContent += text.charAt(index);
+            if (text.charAt(index) === "\n") {
+                target.innerHTML += "<br>";
+            } else {
+                target.innerHTML += text.charAt(index);
+            }
             index++;
             setTimeout(typeWriter, 30);
         }

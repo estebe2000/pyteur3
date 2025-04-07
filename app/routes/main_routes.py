@@ -8,6 +8,36 @@ from app.models import User, Document, SchoolClass, Group
 
 main_bp = Blueprint('main', __name__)
 
+@main_bp.route('/qcm')
+@login_required
+def qcm():
+    return render_template('qcm.html')
+
+@main_bp.route('/statistiques')
+@login_required
+def statistiques():
+    return render_template('statistiques.html')
+
+@main_bp.route('/messagerie')
+@login_required
+def messagerie():
+    return render_template('messagerie.html')
+
+@main_bp.route('/todo')
+@login_required
+def todo():
+    return render_template('todo.html')
+
+@main_bp.route('/projets')
+@login_required
+def projets():
+    return render_template('projets.html')
+
+@main_bp.route('/drive')
+@login_required
+def drive():
+    return render_template('drive.html')
+
 @main_bp.route('/')
 @login_required
 def home():
@@ -74,7 +104,7 @@ def upload_file():
         filename = secure_filename(file.filename)
         unique_filename = f"{current_user.id}_{filename}"
 
-        upload_folder = os.path.join('static', 'uploads')
+        upload_folder = os.path.join('app', 'static', 'uploads')
         if not os.path.exists(upload_folder):
             os.makedirs(upload_folder, exist_ok=True)
 
@@ -113,7 +143,7 @@ def upload_exercise():
         filename = secure_filename(file.filename)
         unique_filename = f"{current_user.id}_{filename}"
 
-        upload_folder = os.path.join('static', 'uploads')
+        upload_folder = os.path.join('app', 'static', 'uploads')
         if not os.path.exists(upload_folder):
             os.makedirs(upload_folder, exist_ok=True)
 
@@ -164,7 +194,7 @@ def delete_document(doc_id):
     #     return "Unauthorized", 403
     
     try:
-        os.remove(os.path.join('static', 'uploads', doc.filename))
+        os.remove(os.path.join('app', 'static', 'uploads', doc.filename))
         db.session.delete(doc)
         db.session.commit()
         return '', 204

@@ -101,4 +101,10 @@ LABELS = {
     "no_file_chosen": "No file chosen",
     "select_level": "-- Level --",
     "hello": "Hello",
+    "qcm": "MCQ",
+    "statistiques": "Statistics",
+    "messagerie": "Messaging",
+    "todo": "To-Do",
+    "projets": "Projects",
+    "drive": "Drive",
 }

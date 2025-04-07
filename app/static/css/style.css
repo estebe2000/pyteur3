@@ -7,3 +7,61 @@
 .btn-full {
   @apply w-full;
 }
+
+
+/* Faux terminal Python */
+.terminal-banner {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+  background-color: #333;
+}
+
+.terminal-header .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-header .red {
+  background-color: #ff5f56;
+}
+
+.terminal-header .yellow {
+  background-color: #ffbd2e;
+}
+
+.terminal-header .green {
+  background-color: #27c93f;
+}
+
+.terminal-body {
+  background-color: #1e1e1e;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+/* Animation logo dansant calmement */
+@keyframes dance {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(2deg) scale(1.02);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(-2deg) scale(1.02);
+  }
+}
+
+.dancing-logo {
+  animation: dance 3s infinite ease-in-out;
+  transform-origin: center;
+}
