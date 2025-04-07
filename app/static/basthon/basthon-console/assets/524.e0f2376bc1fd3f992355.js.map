@@ -1,0 +1,1 @@
+{"version":3,"file":"assets/524.e0f2376bc1fd3f992355.js","mappings":"uKAEA,OAAO,I","sources":["webpack://@basthon/basthon-console/./node_modules/@basthon/kernel-sql/lib/comlink-worker.js"],"sourcesContent":["import { expose } from \"@basthon/kernel-base/worker\";\nimport { SQLKernelWorker } from \"./worker\";\nexpose(SQLKernelWorker);\n"],"names":[],"sourceRoot":""}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Bac à sable{% endblock %}
+{% block page_title %}Bac à sable{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('main.home') }}">Accueil</a> > Bac à sable
+{% endblock %}
+
+{% block content %}
+<div class="mb-4 flex flex-col md:flex-row gap-4">
+
+    <div class="flex-1 p-4 bg-gray-100 rounded-lg shadow-sm">
+        <h3 class="font-semibold mb-3">Console</h3>
+        <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Python</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">SQL</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">OCaml</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">JavaScript</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Xcas</button>
+        </div>
+    </div>
+
+    <div class="flex-1 p-4 bg-gray-100 rounded-lg shadow-sm">
+        <h3 class="font-semibold mb-3">Notebook</h3>
+        <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Python</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">SQL</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">OCaml</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">JavaScript</button>
+            <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Xcas</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="w-full h-[80vh] border rounded-lg overflow-hidden">
+    <iframe id="sandbox-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" class="w-full h-full border-0"></iframe>
+</div>
+
+<script>
+const iframe = document.getElementById('sandbox-iframe');
+const buttons = document.querySelectorAll('.btn.btn-primary');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const label = btn.textContent.trim().toLowerCase();
+        if (btn.parentElement.previousElementSibling.textContent.includes('Console')) {
+            iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + encodeURIComponent(label);
+        } else {
+            iframe.src = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?kernel=" + encodeURIComponent(label);
+        }
+    });
+});
+</script>
+{% endblock %}

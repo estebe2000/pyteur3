@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Éducation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                        light: '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.6s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .animate-bounce-slow {
+            animation: bounce 3s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+                <div class="flex items-center justify-center h-16 px-4 bg-primary text-white">
+                    <h1 class="text-xl font-bold">ÉduPortal</h1>
+                </div>
+                <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
+                    <div class="space-y-1">
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md bg-primary bg-opacity-10 text-primary">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Tableau de bord
+                        </a>
+                        <a href="/admin/eleves" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-users mr-3"></i>
+                            Élèves
+                        </a>
+                        <a href="/admin/professeurs" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-user-tie mr-3"></i>
+                            Professeurs
+                        </a>
+                        <a href="/admin/administrateurs" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-user-shield mr-3"></i>
+                            Administrateurs
+                        </a>
+                        <a href="/admin/classes" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-layer-group mr-3"></i>
+                            Classes
+                        </a>
+                        <a href="/admin/groupes" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-users mr-3"></i>
+                            Groupes
+                        </a>
+                        <a href="/admin/cours" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-book mr-3"></i>
+                            Cours
+                        </a>
+                        <a href="/admin/exercices" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-tasks mr-3"></i>
+                            Exercices
+                        </a>
+                        <a href="/admin/qcm" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            QCM
+                        </a>
+                        <a href="/admin/resultats" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Résultats
+                        </a>
+                        <a href="/admin/statistiques" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-chart-bar mr-3"></i>
+                            Statistiques
+                        </a>
+                        <a href="/admin/messagerie" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-envelope mr-3"></i>
+                            Messagerie
+                        </a>
+                        <a href="/admin/todo" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            To-Do
+                        </a>
+                        <a href="/admin/projets" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-project-diagram mr-3"></i>
+                            Projets
+                        </a>
+                        <a href="/admin/drive" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-folder mr-3"></i>
+                            Drive
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-layer-group mr-3"></i>
+                            Classes
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-users mr-3"></i>
+                            Groupes
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-book mr-3"></i>
+                            Cours
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-tasks mr-3"></i>
+                            Exercices
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            QCM
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-chart-bar mr-3"></i>
+                            Statistiques
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-envelope mr-3"></i>
+                            Messagerie
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            To-Do
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-project-diagram mr-3"></i>
+                            Projets
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                            <i class="fas fa-folder mr-3"></i>
+                            Drive
+                        </a>
+                    </div>
+                    <div class="mt-auto mb-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <p class="text-sm text-blue-800">Nouveautés disponibles!</p>
+                            <p class="text-xs text-blue-600 mt-1">Découvrez les dernières fonctionnalités.</p>
+                            <button class="mt-2 w-full bg-blue-100 text-blue-800 text-xs py-1 px-2 rounded hover:bg-blue-200">Voir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Top navigation -->
+            <div class="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200">
+                <div class="flex items-center">
+                    <button class="md:hidden text-gray-500 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="ml-4 text-lg font-semibold text-gray-800">Tableau de Bord</h2>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="text-gray-500 focus:outline-none">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="flex items-center text-gray-700 focus:outline-none">
+                            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
+                            <span class="ml-2 text-sm font-medium hidden md:inline">Prof. Dupont</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard content -->
+            <div class="flex-1 overflow-auto p-6">
+                <!-- Welcome banner -->
+                <div class="bg-gradient-to-r from-primary to-blue-600 rounded-xl p-6 text-white mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <h1 class="text-2xl font-bold">Bonjour, Professeur Dupont</h1>
+                            <p class="mt-2 opacity-90">Voici un aperçu de votre activité aujourd'hui</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <button class="bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition">
+                                <i class="fas fa-plus mr-2"></i> Nouveau cours
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <!-- Élèves card -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Élèves</p>
+                                <h3 class="text-2xl font-bold mt-1">1,248</h3>
+                                <p class="text-xs text-green-500 mt-1 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1"></i> 12% depuis hier
+                                </p>
+                            </div>
+                            <div class="relative w-16 h-16">
+                                <svg class="w-full h-full" viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#E5E7EB" stroke-width="2"></circle>
+                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#4F46E5" stroke-width="2" stroke-dasharray="100 100" stroke-dashoffset="25"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-sm font-bold text-primary">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <a href="#" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                Voir tous les élèves <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Professeurs card -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Professeurs</p>
+                                <h3 class="text-2xl font-bold mt-1">48</h3>
+                                <p class="text-xs text-green-500 mt-1 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1"></i> 2 nouveaux
+                                </p>
+                            </div>
+                            <div class="p-3 rounded-full bg-indigo-50 text-primary">
+                                <i class="fas fa-user-tie text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <a href="#" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                Voir l'équipe <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Classes card -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Classes</p>
+                                <h3 class="text-2xl font-bold mt-1">24</h3>
+                                <p class="text-xs text-gray-500 mt-1">8 classes actives</p>
+                            </div>
+                            <div class="relative w-16 h-16">
+                                <svg class="w-full h-full" viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#E5E7EB" stroke-width="2"></circle>
+                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="100 100" stroke-dashoffset="40"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-sm font-bold text-green-500">60%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <a href="#" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                Voir le planning <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Exercices card -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 transition-all duration-300 card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Exercices & QCM</p>
+                                <h3 class="text-2xl font-bold mt-1">327</h3>
+                                <p class="text-xs text-red-500 mt-1 flex items-center">
+                                    <i class="fas fa-arrow-down mr-1"></i> 2% à corriger
+                                </p>
+                            </div>
+                            <div class="p-3 rounded-full bg-yellow-50 text-yellow-500">
+                                <i class="fas fa-tasks text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <a href="#" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                Créer un exercice <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second row with charts and recent activity -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Cours statistics -->
+                    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Activité des Cours</h3>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded-md">Semaine</button>
+                                <button class="px-3 py-1 text-xs bg-primary text-white rounded-md">Mois</button>
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded-md">Année</button>
+                            </div>
+                        </div>
+                        <div class="h-64">
+                            <!-- Chart placeholder - in a real app you would use Chart.js or similar -->
+                            <div class="flex items-end h-full space-x-2">
+                                <div class="flex-1 bg-blue-100 rounded-t" style="height: 20%"></div>
+                                <div class="flex-1 bg-blue-200 rounded-t" style="height: 35%"></div>
+                                <div class="flex-1 bg-blue-300 rounded-t" style="height: 50%"></div>
+                                <div class="flex-1 bg-blue-400 rounded-t" style="height: 70%"></div>
+                                <div class="flex-1 bg-blue-500 rounded-t" style="height: 90%"></div>
+                                <div class="flex-1 bg-blue-400 rounded-t" style="height: 75%"></div>
+                                <div class="flex-1 bg-blue-300 rounded-t" style="height: 60%"></div>
+                            </div>
+                            <div class="flex justify-between mt-2 text-xs text-gray-500">
+                                <span>Lun</span>
+                                <span>Mar</span>
+                                <span>Mer</span>
+                                <span>Jeu</span>
+                                <span>Ven</span>
+                                <span>Sam</span>
+                                <span>Dim</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Cours créés</p>
+                                    <h3 class="text-xl font-bold mt-1">156</h3>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Exercices</p>
+                                    <h3 class="text-xl font-bold mt-1">327</h3>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">QCM</p>
+                                    <h3 class="text-xl font-bold mt-1">84</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent activity -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Activité Récente</h3>
+                            <button class="text-sm text-primary hover:underline">Voir tout</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="p-2 bg-green-50 rounded-full text-green-500 mr-3">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Exercice de mathématiques corrigé</p>
+                                    <p class="text-xs text-gray-500 mt-1">Classe de 4èmeB - Il y a 2 heures</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="p-2 bg-blue-50 rounded-full text-blue-500 mr-3">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Nouveau cours publié</p>
+                                    <p class="text-xs text-gray-500 mt-1">Histoire-Géo - Il y a 5 heures</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="p-2 bg-purple-50 rounded-full text-purple-500 mr-3">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Nouvel élève inscrit</p>
+                                    <p class="text-xs text-gray-500 mt-1">Jean Dupont - Il y a 1 jour</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="p-2 bg-yellow-50 rounded-full text-yellow-500 mr-3">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Nouveau QCM créé</p>
+                                    <p class="text-xs text-gray-500 mt-1">Sciences - Il y a 1 jour</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third row with classes and upcoming tasks -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Groupes et projets -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Groupes & Projets</h3>
+                            <button class="text-sm text-primary hover:underline">Voir tout</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="font-medium">Groupe de Sciences</p>
+                                        <p class="text-sm text-gray-500 mt-1">12 membres</p>
+                                    </div>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Actif</span>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="font-medium">Projet Robotique</p>
+                                        <p class="text-sm text-gray-500 mt-1">Échéance: 15/06</p>
+                                    </div>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">En cours</span>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="font-medium">Club Théâtre</p>
+                                        <p class="text-sm text-gray-500 mt-1">8 membres</p>
+                                    </div>
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Nouveau</span>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="font-medium">Projet Histoire</p>
+                                        <p class="text-sm text-gray-500 mt-1">Échéance: 30/05</p>
+                                    </div>
+                                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Planifié</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messagerie -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Messagerie</h3>
+                            <button class="text-sm text-primary hover:underline">Voir tout</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                                <div>
+                                    <p class="font-medium">M. Martin</p>
+                                    <p class="text-sm text-gray-500 mt-1 truncate">À propos du projet de sciences...</p>
+                                </div>
+                                <span class="ml-auto text-xs text-gray-500">10:30</span>
+                            </div>
+                            <div class="flex items-start">
+                                <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Profile">
+                                <div>
+                                    <p class="font-medium">Mme. Leroy</p>
+                                    <p class="text-sm text-gray-500 mt-1 truncate">Réunion parents-professeurs...</p>
+                                </div>
+                                <span class="ml-auto text-xs text-gray-500">Hier</span>
+                            </div>
+                            <div class="flex items-start">
+                                <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Profile">
+                                <div>
+                                    <p class="font-medium">M. Dubois</p>
+                                    <p class="text-sm text-gray-500 mt-1 truncate">Question sur le dernier devoir...</p>
+                                </div>
+                                <span class="ml-auto text-xs text-gray-500">Lundi</span>
+                            </div>
+                            <div class="flex items-start">
+                                <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/33.jpg" alt="Profile">
+                                <div>
+                                    <p class="font-medium">Mme. Bernard</p>
+                                    <p class="text-sm text-gray-500 mt-1 truncate">Documents pour le projet...</p>
+                                </div>
+                                <span class="ml-auto text-xs text-gray-500">Lundi</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="w-full bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-lg font-medium hover:bg-opacity-20 transition flex items-center justify-center">
+                                <i class="fas fa-pen mr-2"></i> Nouveau message
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drive et To-Do -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Drive & To-Do</h3>
+                            <button class="text-sm text-primary hover:underline">Voir tout</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-word text-blue-500 mr-3"></i>
+                                        <div>
+                                            <p class="font-medium">Cours_Histoire.docx</p>
+                                            <p class="text-sm text-gray-500 mt-1">Modifié il y a 2h</p>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-ellipsis-v text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-pdf text-red-500 mr-3"></i>
+                                        <div>
+                                            <p class="font-medium">Exercices_Maths.pdf</p>
+                                            <p class="text-sm text-gray-500 mt-1">Ajouté hier</p>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-ellipsis-v text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Corriger les QCM</p>
+                                        <p class="text-sm text-gray-500 mt-1">Pour demain</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Préparer la réunion</p>
+                                        <p class="text-sm text-gray-500 mt-1">Vendredi 15h</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for the stats cards on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card-hover');
+            
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Add hover effect to table rows
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.classList.add('bg-gray-50');
+                });
+                row.addEventListener('mouseleave', () => {
+                    row.classList.remove('bg-gray-50');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

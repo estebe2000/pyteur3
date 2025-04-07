@@ -1,0 +1,46 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+ * jQuery Typeahead
+ * Copyright (C) 2020 RunningCoder.org
+ * Licensed under the MIT license
+ *
+ * @author Tom Bertrand
+ * @version 2.11.1 (2020-5-18)
+ * @link http://www.runningcoder.org/jquerytypeahead/
+ */
+
+/*!
+ * jQuery UI Widget 1.14.1
+ * https://jqueryui.com
+ *
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license.
+ * https://jquery.org/license
+ */
+
+/*!
+* reveal.js 4.6.0
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2011-2023 Hakim El Hattab, https://hakim.se
+*/
+
+/**
+ * @license r.js 2.3.7 Copyright jQuery Foundation and other contributors.
+ * Released under MIT license, http://github.com/requirejs/r.js/LICENSE
+ */
+
+/** vim: et:ts=4:sw=4:sts=4
+ * @license RequireJS 2.3.7 Copyright jQuery Foundation and other contributors.
+ * Released under MIT license, https://github.com/requirejs/requirejs/blob/master/LICENSE
+ */
+
+//! moment.js
+
+//! moment.js locale configuration

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Gestion des Classes & Groupes{% endblock %}
+{% block page_title %}Classes & Groupes{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('home') }}">Accueil</a> > Classes & Groupes
+{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Gestion des classes et groupes</h2>
+
+<div class="flex gap-6">
+    <!-- Colonne 1 : classes -->
+    <div class="w-1/4 border-r pr-4">
+        <h3 class="font-semibold mb-2">Classes</h3>
+        <h4 class="font-semibold mb-2">Ajouter une classe</h4>
+        <form method="POST" class="flex gap-2 items-center mb-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="form_type" value="class">
+            <input type="text" name="nom" placeholder="Nom" required class="border rounded px-2 py-1 w-24">
+            <select name="niveau" required class="border rounded px-2 py-1 w-24">
+                <option value="">-- Niveau --</option>
+                <option value="6e">6e</option>
+                <option value="5e">5e</option>
+                <option value="4e">4e</option>
+                <option value="3e">3e</option>
+                <option value="2nde">2nde</option>
+                <option value="1ère">1ère</option>
+                <option value="Terminale">Terminale</option>
+            </select>
+<button type="submit" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Ajouter</button>
+        </form>
+        <ul class="space-y-2">
+{% for c in classes %}
+<li class="border p-2 rounded">
+    <div class="flex flex-nowrap items-center gap-2">
+        <form method="POST" action="{{ url_for('edit_class', class_id=c.id) }}" class="flex items-center gap-2">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <a href="{{ url_for('classes', class_id=c.id) }}"
+               class="px-3 py-2 rounded {{ 'border-l-4 border-primary bg-primary bg-opacity-10 text-gray-800' if selected_class and selected_class.id == c.id else 'hover:bg-gray-100' }}">
+                {{ c.nom }} ({{ c.niveau }})
+            </a>
+            <input type="text" name="nom" value="{{ c.nom }}" placeholder="Nom" required class="border rounded px-2 py-1 w-20">
+            <select name="niveau" required class="border rounded px-2 py-1 w-20">
+                <option value="">-- Niveau --</option>
+                <option value="6e" {% if c.niveau == '6e' %}selected{% endif %}>6e</option>
+                <option value="5e" {% if c.niveau == '5e' %}selected{% endif %}>5e</option>
+                <option value="4e" {% if c.niveau == '4e' %}selected{% endif %}>4e</option>
+                <option value="3e" {% if c.niveau == '3e' %}selected{% endif %}>3e</option>
+                <option value="2nde" {% if c.niveau == '2nde' %}selected{% endif %}>2nde</option>
+                <option value="1ère" {% if c.niveau == '1ère' %}selected{% endif %}>1ère</option>
+                <option value="Terminale" {% if c.niveau == 'Terminale' %}selected{% endif %}>Terminale</option>
+            </select>
+<button type="submit" class="btn btn-sm btn-primary" title="Modifier">✏️</button>
+        </form>
+        <form method="POST" action="{{ url_for('delete_class', class_id=c.id) }}" onsubmit="return confirm('Supprimer cette classe ?');" class="flex items-center">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<button type="submit" class="text-red-600 hover:text-red-800" title="Supprimer">🗑️</button>
+        </form>
+    </div>
+</li>
+{% endfor %}
+        </ul>
+
+    </div>
+
+    <!-- Colonne 2 : groupes -->
+    <div class="w-1/4 border-r pr-4">
+        {% if selected_class %}
+        <h3 class="font-semibold mb-2">Groupes de {{ selected_class.nom }} ({{ selected_class.niveau }})</h3>
+
+        <form method="POST" class="mb-6 space-y-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="form_type" value="group">
+            <input type="hidden" name="class_id" value="{{ selected_class.id }}">
+            <div>
+                <label class="block mb-1">Nom du groupe</label>
+                <input type="text" name="group_nom" required class="w-full border rounded px-3 py-2">
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter le groupe</button>
+        </form>
+
+        {% if groups %}
+        <ul class="space-y-2">
+        {% for g in groups %}
+        <li class="border p-2 rounded flex justify-between items-center gap-2">
+            <a href="{{ url_for('classes', class_id=selected_class.id, group_id=g.id) }}" class="flex-1 hover:bg-gray-100 px-2 py-1 rounded {% if selected_group and selected_group.id == g.id %}bg-primary bg-opacity-10 border-l-4 border-primary{% endif %}">
+                {{ g.nom }}
+            </a>
+            <form method="POST" action="{{ url_for('edit_group', group_id=g.id) }}" class="flex items-center gap-2">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="text" name="nom" value="{{ g.nom }}" required class="border rounded px-2 py-1 w-24">
+                <button type="submit" class="btn btn-sm btn-primary" title="Modifier">✏️</button>
+            </form>
+            <form method="POST" action="{{ url_for('delete_group', group_id=g.id) }}" onsubmit="return confirm('Supprimer ce groupe ?');" class="flex items-center">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="text-red-600 hover:text-red-800" title="Supprimer">🗑️</button>
+            </form>
+        </li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>Aucun groupe pour cette classe.</p>
+        {% endif %}
+        {% else %}
+        <p>Sélectionnez une classe pour voir ses groupes.</p>
+        {% endif %}
+    </div>
+
+    <!-- Colonne 3 : élèves du groupe -->
+    <div class="w-2/4 pl-4">
+        {% if selected_group %}
+        <h3 class="font-semibold mb-2">Élèves du groupe {{ selected_group.nom }}</h3>
+        <h4 class="font-semibold mb-2">Ajouter un élève sans groupe</h4>
+        {% if unassigned_students %}
+        <form method="POST" class="flex gap-2 items-center mb-4">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="form_type" value="add_student_to_group">
+            <input type="hidden" name="group_id" value="{{ selected_group.id }}">
+            <select name="user_id" required class="border rounded px-2 py-1">
+                <option value="">-- Sélectionner un élève --</option>
+                {% for student in unassigned_students %}
+                <option value="{{ student.id }}">{{ student.prenom }} {{ student.nom }}</option>
+                {% endfor %}
+            </select>
+<button type="submit" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">Ajouter</button>
+        </form>
+        {% else %}
+        <p>Aucun élève sans groupe.</p>
+        {% endif %}
+        {% if group_students %}
+        <ul class="space-y-1 mb-4">
+{% for student in group_students %}
+            <li class="border rounded px-2 py-1 flex justify-between items-center">
+                <span>{{ student.prenom }} {{ student.nom }}</span>
+                <form method="POST" action="{{ url_for('remove_student_from_group', user_id=student.id) }}" onsubmit="return confirm('Retirer cet élève du groupe ?');">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="text-red-600 hover:text-red-800" title="Retirer">🗑️</button>
+                </form>
+            </li>
+{% endfor %}
+        </ul>
+        {% else %}
+        <p>Aucun élève dans ce groupe.</p>
+        {% endif %}
+
+        {% else %}
+        <p>Sélectionnez un groupe pour voir ses élèves.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

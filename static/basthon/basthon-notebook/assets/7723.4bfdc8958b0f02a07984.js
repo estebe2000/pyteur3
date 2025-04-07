@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_basthon_basthon_notebook=self.webpackChunk_basthon_basthon_notebook||[]).push([[7723],{57723:(e,o,s)=>{s.d(o,{createPieServices:()=>t.f});var t=s(88685);s(19369)}}]);

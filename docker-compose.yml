@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  pyteur:
+    build: .
+    container_name: pyteur_app
+    command: /bin/sh -c "if [ \"$RESET_DB\" = \"true\" ]; then python manage.py --reset --init; else python manage.py --init; fi && python run.py"
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - RESET_DB=false
+    restart: unless-stopped

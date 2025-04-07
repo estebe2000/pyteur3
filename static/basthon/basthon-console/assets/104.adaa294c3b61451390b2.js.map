@@ -1,0 +1,1 @@
+{"version":3,"file":"assets/104.adaa294c3b61451390b2.js","mappings":"gKACA,QAAe,IAAIA,IAAI,aAAkD,I","sources":["webpack://@basthon/basthon-console/./node_modules/@basthon/kernel-sql/lib/wasm-wrap.js"],"sourcesContent":["/* only to dynamically import wasm */\nexport default new URL(\"sql.js/dist/sql-wasm.wasm\", import.meta.url).href;\n"],"names":["URL"],"sourceRoot":""}

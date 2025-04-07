@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Gestion des Exercices{% endblock %}
+{% block page_title %}Exercices{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('home') }}">Accueil</a> > Exercices
+{% endblock %}
+
+{% block content %}
+<div class="mb-6 flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Vos exercices</h2>
+    <button onclick="document.getElementById('uploadModal').classList.remove('hidden')"
+        class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs">
+        <i class="fas fa-upload mr-2"></i> Uploader
+    </button>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+    {% if exercises %}
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            {% for ex in exercises %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-code text-green-500 mr-2"></i>
+                        <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" 
+                           target="_blank" class="text-blue-600 hover:underline">
+                            {{ ex.original_filename }}
+                        </a>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {{ ex.tags }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {{ ex.created_at.strftime('%d/%m/%Y') }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button onclick="openInBasthon('{{ url_for('static', filename='uploads/' + ex.filename) }}')" class="btn btn-secondary mr-2">
+                        <i class="fas fa-terminal"></i> Ouvrir dans éditeur
+                    </button>
+                    <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" target="_blank" class="btn btn-primary mr-2">
+                        <i class="fas fa-eye"></i> Voir
+                    </a>
+                    <button onclick="confirmDeleteExercise('{{ ex.id }}')" 
+                            class="text-red-600 hover:text-red-900 mr-3">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="p-8 text-center text-gray-500">
+        <i class="fas fa-folder-open text-4xl mb-2"></i>
+        <p>Aucun exercice trouvé</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Upload Modal -->
+<div id="uploadModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Uploader un exercice</h3>
+            <button onclick="document.getElementById('uploadModal').classList.add('hidden')"
+                class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+<form method="POST" action="{{ url_for('upload_exercise') }}" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="mb-4">
+        <label class="block text-gray-700 mb-2">Fichier exercice</label>
+        <input type="file" name="file" accept=".py,.sql,.js,.ml,.xcas" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 mb-2">Tags (séparés par des virgules)</label>
+        <input type="text" name="tags" placeholder="python, sql, 2025"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md">
+    </div>
+<button type="submit" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition w-full">
+        Uploader
+    </button>
+</form>
+    </div>
+</div>
+
+<script>
+function confirmDeleteExercise(exId) {
+    if (confirm('Supprimer cet exercice ?')) {
+        fetch('/delete_exercise/' + exId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            if (response.ok) {
+                location.reload();
+            }
+        });
+    }
+}
+
+function openInBasthon(fileUrl) {
+    const ext = fileUrl.split('.').pop().toLowerCase();
+    let kernel = 'python';
+    if (ext === 'sql') kernel = 'sql';
+    else if (ext === 'ml') kernel = 'ocaml';
+    else if (ext === 'js') kernel = 'javascript';
+    else if (ext === 'xcas') kernel = 'xcas';
+
+    fetch(fileUrl)
+        .then(response => response.text())
+        .then(code => {
+            const encoded = encodeURIComponent(code);
+            const basthonUrl = `/static/basthon/basthon-console/index.html?kernel=${kernel}&script=${encoded}`;
+            window.open(basthonUrl, '_blank');
+        })
+        .catch(err => {
+            alert('Erreur lors du chargement du fichier');
+            console.error(err);
+        });
+}
+</script>
+{% endblock %}
