@@ -15,3 +15,18 @@ services:
       - RESET_DB=false    # Mettre à true pour forcer la réinitialisation complète
       - SECRET_KEY=your_secret_key
     restart: unless-stopped
+
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    container_name: ollama_server
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    command: /bin/sh -c "ollama serve & sleep 5 && ollama pull gemma3:1b && tail -f /dev/null"
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

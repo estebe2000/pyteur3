@@ -22,7 +22,12 @@
         <h3 class="font-semibold mb-2">Ollama (local)</h3>
         <div id="ollama-status" class="mb-2 text-sm"></div>
         <label class="block mb-2">URL Ollama :</label>
-        <input id="ollama-url" type="text" class="w-full border p-2 rounded mb-2" value="http://localhost:11434">
+        <div class="flex items-center mb-2">
+            <input id="ollama-url" type="text" class="flex-grow border p-2 rounded" value="http://localhost:11434">
+            <button onclick="refreshOllama()" title="Valider et rafraîchir" class="ml-2 px-3 py-2 bg-green-600 text-white rounded">
+                🔄
+            </button>
+        </div>
         <label class="block mb-2">Modèle :</label>
         <select id="ollama-model" class="w-full border p-2 rounded mb-2"></select>
         <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Ollama</button>
@@ -119,6 +124,29 @@ async function saveMistral() {
     });
     if (res.ok) {
         document.getElementById('status').innerText = 'Configuration Mistral enregistrée et activée.';
+    } else {
+        document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
+    }
+}
+
+async function refreshOllama() {
+    const url = document.getElementById('ollama-url').value.trim();
+    const config = {
+        active_provider: "ollama",
+        ollama: { url, model: "" }
+    };
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const res = await fetch('/api/save_ia_config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify(config)
+    });
+    if (res.ok) {
+        document.getElementById('status').innerText = 'URL Ollama enregistrée. Rafraîchissement des modèles...';
+        await detectOllama();
     } else {
         document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
     }

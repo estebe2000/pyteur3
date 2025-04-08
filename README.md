@@ -127,6 +127,32 @@ L'application sera accessible sur [http://127.0.0.1:5000](http://127.0.0.1:5000)
 docker-compose up --build
 ```
 
+### Installation optionnelle d'Ollama
+
+Par défaut, Ollama **n'est pas installé** dans l'image Docker.  
+Pour installer Ollama lors de la construction, ajoutez l'argument `INSTALL_OLLAMA=true` à la commande `docker build` :
+
+```bash
+docker build --build-arg INSTALL_OLLAMA=true -t nom_image .
+```
+
+Puis lancez le conteneur avec cette image :
+
+```bash
+docker run -p 5000:5000 nom_image
+```
+
+Avec `docker-compose`, vous pouvez aussi passer cet argument en modifiant votre `docker-compose.yml` :
+
+```yaml
+services:
+  votre_service:
+    build:
+      context: .
+      args:
+        INSTALL_OLLAMA: "true"
+```
+
 2. **Réinitialiser la base de données (optionnel)**
 
 Par défaut, la base n'est pas supprimée.  
