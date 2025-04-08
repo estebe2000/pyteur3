@@ -610,8 +610,10 @@ def delete_exercise(ex_id):
 def users():
     if current_user.role != 'admin':
         return "Accès non autorisé", 403
-    users_list = User.query.order_by(User.nom).all()
-    return render_template('users.html', users=users_list)
+    eleves = User.query.filter_by(role='eleve').order_by(User.nom).all()
+    profs = User.query.filter_by(role='professeur').order_by(User.nom).all()
+    admins = User.query.filter_by(role='admin').order_by(User.nom).all()
+    return render_template('users.html', eleves=eleves, profs=profs, admins=admins)
 
 @main_bp.route('/users/add', methods=['GET', 'POST'])
 @login_required
@@ -915,10 +917,18 @@ def import_users():
 
                 password_hash = generate_password_hash(password_plain)
 
+                # Générer un login unique
+                base_login = prenom.lower() + '.' + nom.lower().replace(' ', '')
+                login_candidate = base_login
+                suffix = 1
+                while User.query.filter_by(login=login_candidate).first() is not None:
+                    login_candidate = f"{base_login}{suffix}"
+                    suffix += 1
+
                 user = User(
                     nom=nom,
                     prenom=prenom,
-                    login=prenom.lower() + '.' + nom.lower().replace(' ', ''),
+                    login=login_candidate,
                     password=password_hash,
                     date_naissance=date_naissance,
                     sexe=row[3].strip() if len(row) > 3 else '',
