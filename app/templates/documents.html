@@ -52,10 +52,17 @@
                     <a href="{{ url_for('static', filename='uploads/' + doc.filename) }}" download class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition mr-2">
                         <i class="fas fa-download"></i> {{ labels['download'] if 'download' in labels else 'Télécharger' }}
                     </a>
+                    {% if current_user.role == 'admin' %}
+                    <a href="{{ url_for('main.assign_document', document_id=doc.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
+                        <i class="fas fa-users"></i> Affecter
+                    </a>
+                    {% endif %}
+                    {% if current_user.role != 'eleve' or doc.user_id == current_user.id %}
                     <button onclick="confirmDelete('{{ doc.id }}')" 
                             class="text-red-600 hover:text-red-900 mr-3">
                         <i class="fas fa-trash"></i>
                     </button>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

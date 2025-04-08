@@ -36,3 +36,30 @@ class Document(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     type = db.Column(db.String(20), default='document')  # 'document' ou 'exercise'
+
+class ExerciseAssignment(db.Model):
+    __tablename__ = 'exercise_assignments'
+    id = db.Column(db.Integer, primary_key=True)
+    exercise_id = db.Column(db.Integer, db.ForeignKey('document.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
+
+    exercise = db.relationship('Document', backref='assignments')
+    user = db.relationship('User', backref='exercise_assignments')
+    group = db.relationship('Group', backref='exercise_assignments')
+    school_class = db.relationship('SchoolClass', backref='exercise_assignments')
+
+
+class DocumentAssignment(db.Model):
+    __tablename__ = 'document_assignments'
+    id = db.Column(db.Integer, primary_key=True)
+    document_id = db.Column(db.Integer, db.ForeignKey('document.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
+
+    document = db.relationship('Document', backref='doc_assignments')
+    user = db.relationship('User', backref='document_assignments')
+    group = db.relationship('Group', backref='document_assignments')
+    school_class = db.relationship('SchoolClass', backref='document_assignments')

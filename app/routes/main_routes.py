@@ -93,13 +93,62 @@ def logout():
 @main_bp.route('/documents')
 @login_required
 def documents():
-    docs = Document.query.filter_by(type='document').all()
+    from app.models import DocumentAssignment
+    from sqlalchemy import or_
+
+    # Documents personnels
+    personal_docs = Document.query.filter_by(user_id=current_user.id, type='document')
+
+    # Construction dynamique du filtre
+    filters = [DocumentAssignment.user_id == current_user.id]
+
+    if current_user.group_id is not None:
+        filters.append(DocumentAssignment.group_id == current_user.group_id)
+
+    if current_user.group and current_user.group.school_class:
+        filters.append(DocumentAssignment.class_id == current_user.group.school_class.id)
+
+    # Documents affectés
+    assigned_docs = Document.query.join(DocumentAssignment).filter(
+        Document.type == 'document',
+        or_(*filters)
+    )
+
+    # Union sans doublons
+    docs = personal_docs.union(assigned_docs).all()
+
     return render_template('documents.html', documents=docs)
 
 @main_bp.route('/exercises')
 @login_required
 def exercises():
-    exercises = Document.query.filter_by(user_id=current_user.id, type='exercise').all()
+    print("DEBUG - current_user.id:", current_user.id)
+    print("DEBUG - current_user.group_id:", current_user.group_id)
+    print("DEBUG - current_user.class_id:", current_user.class_id)
+    from app.models import ExerciseAssignment
+    from sqlalchemy import or_
+
+    # Exercices personnels
+    personal_exercises = Document.query.filter_by(user_id=current_user.id, type='exercise')
+
+    # Construction dynamique du filtre
+    filters = [ExerciseAssignment.user_id == current_user.id]
+
+    if current_user.group_id is not None:
+        filters.append(ExerciseAssignment.group_id == current_user.group_id)
+
+    if current_user.group and current_user.group.school_class:
+        filters.append(ExerciseAssignment.class_id == current_user.group.school_class.id)
+
+    # Exercices affectés
+    assigned_exercises = Document.query.join(ExerciseAssignment).filter(
+        Document.type == 'exercise',
+        or_(*filters)
+    )
+
+    # Union sans doublons
+    exercises = personal_exercises.union(assigned_exercises).all()
+
     return render_template('exercises.html', exercises=exercises)
 
 @main_bp.route('/upload', methods=['POST'])
@@ -180,6 +229,118 @@ def upload_exercise():
     return redirect(url_for('main.exercises'))
 
 from app import csrf
+
+@main_bp.route('/assign_document/<int:document_id>', methods=['GET', 'POST'])
+@login_required
+def assign_document(document_id):
+    if current_user.role != 'admin':
+        return "Accès non autorisé", 403
+
+    from app.models import User, Group, SchoolClass, DocumentAssignment, Document
+
+    document = Document.query.get_or_404(document_id)
+
+    if request.method == 'POST':
+        # Supprimer les affectations existantes
+        DocumentAssignment.query.filter_by(document_id=document_id).delete()
+
+        # Affectation aux élèves
+        user_ids = request.form.getlist('users')
+        for uid in user_ids:
+            assign = DocumentAssignment(document_id=document_id, user_id=int(uid))
+            db.session.add(assign)
+
+        # Affectation aux groupes
+        group_ids = request.form.getlist('groups')
+        for gid in group_ids:
+            assign = DocumentAssignment(document_id=document_id, group_id=int(gid))
+            db.session.add(assign)
+
+        # Affectation aux classes
+        class_ids = request.form.getlist('classes')
+        for cid in class_ids:
+            assign = DocumentAssignment(document_id=document_id, class_id=int(cid))
+            db.session.add(assign)
+
+        db.session.commit()
+        flash("Affectations mises à jour")
+        return redirect(url_for('main.documents'))
+
+    # GET : afficher formulaire
+    users = User.query.filter_by(role='eleve').all()
+    groups = Group.query.all()
+    classes = SchoolClass.query.all()
+
+    # Affectations existantes
+    existing = DocumentAssignment.query.filter_by(document_id=document_id).all()
+    assigned_users = [a.user_id for a in existing if a.user_id]
+    assigned_groups = [a.group_id for a in existing if a.group_id]
+    assigned_classes = [a.class_id for a in existing if a.class_id]
+
+    return render_template('assign_exercise.html',
+                           exercise=document,
+                           users=users,
+                           groups=groups,
+                           classes=classes,
+                           assigned_users=assigned_users,
+                           assigned_groups=assigned_groups,
+                           assigned_classes=assigned_classes)
+
+@main_bp.route('/assign_exercise/<int:exercise_id>', methods=['GET', 'POST'])
+@login_required
+def assign_exercise(exercise_id):
+    if current_user.role != 'admin':
+        return "Accès non autorisé", 403
+
+    from app.models import User, Group, SchoolClass, ExerciseAssignment, Document
+
+    exercise = Document.query.get_or_404(exercise_id)
+
+    if request.method == 'POST':
+        # Supprimer les affectations existantes
+        ExerciseAssignment.query.filter_by(exercise_id=exercise_id).delete()
+
+        # Affectation aux élèves
+        user_ids = request.form.getlist('users')
+        for uid in user_ids:
+            assign = ExerciseAssignment(exercise_id=exercise_id, user_id=int(uid))
+            db.session.add(assign)
+
+        # Affectation aux groupes
+        group_ids = request.form.getlist('groups')
+        for gid in group_ids:
+            assign = ExerciseAssignment(exercise_id=exercise_id, group_id=int(gid))
+            db.session.add(assign)
+
+        # Affectation aux classes
+        class_ids = request.form.getlist('classes')
+        for cid in class_ids:
+            assign = ExerciseAssignment(exercise_id=exercise_id, class_id=int(cid))
+            db.session.add(assign)
+
+        db.session.commit()
+        flash("Affectations mises à jour")
+        return redirect(url_for('main.exercises'))
+
+    # GET : afficher formulaire
+    users = User.query.filter_by(role='eleve').all()
+    groups = Group.query.all()
+    classes = SchoolClass.query.all()
+
+    # Affectations existantes
+    existing = ExerciseAssignment.query.filter_by(exercise_id=exercise_id).all()
+    assigned_users = [a.user_id for a in existing if a.user_id]
+    assigned_groups = [a.group_id for a in existing if a.group_id]
+    assigned_classes = [a.class_id for a in existing if a.class_id]
+
+    return render_template('assign_exercise.html',
+                           exercise=exercise,
+                           users=users,
+                           groups=groups,
+                           classes=classes,
+                           assigned_users=assigned_users,
+                           assigned_groups=assigned_groups,
+                           assigned_classes=assigned_classes)
 
 @main_bp.route('/settings', methods=['GET', 'POST'])
 @login_required
@@ -352,7 +513,23 @@ def edit_user(id):
         user.nom = request.form.get('nom')
         user.prenom = request.form.get('prenom') 
         user.login = request.form.get('login')
-        user.date_naissance = request.form.get('date_naissance')
+
+        date_str = request.form.get('date_naissance')
+        if date_str:
+            try:
+                import datetime
+                user.date_naissance = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+            except ValueError:
+                user.date_naissance = None
+        else:
+            user.date_naissance = None
+
+        # Gestion mot de passe
+        password = request.form.get('password')
+        if password:
+            from werkzeug.security import generate_password_hash
+            user.password = generate_password_hash(password)
+
         user.besoins_particuliers = request.form.get('besoins_particuliers')
         user.email = request.form.get('email')
         user.role = request.form.get('role')

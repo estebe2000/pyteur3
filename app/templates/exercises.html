@@ -76,10 +76,17 @@
                     <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" target="_blank" class="py-2 px-3 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition mr-2" title="Ouvrir dans un nouvel onglet">
                         <i class="fas fa-external-link-alt"></i> Ouvrir
                     </a>
+                    {% if current_user.role == 'admin' %}
+                    <a href="{{ url_for('main.assign_exercise', exercise_id=ex.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
+                        <i class="fas fa-users"></i> Affecter
+                    </a>
+                    {% endif %}
+                    {% if current_user.role != 'eleve' or ex.user_id == current_user.id %}
                     <button onclick="confirmDeleteExercise('{{ ex.id }}')" 
                             class="text-red-600 hover:text-red-900 mr-3">
                         <i class="fas fa-trash"></i>
                     </button>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

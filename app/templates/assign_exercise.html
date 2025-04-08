@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Affecter l'exercice{% endblock %}
+{% block page_title %}Affecter l'exercice{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Affecter l'exercice : {{ exercise.original_filename }}</h2>
+
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Élèves</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {% for user in users %}
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="users" value="{{ user.id }}"
+                       {% if user.id in assigned_users %}checked{% endif %}>
+                <span>{{ user.prenom }} {{ user.nom }}</span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Groupes</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {% for group in groups %}
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="groups" value="{{ group.id }}"
+                       {% if group.id in assigned_groups %}checked{% endif %}>
+                <span>{{ group.nom }}</span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Classes</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {% for cl in classes %}
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="classes" value="{{ cl.id }}"
+                       {% if cl.id in assigned_classes %}checked{% endif %}>
+                <span>{{ cl.niveau }} - {{ cl.nom }}</span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
+        Valider les affectations
+    </button>
+</form>
+{% endblock %}
