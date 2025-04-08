@@ -97,11 +97,13 @@ python manage.py --reset --init
 
 Ce script crée automatiquement trois comptes :
 
-| Rôle           | Email                | Mot de passe |
+| Rôle           | Login                | Mot de passe |
 |----------------|----------------------|--------------|
-| Administrateur | admin@pyteur.com     | admin        |
-| Professeur     | prof@pyteur.com      | prof         |
-| Élève          | eleve@pyteur.com     | eleve        |
+| Administrateur | admin                | admin        |
+| Professeur     | prof                 | prof         |
+| Élève          | eleve                | eleve        |
+
+Utilisez ces identifiants (login et mot de passe) pour vous connecter avec les comptes par défaut.
 
 6. **Lancer l'application**
 ```bash
