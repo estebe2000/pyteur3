@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block title %}QCM{% endblock %}
 {% block page_title %}QCM{% endblock %}
+{% block breadcrumb %}
+<a href="{{ url_for('main.home') }}">Accueil</a> > QCM
+{% endblock %}
+
 {% block content %}
 <h1 class="text-2xl font-bold mb-6">Éditeur de QCM</h1>
 
