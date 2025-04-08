@@ -373,6 +373,10 @@ def upload_exercise():
     return redirect(url_for('main.exercises'))
 
 from app import csrf
+import csv
+import datetime
+from werkzeug.security import generate_password_hash
+from flask import send_from_directory
 
 
 @main_bp.route('/assign_document/<int:document_id>', methods=['GET', 'POST'])
@@ -849,6 +853,99 @@ def set_language(lang_code):
 from flask import jsonify
 
 from app import csrf
+
+@main_bp.route('/users/import', methods=['GET', 'POST'])
+@login_required
+def import_users():
+    if current_user.role != 'admin':
+        return "Accès non autorisé", 403
+
+    if request.method == 'POST':
+        file = request.files.get('file')
+        if not file or file.filename == '':
+            flash('Aucun fichier sélectionné')
+            return redirect(request.url)
+
+        filename = secure_filename(file.filename)
+        filepath = os.path.join('app', 'static', 'uploads', filename)
+        file.save(filepath)
+
+        # Extraire classe et groupe du nom de fichier, ex: 201.p1.csv
+        base = os.path.basename(filename)
+        parts = base.split('.')
+        classe_nom = parts[0]
+        groupe_nom = parts[1] if len(parts) > 1 else 'default'
+
+        # Chercher ou créer la classe
+        school_class = SchoolClass.query.filter_by(nom=classe_nom).first()
+        if not school_class:
+            school_class = SchoolClass(nom=classe_nom, niveau='Inconnu')
+            db.session.add(school_class)
+            db.session.commit()
+
+        # Chercher ou créer le groupe
+        group = Group.query.filter_by(nom=groupe_nom, class_id=school_class.id).first()
+        if not group:
+            group = Group(nom=groupe_nom, class_id=school_class.id)
+            db.session.add(group)
+            db.session.commit()
+
+        with open(filepath, newline='', encoding='utf-8-sig') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';')
+            headers = next(reader, None)  # sauter l'en-tête
+            for row in reader:
+                if not row or not row[0].strip():
+                    continue
+                nom_prenom = row[0].strip()
+                try:
+                    nom_complet = nom_prenom.split(' ')
+                    prenom = nom_complet[0]
+                    nom = ' '.join(nom_complet[1:])
+                except:
+                    prenom = nom_prenom
+                    nom = ''
+
+                date_naissance_str = row[2].strip() if len(row) > 2 else ''
+                try:
+                    date_naissance = datetime.datetime.strptime(date_naissance_str, '%d/%m/%Y').date()
+                    password_plain = date_naissance.strftime('%d%m%Y')
+                except:
+                    date_naissance = None
+                    password_plain = 'changeme'
+
+                password_hash = generate_password_hash(password_plain)
+
+                user = User(
+                    nom=nom,
+                    prenom=prenom,
+                    login=prenom.lower() + '.' + nom.lower().replace(' ', ''),
+                    password=password_hash,
+                    date_naissance=date_naissance,
+                    sexe=row[3].strip() if len(row) > 3 else '',
+                    besoins_particuliers='',
+                    email=None,
+                    role='eleve',
+                    date_entree=datetime.datetime.strptime(row[5], '%d/%m/%Y').date() if len(row) > 5 and row[5].strip() else None,
+                    date_sortie=datetime.datetime.strptime(row[6], '%d/%m/%Y').date() if len(row) > 6 and row[6].strip() else None,
+                    tuteur=row[7].strip() if len(row) > 7 else '',
+                    connexion_eleve=row[8].strip() if len(row) > 8 else '',
+                    connexion_responsable=row[9].strip() if len(row) > 9 else '',
+                    option1=row[10].strip() if len(row) > 10 else '',
+                    option2=row[11].strip() if len(row) > 11 else '',
+                    option3=row[12].strip() if len(row) > 12 else '',
+                    autres_options=row[13].strip() if len(row) > 13 else '',
+                    regime=row[14].strip() if len(row) > 14 else '',
+                    class_id=school_class.id,
+                    group_id=group.id
+                )
+                db.session.add(user)
+            db.session.commit()
+        flash('Importation terminée avec succès')
+        return redirect(url_for('main.users'))
+
+    return render_template('import_users.html')
+
+
 
 @csrf.exempt
 @main_bp.route('/api/chat', methods=['POST'])

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Importation élèves{% endblock %}
+{% block page_title %}Importation élèves{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('main.home') }}">Accueil</a> > <a href="{{ url_for('main.users') }}">Utilisateurs</a> > Importation élèves
+{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Importer un fichier CSV d'élèves</h2>
+
+<form method="POST" enctype="multipart/form-data" class="space-y-4">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div>
+        <label class="block mb-2 font-medium">Fichier CSV</label>
+        <input type="file" name="file" accept=".csv" required class="border rounded p-2 w-full">
+    </div>
+    <button type="submit" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition">
+        <i class="fas fa-upload mr-2"></i> Importer
+    </button>
+</form>
+
+<p class="mt-4 text-gray-600">Le nom du fichier doit être au format <strong>classe.groupe.csv</strong> pour affecter automatiquement la classe et le groupe.</p>
+{% endblock %}
