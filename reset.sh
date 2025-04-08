@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "Suppression de la base de données..."
-rm -f instance/db.sqlite
-
-echo "Réinitialisation de la base..."
-python3 init_db.py
-
+echo "Réinitialisation complète de la base de données..."
+python3 manage.py --reset --init
 echo "Base de données réinitialisée avec succès."
