@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Créateur d'exercices</h2>
+
+<form id="exerciseForm" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="json_data" id="json_data">
+
+        <!-- 1. Choix du niveau scolaire -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Niveau scolaire</h5>
+                <select id="niveauSelect" class="form-select"></select>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Liste des thèmes -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="card-title">Thèmes</h5>
+                            <button type="button" class="btn btn-success btn-sm" onclick="addTheme()">
+                                <i class="fas fa-plus"></i> Ajouter
+                            </button>
+                        </div>
+                        <ul class="list-group" id="themesList"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 niveaux -->
+            <div class="col-md-8 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 id="selectedThemeTitle" class="card-title mb-3"></h5>
+                        <div id="niveauxContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">
+                <i class="fas fa-save"></i> Enregistrer
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+let data = {{ data_json | safe }};
+const mapping = {
+    "Première Générale": "Première",
+    "Terminale Générale": "Terminale"
+};
+const niveauxLabels = ["Troisième", "Seconde", "SNT", "Première", "Terminale"];
+const newData = {};
+niveauxLabels.forEach(label => {
+    let found = false;
+    for (const key in data) {
+        if (key === label) {
+            newData[label] = data[key];
+            found = true;
+            break;
+        }
+        if (mapping[key] === label) {
+            newData[label] = data[key];
+            found = true;
+            break;
+        }
+    }
+    if (!found) newData[label] = [];
+});
+data = newData;
+
+function refreshNiveaux() {
+    const niveauSelect = document.getElementById('niveauSelect');
+    niveauSelect.innerHTML = '';
+    niveauxLabels.forEach(niv => {
+        const opt = document.createElement('option');
+        opt.value = niv;
+        opt.textContent = niv;
+        niveauSelect.appendChild(opt);
+    });
+    niveauSelect.onchange = refreshThemes;
+    refreshThemes();
+}
+
+function refreshThemes() {
+    const niveau = document.getElementById('niveauSelect').value;
+    const themesList = document.getElementById('themesList');
+    themesList.innerHTML = '';
+
+    data[niveau].forEach((themeObj, idx) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item list-group-item-action';
+        li.style.cursor = 'pointer';
+        li.textContent = themeObj.thème;
+        li.onclick = () => {
+            document.getElementById('selectedThemeTitle').textContent = themeObj.thème;
+            refreshLevels(idx);
+        };
+        themesList.appendChild(li);
+    });
+
+    // Par défaut, afficher le premier thème s'il existe
+    if (data[niveau].length > 0) {
+        document.getElementById('selectedThemeTitle').textContent = data[niveau][0].thème;
+        refreshLevels(0);
+    } else {
+        document.getElementById('selectedThemeTitle').textContent = '';
+        document.getElementById('niveauxContainer').innerHTML = '';
+    }
+}
+
+function refreshLevels(themeIdx) {
+    const niveau = document.getElementById('niveauSelect').value;
+    const niveauxContainer = document.getElementById('niveauxContainer');
+    niveauxContainer.innerHTML = '';
+
+    if(data[niveau].length === 0) return;
+
+    const niveaux = data[niveau][themeIdx].niveaux;
+
+    const table = document.createElement('table');
+    table.className = 'table table-bordered align-middle';
+    table.style.width = '100%';
+
+    const thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th style="width:80px;">Niveau</th><th style="width:auto;">Description</th><th style="width:100px;">Débutant</th></tr>';
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+
+    niveaux.forEach((niv, idx) => {
+        const tr = document.createElement('tr');
+
+        const tdNiv = document.createElement('td');
+        tdNiv.innerHTML = `<strong>${niv.niveau}</strong>`;
+        tr.appendChild(tdNiv);
+
+        const tdDesc = document.createElement('td');
+        tdDesc.style.width = '100%';
+        const textarea = document.createElement('textarea');
+        textarea.className = 'form-control';
+        textarea.style.width = '100%';
+        textarea.rows = 2;
+        textarea.value = niv.description;
+        textarea.onchange = () => updateDescription(niveau, themeIdx, idx, textarea.value);
+        tdDesc.appendChild(textarea);
+        tr.appendChild(tdDesc);
+
+        const tdDeb = document.createElement('td');
+        tdDeb.className = 'text-center';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'form-check-input';
+        checkbox.checked = niv.debutant;
+        checkbox.onchange = () => updateDebutant(niveau, themeIdx, idx, checkbox.checked);
+        tdDeb.appendChild(checkbox);
+        tr.appendChild(tdDeb);
+
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    niveauxContainer.appendChild(table);
+}
+
+function updateDescription(niveau, themeIdx, nivIdx, value) {
+    data[niveau][themeIdx].niveaux[nivIdx].description = value;
+}
+
+function updateDebutant(niveau, themeIdx, nivIdx, checked) {
+    data[niveau][themeIdx].niveaux[nivIdx].debutant = checked;
+}
+
+function addTheme() {
+    const niveau = document.getElementById('niveauSelect').value;
+    const themeName = prompt('Nom du nouveau thème :');
+    if (!themeName) return;
+    data[niveau].push({
+        "thème": themeName,
+        "niveaux": [
+            {"niveau":1,"description":"","debutant":false},
+            {"niveau":2,"description":"","debutant":false},
+            {"niveau":3,"description":"","debutant":false},
+            {"niveau":4,"description":"","debutant":false},
+            {"niveau":5,"description":"","debutant":false}
+        ]
+    });
+    refreshThemes();
+}
+
+function deleteTheme() {
+    const niveau = document.getElementById('niveauSelect').value;
+    const themeIdx = document.getElementById('themeSelect').value;
+    if(themeIdx === '') return;
+    if(!confirm('Supprimer ce thème ?')) return;
+    data[niveau].splice(themeIdx,1);
+    refreshThemes();
+}
+
+document.getElementById('exerciseForm').onsubmit = function() {
+    document.getElementById('json_data').value = JSON.stringify(data, null, 2);
+};
+refreshNiveaux();
+</script>
+{% endblock %}

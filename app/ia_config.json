@@ -1,0 +1,11 @@
+{
+    "active_provider": "ollama",
+    "ollama": {
+        "url": "http://localhost:11434",
+        "model": "gemma3:latest"
+    },
+    "mistral": {
+        "api_key": "DcCuwA1kbtGMShFRunnTJi6OtVgjQxGG",
+        "url": "https://codestral.mistral.ai/v1/chat/completions"
+    }
+}

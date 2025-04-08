@@ -38,7 +38,7 @@ LABELS = {
     "admin_actions": "Actions administrateur",
     "manage_users_action": "Gérer les utilisateurs",
     "statistics": "Statistiques",
-    "settings": "Paramètres",
+    "settings": "Profil",
     "welcome_dashboard": "Bienvenue sur votre tableau de bord",
     "students": "Élèves",
     "teachers": "Professeurs",

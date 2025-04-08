@@ -1,0 +1,26 @@
+{
+    "active_provider": "mistral_default",
+    "providers": {
+        "mistral_default": {
+            "type": "mistral",
+            "api_key": "",
+            "url": "https://codestral.mistral.ai/v1/chat/completions",
+            "model": "codestral-latest",
+            "system_message": "Vous êtes un assistant IA utile."
+        },
+        "openai_default": {
+            "type": "openai",
+            "api_key": "",
+            "url": "https://api.openai.com/v1/chat/completions",
+            "model": "gpt-3.5-turbo",
+            "system_message": "You are a helpful assistant."
+        },
+        "ollama_local": {
+            "type": "ollama",
+            "api_key": "",
+            "url": "http://localhost:11434/api/generate",
+            "model": "llama2",
+            "system_message": "You are a helpful assistant."
+        }
+    }
+}

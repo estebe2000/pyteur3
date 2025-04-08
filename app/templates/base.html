@@ -54,6 +54,14 @@
     <i class="fas fa-question-circle mr-3"></i>
     {{ labels['qcm'] }}
 </a>
+<a href="{{ url_for('main.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-edit mr-3"></i>
+    Créateur exercice
+</a>
+<a href="{{ url_for('main.generateur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-magic mr-3"></i>
+    Générateur d'exercice
+</a>
 {% endif %}
 
 {% if current_user.role != 'eleve' %}
@@ -92,6 +100,8 @@
     <i class="fas fa-brain mr-3"></i>
     {{ labels['ia'] }}
 </a>
+{% if current_user.role == 'admin' %}
+{% endif %}
 {% endif %}
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>

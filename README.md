@@ -4,7 +4,8 @@
 
 ## Description
 Pyteur est une plateforme web éducative développée avec Flask.  
-Elle permet la gestion d'utilisateurs, la gestion de classes et groupes, l'upload sécurisé de documents PDF, la gestion et l'exécution d'exercices multi-langages, et intègre un bac à sable interactif multi-langages (Python, SQL, OCaml, JavaScript, Xcas) via Basthon Console et Notebook.
+Elle permet la gestion d'utilisateurs, la gestion de classes et groupes, l'upload sécurisé de documents PDF, la gestion et l'exécution d'exercices multi-langages, et intègre un bac à sable interactif multi-langages (Python, SQL, OCaml, JavaScript, Xcas) via Basthon Console et Notebook.  
+Elle propose également des fonctionnalités d'intelligence artificielle pour générer ou corriger des exercices.
 
 ## Nouveautés UX
 - **Page de connexion immersive** avec :
@@ -21,17 +22,25 @@ Elle permet la gestion d'utilisateurs, la gestion de classes et groupes, l'uploa
 - Upload et gestion de documents PDF (limité aux fichiers PDF)
 - Gestion et exécution d'exercices multi-langages (Python, SQL, OCaml, JavaScript, Xcas)
 - Bac à sable interactif multi-langages (console et notebook)
+- Intégration d'IA pour la génération et correction d'exercices
 - Interface responsive compatible mobile et desktop
 - Fil d'Ariane pour la navigation
 - Sidebar dynamique avec menu mobile
 - Affichage dynamique de l'heure
 
+## Fonctionnalités IA
+- Intégration avec plusieurs fournisseurs d'IA configurables (OpenAI, Mistral, etc.)
+- Génération automatique d'exercices à partir de consignes
+- Correction automatique d'exercices soumis par les élèves
+- Configuration flexible via fichiers `app/ia_config.json` et `app/ia_providers.json`
+- Gestion des fournisseurs IA via l'interface d'administration
+
 ## Installation locale (sans Docker)
 
 1. **Cloner le dépôt**
 ```bash
-git clone https://github.com/votre-utilisateur/pyteur.git
-cd pyteur
+git clone https://github.com/estebe2000/pyteur3.git
+cd pyteur3
 ```
 
 2. **Créer un environnement virtuel**
@@ -50,10 +59,28 @@ pip install -r requirements.txt
 
 4. **Configurer les variables d'environnement**
 
-Créer un fichier `.env` à la racine avec :
+Créer un fichier `.env` à la racine avec au minimum :
 
 ```
 SECRET_KEY=your_secret_key
+```
+
+### Configuration avancée (.env)
+
+Vous pouvez également définir d'autres variables selon vos besoins :
+
+```
+# Clé secrète Flask
+SECRET_KEY=your_secret_key
+
+# Clé API pour un fournisseur IA par défaut
+IA_API_KEY=your_api_key
+
+# URL du serveur IA personnalisé
+IA_API_URL=https://api.monfournisseur.com
+
+# Forcer le reset de la base au démarrage (utile en dev)
+RESET_DB=true
 ```
 
 5. **Initialiser ou réinitialiser la base de données**
@@ -119,51 +146,9 @@ L'application sera accessible sur [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
-## Structure du projet
-```
-├── app/                    # Code source Flask
-│   ├── __init__.py
-│   ├── models.py
-│   ├── routes/
-│   ├── static/
-│   └── templates/
-├── Dockerfile              # Image Docker de l'app
-├── docker-compose.yml      # Orchestration multi-conteneurs
-├── manage.py               # Script init/reset base
-├── init_db.py              # Init base
-├── init_admin.py           # Création comptes admin
-├── run.py                  # Lancement Flask
-├── requirements.txt        # Dépendances Python
-├── README.md
-```
+## Scripts utilitaires
 
-## Contribuer
-
-Les contributions sont les bienvenues !
-
-1. Forkez ce dépôt
-2. Créez une branche (`git checkout -b feature/ma-fonctionnalite`)
-3. Commitez vos changements (`git commit -am 'Ajout nouvelle fonctionnalité'`)
-4. Poussez la branche (`git push origin feature/ma-fonctionnalite`)
-5. Ouvrez une Pull Request
-
-## Sécurité
-
-⚠️ Cette application est conçue pour un usage en environnement de développement ou éducatif.  
-Pour un déploiement en production, pensez à :
-- Configurer un serveur web sécurisé (ex: Nginx)
-- Utiliser une base de données robuste (PostgreSQL, MySQL)
-- Gérer les clés secrètes et variables sensibles de manière sécurisée
-- Activer HTTPS
-- Renforcer la gestion des permissions
-
-## Crédits
-- [Basthon](https://basthon.fr/) pour l'intégration console et notebook
-- [Flask](https://flask.palletsprojects.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Bootstrap](https://getbootstrap.com/)
-
----
-
-## Licence
-Ce projet est distribué sous licence MIT.
+- `manage.py` : initialisation et réinitialisation de la base de données
+- `init_db.py` : script d'initialisation de la base
+- `init_admin.py` : création des comptes administrateur, professeur, élève par défaut
+- `reset

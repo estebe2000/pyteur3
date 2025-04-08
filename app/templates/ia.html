@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}GROS TEST PAGE IA{% endblock %}
+{% block head %}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+{% endblock %}
 
-{% block page_title %}GROS TEST PAGE IA{% endblock %}
+{% block title %}Intelligence Artificielle{% endblock %}
+
+{% block page_title %}Intelligence Artificielle{% endblock %}
 
 {% block breadcrumb %}
 <a href="{{ url_for('main.home') }}">Accueil</a> > Intelligence Artificielle
@@ -10,18 +14,118 @@
 
 {% block content %}
 <div class="container mx-auto px-4">
-    <h1 class="text-4xl font-extrabold text-red-600 mb-4">GROS TEST PAGE IA</h1>
-    <p>Bienvenue dans la section dédiée à l'intelligence artificielle.</p>
 
-    <div class="mt-6">
-        <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="Écrivez votre question..."></textarea>
-        <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Envoyer</button>
+<h2 class="text-2xl font-bold mb-4">Gestion des fournisseurs IA</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="p-4 border rounded bg-gray-50">
+        <h3 class="font-semibold mb-2">Ollama (local)</h3>
+        <div id="ollama-status" class="mb-2 text-sm"></div>
+        <label class="block mb-2">URL Ollama :</label>
+        <input id="ollama-url" type="text" class="w-full border p-2 rounded mb-2" value="http://localhost:11434">
+        <label class="block mb-2">Modèle :</label>
+        <select id="ollama-model" class="w-full border p-2 rounded mb-2"></select>
+        <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Ollama</button>
     </div>
 
-    <div id="response" class="mt-4 p-4 border rounded bg-gray-100"></div>
+    <div class="p-4 border rounded bg-gray-50">
+        <h3 class="font-semibold mb-2">Mistral Codestral</h3>
+        <label class="block mb-2">URL API :</label>
+        <input id="mistral-url" type="text" class="w-full border p-2 rounded mb-2" value="https://codestral.mistral.ai/v1/chat/completions">
+        <label class="block mb-2">Clé API :</label>
+        <input id="mistral-key" type="text" class="w-full border p-2 rounded mb-2">
+        <button onclick="saveMistral()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Mistral</button>
+    </div>
+</div>
+
+<div id="status" class="text-green-600 mb-4"></div>
+
+<h2 class="text-2xl font-bold mb-4">Chat IA</h2>
+
+<div class="mt-6">
+    <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="Écrivez votre question..."></textarea>
+    <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Envoyer</button>
+</div>
+
+<div id="response" class="mt-4 p-4 border rounded bg-gray-100"></div>
+
 </div>
 
 <script>
+async function detectOllama() {
+    const statusDiv = document.getElementById('ollama-status');
+    const select = document.getElementById('ollama-model');
+    statusDiv.innerText = 'Détection en cours...';
+    select.innerHTML = '';
+    try {
+        const res = await fetch('/api/ollama_status');
+        const data = await res.json();
+        if (data.installed) {
+            statusDiv.innerHTML = '<span class="text-green-600">Ollama détecté.</span>';
+            data.models.forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = m;
+                opt.innerText = m;
+                select.appendChild(opt);
+            });
+        } else {
+            statusDiv.innerHTML = '<span class="text-red-600">Ollama non détecté. Installez-le depuis <a href="https://ollama.com/download" target="_blank" class="underline">ollama.com</a></span>';
+        }
+    } catch {
+        statusDiv.innerText = 'Erreur lors de la détection.';
+    }
+}
+
+async function saveOllama() {
+    const url = document.getElementById('ollama-url').value.trim();
+    const model = document.getElementById('ollama-model').value.trim();
+    const config = {
+        active_provider: "ollama",
+        ollama: { url, model }
+    };
+    console.log("Envoi config Ollama:", config);
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const res = await fetch('/api/save_ia_config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify(config)
+    });
+    if (res.ok) {
+        document.getElementById('status').innerText = 'Configuration Ollama enregistrée et activée.';
+    } else {
+        document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
+    }
+}
+
+async function saveMistral() {
+    const url = document.getElementById('mistral-url').value.trim();
+    const api_key = document.getElementById('mistral-key').value.trim();
+    const config = {
+        active_provider: "mistral",
+        mistral: { url, api_key }
+    };
+    console.log("Envoi config Mistral:", config);
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const res = await fetch('/api/save_ia_config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify(config)
+    });
+    if (res.ok) {
+        document.getElementById('status').innerText = 'Configuration Mistral enregistrée et activée.';
+    } else {
+        document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
+    }
+}
+
+detectOllama();
+
 document.getElementById('send-btn').addEventListener('click', async () => {
     const userInput = document.getElementById('user-input').value.trim();
     if (!userInput) return;
