@@ -11,7 +11,21 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/qcm')
 @login_required
 def qcm():
-    return render_template('qcm.html')
+    import glob
+    import os
+    # banques de questions
+    base_dir = os.path.join('app', 'static', 'data', 'qcm')
+    pattern = os.path.join(base_dir, '**', '*.json')
+    files = glob.glob(pattern, recursive=True)
+    qcm_files = [os.path.relpath(f, base_dir).replace('\\', '/') for f in files]
+
+    # qcm sauvegardés
+    saved_dir = os.path.join('app', 'static', 'uploads', 'qcm')
+    saved_pattern = os.path.join(saved_dir, '*.json')
+    saved_files = glob.glob(saved_pattern)
+    saved_qcms = [os.path.basename(f) for f in saved_files]
+
+    return render_template('qcm.html', qcm_files=qcm_files, saved_qcms=saved_qcms)
 
 @main_bp.route('/statistiques')
 @login_required
@@ -198,6 +212,70 @@ def delete_document(doc_id):
         db.session.delete(doc)
         db.session.commit()
         return '', 204
+    except Exception as e:
+        return str(e), 500
+
+
+@csrf.exempt
+@main_bp.route('/export_pronote', methods=['POST'])
+@login_required
+def export_pronote():
+    import json
+    from flask import Response
+    try:
+        data = request.get_json(force=True)
+        qcm_name = data.get('name', 'qcm_export')
+        questions = data.get('questions', [])
+
+        # Construction XML Pronote
+        xml = '<?xml version="1.0" encoding="UTF-8"?>\n<quiz>\n'
+
+        # Catégorie par défaut
+        xml += '  <question type="category">\n'
+        xml += '    <category>\n'
+        xml += f'      <text><![CDATA[<infos><name>{qcm_name}</name><answernumbering>123</answernumbering><niveau>2NDE</niveau><matiere>SC.NUMERIQ.TECHNOL.</matiere></infos>]]></text>\n'
+        xml += '    </category>\n'
+        xml += '  </question>\n'
+
+        for q in questions:
+            question_text = q.get('question', '').replace('&', '&').replace('<', '<').replace('>', '>')
+            propositions = q.get('propositions', [])
+            bonne_reponse = q.get('bonne_reponse', 0)
+
+            xml += '  <question type="multichoice">\n'
+            xml += '    <name>\n'
+            xml += f'      <text><![CDATA[{question_text}]]></text>\n'
+            xml += '    </name>\n'
+            xml += '    <questiontext format="html">\n'
+            xml += '      <text><![CDATA[]]></text>\n'
+            xml += '    </questiontext>\n'
+            xml += '    <externallink/>\n'
+            xml += '    <usecase>1</usecase>\n'
+            xml += '    <defaultgrade>1</defaultgrade>\n'
+            xml += '    <editeur>0</editeur>\n'
+            xml += '    <single>true</single>\n'
+
+            for idx, prop in enumerate(propositions):
+                prop_text = prop.replace('&', '&').replace('<', '<').replace('>', '>')
+                fraction = "100" if idx == bonne_reponse else "0"
+                xml += f'    <answer fraction="{fraction}" format="plain_text">\n'
+                xml += f'      <text><![CDATA[{prop_text}]]></text>\n'
+                xml += '      <feedback>\n'
+                xml += '        <text><![CDATA[]]></text>\n'
+                xml += '      </feedback>\n'
+                xml += '    </answer>\n'
+
+            xml += '  </question>\n'
+
+        xml += '</quiz>\n'
+
+        return Response(
+            xml,
+            mimetype='application/xml',
+            headers={
+                'Content-Disposition': f'attachment; filename={qcm_name}.xml'
+            }
+        )
     except Exception as e:
         return str(e), 500
 
@@ -472,3 +550,28 @@ def chat_api():
         return jsonify({'response': ai_response})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@csrf.exempt
+@main_bp.route('/save_qcm', methods=['POST'])
+@login_required
+def save_qcm():
+    import json
+    try:
+        data = request.get_json(force=True)
+        qcm_name = data.get('name', '').strip()
+        questions = data.get('questions', [])
+        if not qcm_name or not questions:
+            return 'Nom ou questions manquants', 400
+
+        save_dir = os.path.join('app', 'static', 'uploads', 'qcm')
+        os.makedirs(save_dir, exist_ok=True)
+        filename = secure_filename(qcm_name) + '.json'
+        filepath = os.path.join(save_dir, filename)
+
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(questions, f, ensure_ascii=False, indent=2)
+
+        return '', 200
+    except Exception as e:
+        return str(e), 500

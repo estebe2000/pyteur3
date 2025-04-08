@@ -2,5 +2,212 @@
 {% block title %}QCM{% endblock %}
 {% block page_title %}QCM{% endblock %}
 {% block content %}
-<h1>QCM</h1>
+<h1 class="text-2xl font-bold mb-6">Éditeur de QCM</h1>
+
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">Charger un QCM existant</h2>
+  <select id="load-qcm" class="w-full p-2 border rounded">
+    <option value="">-- Choisir un QCM --</option>
+    {% for saved in saved_qcms %}
+    <option value="{{ saved }}">{{ saved }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">Banque de questions</h2>
+  <select id="qcm-file" class="w-full p-2 border rounded mb-2">
+    <option value="">-- Choisir une banque --</option>
+    {% for file in qcm_files %}
+    <option value="{{ file }}">{{ file }}</option>
+    {% endfor %}
+  </select>
+  <div id="bank-questions" class="mt-2">
+    <h3 class="text-lg font-semibold mb-2">Questions disponibles</h3>
+    <select id="bank-select" class="w-full p-2 border rounded"></select>
+  </div>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">Nouvelle question personnalisée</h2>
+  <textarea id="question-text" rows="3" class="w-full p-2 border rounded mb-2" placeholder="Écrivez la question ici..."></textarea>
+  <div class="mb-2">
+    <label class="font-semibold">Propositions :</label><br>
+    <input type="text" id="prop0" placeholder="Proposition 1" class="p-1 border rounded mb-1 w-full">
+    <input type="radio" name="correct" value="0"> Bonne réponse<br>
+    <input type="text" id="prop1" placeholder="Proposition 2" class="p-1 border rounded mb-1 w-full">
+    <input type="radio" name="correct" value="1"> Bonne réponse<br>
+    <input type="text" id="prop2" placeholder="Proposition 3" class="p-1 border rounded mb-1 w-full">
+    <input type="radio" name="correct" value="2"> Bonne réponse<br>
+    <input type="text" id="prop3" placeholder="Proposition 4" class="p-1 border rounded mb-1 w-full">
+    <input type="radio" name="correct" value="3"> Bonne réponse<br>
+  </div>
+  <button id="add-question" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Ajouter au QCM</button>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">Questions du QCM</h2>
+  <ul id="qcm-list" class="space-y-2"></ul>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">Sauvegarder</h2>
+  <label for="qcm-name" class="font-semibold">Nom du QCM :</label>
+  <input type="text" id="qcm-name" placeholder="Nom du QCM" class="w-full p-2 border rounded mb-2">
+  <button id="save-qcm" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Sauvegarder le QCM</button>
+  <button id="export-pronote" class="mt-2 px-4 py-2 bg-green-500 text-white rounded ml-2">Exporter au format Pronote</button>
+</div>
+
+<script>
+let qcm = [];
+
+let bankQuestions = [];
+
+document.getElementById('load-qcm').onchange = () => {
+  const filename = document.getElementById('load-qcm').value;
+  if (!filename) return;
+  fetch('/static/uploads/qcm/' + filename)
+    .then(res => res.json())
+    .then(json => {
+      qcm = json;
+      updateQcmList();
+      // remplir le champ nom sans extension
+      const name = filename.endsWith('.json') ? filename.slice(0, -5) : filename;
+      document.getElementById('qcm-name').value = name;
+    });
+};
+
+document.getElementById('qcm-file').onchange = () => {
+  const file = document.getElementById('qcm-file').value;
+  if (!file) return;
+  fetch('/static/data/qcm/' + file)
+    .then(res => res.json())
+    .then(json => {
+      bankQuestions = Object.values(json).flat();
+      const select = document.getElementById('bank-select');
+      select.innerHTML = '';
+      bankQuestions.forEach((q, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = q.question;
+        select.appendChild(opt);
+      });
+    });
+};
+
+document.getElementById('bank-select').onchange = () => {
+  const idx = document.getElementById('bank-select').value;
+  if (idx === '') return;
+  const q = bankQuestions[idx];
+  document.getElementById('question-text').value = q.question;
+  q.options.forEach((opt, i) => {
+    document.getElementById('prop' + i).value = opt;
+  });
+  const correctIdx = q.options.indexOf(q.correct);
+  document.querySelectorAll('input[name="correct"]').forEach(radio => {
+    radio.checked = parseInt(radio.value) === correctIdx;
+  });
+};
+
+document.getElementById('add-question').onclick = () => {
+  const question = document.getElementById('question-text').value.trim();
+  const propositions = [
+    document.getElementById('prop0').value.trim(),
+    document.getElementById('prop1').value.trim(),
+    document.getElementById('prop2').value.trim(),
+    document.getElementById('prop3').value.trim()
+  ];
+  const correct = document.querySelector('input[name="correct"]:checked');
+  if (!question || propositions.some(p => !p) || !correct) {
+    alert('Veuillez remplir la question, les 4 propositions et sélectionner la bonne réponse.');
+    return;
+  }
+  qcm.push({
+    question,
+    propositions,
+    bonne_reponse: parseInt(correct.value)
+  });
+  updateQcmList();
+  document.getElementById('question-text').value = '';
+  propositions.forEach((_, i) => document.getElementById('prop' + i).value = '');
+  correct.checked = false;
+};
+
+function updateQcmList() {
+  const ul = document.getElementById('qcm-list');
+  ul.innerHTML = '';
+  qcm.forEach((q, idx) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span style="cursor:pointer;" onclick="deleteQuestion(${idx})">🗑️</span>
+      <span style="cursor:pointer; margin-left:5px;" onclick="editQuestion(${idx})">✏️</span>
+      📄 <b>${q.question}</b> (Bonne réponse : ${q.propositions[q.bonne_reponse]})`;
+    ul.appendChild(li);
+  });
+}
+
+function deleteQuestion(index) {
+  qcm.splice(index, 1);
+  updateQcmList();
+}
+
+function editQuestion(index) {
+  const q = qcm[index];
+  document.getElementById('question-text').value = q.question;
+  q.propositions.forEach((prop, i) => {
+    document.getElementById('prop' + i).value = prop;
+  });
+  document.querySelectorAll('input[name="correct"]').forEach(radio => {
+    radio.checked = parseInt(radio.value) === q.bonne_reponse;
+  });
+  // Supprimer la question pour la remplacer après modification
+  qcm.splice(index, 1);
+  updateQcmList();
+}
+
+document.getElementById('save-qcm').onclick = () => {
+  const qcmName = document.getElementById('qcm-name').value.trim();
+  if (!qcmName) {
+    alert('Veuillez donner un nom au QCM.');
+    return;
+  }
+  fetch('/save_qcm', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: qcmName, questions: qcm})
+  }).then(res => {
+    if (res.ok) {
+      alert('QCM sauvegardé avec succès.');
+      qcm = [];
+      updateQcmList();
+    } else {
+      alert('Erreur lors de la sauvegarde.');
+    }
+  });
+};
+
+document.getElementById('export-pronote').onclick = () => {
+  const qcmName = document.getElementById('qcm-name').value.trim() || 'qcm_export';
+  fetch('/export_pronote', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: qcmName, questions: qcm})
+  })
+  .then(response => {
+    if (!response.ok) throw new Error('Erreur lors de la génération du fichier Pronote.');
+    return response.blob();
+  })
+  .then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = qcmName + '.xml';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  })
+  .catch(err => alert(err.message));
+};
+</script>
 {% endblock %}
