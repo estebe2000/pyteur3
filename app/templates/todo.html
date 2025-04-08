@@ -1,6 +1,79 @@
 {% extends "base.html" %}
+
 {% block title %}To-Do{% endblock %}
 {% block page_title %}To-Do{% endblock %}
+
 {% block content %}
-<h1>To-Do</h1>
+<h2 class="text-xl font-semibold mb-4">Mes listes</h2>
+
+<form method="POST" action="{{ url_for('main.add_todo_list') }}" class="mb-6">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="flex space-x-2">
+        <input type="text" name="title" placeholder="Nouvelle liste" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+        <button type="submit" class="btn btn-primary px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Créer</button>
+    </div>
+</form>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for lst in my_lists %}
+    <div class="bg-white rounded-lg shadow p-4">
+        <div class="flex space-x-2 mb-2">
+            <form method="POST" action="{{ url_for('main.rename_todo_list', list_id=lst.id) }}" class="flex flex-1 space-x-2">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="text" name="title" value="{{ lst.title }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                <button type="submit" title="Renommer" class="text-green-600 hover:text-green-800 text-xl">✎</button>
+            </form>
+            <form method="POST" action="{{ url_for('main.delete_todo_list', list_id=lst.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" title="Supprimer la liste" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
+            </form>
+        </div>
+        <form method="POST" action="{{ url_for('main.add_todo_item', list_id=lst.id) }}" class="mb-3">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="flex space-x-2">
+                <input type="text" name="content" placeholder="Nouvelle tâche" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                <button type="submit" title="Ajouter tâche" class="text-blue-600 hover:text-blue-800 text-xl">＋</button>
+            </div>
+        </form>
+        <ul class="list-disc pl-5">
+            {% for item in lst.items %}
+            <li class="flex items-center space-x-2 mb-1">
+                <form method="POST" action="{{ url_for('main.toggle_todo_item', item_id=item.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" title="Marquer fait/non fait" class="text-green-600 hover:text-green-800 text-xl">
+                        {% if item.done %}✔{% else %}○{% endif %}
+                    </button>
+                </form>
+                <form method="POST" action="{{ url_for('main.edit_todo_item', item_id=item.id) }}" class="flex-1 flex space-x-2">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="text" name="content" value="{{ item.content }}" class="flex-1 px-2 py-1 border border-gray-300 rounded">
+                    <button type="submit" title="Modifier" class="text-blue-600 hover:text-blue-800 text-xl">✎</button>
+                </form>
+                <form method="POST" action="{{ url_for('main.delete_todo_item', item_id=item.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" title="Supprimer" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+
+<h2 class="text-xl font-semibold mt-8 mb-4">Listes partagées avec moi</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for lst in shared_lists %}
+    <div class="bg-white rounded-lg shadow p-4">
+        <h3 class="font-semibold mb-2">{{ lst.title }}</h3>
+        <ul class="list-disc pl-5">
+            {% for item in lst.items %}
+            <li>
+                {% if item.done %}<s>{{ item.content }}</s>{% else %}{{ item.content }}{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

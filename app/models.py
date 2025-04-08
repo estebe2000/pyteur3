@@ -63,3 +63,31 @@ class DocumentAssignment(db.Model):
     user = db.relationship('User', backref='document_assignments')
     group = db.relationship('Group', backref='document_assignments')
     school_class = db.relationship('SchoolClass', backref='document_assignments')
+
+
+class TodoList(db.Model):
+    __tablename__ = 'todo_lists'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    owner = db.relationship('User', backref='todo_lists')
+    items = db.relationship('TodoItem', backref='list', cascade='all, delete-orphan')
+    assignments = db.relationship('TodoListAssignment', backref='list', cascade='all, delete-orphan')
+
+
+class TodoItem(db.Model):
+    __tablename__ = 'todo_items'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(255), nullable=False)
+    done = db.Column(db.Boolean, default=False)
+    list_id = db.Column(db.Integer, db.ForeignKey('todo_lists.id'), nullable=False)
+
+
+class TodoListAssignment(db.Model):
+    __tablename__ = 'todo_list_assignments'
+    id = db.Column(db.Integer, primary_key=True)
+    list_id = db.Column(db.Integer, db.ForeignKey('todo_lists.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    user = db.relationship('User', backref='todo_list_assignments')

@@ -49,16 +49,19 @@
     {{ labels['exercises'] }}
 </a>
 
+{% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-question-circle mr-3"></i>
     {{ labels['qcm'] }}
 </a>
+{% endif %}
 
+{% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-chart-bar mr-3"></i>
     {{ labels['statistiques'] }}
 </a>
-
+{% endif %}
 <a href="{{ url_for('main.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-envelope mr-3"></i>
     {{ labels['messagerie'] }}
@@ -84,10 +87,12 @@
     {{ labels['sandbox'] }}
 </a>
 
+{% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.ia') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-brain mr-3"></i>
     {{ labels['ia'] }}
 </a>
+{% endif %}
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
                             {{ labels['classes_groups'] }}

@@ -11,6 +11,9 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/qcm')
 @login_required
 def qcm():
+    if current_user.role == 'eleve':
+        return "Accès non autorisé", 403
+
     import glob
     import os
     # banques de questions
@@ -37,10 +40,151 @@ def statistiques():
 def messagerie():
     return render_template('messagerie.html')
 
-@main_bp.route('/todo')
+@main_bp.route('/todo', methods=['GET'])
 @login_required
 def todo():
-    return render_template('todo.html')
+    from app.models import TodoList, TodoListAssignment
+
+    # Mes listes
+    my_lists = TodoList.query.filter_by(owner_id=current_user.id).all()
+
+    # Listes partagées avec moi
+    shared_lists = (
+        TodoList.query.join(TodoListAssignment)
+        .filter(TodoListAssignment.user_id == current_user.id)
+        .all()
+    )
+
+    return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists)
+
+
+@main_bp.route('/todo/add_list', methods=['POST'])
+@login_required
+def add_todo_list():
+    from app.models import TodoList
+
+    title = request.form.get('title')
+    if title:
+        new_list = TodoList(title=title, owner_id=current_user.id)
+        db.session.add(new_list)
+        db.session.commit()
+        flash('Liste créée')
+
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/rename_list/<int:list_id>', methods=['POST'])
+@login_required
+def rename_todo_list(list_id):
+    from app.models import TodoList
+
+    todo_list = TodoList.query.get_or_404(list_id)
+    if todo_list.owner_id != current_user.id:
+        return "Accès non autorisé", 403
+
+    title = request.form.get('title')
+    if title:
+        todo_list.title = title
+        db.session.commit()
+        flash('Liste renommée')
+
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/delete_list/<int:list_id>', methods=['POST'])
+@login_required
+def delete_todo_list(list_id):
+    from app.models import TodoList
+
+    todo_list = TodoList.query.get_or_404(list_id)
+    if todo_list.owner_id != current_user.id:
+        return "Accès non autorisé", 403
+
+    db.session.delete(todo_list)
+    db.session.commit()
+    flash('Liste supprimée')
+
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/add_item/<int:list_id>', methods=['POST'])
+@login_required
+def add_todo_item(list_id):
+    from app.models import TodoList, TodoItem
+
+    todo_list = TodoList.query.get_or_404(list_id)
+
+    # Vérifier que l'utilisateur est propriétaire ou a accès
+    if todo_list.owner_id != current_user.id and not any(
+        assign.user_id == current_user.id for assign in todo_list.assignments
+    ):
+        return "Accès non autorisé", 403
+
+    content = request.form.get('content')
+    if content:
+        item = TodoItem(content=content, list_id=list_id)
+        db.session.add(item)
+        db.session.commit()
+        flash('Tâche ajoutée')
+
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/toggle_item/<int:item_id>', methods=['POST'])
+@login_required
+def toggle_todo_item(item_id):
+    from app.models import TodoItem, TodoList
+
+    item = TodoItem.query.get_or_404(item_id)
+    todo_list = item.list
+
+    if todo_list.owner_id != current_user.id and not any(
+        assign.user_id == current_user.id for assign in todo_list.assignments
+    ):
+        return "Accès non autorisé", 403
+
+    item.done = not item.done
+    db.session.commit()
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/delete_item/<int:item_id>', methods=['POST'])
+@login_required
+def delete_todo_item(item_id):
+    from app.models import TodoItem, TodoList
+
+    item = TodoItem.query.get_or_404(item_id)
+    todo_list = item.list
+
+    if todo_list.owner_id != current_user.id and not any(
+        assign.user_id == current_user.id for assign in todo_list.assignments
+    ):
+        return "Accès non autorisé", 403
+
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(url_for('main.todo'))
+
+
+@main_bp.route('/todo/edit_item/<int:item_id>', methods=['POST'])
+@login_required
+def edit_todo_item(item_id):
+    from app.models import TodoItem, TodoList
+
+    item = TodoItem.query.get_or_404(item_id)
+    todo_list = item.list
+
+    if todo_list.owner_id != current_user.id and not any(
+        assign.user_id == current_user.id for assign in todo_list.assignments
+    ):
+        return "Accès non autorisé", 403
+
+    content = request.form.get('content')
+    if content:
+        item.content = content
+        db.session.commit()
+
+    return redirect(url_for('main.todo'))
 
 @main_bp.route('/projets')
 @login_required
@@ -229,6 +373,7 @@ def upload_exercise():
     return redirect(url_for('main.exercises'))
 
 from app import csrf
+
 
 @main_bp.route('/assign_document/<int:document_id>', methods=['GET', 'POST'])
 @login_required
