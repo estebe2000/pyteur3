@@ -103,10 +103,12 @@
 {% if current_user.role == 'admin' %}
 {% endif %}
 {% endif %}
+                        {% if current_user.role != 'eleve' %}
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
                             {{ labels['classes_groups'] }}
                         </a>
+                        {% endif %}
                         <a href="{{ url_for('main.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-cog mr-3"></i>
                             {{ labels['settings'] }}
