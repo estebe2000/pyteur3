@@ -91,20 +91,43 @@ async function chargerData() {
         const niveauContainer = document.getElementById('niveauContainer');
         niveauContainer.innerHTML = '';
 
+        const ordreNiveaux = ["Troisième", "SNT", "Première", "Terminale"];
+
+        ordreNiveaux.forEach(niveau => {
+            if (data[niveau]) {
+                const btn = document.createElement('div');
+                btn.className = 'btn-choice';
+                btn.textContent = niveau;
+                btn.dataset.value = niveau;
+                btn.addEventListener('click', () => {
+                    selectedNiveau = niveau;
+                    selectedTheme = null;
+                    selectedDifficulte = 0;
+                    updateSelection();
+                    afficherThemes();
+                    updateDescription();
+                });
+                niveauContainer.appendChild(btn);
+            }
+        });
+
+        // Ajouter les autres niveaux non listés explicitement
         Object.keys(data).forEach(niveau => {
-            const btn = document.createElement('div');
-            btn.className = 'btn-choice';
-            btn.textContent = niveau;
-            btn.dataset.value = niveau;
-            btn.addEventListener('click', () => {
-                selectedNiveau = niveau;
-                selectedTheme = null;
-                selectedDifficulte = 0;
-                updateSelection();
-                afficherThemes();
-                updateDescription();
-            });
-            niveauContainer.appendChild(btn);
+            if (!ordreNiveaux.includes(niveau)) {
+                const btn = document.createElement('div');
+                btn.className = 'btn-choice';
+                btn.textContent = niveau;
+                btn.dataset.value = niveau;
+                btn.addEventListener('click', () => {
+                    selectedNiveau = niveau;
+                    selectedTheme = null;
+                    selectedDifficulte = 0;
+                    updateSelection();
+                    afficherThemes();
+                    updateDescription();
+                });
+                niveauContainer.appendChild(btn);
+            }
         });
     } catch (error) {
         console.error('Erreur chargement données:', error);

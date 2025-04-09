@@ -1276,6 +1276,32 @@ def api_generateur_data():
         return jsonify({'error': str(e)}), 500
 
 
+@main_bp.route('/api/generer_exercice', methods=['POST'])
+@login_required
+def api_generer_exercice():
+    import json
+    from flask import request
+    from app.prompts_generateur import prompt_generation_exercice
+    try:
+        data = request.get_json(force=True)
+        niveau = data.get('niveau')
+        theme = data.get('theme')
+        difficulte = data.get('difficulte')
+        description = data.get('description')
+
+        if not all([niveau, theme, difficulte, description]):
+            return jsonify({'error': 'Paramètres manquants'}), 400
+
+        prompt = prompt_generation_exercice(niveau, theme, difficulte, description)
+
+        from app.ia_client import generate_text
+        reponse = generate_text(prompt)
+
+        return jsonify({'response': reponse})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 from flask import jsonify
 from app.models import Message, MessageRecipient, User, Group, SchoolClass
 
