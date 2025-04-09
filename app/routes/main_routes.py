@@ -1174,6 +1174,23 @@ def api_ollama_status():
         return jsonify({'installed': False, 'models': []})
 
 
+@main_bp.route('/api/ollama_pull', methods=['POST'])
+@login_required
+def api_ollama_pull():
+    if current_user.role != 'admin':
+        return {'error': 'Accès refusé'}, 403
+    try:
+        data = request.get_json(force=True)
+        model_name = data.get('model_name')
+        if not model_name:
+            return {'error': 'Nom du modèle manquant'}, 400
+        from app.ollama_api import pull_model
+        pull_model(model_name)
+        return {'success': True}
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+
 @main_bp.route('/api/save_ia_config', methods=['POST'])
 @login_required
 def api_save_ia_config():

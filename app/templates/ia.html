@@ -31,7 +31,12 @@
         <label class="block mb-2">Modèle :</label>
         <select id="ollama-model" class="w-full border p-2 rounded mb-2"></select>
         <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Ollama</button>
-        <button onclick="activateInternalIA()" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded">IA interne (forcer)</button>
+
+        <div class="mt-4">
+            <label class="block mb-2">Nom du modèle à télécharger :</label>
+            <input id="ollama-pull-model" type="text" class="w-full border p-2 rounded mb-2" placeholder="ex: mistral:7b">
+            <button onclick="pullOllamaModel()" class="px-4 py-2 bg-green-600 text-white rounded">Télécharger modèle</button>
+        </div>
     </div>
 
     <div class="p-4 border rounded bg-gray-50">
@@ -186,28 +191,31 @@ document.getElementById('send-btn').addEventListener('click', async () => {
         responseDiv.textContent = "Erreur: " + error.message;
     }
 });
-async function activateInternalIA() {
-    const config = {
-        active_provider: "ollama",
-        ollama: {
-            url: "http://ollama:11434",
-            model: "qwen2.5-coder:0.5b"
-        }
-    };
-    console.log("Activation IA interne forcée:", config);
+async function pullOllamaModel() {
+    const modelName = document.getElementById('ollama-pull-model').value.trim();
+    if (!modelName) {
+        document.getElementById('status').innerText = 'Veuillez entrer un nom de modèle.';
+        return;
+    }
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    const res = await fetch('/api/save_ia_config', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
-        body: JSON.stringify(config)
-    });
-    if (res.ok) {
-        document.getElementById('status').innerText = 'IA interne activée avec succès.';
-    } else {
-        document.getElementById('status').innerText = 'Erreur lors de l\'activation IA interne.';
+    try {
+        const res = await fetch('/api/ollama_pull', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ model_name: modelName })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+            document.getElementById('status').innerText = 'Modèle téléchargé avec succès.';
+            await detectOllama();
+        } else {
+            document.getElementById('status').innerText = 'Erreur: ' + (data.error || 'inconnue');
+        }
+    } catch (e) {
+        document.getElementById('status').innerText = 'Erreur: ' + e.message;
     }
 }
 
