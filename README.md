@@ -7,12 +7,16 @@ Pyteur est une plateforme web éducative développée avec Flask.
 Elle permet la gestion d'utilisateurs, la gestion de classes et groupes, l'upload sécurisé de documents PDF, la gestion et l'exécution d'exercices multi-langages, et intègre un bac à sable interactif multi-langages (Python, SQL, OCaml, JavaScript, Xcas) via Basthon Console et Notebook.  
 Elle propose également des fonctionnalités d'intelligence artificielle pour générer ou corriger des exercices.
 
+---
+
 ## Nouveautés UX
 - **Page de connexion immersive** avec :
   - Faux terminal Python animé simulant une console interactive
   - Logo Pyteur animé calmement
 - **Interface moderne et responsive** avec Tailwind CSS + Bootstrap
 - **Boutons uniformisés** pour une expérience utilisateur cohérente
+
+---
 
 ## Fonctionnalités principales
 - Authentification sécurisée (Flask-Login + CSRF)
@@ -28,12 +32,53 @@ Elle propose également des fonctionnalités d'intelligence artificielle pour g�
 - Sidebar dynamique avec menu mobile
 - Affichage dynamique de l'heure
 
+---
+
 ## Fonctionnalités IA
 - Intégration avec plusieurs fournisseurs d'IA configurables (OpenAI, Mistral, etc.)
 - Génération automatique d'exercices à partir de consignes
 - Correction automatique d'exercices soumis par les élèves
 - Configuration flexible via fichiers `app/ia_config.json` et `app/ia_providers.json`
 - Gestion des fournisseurs IA via l'interface d'administration
+
+---
+
+## Technologies utilisées
+- **Backend** : Flask, Flask-SQLAlchemy, Flask-Login, Flask-WTF
+- **Base de données** : SQLite (par défaut)
+- **Frontend** : HTML5, Tailwind CSS, Bootstrap, JavaScript
+- **Bac à sable multi-langages** : [Basthon](https://basthon.fr)
+- **Intelligence Artificielle** : OpenAI, Mistral AI
+- **Conteneurisation** : Docker, Docker Compose
+- **Autres** : python-dotenv, requests, gunicorn (optionnel)
+
+---
+
+## Structure du projet
+
+```
+pyteur3/
+├── app.py                 # Point d'entrée Flask
+├── run.py                 # Lancement de l'application
+├── manage.py              # Scripts init/reset base de données
+├── config.py              # Configuration Flask
+├── models.py              # Modèles SQLAlchemy
+├── mistral_client.py      # Client API Mistral
+├── init_db.py             # Initialisation base
+├── init_admin.py          # Création comptes par défaut
+├── requirements.txt       # Dépendances Python
+├── Dockerfile             # Image Docker
+├── docker-compose.yml     # Orchestration Docker
+├── app/
+│   ├── __init__.py        # Initialisation app Flask
+│   ├── routes/            # Routes Flask
+│   ├── lang/              # Fichiers de langue
+│   ├── static/            # Fichiers statiques (css, js, images)
+│   └── templates/         # Templates HTML Jinja2
+└── README.md              # Documentation
+```
+
+---
 
 ## Installation locale (sans Docker)
 
@@ -103,8 +148,6 @@ Ce script crée automatiquement trois comptes :
 | Professeur     | prof                 | prof         |
 | Élève          | eleve                | eleve        |
 
-Utilisez ces identifiants (login et mot de passe) pour vous connecter avec les comptes par défaut.
-
 6. **Lancer l'application**
 ```bash
 python run.py
@@ -155,7 +198,6 @@ services:
 
 2. **Réinitialiser la base de données (optionnel)**
 
-Par défaut, la base n'est pas supprimée.  
 Pour forcer la suppression + recréation au démarrage, éditez `docker-compose.yml` :
 
 ```yaml
@@ -179,4 +221,18 @@ L'application sera accessible sur [http://127.0.0.1:5000](http://127.0.0.1:5000)
 - `manage.py` : initialisation et réinitialisation de la base de données
 - `init_db.py` : script d'initialisation de la base
 - `init_admin.py` : création des comptes administrateur, professeur, élève par défaut
-- `reset
+- `reset.sh` / `reset.bat` : scripts shell/batch pour réinitialiser rapidement l'environnement
+- `ollama_entrypoint.sh` : script d'initialisation pour Ollama dans Docker
+
+---
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
+
+---
+
+## Auteurs
+
+- **Estebe2000** (https://github.com/estebe2000)
+- Contributions bienvenues via pull requests.
