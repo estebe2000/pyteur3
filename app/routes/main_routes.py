@@ -1135,13 +1135,18 @@ def api_activate_provider(name):
 def api_ollama_models():
     if current_user.role != 'admin':
         return jsonify({'error': 'Accès refusé'}), 403
-    import requests
+    import requests, json, os
     try:
-        response = requests.get('http://localhost:11434/api/tags', timeout=5)
+        url = 'http://localhost:11434'
+        if os.path.exists('app/ia_config.json'):
+            with open('app/ia_config.json', 'r', encoding='utf-8') as f:
+                config = json.load(f)
+                url = config.get('ollama', {}).get('url', url)
+        response = requests.get(url.rstrip('/') + '/v1/models', timeout=5)
         if response.status_code != 200:
             return jsonify({'error': f'Status {response.status_code}'}), 500
         data = response.json()
-        models = [m['name'] for m in data.get('models', [])]
+        models = [m['id'] for m in data.get('data', [])]
         return jsonify({'models': models})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -1152,13 +1157,18 @@ def api_ollama_models():
 def api_ollama_status():
     if current_user.role != 'admin':
         return jsonify({'error': 'Accès refusé'}), 403
-    import requests
+    import requests, json, os
     try:
-        response = requests.get('http://localhost:11434/api/tags', timeout=3)
+        url = 'http://localhost:11434'
+        if os.path.exists('app/ia_config.json'):
+            with open('app/ia_config.json', 'r', encoding='utf-8') as f:
+                config = json.load(f)
+                url = config.get('ollama', {}).get('url', url)
+        response = requests.get(url.rstrip('/') + '/v1/models', timeout=3)
         if response.status_code != 200:
             return jsonify({'installed': False, 'models': []})
         data = response.json()
-        models = [m['name'] for m in data.get('models', [])]
+        models = [m['id'] for m in data.get('data', [])]
         return jsonify({'installed': True, 'models': models})
     except Exception:
         return jsonify({'installed': False, 'models': []})

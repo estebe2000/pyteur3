@@ -31,6 +31,7 @@
         <label class="block mb-2">Modèle :</label>
         <select id="ollama-model" class="w-full border p-2 rounded mb-2"></select>
         <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Ollama</button>
+        <button onclick="activateInternalIA()" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded">IA interne (forcer)</button>
     </div>
 
     <div class="p-4 border rounded bg-gray-50">
@@ -185,6 +186,31 @@ document.getElementById('send-btn').addEventListener('click', async () => {
         responseDiv.textContent = "Erreur: " + error.message;
     }
 });
+async function activateInternalIA() {
+    const config = {
+        active_provider: "ollama",
+        ollama: {
+            url: "http://ollama:11434",
+            model: "qwen2.5-coder:0.5b"
+        }
+    };
+    console.log("Activation IA interne forcée:", config);
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const res = await fetch('/api/save_ia_config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify(config)
+    });
+    if (res.ok) {
+        document.getElementById('status').innerText = 'IA interne activée avec succès.';
+    } else {
+        document.getElementById('status').innerText = 'Erreur lors de l\'activation IA interne.';
+    }
+}
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 {% endblock %}
