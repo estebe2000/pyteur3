@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Messagerie{% endblock %}
-{% block page_title %}Messagerie{% endblock %}
+{% block title %}{{ labels['messagerie'] }}{% endblock %}
+{% block page_title %}{{ labels['messagerie'] }}{% endblock %}
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > Messagerie
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['messagerie'] }}
 {% endblock %}
 
 {% block head %}
@@ -12,29 +12,29 @@
 {% endblock %}
 
 {% block content %}
-<h1>Messagerie</h1>
+<h1>{{ labels['messagerie'] }}</h1>
 
 <div>
-  <h3><i class="fa fa-paper-plane"></i> Envoyer un message</h3>
+  <h3><i class="fa fa-paper-plane"></i> {{ labels['send_message_title'] }}</h3>
   <form id="sendMessageForm">
-    <label><i class="fa fa-user"></i> À un utilisateur :</label>
+    <label><i class="fa fa-user"></i> {{ labels['to_user'] }} :</label>
     <select id="recipientUser">
-      <option value="">-- Aucun --</option>
+      <option value="">{{ labels['none_option'] }}</option>
     </select>
 
-    <label><i class="fa fa-users"></i> À un groupe :</label>
+    <label><i class="fa fa-users"></i> {{ labels['to_group'] }} :</label>
     <select id="recipientGroup">
-      <option value="">-- Aucun --</option>
+      <option value="">{{ labels['none_option'] }}</option>
     </select>
 
-    <label><i class="fa fa-school"></i> À une classe :</label>
+    <label><i class="fa fa-school"></i> {{ labels['to_class'] }} :</label>
     <select id="recipientClass">
-      <option value="">-- Aucun --</option>
+      <option value="">{{ labels['none_option'] }}</option>
     </select>
 
     <br>
-    <textarea id="messageContent" rows="3" cols="50" placeholder="Votre message..."></textarea><br>
-    <button type="submit"><i class="fa fa-paper-plane"></i> Envoyer</button>
+    <textarea id="messageContent" rows="3" cols="50" placeholder="{{ labels['your_message_placeholder'] }}"></textarea><br>
+    <button type="submit"><i class="fa fa-paper-plane"></i> {{ labels['send_button'] }}</button>
   </form>
 </div>
 
@@ -42,21 +42,21 @@
 
 <div style="display: flex; gap: 20px;">
   <div style="width: 250px; border-right: 1px solid #ccc;">
-    <h3><i class="fa fa-comments"></i> Conversations</h3>
-    <input type="text" id="searchInput" placeholder="🔍 Rechercher..." style="width:90%;margin-bottom:5px;">
-    <ul id="conversationsList">
-      <li>Chargement...</li>
-    </ul>
+<h3><i class="fa fa-comments"></i> {{ labels['conversations'] }}</h3>
+<input type="text" id="searchInput" placeholder="{{ labels['search_placeholder'] }}" style="width:90%;margin-bottom:5px;">
+<ul id="conversationsList">
+  <li>{{ labels['loading'] }}</li>
+</ul>
   </div>
   <div style="flex: 1;">
-    <h3><i class="fa fa-envelope"></i> Messages</h3>
-    <ul id="messagesList">
-      <li>Sélectionnez une conversation</li>
-    </ul>
-    <form id="replyForm" style="display:none; margin-top:10px;">
-      <textarea id="replyContent" rows="2" cols="50" placeholder="Votre message..."></textarea><br>
-      <button type="submit"><i class="fa fa-paper-plane"></i> Envoyer</button>
-    </form>
+<h3><i class="fa fa-envelope"></i> {{ labels['messages'] }}</h3>
+<ul id="messagesList">
+  <li>{{ labels['select_conversation'] }}</li>
+</ul>
+<form id="replyForm" style="display:none; margin-top:10px;">
+  <textarea id="replyContent" rows="2" cols="50" placeholder="{{ labels['your_message_placeholder'] }}"></textarea><br>
+  <button type="submit"><i class="fa fa-paper-plane"></i> {{ labels['send_button'] }}</button>
+</form>
   </div>
 </div>
 
@@ -150,7 +150,7 @@ function showConversation(key) {
         delBtn.style.marginLeft = '8px';
         delBtn.title = 'Supprimer';
         delBtn.onclick = async () => {
-          if(confirm('Supprimer ce message ?')){
+          if(confirm('{{ labels['delete_confirm'] }}')){
             await fetch(`/api/messages/delete/${msg.id}`, {method: 'DELETE'});
             loadMessages();
           }
@@ -173,7 +173,7 @@ function showConversation(key) {
 
     if (visibleCount < msgs.length) {
       const moreBtn = document.createElement('button');
-      moreBtn.textContent = 'Charger plus';
+      moreBtn.textContent = '{{ labels['load_more'] }}';
       moreBtn.onclick = () => {
         visibleCount += 20;
         renderMessages();
@@ -208,7 +208,7 @@ document.getElementById('sendMessageForm').addEventListener('submit', async e =>
     document.getElementById('messageContent').value = '';
     loadMessages();
   } else {
-    alert(result.error || 'Erreur lors de l\'envoi');
+    alert(result.error || '{{ labels['error_sending'] }}');
   }
 });
 
@@ -230,7 +230,7 @@ document.getElementById('replyForm').addEventListener('submit', async e => {
     document.getElementById('replyContent').value = '';
     loadMessages();
   } else {
-    alert(result.error || 'Erreur lors de l\'envoi');
+    alert(result.error || '{{ labels['error_sending'] }}');
   }
 });
 

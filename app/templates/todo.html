@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}To-Do{% endblock %}
-{% block page_title %}To-Do{% endblock %}
+{% block title %}{{ labels['todo_title'] }}{% endblock %}
+{% block page_title %}{{ labels['todo_title'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > To-Do
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['todo_title'] }}
 {% endblock %}
 
 {% block content %}
-<h2 class="text-xl font-semibold mb-4">Mes listes</h2>
+<h2 class="text-xl font-semibold mb-4">{{ labels['my_lists'] }}</h2>
 
 <form method="POST" action="{{ url_for('main.add_todo_list') }}" class="mb-6">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="flex space-x-2">
-        <input type="text" name="title" placeholder="Nouvelle liste" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
-        <button type="submit" class="btn btn-primary px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Créer</button>
+        <input type="text" name="title" placeholder="{{ labels['new_list_placeholder'] }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+        <button type="submit" class="btn btn-primary px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">{{ labels['create_button'] }}</button>
     </div>
 </form>
 
@@ -25,18 +25,18 @@
             <form method="POST" action="{{ url_for('main.rename_todo_list', list_id=lst.id) }}" class="flex flex-1 space-x-2">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="text" name="title" value="{{ lst.title }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
-                <button type="submit" title="Renommer" class="text-green-600 hover:text-green-800 text-xl">✎</button>
+                <button type="submit" title="{{ labels['rename_button'] }}" class="text-green-600 hover:text-green-800 text-xl">✎</button>
             </form>
             <form method="POST" action="{{ url_for('main.delete_todo_list', list_id=lst.id) }}">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                <button type="submit" title="Supprimer la liste" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
+                <button type="submit" title="{{ labels['delete_list_button'] }}" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
             </form>
         </div>
         <form method="POST" action="{{ url_for('main.add_todo_item', list_id=lst.id) }}" class="mb-3">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="flex space-x-2">
-                <input type="text" name="content" placeholder="Nouvelle tâche" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
-                <button type="submit" title="Ajouter tâche" class="text-blue-600 hover:text-blue-800 text-xl">＋</button>
+                <input type="text" name="content" placeholder="{{ labels['new_task_placeholder'] }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                <button type="submit" title="{{ labels['add_task_button'] }}" class="text-blue-600 hover:text-blue-800 text-xl">＋</button>
             </div>
         </form>
         <ul class="list-disc pl-5">

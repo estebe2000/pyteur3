@@ -4,58 +4,58 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 {% endblock %}
 
-{% block title %}Intelligence Artificielle{% endblock %}
+{% block title %}{{ labels['ai_title'] }}{% endblock %}
 
-{% block page_title %}Intelligence Artificielle{% endblock %}
+{% block page_title %}{{ labels['ai_title'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > Intelligence Artificielle
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['ai_title'] }}
 {% endblock %}
 
 {% block content %}
 <div class="container mx-auto px-4">
 
-<h2 class="text-2xl font-bold mb-4">Gestion des fournisseurs IA</h2>
+<h2 class="text-2xl font-bold mb-4">{{ labels['ai_providers'] }}</h2>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
     <div class="p-4 border rounded bg-gray-50">
-        <h3 class="font-semibold mb-2">Ollama (local)</h3>
+        <h3 class="font-semibold mb-2">{{ labels['ollama_local'] }}</h3>
         <div id="ollama-status" class="mb-2 text-sm"></div>
-        <label class="block mb-2">URL Ollama :</label>
+        <label class="block mb-2">{{ labels['ollama_url'] }} :</label>
         <div class="flex items-center mb-2">
             <input id="ollama-url" type="text" class="flex-grow border p-2 rounded" value="http://localhost:11434">
             <button onclick="refreshOllama()" title="Valider et rafraîchir" class="ml-2 px-3 py-2 bg-green-600 text-white rounded">
                 🔄
             </button>
         </div>
-        <label class="block mb-2">Modèle :</label>
+        <label class="block mb-2">{{ labels['ollama_model'] }} :</label>
         <select id="ollama-model" class="w-full border p-2 rounded mb-2"></select>
-        <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Ollama</button>
+        <button onclick="saveOllama()" class="px-4 py-2 bg-blue-600 text-white rounded">{{ labels['activate_ollama'] }}</button>
 
         <div class="mt-4">
-            <label class="block mb-2">Nom du modèle à télécharger :</label>
+            <label class="block mb-2">{{ labels['model_name_to_download'] }} :</label>
             <input id="ollama-pull-model" type="text" class="w-full border p-2 rounded mb-2" placeholder="ex: mistral:7b">
-            <button onclick="pullOllamaModel()" class="px-4 py-2 bg-green-600 text-white rounded">Télécharger modèle</button>
+            <button onclick="pullOllamaModel()" class="px-4 py-2 bg-green-600 text-white rounded">{{ labels['download_model'] }}</button>
         </div>
     </div>
 
     <div class="p-4 border rounded bg-gray-50">
-        <h3 class="font-semibold mb-2">Mistral Codestral</h3>
-        <label class="block mb-2">URL API :</label>
+        <h3 class="font-semibold mb-2">{{ labels['mistral_codestral'] }}</h3>
+        <label class="block mb-2">{{ labels['api_url'] }} :</label>
         <input id="mistral-url" type="text" class="w-full border p-2 rounded mb-2" value="https://codestral.mistral.ai/v1/chat/completions">
-        <label class="block mb-2">Clé API :</label>
+        <label class="block mb-2">{{ labels['api_key'] }} :</label>
         <input id="mistral-key" type="text" class="w-full border p-2 rounded mb-2">
-        <button onclick="saveMistral()" class="px-4 py-2 bg-blue-600 text-white rounded">Activer Mistral</button>
+        <button onclick="saveMistral()" class="px-4 py-2 bg-blue-600 text-white rounded">{{ labels['activate_mistral'] }}</button>
     </div>
 </div>
 
 <div id="status" class="text-green-600 mb-4"></div>
 
-<h2 class="text-2xl font-bold mb-4">Chat IA</h2>
+<h2 class="text-2xl font-bold mb-4">{{ labels['chat_ai'] }}</h2>
 
 <div class="mt-6">
-    <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="Écrivez votre question..."></textarea>
-    <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Envoyer</button>
+    <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="{{ labels['write_question_placeholder'] }}"></textarea>
+    <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">{{ labels['send'] }}</button>
 </div>
 
 <div id="response" class="mt-4 p-4 border rounded bg-gray-100"></div>
@@ -66,13 +66,13 @@
 async function detectOllama() {
     const statusDiv = document.getElementById('ollama-status');
     const select = document.getElementById('ollama-model');
-    statusDiv.innerText = 'Détection en cours...';
+    statusDiv.innerText = '{{ labels['detecting'] }}';
     select.innerHTML = '';
     try {
         const res = await fetch('/api/ollama_status');
         const data = await res.json();
         if (data.installed) {
-            statusDiv.innerHTML = '<span class="text-green-600">Ollama détecté.</span>';
+            statusDiv.innerHTML = '<span class="text-green-600">{{ labels['ollama_detected'] }}</span>';
             data.models.forEach(m => {
                 const opt = document.createElement('option');
                 opt.value = m;
@@ -80,10 +80,10 @@ async function detectOllama() {
                 select.appendChild(opt);
             });
         } else {
-            statusDiv.innerHTML = '<span class="text-red-600">Ollama non détecté. Installez-le depuis <a href="https://ollama.com/download" target="_blank" class="underline">ollama.com</a></span>';
+            statusDiv.innerHTML = '<span class="text-red-600">{{ labels['ollama_not_detected'] }} <a href="https://ollama.com/download" target="_blank" class="underline">ollama.com</a></span>';
         }
     } catch {
-        statusDiv.innerText = 'Erreur lors de la détection.';
+        statusDiv.innerText = '{{ labels['error_detecting'] }}';
     }
 }
 
@@ -105,9 +105,9 @@ async function saveOllama() {
         body: JSON.stringify(config)
     });
     if (res.ok) {
-        document.getElementById('status').innerText = 'Configuration Ollama enregistrée et activée.';
+        document.getElementById('status').innerText = '{{ labels['ollama_config_saved'] }}';
     } else {
-        document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
+        document.getElementById('status').innerText = '{{ labels['save_error'] }}';
     }
 }
 
@@ -129,9 +129,9 @@ async function saveMistral() {
         body: JSON.stringify(config)
     });
     if (res.ok) {
-        document.getElementById('status').innerText = 'Configuration Mistral enregistrée et activée.';
+        document.getElementById('status').innerText = '{{ labels['mistral_config_saved'] }}';
     } else {
-        document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
+        document.getElementById('status').innerText = '{{ labels['save_error'] }}';
     }
 }
 
@@ -151,7 +151,7 @@ async function refreshOllama() {
         body: JSON.stringify(config)
     });
     if (res.ok) {
-        document.getElementById('status').innerText = 'URL Ollama enregistrée. Rafraîchissement des modèles...';
+        document.getElementById('status').innerText = '{{ labels['ollama_url_saved'] }}';
         await detectOllama();
     } else {
         document.getElementById('status').innerText = 'Erreur lors de l\'enregistrement.';
@@ -177,24 +177,24 @@ document.getElementById('send-btn').addEventListener('click', async () => {
         });
 
         if (!res.ok) {
-            responseDiv.textContent = "Erreur serveur: " + res.status;
+            responseDiv.textContent = "{{ labels['server_error'] }}: " + res.status;
             return;
         }
 
         const data = await res.json();
         if (data.error) {
-            responseDiv.textContent = "Erreur: " + data.error;
+            responseDiv.textContent = "{{ labels['error'] }}: " + data.error;
         } else {
-            responseDiv.innerHTML = marked.parse(data.response || "Pas de réponse.");
+            responseDiv.innerHTML = marked.parse(data.response || "{{ labels['no_response'] }}");
         }
     } catch (error) {
-        responseDiv.textContent = "Erreur: " + error.message;
+        responseDiv.textContent = "{{ labels['error'] }}: " + error.message;
     }
 });
 async function pullOllamaModel() {
     const modelName = document.getElementById('ollama-pull-model').value.trim();
     if (!modelName) {
-        document.getElementById('status').innerText = 'Veuillez entrer un nom de modèle.';
+        document.getElementById('status').innerText = '{{ labels['enter_model_name'] }}';
         return;
     }
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -209,13 +209,13 @@ async function pullOllamaModel() {
         });
         const data = await res.json();
         if (res.ok && data.success) {
-            document.getElementById('status').innerText = 'Modèle téléchargé avec succès.';
+            document.getElementById('status').innerText = '{{ labels['model_downloaded'] }}';
             await detectOllama();
         } else {
-            document.getElementById('status').innerText = 'Erreur: ' + (data.error || 'inconnue');
+            document.getElementById('status').innerText = '{{ labels['error'] }}: ' + (data.error || '{{ labels['unknown_error'] }}');
         }
     } catch (e) {
-        document.getElementById('status').innerText = 'Erreur: ' + e.message;
+        document.getElementById('status').innerText = '{{ labels['error'] }}: ' + e.message;
     }
 }
 

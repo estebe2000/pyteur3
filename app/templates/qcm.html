@@ -8,58 +8,70 @@
 {% block content %}
 <h1 class="text-2xl font-bold mb-6">Éditeur de QCM</h1>
 
-<div class="mb-6">
-  <h2 class="text-xl font-semibold mb-2">Charger un QCM existant</h2>
-  <select id="load-qcm" class="w-full p-2 border rounded">
-    <option value="">-- Choisir un QCM --</option>
-    {% for saved in saved_qcms %}
-    <option value="{{ saved }}">{{ saved }}</option>
-    {% endfor %}
-  </select>
-</div>
+<div class="flex flex-col gap-6">
+  <!-- Ligne du haut : 2 colonnes -->
+  <div class="flex flex-row gap-6">
+    <!-- Colonne gauche -->
+    <div class="flex flex-col gap-4 w-1/2 p-2 border rounded bg-gray-50">
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Charger un QCM</h2>
+        <select id="load-qcm" class="w-full p-2 border rounded">
+          <option value="">-- Choisir un QCM --</option>
+          {% for saved in saved_qcms %}
+          <option value="{{ saved }}">{{ saved }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Banque de questions</h2>
+        <select id="qcm-file" class="w-full p-2 border rounded mb-2">
+          <option value="">-- Choisir une banque --</option>
+          {% for file in qcm_files %}
+          <option value="{{ file }}">{{ file }}</option>
+          {% endfor %}
+        </select>
+        <div id="bank-questions" class="mt-2">
+          <h3 class="text-md font-semibold mb-2">Questions disponibles</h3>
+          <select id="bank-select" class="w-full p-2 border rounded"></select>
+        </div>
+      </div>
+    </div>
 
-<div class="mb-6">
-  <h2 class="text-xl font-semibold mb-2">Banque de questions</h2>
-  <select id="qcm-file" class="w-full p-2 border rounded mb-2">
-    <option value="">-- Choisir une banque --</option>
-    {% for file in qcm_files %}
-    <option value="{{ file }}">{{ file }}</option>
-    {% endfor %}
-  </select>
-  <div id="bank-questions" class="mt-2">
-    <h3 class="text-lg font-semibold mb-2">Questions disponibles</h3>
-    <select id="bank-select" class="w-full p-2 border rounded"></select>
+    <!-- Colonne droite -->
+    <div class="flex flex-col gap-4 w-1/2 p-2 border rounded bg-gray-50">
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Nouvelle question personnalisée</h2>
+        <textarea id="question-text" rows="4" class="w-full p-2 border rounded mb-2" placeholder="Écrivez la question ici..."></textarea>
+        <div class="mb-2">
+          <label class="font-semibold">Propositions :</label><br>
+          <input type="text" id="prop0" placeholder="Proposition 1" class="p-1 border rounded mb-1 w-full">
+          <input type="radio" name="correct" value="0"> Bonne réponse<br>
+          <input type="text" id="prop1" placeholder="Proposition 2" class="p-1 border rounded mb-1 w-full">
+          <input type="radio" name="correct" value="1"> Bonne réponse<br>
+          <input type="text" id="prop2" placeholder="Proposition 3" class="p-1 border rounded mb-1 w-full">
+          <input type="radio" name="correct" value="2"> Bonne réponse<br>
+          <input type="text" id="prop3" placeholder="Proposition 4" class="p-1 border rounded mb-1 w-full">
+          <input type="radio" name="correct" value="3"> Bonne réponse<br>
+        </div>
+        <button id="add-question" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Ajouter au QCM</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="mb-6">
-  <h2 class="text-xl font-semibold mb-2">Nouvelle question personnalisée</h2>
-  <textarea id="question-text" rows="3" class="w-full p-2 border rounded mb-2" placeholder="Écrivez la question ici..."></textarea>
-  <div class="mb-2">
-    <label class="font-semibold">Propositions :</label><br>
-    <input type="text" id="prop0" placeholder="Proposition 1" class="p-1 border rounded mb-1 w-full">
-    <input type="radio" name="correct" value="0"> Bonne réponse<br>
-    <input type="text" id="prop1" placeholder="Proposition 2" class="p-1 border rounded mb-1 w-full">
-    <input type="radio" name="correct" value="1"> Bonne réponse<br>
-    <input type="text" id="prop2" placeholder="Proposition 3" class="p-1 border rounded mb-1 w-full">
-    <input type="radio" name="correct" value="2"> Bonne réponse<br>
-    <input type="text" id="prop3" placeholder="Proposition 4" class="p-1 border rounded mb-1 w-full">
-    <input type="radio" name="correct" value="3"> Bonne réponse<br>
+  <!-- Ligne du bas : pleine largeur -->
+  <div class="flex flex-col gap-4 p-2 border rounded bg-gray-50">
+    <div>
+      <h2 class="text-lg font-semibold mb-2">Questions du QCM</h2>
+      <ul id="qcm-list" class="space-y-2"></ul>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold mb-2">Sauvegarder</h2>
+      <label for="qcm-name" class="font-semibold">Nom du QCM :</label>
+      <input type="text" id="qcm-name" placeholder="Nom du QCM" class="w-full p-2 border rounded mb-2">
+      <button id="save-qcm" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Sauvegarder le QCM</button>
+      <button id="export-pronote" class="mt-2 px-4 py-2 bg-green-500 text-white rounded ml-2">Exporter au format Pronote</button>
+    </div>
   </div>
-  <button id="add-question" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Ajouter au QCM</button>
-</div>
-
-<div class="mb-6">
-  <h2 class="text-xl font-semibold mb-2">Questions du QCM</h2>
-  <ul id="qcm-list" class="space-y-2"></ul>
-</div>
-
-<div class="mb-6">
-  <h2 class="text-xl font-semibold mb-2">Sauvegarder</h2>
-  <label for="qcm-name" class="font-semibold">Nom du QCM :</label>
-  <input type="text" id="qcm-name" placeholder="Nom du QCM" class="w-full p-2 border rounded mb-2">
-  <button id="save-qcm" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Sauvegarder le QCM</button>
-  <button id="export-pronote" class="mt-2 px-4 py-2 bg-green-500 text-white rounded ml-2">Exporter au format Pronote</button>
 </div>
 
 <script>
@@ -75,7 +87,6 @@ document.getElementById('load-qcm').onchange = () => {
     .then(json => {
       qcm = json;
       updateQcmList();
-      // remplir le champ nom sans extension
       const name = filename.endsWith('.json') ? filename.slice(0, -5) : filename;
       document.getElementById('qcm-name').value = name;
     });
@@ -164,7 +175,6 @@ function editQuestion(index) {
   document.querySelectorAll('input[name="correct"]').forEach(radio => {
     radio.checked = parseInt(radio.value) === q.bonne_reponse;
   });
-  // Supprimer la question pour la remplacer après modification
   qcm.splice(index, 1);
   updateQcmList();
 }

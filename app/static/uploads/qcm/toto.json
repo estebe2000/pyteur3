@@ -20,12 +20,22 @@
     "bonne_reponse": 2
   },
   {
-    "question": "Qu'appelle-t-on 'métadonnée' ?",
+    "question": "Soit L = [5, 10, 15, 20]. Comment modifier le troisième élément pour qu'il vaille 16 ?",
     "propositions": [
-      "Une donnée très volumineuse",
-      "Une donnée personnelle sensible",
-      "Une donnée décrivant une autre donnée (ex: auteur, date de création, type de fichier)",
-      "Une donnée non structurée"
+      "L(2) = 16",
+      "L[2] = 16",
+      "L.set(2, 16)",
+      "Impossible, les listes sont immuables"
+    ],
+    "bonne_reponse": 1
+  },
+  {
+    "question": "Comment déclare-t-on généralement un tuple en Python ?",
+    "propositions": [
+      "En utilisant des crochets [ ]",
+      "En utilisant des accolades { }",
+      "En utilisant des parenthèses ( ) ou simplement des virgules",
+      "En utilisant des guillemets \" \""
     ],
     "bonne_reponse": 2
   }

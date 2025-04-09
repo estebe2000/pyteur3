@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Générateur d'exercice</h2>
+    <h2>{{ labels['exercise_generator'] }}</h2>
 
     <div class="mt-4">
-        <h5>Choisissez un niveau scolaire :</h5>
+        <h5>{{ labels['choose_level'] }} :</h5>
         <div id="niveauContainer" class="grid-container mt-2"></div>
     </div>
 
     <div class="mt-4">
-        <h5>Choisissez un thème :</h5>
+        <h5>{{ labels['choose_theme'] }} :</h5>
         <div id="themeContainer" class="grid-container mt-2"></div>
     </div>
 
     <div class="mt-4">
-        <h5>Choisissez la difficulté :</h5>
+        <h5>{{ labels['choose_difficulty'] }} :</h5>
         <div id="difficulteContainer" class="mt-2">
             {% for i in range(1,6) %}
             <span class="star" data-value="{{ i }}">&#9734;</span>
@@ -24,19 +24,19 @@
     </div>
 
     <div class="mt-4">
-        <h5>Description de l'exercice :</h5>
-        <p id="descriptionExercice">Veuillez sélectionner un niveau, un thème et une difficulté.</p>
+        <h5>{{ labels['exercise_description'] }} :</h5>
+        <p id="descriptionExercice">{{ labels['select_all_fields'] }}</p>
     </div>
 
-    <button id="genererBtn" class="btn btn-primary mt-3" disabled>Générer avec l'IA</button>
+    <button id="genererBtn" class="btn btn-primary mt-3" disabled>{{ labels['generate_with_ai'] }}</button>
 
     <div class="mt-4">
-        <h5>Prompt utilisé :</h5>
+        <h5>{{ labels['used_prompt'] }} :</h5>
         <pre id="promptAffiche" style="white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
     </div>
 
     <div class="mt-4">
-        <h5>Exercice généré :</h5>
+        <h5>{{ labels['generated_exercise'] }} :</h5>
         <pre id="resultatIA" style="white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
     </div>
 </div>
@@ -191,7 +191,7 @@ function updateDescription() {
             }
         }
     }
-    descriptionExercice.textContent = 'Veuillez sélectionner un niveau, un thème et une difficulté.';
+    descriptionExercice.textContent = '{{ labels['select_all_fields'] }}';
     genererBtn.disabled = true;
 }
 
@@ -223,8 +223,8 @@ document.querySelectorAll('.star').forEach(star => {
         const resultatIA = document.getElementById('resultatIA');
         const promptAffiche = document.getElementById('promptAffiche');
 
-        resultatIA.textContent = "Génération en cours...";
-        promptAffiche.textContent = "Construction du prompt...";
+        resultatIA.textContent = "{{ labels['generating'] }}";
+        promptAffiche.textContent = "{{ labels['building_prompt'] }}";
 
         try {
             const responsePrompt = await fetch('/api/generer_exercice', {
@@ -243,16 +243,16 @@ document.querySelectorAll('.star').forEach(star => {
             const dataPrompt = await responsePrompt.json();
 
             if (dataPrompt.error) {
-                promptAffiche.textContent = "Erreur génération prompt : " + dataPrompt.error;
+                promptAffiche.textContent = "{{ labels['error_generating_prompt'] }} " + dataPrompt.error;
                 resultatIA.textContent = "";
                 return;
             }
 
-            promptAffiche.textContent = dataPrompt.prompt || "Prompt non disponible";
-            resultatIA.textContent = dataPrompt.response || "Réponse IA non disponible";
+            promptAffiche.textContent = dataPrompt.prompt || "{{ labels['prompt_unavailable'] }}";
+            resultatIA.textContent = dataPrompt.response || "{{ labels['response_unavailable'] }}";
         } catch (error) {
             promptAffiche.textContent = "";
-            resultatIA.textContent = "Erreur lors de la requête : " + error;
+            resultatIA.textContent = "{{ labels['request_error'] }} " + error;
         }
     });
 });
