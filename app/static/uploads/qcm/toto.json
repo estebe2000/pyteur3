@@ -18,5 +18,15 @@
       "Impossible à déterminer"
     ],
     "bonne_reponse": 2
+  },
+  {
+    "question": "Qu'appelle-t-on 'métadonnée' ?",
+    "propositions": [
+      "Une donnée très volumineuse",
+      "Une donnée personnelle sensible",
+      "Une donnée décrivant une autre donnée (ex: auteur, date de création, type de fichier)",
+      "Une donnée non structurée"
+    ],
+    "bonne_reponse": 2
   }
 ]

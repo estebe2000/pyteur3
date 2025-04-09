@@ -31,6 +31,11 @@
     <button id="genererBtn" class="btn btn-primary mt-3" disabled>Générer avec l'IA</button>
 
     <div class="mt-4">
+        <h5>Prompt utilisé :</h5>
+        <pre id="promptAffiche" style="white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
+    </div>
+
+    <div class="mt-4">
         <h5>Exercice généré :</h5>
         <pre id="resultatIA" style="white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
     </div>
@@ -210,29 +215,44 @@ document.querySelectorAll('.star').forEach(star => {
     });
 
     document.getElementById('genererBtn').addEventListener('click', async () => {
-        const prompt = `Génère un exercice Python pour un élève de ${selectedNiveau}, sur le thème "${selectedTheme}", avec une difficulté de niveau ${selectedDifficulte}. Voici la description : ${document.getElementById('descriptionExercice').textContent}`;
+        const niveau = selectedNiveau;
+        const theme = selectedTheme;
+        const difficulte = selectedDifficulte;
+        const description = document.getElementById('descriptionExercice').textContent;
 
         const resultatIA = document.getElementById('resultatIA');
+        const promptAffiche = document.getElementById('promptAffiche');
+
         resultatIA.textContent = "Génération en cours...";
+        promptAffiche.textContent = "Construction du prompt...";
 
         try {
-            const response = await fetch('/api/chat', {
+            const responsePrompt = await fetch('/api/generer_exercice', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message: prompt })
+                body: JSON.stringify({
+                    niveau: niveau,
+                    theme: theme,
+                    difficulte: difficulte,
+                    description: description,
+                    debutant: true
+                })
             });
-            const data = await response.json();
-            if (data.response) {
-                resultatIA.textContent = data.response;
-            } else if (data.error) {
-                resultatIA.textContent = "Erreur IA : " + data.error;
-            } else {
-                resultatIA.textContent = "Réponse inattendue.";
+            const dataPrompt = await responsePrompt.json();
+
+            if (dataPrompt.error) {
+                promptAffiche.textContent = "Erreur génération prompt : " + dataPrompt.error;
+                resultatIA.textContent = "";
+                return;
             }
+
+            promptAffiche.textContent = dataPrompt.prompt || "Prompt non disponible";
+            resultatIA.textContent = dataPrompt.response || "Réponse IA non disponible";
         } catch (error) {
-            resultatIA.textContent = "Erreur lors de la requête IA : " + error;
+            promptAffiche.textContent = "";
+            resultatIA.textContent = "Erreur lors de la requête : " + error;
         }
     });
 });

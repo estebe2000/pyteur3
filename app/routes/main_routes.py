@@ -1276,6 +1276,9 @@ def api_generateur_data():
         return jsonify({'error': str(e)}), 500
 
 
+from app import csrf
+
+@csrf.exempt
 @main_bp.route('/api/generer_exercice', methods=['POST'])
 @login_required
 def api_generer_exercice():
@@ -1288,16 +1291,17 @@ def api_generer_exercice():
         theme = data.get('theme')
         difficulte = data.get('difficulte')
         description = data.get('description')
+        debutant = data.get('debutant', False)
 
         if not all([niveau, theme, difficulte, description]):
             return jsonify({'error': 'Paramètres manquants'}), 400
 
-        prompt = prompt_generation_exercice(niveau, theme, difficulte, description)
+        prompt = prompt_generation_exercice(niveau, theme, difficulte, description, debutant=debutant)
 
         from app.ia_client import generate_text
         reponse = generate_text(prompt)
 
-        return jsonify({'response': reponse})
+        return jsonify({'prompt': prompt, 'response': reponse})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
