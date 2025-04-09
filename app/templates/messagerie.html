@@ -5,43 +5,65 @@
 <a href="{{ url_for('main.home') }}">Accueil</a> > Messagerie
 {% endblock %}
 
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/messagerie.css') }}">
+{% endblock %}
+
 {% block content %}
 <h1>Messagerie</h1>
 
 <div>
-  <h3>Envoyer un message</h3>
+  <h3><i class="fa fa-paper-plane"></i> Envoyer un message</h3>
   <form id="sendMessageForm">
-    <label>À un utilisateur :</label>
+    <label><i class="fa fa-user"></i> À un utilisateur :</label>
     <select id="recipientUser">
       <option value="">-- Aucun --</option>
     </select>
 
-    <label>À un groupe :</label>
+    <label><i class="fa fa-users"></i> À un groupe :</label>
     <select id="recipientGroup">
       <option value="">-- Aucun --</option>
     </select>
 
-    <label>À une classe :</label>
+    <label><i class="fa fa-school"></i> À une classe :</label>
     <select id="recipientClass">
       <option value="">-- Aucun --</option>
     </select>
 
     <br>
     <textarea id="messageContent" rows="3" cols="50" placeholder="Votre message..."></textarea><br>
-    <button type="submit">Envoyer</button>
+    <button type="submit"><i class="fa fa-paper-plane"></i> Envoyer</button>
   </form>
 </div>
 
 <hr>
 
-<div>
-  <h3>Messages reçus</h3>
-  <ul id="messagesList">
-    <li>Chargement...</li>
-  </ul>
+<div style="display: flex; gap: 20px;">
+  <div style="width: 250px; border-right: 1px solid #ccc;">
+    <h3><i class="fa fa-comments"></i> Conversations</h3>
+    <input type="text" id="searchInput" placeholder="🔍 Rechercher..." style="width:90%;margin-bottom:5px;">
+    <ul id="conversationsList">
+      <li>Chargement...</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <h3><i class="fa fa-envelope"></i> Messages</h3>
+    <ul id="messagesList">
+      <li>Sélectionnez une conversation</li>
+    </ul>
+    <form id="replyForm" style="display:none; margin-top:10px;">
+      <textarea id="replyContent" rows="2" cols="50" placeholder="Votre message..."></textarea><br>
+      <button type="submit"><i class="fa fa-paper-plane"></i> Envoyer</button>
+    </form>
+  </div>
 </div>
 
 <script>
+let conversations = {};
+let currentConversation = null;
+
 async function loadRecipients() {
   const resp = await fetch('/api/recipients');
   const data = await resp.json();
@@ -75,17 +97,93 @@ async function loadRecipients() {
 async function loadMessages() {
   const resp = await fetch('/api/messages');
   const messages = await resp.json();
-  const list = document.getElementById('messagesList');
-  list.innerHTML = '';
-  if(messages.length === 0) {
-    list.innerHTML = '<li>Aucun message</li>';
-    return;
-  }
+
+  // Regrouper par conversation (clé = sender_id + sender_name)
+  conversations = {};
   messages.forEach(msg => {
-    const li = document.createElement('li');
-    li.innerHTML = `<strong>${msg.sender_name}</strong> : ${msg.content} <em>(${new Date(msg.timestamp).toLocaleString()})</em>`;
-    list.appendChild(li);
+    let key = msg.sender_id + '|' + msg.sender_name;
+    if (!conversations[key]) conversations[key] = [];
+    conversations[key].push(msg);
   });
+
+  const convList = document.getElementById('conversationsList');
+  convList.innerHTML = '';
+  Object.keys(conversations).forEach(key => {
+    const [id, name] = key.split('|');
+    const li = document.createElement('li');
+    li.style.cursor = 'pointer';
+    const unread = conversations[key].some(m => !m.is_read);
+    li.innerHTML = unread ? `<strong>${name}</strong>` : name;
+    li.onclick = () => showConversation(key);
+    convList.appendChild(li);
+  });
+
+  // Effacer messages et formulaire
+  const msgList = document.getElementById('messagesList');
+  msgList.innerHTML = '<li>Sélectionnez une conversation</li>';
+  document.getElementById('replyForm').style.display = 'none';
+}
+
+function showConversation(key) {
+  currentConversation = key;
+  const msgs = conversations[key];
+  const msgList = document.getElementById('messagesList');
+  msgList.innerHTML = '';
+
+  let visibleCount = 20;
+  function renderMessages() {
+    msgList.innerHTML = '';
+    const toShow = msgs.slice(-visibleCount);
+    toShow.forEach(async msg => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${msg.sender_name}</strong> : ${msg.content} <em>(${new Date(msg.timestamp).toLocaleString()})</em>`;
+
+      if (msg.sent) {
+        li.style.background = '#d1ffd1';
+        li.style.marginLeft = 'auto';
+        li.style.textAlign = 'right';
+
+        const delBtn = document.createElement('i');
+        delBtn.className = 'fa fa-trash';
+        delBtn.style.color = 'red';
+        delBtn.style.cursor = 'pointer';
+        delBtn.style.marginLeft = '8px';
+        delBtn.title = 'Supprimer';
+        delBtn.onclick = async () => {
+          if(confirm('Supprimer ce message ?')){
+            await fetch(`/api/messages/delete/${msg.id}`, {method: 'DELETE'});
+            loadMessages();
+          }
+        };
+        li.appendChild(delBtn);
+      } else {
+        if (!msg.is_read) {
+          li.style.fontWeight = 'bold';
+          await fetch('/api/messages/mark_read', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message_id: msg.id})
+          });
+          li.style.fontWeight = 'normal';
+          msg.is_read = true;
+        }
+      }
+      msgList.appendChild(li);
+    });
+
+    if (visibleCount < msgs.length) {
+      const moreBtn = document.createElement('button');
+      moreBtn.textContent = 'Charger plus';
+      moreBtn.onclick = () => {
+        visibleCount += 20;
+        renderMessages();
+      };
+      msgList.prepend(moreBtn);
+    }
+  }
+
+  renderMessages();
+  document.getElementById('replyForm').style.display = 'block';
 }
 
 document.getElementById('sendMessageForm').addEventListener('submit', async e => {
@@ -114,8 +212,72 @@ document.getElementById('sendMessageForm').addEventListener('submit', async e =>
   }
 });
 
+document.getElementById('replyForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const content = document.getElementById('replyContent').value.trim();
+  if (!content || !currentConversation) return;
+  const [recipient_user_id] = currentConversation.split('|');
+  const resp = await fetch('/api/messages/send', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      content,
+      recipient_user_id: recipient_user_id || null
+    })
+  });
+  const result = await resp.json();
+  if(result.success) {
+    document.getElementById('replyContent').value = '';
+    loadMessages();
+  } else {
+    alert(result.error || 'Erreur lors de l\'envoi');
+  }
+});
+
 loadRecipients();
 loadMessages();
+
+setInterval(async () => {
+  const resp = await fetch('/api/messages');
+  const messages = await resp.json();
+
+  // Regrouper par conversation
+  conversations = {};
+  messages.forEach(msg => {
+    let key = msg.sender_id + '|' + msg.sender_name;
+    if (!conversations[key]) conversations[key] = [];
+    conversations[key].push(msg);
+  });
+
+  const convList = document.getElementById('conversationsList');
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  convList.innerHTML = '';
+  Object.keys(conversations).forEach(key => {
+    const [id, name] = key.split('|');
+    if(name.toLowerCase().includes(search)){
+      const li = document.createElement('li');
+      li.style.cursor = 'pointer';
+      const unread = conversations[key].some(m => !m.is_read);
+      li.innerHTML = unread ? `<strong>${name}</strong>` : name;
+      li.onclick = () => showConversation(key);
+      convList.appendChild(li);
+    }
+  });
+
+  if(currentConversation){
+    showConversation(currentConversation);
+  } else {
+    const msgList = document.getElementById('messagesList');
+    msgList.innerHTML = '<li>Sélectionnez une conversation</li>';
+    document.getElementById('replyForm').style.display = 'none';
+  }
+}, 5000);
+
+document.getElementById('searchInput').addEventListener('input', () => {
+  // Forcer un rafraîchissement immédiat lors de la saisie
+  const event = new Event('refreshConversations');
+  window.dispatchEvent(event);
+});
 </script>
 
 {% endblock %}

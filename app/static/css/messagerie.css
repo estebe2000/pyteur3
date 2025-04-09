@@ -1,0 +1,114 @@
+/* Messagerie - Style moderne et ergonomique */
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+#sendMessageForm, #replyForm {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+#sendMessageForm textarea, #replyForm textarea {
+  width: 95%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  resize: vertical;
+}
+
+#sendMessageForm button, #replyForm button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+#sendMessageForm button:hover, #replyForm button:hover {
+  background-color: #0056b3;
+}
+
+#conversationsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#conversationsList li {
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: background 0.2s;
+}
+
+#conversationsList li:hover {
+  background: #e9ecef;
+}
+
+#messagesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#messagesList li {
+  background: #e1f0ff;
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  max-width: 80%;
+  position: relative;
+  word-wrap: break-word;
+}
+
+#messagesList li:nth-child(odd) {
+  background: #f1f1f1;
+}
+
+#messagesList li strong {
+  color: #007bff;
+}
+
+#messagesList li em {
+  font-size: 0.8em;
+  color: #666;
+  margin-left: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#searchInput {
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button.load-more {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+button.load-more:hover {
+  background: #5a6268;
+}
+
+/* Icônes */
+.fa {
+  margin-right: 5px;
+}

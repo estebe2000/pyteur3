@@ -1269,6 +1269,42 @@ from app.models import Message, MessageRecipient, User, Group, SchoolClass
 from app import csrf
 
 @csrf.exempt
+@main_bp.route('/api/messages/delete/<int:message_id>', methods=['DELETE'])
+@login_required
+def delete_message(message_id):
+    message = Message.query.get_or_404(message_id)
+    if message.sender_id != current_user.id:
+        return {'error': 'Non autorisé'}, 403
+
+    # Supprimer les destinataires liés
+    MessageRecipient.query.filter_by(message_id=message_id).delete()
+    db.session.delete(message)
+    db.session.commit()
+    return {'success': True}
+
+
+@csrf.exempt
+@main_bp.route('/api/messages/mark_read', methods=['POST'])
+@login_required
+def mark_message_read():
+    try:
+        data = request.get_json(force=True)
+        message_id = data.get('message_id')
+        if not message_id:
+            return {'error': 'ID manquant'}, 400
+
+        mr = MessageRecipient.query.filter_by(message_id=message_id, recipient_user_id=current_user.id).first()
+        if not mr:
+            return {'error': 'Message non trouvé'}, 404
+
+        mr.is_read = True
+        db.session.commit()
+        return {'success': True}
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+
+@csrf.exempt
 @main_bp.route('/api/messages/send', methods=['POST'])
 @login_required
 def send_message():
@@ -1335,15 +1371,13 @@ def get_recipients():
 @main_bp.route('/api/messages', methods=['GET'])
 @login_required
 def get_messages():
-    # Messages directs
+    # Messages reçus
     direct_msgs = MessageRecipient.query.filter_by(recipient_user_id=current_user.id).all()
 
-    # Messages de groupes
     group_msgs = []
     if current_user.group_id:
         group_msgs = MessageRecipient.query.filter_by(recipient_group_id=current_user.group_id).all()
 
-    # Messages de classe (via groupes de la classe)
     class_msgs = []
     if current_user.group and current_user.group.school_class:
         class_groups = current_user.group.school_class.groups
@@ -1351,22 +1385,40 @@ def get_messages():
         if group_ids:
             class_msgs = MessageRecipient.query.filter(MessageRecipient.recipient_group_id.in_(group_ids)).all()
 
-    all_msgs = direct_msgs + group_msgs + class_msgs
+    all_recipient_msgs = direct_msgs + group_msgs + class_msgs
 
-    # Supprimer doublons (même message envoyé à plusieurs groupes)
-    unique_msgs = {}
-    for mr in all_msgs:
-        unique_msgs[mr.message_id] = mr
+    # Supprimer doublons
+    unique_recipient_msgs = {}
+    for mr in all_recipient_msgs:
+        unique_recipient_msgs[mr.message_id] = mr
+
+    # Messages envoyés
+    sent_msgs = Message.query.filter_by(sender_id=current_user.id).all()
 
     messages = []
-    for mr in unique_msgs.values():
+
+    # Ajouter messages reçus
+    for mr in unique_recipient_msgs.values():
         messages.append({
             'id': mr.message.id,
             'content': mr.message.content,
             'sender_id': mr.message.sender_id,
             'sender_name': f"{mr.message.sender.prenom} {mr.message.sender.nom}",
             'timestamp': mr.message.timestamp.isoformat(),
-            'is_read': mr.is_read
+            'is_read': mr.is_read,
+            'sent': False
+        })
+
+    # Ajouter messages envoyés
+    for m in sent_msgs:
+        messages.append({
+            'id': m.id,
+            'content': m.content,
+            'sender_id': m.sender_id,
+            'sender_name': f"{current_user.prenom} {current_user.nom}",
+            'timestamp': m.timestamp.isoformat(),
+            'is_read': True,
+            'sent': True
         })
 
     # Trier par date
