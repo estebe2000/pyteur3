@@ -1,6 +1,5 @@
 __pycache__/
 *.py[cod]
 .env
-instance/
 static/uploads/
 db.sqlite
