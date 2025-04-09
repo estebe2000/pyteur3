@@ -1263,6 +1263,20 @@ def generateur_exercice():
 
 
 from flask import jsonify
+
+@main_bp.route('/api/generateur_data', methods=['GET'])
+@login_required
+def api_generateur_data():
+    import json
+    try:
+        with open('app/static/data/data.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+from flask import jsonify
 from app.models import Message, MessageRecipient, User, Group, SchoolClass
 
 

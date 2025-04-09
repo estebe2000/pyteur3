@@ -3,5 +3,215 @@
 {% block content %}
 <div class="container mt-4">
     <h2>Générateur d'exercice</h2>
+
+    <div class="mt-4">
+        <h5>Choisissez un niveau scolaire :</h5>
+        <div id="niveauContainer" class="grid-container mt-2"></div>
+    </div>
+
+    <div class="mt-4">
+        <h5>Choisissez un thème :</h5>
+        <div id="themeContainer" class="grid-container mt-2"></div>
+    </div>
+
+    <div class="mt-4">
+        <h5>Choisissez la difficulté :</h5>
+        <div id="difficulteContainer" class="mt-2">
+            {% for i in range(1,6) %}
+            <span class="star" data-value="{{ i }}">&#9734;</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h5>Description de l'exercice :</h5>
+        <p id="descriptionExercice">Veuillez sélectionner un niveau, un thème et une difficulté.</p>
+    </div>
+
+    <button id="genererBtn" class="btn btn-primary mt-3" disabled>Générer avec l'IA</button>
+
+    <div class="mt-4">
+        <h5>Exercice généré :</h5>
+        <pre id="resultatIA" style="white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
+    </div>
 </div>
+
+<style>
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.btn-choice {
+    padding: 10px 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+.btn-choice:hover {
+    background-color: #007bff;
+    color: white;
+}
+.btn-choice.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.star {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.star:hover,
+.star:hover ~ .star {
+    color: #ffc107;
+}
+.star.selected {
+    color: #ffc107;
+}
+</style>
+
+<script>
+let data = {};
+let selectedNiveau = null;
+let selectedTheme = null;
+let selectedDifficulte = 0;
+
+async function chargerData() {
+    try {
+        const response = await fetch('/api/generateur_data');
+        data = await response.json();
+
+        const niveauContainer = document.getElementById('niveauContainer');
+        niveauContainer.innerHTML = '';
+
+        Object.keys(data).forEach(niveau => {
+            const btn = document.createElement('div');
+            btn.className = 'btn-choice';
+            btn.textContent = niveau;
+            btn.dataset.value = niveau;
+            btn.addEventListener('click', () => {
+                selectedNiveau = niveau;
+                selectedTheme = null;
+                selectedDifficulte = 0;
+                updateSelection();
+                afficherThemes();
+                updateDescription();
+            });
+            niveauContainer.appendChild(btn);
+        });
+    } catch (error) {
+        console.error('Erreur chargement données:', error);
+    }
+}
+
+function afficherThemes() {
+    const themeContainer = document.getElementById('themeContainer');
+    themeContainer.innerHTML = '';
+    if (!selectedNiveau || !data[selectedNiveau]) return;
+
+    data[selectedNiveau].forEach(themeObj => {
+        const btn = document.createElement('div');
+        btn.className = 'btn-choice';
+        btn.textContent = themeObj.thème;
+        btn.dataset.value = themeObj.thème;
+        btn.addEventListener('click', () => {
+            selectedTheme = themeObj.thème;
+            selectedDifficulte = 0;
+            updateSelection();
+            updateDescription();
+        });
+        themeContainer.appendChild(btn);
+    });
+}
+
+function updateSelection() {
+    document.querySelectorAll('#niveauContainer .btn-choice').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.value === selectedNiveau);
+    });
+    document.querySelectorAll('#themeContainer .btn-choice').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.value === selectedTheme);
+    });
+    document.querySelectorAll('.star').forEach(star => {
+        const val = parseInt(star.dataset.value);
+        if (val <= selectedDifficulte) {
+            star.classList.add('selected');
+        } else {
+            star.classList.remove('selected');
+        }
+    });
+}
+
+function updateDescription() {
+    const descriptionExercice = document.getElementById('descriptionExercice');
+    const genererBtn = document.getElementById('genererBtn');
+
+    if (selectedNiveau && selectedTheme && selectedDifficulte && data[selectedNiveau]) {
+        const themeObj = data[selectedNiveau].find(t => t.thème === selectedTheme);
+        if (themeObj) {
+            const nivObj = themeObj.niveaux.find(n => n.niveau === selectedDifficulte);
+            if (nivObj) {
+                descriptionExercice.textContent = nivObj.description;
+                genererBtn.disabled = false;
+                return;
+            }
+        }
+    }
+    descriptionExercice.textContent = 'Veuillez sélectionner un niveau, un thème et une difficulté.';
+    genererBtn.disabled = true;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    chargerData();
+
+document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', () => {
+            selectedDifficulte = parseInt(star.dataset.value);
+
+            document.querySelectorAll('.star').forEach(s => {
+                if (parseInt(s.dataset.value) <= selectedDifficulte) {
+                    s.classList.add('selected');
+                } else {
+                    s.classList.remove('selected');
+                }
+            });
+
+            updateDescription();
+        });
+    });
+
+    document.getElementById('genererBtn').addEventListener('click', async () => {
+        const prompt = `Génère un exercice Python pour un élève de ${selectedNiveau}, sur le thème "${selectedTheme}", avec une difficulté de niveau ${selectedDifficulte}. Voici la description : ${document.getElementById('descriptionExercice').textContent}`;
+
+        const resultatIA = document.getElementById('resultatIA');
+        resultatIA.textContent = "Génération en cours...";
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: prompt })
+            });
+            const data = await response.json();
+            if (data.response) {
+                resultatIA.textContent = data.response;
+            } else if (data.error) {
+                resultatIA.textContent = "Erreur IA : " + data.error;
+            } else {
+                resultatIA.textContent = "Réponse inattendue.";
+            }
+        } catch (error) {
+            resultatIA.textContent = "Erreur lors de la requête IA : " + error;
+        }
+    });
+});
+</script>
 {% endblock %}
