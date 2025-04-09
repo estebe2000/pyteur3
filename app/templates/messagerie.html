@@ -7,4 +7,115 @@
 
 {% block content %}
 <h1>Messagerie</h1>
+
+<div>
+  <h3>Envoyer un message</h3>
+  <form id="sendMessageForm">
+    <label>À un utilisateur :</label>
+    <select id="recipientUser">
+      <option value="">-- Aucun --</option>
+    </select>
+
+    <label>À un groupe :</label>
+    <select id="recipientGroup">
+      <option value="">-- Aucun --</option>
+    </select>
+
+    <label>À une classe :</label>
+    <select id="recipientClass">
+      <option value="">-- Aucun --</option>
+    </select>
+
+    <br>
+    <textarea id="messageContent" rows="3" cols="50" placeholder="Votre message..."></textarea><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+<hr>
+
+<div>
+  <h3>Messages reçus</h3>
+  <ul id="messagesList">
+    <li>Chargement...</li>
+  </ul>
+</div>
+
+<script>
+async function loadRecipients() {
+  const resp = await fetch('/api/recipients');
+  const data = await resp.json();
+
+  const userSelect = document.getElementById('recipientUser');
+  const groupSelect = document.getElementById('recipientGroup');
+  const classSelect = document.getElementById('recipientClass');
+
+  data.users.forEach(u => {
+    const opt = document.createElement('option');
+    opt.value = u.id;
+    opt.textContent = u.name;
+    userSelect.appendChild(opt);
+  });
+
+  data.groups.forEach(g => {
+    const opt = document.createElement('option');
+    opt.value = g.id;
+    opt.textContent = g.name;
+    groupSelect.appendChild(opt);
+  });
+
+  data.classes.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = c.name;
+    classSelect.appendChild(opt);
+  });
+}
+
+async function loadMessages() {
+  const resp = await fetch('/api/messages');
+  const messages = await resp.json();
+  const list = document.getElementById('messagesList');
+  list.innerHTML = '';
+  if(messages.length === 0) {
+    list.innerHTML = '<li>Aucun message</li>';
+    return;
+  }
+  messages.forEach(msg => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${msg.sender_name}</strong> : ${msg.content} <em>(${new Date(msg.timestamp).toLocaleString()})</em>`;
+    list.appendChild(li);
+  });
+}
+
+document.getElementById('sendMessageForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const content = document.getElementById('messageContent').value.trim();
+  const recipient_user_id = document.getElementById('recipientUser').value;
+  const recipient_group_id = document.getElementById('recipientGroup').value;
+  const recipient_class_id = document.getElementById('recipientClass').value;
+
+  const resp = await fetch('/api/messages/send', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      content,
+      recipient_user_id: recipient_user_id || null,
+      recipient_group_id: recipient_group_id || null,
+      recipient_class_id: recipient_class_id || null
+    })
+  });
+  const result = await resp.json();
+  if(result.success) {
+    document.getElementById('messageContent').value = '';
+    loadMessages();
+  } else {
+    alert(result.error || 'Erreur lors de l\'envoi');
+  }
+});
+
+loadRecipients();
+loadMessages();
+</script>
+
 {% endblock %}

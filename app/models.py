@@ -102,3 +102,26 @@ class TodoListAssignment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     user = db.relationship('User', backref='todo_list_assignments')
+
+
+class Message(db.Model):
+    __tablename__ = 'messages'
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, server_default=db.func.now())
+
+    sender = db.relationship('User', backref='sent_messages')
+
+
+class MessageRecipient(db.Model):
+    __tablename__ = 'message_recipients'
+    id = db.Column(db.Integer, primary_key=True)
+    message_id = db.Column(db.Integer, db.ForeignKey('messages.id'), nullable=False)
+    recipient_user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    recipient_group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
+    is_read = db.Column(db.Boolean, default=False)
+
+    message = db.relationship('Message', backref='recipients')
+    recipient_user = db.relationship('User', foreign_keys=[recipient_user_id], backref='received_messages')
+    recipient_group = db.relationship('Group', foreign_keys=[recipient_group_id], backref='group_messages')

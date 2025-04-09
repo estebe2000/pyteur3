@@ -1260,3 +1260,116 @@ def createur_exercice():
 @login_required
 def generateur_exercice():
     return render_template('generateur_exercice.html')
+
+
+from flask import jsonify
+from app.models import Message, MessageRecipient, User, Group, SchoolClass
+
+
+from app import csrf
+
+@csrf.exempt
+@main_bp.route('/api/messages/send', methods=['POST'])
+@login_required
+def send_message():
+    data = request.get_json(force=True)
+    content = data.get('content', '').strip()
+    recipient_user_id = data.get('recipient_user_id')
+    recipient_group_id = data.get('recipient_group_id')
+    recipient_class_id = data.get('recipient_class_id')
+
+    if not content:
+        return jsonify({'error': 'Message vide'}), 400
+
+    # Créer le message
+    message = Message(sender_id=current_user.id, content=content)
+    db.session.add(message)
+    db.session.flush()  # pour récupérer message.id
+
+    recipients = []
+
+    # Destinataire individuel
+    if recipient_user_id:
+        user = User.query.get(recipient_user_id)
+        if user:
+            recipients.append(MessageRecipient(message_id=message.id, recipient_user_id=user.id))
+
+    # Destinataire groupe
+    if recipient_group_id:
+        group = Group.query.get(recipient_group_id)
+        if group:
+            recipients.append(MessageRecipient(message_id=message.id, recipient_group_id=group.id))
+
+    # Destinataire classe (tous les groupes de la classe)
+    if recipient_class_id:
+        school_class = SchoolClass.query.get(recipient_class_id)
+        if school_class:
+            groups = school_class.groups
+            for group in groups:
+                recipients.append(MessageRecipient(message_id=message.id, recipient_group_id=group.id))
+
+    if not recipients:
+        return jsonify({'error': 'Aucun destinataire valide'}), 400
+
+    db.session.add_all(recipients)
+    db.session.commit()
+
+    return jsonify({'success': True})
+
+
+@main_bp.route('/api/recipients', methods=['GET'])
+@login_required
+def get_recipients():
+    users = User.query.filter(User.id != current_user.id).all()
+    groups = Group.query.all()
+    classes = SchoolClass.query.all()
+
+    return jsonify({
+        "users": [{"id": u.id, "name": f"{u.prenom} {u.nom}"} for u in users],
+        "groups": [{"id": g.id, "name": g.nom} for g in groups],
+        "classes": [{"id": c.id, "name": c.nom} for c in classes]
+    })
+
+
+@csrf.exempt
+@main_bp.route('/api/messages', methods=['GET'])
+@login_required
+def get_messages():
+    # Messages directs
+    direct_msgs = MessageRecipient.query.filter_by(recipient_user_id=current_user.id).all()
+
+    # Messages de groupes
+    group_msgs = []
+    if current_user.group_id:
+        group_msgs = MessageRecipient.query.filter_by(recipient_group_id=current_user.group_id).all()
+
+    # Messages de classe (via groupes de la classe)
+    class_msgs = []
+    if current_user.group and current_user.group.school_class:
+        class_groups = current_user.group.school_class.groups
+        group_ids = [g.id for g in class_groups]
+        if group_ids:
+            class_msgs = MessageRecipient.query.filter(MessageRecipient.recipient_group_id.in_(group_ids)).all()
+
+    all_msgs = direct_msgs + group_msgs + class_msgs
+
+    # Supprimer doublons (même message envoyé à plusieurs groupes)
+    unique_msgs = {}
+    for mr in all_msgs:
+        unique_msgs[mr.message_id] = mr
+
+    messages = []
+    for mr in unique_msgs.values():
+        messages.append({
+            'id': mr.message.id,
+            'content': mr.message.content,
+            'sender_id': mr.message.sender_id,
+            'sender_name': f"{mr.message.sender.prenom} {mr.message.sender.nom}",
+            'timestamp': mr.message.timestamp.isoformat(),
+            'is_read': mr.is_read
+        })
+
+    # Trier par date
+    messages.sort(key=lambda m: m['timestamp'])
+
+    return jsonify(messages)
