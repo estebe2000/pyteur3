@@ -190,9 +190,8 @@ document.getElementById('save-qcm').onclick = () => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({name: qcmName, questions: qcm})
   }).then(res => {
-    if (res.ok) {
+if (res.ok) {
       alert('QCM sauvegardé avec succès.');
-      qcm = [];
       updateQcmList();
     } else {
       alert('Erreur lors de la sauvegarde.');
