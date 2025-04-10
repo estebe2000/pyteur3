@@ -1322,6 +1322,31 @@ def api_generer_exercice():
         return jsonify({'error': str(e)}), 500
 
 @csrf.exempt
+@main_bp.route('/api/evaluer_code', methods=['POST'])
+@login_required
+def api_evaluer_code():
+    import json
+    from flask import request
+    from app.prompts_generateur import prompt_evaluation_code
+    try:
+        data = request.get_json(force=True)
+        code = data.get('code')
+        enonce = data.get('enonce')
+
+        if not code or not enonce:
+            return {'error': 'Paramètres manquants'}, 400
+
+        prompt = prompt_evaluation_code(code, enonce)
+
+        from app.ia_client import generate_text
+        reponse = generate_text(prompt)
+
+        return {'prompt': prompt, 'response': reponse}
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+
+@csrf.exempt
 @main_bp.route('/api/upload_notebook', methods=['POST'])
 @login_required
 def api_upload_notebook():
