@@ -62,6 +62,10 @@
     <i class="fas fa-magic mr-3"></i>
     Générateur d'exercice
 </a>
+<a href="{{ url_for('main.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-bolt mr-3"></i>
+    Exercices flash
+</a>
 {% endif %}
 
 {% if current_user.role != 'eleve' %}

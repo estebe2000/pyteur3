@@ -1265,6 +1265,15 @@ def generateur_exercice():
     return render_template('generateur_exercice.html', ia_name=ia_name, model_name=model_name)
 
 
+@main_bp.route('/exercices_flash')
+@login_required
+def exercices_flash():
+    from app.ia_providers import provider_manager
+    ia_name = provider_manager.active_provider_name or "Aucun fournisseur"
+    model_name = provider_manager.active_provider.model if provider_manager.active_provider else "Aucun modèle"
+    return render_template('exercices_flash.html', ia_name=ia_name, model_name=model_name)
+
+
 from flask import jsonify
 
 @main_bp.route('/api/generateur_data', methods=['GET'])

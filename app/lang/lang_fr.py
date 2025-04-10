@@ -179,5 +179,15 @@ LABELS = {
     "error_generating_prompt": "Erreur génération prompt :",
     "prompt_unavailable": "Prompt non disponible",
     "response_unavailable": "Réponse IA non disponible",
-    "request_error": "Erreur lors de la requête :"
+    "request_error": "Erreur lors de la requête :",
+    "show_prompt": "Afficher le prompt utilisé",
+    "hide_prompt": "Cacher le prompt utilisé",
+    "show_generated_exercise": "Afficher l'exercice généré",
+    "hide_generated_exercise": "Cacher l'exercice généré",
+    "download_notebook": "Télécharger pour Jupyter Notebook",
+    "download_script": "Télécharger le script Python",
+    "open_console": "Ouvrir dans la console Python",
+    "open_notebook": "Ouvrir dans notebook Python",
+    "error_loading_data": "Erreur chargement données:",
+    "error_upload_notebook": "Erreur upload notebook"
 }

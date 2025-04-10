@@ -180,5 +180,15 @@ LABELS = {
     "error_generating_prompt": "Error generating prompt:",
     "prompt_unavailable": "Prompt unavailable",
     "response_unavailable": "AI response unavailable",
-    "request_error": "Request error:"
+    "request_error": "Request error:",
+    "show_prompt": "Show used prompt",
+    "hide_prompt": "Hide used prompt",
+    "show_generated_exercise": "Show generated exercise",
+    "hide_generated_exercise": "Hide generated exercise",
+    "download_notebook": "Download for Jupyter Notebook",
+    "download_script": "Download Python script",
+    "open_console": "Open in Python console",
+    "open_notebook": "Open in Python notebook",
+    "error_loading_data": "Error loading data:",
+    "error_upload_notebook": "Error uploading notebook"
 }

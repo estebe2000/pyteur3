@@ -1,0 +1,158 @@
+/* Style dédié à la page exercices flash - design attractif pour élèves */
+
+/* Palette dynamique */
+:root {
+  --color-primary: #4f46e5; /* violet */
+  --color-secondary: #22c55e; /* vert */
+  --color-accent: #f97316; /* orange */
+  --color-bg: #f0f4ff;
+  --color-text: #333;
+}
+
+/* Conteneur principal */
+.container {
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Titres */
+h2, h5 {
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+}
+
+/* Boutons choix niveau/thème */
+.btn-choice {
+  padding: 15px 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 12px;
+  background-color: white;
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+.btn-choice:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
+}
+.btn-choice.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Boutons principaux */
+.btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  transition: all 0.3s ease;
+}
+.btn-primary {
+  background-color: var(--color-secondary) !important;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #16a34a !important;
+  transform: scale(1.05);
+}
+.btn-secondary {
+  background-color: var(--color-accent) !important;
+  border: none;
+  color: white !important;
+}
+.btn-secondary:hover {
+  background-color: #ea580c !important;
+  transform: scale(1.05);
+}
+
+/* Étoiles difficulté */
+.star {
+  font-size: 2.5rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+.star:hover,
+.star:hover ~ .star {
+  color: #ffc107;
+  transform: scale(1.2);
+}
+.star.selected {
+  color: #ffc107;
+  transform: scale(1.2);
+}
+
+/* Blocs affichage prompt et résultat */
+pre {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  border: 2px dashed var(--color-primary);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* Grille responsive */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Masquer un élément sans le supprimer */
+.hidden-element {
+  display: none !important;
+}
+
+/* Espacements */
+.mt-4 { margin-top: 1.5rem; }
+.my-4 { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+
+/* Bannière titre */
+.banniere-flash {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Ligne actions difficulté + description + boutons */
+.ligne-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+/* Boutons désactivés gris */
+button:disabled {
+  background-color: #9ca3af !important; /* gris Tailwind bg-gray-400 */
+  color: white !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.banniere-flash h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: white;
+}
+.banniere-flash p {
+  margin: 10px 0 0;
+  font-size: 1.2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+}

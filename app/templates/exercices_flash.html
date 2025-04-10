@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/exercices_flash.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
-    <h2>{{ labels['exercise_generator'] }}</h2>
-    <p><strong>IA :</strong> {{ ia_name }} | <strong>Modèle :</strong> {{ model_name }}</p>
+<div class="banniere-flash mb-4">
+  <h2>Exercices flash</h2>
+  <p>Entraîne-toi rapidement et progresse chaque jour !</p>
+</div>
+<p class="hidden-element"><strong>IA :</strong> {{ ia_name }} | <strong>Modèle :</strong> {{ model_name }}</p>
 
     <div class="mt-4">
         <h5>{{ labels['choose_level'] }} :</h5>
@@ -15,44 +22,60 @@
         <div id="themeContainer" class="grid-container mt-2"></div>
     </div>
 
-    <div class="mt-4">
-        <h5>{{ labels['choose_difficulty'] }} :</h5>
-        <div id="difficulteContainer" class="mt-2">
+    <div class="ligne-actions mt-4 mb-4" style="gap: 15px;">
+        <div>
+            <h5>{{ labels['choose_difficulty'] }} :</h5>
+        </div>
+        <div id="difficulteContainer">
             {% for i in range(1,6) %}
             <span class="star" data-value="{{ i }}">&#9734;</span>
             {% endfor %}
         </div>
-    </div>
-
-    <div class="mt-4">
-        <h5>{{ labels['exercise_description'] }} :</h5>
-        <p id="descriptionExercice">{{ labels['select_all_fields'] }}</p>
-    </div>
-
-    <div class="my-4">
-        <button id="genererBtn" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs" disabled>
+        <div>
+            <h5 class="hidden-element">{{ labels['exercise_description'] }} :</h5>
+        </div>
+        <p id="descriptionExercice" class="hidden-element" style="margin:0;">{{ labels['select_all_fields'] }}</p>
+        <button id="genererBtn" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition" disabled>
             {{ labels['generate_with_ai'] }}
         </button>
+        <button id="ouvrirConsoleIframeBtn" disabled class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition">Ouvrir dans la console intégrée</button>
     </div>
 
     <div class="my-4">
-        <h5>{{ labels['used_prompt'] }} :</h5>
-<button id="togglePromptBtn" class="btn btn-secondary mb-2">{{ labels['show_prompt'] }}</button>
+<h5 class="hidden-element">{{ labels['used_prompt'] }} :</h5>
+<button id="togglePromptBtn" class="btn btn-secondary mb-2 hidden-element">{{ labels['show_prompt'] }}</button>
         <pre id="promptAffiche" style="display:none; white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
     </div>
 
     <div class="my-4">
-        <h5>{{ labels['generated_exercise'] }} :</h5>
-<button id="toggleResultatBtn" class="btn btn-secondary mb-2">{{ labels['show_generated_exercise'] }}</button>
+<h5 class="hidden-element">{{ labels['generated_exercise'] }} :</h5>
+<button id="toggleResultatBtn" class="btn btn-secondary mb-2 hidden-element">{{ labels['show_generated_exercise'] }}</button>
         <pre id="resultatIA" style="display:none; white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
-<button id="downloadNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_notebook'] }}</button>
-<button id="downloadScriptBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_script'] }}</button>
-<button id="ouvrirConsoleBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_console'] }}</button>
-<button id="ouvrirNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_notebook'] }}</button>
+<button id="downloadNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs hidden-element">{{ labels['download_notebook'] }}</button>
+<button id="downloadScriptBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs hidden-element">{{ labels['download_script'] }}</button>
+<button id="ouvrirConsoleBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs hidden-element">{{ labels['open_console'] }}</button>
+<button id="ouvrirNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs hidden-element">{{ labels['open_notebook'] }}</button>
         </div>
     </div>
+
+<div id="consoleContainer" class="mt-4 hidden-element">
+  <h5>Console Python interactive</h5>
+<iframe id="iframeBasthon" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python&script="
+          style="width:100%; height:1000px; border:1px solid #ccc; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
 </div>
+</div>
+
+<script>
+fetch("{{ url_for('static', filename='data/vide.py') }}")
+  .then(response => response.text())
+  .then(code => {
+    const encoded = encodeURIComponent(code);
+    const iframe = document.getElementById('iframeBasthon');
+    iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python&script=" + encoded;
+  })
+  .catch(err => console.error("Erreur chargement vide.py:", err));
+</script>
 
 <style>
 .grid-container {
@@ -242,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const promptAffiche = document.getElementById('promptAffiche');
 
         // Désactiver les boutons pendant la génération
-        const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn'];
+const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn', 'ouvrirConsoleIframeBtn'];
         actionButtons.forEach(id => {
             const btn = document.getElementById(id);
             btn.disabled = true;
@@ -465,6 +488,49 @@ document.getElementById('ouvrirNotebookBtn').addEventListener('click', () => {
     const fileUrl = "{{ url_for('static', filename='uploads/temp/1_programme_nsi_terminal.ipynb') }}";
     const notebookLocalUrl = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?from=" + encodeURIComponent(window.location.origin + fileUrl);
     window.open(notebookLocalUrl, '_blank');
+});
+document.getElementById('ouvrirConsoleIframeBtn').addEventListener('click', () => {
+  const consoleDiv = document.getElementById('consoleContainer');
+  consoleDiv.classList.toggle('hidden-element');
+
+    const raw = document.getElementById('resultatIA').textContent;
+
+    let transformed = '';
+    const codeBlockRegex = /```(?:python)?\n([\s\S]*?)```/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = codeBlockRegex.exec(raw)) !== null) {
+        // Partie avant le bloc de code => commenter
+        const before = raw.slice(lastIndex, match.index);
+        before.split('\n').forEach(line => {
+            transformed += '# ' + line + '\n';
+        });
+
+        // Bloc de code => supprimer indentation commune
+        const codeBlock = match[1];
+        const lines = codeBlock.split('\n');
+        const indentLengths = lines
+            .filter(line => line.trim() !== '')
+            .map(line => line.match(/^(\s*)/)[1].length);
+        const minIndent = indentLengths.length > 0 ? Math.min(...indentLengths) : 0;
+
+        lines.forEach(line => {
+            transformed += line.slice(minIndent) + '\n';
+        });
+
+        lastIndex = codeBlockRegex.lastIndex;
+    }
+
+    // Partie après le dernier bloc
+    const after = raw.slice(lastIndex);
+    after.split('\n').forEach(line => {
+        transformed += '# ' + line + '\n';
+    });
+
+    const encoded = encodeURIComponent(transformed);
+    const iframe = document.querySelector('iframe');
+    iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python&script=" + encoded;
 });
 </script>
 {% endblock %}
