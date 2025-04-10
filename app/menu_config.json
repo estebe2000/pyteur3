@@ -3,6 +3,7 @@
   "documents": true,
   "exercises": true,
   "exercices_flash": true,
+  "qcm_flash": true,
   "messagerie": true,
   "todo": true,
   "projets": true,

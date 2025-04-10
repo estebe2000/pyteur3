@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('dashboard.home') }}">Accueil</a> > Gestion menu
+<a href="{{ url_for('dashboard.home') }}">Accueil</a> > {{ labels['menu_management'] }}
 {% endblock %}
 
 {% block content %}
-<h1>Gestion du menu élèves</h1>
+<h1>{{ labels['menu_management'] }}</h1>
 
 <form method="post" action="{{ url_for('admin.gestion_menu') }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <table class="table-auto w-full mt-4 border">
         <thead>
             <tr class="bg-gray-200">
-                <th class="p-2 text-left">Visible</th>
-                <th class="p-2 text-left">Rubrique</th>
+                <th class="p-2 text-left">{{ labels['visible'] }}</th>
+                <th class="p-2 text-left">{{ labels['section'] }}</th>
             </tr>
         </thead>
         <tbody>
@@ -22,11 +22,11 @@
                 <td class="p-2">
                     <input type="checkbox" name="visible_{{ key }}" {% if visible %}checked{% endif %}>
                 </td>
-                <td class="p-2">{{ key }}</td>
+                <td class="p-2">{{ labels.get(key, key) }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Enregistrer</button>
+    <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">{{ labels['save'] }}</button>
 </form>
 {% endblock %}

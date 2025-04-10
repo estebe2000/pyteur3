@@ -33,9 +33,13 @@
                 <label class="block text-sm font-medium mb-1">{{ labels['date_of_birth'] }}</label>
                 <input type="date" name="date_naissance" value="{{ user.date_naissance }}" class="w-full border border-gray-300 rounded px-3 py-2">
             </div>
-            <div>
+<div>
                 <label class="block text-sm font-medium mb-1">{{ labels['special_needs'] }}</label>
                 <input type="text" name="besoins_particuliers" value="{{ user.besoins_particuliers }}" class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-1">URL du Drive</label>
+                <input type="url" name="drive_url" value="{{ drive_url }}" placeholder="https://nuage.apps.education.fr/" class="w-full border border-gray-300 rounded px-3 py-2">
             </div>
             <div class="md:col-span-2">
                 <label class="block text-sm font-medium mb-1">{{ labels['new_password'] }}</label>

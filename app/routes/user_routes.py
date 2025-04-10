@@ -127,6 +127,21 @@ def delete_user(id):
 @user_bp.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
+    import json
+
+    config_path = os.path.join(os.path.dirname(__file__), '..', 'drive_config.json')
+    config_path = os.path.abspath(config_path)
+
+    # Charger la config existante
+    if os.path.exists(config_path):
+        with open(config_path, 'r', encoding='utf-8') as f:
+            try:
+                config_data = json.load(f)
+            except json.JSONDecodeError:
+                config_data = {}
+    else:
+        config_data = {}
+
     if request.method == 'POST':
         current_user.nom = request.form.get('nom')
         current_user.prenom = request.form.get('prenom')
@@ -147,8 +162,19 @@ def settings():
         if password:
             current_user.password = generate_password_hash(password)
         db.session.commit()
+
+        # Mettre à jour l'URL du drive si fournie
+        drive_url = request.form.get('drive_url')
+        if drive_url:
+            config_data['drive_url'] = drive_url
+            with open(config_path, 'w', encoding='utf-8') as f:
+                json.dump(config_data, f, indent=2, ensure_ascii=False)
+
         flash('Profil mis à jour avec succès.')
-    return render_template('settings.html', user=current_user)
+
+    # Passer l'URL du drive au template
+    drive_url = config_data.get('drive_url', 'https://nuage.apps.education.fr/')
+    return render_template('settings.html', user=current_user, drive_url=drive_url)
 
 @user_bp.route('/users/import', methods=['GET', 'POST'])
 @login_required

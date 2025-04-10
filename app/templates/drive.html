@@ -6,5 +6,15 @@
 {% endblock %}
 
 {% block content %}
-<h1>Drive</h1>
+<div style="margin-bottom:10px;">
+  <input type="text" id="urlInput" value="https://nuage.apps.education.fr/" style="width:80%; padding:5px;">
+  <button id="openBtn" style="padding:5px;">🔄</button>
+</div>
+
+<script>
+document.getElementById('openBtn').addEventListener('click', function() {
+    const url = document.getElementById('urlInput').value;
+    window.open(url, '_blank');
+});
+</script>
 {% endblock %}

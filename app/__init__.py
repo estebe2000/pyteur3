@@ -26,6 +26,7 @@ def create_app():
     from app.routes.qcm_routes import qcm_bp
     from app.routes.admin_routes import admin_bp
     from app.routes.misc_routes import misc_bp
+    from app.routes.statistics_routes import statistics_bp
 
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(user_bp)
@@ -35,6 +36,7 @@ def create_app():
     app.register_blueprint(qcm_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(misc_bp)
+    app.register_blueprint(statistics_bp)
 
     @app.context_processor
     def inject_labels():
@@ -65,6 +67,18 @@ def create_app():
             print(f"[DEBUG] Erreur chargement menu_config : {e}")
             menu_config = {}
         return {'menu_config': menu_config}
+
+    @app.context_processor
+    def inject_drive_url():
+        import os
+        try:
+            config_path = os.path.join(app.root_path, 'drive_config.json')
+            with open(config_path, 'r', encoding='utf-8') as f:
+                config_data = json.load(f)
+            drive_url = config_data.get('drive_url', 'https://nuage.apps.education.fr/')
+        except Exception:
+            drive_url = 'https://nuage.apps.education.fr/'
+        return {'drive_url': drive_url}
 
     return app
 
