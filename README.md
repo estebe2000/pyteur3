@@ -1,7 +1,8 @@
 # Pyteur
 
-Plateforme éducative collaborative avec génération d’exercices assistée par IA.
-:)
+**Pyteur** est une plateforme éducative collaborative open-source, conçue pour les enseignants et élèves, intégrant la génération d’exercices assistée par IA, la gestion de classes, la messagerie, le suivi pédagogique et des outils interactifs.  
+Ce projet est développé pour l’Éducation Nationale française, sous licence **MIT**.
+
 ---
 
 ## Fonctionnalités principales
@@ -13,34 +14,11 @@ Plateforme éducative collaborative avec génération d’exercices assistée pa
 - **Création et génération d’exercices assistée par IA**
 - **QCM interactifs**
 - **Suivi personnalisé des élèves**
-- **Tableau de bord et statistiques**
+- **Tableau de bord et statistiques avancées**
 - **Support multi-langues (français, anglais)**
 - **Importation d’utilisateurs via CSV**
 - **Gestion des fournisseurs IA (Ollama, autres)**
-
----
-
-## Statistiques (UX améliorée)
-
-- La page **Statistiques** est organisée en **blocs repliables** (Utilisateurs, Classes & Groupes, Exercices & Documents, Messagerie, ToDo Lists).
-- Chaque bloc contient des **graphiques Chart.js** (2 par ligne max) et un **tableau interactif DataTables**.
-- Le code JavaScript de chargement des données et création des graphiques est **externalisé dans** :
-
-```
-app/static/js/statistiques.js
-```
-
-- Pour personnaliser l’apparence, modifier le CSS dans :
-
-```
-app/templates/statistiques.html
-```
-
-- Pour adapter les données, modifier les routes API `/api/statistics/*` dans :
-
-```
-app/routes/statistics_routes.py
-```
+- **Refonte UX moderne avec sections repliables et graphiques dynamiques**
 
 ---
 
@@ -58,7 +36,8 @@ app/routes/statistics_routes.py
 │   │   ├── css/                # Feuilles de style
 │   │   ├── img/                # Images
 │   │   ├── uploads/            # Fichiers uploadés
-│   │   └── data/               # Données JSON
+│   │   ├── data/               # Données JSON
+│   │   └── js/                 # Scripts JavaScript (statistiques.js)
 │   ├── templates/              # Templates Jinja2
 │   └── lang/                   # Fichiers de langue
 │
@@ -80,7 +59,7 @@ app/routes/statistics_routes.py
 1. **Cloner le dépôt**
 
 ```bash
-git clone <repo_url>
+git clone https://github.com/estebe2000/pyteur3.git
 cd pyteur3
 ```
 
@@ -111,14 +90,36 @@ python run.py
 
 ---
 
-## Technologies
+## Installation avec Docker
+
+1. **Construire l’image**
+
+```bash
+docker build -t pyteur .
+```
+
+2. **Lancer avec Docker Compose**
+
+```bash
+docker-compose up
+```
+
+L’application sera accessible sur `http://localhost:5000`.
+
+---
+
+## Technologies utilisées
 
 - **Python 3.10+**
-- **Flask**
-- **SQLAlchemy**
-- **Bootstrap / Tailwind CSS**
-- **FontAwesome**
-- **Ollama / API IA**
+- **Flask** (framework web)
+- **SQLAlchemy** (ORM)
+- **Bootstrap** et **Tailwind CSS** (design responsive)
+- **FontAwesome** (icônes)
+- **Chart.js** (graphiques dynamiques)
+- **jQuery** (manipulation DOM)
+- **DataTables** (tableaux interactifs)
+- **Ollama** (API IA)
+- **Basthon** (exécution Python dans le navigateur) : [https://basthon.fr](https://basthon.fr)
 
 ---
 
@@ -146,4 +147,6 @@ python run.py
 
 ## Licence
 
-MIT
+Ce projet est open-source sous licence **MIT** et destiné à un usage pédagogique dans l’Éducation Nationale.
+
+---
