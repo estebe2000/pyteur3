@@ -38,7 +38,7 @@
         <button id="genererBtn" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition" disabled>
             {{ labels['generate_with_ai'] }}
         </button>
-        <button id="ouvrirConsoleIframeBtn" disabled class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition">Ouvrir dans la console intégrée</button>
+<button id="ouvrirConsoleIframeBtn" disabled class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition hidden-element">Ouvrir dans la console intégrée</button>
     </div>
 
     <div class="my-4">
@@ -230,7 +230,7 @@ function updateDescription() {
             }
         }
     }
-    descriptionExercice.textContent = '{{ labels['select_all_fields'] }}';
+    descriptionExercice.textContent = "{{ labels['select_all_fields'] }}";
     genererBtn.disabled = true;
     genererBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
     genererBtn.classList.add('bg-gray-400');
@@ -324,6 +324,9 @@ const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsol
             promptAffiche.textContent = "";
             resultatIA.textContent = "{{ labels['request_error'] }} " + error;
         }
+
+        // Ouvrir automatiquement la console intégrée après génération
+        document.getElementById('ouvrirConsoleIframeBtn').click();
     });
 });
 
