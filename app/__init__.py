@@ -1,3 +1,4 @@
+import json
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -50,6 +51,20 @@ def create_app():
         else:
             from app.lang.lang_fr import LABELS as LABELS_FR
             return {'labels': LABELS_FR}
+
+    @app.context_processor
+    def inject_menu_config():
+        import os
+        try:
+            config_path = os.path.join(app.root_path, 'menu_config.json')
+            print(f"[DEBUG] Chargement menu_config depuis : {config_path}")
+            with open(config_path, 'r', encoding='utf-8') as f:
+                menu_config = json.load(f)
+            print(f"[DEBUG] menu_config chargé : {menu_config}")
+        except Exception as e:
+            print(f"[DEBUG] Erreur chargement menu_config : {e}")
+            menu_config = {}
+        return {'menu_config': menu_config}
 
     return app
 

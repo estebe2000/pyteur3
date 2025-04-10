@@ -1,0 +1,11 @@
+{
+  "dashboard": true,
+  "documents": true,
+  "exercises": true,
+  "exercices_flash": true,
+  "messagerie": true,
+  "todo": true,
+  "projets": true,
+  "drive": true,
+  "sandbox": true
+}

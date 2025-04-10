@@ -7,6 +7,43 @@ import requests
 
 admin_bp = Blueprint('admin', __name__)
 
+@admin_bp.route('/admin/gestion_menu', methods=['GET', 'POST'])
+@login_required
+def gestion_menu():
+    if current_user.role != 'admin':
+        return "Accès non autorisé", 403
+
+    config_path = 'app/menu_config.json'
+
+    if request.method == 'POST':
+        try:
+            with open(config_path, 'r', encoding='utf-8') as f:
+                menu_config = json.load(f)
+        except Exception:
+            menu_config = {}
+
+        # Mettre à jour la config selon les cases cochées
+        for key in menu_config.keys():
+            menu_config[key] = f"visible_{key}" in request.form
+
+        try:
+            with open(config_path, 'w', encoding='utf-8') as f:
+                json.dump(menu_config, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass  # Ignorer les erreurs d'écriture pour l'instant
+
+        from flask import redirect, url_for, flash
+        flash("Configuration du menu enregistrée.", "success")
+        return redirect(url_for('admin.gestion_menu'))
+
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            menu_config = json.load(f)
+    except Exception:
+        menu_config = {}
+
+    return render_template('gestion_menu.html', menu_config=menu_config)
+
 @admin_bp.route('/manage_providers')
 @login_required
 def manage_providers():
