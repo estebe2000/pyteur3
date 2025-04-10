@@ -88,6 +88,8 @@ def prompt_evaluation_code(code, enonce):
     Construit un prompt pour évaluer un code Python soumis.
     """
     return f"""
+     Évalue le code Python suivant par rapport à l'énoncé donné:
+
 Voici l'énoncé de l'exercice :
 {enonce}
 
@@ -96,7 +98,27 @@ Voici le code soumis :
 {code}
 ```
 
-Évalue ce code par rapport à l'énoncé.
-Identifie les erreurs, suggère des améliorations, et donne un retour constructif.
-Réponds uniquement avec du texte formaté en HTML pur.
+IMPORTANT: Ton évaluation doit être formatée en HTMarkdown pur pour un affichage correct dans un navigateur.
+Ton évaluation doit toujours inclure:
+    1. Un titre principal avec # Évaluation du code
+    2. Une section sur la conformité à l'énoncé avec ## Conformité à l'énoncé
+    3. Une section sur les erreurs potentielles avec ## Erreurs potentielles
+    4. Une section sur les suggestions d'amélioration avec ## uggestions d'amélioration:
+       - Si le code ne fonctionne pas: fournir UNE seule suggestion principale
+       - Si le code fonctionne: fournir 3 suggestions maximum
+IMPORTANT: La section "Pour aller plus loin" avec ## Pour aller plus loin ne doit être incluse QUE si le code fonctionne correctement et répond à l'énoncé. Si le code contient des erreurs ou ne répond pas à l'énoncé, n'inclus PAS cette section.
+    
+    Utilise des émojis pour rendre ton évaluation plus visuelle :
+    ✅ Texte : pour les points positifs
+    ❌ Texte : pour les erreurs ou problèmes
+    💡 Texte : pour les suggestions
+    🚀 Texte : pour les conseils d’amélioration
+    
+    TRÈS IMPORTANT:
+    - NE DONNE JAMAIS LA SOLUTION COMPLÈTE à l'exercice
+    - Fournis uniquement des notions de cours et des pistes de réflexion
+    - Si tu dois donner un exemple de code, utilise un exemple différent de l'exercice ou montre seulement une petite partie de la solution
+    - Guide l'élève vers la bonne direction sans faire le travail à sa place
+    - Sois encourageant et constructif dans tes retours
+
 """

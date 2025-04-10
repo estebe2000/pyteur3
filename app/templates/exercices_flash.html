@@ -74,6 +74,8 @@
   <div style="background:#eef; padding:10px; border-radius:8px; border:1px solid #ccc;">
     <textarea id="evalTextarea" rows="10" style="width:100%; border:none; background:transparent; resize:vertical;" placeholder="Zone d'évaluation..."></textarea>
   </div>
+  <h5 id="promptEvaluationTitle" class="mt-3">Prompt d'évaluation (debug)</h5>
+  <pre id="promptEvaluation" style="background:#eef; padding:10px; border-radius:8px; border:1px solid #99f; white-space: pre-wrap;"></pre>
 </div>
 </div>
 
@@ -108,8 +110,10 @@ async function evaluerCode() {
 
         if (data.error) {
             document.getElementById('evalTextarea').value = "Erreur : " + data.error;
+            document.getElementById('promptEvaluation').textContent = "";
         } else {
             document.getElementById('evalTextarea').value = data.response || "Aucune réponse IA.";
+            document.getElementById('promptEvaluation').textContent = data.prompt || "";
         }
     } catch (error) {
         document.getElementById('evalTextarea').value = "Erreur requête : " + error;
@@ -176,7 +180,9 @@ fetch("{{ url_for('static', filename='data/vide.py') }}")
 
 #btn-action,
 #evalBtn,
-#zone-code {
+#zone-code,
+#promptEvaluation,
+#promptEvaluationTitle {
     display: none;
 }
 </style>
