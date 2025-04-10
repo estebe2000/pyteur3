@@ -4,7 +4,7 @@
 {% block page_title %}{{ labels['classes_groups'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['classes_groups'] }}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['classes_groups'] }}
 {% endblock %}
 
 {% block content %}
@@ -35,9 +35,9 @@
 {% for c in classes %}
 <li class="border p-2 rounded">
     <div class="flex flex-nowrap items-center gap-2">
-        <form method="POST" action="{{ url_for('main.edit_class', class_id=c.id) }}" class="flex items-center gap-2">
+<form method="POST" action="{{ url_for('misc.edit_class', class_id=c.id) }}" class="flex items-center gap-2">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <a href="{{ url_for('main.classes', class_id=c.id) }}"
+<a href="{{ url_for('misc.classes', class_id=c.id) }}"
                class="px-3 py-2 rounded {{ 'border-l-4 border-primary bg-primary bg-opacity-10 text-gray-800' if selected_class and selected_class.id == c.id else 'hover:bg-gray-100' }}">
                 {{ c.nom }} ({{ c.niveau }})
             </a>
@@ -54,7 +54,7 @@
             </select>
 <button type="submit" class="btn btn-sm btn-primary" title="Modifier">✏️</button>
         </form>
-        <form method="POST" action="{{ url_for('main.delete_class', class_id=c.id) }}" onsubmit="return confirm('Supprimer cette classe ?');" class="flex items-center">
+<form method="POST" action="{{ url_for('misc.delete_class', class_id=c.id) }}" onsubmit="return confirm('Supprimer cette classe ?');" class="flex items-center">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 <button type="submit" class="text-red-600 hover:text-red-800" title="Supprimer">🗑️</button>
         </form>
@@ -85,15 +85,15 @@
         <ul class="space-y-2">
         {% for g in groups %}
         <li class="border p-2 rounded flex justify-between items-center gap-2">
-            <a href="{{ url_for('main.classes', class_id=selected_class.id, group_id=g.id) }}" class="flex-1 hover:bg-gray-100 px-2 py-1 rounded {% if selected_group and selected_group.id == g.id %}bg-primary bg-opacity-10 border-l-4 border-primary{% endif %}">
+<a href="{{ url_for('misc.classes', class_id=selected_class.id, group_id=g.id) }}" class="flex-1 hover:bg-gray-100 px-2 py-1 rounded {% if selected_group and selected_group.id == g.id %}bg-primary bg-opacity-10 border-l-4 border-primary{% endif %}">
                 {{ g.nom }}
             </a>
-            <form method="POST" action="{{ url_for('main.edit_group', group_id=g.id) }}" class="flex items-center gap-2">
+<form method="POST" action="{{ url_for('misc.edit_group', group_id=g.id) }}" class="flex items-center gap-2">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="text" name="nom" value="{{ g.nom }}" required class="border rounded px-2 py-1 w-24">
                 <button type="submit" class="btn btn-sm btn-primary" title="Modifier">✏️</button>
             </form>
-            <form method="POST" action="{{ url_for('main.delete_group', group_id=g.id) }}" onsubmit="return confirm('Supprimer ce groupe ?');" class="flex items-center">
+<form method="POST" action="{{ url_for('misc.delete_group', group_id=g.id) }}" onsubmit="return confirm('Supprimer ce groupe ?');" class="flex items-center">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit" class="text-red-600 hover:text-red-800" title="Supprimer">🗑️</button>
             </form>
@@ -134,7 +134,7 @@
 {% for student in group_students %}
             <li class="border rounded px-2 py-1 flex justify-between items-center">
                 <span>{{ student.prenom }} {{ student.nom }}</span>
-                <form method="POST" action="{{ url_for('main.remove_student_from_group', user_id=student.id) }}" onsubmit="return confirm('Retirer cet élève du groupe ?');">
+<form method="POST" action="{{ url_for('misc.remove_student_from_group', user_id=student.id) }}" onsubmit="return confirm('Retirer cet élève du groupe ?');">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="text-red-600 hover:text-red-800" title="Retirer">🗑️</button>
                 </form>

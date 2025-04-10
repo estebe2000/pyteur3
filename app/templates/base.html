@@ -36,76 +36,73 @@
                 </div>
                 <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
                     <div class="space-y-1">
-                        <a href="{{ url_for('main.home') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.home') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-tachometer-alt mr-3"></i>
                             <span>{{ labels['dashboard'] }}</span>
                         </a>
-                        <a href="{{ url_for('main.documents') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('document.documents') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('document.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-folder mr-3"></i>
                             <span>{{ labels['documents'] }}</span>
                         </a>
-<a href="{{ url_for('main.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('exercise.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-book mr-3"></i>
     <span>{{ labels['exercises'] }}</span>
 </a>
 
-<a href="{{ url_for('main.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('exercise.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-bolt mr-3"></i>
     <span>Exercices flash</span>
 </a>
 
 {% if current_user.role != 'eleve' %}
-<a href="{{ url_for('main.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('qcm.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-question-circle mr-3"></i>
     <span>{{ labels['qcm'] }}</span>
 </a>
-<a href="{{ url_for('main.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-edit mr-3"></i>
     <span>Créateur exercice</span>
 </a>
-<a href="{{ url_for('main.generateur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('exercise.generateur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-magic mr-3"></i>
     <span>Générateur d'exercice</span>
 </a>
-<a href="{{ url_for('main.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-bolt mr-3"></i>
-    <span>Exercices flash</span>
-</a>
+
 {% endif %}
 
 {% if current_user.role != 'eleve' %}
-<a href="{{ url_for('main.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-chart-bar mr-3"></i>
     <span>{{ labels['statistiques'] }}</span>
 </a>
 {% endif %}
-<a href="{{ url_for('main.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('messagerie.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('messagerie.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-envelope mr-3"></i>
     <span>{{ labels['messagerie'] }}</span>
 </a>
 
-<a href="{{ url_for('main.todo') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('misc.todo') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('misc.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-check-circle mr-3"></i>
     <span>{{ labels['todo'] }}</span>
 </a>
 
-<a href="{{ url_for('main.projets') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.projets') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-project-diagram mr-3"></i>
     <span>{{ labels['projets'] }}</span>
 </a>
 
-<a href="{{ url_for('main.drive') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.drive') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.drive') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.drive') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-folder mr-3"></i>
     <span>{{ labels['drive'] }}</span>
 </a>
 
-<a href="{{ url_for('main.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-flask mr-3"></i>
     <span>{{ labels['sandbox'] }}</span>
 </a>
 
 {% if current_user.role != 'eleve' %}
-<a href="{{ url_for('main.ia') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('dashboard.ia') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-brain mr-3"></i>
     <span>{{ labels['ia'] }}</span>
 </a>
@@ -113,24 +110,24 @@
 {% endif %}
 {% endif %}
                         {% if current_user.role != 'eleve' %}
-                        <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('misc.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('misc.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
                             <span>{{ labels['classes_groups'] }}</span>
                         </a>
                         {% endif %}
-                        <a href="{{ url_for('main.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+<a href="{{ url_for('user.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('user.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-cog mr-3"></i>
                             <span>{{ labels['settings'] }}</span>
                         </a>
 {% if current_user.role == 'admin' %}
-<a href="{{ url_for('main.users') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+<a href="{{ url_for('user.users') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
     <i class="fas fa-users mr-3"></i>
     <span>{{ labels['users'] }}</span>
 </a>
 {% endif %}
                     </div>
                     <div class="mt-auto mb-4">
-                        <a href="{{ url_for('main.logout') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+<a href="{{ url_for('user.logout') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
                             <i class="fas fa-sign-out-alt mr-3"></i>
                             <span>{{ labels['logout'] if 'logout' in labels else 'Déconnexion' }}</span>
                         </a>
@@ -168,7 +165,7 @@
                         </a>
                     </div>
                     <div class="relative">
-                        <a href="{{ url_for('main.settings') }}" class="flex items-center text-gray-700 focus:outline-none hover:underline">
+<a href="{{ url_for('user.settings') }}" class="flex items-center text-gray-700 focus:outline-none hover:underline">
                             <span class="ml-2 text-sm font-medium hidden md:inline">{{ current_user.prenom }} {{ current_user.nom }}</span>
                         </a>
                     </div>

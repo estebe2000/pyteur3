@@ -4,7 +4,7 @@
 {% block page_title %}{{ labels['documents'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['documents'] }}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['documents'] }}
 {% endblock %}
 
 {% block content %}
@@ -53,7 +53,7 @@
                         <i class="fas fa-download"></i> {{ labels['download'] if 'download' in labels else 'Télécharger' }}
                     </a>
                     {% if current_user.role == 'admin' %}
-                    <a href="{{ url_for('main.assign_document', document_id=doc.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
+<a href="{{ url_for('document.assign_document', document_id=doc.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
                         <i class="fas fa-users"></i> Affecter
                     </a>
                     {% endif %}
@@ -86,7 +86,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-<form method="POST" action="{{ url_for('main.upload_file') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ url_for('document.upload_file') }}" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="mb-4">
         <label class="block text-gray-700 mb-2">{{ labels['file_pdf'] }}</label>

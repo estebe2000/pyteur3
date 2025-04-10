@@ -2,7 +2,7 @@
     "active_provider": "ollama",
     "ollama": {
         "url": "http://localhost:11434",
-        "model": "mistral:7b"
+        "model": "llama3.2:1b"
     },
     "mistral": {
         "api_key": "DcCuwA1kbtGMShFRunnTJi6OtVgjQxGG",

@@ -4,13 +4,13 @@
 {% block page_title %}{{ labels['todo_title'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['todo_title'] }}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['todo_title'] }}
 {% endblock %}
 
 {% block content %}
 <h2 class="text-xl font-semibold mb-4">{{ labels['my_lists'] }}</h2>
 
-<form method="POST" action="{{ url_for('main.add_todo_list') }}" class="mb-6">
+<form method="POST" action="{{ url_for('misc.add_todo_list') }}" class="mb-6">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="flex space-x-2">
         <input type="text" name="title" placeholder="{{ labels['new_list_placeholder'] }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
@@ -22,17 +22,17 @@
     {% for lst in my_lists %}
     <div class="bg-white rounded-lg shadow p-4">
         <div class="flex space-x-2 mb-2">
-            <form method="POST" action="{{ url_for('main.rename_todo_list', list_id=lst.id) }}" class="flex flex-1 space-x-2">
+<form method="POST" action="{{ url_for('misc.rename_todo_list', list_id=lst.id) }}" class="flex flex-1 space-x-2">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="text" name="title" value="{{ lst.title }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
                 <button type="submit" title="{{ labels['rename_button'] }}" class="text-green-600 hover:text-green-800 text-xl">✎</button>
             </form>
-            <form method="POST" action="{{ url_for('main.delete_todo_list', list_id=lst.id) }}">
+<form method="POST" action="{{ url_for('misc.delete_todo_list', list_id=lst.id) }}">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit" title="{{ labels['delete_list_button'] }}" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
             </form>
         </div>
-        <form method="POST" action="{{ url_for('main.add_todo_item', list_id=lst.id) }}" class="mb-3">
+<form method="POST" action="{{ url_for('misc.add_todo_item', list_id=lst.id) }}" class="mb-3">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="flex space-x-2">
                 <input type="text" name="content" placeholder="{{ labels['new_task_placeholder'] }}" required class="flex-1 px-3 py-2 border border-gray-300 rounded-md">
@@ -42,18 +42,18 @@
         <ul class="list-disc pl-5">
             {% for item in lst.items %}
             <li class="flex items-center space-x-2 mb-1">
-                <form method="POST" action="{{ url_for('main.toggle_todo_item', item_id=item.id) }}">
+<form method="POST" action="{{ url_for('misc.toggle_todo_item', item_id=item.id) }}">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" title="Marquer fait/non fait" class="text-green-600 hover:text-green-800 text-xl">
                         {% if item.done %}✔{% else %}○{% endif %}
                     </button>
                 </form>
-                <form method="POST" action="{{ url_for('main.edit_todo_item', item_id=item.id) }}" class="flex-1 flex space-x-2">
+<form method="POST" action="{{ url_for('misc.edit_todo_item', item_id=item.id) }}" class="flex-1 flex space-x-2">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="text" name="content" value="{{ item.content }}" class="flex-1 px-2 py-1 border border-gray-300 rounded">
                     <button type="submit" title="Modifier" class="text-blue-600 hover:text-blue-800 text-xl">✎</button>
                 </form>
-                <form method="POST" action="{{ url_for('main.delete_todo_item', item_id=item.id) }}">
+<form method="POST" action="{{ url_for('misc.delete_todo_item', item_id=item.id) }}">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" title="Supprimer" class="text-red-600 hover:text-red-800 text-xl">🗑</button>
                 </form>

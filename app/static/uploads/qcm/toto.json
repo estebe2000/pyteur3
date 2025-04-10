@@ -30,12 +30,12 @@
     "bonne_reponse": 1
   },
   {
-    "question": "Comment déclare-t-on généralement un tuple en Python ?",
+    "question": "Comment s'appelle la machine imaginée par Charles Babbage au 19ème siècle, considérée comme l'ancêtre conceptuel de l'ordinateur moderne programmable ?",
     "propositions": [
-      "En utilisant des crochets [ ]",
-      "En utilisant des accolades { }",
-      "En utilisant des parenthèses ( ) ou simplement des virgules",
-      "En utilisant des guillemets \" \""
+      "La Pascaline",
+      "La machine à différences",
+      "La machine analytique",
+      "Le métier Jacquard"
     ],
     "bonne_reponse": 2
   }

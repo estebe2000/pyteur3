@@ -14,11 +14,26 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
-    login_manager.login_view = 'main.login'
+    login_manager.login_view = 'user.login'
 
-    # Importer et enregistrer les blueprints ici plus tard
-    from app.routes.main_routes import main_bp
-    app.register_blueprint(main_bp)
+    # Importer et enregistrer les blueprints
+    from app.routes.dashboard_routes import dashboard_bp
+    from app.routes.user_routes import user_bp
+    from app.routes.document_routes import document_bp
+    from app.routes.exercise_routes import exercise_bp
+    from app.routes.messagerie_routes import messagerie_bp
+    from app.routes.qcm_routes import qcm_bp
+    from app.routes.admin_routes import admin_bp
+    from app.routes.misc_routes import misc_bp
+
+    app.register_blueprint(dashboard_bp)
+    app.register_blueprint(user_bp)
+    app.register_blueprint(document_bp)
+    app.register_blueprint(exercise_bp)
+    app.register_blueprint(messagerie_bp)
+    app.register_blueprint(qcm_bp)
+    app.register_blueprint(admin_bp)
+    app.register_blueprint(misc_bp)
 
     @app.context_processor
     def inject_labels():
@@ -27,6 +42,7 @@ def create_app():
         if lang_code == 'en':
             try:
                 from app.lang.lang_en import LABELS as LABELS_EN
+
                 return {'labels': LABELS_EN}
             except ImportError:
                 from app.lang.lang_fr import LABELS as LABELS_FR

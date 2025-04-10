@@ -4,7 +4,7 @@
 {% block page_title %}{{ labels['exercises'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['exercises'] }}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['exercises'] }}
 {% endblock %}
 
 {% block content %}
@@ -77,7 +77,7 @@
                         <i class="fas fa-external-link-alt"></i> Ouvrir
                     </a>
                     {% if current_user.role == 'admin' %}
-                    <a href="{{ url_for('main.assign_exercise', exercise_id=ex.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
+<a href="{{ url_for('exercise.assign_exercise', exercise_id=ex.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
                         <i class="fas fa-users"></i> Affecter
                     </a>
                     {% endif %}
@@ -110,7 +110,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <form id="saveCodeForm" method="POST" action="{{ url_for('main.upload_exercise') }}">
+<form id="saveCodeForm" method="POST" action="{{ url_for('exercise.upload_exercise') }}">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="code" id="hiddenCodeInput">
             <div class="mb-4">
@@ -139,7 +139,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-<form method="POST" action="{{ url_for('main.upload_exercise') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ url_for('exercise.upload_exercise') }}" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="mb-4">
         <label class="block text-gray-700 mb-2">{{ labels['file_exercise'] }}</label>

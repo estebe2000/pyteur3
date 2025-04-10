@@ -9,7 +9,7 @@
 {% block page_title %}{{ labels['ai_title'] }}{% endblock %}
 
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['ai_title'] }}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['ai_title'] }}
 {% endblock %}
 
 {% block content %}
