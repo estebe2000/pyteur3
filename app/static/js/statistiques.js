@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+
         const tbodyClasses = document.querySelector('#table-classes tbody');
         tbodyClasses.innerHTML = '';
 
@@ -42,7 +43,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${c.nb_eleves}</td>
             `;
             tbodyClasses.appendChild(tr);
-        });
+});
+
+// Fonction export CSV
+function exportTableToCSV(tableId, filename) {
+  const table = $('#' + tableId).DataTable();
+  let csv = '';
+
+  // En-têtes
+  const headers = [];
+  $('#' + tableId + ' thead th').each(function() {
+    let data = $(this).text().replace(/"/g, '""');
+    headers.push('"' + data + '"');
+  });
+  csv += headers.join(';') + '\n';
+
+  // Toutes les données, même non visibles
+  table.rows({ search: 'applied' }).every(function() {
+    const row = this.data();
+    const rowData = [];
+    for (let i = 0; i < row.length; i++) {
+      let data = row[i].toString().replace(/"/g, '""');
+      rowData.push('"' + data + '"');
+    }
+    csv += rowData.join(';') + '\n';
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', filename);
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Associer export à chaque bouton
+document.getElementById('export-users-csv').onclick = () => exportTableToCSV('table-users', 'utilisateurs.csv');
+document.getElementById('export-classes-csv').onclick = () => exportTableToCSV('table-classes', 'classes_groupes.csv');
+document.getElementById('export-exercices-csv').onclick = () => exportTableToCSV('table-exercices', 'exercices_documents.csv');
+document.getElementById('export-messages-csv').onclick = () => exportTableToCSV('table-messages', 'messagerie.csv');
+document.getElementById('export-todos-csv').onclick = () => exportTableToCSV('table-todos', 'todos.csv');
 
         data.groupes.forEach(g => {
             const tr = document.createElement('tr');
