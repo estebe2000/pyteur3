@@ -230,7 +230,7 @@ function updateDescription() {
             }
         }
     }
-    descriptionExercice.textContent = "{{ labels['select_all_fields'] }}";
+    descriptionExercice.textContent = '{{ labels['select_all_fields'] }}';
     genererBtn.disabled = true;
     genererBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
     genererBtn.classList.add('bg-gray-400');
@@ -256,6 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('genererBtn').addEventListener('click', async () => {
+        // Toujours cacher la console avant de générer
+        document.getElementById('consoleContainer').classList.add('hidden-element');
+
         const niveau = selectedNiveau;
         const theme = selectedTheme;
         const difficulte = selectedDifficulte;
@@ -265,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const promptAffiche = document.getElementById('promptAffiche');
 
         // Désactiver les boutons pendant la génération
-const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn', 'ouvrirConsoleIframeBtn'];
+        const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn', 'ouvrirConsoleIframeBtn'];
         actionButtons.forEach(id => {
             const btn = document.getElementById(id);
             btn.disabled = true;
@@ -320,13 +323,14 @@ const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsol
                 btn.classList.remove('bg-gray-400');
                 btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
             });
+
+            // Ouvrir automatiquement dans la console intégrée après génération
+            document.getElementById('ouvrirConsoleIframeBtn').click();
+
         } catch (error) {
             promptAffiche.textContent = "";
             resultatIA.textContent = "{{ labels['request_error'] }} " + error;
         }
-
-        // Ouvrir automatiquement la console intégrée après génération
-        document.getElementById('ouvrirConsoleIframeBtn').click();
     });
 });
 
@@ -493,8 +497,8 @@ document.getElementById('ouvrirNotebookBtn').addEventListener('click', () => {
     window.open(notebookLocalUrl, '_blank');
 });
 document.getElementById('ouvrirConsoleIframeBtn').addEventListener('click', () => {
-  const consoleDiv = document.getElementById('consoleContainer');
-  consoleDiv.classList.toggle('hidden-element');
+    const consoleDiv = document.getElementById('consoleContainer');
+    consoleDiv.classList.toggle('hidden-element');
 
     const raw = document.getElementById('resultatIA').textContent;
 
