@@ -1,7 +1,7 @@
 # Pyteur
 
 Plateforme éducative collaborative avec génération d’exercices assistée par IA.
-
+:)
 ---
 
 ## Fonctionnalités principales
