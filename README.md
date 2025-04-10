@@ -20,6 +20,30 @@ Plateforme éducative collaborative avec génération d’exercices assistée pa
 
 ---
 
+## Statistiques (UX améliorée)
+
+- La page **Statistiques** est organisée en **blocs repliables** (Utilisateurs, Classes & Groupes, Exercices & Documents, Messagerie, ToDo Lists).
+- Chaque bloc contient des **graphiques Chart.js** (2 par ligne max) et un **tableau interactif DataTables**.
+- Le code JavaScript de chargement des données et création des graphiques est **externalisé dans** :
+
+```
+app/static/js/statistiques.js
+```
+
+- Pour personnaliser l’apparence, modifier le CSS dans :
+
+```
+app/templates/statistiques.html
+```
+
+- Pour adapter les données, modifier les routes API `/api/statistics/*` dans :
+
+```
+app/routes/statistics_routes.py
+```
+
+---
+
 ## Structure du projet
 
 ```
