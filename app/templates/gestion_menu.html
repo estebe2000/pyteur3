@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}">Accueil</a> > Gestion menu
+{% endblock %}
+
 {% block content %}
 <h1>Gestion du menu élèves</h1>
 

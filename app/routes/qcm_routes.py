@@ -8,6 +8,11 @@ from werkzeug.utils import secure_filename
 
 qcm_bp = Blueprint('qcm', __name__)
 
+@qcm_bp.route('/qcm_flash')
+@login_required
+def qcm_flash():
+    return render_template('qcm_flash.html')
+
 @qcm_bp.route('/qcm')
 @login_required
 def qcm():

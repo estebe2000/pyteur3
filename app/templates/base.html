@@ -67,6 +67,10 @@
     <i class="fas fa-question-circle mr-3"></i>
     <span>{{ labels['qcm'] }}</span>
 </a>
+<a href="{{ url_for('qcm.qcm_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-bolt mr-3"></i>
+    <span>QCM flash</span>
+</a>
 <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-edit mr-3"></i>
     <span>Créateur exercice</span>
