@@ -30,7 +30,7 @@
 
         <!-- Sidebar -->
         <div id="sidebar" class="hidden md:flex md:flex-shrink-0 z-50">
-            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+            <div id="sidebar-inner" class="flex flex-col w-64 bg-white border-r border-gray-200">
                 <div class="flex items-center justify-center h-16 px-4 bg-primary text-gray-800">
                     <h1 class="text-xl font-bold">Pyteur</h1>
                 </div>
@@ -38,71 +38,76 @@
                     <div class="space-y-1">
                         <a href="{{ url_for('main.home') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-tachometer-alt mr-3"></i>
-                            {{ labels['dashboard'] }}
+                            <span>{{ labels['dashboard'] }}</span>
                         </a>
                         <a href="{{ url_for('main.documents') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-folder mr-3"></i>
-                            {{ labels['documents'] }}
+                            <span>{{ labels['documents'] }}</span>
                         </a>
 <a href="{{ url_for('main.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-book mr-3"></i>
-    {{ labels['exercises'] }}
+    <span>{{ labels['exercises'] }}</span>
+</a>
+
+<a href="{{ url_for('main.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    <i class="fas fa-bolt mr-3"></i>
+    <span>Exercices flash</span>
 </a>
 
 {% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-question-circle mr-3"></i>
-    {{ labels['qcm'] }}
+    <span>{{ labels['qcm'] }}</span>
 </a>
 <a href="{{ url_for('main.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-edit mr-3"></i>
-    Créateur exercice
+    <span>Créateur exercice</span>
 </a>
 <a href="{{ url_for('main.generateur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-magic mr-3"></i>
-    Générateur d'exercice
+    <span>Générateur d'exercice</span>
 </a>
 <a href="{{ url_for('main.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-bolt mr-3"></i>
-    Exercices flash
+    <span>Exercices flash</span>
 </a>
 {% endif %}
 
 {% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-chart-bar mr-3"></i>
-    {{ labels['statistiques'] }}
+    <span>{{ labels['statistiques'] }}</span>
 </a>
 {% endif %}
 <a href="{{ url_for('main.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-envelope mr-3"></i>
-    {{ labels['messagerie'] }}
+    <span>{{ labels['messagerie'] }}</span>
 </a>
 
 <a href="{{ url_for('main.todo') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-check-circle mr-3"></i>
-    {{ labels['todo'] }}
+    <span>{{ labels['todo'] }}</span>
 </a>
 
 <a href="{{ url_for('main.projets') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-project-diagram mr-3"></i>
-    {{ labels['projets'] }}
+    <span>{{ labels['projets'] }}</span>
 </a>
 
 <a href="{{ url_for('main.drive') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.drive') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-folder mr-3"></i>
-    {{ labels['drive'] }}
+    <span>{{ labels['drive'] }}</span>
 </a>
 
 <a href="{{ url_for('main.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-flask mr-3"></i>
-    {{ labels['sandbox'] }}
+    <span>{{ labels['sandbox'] }}</span>
 </a>
 
 {% if current_user.role != 'eleve' %}
 <a href="{{ url_for('main.ia') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
     <i class="fas fa-brain mr-3"></i>
-    {{ labels['ia'] }}
+    <span>{{ labels['ia'] }}</span>
 </a>
 {% if current_user.role == 'admin' %}
 {% endif %}
@@ -110,24 +115,24 @@
                         {% if current_user.role != 'eleve' %}
                         <a href="{{ url_for('main.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-school mr-3"></i>
-                            {{ labels['classes_groups'] }}
+                            <span>{{ labels['classes_groups'] }}</span>
                         </a>
                         {% endif %}
                         <a href="{{ url_for('main.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('main.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                             <i class="fas fa-cog mr-3"></i>
-                            {{ labels['settings'] }}
+                            <span>{{ labels['settings'] }}</span>
                         </a>
 {% if current_user.role == 'admin' %}
 <a href="{{ url_for('main.users') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
     <i class="fas fa-users mr-3"></i>
-    {{ labels['users'] }}
+    <span>{{ labels['users'] }}</span>
 </a>
 {% endif %}
                     </div>
                     <div class="mt-auto mb-4">
                         <a href="{{ url_for('main.logout') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
                             <i class="fas fa-sign-out-alt mr-3"></i>
-                            {{ labels['logout'] if 'logout' in labels else 'Déconnexion' }}
+                            <span>{{ labels['logout'] if 'logout' in labels else 'Déconnexion' }}</span>
                         </a>
                     </div>
                 </div>
@@ -138,9 +143,13 @@
         <div class="flex flex-col flex-1 overflow-hidden">
             <!-- Top navigation -->
             <div class="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200">
-                <div class="flex items-center">
+<div class="flex items-center">
                     <button class="md:hidden text-gray-500 focus:outline-none" onclick="toggleSidebar()">
                         <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- Bouton desktop toggle sidebar -->
+                    <button class="hidden md:inline-block ml-2 text-gray-500 focus:outline-none" onclick="toggleCollapseSidebar()">
+                        <i class="fas fa-angle-double-left"></i>
                     </button>
                     <h2 class="ml-4 text-lg font-semibold text-gray-800">{% block page_title %}{% endblock %}</h2>
                 </div>
@@ -184,6 +193,20 @@ function toggleSidebar() {
     const overlay = document.getElementById('overlay');
     sidebar.classList.toggle('hidden');
     overlay.classList.toggle('hidden');
+}
+
+function toggleCollapseSidebar() {
+    const sidebarInner = document.getElementById('sidebar-inner');
+    sidebarInner.classList.toggle('collapsed');
+
+    const toggleBtnIcon = document.querySelector('button[onclick="toggleCollapseSidebar()"] i');
+    if (sidebarInner.classList.contains('collapsed')) {
+        toggleBtnIcon.classList.remove('fa-angle-double-left');
+        toggleBtnIcon.classList.add('fa-angle-double-right');
+    } else {
+        toggleBtnIcon.classList.remove('fa-angle-double-right');
+        toggleBtnIcon.classList.add('fa-angle-double-left');
+    }
 }
 </script>
 </body>

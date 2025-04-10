@@ -2,7 +2,7 @@
 {% block title %}Statistiques{% endblock %}
 {% block page_title %}Statistiques{% endblock %}
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > Statistiques
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Statistiques
 {% endblock %}
 
 {% block content %}

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block breadcrumb %}
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Exercices flash
+{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/exercices_flash.css') }}">
 {% endblock %}
@@ -72,7 +76,7 @@
   <button id="evalBtn" class="btn btn-success mb-2">Eval</button>
 <button id="evaluationBtn" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition mb-2">Evaluation</button>
   <div style="background:#eef; padding:10px; border-radius:8px; border:1px solid #ccc;">
-    <textarea id="evalTextarea" rows="10" style="width:100%; border:none; background:transparent; resize:vertical;" placeholder="Zone d'évaluation..."></textarea>
+<div id="evalTextarea" style="width:100%; border:none; background:transparent; padding:10px; resize:vertical; min-height:150px;">Zone d'évaluation...</div>
   </div>
   <h5 id="promptEvaluationTitle" class="mt-3">Prompt d'évaluation (debug)</h5>
   <pre id="promptEvaluation" style="background:#eef; padding:10px; border-radius:8px; border:1px solid #99f; white-space: pre-wrap;"></pre>
@@ -95,7 +99,7 @@ async function evaluerCode() {
         return;
     }
 
-    document.getElementById('evalTextarea').value = "Évaluation en cours...";
+document.getElementById('evalTextarea').innerHTML = "Évaluation en cours...";
 
     try {
         const response = await fetch('/api/evaluer_code', {
@@ -109,14 +113,14 @@ async function evaluerCode() {
         const data = await response.json();
 
         if (data.error) {
-            document.getElementById('evalTextarea').value = "Erreur : " + data.error;
+document.getElementById('evalTextarea').innerHTML = "Erreur : " + data.error;
             document.getElementById('promptEvaluation').textContent = "";
         } else {
-            document.getElementById('evalTextarea').value = data.response || "Aucune réponse IA.";
+document.getElementById('evalTextarea').innerHTML = data.response || "Aucune réponse IA.";
             document.getElementById('promptEvaluation').textContent = data.prompt || "";
         }
     } catch (error) {
-        document.getElementById('evalTextarea').value = "Erreur requête : " + error;
+document.getElementById('evalTextarea').innerHTML = "Erreur requête : " + error;
     }
 }
 

@@ -2,7 +2,7 @@
 {% block title %}Drive{% endblock %}
 {% block page_title %}Drive{% endblock %}
 {% block breadcrumb %}
-<a href="{{ url_for('main.home') }}">Accueil</a> > Drive
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Drive
 {% endblock %}
 
 {% block content %}

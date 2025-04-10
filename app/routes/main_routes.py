@@ -500,7 +500,17 @@ def settings():
         current_user.prenom = request.form.get('prenom')
         current_user.login = request.form.get('login')
         current_user.email = request.form.get('email')
-        current_user.date_naissance = request.form.get('date_naissance')
+
+        date_str = request.form.get('date_naissance')
+        if date_str:
+            import datetime
+            try:
+                current_user.date_naissance = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+            except ValueError:
+                current_user.date_naissance = None
+        else:
+            current_user.date_naissance = None
+
         current_user.besoins_particuliers = request.form.get('besoins_particuliers')
         password = request.form.get('password')
         if password:

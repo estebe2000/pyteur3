@@ -65,3 +65,34 @@
   animation: dance 3s infinite ease-in-out;
   transform-origin: center;
 }
+
+/* Sidebar rétractée */
+#sidebar-inner.collapsed {
+  width: 4rem; /* 64px */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+#sidebar-inner.collapsed .space-y-1 a,
+#sidebar-inner.collapsed .mt-auto a {
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#sidebar-inner.collapsed a > *:not(i) {
+  display: none;
+}
+
+#sidebar-inner.collapsed a i {
+  display: inline-block;
+  margin-right: 0;
+  color: #333; /* couleur foncée visible */
+  font-size: 1.25rem; /* un peu plus gros si besoin */
+}
+
+#sidebar-inner.collapsed h1 {
+  display: none;
+}

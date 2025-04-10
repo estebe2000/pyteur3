@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block breadcrumb %}
+<a href="{{ url_for('main.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Créateur d'exercices
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <h2>Créateur d'exercices</h2>
