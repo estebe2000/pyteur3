@@ -2,7 +2,7 @@
     "active_provider": "ollama",
     "ollama": {
         "url": "http://localhost:11434",
-        "model": "deepseek-coder:6.7b"
+        "model": "mistral:7b"
     },
     "mistral": {
         "api_key": "DcCuwA1kbtGMShFRunnTJi6OtVgjQxGG",

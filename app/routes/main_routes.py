@@ -1259,7 +1259,10 @@ def createur_exercice():
 @main_bp.route('/generateur_exercice')
 @login_required
 def generateur_exercice():
-    return render_template('generateur_exercice.html')
+    from app.ia_providers import provider_manager
+    ia_name = provider_manager.active_provider_name or "Aucun fournisseur"
+    model_name = provider_manager.active_provider.model if provider_manager.active_provider else "Aucun modèle"
+    return render_template('generateur_exercice.html', ia_name=ia_name, model_name=model_name)
 
 
 from flask import jsonify
@@ -1291,7 +1294,11 @@ def api_generer_exercice():
         theme = data.get('theme')
         difficulte = data.get('difficulte')
         description = data.get('description')
-        debutant = data.get('debutant', False)
+        debutant_str = data.get('debutant', False)
+        if isinstance(debutant_str, str):
+            debutant = debutant_str.lower() == "true"
+        else:
+            debutant = bool(debutant_str)
 
         if not all([niveau, theme, difficulte, description]):
             return jsonify({'error': 'Paramètres manquants'}), 400

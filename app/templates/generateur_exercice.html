@@ -3,6 +3,7 @@
 {% block content %}
 <div class="container mt-4">
     <h2>{{ labels['exercise_generator'] }}</h2>
+    <p><strong>IA :</strong> {{ ia_name }} | <strong>Modèle :</strong> {{ model_name }}</p>
 
     <div class="mt-4">
         <h5>{{ labels['choose_level'] }} :</h5>
@@ -28,14 +29,18 @@
         <p id="descriptionExercice">{{ labels['select_all_fields'] }}</p>
     </div>
 
-    <button id="genererBtn" class="btn btn-primary mt-3" disabled>{{ labels['generate_with_ai'] }}</button>
+    <div class="my-4">
+        <button id="genererBtn" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs" disabled>
+            {{ labels['generate_with_ai'] }}
+        </button>
+    </div>
 
-    <div class="mt-4">
+    <div class="my-4">
         <h5>{{ labels['used_prompt'] }} :</h5>
         <pre id="promptAffiche" style="white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
     </div>
 
-    <div class="mt-4">
+    <div class="my-4">
         <h5>{{ labels['generated_exercise'] }} :</h5>
         <pre id="resultatIA" style="white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
     </div>
@@ -198,7 +203,7 @@ function updateDescription() {
 document.addEventListener('DOMContentLoaded', () => {
     chargerData();
 
-document.querySelectorAll('.star').forEach(star => {
+    document.querySelectorAll('.star').forEach(star => {
         star.addEventListener('click', () => {
             selectedDifficulte = parseInt(star.dataset.value);
 
@@ -227,6 +232,18 @@ document.querySelectorAll('.star').forEach(star => {
         promptAffiche.textContent = "{{ labels['building_prompt'] }}";
 
         try {
+            // Récupérer la valeur debutant depuis le JSON pédagogique
+            let debutant = false;
+            if (data[niveau]) {
+                const themeObj = data[niveau].find(t => t.thème === theme);
+                if (themeObj && themeObj.niveaux) {
+                    const niveauObj = themeObj.niveaux.find(n => n.niveau === difficulte);
+                    if (niveauObj && typeof niveauObj.debutant !== 'undefined') {
+                        debutant = niveauObj.debutant;
+                    }
+                }
+            }
+
             const responsePrompt = await fetch('/api/generer_exercice', {
                 method: 'POST',
                 headers: {
@@ -237,7 +254,7 @@ document.querySelectorAll('.star').forEach(star => {
                     theme: theme,
                     difficulte: difficulte,
                     description: description,
-                    debutant: true
+                    debutant: debutant
                 })
             });
             const dataPrompt = await responsePrompt.json();

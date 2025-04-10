@@ -401,7 +401,7 @@
         {
           "niveau": 1,
           "description": "Utiliser les expressions régulières pour extraire des motifs dans un texte",
-          "debutant": false
+          "debutant": true
         },
         {
           "niveau": 2,
