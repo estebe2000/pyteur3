@@ -1312,6 +1312,27 @@ def api_generer_exercice():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@csrf.exempt
+@main_bp.route('/api/upload_notebook', methods=['POST'])
+@login_required
+def api_upload_notebook():
+    import os, json
+    try:
+        data = json.loads(request.data)
+        notebook_json = json.dumps(data, ensure_ascii=False, indent=2)
+
+        upload_folder = os.path.join('app', 'static', 'uploads', 'temp')
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder, exist_ok=True)
+
+        save_path = os.path.join(upload_folder, '1_programme_nsi_terminal.ipynb')
+        with open(save_path, 'w', encoding='utf-8') as f:
+            f.write(notebook_json)
+
+        return {'success': True}, 200
+    except Exception as e:
+        return {'error': str(e)}, 500
+
 
 from flask import jsonify
 from app.models import Message, MessageRecipient, User, Group, SchoolClass

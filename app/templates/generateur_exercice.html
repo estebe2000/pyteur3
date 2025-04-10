@@ -30,19 +30,27 @@
     </div>
 
     <div class="my-4">
-        <button id="genererBtn" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs" disabled>
+        <button id="genererBtn" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs" disabled>
             {{ labels['generate_with_ai'] }}
         </button>
     </div>
 
     <div class="my-4">
         <h5>{{ labels['used_prompt'] }} :</h5>
-        <pre id="promptAffiche" style="white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
+        <button id="togglePromptBtn" class="btn btn-secondary mb-2">Afficher le prompt utilisé</button>
+        <pre id="promptAffiche" style="display:none; white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
     </div>
 
     <div class="my-4">
         <h5>{{ labels['generated_exercise'] }} :</h5>
-        <pre id="resultatIA" style="white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
+        <button id="toggleResultatBtn" class="btn btn-secondary mb-2">Afficher l'exercice généré</button>
+        <pre id="resultatIA" style="display:none; white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
+            <button id="downloadNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">Télécharger pour Jupyter Notebook</button>
+            <button id="downloadScriptBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">Télécharger le script Python</button>
+            <button id="ouvrirConsoleBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">Ouvrir dans la console Python</button>
+            <button id="ouvrirNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">Ouvrir dans notebook Python</button>
+        </div>
     </div>
 </div>
 
@@ -192,12 +200,16 @@ function updateDescription() {
             if (nivObj) {
                 descriptionExercice.textContent = nivObj.description;
                 genererBtn.disabled = false;
+                genererBtn.classList.remove('bg-gray-400');
+                genererBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
                 return;
             }
         }
     }
     descriptionExercice.textContent = '{{ labels['select_all_fields'] }}';
     genererBtn.disabled = true;
+    genererBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+    genererBtn.classList.add('bg-gray-400');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -227,6 +239,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resultatIA = document.getElementById('resultatIA');
         const promptAffiche = document.getElementById('promptAffiche');
+
+        // Désactiver les boutons pendant la génération
+        const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn'];
+        actionButtons.forEach(id => {
+            const btn = document.getElementById(id);
+            btn.disabled = true;
+            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            btn.classList.add('bg-gray-400');
+        });
 
         resultatIA.textContent = "{{ labels['generating'] }}";
         promptAffiche.textContent = "{{ labels['building_prompt'] }}";
@@ -267,11 +288,173 @@ document.addEventListener('DOMContentLoaded', () => {
 
             promptAffiche.textContent = dataPrompt.prompt || "{{ labels['prompt_unavailable'] }}";
             resultatIA.textContent = dataPrompt.response || "{{ labels['response_unavailable'] }}";
+
+            // Réactiver les boutons après génération
+            actionButtons.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-400');
+                btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            });
         } catch (error) {
             promptAffiche.textContent = "";
             resultatIA.textContent = "{{ labels['request_error'] }} " + error;
         }
     });
+});
+
+// Toggle affichage du prompt utilisé
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('togglePromptBtn');
+    const promptPre = document.getElementById('promptAffiche');
+    toggleBtn.addEventListener('click', () => {
+        if (promptPre.style.display === 'none') {
+            promptPre.style.display = 'block';
+            toggleBtn.textContent = 'Cacher le prompt utilisé';
+        } else {
+            promptPre.style.display = 'none';
+            toggleBtn.textContent = 'Afficher le prompt utilisé';
+        }
+    });
+});
+
+document.getElementById('toggleResultatBtn').addEventListener('click', () => {
+    const pre = document.getElementById('resultatIA');
+    const btn = document.getElementById('toggleResultatBtn');
+    if (pre.style.display === 'none') {
+        pre.style.display = 'block';
+        btn.textContent = 'Cacher l\'exercice généré';
+    } else {
+        pre.style.display = 'none';
+        btn.textContent = 'Afficher l\'exercice généré';
+    }
+});
+
+// Téléchargement Jupyter Notebook
+document.getElementById('downloadNotebookBtn').addEventListener('click', () => {
+    const code = document.getElementById('resultatIA').textContent;
+    const notebook = {
+        "cells": [
+            {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": code.split('\n').map(line => line + '\n')
+            }
+        ],
+        "metadata": {
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3"
+            },
+            "language_info": {
+                "name": "python",
+                "version": "3.8"
+            }
+        },
+        "nbformat": 4,
+        "nbformat_minor": 2
+    };
+
+    // Envoi automatique du notebook au serveur
+    fetch('/api/upload_notebook', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(notebook)
+    }).then(response => {
+        if (!response.ok) {
+            console.error('Erreur upload notebook');
+        }
+    }).catch(err => {
+        console.error('Erreur upload notebook', err);
+    });
+
+    const blob = new Blob([JSON.stringify(notebook, null, 2)], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "exercice.ipynb";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});
+
+// Ouvrir dans la console Python
+document.getElementById('ouvrirConsoleBtn').addEventListener('click', () => {
+    const raw = document.getElementById('resultatIA').textContent;
+
+    let transformed = '';
+    const codeBlockRegex = /```(?:python)?\n([\s\S]*?)```/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = codeBlockRegex.exec(raw)) !== null) {
+        // Partie avant le bloc de code => commenter
+        const before = raw.slice(lastIndex, match.index);
+        before.split('\n').forEach(line => {
+            transformed += '# ' + line + '\n';
+        });
+
+        // Bloc de code => insérer tel quel
+        transformed += match[1] + '\n';
+
+        lastIndex = codeBlockRegex.lastIndex;
+    }
+
+    // Partie après le dernier bloc
+    const after = raw.slice(lastIndex);
+    after.split('\n').forEach(line => {
+        transformed += '# ' + line + '\n';
+    });
+
+    const encoded = encodeURIComponent(transformed);
+    const basthonUrl = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python&script=" + encoded;
+    window.open(basthonUrl, '_blank');
+});
+
+document.getElementById('downloadScriptBtn').addEventListener('click', () => {
+    const raw = document.getElementById('resultatIA').textContent;
+
+    let transformed = '';
+    const codeBlockRegex = /```(?:python)?\n([\s\S]*?)```/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = codeBlockRegex.exec(raw)) !== null) {
+        const before = raw.slice(lastIndex, match.index);
+        before.split('\n').forEach(line => {
+            transformed += '# ' + line + '\n';
+        });
+
+        transformed += match[1] + '\n';
+
+        lastIndex = codeBlockRegex.lastIndex;
+    }
+
+    const after = raw.slice(lastIndex);
+    after.split('\n').forEach(line => {
+        transformed += '# ' + line + '\n';
+    });
+
+    const blob = new Blob([transformed], {type: "text/x-python"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "exercice.py";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});
+
+// Ouvrir dans notebook Python
+document.getElementById('ouvrirNotebookBtn').addEventListener('click', () => {
+    const fileUrl = "{{ url_for('static', filename='uploads/temp/1_programme_nsi_terminal.ipynb') }}";
+    const notebookLocalUrl = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?from=" + encodeURIComponent(window.location.origin + fileUrl);
+    window.open(notebookLocalUrl, '_blank');
 });
 </script>
 {% endblock %}

@@ -34,15 +34,13 @@ Debutant : {"true" if debutant else "false"}
 IMPORTANT :
 1. Utilise une structure claire avec des titres et sous-titres bien formatés
 2. Fournis un squelette de code avec plusieurs zones à compléter (1-3 minimum) marquées par "# À COMPLÉTER" ou "# VOTRE CODE ICI"
-3. Ne fournis jamais d'exercice déjà complet - il doit toujours y avoir plusieurs parties à implémenter
-4. Pour les non débutants uniquement, inclus 2 tests maximum avec des messages de réussite (✅) ou d'échec (❌). Les tests sont déjà écrits et fonctionnels
-5. Le squelette de code et les tests DOIVENT être dans un SEUL bloc de code
-6. Les tests NE DOIVENT JAMAIS contenir la solution complète ou partielle
-7. Les tests doivent utiliser des assertions ou des vérifications indirectes
-- L'énoncé doit être auto-suffisant et compréhensible.
-- Formate ta réponse uniquement en Markdown pur.
+3. Ne fournis jamais de squelette de code fonctionnel déjà complet - il doit toujours y avoir plusieurs parties à implémenter
+4. Ne fournis aucun tests ou exemples d'utilisations
+5. Le squelette de code dois être dans un SEUL bloc de code
+6. L'énoncé doit être auto-suffisant et compréhensible.
+7. Formate ta réponse uniquement en Markdown pur.
 
-Exemple de squelette de code CORRECT (avec parties à compléter, non fonctionnel):
+Exemple de squelette de code CORRECT (avec parties à compléter, non fonctionnel, pour les debutants):
 
 def est_palindrome(chaine):
     # À COMPLÉTER: Normaliser la chaîne (ignorer les espaces et la casse)
@@ -54,7 +52,7 @@ def est_palindrome(chaine):
     # À COMPLÉTER: Retourner le résultat (True ou False)
     pass
 
-Autre exemple de squelette de code CORRECT (avec parties à compléter, non fonctionnel):
+Autre exemple de squelette de code CORRECT (avec parties à compléter, non fonctionnel, pour les debutants):
 
 # Calcul de l'aire en fonction de la forme choisie
 if forme == "rectangle":
@@ -69,20 +67,6 @@ elif forme == "triangle":
 else:
     # À COMPLÉTER: Gérer le cas d'une forme non reconnue
     pass
-
-Exemple de format CORRECT pour le code et les tests (dans un SEUL bloc):
-
-def fonction(a, b):
-    # À COMPLÉTER: Additionner les deux nombres
-    pass
-    
-# Tests - NE PAS SÉPARER DU CODE CI-DESSUS
-try:
-    assert fonction(1, 2) == 3
-    print("✅ Test 1 réussi: fonction(1, 2) == 3")
-except AssertionError:
-    print("❌ Test 1 échoué: fonction(1, 2) devrait retourner 3")
-
 
 Exemple de squelette de code INCORRECT (car déjà complet et fonctionnel):
 
