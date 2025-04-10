@@ -142,6 +142,8 @@ L’application sera accessible sur `http://localhost:5000`.
 - [ ] Génération de QCM flash
 - [ ] Suivi personnalisé avancé
 - [ ] Finaliser la refonte interface (améliorations UI/UX)
+- [ ] **Mode défis** entre élèves (classements, scores, compétitions)
+- [ ] **Refonte graphique élèves globale** (meilleure visualisation, dashboards élèves, suivi simplifié)
 
 ---
 
