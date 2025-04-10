@@ -70,6 +70,7 @@
 
 <div class="mt-3">
   <button id="evalBtn" class="btn btn-success mb-2">Eval</button>
+<button id="evaluationBtn" class="btn btn-primary py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition mb-2">Evaluation</button>
   <div style="background:#eef; padding:10px; border-radius:8px; border:1px solid #ccc;">
     <textarea id="evalTextarea" rows="10" style="width:100%; border:none; background:transparent; resize:vertical;" placeholder="Zone d'évaluation..."></textarea>
   </div>
@@ -77,10 +78,46 @@
 </div>
 
 <script>
-document.getElementById('btn-action').onclick = function() {
+function recupererCode() {
     const iframe = document.getElementById('iframeBasthon');
     const code = iframe.contentWindow.getBasthonCode();
     document.getElementById('zone-code').value = code;
+}
+
+async function evaluerCode() {
+    const code = document.getElementById('zone-code').value;
+    const enonce = document.getElementById('resultatIA').textContent;
+
+    if (!code.trim() || !enonce.trim()) {
+        alert("Code ou énoncé manquant.");
+        return;
+    }
+
+    document.getElementById('evalTextarea').value = "Évaluation en cours...";
+
+    try {
+        const response = await fetch('/api/evaluer_code', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: code, enonce: enonce })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            document.getElementById('evalTextarea').value = "Erreur : " + data.error;
+        } else {
+            document.getElementById('evalTextarea').value = data.response || "Aucune réponse IA.";
+        }
+    } catch (error) {
+        document.getElementById('evalTextarea').value = "Erreur requête : " + error;
+    }
+}
+
+document.getElementById('btn-action').onclick = function() {
+    recupererCode();
 };
 </script>
 </div>
@@ -135,6 +172,12 @@ fetch("{{ url_for('static', filename='data/vide.py') }}")
 }
 .star.selected {
     color: #ffc107;
+}
+
+#btn-action,
+#evalBtn,
+#zone-code {
+    display: none;
 }
 </style>
 
@@ -589,6 +632,13 @@ document.getElementById('evalBtn').addEventListener('click', async () => {
     } catch (error) {
         document.getElementById('evalTextarea').value = "Erreur requête : " + error;
     }
+});
+
+document.getElementById('evaluationBtn').addEventListener('click', async () => {
+    recupererCode();
+    setTimeout(() => {
+        evaluerCode();
+    }, 300); // délai court pour laisser le temps à la récupération
 });
 </script>
 {% endblock %}
