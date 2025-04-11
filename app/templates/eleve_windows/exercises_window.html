@@ -1,0 +1,181 @@
+<div class="window" id="exercises-window">
+    <div class="window-header">
+        <div><i class="fas fa-code"></i> <span>{{ labels['exercises'] }}</span></div>
+        <div class="close-btn" onclick="closeWindow('exercises')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="window-content overflow-auto">
+        {% block exercises_content %}
+        <div class="mb-4 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">{{ labels['manage_exercises'] }}</h2>
+            <div class="flex space-x-2">
+                <button onclick="toggleEditor()" class="btn btn-secondary py-2 px-4 rounded-lg shadow bg-gray-300 hover:bg-gray-400 transition">
+                    <i class="fas fa-terminal"></i> Éditeur
+                </button>
+                <button onclick="document.getElementById('uploadExerciseModal').classList.remove('hidden')"
+                    class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
+                    <i class="fas fa-upload mr-2"></i> {{ labels['upload'] }}
+                </button>
+            </div>
+        </div>
+
+        <div id="editor-container" class="hidden mb-6">
+            <div class="mb-2 flex flex-col md:flex-row md:items-center md:space-x-4 space-y-2 md:space-y-0">
+                <div>
+                    <label for="kernel-select" class="mr-2 font-semibold">Choisir un éditeur :</label>
+                    <select id="kernel-select" class="border border-gray-300 rounded px-2 py-1" onchange="changeEditorKernel()">
+                        <option value="python">Python</option>
+                        <option value="sql">SQL</option>
+                        <option value="ocaml">OCaml</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="xcas">Xcas</option>
+                    </select>
+                </div>
+            </div>
+            <iframe id="editor-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" style="width:100%; height:650px; border:1px solid #ccc; border-radius:8px;" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            {% if exercises %}
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['name_header'] }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['tags_header'] }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['date_header'] }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['actions_header'] }}</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for ex in exercises %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <i class="fas fa-file-code text-green-500 mr-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" 
+                                   target="_blank" class="text-blue-600 hover:underline">
+                                    {{ ex.original_filename }}
+                                </a>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {{ ex.tags }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {{ ex.created_at.strftime('%d/%m/%Y') }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button onclick="loadExerciseInEditor('{{ url_for('static', filename='uploads/' + ex.filename) }}')" class="py-2 px-3 rounded-lg shadow bg-gray-400 text-white hover:bg-gray-500 transition mr-2">
+                                <i class="fas fa-terminal"></i> Lancer
+                            </button>
+                            <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" download class="py-2 px-3 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition mr-2">
+                                <i class="fas fa-download"></i> Télécharger
+                            </a>
+                            <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" target="_blank" class="py-2 px-3 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition mr-2" title="Ouvrir dans un nouvel onglet">
+                                <i class="fas fa-external-link-alt"></i> Ouvrir
+                            </a>
+                            {% if current_user.role == 'admin' %}
+                            <a href="{{ url_for('exercise.assign_exercise', exercise_id=ex.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
+                                <i class="fas fa-users"></i> Affecter
+                            </a>
+                            {% endif %}
+                            {% if current_user.role != 'eleve' or ex.user_id == current_user.id %}
+                            <button onclick="confirmDeleteExercise('{{ ex.id }}')" 
+                                    class="text-red-600 hover:text-red-900 mr-3">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="p-8 text-center text-gray-500">
+                <i class="fas fa-folder-open text-4xl mb-2"></i>
+                <p>{{ labels['no_exercises_found'] }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Upload Modal -->
+        <div id="uploadExerciseModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 w-full max-w-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">{{ labels['upload_exercise'] }}</h3>
+                    <button onclick="document.getElementById('uploadModal').classList.add('hidden')"
+                        class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form method="POST" action="{{ url_for('exercise.upload_exercise') }}" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">{{ labels['file_exercise'] }}</label>
+                        <div class="flex items-center space-x-2">
+                            <label class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer mb-0">
+                                {{ labels['choose_file'] if 'choose_file' in labels else 'Choisir un fichier' }}
+                                <input type="file" name="file" accept=".py,.sql,.js,.ml,.xcas" required class="hidden" onchange="updateFileName(this)">
+                            </label>
+                            <span id="file-name">{{ labels['no_file_chosen'] if 'no_file_chosen' in labels else 'Aucun fichier choisi' }}</span>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">{{ labels['tags'] }} (séparés par des virgules)</label>
+                        <input type="text" name="tags" placeholder="{{ labels['tags_placeholder_ex'] }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">
+                        {{ labels['upload'] }}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+        function confirmDeleteExercise(exId) {
+            if (confirm('Supprimer cet exercice ?')) {
+                fetch('/delete_exercise/' + exId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function toggleEditor() {
+            const container = document.getElementById('editor-container');
+            container.classList.toggle('hidden');
+        }
+
+        function changeEditorKernel() {
+            const kernel = document.getElementById('kernel-select').value;
+            const iframe = document.getElementById('editor-iframe');
+            iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel;
+        }
+
+        function loadExerciseInEditor(fileUrl) {
+            const container = document.getElementById('editor-container');
+            container.classList.remove('hidden');
+
+            fetch(fileUrl)
+                .then(response => response.text())
+                .then(code => {
+                    const encoded = encodeURIComponent(code);
+                    const kernel = document.getElementById('kernel-select').value;
+                    const iframe = document.getElementById('editor-iframe');
+                    iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel + "&script=" + encoded;
+                })
+                .catch(err => {
+                    alert('Erreur lors du chargement du fichier');
+                    console.error(err);
+                });
+        }
+        </script>
+        {% endblock %}
+    </div>
+</div>

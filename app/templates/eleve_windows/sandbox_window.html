@@ -1,0 +1,48 @@
+<div class="window" id="sandbox-window">
+    <div class="window-header">
+        <div><i class="fas fa-shapes"></i> <span>Bac à sable</span></div>
+        <div class="close-btn" onclick="closeWindow('sandbox')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="window-content">
+        <div class="mb-4 flex flex-col md:flex-row gap-4">
+
+            <div class="flex-1 p-4 bg-gray-100 rounded-lg shadow-sm">
+                <h3 class="font-semibold mb-3">Console</h3>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('python', 'console')">Python</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('sql', 'console')">SQL</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('ocaml', 'console')">OCaml</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('javascript', 'console')">JavaScript</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('xcas', 'console')">Xcas</button>
+                </div>
+            </div>
+
+            <div class="flex-1 p-4 bg-gray-100 rounded-lg shadow-sm">
+                <h3 class="font-semibold mb-3">Notebook</h3>
+                <div class="flex flex-wrap gap-3">
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('python', 'notebook')">Python</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('sql', 'notebook')">SQL</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('ocaml', 'notebook')">OCaml</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('javascript', 'notebook')">JavaScript</button>
+                    <button class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition" onclick="loadSandbox('xcas', 'notebook')">Xcas</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-full h-[80vh] border rounded-lg overflow-hidden">
+            <iframe id="sandbox-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" class="w-full h-full border-0"></iframe>
+        </div>
+
+        <script>
+            function loadSandbox(kernel, type) {
+                const iframe = document.getElementById('sandbox-iframe');
+                let url = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + encodeURIComponent(kernel);
+                if (type === 'notebook') {
+                    url = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?kernel=" + encodeURIComponent(kernel);
+                }
+                iframe.src = url;
+            }
+        </script>
+    </div>
+</div>

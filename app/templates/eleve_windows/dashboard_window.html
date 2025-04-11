@@ -1,0 +1,31 @@
+<div class="window" id="dashboard-window">
+    <div class="window-header">
+        <div><i class="fas fa-tachometer-alt"></i> <span>{{ labels['dashboard'] }}</span></div>
+        <div class="close-btn" onclick="closeWindow('dashboard')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="window-content">
+        {% block dashboard_content %}
+        <h2 class="text-2xl font-bold mb-4">Bienvenue sur votre espace élève Pyteur</h2>
+        <p class="mb-4">
+            Cet environnement vous permet d'accéder à toutes vos ressources pédagogiques, exercices, projets et outils numériques.
+        </p>
+        <p class="mb-4">
+            Utilisez le menu <strong>Mes applications</strong> en bas à gauche pour ouvrir les différentes rubriques :
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mb-4">
+            <li><strong>Documents</strong> : vos cours, fichiers et ressources partagées</li>
+            <li><strong>Exercices</strong> : vos exercices à réaliser</li>
+            <li><strong>Exercices flash</strong> : mini-exercices rapides pour s'entraîner</li>
+            <li><strong>Messagerie</strong> : communiquer avec vos enseignants et camarades</li>
+            <li><strong>To-Do</strong> : votre liste de tâches à faire</li>
+            <li><strong>Projets</strong> : vos projets collaboratifs</li>
+            <li><strong>Drive</strong> : votre espace de stockage personnel</li>
+            <li><strong>Bac à sable</strong> : un espace pour expérimenter et coder librement</li>
+            <li><strong>Profil</strong> : vos informations personnelles</li>
+        </ul>
+        <p>
+            Cliquez sur une rubrique pour ouvrir sa fenêtre. Vous pouvez déplacer et redimensionner les fenêtres à votre convenance.
+        </p>
+        {% endblock %}
+    </div>
+</div>

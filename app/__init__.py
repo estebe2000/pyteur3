@@ -82,6 +82,18 @@ def create_app():
             drive_url = 'https://nuage.apps.education.fr/'
         return {'drive_url': drive_url}
 
+    # Ajouter un filtre Jinja2 pour charger les fichiers JSON
+    @app.template_filter('load_json')
+    def load_json_filter(path):
+        import os
+        try:
+            full_path = os.path.join(app.root_path, path)
+            with open(full_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Erreur lors du chargement du fichier JSON {path}: {e}")
+            return {}
+
     return app
 
 from app.models import User

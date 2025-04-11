@@ -8,45 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
     {% block head %}{% endblock %}
-    <style>
-        @font-face {
-                    font-family: 'JetBrains Mono';
-                    src: url('{{ url_for('static', filename='fonts/jetbrains/JetBrainsMono-Regular.woff2') }}') format('woff2');
-                    font-weight: 400;
-                    }
-        @font-face {
-                    font-family: 'JetBrains Mono';
-                    src: url('{{ url_for('static', filename='fonts/jetbrains/JetBrainsMono-Bold.woff2') }}') format('woff2');
-                    font-weight: 700;
-                    }
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background-image: url('{{ url_for('static', filename='img/b1.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        /* Styles PYTEUR_OS conservés */
-        .window { box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius:8px; overflow:hidden; position:absolute; resize:both; min-width:300px; min-height:200px; max-width:95%; max-height:90%; width:95%; height:90%; background-color:rgba(255,255,255,0.9); backdrop-filter:blur(10px); display:none; border:1px solid rgba(255,255,255,0.2);}
-        .window-header {background:linear-gradient(90deg,#4f46e5,#7c3aed);color:white;padding:8px 12px;cursor:move;user-select:none;display:flex;justify-content:space-between;align-items:center;}
-        .window-content {padding:15px;height:calc(100% - 40px);overflow:auto;}
-        .close-btn {background:#ef4444;width:20px;height:20px;border-radius:50%;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:all 0.2s;}
-        .close-btn:hover {transform:scale(1.1);}
-        .taskbar {position:fixed;bottom:0;left:0;right:0;background:rgba(30,41,59,0.8);backdrop-filter:blur(10px);height:50px;display:flex;align-items:center;padding:0 10px;z-index:9998;border-top:1px solid rgba(255,255,255,0.1);}
-        .start-btn {background:linear-gradient(90deg,#4f46e5,#7c3aed);color:white;padding:5px 15px;border-radius:5px;margin-right:15px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s;}
-        .start-btn:hover {transform:translateY(-2px);box-shadow:0 5px 15px rgba(79,70,229,0.4);}
-        .start-menu {position:absolute;bottom:60px;left:10px;background:rgba(30,41,59,0.9);backdrop-filter:blur(10px);width:300px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.3);display:none;z-index:9999;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
-        .menu-item {padding:12px 15px;color:white;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05);}
-        .menu-item:hover {background:rgba(79,70,229,0.5);}
-        .user-banner {position:fixed;top:0;left:0;right:0;background:rgba(30,41,59,0.8);backdrop-filter:blur(10px);height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.1);}
-        .user-info {color:white;display:flex;align-items:center;gap:10px;}
-        .pyteur-logo {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;font-weight:bold;color:rgba(255,255,255,0.8);text-shadow:0 0 20px rgba(79,70,229,0.7);pointer-events:none;user-select:none;}
-        .desktop-icon {position:absolute;width:80px;display:flex;flex-direction:column;align-items:center;text-align:center;color:white;cursor:pointer;padding:10px;border-radius:5px;transition:all 0.2s;user-select:none;}
-        .desktop-icon:hover {background:rgba(255,255,255,0.1);transform:scale(1.05);}
-        .desktop-icon i {font-size:2rem;margin-bottom:5px;}
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_base.css') }}">
 </head>
 <body>
     <!-- Bannière utilisateur -->
@@ -93,475 +55,59 @@
             <span id="date"></span>
         </div>
         <div class="start-menu" id="startMenu">
-            <div class="menu-item" onclick="openWindow('dashboard')"><i class="fas fa-tachometer-alt"></i><span>{{ labels['dashboard'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('documents')"><i class="fas fa-folder"></i><span>{{ labels['documents'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('exercices')"><i class="fas fa-code"></i><span>{{ labels['exercises'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('exercices_flash')"><i class="fas fa-bolt"></i><span>Exercices flash</span></div>
-            <div class="menu-item" onclick="openWindow('messagerie')"><i class="fas fa-envelope"></i><span>{{ labels['messagerie'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('todo')"><i class="fas fa-tasks"></i><span>{{ labels['todo'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('projets')"><i class="fas fa-project-diagram"></i><span>{{ labels['projets'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('drive')"><i class="fas fa-hdd"></i><span>{{ labels['drive'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('sandbox')"><i class="fas fa-shapes"></i><span>{{ labels['sandbox'] }}</span></div>
-            <div class="menu-item" onclick="openWindow('profile')"><i class="fas fa-user-cog"></i><span>{{ labels['settings'] }}</span></div>
+            {% for item, enabled in menu_config.items() %}
+                {% if enabled %}
+                    <div class="menu-item" onclick="openWindow('{{ item }}')">
+                        <i class="fas {% if item == 'dashboard' %}fa-tachometer-alt{% elif item == 'documents' %}fa-folder{% elif item == 'exercises' %}fa-code{% elif item == 'exercices_flash' %}fa-bolt{% elif item == 'qcm_flash' %}fa-bolt{% elif item == 'messagerie' %}fa-envelope{% elif item == 'todo' %}fa-tasks{% elif item == 'projets' %}fa-project-diagram{% elif item == 'drive' %}fa-hdd{% elif item == 'sandbox' %}fa-shapes{% elif item == 'profile' %}fa-user-cog{% endif %}"></i>
+                        <span>
+                            {% if item == 'dashboard' %}{{ labels['dashboard'] }}{% elif item == 'documents' %}{{ labels['documents'] }}{% elif item == 'exercises' %}{{ labels['exercises'] }}{% elif item == 'exercices_flash' %}Exercices flash{% elif item == 'qcm_flash' %}QCM Flash{% elif item == 'messagerie' %}{{ labels['messagerie'] }}{% elif item == 'todo' %}{{ labels['todo'] }}{% elif item == 'projets' %}{{ labels['projets'] }}{% elif item == 'drive' %}{{ labels['drive'] }}{% elif item == 'sandbox' %}Bac à sable{% elif item == 'profile' %}{{ labels['settings'] }}{% elif item == 'qcm' %}{{ labels['qcm'] }}{% elif item == 'ia' %}Intelligence Artificielle{% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
     <!-- Fenêtres dynamiques -->
     {% block windows %}
     <!-- Exemples : -->
-    <div class="window" id="dashboard-window">
+    {% include 'eleve_windows/dashboard_window.html' %}
+    {% include 'eleve_windows/documents_window.html' %}
+{% include 'eleve_windows/exercises_window.html' %}
+{% include 'eleve_windows/sandbox_window.html' %}
+    {% include 'eleve_windows/exercices_flash_window.html' %}
+    <div class="window" id="qcm_flash-window">
         <div class="window-header">
-            <div><i class="fas fa-tachometer-alt"></i> <span>{{ labels['dashboard'] }}</span></div>
-            <div class="close-btn" onclick="closeWindow('dashboard')"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="window-content">
-            {% block dashboard_content %}
-            <h2 class="text-2xl font-bold mb-4">Bienvenue sur votre espace élève Pyteur</h2>
-            <p class="mb-4">
-                Cet environnement vous permet d'accéder à toutes vos ressources pédagogiques, exercices, projets et outils numériques.
-            </p>
-            <p class="mb-4">
-                Utilisez le menu <strong>Mes applications</strong> en bas à gauche pour ouvrir les différentes rubriques :
-            </p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-                <li><strong>Documents</strong> : vos cours, fichiers et ressources partagées</li>
-                <li><strong>Exercices</strong> : vos exercices à réaliser</li>
-                <li><strong>Exercices flash</strong> : mini-exercices rapides pour s'entraîner</li>
-                <li><strong>Messagerie</strong> : communiquer avec vos enseignants et camarades</li>
-                <li><strong>To-Do</strong> : votre liste de tâches à faire</li>
-                <li><strong>Projets</strong> : vos projets collaboratifs</li>
-                <li><strong>Drive</strong> : votre espace de stockage personnel</li>
-                <li><strong>Bac à sable</strong> : un espace pour expérimenter et coder librement</li>
-                <li><strong>Profil</strong> : vos informations personnelles</li>
-            </ul>
-            <p>
-                Cliquez sur une rubrique pour ouvrir sa fenêtre. Vous pouvez déplacer et redimensionner les fenêtres à votre convenance.
-            </p>
-            {% endblock %}
-        </div>
-    </div>
-    <div class="window" id="documents-window">
-        <div class="window-header">
-            <div><i class="fas fa-folder"></i> <span>{{ labels['documents'] }}</span></div>
-            <div class="close-btn" onclick="closeWindow('documents')"><i class="fas fa-times"></i></div>
+            <div><i class="fas fa-bolt"></i> <span>QCM Flash</span></div>
+            <div class="close-btn" onclick="closeWindow('qcm_flash')"><i class="fas fa-times"></i></div>
         </div>
         <div class="window-content overflow-auto">
-            {% block documents_content %}
-            <div class="mb-6 flex justify-between items-center">
-                <h2 class="text-xl font-semibold">{{ labels['manage_documents'] }}</h2>
-                <button onclick="document.getElementById('uploadModal').classList.remove('hidden')"
-                    class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs">
-                    <i class="fas fa-upload mr-2"></i> {{ labels['upload'] }}
-                </button>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                {% if documents %}
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['name_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['tags_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['date_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['actions_header'] }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        {% for doc in documents %}
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <i class="fas fa-file-pdf text-red-500 mr-2"></i>
-                                    <a href="{{ url_for('static', filename='uploads/' + doc.filename) }}" 
-                                       target="_blank" class="text-blue-600 hover:underline">
-                                        {{ doc.original_filename }}
-                                    </a>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ doc.tags }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ doc.created_at.strftime('%d/%m/%Y') }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ url_for('static', filename='uploads/' + doc.filename) }}" target="_blank" class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition mr-2">
-                                    <i class="fas fa-eye"></i> {{ labels['view'] if 'view' in labels else 'Voir' }}
-                                </a>
-                                <a href="{{ url_for('static', filename='uploads/' + doc.filename) }}" download class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition mr-2">
-                                    <i class="fas fa-download"></i> {{ labels['download'] if 'download' in labels else 'Télécharger' }}
-                                </a>
-                                {% if current_user.role == 'admin' %}
-                                <a href="{{ url_for('document.assign_document', document_id=doc.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
-                                    <i class="fas fa-users"></i> Affecter
-                                </a>
-                                {% endif %}
-                                {% if current_user.role != 'eleve' or doc.user_id == current_user.id %}
-                                <button onclick="confirmDelete('{{ doc.id }}')" 
-                                        class="text-red-600 hover:text-red-900 mr-3">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <div class="p-8 text-center text-gray-500">
-                    <i class="fas fa-folder-open text-4xl mb-2"></i>
-                    <p>{{ labels['no_documents_found'] }}</p>
-                </div>
-                {% endif %}
-            </div>
-
-            <!-- Upload Modal -->
-            <div id="uploadModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                <div class="bg-white rounded-lg p-6 w-full max-w-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">{{ labels['upload_document'] }}</h3>
-                        <button onclick="document.getElementById('uploadModal').classList.add('hidden')"
-                            class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <form method="POST" action="{{ url_for('document.upload_file') }}" enctype="multipart/form-data">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">{{ labels['file_pdf'] }}</label>
-                            <div class="flex items-center space-x-2">
-                                <label class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer mb-0">
-                                    {{ labels['choose_file'] if 'choose_file' in labels else 'Choisir un fichier' }}
-                                    <input type="file" name="file" accept=".pdf" required class="hidden" onchange="updateFileName(this)">
-                                </label>
-                                <span id="file-name">{{ labels['no_file_chosen'] if 'no_file_chosen' in labels else 'Aucun fichier choisi' }}</span>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">{{ labels['tags'] }} (séparés par des virgules)</label>
-                            <input type="text" name="tags" placeholder="{{ labels['tags_placeholder'] }}"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full">
-                            {{ labels['upload'] }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <script>
-            function updateFileName(input) {
-                const fileNameSpan = document.getElementById('file-name');
-                if (input.files.length > 0) {
-                    fileNameSpan.textContent = input.files[0].name;
-                } else {
-                    fileNameSpan.textContent = '{{ labels['no_file_chosen'] if 'no_file_chosen' in labels else 'Aucun fichier choisi' }}';
-                }
-            }
-
-            function getCookie(name) {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            }
-
-            function confirmDelete(docId) {
-                if (confirm('{{ labels['delete_confirm'] if 'delete_confirm' in labels else 'Supprimer ce document ?' }}')) {
-                    fetch('/delete/' + docId, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': getCookie('csrf_token')
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            location.reload();
-                        }
-                    });
-                }
-            }
-            </script>
-            {% endblock %}
+            <p>À venir : intégration des QCM flash.</p>
         </div>
     </div>
-
-    <div class="window" id="exercices-window">
+    <div class="window" id="qcm-window">
         <div class="window-header">
-            <div><i class="fas fa-code"></i> <span>{{ labels['exercises'] }}</span></div>
-            <div class="close-btn" onclick="closeWindow('exercices')"><i class="fas fa-times"></i></div>
+            <div><i class="fas fa-list"></i> <span>QCM</span></div>
+            <div class="close-btn" onclick="closeWindow('qcm')"><i class="fas fa-times"></i></div>
         </div>
         <div class="window-content overflow-auto">
-            {% block exercises_content %}
-            <div class="mb-4 flex justify-between items-center">
-                <h2 class="text-xl font-semibold">{{ labels['manage_exercises'] }}</h2>
-                <div class="flex space-x-2">
-                    <button onclick="toggleEditor()" class="btn btn-secondary py-2 px-4 rounded-lg shadow bg-gray-300 hover:bg-gray-400 transition">
-                        <i class="fas fa-terminal"></i> Éditeur
-                    </button>
-                    <button onclick="document.getElementById('uploadExerciseModal').classList.remove('hidden')"
-                        class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
-                        <i class="fas fa-upload mr-2"></i> {{ labels['upload'] }}
-                    </button>
-                </div>
-            </div>
-
-            <div id="editor-container" class="hidden mb-6">
-                <div class="mb-2 flex flex-col md:flex-row md:items-center md:space-x-4 space-y-2 md:space-y-0">
-                    <div>
-                        <label for="kernel-select" class="mr-2 font-semibold">Choisir un éditeur :</label>
-                        <select id="kernel-select" class="border border-gray-300 rounded px-2 py-1" onchange="changeEditorKernel()">
-                            <option value="python">Python</option>
-                            <option value="sql">SQL</option>
-                            <option value="ocaml">OCaml</option>
-                            <option value="javascript">JavaScript</option>
-                            <option value="xcas">Xcas</option>
-                        </select>
-                    </div>
-                </div>
-                <iframe id="editor-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" style="width:100%; height:650px; border:1px solid #ccc; border-radius:8px;" sandbox="allow-same-origin allow-scripts"></iframe>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                {% if exercises %}
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['name_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['tags_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['date_header'] }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ labels['actions_header'] }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        {% for ex in exercises %}
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <i class="fas fa-file-code text-green-500 mr-2"></i>
-                                    <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" 
-                                       target="_blank" class="text-blue-600 hover:underline">
-                                        {{ ex.original_filename }}
-                                    </a>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ ex.tags }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ ex.created_at.strftime('%d/%m/%Y') }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <button onclick="loadExerciseInEditor('{{ url_for('static', filename='uploads/' + ex.filename) }}')" class="py-2 px-3 rounded-lg shadow bg-gray-400 text-white hover:bg-gray-500 transition mr-2">
-                                    <i class="fas fa-terminal"></i> Lancer
-                                </button>
-                                <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" download class="py-2 px-3 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition mr-2">
-                                    <i class="fas fa-download"></i> Télécharger
-                                </a>
-                                <a href="{{ url_for('static', filename='uploads/' + ex.filename) }}" target="_blank" class="py-2 px-3 rounded-lg shadow bg-green-600 text-white hover:bg-green-700 transition mr-2" title="Ouvrir dans un nouvel onglet">
-                                    <i class="fas fa-external-link-alt"></i> Ouvrir
-                                </a>
-                                {% if current_user.role == 'admin' %}
-                                <a href="{{ url_for('exercise.assign_exercise', exercise_id=ex.id) }}" class="py-2 px-3 rounded-lg shadow bg-purple-600 text-white hover:bg-purple-700 transition mr-2">
-                                    <i class="fas fa-users"></i> Affecter
-                                </a>
-                                {% endif %}
-                                {% if current_user.role != 'eleve' or ex.user_id == current_user.id %}
-                                <button onclick="confirmDeleteExercise('{{ ex.id }}')" 
-                                        class="text-red-600 hover:text-red-900 mr-3">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <div class="p-8 text-center text-gray-500">
-                    <i class="fas fa-folder-open text-4xl mb-2"></i>
-                    <p>{{ labels['no_exercises_found'] }}</p>
-                </div>
-                {% endif %}
-            </div>
-
-            <!-- Upload Modal -->
-            <div id="uploadExerciseModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                <div class="bg-white rounded-lg p-6 w-full max-w-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">{{ labels['upload_exercise'] }}</h3>
-                        <button onclick="document.getElementById('uploadModal').classList.add('hidden')"
-                            class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <form method="POST" action="{{ url_for('exercise.upload_exercise') }}" enctype="multipart/form-data">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">{{ labels['file_exercise'] }}</label>
-                            <div class="flex items-center space-x-2">
-                                <label class="btn btn-primary py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer mb-0">
-                                    {{ labels['choose_file'] if 'choose_file' in labels else 'Choisir un fichier' }}
-                                    <input type="file" name="file" accept=".py,.sql,.js,.ml,.xcas" required class="hidden" onchange="updateFileName(this)">
-                                </label>
-                                <span id="file-name">{{ labels['no_file_chosen'] if 'no_file_chosen' in labels else 'Aucun fichier choisi' }}</span>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">{{ labels['tags'] }} (séparés par des virgules)</label>
-                            <input type="text" name="tags" placeholder="{{ labels['tags_placeholder_ex'] }}"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full">
-                            {{ labels['upload'] }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <script>
-            function confirmDeleteExercise(exId) {
-                if (confirm('Supprimer cet exercice ?')) {
-                    fetch('/delete_exercise/' + exId, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            location.reload();
-                        }
-                    });
-                }
-            }
-
-            function toggleEditor() {
-                const container = document.getElementById('editor-container');
-                container.classList.toggle('hidden');
-            }
-
-            function changeEditorKernel() {
-                const kernel = document.getElementById('kernel-select').value;
-                const iframe = document.getElementById('editor-iframe');
-                iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel;
-            }
-
-            function loadExerciseInEditor(fileUrl) {
-                const container = document.getElementById('editor-container');
-                container.classList.remove('hidden');
-
-                fetch(fileUrl)
-                    .then(response => response.text())
-                    .then(code => {
-                        const encoded = encodeURIComponent(code);
-                        const kernel = document.getElementById('kernel-select').value;
-                        const iframe = document.getElementById('editor-iframe');
-                        iframe.src = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + kernel + "&script=" + encoded;
-                    })
-                    .catch(err => {
-                        alert('Erreur lors du chargement du fichier');
-                        console.error(err);
-                    });
-            }
-            </script>
+            <p>À venir : intégration des QCM.</p>
+        </div>
+    </div>
+    <div class="window" id="ia-window">
+        <div class="window-header">
+            <div><i class="fas fa-robot"></i> <span>Intelligence Artificielle</span></div>
+            <div class="close-btn" onclick="closeWindow('ia')"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="window-content overflow-auto">
+            <p>À venir : intégration de l'IA.</p>
+        </div>
+    </div>
             {% endblock %}
         </div>
     </div>
-
-    {% endblock %}
 
     <!-- Scripts -->
-    <script>
-        let zIndexCounter = 1001;
-
-        function toggleStartMenu() {
-            const menu = document.getElementById('startMenu');
-            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-        }
-
-        function bringToFront(win) {
-            zIndexCounter++;
-            if (zIndexCounter >= 9999) zIndexCounter = 1001; // éviter de dépasser le menu
-            win.style.zIndex = zIndexCounter;
-        }
-
-        function openWindow(id) {
-            const win = document.getElementById(id + '-window');
-            if(win){
-                win.style.display = 'block';
-                bringToFront(win);
-                // Définir la taille à 95% x 90%
-                win.style.width = '95%';
-                win.style.height = '90%';
-                // Centrer la fenêtre
-                const viewportWidth = window.innerWidth;
-                const viewportHeight = window.innerHeight;
-                const winWidth = viewportWidth * 0.95;
-                const winHeight = viewportHeight * 0.90;
-                win.style.left = `${(viewportWidth - winWidth) / 2}px`;
-                win.style.top = `${(viewportHeight - winHeight) / 2}px`;
-            }
-        }
-
-        function closeWindow(id) {
-            const win = document.getElementById(id + '-window');
-            if(win){
-                win.style.display = 'none';
-            }
-        }
-    </script>
-    <script>
-        // Fermer le menu démarrer quand on clique sur un élément
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.start-menu .menu-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    document.getElementById('startMenu').style.display = 'none';
-                });
-            });
-        });
-
-        function updateDateTime() {
-            const now = new Date();
-            const timeElement = document.getElementById('time');
-            const dateElement = document.getElementById('date');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const year = now.getFullYear();
-            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
-            dateElement.textContent = `${day}/${month}/${year}`;
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-
-        // Rendre toutes les fenêtres déplaçables
-        document.querySelectorAll('.window').forEach(win => {
-            const header = win.querySelector('.window-header');
-            let offsetX = 0, offsetY = 0, isDragging = false;
-
-            header.addEventListener('mousedown', function(e) {
-                isDragging = true;
-                offsetX = e.clientX - win.offsetLeft;
-                offsetY = e.clientY - win.offsetTop;
-                bringToFront(win);
-            });
-
-            document.addEventListener('mousemove', function(e) {
-                if (!isDragging) return;
-                win.style.left = (e.clientX - offsetX) + 'px';
-                win.style.top = (e.clientY - offsetY) + 'px';
-            });
-
-            document.addEventListener('mouseup', function() {
-                isDragging = false;
-            });
-        });
-    </script>
-    <script>
-        function changeBackground(imageName) {
-            document.body.style.backgroundImage = `url('${"{{ url_for('static', filename='img/') }}" + imageName}')`;
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/eleve_base.js') }}"></script>
 </body>
 </html>

@@ -4,6 +4,8 @@
   "exercises": true,
   "exercices_flash": true,
   "qcm_flash": true,
+  "qcm": false,
+  "ia": false,
   "messagerie": true,
   "todo": true,
   "projets": true,
