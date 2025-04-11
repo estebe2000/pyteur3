@@ -147,6 +147,16 @@ L’application sera accessible sur `http://localhost:5000`.
 
 ---
 
+## Bugs connus / améliorations à prévoir
+
+- [ ] **Empêcher l'upload de fichiers en double** (vérification nom ou hash)
+- [ ] **Limiter la taille des fichiers uploadés** (ex: 10 Mo max)
+- [ ] **Régler le mot de passe à l'ajout manuel d'utilisateur** (validation, génération, sécurité)
+- [ ] **Étendre la traduction** (plus de labels, messages, interface complète)
+- [ ] **Intégrer une base de données plus robuste** (PostgreSQL, MySQL, etc.)
+
+---
+
 ## Licence
 
 Ce projet est open-source sous licence **MIT** et destiné à un usage pédagogique dans l’Éducation Nationale.
