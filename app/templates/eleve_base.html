@@ -9,6 +9,7 @@
     <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
     {% block head %}{% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_windows.css') }}">
 </head>
 <body>
     <!-- Bannière utilisateur -->
@@ -24,6 +25,15 @@
             <img src="{{ url_for('static', filename='img/b4.jpg') }}" alt="Fond 4" style="height:30px;cursor:pointer;border-radius:4px;" onclick="changeBackground('b4.jpg')">
         </div>
         <div class="flex items-center space-x-4">
+            <!-- Thème clair/sombre (caché pour le moment) -->
+            <div class="theme-toggle" style="display: none;">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" onchange="toggleDarkTheme(this.checked)">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
             <div class="flex items-center space-x-2">
                 <a href="/set_language/fr" title="Français">
                     <img src="{{ url_for('static', filename='img/flags/fr.png') }}" alt="Français" style="height:24px;">
@@ -91,7 +101,7 @@
 
     <!-- Fenêtres dynamiques -->
     {% block windows %}
-    <!-- Exemples : -->
+    <!-- Fenêtres incluses mais masquées par défaut -->
     {% include 'eleve_windows/dashboard_window.html' %}
     {% include 'eleve_windows/documents_window.html' %}
     {% include 'eleve_windows/exercises_window.html' %}
@@ -102,17 +112,9 @@
     {% include 'eleve_windows/messagerie_window.html' %}
     {% include 'eleve_windows/qcm_flash_window.html' %}
     {% include 'eleve_windows/profile_window.html' %}
-    <div class="window" id="qcm-window">
-        <div class="window-header">
-            <div><i class="fas fa-list"></i> <span>QCM</span></div>
-            <div class="close-btn" onclick="closeWindow('qcm')"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="window-content overflow-auto">
-            <p>À venir : intégration des QCM.</p>
-        </div>
-    </div>
+    {% include 'eleve_windows/qcm_window.html' %}
     {% include 'eleve_windows/ia_window.html' %}
-            {% endblock %}
+    {% endblock %}
         </div>
     </div>
 

@@ -1,0 +1,563 @@
+/* Styles globaux pour les fenêtres élèves - Inspiré de messagerie.css */
+
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --light-bg: #f8f9fa;
+  --dark-bg: #343a40;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --radius: 8px;
+  --shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+}
+
+body.dark-theme {
+  --light-bg: #222;
+  --dark-bg: #111;
+  --border-color: #444;
+  --text-color: #eee;
+  --text-muted: #aaa;
+}
+
+/* Structure commune pour toutes les fenêtres */
+.window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--light-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* En-tête de fenêtre standardisé */
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+.window-header i {
+  margin-right: 8px;
+}
+
+.close-btn {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  opacity: 0.8;
+}
+
+/* Contenu principal de la fenêtre */
+.window-content {
+  flex: 1;
+  overflow: auto;
+  padding: 15px;
+  position: relative;
+}
+
+/* Layout à colonnes (pour dashboard, documents, etc.) */
+.columns-layout {
+  display: flex;
+  height: 100%;
+  gap: 15px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: white;
+}
+
+.column-sidebar {
+  width: 250px;
+  border-right: 1px solid var(--border-color);
+}
+
+.column-main {
+  flex: 1;
+}
+
+.column-details {
+  width: 250px;
+  border-left: 1px solid var(--border-color);
+}
+
+.column-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  font-weight: 500;
+}
+
+.column-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Cartes pour afficher les éléments (exercices, documents, etc.) */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  background-color: white;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-footer {
+  padding: 10px 15px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grille pour afficher plusieurs éléments */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.grid-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: white;
+  transition: var(--transition);
+}
+
+.grid-item:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.grid-item-header {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  font-weight: 500;
+}
+
+.grid-item-body {
+  padding: 10px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item-footer {
+  padding: 10px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* Formulaires */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn i {
+  margin-right: 5px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 10px 20px;
+  font-size: 1.25rem;
+}
+
+/* Badges et indicateurs */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.badge-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.badge-info {
+  background-color: var(--info-color);
+  color: white;
+}
+
+/* Barre de recherche */
+.search-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 35px 10px 35px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.search-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* États vides et chargement */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary-color);
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Barre de progression */
+.progress {
+  height: 8px;
+  background-color: var(--light-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Onglets */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
+}
+
+.tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.tab:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.tab.active {
+  border-bottom-color: var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Alertes et notifications */
+.alert {
+  padding: 15px;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  border-left: 4px solid transparent;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-left-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  border-left-color: var(--warning-color);
+  color: var(--warning-color);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-left-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.alert-info {
+  background-color: rgba(23, 162, 184, 0.1);
+  border-left-color: var(--info-color);
+  color: var(--info-color);
+}
+
+/* Modals */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: var(--radius);
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.modal-footer {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .column-details {
+    display: none;
+  }
+  
+  .columns-layout {
+    flex-direction: column;
+  }
+  
+  .column-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+  
+  .grid-layout {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+}

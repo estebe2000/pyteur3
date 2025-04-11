@@ -1,31 +1,179 @@
-<div class="window" id="dashboard-window">
+<div class="window" id="dashboard-window" style="display: none;">
     <div class="window-header">
         <div><i class="fas fa-tachometer-alt"></i> <span>{{ labels['dashboard'] }}</span></div>
         <div class="close-btn" onclick="closeWindow('dashboard')"><i class="fas fa-times"></i></div>
     </div>
     <div class="window-content">
         {% block dashboard_content %}
-        <h2 class="text-2xl font-bold mb-4">Bienvenue sur votre espace élève Pyteur</h2>
-        <p class="mb-4">
-            Cet environnement vous permet d'accéder à toutes vos ressources pédagogiques, exercices, projets et outils numériques.
-        </p>
-        <p class="mb-4">
-            Utilisez le menu <strong>Mes applications</strong> en bas à gauche pour ouvrir les différentes rubriques :
-        </p>
-        <ul class="list-disc pl-6 space-y-2 mb-4">
-            <li><strong>Documents</strong> : vos cours, fichiers et ressources partagées</li>
-            <li><strong>Exercices</strong> : vos exercices à réaliser</li>
-            <li><strong>Exercices flash</strong> : mini-exercices rapides pour s'entraîner</li>
-            <li><strong>Messagerie</strong> : communiquer avec vos enseignants et camarades</li>
-            <li><strong>To-Do</strong> : votre liste de tâches à faire</li>
-            <li><strong>Projets</strong> : vos projets collaboratifs</li>
-            <li><strong>Drive</strong> : votre espace de stockage personnel</li>
-            <li><strong>Bac à sable</strong> : un espace pour expérimenter et coder librement</li>
-            <li><strong>Profil</strong> : vos informations personnelles</li>
-        </ul>
-        <p>
-            Cliquez sur une rubrique pour ouvrir sa fenêtre. Vous pouvez déplacer et redimensionner les fenêtres à votre convenance.
-        </p>
+        <div class="columns-layout">
+            <!-- Colonne de gauche - Informations personnelles -->
+            <div class="column column-sidebar">
+                <div class="column-header">
+                    <i class="fas fa-user"></i> Profil
+                </div>
+                <div class="column-content">
+                    <div class="card">
+                        <div class="card-body">
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <div style="width: 80px; height: 80px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 10px;">
+                                    {{ current_user.prenom[0] }}{{ current_user.nom[0] }}
+                                </div>
+                                <div style="font-weight: 500; font-size: 18px;">{{ current_user.prenom }} {{ current_user.nom }}</div>
+                                <div style="color: var(--text-muted); font-size: 14px;">Élève</div>
+                            </div>
+                            
+                            <div class="progress" title="Progression globale">
+                                <div class="progress-bar" style="width: 65%;"></div>
+                            </div>
+                            <div style="text-align: right; font-size: 12px; color: var(--text-muted);">Progression: 65%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-bell"></i> Notifications
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <span class="badge badge-primary" style="margin-right: 10px;">3</span>
+                                <span>Nouveaux messages</span>
+                            </div>
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <span class="badge badge-warning" style="margin-right: 10px;">2</span>
+                                <span>Exercices à rendre</span>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <span class="badge badge-success" style="margin-right: 10px;">1</span>
+                                <span>Projet mis à jour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne centrale - Activités récentes et raccourcis -->
+            <div class="column column-main">
+                <div class="column-header">
+                    <i class="fas fa-home"></i> Tableau de bord
+                </div>
+                <div class="column-content">
+                    <div class="alert alert-info">
+                        <strong>Bienvenue sur votre espace élève Pyteur!</strong> Cet environnement vous permet d'accéder à toutes vos ressources pédagogiques, exercices, projets et outils numériques.
+                    </div>
+                    
+                    <h3 style="font-weight: 500; margin: 15px 0 10px;">Raccourcis</h3>
+                    <div class="grid-layout" style="padding: 0;">
+                        <div class="grid-item" onclick="openWindow('documents')">
+                            <div class="grid-item-body">
+                                <i class="fas fa-folder" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+                                <span>Documents</span>
+                            </div>
+                        </div>
+                        <div class="grid-item" onclick="openWindow('exercises')">
+                            <div class="grid-item-body">
+                                <i class="fas fa-code" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+                                <span>Exercices</span>
+                            </div>
+                        </div>
+                        <div class="grid-item" onclick="openWindow('messagerie')">
+                            <div class="grid-item-body">
+                                <i class="fas fa-envelope" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+                                <span>Messagerie</span>
+                            </div>
+                        </div>
+                        <div class="grid-item" onclick="openWindow('todo')">
+                            <div class="grid-item-body">
+                                <i class="fas fa-tasks" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+                                <span>To-Do</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="font-weight: 500; margin: 15px 0 10px;">Activités récentes</h3>
+                    <div class="card">
+                        <div class="card-body" style="padding: 0;">
+                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <i class="fas fa-file-code" style="color: var(--primary-color); margin-right: 10px;"></i>
+                                <div style="flex: 1;">
+                                    <div>Exercice Python complété</div>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 2 heures</div>
+                                </div>
+                                <span class="badge badge-success">100%</span>
+                            </div>
+                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <i class="fas fa-envelope" style="color: var(--primary-color); margin-right: 10px;"></i>
+                                <div style="flex: 1;">
+                                    <div>Message reçu de Prof NSI</div>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 1 jour</div>
+                                </div>
+                                <span class="badge badge-primary">Nouveau</span>
+                            </div>
+                            <div style="padding: 10px; display: flex; align-items: center;">
+                                <i class="fas fa-project-diagram" style="color: var(--primary-color); margin-right: 10px;"></i>
+                                <div style="flex: 1;">
+                                    <div>Projet "Site web" mis à jour</div>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 3 jours</div>
+                                </div>
+                                <span class="badge badge-info">Mise à jour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne de droite - Calendrier et tâches -->
+            <div class="column column-details">
+                <div class="column-header">
+                    <i class="fas fa-calendar"></i> Agenda
+                </div>
+                <div class="column-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-calendar-day"></i> Aujourd'hui
+                        </div>
+                        <div class="card-body">
+                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">
+                                <div style="font-weight: 500;">Cours NSI</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">10:00 - 12:00</div>
+                            </div>
+                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">
+                                <div style="font-weight: 500;">TP Algorithmes</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">14:00 - 16:00</div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 500;">Rendu exercice Python</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Avant 18:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-tasks"></i> Tâches à faire
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <input type="checkbox" style="margin-right: 10px;">
+                                <span>Terminer l'exercice de Python</span>
+                            </div>
+                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <input type="checkbox" style="margin-right: 10px;">
+                                <span>Préparer la présentation</span>
+                            </div>
+                            <div style="padding: 10px; display: flex; align-items: center;">
+                                <input type="checkbox" style="margin-right: 10px;">
+                                <span>Réviser pour le contrôle</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endblock %}
     </div>
 </div>

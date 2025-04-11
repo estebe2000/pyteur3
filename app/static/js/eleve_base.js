@@ -157,8 +157,42 @@ function changeBackground(imageName) {
     document.body.style.backgroundImage = `url('/static/img/${imageName}')`;
 }
 
+// Fonction pour basculer entre les thèmes clair et sombre
+function toggleDarkTheme(isDark) {
+    if (isDark) {
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('darkTheme', 'true');
+    } else {
+        document.body.classList.remove('dark-theme');
+        localStorage.setItem('darkTheme', 'false');
+    }
+    
+    // Propager le changement de thème aux iframes
+    document.querySelectorAll('iframe').forEach(iframe => {
+        try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            if (isDark) {
+                iframeDoc.body.classList.add('dark-theme');
+            } else {
+                iframeDoc.body.classList.remove('dark-theme');
+            }
+        } catch (e) {
+            // Ignorer les erreurs de sécurité cross-origin
+            console.log('Impossible de propager le thème à une iframe (probablement cross-origin)');
+        }
+    });
+}
+
 // Gestion du déplacement des fenêtres
 window.addEventListener('DOMContentLoaded', () => {
+    // Ouvrir automatiquement le tableau de bord au chargement de la page
+    openWindow('dashboard');
+    
+    // Restaurer le thème préféré de l'utilisateur
+    const darkTheme = localStorage.getItem('darkTheme') === 'true';
+    document.getElementById('themeToggle').checked = darkTheme;
+    toggleDarkTheme(darkTheme);
+    
     // Fermer le menu démarrer quand on clique sur un élément
     document.querySelectorAll('.start-menu .menu-item').forEach(item => {
         item.addEventListener('click', () => {
