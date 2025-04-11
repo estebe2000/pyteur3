@@ -4,11 +4,20 @@
   "exercises": true,
   "exercices_flash": true,
   "qcm_flash": true,
-  "qcm": false,
   "ia": true,
   "messagerie": true,
   "todo": true,
   "projets": true,
   "drive": true,
-  "sandbox": true
+  "sandbox": true,
+  "profile": true,
+  "external_links": {
+    "link_1744366185344_590": {
+      "name": "Py-rates",
+      "url": "https://py-rates.fr/",
+      "icon": "fa-link",
+      "target": "_blank",
+      "visible": true
+    }
+  }
 }

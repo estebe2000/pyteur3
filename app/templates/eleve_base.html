@@ -55,13 +55,34 @@
             <span id="date"></span>
         </div>
         <div class="start-menu" id="startMenu">
-            {% for item, enabled in menu_config.items() %}
+            <!-- Sections internes -->
+            {% for item, enabled in menu_config.items() if item != 'external_links' %}
                 {% if enabled %}
                     <div class="menu-item" onclick="openWindow('{{ item }}')">
                         <i class="fas {% if item == 'dashboard' %}fa-tachometer-alt{% elif item == 'documents' %}fa-folder{% elif item == 'exercises' %}fa-code{% elif item == 'exercices_flash' %}fa-bolt{% elif item == 'qcm_flash' %}fa-bolt{% elif item == 'messagerie' %}fa-envelope{% elif item == 'todo' %}fa-tasks{% elif item == 'projets' %}fa-project-diagram{% elif item == 'drive' %}fa-hdd{% elif item == 'sandbox' %}fa-shapes{% elif item == 'profile' %}fa-user-cog{% endif %}"></i>
                         <span>
                             {% if item == 'dashboard' %}{{ labels['dashboard'] }}{% elif item == 'documents' %}{{ labels['documents'] }}{% elif item == 'exercises' %}{{ labels['exercises'] }}{% elif item == 'exercices_flash' %}Exercices flash{% elif item == 'qcm_flash' %}QCM Flash{% elif item == 'messagerie' %}{{ labels['messagerie'] }}{% elif item == 'todo' %}{{ labels['todo'] }}{% elif item == 'projets' %}{{ labels['projets'] }}{% elif item == 'drive' %}{{ labels['drive'] }}{% elif item == 'sandbox' %}Bac à sable{% elif item == 'profile' %}{{ labels['settings'] }}{% elif item == 'qcm' %}{{ labels['qcm'] }}{% elif item == 'ia' %}Intelligence Artificielle{% endif %}
                         </span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+            <!-- Séparateur si des liens externes sont présents et visibles -->
+            {% set has_visible_links = false %}
+            {% for link_id, link_data in menu_config.external_links.items() if link_data.visible %}
+                {% set has_visible_links = true %}
+            {% endfor %}
+            
+            {% if has_visible_links %}
+                <div class="menu-separator my-2 border-t border-gray-600"></div>
+            {% endif %}
+            
+            <!-- Liens externes -->
+            {% for link_id, link_data in menu_config.external_links.items() %}
+                {% if link_data.visible %}
+                    <div class="menu-item" {% if link_data.target == 'window' %}onclick="openExternalWindow('{{ link_id }}', '{{ link_data.name }}', '{{ link_data.url }}', '{{ link_data.icon }}')"{% else %}onclick="window.open('{{ link_data.url }}', '_blank')"{% endif %}>
+                        <i class="fas {{ link_data.icon }}"></i>
+                        <span>{{ link_data.name }}</span>
                     </div>
                 {% endif %}
             {% endfor %}
@@ -80,6 +101,7 @@
     {% include 'eleve_windows/todo_window.html' %}
     {% include 'eleve_windows/messagerie_window.html' %}
     {% include 'eleve_windows/qcm_flash_window.html' %}
+    {% include 'eleve_windows/profile_window.html' %}
     <div class="window" id="qcm-window">
         <div class="window-header">
             <div><i class="fas fa-list"></i> <span>QCM</span></div>

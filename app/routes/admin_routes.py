@@ -22,15 +22,46 @@ def gestion_menu():
         except Exception:
             menu_config = {}
 
-        # Mettre à jour la config selon les cases cochées
-        for key in menu_config.keys():
-            menu_config[key] = f"visible_{key}" in request.form
+        # S'assurer que external_links existe
+        if 'external_links' not in menu_config:
+            menu_config['external_links'] = {}
+
+        # Mettre à jour la config selon les cases cochées pour les sections internes
+        for key in list(menu_config.keys()):
+            if key != 'external_links':
+                menu_config[key] = f"visible_{key}" in request.form
+
+        # Traiter les liens externes
+        # Réinitialiser les liens externes
+        menu_config['external_links'] = {}
+        
+        # Récupérer tous les IDs de liens
+        link_ids = request.form.getlist('link_ids')
+        
+        # Pour chaque ID de lien, récupérer les données correspondantes
+        for link_id in link_ids:
+            name = request.form.get(f'link_name_{link_id}')
+            url = request.form.get(f'link_url_{link_id}')
+            icon = request.form.get(f'link_icon_{link_id}')
+            target = request.form.get(f'link_target_{link_id}')
+            visible = f'link_visible_{link_id}' in request.form
+            
+            # Vérifier que les données essentielles sont présentes
+            if name and url:
+                menu_config['external_links'][link_id] = {
+                    'name': name,
+                    'url': url,
+                    'icon': icon or 'fa-globe',  # Icône par défaut
+                    'target': target or 'window',  # Comportement par défaut
+                    'visible': visible
+                }
 
         try:
             with open(config_path, 'w', encoding='utf-8') as f:
                 json.dump(menu_config, f, indent=2, ensure_ascii=False)
-        except Exception:
-            pass  # Ignorer les erreurs d'écriture pour l'instant
+        except Exception as e:
+            from flask import flash
+            flash(f"Erreur lors de l'enregistrement de la configuration: {str(e)}", "error")
 
         from flask import redirect, url_for, flash
         flash("Configuration du menu enregistrée.", "success")
@@ -41,6 +72,10 @@ def gestion_menu():
             menu_config = json.load(f)
     except Exception:
         menu_config = {}
+        
+    # S'assurer que external_links existe
+    if 'external_links' not in menu_config:
+        menu_config['external_links'] = {}
 
     return render_template('gestion_menu.html', menu_config=menu_config)
 

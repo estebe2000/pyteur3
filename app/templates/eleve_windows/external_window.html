@@ -1,0 +1,14 @@
+<div class="window" id="external-{{ link_id }}-window">
+    <div class="window-header">
+        <div><i class="fas {{ link_icon }}"></i> <span>{{ link_name }}</span></div>
+        <div class="close-btn" onclick="closeWindow('external-{{ link_id }}')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="window-content overflow-auto p-0">
+        <!-- Utilisation d'un iframe pour charger le lien externe -->
+        <iframe 
+            src="{{ link_url }}" 
+            style="width:100%; height:100%; border:none;" 
+            id="external-{{ link_id }}-iframe"
+        ></iframe>
+    </div>
+</div>

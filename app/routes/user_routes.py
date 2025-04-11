@@ -175,9 +175,22 @@ def settings():
 
         flash('Profil mis à jour avec succès.')
 
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
     # Passer l'URL du drive au template
     drive_url = config_data.get('drive_url', 'https://nuage.apps.education.fr/')
-    return render_template('settings.html', user=current_user, drive_url=drive_url)
+    
+    if is_iframe:
+        return render_template('settings.html', user=current_user, drive_url=drive_url, title=labels.get('settings', 'Paramètres'))
+    else:
+        return render_template('settings.html', user=current_user, drive_url=drive_url)
 
 @user_bp.route('/users/import', methods=['GET', 'POST'])
 @login_required

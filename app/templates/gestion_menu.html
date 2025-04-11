@@ -9,6 +9,8 @@
 
 <form method="post" action="{{ url_for('admin.gestion_menu') }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    
+    <h2 class="text-xl font-semibold mt-6 mb-2">Sections internes</h2>
     <table class="table-auto w-full mt-4 border">
         <thead>
             <tr class="bg-gray-200">
@@ -17,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for key, visible in menu_config.items() %}
+            {% for key, visible in menu_config.items() if key != 'external_links' %}
             <tr class="border-t">
                 <td class="p-2">
                     <input type="checkbox" name="visible_{{ key }}" {% if visible %}checked{% endif %}>
@@ -27,6 +29,210 @@
             {% endfor %}
         </tbody>
     </table>
-    <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">{{ labels['save'] }}</button>
+    
+    <h2 class="text-xl font-semibold mt-6 mb-2">Liens externes</h2>
+    <div id="external-links-container">
+        {% if menu_config.external_links %}
+            {% for link_id, link_data in menu_config.external_links.items() %}
+                <div class="external-link-item border p-4 mb-4 rounded-lg bg-gray-50">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nom du lien</label>
+                            <input type="text" name="link_name_{{ link_id }}" value="{{ link_data.name }}" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">URL</label>
+                            <input type="url" name="link_url_{{ link_id }}" value="{{ link_data.url }}" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Icône</label>
+                            <div class="flex">
+                                <select name="link_icon_{{ link_id }}" class="icon-selector w-full px-3 py-2 border border-gray-300 rounded-md">
+                                    <option value="fa-globe" {% if link_data.icon == 'fa-globe' %}selected{% endif %}>🌐 Globe</option>
+                                    <option value="fa-graduation-cap" {% if link_data.icon == 'fa-graduation-cap' %}selected{% endif %}>🎓 Diplôme</option>
+                                    <option value="fa-book" {% if link_data.icon == 'fa-book' %}selected{% endif %}>📚 Livre</option>
+                                    <option value="fa-calculator" {% if link_data.icon == 'fa-calculator' %}selected{% endif %}>🧮 Calculatrice</option>
+                                    <option value="fa-chart-bar" {% if link_data.icon == 'fa-chart-bar' %}selected{% endif %}>📊 Graphique</option>
+                                    <option value="fa-flask" {% if link_data.icon == 'fa-flask' %}selected{% endif %}>🧪 Science</option>
+                                    <option value="fa-language" {% if link_data.icon == 'fa-language' %}selected{% endif %}>🗣️ Langue</option>
+                                    <option value="fa-music" {% if link_data.icon == 'fa-music' %}selected{% endif %}>🎵 Musique</option>
+                                    <option value="fa-palette" {% if link_data.icon == 'fa-palette' %}selected{% endif %}>🎨 Art</option>
+                                    <option value="fa-dumbbell" {% if link_data.icon == 'fa-dumbbell' %}selected{% endif %}>💪 Sport</option>
+                                    <option value="fa-video" {% if link_data.icon == 'fa-video' %}selected{% endif %}>🎥 Vidéo</option>
+                                    <option value="fa-newspaper" {% if link_data.icon == 'fa-newspaper' %}selected{% endif %}>📰 Actualités</option>
+                                    <option value="fa-calendar" {% if link_data.icon == 'fa-calendar' %}selected{% endif %}>📅 Calendrier</option>
+                                    <option value="fa-question-circle" {% if link_data.icon == 'fa-question-circle' %}selected{% endif %}>❓ Aide</option>
+                                    <option value="fa-link" {% if link_data.icon == 'fa-link' %}selected{% endif %}>🔗 Lien</option>
+                                    <option value="fa-external-link-alt" {% if link_data.icon == 'fa-external-link-alt' %}selected{% endif %}>↗️ Lien externe</option>
+                                    <option value="fa-cloud" {% if link_data.icon == 'fa-cloud' %}selected{% endif %}>☁️ Cloud</option>
+                                    <option value="fa-database" {% if link_data.icon == 'fa-database' %}selected{% endif %}>🗄️ Base de données</option>
+                                    <option value="fa-tools" {% if link_data.icon == 'fa-tools' %}selected{% endif %}>🛠️ Outils</option>
+                                    <option value="fa-cogs" {% if link_data.icon == 'fa-cogs' %}selected{% endif %}>⚙️ Paramètres</option>
+                                </select>
+                                <div class="icon-preview ml-2 flex items-center justify-center w-10 h-10 border border-gray-300 rounded-md bg-gray-50">
+                                    <i class="fas {{ link_data.icon }}"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Comportement</label>
+                            <select name="link_target_{{ link_id }}" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                                <option value="window" {% if link_data.target == 'window' %}selected{% endif %}>Ouvrir dans une fenêtre</option>
+                                <option value="_blank" {% if link_data.target == '_blank' %}selected{% endif %}>Ouvrir dans un nouvel onglet</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="link_visible_{{ link_id }}" {% if link_data.visible %}checked{% endif %} class="form-checkbox h-5 w-5 text-blue-600">
+                            <span class="ml-2 text-gray-700">Visible dans le menu</span>
+                        </label>
+                        <button type="button" class="delete-link float-right px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="{{ link_id }}">Supprimer</button>
+                    </div>
+                    <input type="hidden" name="link_ids" value="{{ link_id }}">
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    <button type="button" id="add-link-btn" class="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+        <i class="fas fa-plus mr-1"></i> Ajouter un lien externe
+    </button>
+    
+    <button type="submit" class="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">{{ labels['save'] }}</button>
 </form>
+
+<template id="link-template">
+    <div class="external-link-item border p-4 mb-4 rounded-lg bg-gray-50">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nom du lien</label>
+                <input type="text" name="link_name_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">URL</label>
+                <input type="url" name="link_url_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Icône</label>
+                <div class="flex">
+                    <select name="link_icon_NEW_ID" class="icon-selector w-full px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="fa-globe">🌐 Globe</option>
+                        <option value="fa-graduation-cap">🎓 Diplôme</option>
+                        <option value="fa-book">📚 Livre</option>
+                        <option value="fa-calculator">🧮 Calculatrice</option>
+                        <option value="fa-chart-bar">📊 Graphique</option>
+                        <option value="fa-flask">🧪 Science</option>
+                        <option value="fa-language">🗣️ Langue</option>
+                        <option value="fa-music">🎵 Musique</option>
+                        <option value="fa-palette">🎨 Art</option>
+                        <option value="fa-dumbbell">💪 Sport</option>
+                        <option value="fa-video">🎥 Vidéo</option>
+                        <option value="fa-newspaper">📰 Actualités</option>
+                        <option value="fa-calendar">📅 Calendrier</option>
+                        <option value="fa-question-circle">❓ Aide</option>
+                        <option value="fa-link">🔗 Lien</option>
+                        <option value="fa-external-link-alt">↗️ Lien externe</option>
+                        <option value="fa-cloud">☁️ Cloud</option>
+                        <option value="fa-database">🗄️ Base de données</option>
+                        <option value="fa-tools">🛠️ Outils</option>
+                        <option value="fa-cogs">⚙️ Paramètres</option>
+                    </select>
+                    <div class="icon-preview ml-2 flex items-center justify-center w-10 h-10 border border-gray-300 rounded-md bg-gray-50">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Comportement</label>
+                <select name="link_target_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                    <option value="window">Ouvrir dans une fenêtre</option>
+                    <option value="_blank">Ouvrir dans un nouvel onglet</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-3">
+            <label class="inline-flex items-center">
+                <input type="checkbox" name="link_visible_NEW_ID" checked class="form-checkbox h-5 w-5 text-blue-600">
+                <span class="ml-2 text-gray-700">Visible dans le menu</span>
+            </label>
+            <button type="button" class="delete-link float-right px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="NEW_ID">Supprimer</button>
+        </div>
+        <input type="hidden" name="link_ids" value="NEW_ID">
+    </div>
+</template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addLinkBtn = document.getElementById('add-link-btn');
+        const linksContainer = document.getElementById('external-links-container');
+        const linkTemplate = document.getElementById('link-template');
+        
+        // Fonction pour générer un ID unique
+        function generateUniqueId() {
+            return 'link_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+        }
+        
+        // Ajouter un nouveau lien
+        addLinkBtn.addEventListener('click', function() {
+            const newId = generateUniqueId();
+            const newLinkHtml = linkTemplate.innerHTML.replace(/NEW_ID/g, newId);
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = newLinkHtml;
+            linksContainer.appendChild(tempDiv.firstElementChild);
+            
+            // Ajouter l'écouteur d'événements pour le bouton de suppression
+            const newDeleteBtn = linksContainer.querySelector(`[data-link-id="${newId}"]`);
+            newDeleteBtn.addEventListener('click', function() {
+                const linkItem = this.closest('.external-link-item');
+                linkItem.remove();
+            });
+        });
+        
+        // Ajouter des écouteurs d'événements pour les boutons de suppression existants
+        document.querySelectorAll('.delete-link').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const linkItem = this.closest('.external-link-item');
+                linkItem.remove();
+            });
+        });
+        
+        // Fonction pour mettre à jour l'aperçu de l'icône
+        function updateIconPreview(select) {
+            const iconClass = select.value;
+            const previewContainer = select.closest('.flex').querySelector('.icon-preview');
+            const iconElement = previewContainer.querySelector('i');
+            
+            // Mettre à jour la classe de l'icône
+            iconElement.className = 'fas ' + iconClass;
+        }
+        
+        // Ajouter des écouteurs d'événements pour les sélecteurs d'icônes existants
+        document.querySelectorAll('.icon-selector').forEach(function(select) {
+            select.addEventListener('change', function() {
+                updateIconPreview(this);
+            });
+        });
+        
+        // Observer les nouveaux sélecteurs d'icônes ajoutés dynamiquement
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1) { // Element node
+                            const newSelectors = node.querySelectorAll('.icon-selector');
+                            newSelectors.forEach(function(select) {
+                                select.addEventListener('change', function() {
+                                    updateIconPreview(this);
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        
+        observer.observe(linksContainer, { childList: true, subtree: true });
+    });
+</script>
 {% endblock %}
