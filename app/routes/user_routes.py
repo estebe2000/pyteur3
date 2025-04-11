@@ -19,7 +19,10 @@ def login():
         user = User.query.filter_by(login=login_input).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('dashboard.home'))
+            if user.role == 'eleve':
+                return redirect(url_for('eleve.dashboard'))
+            else:
+                return redirect(url_for('dashboard.home'))
         
         flash('Login ou mot de passe incorrect.')
     return render_template('login.html')
