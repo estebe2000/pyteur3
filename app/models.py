@@ -178,3 +178,14 @@ class HomeworkCompletion(db.Model):
     completed_at = db.Column(db.DateTime, server_default=db.func.now())
     
     student = db.relationship('User', backref='homework_completions')
+
+
+class WelcomeMessage(db.Model):
+    __tablename__ = 'welcome_messages'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text, nullable=False, default="Bienvenue sur votre espace élève Pyteur!")
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
+    created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    
+    created_by = db.relationship('User', backref='welcome_messages')

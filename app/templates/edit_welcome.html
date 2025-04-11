@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Édition du message de bienvenue{% endblock %}
+
+{% block page_title %}Édition du message de bienvenue{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}" class="text-blue-600 hover:underline">Accueil</a> &gt; 
+<span class="text-gray-600">Édition du message de bienvenue</span>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-6">Édition du message de bienvenue</h1>
+    
+    <div class="mb-6">
+        <p class="text-gray-600 mb-4">
+            Ce message sera affiché sur le tableau de bord de tous les élèves. Utilisez cet espace pour communiquer des informations importantes, des annonces ou simplement un message d'accueil chaleureux.
+        </p>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-info-circle text-blue-500"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-blue-700">
+                        Vous pouvez utiliser du texte simple ou du HTML basique pour mettre en forme votre message (gras, italique, listes, etc.).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <form method="POST" action="{{ url_for('welcome.edit_welcome') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <div class="mb-4">
+            <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Message de bienvenue:</label>
+            <textarea id="content" name="content" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ welcome_message.content }}</textarea>
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Enregistrer
+            </button>
+            <a href="{{ url_for('dashboard.home') }}" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                Annuler
+            </a>
+        </div>
+    </form>
+    
+    {% if message_history and message_history|length > 1 %}
+    <div class="mt-10">
+        <h2 class="text-xl font-bold mb-4">Historique des messages</h2>
+        
+        <div class="bg-gray-50 rounded-lg p-4">
+            <table class="min-w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Auteur</th>
+                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for message in message_history %}
+                    {% if not loop.first %} <!-- Ne pas afficher le message actuel dans l'historique -->
+                    <tr>
+                        <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                            {{ message.created_at.strftime('%d/%m/%Y %H:%M') }}
+                        </td>
+                        <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                            {% if message.created_by %}
+                                {{ message.created_by.prenom }} {{ message.created_by.nom }}
+                            {% else %}
+                                Système
+                            {% endif %}
+                        </td>
+                        <td class="px-4 py-2 text-sm text-gray-500">
+                            <div class="max-h-20 overflow-y-auto">
+                                {{ message.content|truncate(100) }}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

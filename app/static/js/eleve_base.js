@@ -235,6 +235,32 @@ function toggleHomework(homeworkId, isChecked) {
     });
 }
 
+// Fonction pour charger le message de bienvenue
+function loadWelcomeMessage() {
+    // Vérifier si les éléments existent
+    const contentElement = document.getElementById('welcome-message-content');
+    const infoElement = document.getElementById('welcome-message-info');
+    
+    if (!contentElement || !infoElement) {
+        return; // Sortir si les éléments n'existent pas
+    }
+    
+    // Charger le message de bienvenue
+    fetch('/welcome/get_latest')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            contentElement.innerHTML = data.content;
+            infoElement.textContent = "Mis à jour le " + data.updated_at + " par " + data.created_by;
+        })
+        .catch(function(error) {
+            console.error('Erreur lors du chargement du message de bienvenue:', error);
+            contentElement.innerHTML = '<p>Bienvenue sur votre espace élève Pyteur!</p>';
+            infoElement.textContent = '';
+        });
+}
+
 // Gestion du déplacement des fenêtres
 window.addEventListener('DOMContentLoaded', () => {
     // Vérifier si l'utilisateur a choisi d'ouvrir automatiquement le tableau de bord
@@ -255,6 +281,9 @@ window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('startMenu').style.display = 'none';
         });
     });
+    
+    // Charger le message de bienvenue
+    loadWelcomeMessage();
 
     // Horloge
     function updateDateTime() {

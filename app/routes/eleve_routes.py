@@ -4,7 +4,7 @@ from app import db
 from app.lang.lang_fr import LABELS as labels_fr
 from app.lang.lang_en import LABELS as labels_en
 from app.models import Document, DocumentAssignment, ExerciseAssignment, Project, ProjectParticipant
-from app.models import Homework, HomeworkCompletion, Message, MessageRecipient, Group
+from app.models import Homework, HomeworkCompletion, Message, MessageRecipient, Group, WelcomeMessage
 from sqlalchemy import or_
 from datetime import datetime, timedelta
 
