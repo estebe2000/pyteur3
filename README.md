@@ -9,47 +9,47 @@ Ce projet est développé pour l’Éducation Nationale française, sous licence
 
 - **Gestion des utilisateurs** (élèves, professeurs, administrateurs)
 - **Gestion des classes et groupes**
-- **Messagerie interne**
-- **Gestion documentaire** (import/export, affectation)
+- **Messagerie interne** avec interface fenêtrée
+- **Gestion documentaire** (import/export, affectation) avec limite de taille
 - **Création et génération d’exercices assistée par IA**
-- **QCM interactifs**
-- **Suivi personnalisé des élèves**
-- **Tableau de bord et statistiques avancées**
-- **Support multi-langues (français, anglais)**
-- **Importation d’utilisateurs via CSV**
-- **Gestion des fournisseurs IA (Ollama, autres)**
-- **Refonte UX moderne avec sections repliables et graphiques dynamiques**
+- **QCM interactifs** et **QCM flash** (mode rapide)
+- **Suivi personnalisé des élèves** avec statistiques détaillées
+- **Tableau de bord** avec widgets personnalisables
+- **Support multi-langues** (français, anglais)
+- **Importation d’utilisateurs** via CSV
+- **Gestion des fournisseurs IA** (Ollama, autres)
+- **Interface moderne** avec :
+  - Sections repliables
+  - Graphiques dynamiques (Chart.js)
+  - Mode fenêtré pour les élèves
+  - Thème sombre/clair
 
 ---
 
-## Structure du projet
+## Structure du projet (simplifiée)
 
 ```
 ├── app/
-│   ├── __init__.py
-│   ├── routes/                 # Routes Flask
+│   ├── __init__.py             # Configuration Flask
+│   ├── routes/                 # 12 blueprints (utilisateurs, QCM, IA, etc.)
 │   ├── models.py               # Modèles SQLAlchemy
-│   ├── ia_client.py            # Client IA
-│   ├── prompts_generateur.py   # Prompts IA
-│   ├── ia_providers.py         # Gestion fournisseurs IA
+│   ├── ia_client.py            # Client IA avec cache
+│   ├── prompts_generateur.py   # Prompts IA optimisés
 │   ├── static/
-│   │   ├── css/                # Feuilles de style
-│   │   ├── img/                # Images
-│   │   ├── uploads/            # Fichiers uploadés
-│   │   ├── data/               # Données JSON
-│   │   └── js/                 # Scripts JavaScript (statistiques.js)
-│   ├── templates/              # Templates Jinja2
-│   └── lang/                   # Fichiers de langue
+│   │   ├── css/                # CSS (Bootstrap + Tailwind)
+│   │   ├── js/                 # JavaScript (jQuery, Chart.js, DataTables)
+│   │   ├── basthon/            # Intégration Basthon
+│   │   └── uploads/            # Fichiers utilisateurs avec quotas
+│   ├── templates/
+│   │   ├── eleve_windows/      # Interface fenêtrée élève
+│   │   └── ...                 # 30+ templates
+│   ├── lang/                   # Internationalisation
+│   └── *.json                  # Configurations (menu, drive)
 │
-├── manage.py                   # Script d'initialisation
-├── init_db.py                  # Init base de données
-├── init_admin.py               # Création comptes par défaut
-├── run.py                      # Lancement serveur Flask
-├── config.py                   # Configuration Flask
-├── docker-compose.yml          # Docker Compose
-├── Dockerfile                  # Dockerfile
-├── requirements.txt            # Dépendances Python
-└── README.md                   # Ce fichier
+├── docker/                     # Fichiers Docker
+├── scripts/                    # Scripts utilitaires
+├── tests/                      # Tests unitaires
+└── *.py                        # Scripts principaux
 ```
 
 ---
@@ -90,7 +90,21 @@ python run.py
 
 ---
 
-## Installation avec Docker
+## Configuration
+
+Les paramètres principaux sont configurés dans `config.py` :
+
+```python
+# Configuration de base
+SECRET_KEY = 'dev_secret_key'  # À remplacer en production
+SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/db.sqlite'  # SQLite par défaut
+
+# Variables d'environnement prioritaires
+# export DATABASE_URL=postgresql://user:pass@localhost/dbname
+# export SECRET_KEY=votre_clé_secrète
+```
+
+### Installation avec Docker
 
 1. **Construire l’image**
 
@@ -105,6 +119,10 @@ docker-compose up
 ```
 
 L’application sera accessible sur `http://localhost:5000`.
+
+> **Note** : Pour la production, configurez :
+> - Une base de données PostgreSQL/MySQL via `DATABASE_URL`
+> - Une `SECRET_KEY` robuste
 
 ---
 
@@ -123,37 +141,45 @@ L’application sera accessible sur `http://localhost:5000`.
 
 ---
 
-## TODO
+## État d'avancement
 
-- [x] Gestion des utilisateurs
-- [x] Gestion des classes et groupes
-- [x] Messagerie interne
-- [x] Gestion documentaire
-- [x] Création et génération d’exercices assistée par IA
-- [x] QCM interactifs
-- [x] Support multi-langues
-- [x] Importation CSV
-- [x] Gestion des fournisseurs IA
-- [x] Tableau de bord et statistiques
-- [x] Refonte interface
+✅ **Fonctionnalités implémentées:**
+- Gestion complète des utilisateurs et classes
+- Messagerie avec notifications
+- Système de documents avec quotas
+- QCM standards et flash
+- Tableau de bord professeur/élève
+- Intégration Basthon et IA
+- Internationalisation (fr/en)
 
-### À faire
+🚧 **En développement:**
+- Amélioration du système de défis
+- Tableaux de bord avancés
+- Export des données pédagogiques
 
-- [ ] Génération de QCM flash
-- [ ] Suivi personnalisé avancé
-- [ ] Finaliser la refonte interface (améliorations UI/UX)
-- [ ] **Mode défis** entre élèves (classements, scores, compétitions)
-- [ ] **Refonte graphique élèves globale** (meilleure visualisation, dashboards élèves, suivi simplifié)
+💡 **Idées futures:**
+- Intégration LTI
+- Synchronisation avec Pronote
+- Module de compétences
 
 ---
 
-## Bugs connus / améliorations à prévoir
+## Améliorations techniques
 
-- [ ] **Empêcher l'upload de fichiers en double** (vérification nom ou hash)
-- [ ] **Limiter la taille des fichiers uploadés** (ex: 10 Mo max)
-- [ ] **Régler le mot de passe à l'ajout manuel d'utilisateur** (validation, génération, sécurité)
-- [ ] **Étendre la traduction** (plus de labels, messages, interface complète)
-- [ ] **Intégrer une base de données plus robuste** (PostgreSQL, MySQL, etc.)
+- **Sécurité:**
+  - Validation des uploads
+  - Politiques de mot de passe
+  - Protection CSRF
+
+- **Performance:**
+  - Cache des requêtes IA
+  - Optimisation des requêtes SQL
+  - Chargement différé des assets
+
+- **Évolutivité:**
+  - Support PostgreSQL
+  - Architecture modulaire
+  - API REST
 
 ---
 
