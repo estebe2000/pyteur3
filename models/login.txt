@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - PYTEUR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles personnalisés */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: var(--light);
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        /* Animation du logo */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .logo-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Effet de surbrillance sur les champs */
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* Animation du bouton */
+        .btn-hover {
+            transition: all 0.3s ease;
+            background-size: 200% auto;
+        }
+        
+        .btn-hover:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+        }
+        
+        /* Particules de code */
+        .code-particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: 'Courier New', monospace;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Animation du terminal */
+        @keyframes terminal-typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        .terminal-line {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: terminal-typing 3s steps(40) infinite alternate;
+        }
+        
+        /* Effet de flottement */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90% !important;
+                padding: 2rem !important;
+            }
+            
+            .logo-text {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+    <!-- Fond animé avec particules de code -->
+    <div id="code-background"></div>
+    
+    <!-- Terminal animé -->
+    <div class="absolute bottom-0 left-0 w-full h-1/3 bg-black bg-opacity-20 backdrop-blur-sm p-4 overflow-hidden">
+        <div class="terminal-content text-green-400 font-mono text-sm opacity-70 space-y-2">
+            <div class="terminal-line">>>> Bienvenue sur PYTEUR - Votre plateforme d'apprentissage interactif</div>
+            <div class="terminal-line">>>> Chargement des cours disponibles: Python, SQL, OCaml, JavaScript, Xcas...</div>
+            <div class="terminal-line">>>> Initialisation de l'environnement Jupyter...</div>
+            <div class="terminal-line">>>> Prêt à coder!</div>
+        </div>
+    </div>
+    
+    <!-- Conteneur principal -->
+    <div class="login-container relative z-10 bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden w-full max-w-md mx-4 border border-gray-700 float-animation">
+        <!-- Dégradé coloré en haut -->
+        <div class="h-2 bg-gradient-to-r from-purple-600 via-blue-500 to-emerald-400"></div>
+        
+        <div class="p-8">
+            <!-- Logo et titre -->
+            <div class="flex flex-col items-center mb-8">
+                <div class="logo-pulse mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-16 h-16 text-purple-500">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h1 class="logo-text text-4xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent mb-2">PYTEUR</h1>
+                <p class="text-gray-300">Apprenez à coder interactivement</p>
+            </div>
+            
+            <!-- Formulaire de connexion -->
+            <form class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Nom d'utilisateur</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-500"></i>
+                        </div>
+                        <input type="text" id="username" name="username" required 
+                               class="input-glow pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500 transition duration-200 text-white" 
+                               placeholder="votre.nom">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Mot de passe</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-500"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required 
+                               class="input-glow pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-purple-500 transition duration-200 text-white" 
+                               placeholder="••••••••">
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-600 rounded bg-gray-700">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">Se souvenir de moi</label>
+                    </div>
+                    
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300 transition duration-200">Mot de passe oublié?</a>
+                    </div>
+                </div>
+                
+                <button type="submit" 
+                        class="btn-hover w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300">
+                    Se connecter
+                </button>
+            </form>
+        </div>
+        
+        <!-- Langages enseignés -->
+        <div class="px-8 pb-6">
+            <div class="border-t border-gray-700 pt-6">
+                <p class="text-center text-sm text-gray-400 mb-3">Apprenez avec nous:</p>
+                <div class="flex justify-center space-x-6">
+                    <div class="text-blue-400 hover:text-blue-300 transition duration-200 cursor-pointer" title="Python">
+                        <i class="fab fa-python text-2xl"></i>
+                    </div>
+                    <div class="text-yellow-400 hover:text-yellow-300 transition duration-200 cursor-pointer" title="JavaScript">
+                        <i class="fab fa-js-square text-2xl"></i>
+                    </div>
+                    <div class="text-red-400 hover:text-red-300 transition duration-200 cursor-pointer" title="SQL">
+                        <i class="fas fa-database text-2xl"></i>
+                    </div>
+                    <div class="text-green-400 hover:text-green-300 transition duration-200 cursor-pointer" title="OCaml">
+                        <i class="fas fa-lambda text-2xl"></i>
+                    </div>
+                    <div class="text-purple-400 hover:text-purple-300 transition duration-200 cursor-pointer" title="Xcas">
+                        <i class="fas fa-square-root-alt text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Création des particules de code en arrière-plan
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeBackground = document.getElementById('code-background');
+            const symbols = ['{}', '()', '[]', '<>', ';', '=>', '=', '==', '===', '!=', '!==', '+=', '-=', '*=', '/=', '++', '--', '&&', '||', '!', '?', ':', '...', '${}', '`', '//', '/*', '*/', '#', 'import', 'from', 'def', 'function', 'return', 'class', 'if', 'else', 'for', 'while', 'switch', 'case', 'break', 'continue', 'try', 'catch', 'finally', 'throw', 'const', 'let', 'var'];
+            
+            // Créer 50 particules de code
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'code-particle';
+                
+                // Position aléatoire
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Taille aléatoire
+                const size = Math.random() * 20 + 10;
+                
+                // Symbole aléatoire
+                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // Opacité aléatoire
+                const opacity = Math.random() * 0.2 + 0.05;
+                
+                // Animation aléatoire
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                
+                // Appliquer les styles
+                particle.textContent = symbol;
+                particle.style.left = `${left}%`;
+                particle.style.top = `${top}%`;
+                particle.style.fontSize = `${size}px`;
+                particle.style.opacity = opacity;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                // Ajouter au fond
+                codeBackground.appendChild(particle);
+            }
+            
+            // Effet de survol sur les particules
+            document.addEventListener('mousemove', function(e) {
+                const particles = document.querySelectorAll('.code-particle');
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                
+                particles.forEach(particle => {
+                    const rect = particle.getBoundingClientRect();
+                    const particleX = rect.left + rect.width / 2;
+                    const particleY = rect.top + rect.height / 2;
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(mouseX - particleX, 2) + 
+                        Math.pow(mouseY - particleY, 2)
+                    );
+                    
+                    if (distance < 100) {
+                        const angle = Math.atan2(mouseY - particleY, mouseX - particleX);
+                        const force = (100 - distance) / 10;
+                        
+                        particle.style.transform = `translate(${Math.cos(angle) * force}px, ${Math.sin(angle) * force}px)`;
+                        particle.style.opacity = '0.3';
+                    } else {
+                        particle.style.transform = '';
+                        particle.style.opacity = particle.dataset.originalOpacity;
+                    }
+                });
+            });
+            
+            // Animation du terminal - changer les lignes périodiquement
+            const terminalLines = [
+                ">>> print('Bonjour PYTEUR!')",
+                ">>> def hello(): return 'Hello World!'",
+                ">>> SELECT * FROM users WHERE active = True;",
+                ">>> let rec factorial n = if n <= 1 then 1 else n * factorial(n-1);;",
+                ">>> console.log('JavaScript est activé!');",
+                ">>> solve(x^2 - 5x + 6 = 0, x)",
+                ">>> [x * 2 for x in range(10)]",
+                ">>> git commit -m 'Amélioration de l'interface'",
+                ">>> docker-compose up --build",
+                ">>> npm install --save-dev pyteur-client"
+            ];
+            
+            let currentLine = 0;
+            const terminalContent = document.querySelector('.terminal-content');
+            
+            setInterval(() => {
+                currentLine = (currentLine + 1) % terminalLines.length;
+                terminalContent.innerHTML = `
+                    <div class="terminal-line">${terminalLines[currentLine]}</div>
+                    <div class="terminal-line">${terminalLines[(currentLine + 1) % terminalLines.length]}</div>
+                    <div class="terminal-line">${terminalLines[(currentLine + 2) % terminalLines.length]}</div>
+                    <div class="terminal-line">${terminalLines[(currentLine + 3) % terminalLines.length]}</div>
+                `;
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
