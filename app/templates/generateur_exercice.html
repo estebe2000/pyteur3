@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+{% endblock %}
+
 {% block breadcrumb %}
 <a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['exercise_generator'] }}
 {% endblock %}
@@ -41,21 +45,35 @@
 
     <div class="my-4">
         <h5>{{ labels['used_prompt'] }} :</h5>
-<button id="togglePromptBtn" class="btn btn-secondary mb-2">{{ labels['show_prompt'] }}</button>
+        <button id="togglePromptBtn" class="btn btn-secondary mb-2">{{ labels['show_prompt'] }}</button>
         <pre id="promptAffiche" style="display:none; white-space: pre-wrap; background:#eef; padding:10px; border-radius:5px; border:1px solid #99f;"></pre>
     </div>
 
     <div class="my-4">
         <h5>{{ labels['generated_exercise'] }} :</h5>
-<button id="toggleResultatBtn" class="btn btn-secondary mb-2">{{ labels['show_generated_exercise'] }}</button>
+        <button id="toggleResultatBtn" class="btn btn-secondary mb-2">{{ labels['show_generated_exercise'] }}</button>
         <pre id="resultatIA" style="display:none; white-space: pre-wrap; background:#f8f9fa; padding:10px; border-radius:5px; border:1px solid #ccc;"></pre>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
-<button id="downloadNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_notebook'] }}</button>
-<button id="downloadScriptBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_script'] }}</button>
-<button id="ouvrirConsoleBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_console'] }}</button>
-<button id="ouvrirNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_notebook'] }}</button>
+            <button id="downloadNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_notebook'] }}</button>
+            <button id="downloadScriptBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['download_script'] }}</button>
+            <button id="ouvrirConsoleBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_console'] }}</button>
+            <button id="ouvrirNotebookBtn" disabled class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-gray-400 text-white transition max-w-xs">{{ labels['open_notebook'] }}</button>
         </div>
     </div>
+</div>
+
+<!-- Éléments cachés pour le JavaScript -->
+<div style="display: none;">
+    <script id="labels_json" type="application/json">{{ labels | tojson }}</script>
+    <div id="select_all_fields_text">{{ labels['select_all_fields'] }}</div>
+    <div id="generating_text">{{ labels['generating'] }}</div>
+    <div id="building_prompt_text">{{ labels['building_prompt'] }}</div>
+    <div id="error_generating_prompt_text">{{ labels['error_generating_prompt'] }}</div>
+    <div id="prompt_unavailable_text">{{ labels['prompt_unavailable'] }}</div>
+    <div id="response_unavailable_text">{{ labels['response_unavailable'] }}</div>
+    <div id="request_error_text">{{ labels['request_error'] }}</div>
+    <div id="basthon_console_url">{{ url_for('static', filename='basthon/basthon-console/index.html') }}</div>
+    <div id="basthon_notebook_url">{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}</div>
 </div>
 
 <style>
@@ -99,376 +117,5 @@
 }
 </style>
 
-<script>
-const labels_js = {{ labels | tojson }};
-let data = {};
-let selectedNiveau = null;
-let selectedTheme = null;
-let selectedDifficulte = 0;
-
-async function chargerData() {
-    try {
-        const response = await fetch('/api/generateur_data');
-        data = await response.json();
-
-        const niveauContainer = document.getElementById('niveauContainer');
-        niveauContainer.innerHTML = '';
-
-        const ordreNiveaux = ["Troisième", "SNT", "Première", "Terminale"];
-
-        ordreNiveaux.forEach(niveau => {
-            if (data[niveau]) {
-                const btn = document.createElement('div');
-                btn.className = 'btn-choice';
-                btn.textContent = niveau;
-                btn.dataset.value = niveau;
-                btn.addEventListener('click', () => {
-                    selectedNiveau = niveau;
-                    selectedTheme = null;
-                    selectedDifficulte = 0;
-                    updateSelection();
-                    afficherThemes();
-                    updateDescription();
-                });
-                niveauContainer.appendChild(btn);
-            }
-        });
-
-        // Ajouter les autres niveaux non listés explicitement
-        Object.keys(data).forEach(niveau => {
-            if (!ordreNiveaux.includes(niveau)) {
-                const btn = document.createElement('div');
-                btn.className = 'btn-choice';
-                btn.textContent = niveau;
-                btn.dataset.value = niveau;
-                btn.addEventListener('click', () => {
-                    selectedNiveau = niveau;
-                    selectedTheme = null;
-                    selectedDifficulte = 0;
-                    updateSelection();
-                    afficherThemes();
-                    updateDescription();
-                });
-                niveauContainer.appendChild(btn);
-            }
-        });
-    } catch (error) {
-        console.error('Erreur chargement données:', error);
-    }
-}
-
-function afficherThemes() {
-    const themeContainer = document.getElementById('themeContainer');
-    themeContainer.innerHTML = '';
-    if (!selectedNiveau || !data[selectedNiveau]) return;
-
-    data[selectedNiveau].forEach(themeObj => {
-        const btn = document.createElement('div');
-        btn.className = 'btn-choice';
-        btn.textContent = themeObj.thème;
-        btn.dataset.value = themeObj.thème;
-        btn.addEventListener('click', () => {
-            selectedTheme = themeObj.thème;
-            selectedDifficulte = 0;
-            updateSelection();
-            updateDescription();
-        });
-        themeContainer.appendChild(btn);
-    });
-}
-
-function updateSelection() {
-    document.querySelectorAll('#niveauContainer .btn-choice').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.value === selectedNiveau);
-    });
-    document.querySelectorAll('#themeContainer .btn-choice').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.value === selectedTheme);
-    });
-    document.querySelectorAll('.star').forEach(star => {
-        const val = parseInt(star.dataset.value);
-        if (val <= selectedDifficulte) {
-            star.classList.add('selected');
-        } else {
-            star.classList.remove('selected');
-        }
-    });
-}
-
-function updateDescription() {
-    const descriptionExercice = document.getElementById('descriptionExercice');
-    const genererBtn = document.getElementById('genererBtn');
-
-    if (selectedNiveau && selectedTheme && selectedDifficulte && data[selectedNiveau]) {
-        const themeObj = data[selectedNiveau].find(t => t.thème === selectedTheme);
-        if (themeObj) {
-            const nivObj = themeObj.niveaux.find(n => n.niveau === selectedDifficulte);
-            if (nivObj) {
-                descriptionExercice.textContent = nivObj.description;
-                genererBtn.disabled = false;
-                genererBtn.classList.remove('bg-gray-400');
-                genererBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-                return;
-            }
-        }
-    }
-    descriptionExercice.textContent = '{{ labels['select_all_fields'] }}';
-    genererBtn.disabled = true;
-    genererBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-    genererBtn.classList.add('bg-gray-400');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    chargerData();
-
-    document.querySelectorAll('.star').forEach(star => {
-        star.addEventListener('click', () => {
-            selectedDifficulte = parseInt(star.dataset.value);
-
-            document.querySelectorAll('.star').forEach(s => {
-                if (parseInt(s.dataset.value) <= selectedDifficulte) {
-                    s.classList.add('selected');
-                } else {
-                    s.classList.remove('selected');
-                }
-            });
-
-            updateDescription();
-        });
-    });
-
-    document.getElementById('genererBtn').addEventListener('click', async () => {
-        const niveau = selectedNiveau;
-        const theme = selectedTheme;
-        const difficulte = selectedDifficulte;
-        const description = document.getElementById('descriptionExercice').textContent;
-
-        const resultatIA = document.getElementById('resultatIA');
-        const promptAffiche = document.getElementById('promptAffiche');
-
-        // Désactiver les boutons pendant la génération
-        const actionButtons = ['downloadNotebookBtn', 'downloadScriptBtn', 'ouvrirConsoleBtn', 'ouvrirNotebookBtn'];
-        actionButtons.forEach(id => {
-            const btn = document.getElementById(id);
-            btn.disabled = true;
-            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-            btn.classList.add('bg-gray-400');
-        });
-
-        resultatIA.textContent = "{{ labels['generating'] }}";
-        promptAffiche.textContent = "{{ labels['building_prompt'] }}";
-
-        try {
-            // Récupérer la valeur debutant depuis le JSON pédagogique
-            let debutant = false;
-            if (data[niveau]) {
-                const themeObj = data[niveau].find(t => t.thème === theme);
-                if (themeObj && themeObj.niveaux) {
-                    const niveauObj = themeObj.niveaux.find(n => n.niveau === difficulte);
-                    if (niveauObj && typeof niveauObj.debutant !== 'undefined') {
-                        debutant = niveauObj.debutant;
-                    }
-                }
-            }
-
-            const responsePrompt = await fetch('/api/generer_exercice', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    niveau: niveau,
-                    theme: theme,
-                    difficulte: difficulte,
-                    description: description,
-                    debutant: debutant
-                })
-            });
-            const dataPrompt = await responsePrompt.json();
-
-            if (dataPrompt.error) {
-                promptAffiche.textContent = "{{ labels['error_generating_prompt'] }} " + dataPrompt.error;
-                resultatIA.textContent = "";
-                return;
-            }
-
-            promptAffiche.textContent = dataPrompt.prompt || "{{ labels['prompt_unavailable'] }}";
-            resultatIA.textContent = dataPrompt.response || "{{ labels['response_unavailable'] }}";
-
-            // Réactiver les boutons après génération
-            actionButtons.forEach(id => {
-                const btn = document.getElementById(id);
-                btn.disabled = false;
-                btn.classList.remove('bg-gray-400');
-                btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-            });
-        } catch (error) {
-            promptAffiche.textContent = "";
-            resultatIA.textContent = "{{ labels['request_error'] }} " + error;
-        }
-    });
-});
-
-// Toggle affichage du prompt utilisé
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('togglePromptBtn');
-    const promptPre = document.getElementById('promptAffiche');
-    toggleBtn.addEventListener('click', () => {
-        if (promptPre.style.display === 'none') {
-            promptPre.style.display = 'block';
-            toggleBtn.textContent = labels_js['hide_prompt'];
-        } else {
-            promptPre.style.display = 'none';
-            toggleBtn.textContent = labels_js['show_prompt'];
-        }
-    });
-});
-
-document.getElementById('toggleResultatBtn').addEventListener('click', () => {
-    const pre = document.getElementById('resultatIA');
-    const btn = document.getElementById('toggleResultatBtn');
-    if (pre.style.display === 'none') {
-        pre.style.display = 'block';
-        btn.textContent = labels_js['hide_generated_exercise'];
-    } else {
-        pre.style.display = 'none';
-        btn.textContent = labels_js['show_generated_exercise'];
-    }
-});
-
-// Téléchargement Jupyter Notebook
-document.getElementById('downloadNotebookBtn').addEventListener('click', () => {
-    const code = document.getElementById('resultatIA').textContent;
-    const notebook = {
-        "cells": [
-            {
-                "cell_type": "markdown",
-                "metadata": {},
-                "source": code.split('\n').map(line => line + '\n')
-            }
-        ],
-        "metadata": {
-            "kernelspec": {
-                "display_name": "Python 3",
-                "language": "python",
-                "name": "python3"
-            },
-            "language_info": {
-                "name": "python",
-                "version": "3.8"
-            }
-        },
-        "nbformat": 4,
-        "nbformat_minor": 2
-    };
-
-    // Envoi automatique du notebook au serveur
-    fetch('/api/upload_notebook', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(notebook)
-    }).then(response => {
-        if (!response.ok) {
-            console.error('Erreur upload notebook');
-        }
-    }).catch(err => {
-        console.error('Erreur upload notebook', err);
-    });
-
-    const blob = new Blob([JSON.stringify(notebook, null, 2)], {type: "application/json"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "exercice.ipynb";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-});
-
-// Ouvrir dans la console Python
-document.getElementById('ouvrirConsoleBtn').addEventListener('click', () => {
-    const raw = document.getElementById('resultatIA').textContent;
-
-    let transformed = '';
-    const codeBlockRegex = /```(?:python)?\n([\s\S]*?)```/g;
-    let lastIndex = 0;
-    let match;
-
-    while ((match = codeBlockRegex.exec(raw)) !== null) {
-        // Partie avant le bloc de code => commenter
-        const before = raw.slice(lastIndex, match.index);
-        before.split('\n').forEach(line => {
-            transformed += '# ' + line + '\n';
-        });
-
-        // Bloc de code => supprimer indentation commune
-        const codeBlock = match[1];
-        const lines = codeBlock.split('\n');
-        const indentLengths = lines
-            .filter(line => line.trim() !== '')
-            .map(line => line.match(/^(\s*)/)[1].length);
-        const minIndent = indentLengths.length > 0 ? Math.min(...indentLengths) : 0;
-
-        lines.forEach(line => {
-            transformed += line.slice(minIndent) + '\n';
-        });
-
-        lastIndex = codeBlockRegex.lastIndex;
-    }
-
-    // Partie après le dernier bloc
-    const after = raw.slice(lastIndex);
-    after.split('\n').forEach(line => {
-        transformed += '# ' + line + '\n';
-    });
-
-    const encoded = encodeURIComponent(transformed);
-    const basthonUrl = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python&script=" + encoded;
-    window.open(basthonUrl, '_blank');
-});
-
-document.getElementById('downloadScriptBtn').addEventListener('click', () => {
-    const raw = document.getElementById('resultatIA').textContent;
-
-    let transformed = '';
-    const codeBlockRegex = /```(?:python)?\n([\s\S]*?)```/g;
-    let lastIndex = 0;
-    let match;
-
-    while ((match = codeBlockRegex.exec(raw)) !== null) {
-        const before = raw.slice(lastIndex, match.index);
-        before.split('\n').forEach(line => {
-            transformed += '# ' + line + '\n';
-        });
-
-        transformed += match[1] + '\n';
-
-        lastIndex = codeBlockRegex.lastIndex;
-    }
-
-    const after = raw.slice(lastIndex);
-    after.split('\n').forEach(line => {
-        transformed += '# ' + line + '\n';
-    });
-
-    const blob = new Blob([transformed], {type: "text/x-python"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "exercice.py";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-});
-
-// Ouvrir dans notebook Python
-document.getElementById('ouvrirNotebookBtn').addEventListener('click', () => {
-    const fileUrl = "{{ url_for('static', filename='uploads/temp/1_programme_nsi_terminal.ipynb') }}";
-    const notebookLocalUrl = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?from=" + encodeURIComponent(window.location.origin + fileUrl);
-    window.open(notebookLocalUrl, '_blank');
-});
-</script>
+<script src="{{ url_for('static', filename='js/generateur_exercice.js') }}"></script>
 {% endblock %}

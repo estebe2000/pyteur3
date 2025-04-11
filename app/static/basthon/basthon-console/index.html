@@ -7,5 +7,64 @@ window.getBasthonCode = function() {
         return '';
     }
 };
+
+// Fonction pour récupérer les paramètres de l'URL
+function getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const pairs = queryString.split('&');
+    
+    for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i].split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    
+    return params;
+}
+
+// Vérifier si un ID de script est fourni
+document.addEventListener('DOMContentLoaded', function() {
+    const params = getUrlParams();
+    
+    if (params.scriptId) {
+        // Récupérer le script depuis le serveur
+        fetch('/api/get_temp_script/' + params.scriptId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(script => {
+                // Attendre que l'éditeur soit chargé
+                const checkEditor = setInterval(function() {
+                    try {
+                        const editor = window.ace.edit(document.querySelector('.ace_editor'));
+                        if (editor) {
+                            editor.setValue(script);
+                            clearInterval(checkEditor);
+                        }
+                    } catch(e) {
+                        // L'éditeur n'est pas encore prêt
+                    }
+                }, 100);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération du script:', error);
+                // Afficher un message d'erreur dans l'éditeur une fois qu'il est chargé
+                const checkEditor = setInterval(function() {
+                    try {
+                        const editor = window.ace.edit(document.querySelector('.ace_editor'));
+                        if (editor) {
+                            editor.setValue("# Erreur: Impossible de récupérer le script.\n# " + error.message);
+                            clearInterval(checkEditor);
+                        }
+                    } catch(e) {
+                        // L'éditeur n'est pas encore prêt
+                    }
+                }, 100);
+            });
+    }
+});
 </script>
 </body></html>

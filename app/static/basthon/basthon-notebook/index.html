@@ -1,1 +1,42 @@
-<!doctype html><html><head><meta charset="utf-8"/><meta http-equiv="cache-control" content="no-cache"/><title>Basthon Notebook</title><link rel="icon" type="image/x-icon" href="assets/3bc92ab25864c04ad5c8.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script>var sys_info={"kernel-version":"0.73.5","commit-hash":"578204f8633fb4eefa09c9312db6ea90d23174e0","commit-date":"2025-04-03T19:39:09.000Z"}</script><script src="assets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe&delayStartupUntil=configured" async></script><script defer="defer" src="assets/main.73cc42dfca7535f7f9de.js?5013712df66b89c5873c"></script><link href="assets/main.2d3fc18cf2d7d755fc7f.css?5013712df66b89c5873c" rel="stylesheet"></head><body></body></html>
+<!doctype html><html><head><meta charset="utf-8"/><meta http-equiv="cache-control" content="no-cache"/><title>Basthon Notebook</title><link rel="icon" type="image/x-icon" href="assets/3bc92ab25864c04ad5c8.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script>var sys_info={"kernel-version":"0.73.5","commit-hash":"578204f8633fb4eefa09c9312db6ea90d23174e0","commit-date":"2025-04-03T19:39:09.000Z"}</script><script src="assets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe&delayStartupUntil=configured" async></script><script defer="defer" src="assets/main.73cc42dfca7535f7f9de.js?5013712df66b89c5873c"></script><link href="assets/main.2d3fc18cf2d7d755fc7f.css?5013712df66b89c5873c" rel="stylesheet"></head><body>
+<script>
+// Fonction pour récupérer les paramètres de l'URL
+function getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const pairs = queryString.split('&');
+    
+    for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i].split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    
+    return params;
+}
+
+// Vérifier si un ID de notebook est fourni
+document.addEventListener('DOMContentLoaded', function() {
+    const params = getUrlParams();
+    
+    if (params.notebookId) {
+        // Récupérer le notebook depuis le serveur
+        fetch('/api/get_temp_notebook/' + params.notebookId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(notebook => {
+                // Le notebook sera chargé par le système Basthon
+                window.notebookToLoad = notebook;
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération du notebook:', error);
+                // Afficher un message d'erreur
+                alert("Erreur: Impossible de récupérer le notebook. " + error.message);
+            });
+    }
+});
+</script>
+</body></html>

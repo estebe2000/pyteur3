@@ -1,8 +1,8 @@
 {
     "active_provider": "mistral",
     "ollama": {
-        "url": "http://ollama:11434",
-        "model": "qwen2.5-coder:0.5b"
+        "url": "http://localhost:11434",
+        "model": "mistral:7b"
     },
     "mistral": {
         "api_key": "DcCuwA1kbtGMShFRunnTJi6OtVgjQxGG",

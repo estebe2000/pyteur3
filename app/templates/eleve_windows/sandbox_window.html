@@ -30,19 +30,73 @@
 
         </div>
 
-        <div class="w-full h-[80vh] border rounded-lg overflow-hidden">
-            <iframe id="sandbox-iframe" src="{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=python" class="w-full h-full border-0"></iframe>
+        <div class="w-full h-[80vh] border rounded-lg overflow-hidden" id="iframe-container">
+            <!-- L'iframe sera créée dynamiquement par JavaScript -->
         </div>
 
         <script>
-            function loadSandbox(kernel, type) {
-                const iframe = document.getElementById('sandbox-iframe');
-                let url = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}?kernel=" + encodeURIComponent(kernel);
+            // Définir les URL de base au moment du rendu du template
+            const basthonConsoleUrl = "{{ url_for('static', filename='basthon/basthon-console/index.html') }}";
+            const basthonNotebookUrl = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}";
+            
+            // Fonction pour créer et charger l'iframe
+            function createAndLoadIframe(kernel, type) {
+                // Supprimer l'iframe existante si elle existe
+                const container = document.getElementById('iframe-container');
+                container.innerHTML = '';
+                
+                // Créer une nouvelle iframe
+                const iframe = document.createElement('iframe');
+                iframe.id = 'sandbox-iframe';
+                iframe.className = 'w-full h-full border-0';
+                
+                // Déterminer l'URL en fonction du type
+                let url = basthonConsoleUrl;
                 if (type === 'notebook') {
-                    url = "{{ url_for('static', filename='basthon/basthon-notebook/index.html') }}?kernel=" + encodeURIComponent(kernel);
+                    url = basthonNotebookUrl;
                 }
+                
+                // Ajouter le paramètre kernel
+                url += "?kernel=" + encodeURIComponent(kernel);
+                
+                // Définir l'URL et ajouter l'iframe au conteneur
                 iframe.src = url;
+                container.appendChild(iframe);
+                
+                console.log("Iframe Basthon créée avec URL:", url);
             }
+            
+            // Fonction appelée par les boutons
+            function loadSandbox(kernel, type) {
+                createAndLoadIframe(kernel, type);
+            }
+            
+            // Initialiser l'iframe au chargement de la fenêtre
+            window.addEventListener('load', function() {
+                // Créer l'iframe initiale avec Python console
+                createAndLoadIframe('python', 'console');
+                console.log("Iframe Basthon initialisée");
+            });
+            
+            // Réinitialiser l'iframe lorsque la fenêtre est ouverte
+            document.addEventListener('DOMContentLoaded', function() {
+                const sandboxWindow = document.getElementById('sandbox-window');
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'style' && 
+                            sandboxWindow.style.display === 'block' && 
+                            !sandboxWindow.dataset.initialized) {
+                            // Marquer la fenêtre comme initialisée
+                            sandboxWindow.dataset.initialized = 'true';
+                            // Créer l'iframe
+                            createAndLoadIframe('python', 'console');
+                            console.log("Iframe Basthon initialisée lors de l'ouverture de la fenêtre");
+                        }
+                    });
+                });
+                
+                observer.observe(sandboxWindow, { attributes: true });
+            });
         </script>
     </div>
 </div>

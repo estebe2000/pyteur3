@@ -28,15 +28,5 @@
       "Impossible, les listes sont immuables"
     ],
     "bonne_reponse": 1
-  },
-  {
-    "question": "Comment s'appelle la machine imaginée par Charles Babbage au 19ème siècle, considérée comme l'ancêtre conceptuel de l'ordinateur moderne programmable ?",
-    "propositions": [
-      "La Pascaline",
-      "La machine à différences",
-      "La machine analytique",
-      "Le métier Jacquard"
-    ],
-    "bonne_reponse": 2
   }
 ]
