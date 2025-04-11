@@ -1,60 +1,64 @@
-# Pyteur
+# 📚 PYTEUR OS
 
-**Pyteur** est une plateforme éducative collaborative open-source, conçue pour les enseignants et élèves, intégrant la génération d’exercices assistée par IA, la gestion de classes, la messagerie, le suivi pédagogique et des outils interactifs.  
-Ce projet est développé pour l’Éducation Nationale française, sous licence **MIT**.
+**Pyteur OS** est une plateforme éducative collaborative open-source conçue pour l'Éducation Nationale française. Développée dans le cadre d'un projet universitaire (Licence 3), cette solution intègre la génération d'exercices assistée par IA, la gestion de classes, la messagerie, le suivi pédagogique et des outils interactifs pour créer un environnement d'apprentissage complet.
 
----
+![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.10+-green.svg)
+![Flask](https://img.shields.io/badge/Flask-2.2+-lightgrey.svg)
 
-## Fonctionnalités principales
+## 🚀 Fonctionnalités principales
 
-- **Gestion des utilisateurs** (élèves, professeurs, administrateurs)
-- **Gestion des classes et groupes**
-- **Messagerie interne** avec interface fenêtrée
-- **Gestion documentaire** (import/export, affectation) avec limite de taille
-- **Création et génération d’exercices assistée par IA**
-- **QCM interactifs** et **QCM flash** (mode rapide)
-- **Suivi personnalisé des élèves** avec statistiques détaillées
-- **Tableau de bord** avec widgets personnalisables
-- **Support multi-langues** (français, anglais)
-- **Importation d’utilisateurs** via CSV
-- **Gestion des fournisseurs IA** (Ollama, autres)
-- **Interface moderne** avec :
-  - Sections repliables
-  - Graphiques dynamiques (Chart.js)
-  - Mode fenêtré pour les élèves
-  - Thème sombre/clair
+- **👥 Gestion des utilisateurs** - Élèves, professeurs, administrateurs avec rôles et permissions
+- **🏫 Gestion des classes et groupes** - Organisation pédagogique flexible
+- **💬 Messagerie interne** - Communication sécurisée avec interface fenêtrée
+- **📂 Gestion documentaire** - Import/export, affectation avec limite de taille
+- **✍️ Création d'exercices assistée par IA** - Génération automatique de contenu pédagogique
+- **📝 QCM interactifs** - Mode standard et flash (rapide)
+- **📊 Suivi personnalisé des élèves** - Statistiques détaillées et recommandations
+- **📱 Interface moderne** - Responsive, thème clair/sombre, mode fenêtré pour les élèves
+- **🌐 Support multilingue** - Français et anglais
+- **📋 Importation d'utilisateurs** - Via fichiers CSV
+- **🤖 Intégration IA** - Support pour Ollama et autres fournisseurs
 
----
+## 🛠️ Technologies utilisées
 
-## Structure du projet (simplifiée)
+- **Backend**
+  - Python 3.10+
+  - Flask (framework web)
+  - SQLAlchemy (ORM)
+  - Flask-Login (authentification)
+  - Flask-WTF (formulaires et CSRF)
+  - Gunicorn (serveur WSGI production)
 
-```
-├── app/
-│   ├── __init__.py             # Configuration Flask
-│   ├── routes/                 # 12 blueprints (utilisateurs, QCM, IA, etc.)
-│   ├── models.py               # Modèles SQLAlchemy
-│   ├── ia_client.py            # Client IA avec cache
-│   ├── prompts_generateur.py   # Prompts IA optimisés
-│   ├── static/
-│   │   ├── css/                # CSS (Bootstrap + Tailwind)
-│   │   ├── js/                 # JavaScript (jQuery, Chart.js, DataTables)
-│   │   ├── basthon/            # Intégration Basthon
-│   │   └── uploads/            # Fichiers utilisateurs avec quotas
-│   ├── templates/
-│   │   ├── eleve_windows/      # Interface fenêtrée élève
-│   │   └── ...                 # 30+ templates
-│   ├── lang/                   # Internationalisation
-│   └── *.json                  # Configurations (menu, drive)
-│
-├── docker/                     # Fichiers Docker
-├── scripts/                    # Scripts utilitaires
-├── tests/                      # Tests unitaires
-└── *.py                        # Scripts principaux
-```
+- **Frontend**
+  - Bootstrap et Tailwind CSS (design responsive)
+  - JavaScript / jQuery
+  - Chart.js (graphiques dynamiques)
+  - DataTables (tableaux interactifs)
+  - FontAwesome (icônes)
 
----
+- **IA et Intégrations**
+  - Ollama (IA locale)
+  - API Mistral (option cloud)
+  - Basthon (exécution Python dans le navigateur)
 
-## Installation rapide
+- **Déploiement**
+  - Docker / Docker Compose
+  - Gunicorn (serveur WSGI)
+  - Scripts d'automatisation (systemd, batch)
+
+## 📋 Prérequis
+
+- Python 3.10 ou supérieur
+- pip (gestionnaire de paquets Python)
+- Docker et Docker Compose (optionnel, pour déploiement conteneurisé)
+- Navigateur web moderne (Chrome, Firefox, Edge, Safari)
+- 2 Go RAM minimum (4 Go recommandés)
+- 1 Go d'espace disque (hors modèles IA)
+
+## 🔧 Installation
+
+### Installation locale
 
 1. **Cloner le dépôt**
 
@@ -82,27 +86,13 @@ pip install -r requirements.txt
 python manage.py --init
 ```
 
-5. **Lancer l’application**
+5. **Lancer l'application**
 
 ```bash
 python run.py
 ```
 
----
-
-## Configuration
-
-Les paramètres principaux sont configurés dans `config.py` :
-
-```python
-# Configuration de base
-SECRET_KEY = 'dev_secret_key'  # À remplacer en production
-SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/db.sqlite'  # SQLite par défaut
-
-# Variables d'environnement prioritaires
-# export DATABASE_URL=postgresql://user:pass@localhost/dbname
-# export SECRET_KEY=votre_clé_secrète
-```
+L'application sera accessible à l'adresse http://localhost:5000
 
 ### Installation avec Docker
 
@@ -122,25 +112,55 @@ docker-compose up
 docker-compose -f docker-compose-gunicorn.yml up
 ```
 
-Configuration disponible dans `docker-compose.yml` (développement) ou `docker-compose-gunicorn.yml` (production):
-- Service principal `pyteur_os` sur le port 5000 (dev) ou 5001 (prod)
-- Service `ollama` pour l'IA locale (port 11434)
-- Variables d'environnement configurables:
-  ```yaml
-  environment:
-    - FLASK_ENV=development|production
-    - RESET_DB=true|false
-    - SECRET_KEY=votre_clé_secrète
-    - DATABASE_URL=postgresql://user:pass@host/dbname
-  ```
+## 📁 Structure du projet
 
-#### Démarrage automatique avec Docker Compose
+```
+├── app/                        # Dossier principal de l'application
+│   ├── __init__.py             # Configuration Flask
+│   ├── routes/                 # Contrôleurs (12 blueprints)
+│   ├── models.py               # Modèles SQLAlchemy
+│   ├── ia_client.py            # Client IA avec cache
+│   ├── static/                 # Ressources statiques
+│   │   ├── css/                # Styles CSS
+│   │   ├── js/                 # Scripts JavaScript
+│   │   ├── basthon/            # Intégration Basthon
+│   │   └── uploads/            # Fichiers utilisateurs
+│   ├── templates/              # Templates Jinja2
+│   │   ├── eleve_windows/      # Interface fenêtrée élève
+│   │   └── ...                 # Autres templates
+│   └── lang/                   # Internationalisation
+├── docker-compose*.yml         # Configurations Docker
+├── Dockerfile                  # Instructions de build Docker
+├── gunicorn_config.py          # Configuration Gunicorn
+├── manage.py                   # Script de gestion
+├── requirements.txt            # Dépendances Python
+├── run.py                      # Point d'entrée développement
+└── wsgi.py                     # Point d'entrée production
+```
+
+## ⚙️ Configuration
+
+Les paramètres principaux sont configurés dans `config.py` :
+
+```python
+# Configuration de base
+SECRET_KEY = 'dev_secret_key'  # À remplacer en production
+SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/db.sqlite'  # SQLite par défaut
+
+# Variables d'environnement prioritaires
+# export DATABASE_URL=postgresql://user:pass@localhost/dbname
+# export SECRET_KEY=votre_clé_secrète
+```
+
+## 🚀 Déploiement en production
+
+### Avec Docker et démarrage automatique
 
 Pour configurer le démarrage automatique des conteneurs Docker au démarrage du système:
 
 **Sous Linux:**
 1. Copiez le fichier `pyteur-docker.service` dans `/etc/systemd/system/`
-2. Modifiez le chemin dans `WorkingDirectory=/path/to/pyteur3` pour qu'il corresponde à votre installation
+2. Modifiez le chemin dans `WorkingDirectory=/path/to/pyteur3`
 3. Activez et démarrez le service:
    ```bash
    sudo systemctl daemon-reload
@@ -153,7 +173,7 @@ Pour configurer le démarrage automatique des conteneurs Docker au démarrage du
    `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`
 2. Modifiez le chemin dans le script si nécessaire
 
-### Déploiement avec Gunicorn (sans Docker)
+### Sans Docker (avec Gunicorn)
 
 Pour un déploiement en production sans Docker, utilisez les scripts fournis:
 
@@ -165,77 +185,41 @@ Pour un déploiement en production sans Docker, utilisez les scripts fournis:
 start_gunicorn.bat
 ```
 
-Ces scripts démarrent l'application avec Gunicorn sur le port 5001, avec des paramètres optimisés définis dans `gunicorn_config.py`.
+## 📝 TODO
 
-> **Notes importantes**:
-> - Pour la production, configurez :
->   - `FLASK_ENV=production`
->   - Une base de données externe via `DATABASE_URL`
->   - Une `SECRET_KEY` robuste
-> - Le volume `ollama_data` persiste les modèles IA entre les redémarrages
-> - Le port 5001 est utilisé pour éviter les conflits avec d'autres services sur le port 5000
+- [ ] **Sécurité**
+  - [ ] Améliorer la validation des uploads
+  - [ ] Renforcer les politiques de mot de passe
+  - [ ] Ajouter l'authentification à deux facteurs
 
----
+- [ ] **Performance**
+  - [ ] Optimiser le cache des requêtes IA
+  - [ ] Améliorer les requêtes SQL avec indexation
+  - [ ] Implémenter le chargement différé des assets
 
-## Technologies utilisées
+- [ ] **Fonctionnalités**
+  - [ ] Intégration LTI pour compatibilité ENT
+  - [ ] Synchronisation avec Pronote
+  - [ ] Module de compétences avancé
+  - [ ] Export des données pédagogiques
 
-- **Python 3.10+**
-- **Flask** (framework web)
-- **SQLAlchemy** (ORM)
-- **Bootstrap** et **Tailwind CSS** (design responsive)
-- **FontAwesome** (icônes)
-- **Chart.js** (graphiques dynamiques)
-- **jQuery** (manipulation DOM)
-- **DataTables** (tableaux interactifs)
-- **Ollama** (API IA)
-- **Basthon** (exécution Python dans le navigateur) : [https://basthon.fr](https://basthon.fr)
+## 📄 Licence
 
----
+Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
 
-## État d'avancement
+## 👥 Auteurs et contributeurs
 
-✅ **Fonctionnalités implémentées:**
-- Gestion complète des utilisateurs et classes
-- Messagerie avec notifications
-- Système de documents avec quotas
-- QCM standards et flash
-- Tableau de bord professeur/élève
-- Intégration Basthon et IA
-- Internationalisation (fr/en)
+- **Équipe de développement L3 Informatique**
+  - Université [Nom de l'université]
+  - Promotion 2024-2025
 
-🚧 **En développement:**
-- Amélioration du système de défis
-- Tableaux de bord avancés
-- Export des données pédagogiques
+## 🔗 Liens utiles
 
-💡 **Idées futures:**
-- Intégration LTI
-- Synchronisation avec Pronote
-- Module de compétences
+- [Documentation Flask](https://flask.palletsprojects.com/)
+- [Documentation SQLAlchemy](https://docs.sqlalchemy.org/)
+- [Basthon](https://basthon.fr/) - Exécution Python dans le navigateur
+- [Ollama](https://ollama.ai/) - IA locale pour l'éducation
 
 ---
 
-## Améliorations techniques
-
-- **Sécurité:**
-  - Validation des uploads
-  - Politiques de mot de passe
-  - Protection CSRF
-
-- **Performance:**
-  - Cache des requêtes IA
-  - Optimisation des requêtes SQL
-  - Chargement différé des assets
-
-- **Évolutivité:**
-  - Support PostgreSQL
-  - Architecture modulaire
-  - API REST
-
----
-
-## Licence
-
-Ce projet est open-source sous licence **MIT** et destiné à un usage pédagogique dans l’Éducation Nationale.
-
----
+Développé avec ❤️ pour l'Éducation Nationale française
