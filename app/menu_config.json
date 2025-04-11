@@ -16,7 +16,7 @@
       "name": "Py-rates",
       "url": "https://py-rates.fr/",
       "icon": "fa-link",
-      "target": "_blank",
+      "target": "window",
       "visible": true
     }
   }

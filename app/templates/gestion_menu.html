@@ -35,16 +35,16 @@
         {% if menu_config.external_links %}
             {% for link_id, link_data in menu_config.external_links.items() %}
                 <div class="external-link-item border p-4 mb-4 rounded-lg bg-gray-50">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
+                    <div class="flex flex-wrap gap-4 items-end">
+                        <div class="w-1/4 min-w-[150px]">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nom du lien</label>
                             <input type="text" name="link_name_{{ link_id }}" value="{{ link_data.name }}" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
                         </div>
-                        <div>
+                        <div class="flex-1 min-w-[200px]">
                             <label class="block text-sm font-medium text-gray-700 mb-1">URL</label>
                             <input type="url" name="link_url_{{ link_id }}" value="{{ link_data.url }}" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
                         </div>
-                        <div>
+                        <div class="w-1/4 min-w-[150px]">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Icône</label>
                             <div class="flex">
                                 <select name="link_icon_{{ link_id }}" class="icon-selector w-full px-3 py-2 border border-gray-300 rounded-md">
@@ -74,20 +74,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="flex-1 min-w-[200px]">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Comportement</label>
                             <select name="link_target_{{ link_id }}" class="w-full px-3 py-2 border border-gray-300 rounded-md">
                                 <option value="window" {% if link_data.target == 'window' %}selected{% endif %}>Ouvrir dans une fenêtre</option>
                                 <option value="_blank" {% if link_data.target == '_blank' %}selected{% endif %}>Ouvrir dans un nouvel onglet</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="mt-3">
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" name="link_visible_{{ link_id }}" {% if link_data.visible %}checked{% endif %} class="form-checkbox h-5 w-5 text-blue-600">
-                            <span class="ml-2 text-gray-700">Visible dans le menu</span>
-                        </label>
-                        <button type="button" class="delete-link float-right px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="{{ link_id }}">Supprimer</button>
+                        <div class="flex items-center gap-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="link_visible_{{ link_id }}" {% if link_data.visible %}checked{% endif %} class="form-checkbox h-5 w-5 text-blue-600">
+                                <span class="ml-2 text-gray-700">Visible</span>
+                            </label>
+                            <button type="button" class="delete-link px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="{{ link_id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
                     </div>
                     <input type="hidden" name="link_ids" value="{{ link_id }}">
                 </div>
@@ -104,16 +106,16 @@
 
 <template id="link-template">
     <div class="external-link-item border p-4 mb-4 rounded-lg bg-gray-50">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+        <div class="flex flex-wrap gap-4 items-end">
+            <div class="w-1/4 min-w-[150px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nom du lien</label>
                 <input type="text" name="link_name_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
             </div>
-            <div>
+            <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">URL</label>
                 <input type="url" name="link_url_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
             </div>
-            <div>
+            <div class="w-1/4 min-w-[150px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Icône</label>
                 <div class="flex">
                     <select name="link_icon_NEW_ID" class="icon-selector w-full px-3 py-2 border border-gray-300 rounded-md">
@@ -143,20 +145,22 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Comportement</label>
                 <select name="link_target_NEW_ID" class="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="window">Ouvrir dans une fenêtre</option>
                     <option value="_blank">Ouvrir dans un nouvel onglet</option>
                 </select>
             </div>
-        </div>
-        <div class="mt-3">
-            <label class="inline-flex items-center">
-                <input type="checkbox" name="link_visible_NEW_ID" checked class="form-checkbox h-5 w-5 text-blue-600">
-                <span class="ml-2 text-gray-700">Visible dans le menu</span>
-            </label>
-            <button type="button" class="delete-link float-right px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="NEW_ID">Supprimer</button>
+            <div class="flex items-center gap-2">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="link_visible_NEW_ID" checked class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700">Visible</span>
+                </label>
+                <button type="button" class="delete-link px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600" data-link-id="NEW_ID">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
         </div>
         <input type="hidden" name="link_ids" value="NEW_ID">
     </div>

@@ -15,6 +15,7 @@
 {% block content %}
 <div class="container mx-auto px-4">
 
+{% if current_user.role == 'admin' %}
 <h2 class="text-2xl font-bold mb-4">{{ labels['ai_providers'] }}</h2>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -50,15 +51,36 @@
 </div>
 
 <div id="status" class="text-green-600 mb-4"></div>
+{% endif %}
 
 <h2 class="text-2xl font-bold mb-4">{{ labels['chat_ai'] }}</h2>
 
-<div class="mt-6">
-    <textarea id="user-input" rows="4" class="w-full p-2 border rounded" placeholder="{{ labels['write_question_placeholder'] }}"></textarea>
-    <button id="send-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">{{ labels['send'] }}</button>
+<div class="flex flex-col h-full border rounded-lg overflow-hidden" style="min-height: 70vh;">
+    <!-- Historique des conversations -->
+    <div id="chat-history" class="flex-grow overflow-y-auto p-4 bg-gray-50">
+        <div class="text-center text-gray-500 my-4">{{ labels.get('chat_welcome', 'Bienvenue dans le chat IA. Comment puis-je vous aider ?') }}</div>
+    </div>
+    
+    <!-- Zone de saisie -->
+    <div class="border-t p-3 bg-white">
+        <div class="flex items-start">
+            <textarea id="user-input" rows="2" class="flex-grow p-2 border rounded-l-lg resize-none" 
+                      placeholder="{{ labels['write_question_placeholder'] }}"></textarea>
+            <button id="send-btn" class="px-4 py-2 bg-blue-500 text-white rounded-r-lg h-full">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="flex justify-between mt-2 text-sm">
+            <div>
+                <span class="text-gray-500">{{ labels.get('press_enter', 'Appuyez sur Entrée pour envoyer') }}</span>
+                <span class="text-gray-500 ml-4">{{ labels.get('shift_enter', 'Maj+Entrée pour une nouvelle ligne') }}</span>
+            </div>
+            <button id="clear-btn" class="text-red-500 hover:underline">
+                <i class="fas fa-trash-alt mr-1"></i> {{ labels.get('clear_history', 'Effacer l\'historique') }}
+            </button>
+        </div>
+    </div>
 </div>
-
-<div id="response" class="mt-4 p-4 border rounded bg-gray-100"></div>
 
 </div>
 
@@ -160,36 +182,177 @@ async function refreshOllama() {
 
 detectOllama();
 
-document.getElementById('send-btn').addEventListener('click', async () => {
-    const userInput = document.getElementById('user-input').value.trim();
-    if (!userInput) return;
+// Fonction pour envoyer un message à l'IA
+async function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const message = userInput.value.trim();
+    if (!message) return;
 
-    const responseDiv = document.getElementById('response');
-    responseDiv.textContent = "";
-
+    // Ajouter le message de l'utilisateur à l'historique
+    addMessageToHistory('user', message);
+    
+    // Effacer le champ de saisie
+    userInput.value = '';
+    
+    // Ajouter un message de chargement
+    const loadingId = addLoadingMessage();
+    
     try {
         const res = await fetch('/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ message: userInput })
+            body: JSON.stringify({ message: message })
         });
 
+        // Supprimer le message de chargement
+        removeLoadingMessage(loadingId);
+
         if (!res.ok) {
-            responseDiv.textContent = "{{ labels['server_error'] }}: " + res.status;
+            addMessageToHistory('error', "{{ labels['server_error'] }}: " + res.status);
             return;
         }
 
         const data = await res.json();
         if (data.error) {
-            responseDiv.textContent = "{{ labels['error'] }}: " + data.error;
+            addMessageToHistory('error', "{{ labels['error'] }}: " + data.error);
         } else {
-            responseDiv.innerHTML = marked.parse(data.response || "{{ labels['no_response'] }}");
+            addMessageToHistory('ai', data.response || "{{ labels['no_response'] }}");
         }
     } catch (error) {
-        responseDiv.textContent = "{{ labels['error'] }}: " + error.message;
+        // Supprimer le message de chargement en cas d'erreur
+        removeLoadingMessage(loadingId);
+        addMessageToHistory('error', "{{ labels['error'] }}: " + error.message);
     }
+    
+    // Faire défiler l'historique vers le bas
+    scrollHistoryToBottom();
+}
+
+// Fonction pour ajouter un message à l'historique
+function addMessageToHistory(type, content) {
+    const historyDiv = document.getElementById('chat-history');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'mb-4';
+    
+    // Créer l'en-tête du message
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'flex items-center mb-1';
+    
+    // Ajouter l'icône et le nom en fonction du type de message
+    if (type === 'user') {
+        headerDiv.innerHTML = `
+            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-2">
+                <i class="fas fa-user text-xs"></i>
+            </div>
+            <div class="font-semibold">{{ labels.get('you', 'Vous') }}</div>
+        `;
+        messageDiv.className += ' pl-4 border-l-4 border-blue-500';
+    } else if (type === 'ai') {
+        headerDiv.innerHTML = `
+            <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white mr-2">
+                <i class="fas fa-robot text-xs"></i>
+            </div>
+            <div class="font-semibold">{{ labels.get('ai', 'IA') }}</div>
+            <button class="ml-auto text-gray-500 hover:text-blue-500 copy-btn" title="{{ labels.get('copy_to_clipboard', 'Copier dans le presse-papier') }}">
+                <i class="fas fa-copy"></i>
+            </button>
+        `;
+        messageDiv.className += ' pl-4 border-l-4 border-green-500';
+    } else if (type === 'error') {
+        headerDiv.innerHTML = `
+            <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-white mr-2">
+                <i class="fas fa-exclamation-triangle text-xs"></i>
+            </div>
+            <div class="font-semibold">{{ labels.get('error', 'Erreur') }}</div>
+        `;
+        messageDiv.className += ' pl-4 border-l-4 border-red-500';
+    }
+    
+    messageDiv.appendChild(headerDiv);
+    
+    // Créer le contenu du message
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    
+    if (type === 'ai') {
+        contentDiv.innerHTML = marked.parse(content);
+    } else {
+        contentDiv.textContent = content;
+    }
+    
+    messageDiv.appendChild(contentDiv);
+    historyDiv.appendChild(messageDiv);
+    
+    // Ajouter un gestionnaire d'événements pour le bouton de copie
+    if (type === 'ai') {
+        const copyBtn = messageDiv.querySelector('.copy-btn');
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(content).then(() => {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            });
+        });
+    }
+    
+    return messageDiv;
+}
+
+// Fonction pour ajouter un message de chargement
+function addLoadingMessage() {
+    const historyDiv = document.getElementById('chat-history');
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'loading-message flex items-center mb-4 pl-4 border-l-4 border-green-500';
+    loadingDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white mr-2">
+            <i class="fas fa-robot text-xs"></i>
+        </div>
+        <div class="font-semibold">{{ labels.get('ai', 'IA') }}</div>
+        <div class="ml-4 flex space-x-1">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+        </div>
+    `;
+    historyDiv.appendChild(loadingDiv);
+    scrollHistoryToBottom();
+    return loadingDiv.id = 'loading-' + Date.now();
+}
+
+// Fonction pour supprimer le message de chargement
+function removeLoadingMessage(id) {
+    const loadingDiv = document.getElementById(id);
+    if (loadingDiv) {
+        loadingDiv.remove();
+    }
+}
+
+// Fonction pour faire défiler l'historique vers le bas
+function scrollHistoryToBottom() {
+    const historyDiv = document.getElementById('chat-history');
+    historyDiv.scrollTop = historyDiv.scrollHeight;
+}
+
+// Gestionnaire d'événements pour le bouton d'envoi
+document.getElementById('send-btn').addEventListener('click', sendMessage);
+
+// Gestionnaire d'événements pour la touche Entrée
+document.getElementById('user-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+
+// Gestionnaire d'événements pour le bouton d'effacement de l'historique
+document.getElementById('clear-btn').addEventListener('click', () => {
+    const historyDiv = document.getElementById('chat-history');
+    historyDiv.innerHTML = `
+        <div class="text-center text-gray-500 my-4">{{ labels.get('chat_welcome', 'Bienvenue dans le chat IA. Comment puis-je vous aider ?') }}</div>
+    `;
 });
 async function pullOllamaModel() {
     const modelName = document.getElementById('ollama-pull-model').value.trim();

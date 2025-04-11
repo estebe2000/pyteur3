@@ -243,6 +243,31 @@ def api_ollama_pull():
     except Exception as e:
         return {'error': str(e)}, 500
 
+@admin_bp.route('/api/chat', methods=['POST'])
+@login_required
+def api_chat():
+    # Tous les utilisateurs authentifiés peuvent utiliser le chat IA
+    try:
+        data = request.get_json(force=True)
+        message = data.get('message')
+        if not message:
+            return jsonify({'error': 'Message vide'}), 400
+        
+        # Utiliser le client IA pour générer une réponse
+        from app.ia_client import generate_text
+        response = generate_text(message)
+        
+        # Si la réponse est vide ou trop courte, ajouter un message d'erreur
+        if not response or len(response) < 5:
+            return jsonify({'error': 'Aucune réponse générée. Vérifiez la configuration de l\'IA.'}), 500
+        
+        return jsonify({'response': response})
+    except ImportError:
+        # Si le module ia_client n'existe pas ou si la fonction generate_text n'est pas disponible
+        return jsonify({'error': 'Module IA non disponible. Vérifiez l\'installation.'}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @admin_bp.route('/api/save_ia_config', methods=['POST'])
 @login_required
 def api_save_ia_config():

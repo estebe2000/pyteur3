@@ -53,7 +53,19 @@ def sandbox():
 @dashboard_bp.route('/ia')
 @login_required
 def ia():
-    return render_template('ia.html')
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('ia.html', title=labels.get('ai_title', 'Intelligence Artificielle'))
+    else:
+        return render_template('ia.html')
 
 @dashboard_bp.route('/statistiques')
 @login_required

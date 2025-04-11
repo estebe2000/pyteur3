@@ -47,3 +47,29 @@ body {
     position: absolute !important;
     z-index: 9999 !important;
 }
+
+/* Styles spécifiques pour le chat IA */
+.container.mx-auto.px-4 {
+    height: 100vh !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+/* Assurer que le conteneur du chat prend toute la hauteur disponible */
+.flex.flex-col.h-full.border.rounded-lg.overflow-hidden {
+    height: calc(100vh - 80px) !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* Ajuster la hauteur de l'historique des conversations */
+#chat-history {
+    height: calc(100% - 100px) !important;
+}
+
+/* Ajuster les titres pour qu'ils prennent moins de place */
+h2.text-2xl.font-bold.mb-4 {
+    margin: 10px 0 !important;
+    padding: 0 10px !important;
+}
