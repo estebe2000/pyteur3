@@ -94,6 +94,26 @@ python run.py
 
 L'application sera accessible à l'adresse http://localhost:5000
 
+### Comptes par défaut
+
+L'application est préconfigurée avec trois comptes utilisateurs par défaut :
+
+| Type de compte | Identifiant | Mot de passe |
+|----------------|-------------|--------------|
+| Administrateur | admin       | admin        |
+| Professeur     | prof        | prof         |
+| Élève          | eleve       | eleve        |
+
+### Configuration d'Ollama
+
+Si vous utilisez Ollama avec le projet via Docker, vous devez configurer l'URL d'Ollama comme suit :
+
+```
+http://ollama:11434
+```
+
+Cette URL doit être spécifiée dans les paramètres de configuration de l'IA dans l'interface d'administration.
+
 ### Installation avec Docker
 
 #### Option 1: Construction manuelle

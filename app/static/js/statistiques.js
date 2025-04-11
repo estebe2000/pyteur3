@@ -559,7 +559,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             if ($.fn.DataTable.isDataTable('#table-qcm-performance')) {
                                 $('#table-qcm-performance').DataTable().destroy();
                             }
-                            $('#table-qcm-performance').DataTable();
+                            
+                            // Initialiser DataTable avec des options spécifiques pour éviter l'erreur de colonnes
+                            $('#table-qcm-performance').DataTable({
+                                // S'assurer que le nombre de colonnes correspond à l'en-tête
+                                columns: [
+                                    { data: 0 }, // Élève
+                                    { data: 1 }, // QCM
+                                    { data: 2 }, // Score
+                                    { data: 3 }, // Réponses correctes
+                                    { data: 4 }  // Date
+                                ]
+                            });
                         }
                     })
                     .catch(error => {
