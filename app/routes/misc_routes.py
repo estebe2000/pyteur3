@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from app import db, csrf
-from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass
+from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass, Homework, HomeworkCompletion
+from sqlalchemy import or_
+from datetime import datetime
 
 misc_bp = Blueprint('misc', __name__)
 
@@ -17,6 +19,47 @@ def todo():
         .all()
     )
     
+    # Récupérer les devoirs assignés à l'élève
+    homework_list = []
+    if current_user.role == 'eleve':
+        # Récupérer la classe de l'élève (directement ou via son groupe)
+        student_class_id = current_user.class_id
+        if student_class_id is None and current_user.group_id is not None:
+            # Si l'élève n'a pas de classe directement assignée mais est dans un groupe,
+            # récupérer la classe du groupe
+            group = Group.query.get(current_user.group_id)
+            if group:
+                student_class_id = group.class_id
+        
+        # Récupérer les devoirs assignés à la classe ou au groupe de l'élève
+        homework_query = Homework.query.filter(
+            or_(
+                Homework.class_id == student_class_id,
+                Homework.group_id == current_user.group_id
+            )
+        )
+        
+        # Pour chaque devoir, vérifier si l'élève l'a déjà marqué comme fait
+        for homework in homework_query.all():
+            # Vérifier si l'élève a déjà marqué ce devoir comme fait
+            completion = HomeworkCompletion.query.filter_by(
+                homework_id=homework.id,
+                student_id=current_user.id
+            ).first()
+            
+            # Ajouter des informations supplémentaires pour l'affichage
+            homework_data = {
+                'id': homework.id,
+                'title': homework.title,
+                'description': homework.description,
+                'due_date': homework.due_date.strftime('%d/%m/%Y') if homework.due_date else 'Non spécifiée',
+                'subject': homework.subject,
+                'assigned_by': f"{homework.assigned_by.prenom} {homework.assigned_by.nom}",
+                'done_by_student': completion is not None
+            }
+            
+            homework_list.append(homework_data)
+    
     # Vérifier si la requête vient d'un iframe
     is_iframe = request.args.get('iframe', 'false') == 'true'
     
@@ -27,9 +70,66 @@ def todo():
     labels = labels_fr if lang == 'fr' else labels_en
     
     if is_iframe:
-        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists, title=labels.get('todo', 'Todo'))
+        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists, 
+                              homework_list=homework_list, title=labels.get('todo', 'Todo'))
     else:
-        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists)
+        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists, 
+                              homework_list=homework_list)
+
+@misc_bp.route('/todo/toggle_homework/<int:homework_id>', methods=['POST'])
+@login_required
+def toggle_homework(homework_id):
+    # Vérifier que l'utilisateur est un élève
+    if current_user.role != 'eleve':
+        flash('Seuls les élèves peuvent marquer les devoirs comme faits')
+        return redirect(url_for('misc.todo'))
+    
+    # Récupérer la classe de l'élève (directement ou via son groupe)
+    student_class_id = current_user.class_id
+    if student_class_id is None and current_user.group_id is not None:
+        # Si l'élève n'a pas de classe directement assignée mais est dans un groupe,
+        # récupérer la classe du groupe
+        group = Group.query.get(current_user.group_id)
+        if group:
+            student_class_id = group.class_id
+    
+    # Vérifier que le devoir existe et est assigné à l'élève
+    homework = Homework.query.get_or_404(homework_id)
+    if (homework.class_id != student_class_id and 
+        homework.group_id != current_user.group_id):
+        flash('Ce devoir ne vous est pas assigné')
+        return redirect(url_for('misc.todo'))
+    
+    # Vérifier si l'élève a déjà marqué ce devoir comme fait
+    completion = HomeworkCompletion.query.filter_by(
+        homework_id=homework_id,
+        student_id=current_user.id
+    ).first()
+    
+    if completion:
+        # Si le devoir est déjà marqué comme fait, le supprimer
+        db.session.delete(completion)
+        flash('Devoir marqué comme non fait')
+    else:
+        # Sinon, créer une nouvelle entrée
+        completion = HomeworkCompletion(
+            homework_id=homework_id,
+            student_id=current_user.id
+        )
+        db.session.add(completion)
+        flash('Devoir marqué comme fait')
+    
+    db.session.commit()
+    
+    # Vérifier si la requête vient du dashboard ou de la page todo
+    # Si le paramètre 'from_dashboard' est présent, retourner une réponse JSON
+    if request.args.get('from_dashboard') == 'true' or request.form.get('from_dashboard') == 'true':
+        # Retourner une réponse JSON pour les requêtes AJAX
+        from flask import jsonify
+        return jsonify({'success': True})
+    
+    # Sinon, rediriger vers la page todo
+    return redirect(url_for('misc.todo'))
 
 @misc_bp.route('/todo/add_list', methods=['POST'])
 @login_required
@@ -169,7 +269,15 @@ def classes():
             group_id = request.form.get('group_id')
             if user_id and group_id:
                 user = User.query.get(user_id)
+                group = Group.query.get(group_id)
+                
+                # Mettre à jour le groupe de l'élève
                 user.group_id = group_id
+                
+                # Mettre également à jour la classe de l'élève avec la classe du groupe
+                if group and group.class_id:
+                    user.class_id = group.class_id
+                
                 db.session.commit()
                 flash('Élève ajouté au groupe')
             else:
@@ -206,7 +314,14 @@ def classes():
 def remove_student_from_group(user_id):
     user = User.query.get_or_404(user_id)
     group = user.group
+    
+    # Retirer l'élève du groupe
     user.group_id = None
+    
+    # Retirer également l'élève de la classe si nécessaire
+    # (optionnel, selon la logique métier souhaitée)
+    user.class_id = None
+    
     db.session.commit()
     flash('Élève retiré du groupe')
     return redirect(url_for('misc.classes', class_id=group.class_id, group_id=group.id))
@@ -259,3 +374,168 @@ def edit_group(group_id):
     else:
         flash('Veuillez remplir le nom')
     return redirect(url_for('misc.classes', class_id=group.class_id))
+
+# Routes pour la gestion des devoirs
+@misc_bp.route('/homework', methods=['GET'])
+@login_required
+def homework():
+    # Vérifier que l'utilisateur est un professeur ou un administrateur
+    if current_user.role not in ['professeur', 'admin']:
+        flash('Accès non autorisé')
+        return redirect(url_for('dashboard.home'))
+    
+    # Récupérer tous les devoirs
+    if current_user.role == 'admin':
+        # Les administrateurs voient tous les devoirs
+        homework_list = Homework.query.all()
+    else:
+        # Les professeurs ne voient que leurs propres devoirs
+        homework_list = Homework.query.filter_by(assigned_by_id=current_user.id).all()
+    
+    # Récupérer toutes les classes et tous les groupes pour le formulaire
+    classes = SchoolClass.query.all()
+    groups = Group.query.all()
+    
+    return render_template('homework.html', 
+                          homework_list=homework_list,
+                          classes=classes,
+                          groups=groups)
+
+@misc_bp.route('/homework/add', methods=['POST'])
+@login_required
+def add_homework():
+    # Vérifier que l'utilisateur est un professeur ou un administrateur
+    if current_user.role not in ['professeur', 'admin']:
+        flash('Accès non autorisé')
+        return redirect(url_for('dashboard.home'))
+    
+    # Récupérer les données du formulaire
+    title = request.form.get('title')
+    description = request.form.get('description')
+    subject = request.form.get('subject')
+    due_date_str = request.form.get('due_date')
+    assignment_type = request.form.get('assignment_type')
+    
+    # Convertir la date
+    from datetime import datetime
+    try:
+        due_date = datetime.strptime(due_date_str, '%Y-%m-%d').date()
+    except ValueError:
+        flash('Format de date invalide')
+        return redirect(url_for('misc.homework'))
+    
+    # Créer le devoir
+    homework = Homework(
+        title=title,
+        description=description,
+        subject=subject,
+        due_date=due_date,
+        assigned_by_id=current_user.id
+    )
+    
+    # Assigner à une classe ou un groupe
+    if assignment_type == 'class':
+        class_id = request.form.get('class_id')
+        if class_id:
+            homework.class_id = class_id
+    elif assignment_type == 'group':
+        group_id = request.form.get('group_id')
+        if group_id:
+            homework.group_id = group_id
+    
+    # Sauvegarder le devoir
+    db.session.add(homework)
+    db.session.commit()
+    
+    flash('Devoir ajouté avec succès')
+    return redirect(url_for('misc.homework'))
+
+@misc_bp.route('/homework/edit/<int:homework_id>', methods=['GET', 'POST'])
+@login_required
+def edit_homework(homework_id):
+    # Vérifier que l'utilisateur est un professeur ou un administrateur
+    if current_user.role not in ['professeur', 'admin']:
+        flash('Accès non autorisé')
+        return redirect(url_for('dashboard.home'))
+    
+    # Récupérer le devoir
+    homework = Homework.query.get_or_404(homework_id)
+    
+    # Vérifier que l'utilisateur est l'auteur du devoir ou un administrateur
+    if homework.assigned_by_id != current_user.id and current_user.role != 'admin':
+        flash('Vous ne pouvez pas modifier ce devoir')
+        return redirect(url_for('misc.homework'))
+    
+    if request.method == 'POST':
+        # Mettre à jour le devoir
+        homework.title = request.form.get('title')
+        homework.description = request.form.get('description')
+        homework.subject = request.form.get('subject')
+        
+        # Convertir la date
+        due_date_str = request.form.get('due_date')
+        try:
+            homework.due_date = datetime.strptime(due_date_str, '%Y-%m-%d').date()
+        except ValueError:
+            flash('Format de date invalide')
+            return redirect(url_for('misc.edit_homework', homework_id=homework_id))
+        
+        # Mettre à jour l'assignation
+        assignment_type = request.form.get('assignment_type')
+        homework.class_id = None
+        homework.group_id = None
+        
+        if assignment_type == 'class':
+            class_id = request.form.get('class_id')
+            if class_id:
+                homework.class_id = class_id
+        elif assignment_type == 'group':
+            group_id = request.form.get('group_id')
+            if group_id:
+                homework.group_id = group_id
+        
+        # Sauvegarder les modifications
+        db.session.commit()
+        
+        flash('Devoir modifié avec succès')
+        return redirect(url_for('misc.homework'))
+    
+    # Récupérer toutes les classes et tous les groupes pour le formulaire
+    classes = SchoolClass.query.all()
+    groups = Group.query.all()
+    
+    # Déterminer le type d'assignation actuel
+    assignment_type = None
+    if homework.class_id:
+        assignment_type = 'class'
+    elif homework.group_id:
+        assignment_type = 'group'
+    
+    return render_template('edit_homework.html',
+                          homework=homework,
+                          classes=classes,
+                          groups=groups,
+                          assignment_type=assignment_type)
+
+@misc_bp.route('/homework/delete/<int:homework_id>', methods=['POST'])
+@login_required
+def delete_homework(homework_id):
+    # Vérifier que l'utilisateur est un professeur ou un administrateur
+    if current_user.role not in ['professeur', 'admin']:
+        flash('Accès non autorisé')
+        return redirect(url_for('dashboard.home'))
+    
+    # Récupérer le devoir
+    homework = Homework.query.get_or_404(homework_id)
+    
+    # Vérifier que l'utilisateur est l'auteur du devoir ou un administrateur
+    if homework.assigned_by_id != current_user.id and current_user.role != 'admin':
+        flash('Vous ne pouvez pas supprimer ce devoir')
+        return redirect(url_for('misc.homework'))
+    
+    # Supprimer le devoir
+    db.session.delete(homework)
+    db.session.commit()
+    
+    flash('Devoir supprimé avec succès')
+    return redirect(url_for('misc.homework'))

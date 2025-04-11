@@ -36,121 +36,144 @@
                 </div>
                 <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
                     <div class="space-y-1">
-{% if not (current_user.role == 'eleve' and not menu_config.get('dashboard', True)) %}
-<a href="{{ url_for('dashboard.home') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-tachometer-alt mr-3"></i>
-    <span>{{ labels['dashboard'] }}</span>
-</a>
-{% endif %}
-{% if not (current_user.role == 'eleve' and not menu_config.get('documents', True)) %}
-<a href="{{ url_for('document.documents') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('document.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-folder mr-3"></i>
-    <span>{{ labels['documents'] }}</span>
-</a>
-{% endif %}
-{% if not (current_user.role == 'eleve' and not menu_config.get('exercises', True)) %}
-<a href="{{ url_for('exercise.exercises') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-book mr-3"></i>
-    <span>{{ labels['exercises'] }}</span>
-</a>
-{% endif %}
-
-{% if not (current_user.role == 'eleve' and not menu_config.get('exercices_flash', True)) %}
-<a href="{{ url_for('exercise.exercices_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-bolt mr-3"></i>
-    <span>Exercices flash</span>
-</a>
-{% endif %}
-
-{% if current_user.role != 'eleve' %}
-<a href="{{ url_for('qcm.qcm') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-question-circle mr-3"></i>
-    <span>{{ labels['qcm'] }}</span>
-</a>
-{% if not (current_user.role == 'eleve' and not menu_config.get('qcm_flash', True)) %}
-<a href="{{ url_for('qcm.qcm_flash') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-bolt mr-3"></i>
-    <span>QCM flash</span>
-</a>
-{% endif %}
-<a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-edit mr-3"></i>
-    <span>Créateur exercice</span>
-</a>
-<a href="{{ url_for('exercise.generateur_exercice') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('exercise.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-magic mr-3"></i>
-    <span>Générateur d'exercice</span>
-</a>
-
-{% endif %}
-
-{% if current_user.role != 'eleve' %}
-<a href="{{ url_for('dashboard.statistiques') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-chart-bar mr-3"></i>
-    <span>{{ labels['statistiques'] }}</span>
-</a>
-{% endif %}
-{% if not (current_user.role == 'eleve' and not menu_config.get('messagerie', True)) %}
-<a href="{{ url_for('messagerie.messagerie') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('messagerie.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-envelope mr-3"></i>
-    <span>{{ labels['messagerie'] }}</span>
-</a>
-{% endif %}
-
-{% if not (current_user.role == 'eleve' and not menu_config.get('todo', True)) %}
-<a href="{{ url_for('misc.todo') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('misc.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-check-circle mr-3"></i>
-    <span>{{ labels['todo'] }}</span>
-</a>
-{% endif %}
-
-{% if not (current_user.role == 'eleve' and not menu_config.get('projets', True)) %}
-<a href="{{ url_for('dashboard.projets') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-project-diagram mr-3"></i>
-    <span>{{ labels['projets'] }}</span>
-</a>
-{% endif %}
-
-{% if not (current_user.role == 'eleve' and not menu_config.get('drive', True)) %}
-<a href="{{ drive_url }}" target="_blank" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
-    <i class="fas fa-folder mr-3"></i>
-    <span>{{ labels['drive'] }}</span>
-</a>
-{% endif %}
-
-{% if not (current_user.role == 'eleve' and not menu_config.get('sandbox', True)) %}
-<a href="{{ url_for('dashboard.sandbox') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-flask mr-3"></i>
-    <span>{{ labels['sandbox'] }}</span>
-</a>
-{% endif %}
-
-{% if current_user.role != 'eleve' %}
-<a href="{{ url_for('dashboard.ia') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-    <i class="fas fa-brain mr-3"></i>
-    <span>{{ labels['ia'] }}</span>
-</a>
-{% endif %}
+                        <!-- Section Admin/Professeur -->
                         {% if current_user.role != 'eleve' %}
-<a href="{{ url_for('misc.classes') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('misc.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-                            <i class="fas fa-school mr-3"></i>
-                            <span>{{ labels['classes_groups'] }}</span>
-                        </a>
+                        <div class="py-2 px-2 mb-2 bg-gray-100 rounded-md">
+                            <h3 class="text-xs uppercase font-semibold text-gray-500 mb-2">Administration</h3>
+                            
+                            <a href="{{ url_for('dashboard.home') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-tachometer-alt mr-3"></i>
+                                <span>{{ labels['dashboard'] }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('qcm.qcm') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-question-circle mr-3"></i>
+                                <span>{{ labels['qcm'] }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('qcm.qcm_flash') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('qcm.qcm_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-bolt mr-3"></i>
+                                <span>QCM flash</span>
+                            </a>
+                            
+                            <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-edit mr-3"></i>
+                                <span>Créateur exercice</span>
+                            </a>
+                            
+                            <a href="{{ url_for('exercise.generateur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-magic mr-3"></i>
+                                <span>Générateur d'exercice</span>
+                            </a>
+                            
+                            <a href="{{ url_for('dashboard.statistiques') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-chart-bar mr-3"></i>
+                                <span>{{ labels['statistiques'] }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('dashboard.ia') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.ia') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-brain mr-3"></i>
+                                <span>{{ labels['ia'] }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('misc.homework') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('misc.homework') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-book-open mr-3"></i>
+                                <span>Gestion des devoirs</span>
+                            </a>
+                            
+                            <a href="{{ url_for('misc.classes') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('misc.classes') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-school mr-3"></i>
+                                <span>{{ labels['classes_groups'] }}</span>
+                            </a>
+                            
+                            {% if current_user.role == 'admin' %}
+                            <a href="{{ url_for('user.users') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                                <i class="fas fa-users mr-3"></i>
+                                <span>{{ labels['users'] }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('admin.gestion_menu') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                                <i class="fas fa-bars mr-3"></i>
+                                <span>Gestion menu</span>
+                            </a>
+                            {% endif %}
+                        </div>
                         {% endif %}
-<a href="{{ url_for('user.settings') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md {% if request.path == url_for('user.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
-                            <i class="fas fa-cog mr-3"></i>
-                            <span>{{ labels['settings'] }}</span>
-                        </a>
-{% if current_user.role == 'admin' %}
-<a href="{{ url_for('user.users') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
-    <i class="fas fa-users mr-3"></i>
-    <span>{{ labels['users'] }}</span>
-</a>
-<a href="{{ url_for('admin.gestion_menu') }}" class="flex items-center px-2 py-3 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
-    <i class="fas fa-bars mr-3"></i>
-    <span>Gestion menu</span>
-</a>
-{% endif %}
+                        
+                        <!-- Section Élèves -->
+                        <div class="py-2 px-2 mb-2 bg-gray-100 rounded-md">
+                            <h3 class="text-xs uppercase font-semibold text-gray-500 mb-2">Applications</h3>
+                            
+                            {% if current_user.role == 'eleve' and not menu_config.get('dashboard', True) %}
+                            <!-- Ne pas afficher le tableau de bord pour les élèves si désactivé dans la config -->
+                            {% else %}
+                            <a href="{{ url_for('eleve.dashboard' if current_user.role == 'eleve' else 'dashboard.home') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('eleve.dashboard' if current_user.role == 'eleve' else 'dashboard.home') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-tachometer-alt mr-3"></i>
+                                <span>{{ labels['dashboard'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('documents', True)) %}
+                            <a href="{{ url_for('document.documents') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('document.documents') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-folder mr-3"></i>
+                                <span>{{ labels['documents'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('exercises', True)) %}
+                            <a href="{{ url_for('exercise.exercises') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercises') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-book mr-3"></i>
+                                <span>{{ labels['exercises'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('exercices_flash', True)) %}
+                            <a href="{{ url_for('exercise.exercices_flash') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.exercices_flash') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-bolt mr-3"></i>
+                                <span>Exercices flash</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('messagerie', True)) %}
+                            <a href="{{ url_for('messagerie.messagerie') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('messagerie.messagerie') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-envelope mr-3"></i>
+                                <span>{{ labels['messagerie'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('todo', True)) %}
+                            <a href="{{ url_for('misc.todo') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('misc.todo') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-check-circle mr-3"></i>
+                                <span>{{ labels['todo'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('projets', True)) %}
+                            <a href="{{ url_for('dashboard.projets') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.projets') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-project-diagram mr-3"></i>
+                                <span>{{ labels['projets'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('drive', True)) %}
+                            <a href="{{ drive_url }}" target="_blank" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">
+                                <i class="fas fa-folder mr-3"></i>
+                                <span>{{ labels['drive'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            {% if not (current_user.role == 'eleve' and not menu_config.get('sandbox', True)) %}
+                            <a href="{{ url_for('dashboard.sandbox') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.sandbox') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-flask mr-3"></i>
+                                <span>{{ labels['sandbox'] }}</span>
+                            </a>
+                            {% endif %}
+                            
+                            <a href="{{ url_for('user.settings') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('user.settings') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-cog mr-3"></i>
+                                <span>{{ labels['settings'] }}</span>
+                            </a>
+                        </div>
                     </div>
                     <div class="mt-auto mb-4">
 <a href="{{ url_for('user.logout') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">

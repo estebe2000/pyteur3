@@ -77,10 +77,11 @@ def upload_exercise():
         db.session.commit()
         
         flash('Exercice uploadé avec succès')
-        return redirect(url_for('eleve.dashboard'))
+        # Rediriger vers la page exercises au lieu du dashboard
+        return redirect(url_for('exercise.exercises'))
     
     flash('Type de fichier non autorisé (py, sql, js, ml, xcas uniquement)')
-    return redirect(url_for('eleve.dashboard'))
+    return redirect(url_for('exercise.exercises'))
 
 @exercise_bp.route('/assign_exercise/<int:exercise_id>', methods=['GET', 'POST'])
 @login_required

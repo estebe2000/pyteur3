@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div style="text-align: center; margin-bottom: 15px;">
-                                <div style="width: 80px; height: 80px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 10px;">
+                                <div id="profile-avatar" style="width: 80px; height: 80px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 10px; cursor: pointer;" onclick="showProfileInDashboard()">
                                     {{ current_user.prenom[0] }}{{ current_user.nom[0] }}
                                 </div>
                                 <div style="font-weight: 500; font-size: 18px;">{{ current_user.prenom }} {{ current_user.nom }}</div>
@@ -35,16 +35,31 @@
                         </div>
                         <div class="card-body">
                             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <span class="badge badge-primary" style="margin-right: 10px;">3</span>
+                                <span class="badge badge-primary" style="margin-right: 10px;">{{ notifications.messages }}</span>
                                 <span>Nouveaux messages</span>
+                                {% if notifications.messages > 0 %}
+                                <a href="#" onclick="openWindow('messagerie'); return false;" class="ml-auto text-blue-600 hover:underline">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                {% endif %}
                             </div>
                             <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <span class="badge badge-warning" style="margin-right: 10px;">2</span>
-                                <span>Exercices à rendre</span>
+                                <span class="badge badge-warning" style="margin-right: 10px;">{{ notifications.assignments }}</span>
+                                <span>Devoirs à faire</span>
+                                {% if notifications.assignments > 0 %}
+                                <a href="#" onclick="openWindow('todo'); return false;" class="ml-auto text-blue-600 hover:underline">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                {% endif %}
                             </div>
                             <div style="display: flex; align-items: center;">
-                                <span class="badge badge-success" style="margin-right: 10px;">1</span>
+                                <span class="badge badge-success" style="margin-right: 10px;">{{ notifications.projects }}</span>
                                 <span>Projet mis à jour</span>
+                                {% if notifications.projects > 0 %}
+                                <a href="#" onclick="openWindow('projets'); return false;" class="ml-auto text-blue-600 hover:underline">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -89,35 +104,61 @@
                         </div>
                     </div>
                     
-                    <h3 style="font-weight: 500; margin: 15px 0 10px;">Activités récentes</h3>
-                    <div class="card">
-                        <div class="card-body" style="padding: 0;">
-                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
-                                <i class="fas fa-file-code" style="color: var(--primary-color); margin-right: 10px;"></i>
-                                <div style="flex: 1;">
-                                    <div>Exercice Python complété</div>
-                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 2 heures</div>
-                                </div>
-                                <span class="badge badge-success">100%</span>
-                            </div>
-                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
-                                <i class="fas fa-envelope" style="color: var(--primary-color); margin-right: 10px;"></i>
-                                <div style="flex: 1;">
-                                    <div>Message reçu de Prof NSI</div>
-                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 1 jour</div>
-                                </div>
-                                <span class="badge badge-primary">Nouveau</span>
-                            </div>
-                            <div style="padding: 10px; display: flex; align-items: center;">
-                                <i class="fas fa-project-diagram" style="color: var(--primary-color); margin-right: 10px;"></i>
-                                <div style="flex: 1;">
-                                    <div>Projet "Site web" mis à jour</div>
-                                    <div style="font-size: 12px; color: var(--text-muted);">Il y a 3 jours</div>
-                                </div>
-                                <span class="badge badge-info">Mise à jour</span>
+                    <!-- Section profil (masquée par défaut) -->
+                    <div id="dashboard-profile-section" style="display: none; margin-top: 20px;">
+                        <h3 style="font-weight: 500; margin: 15px 0 10px;">Mon Profil</h3>
+                        <div class="card" style="height: 650px;">
+                            <div class="card-body p-0" style="height: 100%;">
+                                <!-- Utilisation d'un iframe pour charger directement la page admin des paramètres -->
+                                <iframe 
+                                    src="{{ url_for('user.settings') }}?iframe=true" 
+                                    style="width:100%; height:100%; border:none;" 
+                                    id="dashboard-profile-iframe"
+                                    onload="injectIframeCSS(this)"
+                                ></iframe>
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        // Fonction pour injecter le CSS dans l'iframe
+                        function injectIframeCSS(iframe) {
+                            try {
+                                // Attendre que l'iframe soit chargé
+                                if (iframe.contentDocument) {
+                                    // Créer un élément link pour le CSS
+                                    const linkElem = document.createElement('link');
+                                    linkElem.rel = 'stylesheet';
+                                    linkElem.href = "{{ url_for('static', filename='css/eleve_iframe.css') }}";
+                                    
+                                    // Ajouter le lien CSS à l'en-tête de l'iframe
+                                    iframe.contentDocument.head.appendChild(linkElem);
+                                    
+                                    // Ajuster les liens dans l'iframe pour qu'ils s'ouvrent dans l'iframe
+                                    const links = iframe.contentDocument.querySelectorAll('a');
+                                    links.forEach(link => {
+                                        // Ne pas modifier les liens externes ou les liens avec target déjà défini
+                                        if (!link.href.startsWith('http') && !link.target) {
+                                            link.target = '_self';
+                                        }
+                                    });
+                                    
+                                    // Ajuster les formulaires pour qu'ils restent dans l'iframe
+                                    const forms = iframe.contentDocument.querySelectorAll('form');
+                                    forms.forEach(form => {
+                                        // Ajouter un paramètre iframe=true à l'action du formulaire
+                                        const action = form.getAttribute('action');
+                                        if (action && !action.includes('iframe=true')) {
+                                            const separator = action.includes('?') ? '&' : '?';
+                                            form.setAttribute('action', action + separator + 'iframe=true');
+                                        }
+                                    });
+                                }
+                            } catch (e) {
+                                console.error("Erreur lors de l'injection du CSS dans l'iframe:", e);
+                            }
+                        }
+                    </script>
                 </div>
             </div>
             
@@ -127,25 +168,7 @@
                     <i class="fas fa-calendar"></i> Agenda
                 </div>
                 <div class="column-content">
-                    <div class="card">
-                        <div class="card-header">
-                            <i class="fas fa-calendar-day"></i> Aujourd'hui
-                        </div>
-                        <div class="card-body">
-                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">
-                                <div style="font-weight: 500;">Cours NSI</div>
-                                <div style="font-size: 12px; color: var(--text-muted);">10:00 - 12:00</div>
-                            </div>
-                            <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">
-                                <div style="font-weight: 500;">TP Algorithmes</div>
-                                <div style="font-size: 12px; color: var(--text-muted);">14:00 - 16:00</div>
-                            </div>
-                            <div>
-                                <div style="font-weight: 500;">Rendu exercice Python</div>
-                                <div style="font-size: 12px; color: var(--text-muted);">Avant 18:00</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Section Aujourd'hui supprimée à la demande de l'utilisateur -->
                     
                     <div class="card">
                         <div class="card-header">
@@ -176,26 +199,36 @@
                     
                     <div class="card mt-4">
                         <div class="card-header">
-                            <i class="fas fa-tasks"></i> Tâches à faire
+                            <i class="fas fa-book-open"></i> Devoirs
                         </div>
                         <div class="card-body" style="padding: 0;">
-                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
-                                <input type="checkbox" style="margin-right: 10px;">
-                                <span>Terminer l'exercice de Python</span>
-                            </div>
-                            <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
-                                <input type="checkbox" style="margin-right: 10px;">
-                                <span>Préparer la présentation</span>
-                            </div>
-                            <div style="padding: 10px; display: flex; align-items: center;">
-                                <input type="checkbox" style="margin-right: 10px;">
-                                <span>Réviser pour le contrôle</span>
-                            </div>
+                            {% if homework_list %}
+                                {% for homework in homework_list %}
+                                <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                    <form action="{{ url_for('misc.toggle_homework', homework_id=homework.id) }}" method="POST" style="display: flex; align-items: center; width: 100%;" id="homework-form-{{ homework.id }}">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="from_dashboard" value="true">
+                                        <input type="checkbox" style="margin-right: 10px;" {% if homework.done_by_student %}checked{% endif %} 
+                                            onclick="toggleHomework({{ homework.id }}, this.checked); return false;">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500;">{{ homework.title }}</div>
+                                            <div style="font-size: 12px; color: var(--text-muted);">
+                                                {{ homework.subject }} - {{ homework.due_date }}
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div style="padding: 15px; text-align: center; color: var(--text-muted);">
+                                    Aucun devoir à faire pour le moment
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fas fa-plus"></i> Ajouter
-                            </button>
+                            <a href="{{ url_for('misc.todo') }}" class="btn btn-sm btn-primary" onclick="openWindow('todo'); return false;">
+                                <i class="fas fa-list"></i> Voir tous les devoirs
+                            </a>
                         </div>
                     </div>
                 </div>

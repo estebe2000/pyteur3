@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier un devoir{% endblock %}
+{% block page_title %}Modifier un devoir{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} 
+<a href="{{ url_for('misc.homework') }}">Gestion des devoirs</a> {{ labels['breadcrumb_separator'] }} Modifier
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold">Modifier un devoir</h2>
+    </div>
+
+    <form method="POST" action="{{ url_for('misc.edit_homework', homework_id=homework.id) }}" class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Titre du devoir *</label>
+                <input type="text" id="title" name="title" value="{{ homework.title }}" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Matière</label>
+                <input type="text" id="subject" name="subject" value="{{ homework.subject or '' }}" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <textarea id="description" name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md">{{ homework.description or '' }}</textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                <label for="due_date" class="block text-sm font-medium text-gray-700 mb-1">Date limite *</label>
+                <input type="date" id="due_date" name="due_date" value="{{ homework.due_date.strftime('%Y-%m-%d') }}" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div>
+                <label for="assignment_type" class="block text-sm font-medium text-gray-700 mb-1">Assigner à *</label>
+                <select id="assignment_type" name="assignment_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md" onchange="toggleAssignmentFields()">
+                    <option value="">Sélectionner...</option>
+                    <option value="class" {% if assignment_type == 'class' %}selected{% endif %}>Classe entière</option>
+                    <option value="group" {% if assignment_type == 'group' %}selected{% endif %}>Groupe</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="class_field" class="{% if assignment_type != 'class' %}hidden{% endif %} mb-4">
+            <label for="class_id" class="block text-sm font-medium text-gray-700 mb-1">Classe</label>
+            <select id="class_id" name="class_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option value="">Sélectionner une classe...</option>
+                {% for class in classes %}
+                <option value="{{ class.id }}" {% if homework.class_id == class.id %}selected{% endif %}>{{ class.niveau }} {{ class.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div id="group_field" class="{% if assignment_type != 'group' %}hidden{% endif %} mb-4">
+            <label for="group_id" class="block text-sm font-medium text-gray-700 mb-1">Groupe</label>
+            <select id="group_id" name="group_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option value="">Sélectionner un groupe...</option>
+                {% for group in groups %}
+                <option value="{{ group.id }}" {% if homework.group_id == group.id %}selected{% endif %}>{{ group.nom }} ({{ group.school_class.niveau }} {{ group.school_class.nom }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="flex justify-end space-x-2">
+            <a href="{{ url_for('misc.homework') }}" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Annuler</a>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Enregistrer les modifications</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function toggleAssignmentFields() {
+        const assignmentType = document.getElementById('assignment_type').value;
+        const classField = document.getElementById('class_field');
+        const groupField = document.getElementById('group_field');
+        
+        if (assignmentType === 'class') {
+            classField.classList.remove('hidden');
+            groupField.classList.add('hidden');
+            document.getElementById('group_id').value = '';
+        } else if (assignmentType === 'group') {
+            groupField.classList.remove('hidden');
+            classField.classList.add('hidden');
+            document.getElementById('class_id').value = '';
+        } else {
+            classField.classList.add('hidden');
+            groupField.classList.add('hidden');
+        }
+    }
+</script>
+{% endblock %}

@@ -8,6 +8,48 @@
 {% endblock %}
 
 {% block content %}
+<h2 class="text-xl font-semibold mb-4">Cahier de devoirs</h2>
+<div class="bg-blue-50 rounded-lg shadow p-4 mb-6">
+    <div class="flex justify-between items-center mb-3">
+        <h3 class="font-semibold text-blue-800">Devoirs assignés par les professeurs</h3>
+        <span class="text-sm text-gray-500">Cochez les devoirs que vous avez terminés</span>
+    </div>
+    
+    <div class="divide-y divide-blue-200">
+        {% for homework in homework_list|default([]) %}
+        <div class="py-3 flex items-start">
+            <form method="POST" action="{{ url_for('misc.toggle_homework', homework_id=homework.id) }}" class="flex items-start">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="mt-1 mr-3 text-blue-600 hover:text-blue-800 text-xl">
+                    {% if homework.done_by_student %}✔{% else %}○{% endif %}
+                </button>
+                <div class="flex-1">
+                    <div class="font-medium {% if homework.done_by_student %}line-through text-gray-500{% endif %}">
+                        {{ homework.title }}
+                    </div>
+                    <div class="text-sm text-gray-600 {% if homework.done_by_student %}line-through{% endif %}">
+                        {{ homework.description }}
+                    </div>
+                    <div class="mt-1 flex items-center text-xs">
+                        <span class="text-red-600 font-medium">À rendre pour le {{ homework.due_date }}</span>
+                        <span class="mx-2">•</span>
+                        <span>Assigné par: {{ homework.assigned_by }}</span>
+                        {% if homework.subject %}
+                        <span class="mx-2">•</span>
+                        <span>{{ homework.subject }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% else %}
+        <div class="py-3 text-center text-gray-500">
+            Aucun devoir assigné pour le moment.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 <h2 class="text-xl font-semibold mb-4">{{ labels['my_lists'] }}</h2>
 
 <form method="POST" action="{{ url_for('misc.add_todo_list') }}" class="mb-6">

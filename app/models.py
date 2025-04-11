@@ -147,3 +147,34 @@ class ProjectParticipant(db.Model):
     role = db.Column(db.String(50), default='member')  # 'owner', 'member'
     
     user = db.relationship('User', backref='project_participations')
+
+
+class Homework(db.Model):
+    __tablename__ = 'homework'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text)
+    due_date = db.Column(db.Date, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    subject = db.Column(db.String(50))
+    assigned_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    assigned_by = db.relationship('User', backref='assigned_homework')
+    completions = db.relationship('HomeworkCompletion', backref='homework', cascade='all, delete-orphan')
+    
+    # Relations pour les assignations
+    class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
+    
+    school_class = db.relationship('SchoolClass', backref='homework_assignments')
+    group = db.relationship('Group', backref='homework_assignments')
+
+
+class HomeworkCompletion(db.Model):
+    __tablename__ = 'homework_completions'
+    id = db.Column(db.Integer, primary_key=True)
+    homework_id = db.Column(db.Integer, db.ForeignKey('homework.id'), nullable=False)
+    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    completed_at = db.Column(db.DateTime, server_default=db.func.now())
+    
+    student = db.relationship('User', backref='homework_completions')

@@ -77,10 +77,11 @@ def upload_file():
         db.session.commit()
         
         flash('Document uploadé avec succès')
-        return redirect(url_for('eleve.dashboard'))
+        # Rediriger vers la page documents au lieu du dashboard
+        return redirect(url_for('document.documents'))
     
     flash('Type de fichier non autorisé (PDF uniquement)')
-    return redirect(url_for('eleve.dashboard'))
+    return redirect(url_for('document.documents'))
 
 @document_bp.route('/assign_document/<int:document_id>', methods=['GET', 'POST'])
 @login_required

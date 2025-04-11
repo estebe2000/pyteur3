@@ -9,5 +9,697 @@
 {% endblock %}
 
 {% block content %}
-<h1>QCM flash</h1>
+<div class="container mx-auto px-4 py-6">
+    <!-- Écran de configuration -->
+    <div id="config-screen" class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-6">QCM Flash</h1>
+        <p class="mb-4">Testez vos connaissances avec un QCM rapide ! Vous aurez 20 secondes par question.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Colonne gauche: Configuration du QCM -->
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">Configurer votre QCM</h2>
+                
+                <div class="mb-4">
+                    <label for="level-select" class="block font-medium mb-2">Niveau :</label>
+                    <select id="level-select" class="w-full p-2 border rounded">
+                        <option value="">-- Choisir un niveau --</option>
+                        <option value="snt">SNT</option>
+                        <option value="nsi1">NSI Première</option>
+                        <option value="nsit">NSI Terminale</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="theme-select" class="block font-medium mb-2">Thème :</label>
+                    <select id="theme-select" class="w-full p-2 border rounded" disabled>
+                        <option value="">-- Choisir un thème --</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block font-medium mb-2">Nombre de questions :</label>
+                    <div class="flex space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="question-count" value="5" checked class="mr-2">
+                            <span>5</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="question-count" value="10" class="mr-2">
+                            <span>10</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="question-count" value="20" class="mr-2">
+                            <span>20</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-2">
+                    <button id="start-qcm" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400" disabled>
+                        Commencer le QCM
+                    </button>
+                    <button id="start-demo-qcm" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                        Utiliser questions de démo
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Colonne droite: QCM préparé par le professeur -->
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">QCM préparé par le professeur</h2>
+                <p class="mb-4">Entrez le code de lancement fourni par votre professeur pour accéder à un QCM spécifique.</p>
+                
+                <div class="mb-4">
+                    <label for="qcm-code" class="block font-medium mb-2">Code de lancement :</label>
+                    <input type="text" id="qcm-code" class="w-full p-2 border rounded" placeholder="Entrez le code...">
+                </div>
+                
+                <button id="launch-qcm" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                    Lancer le QCM
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Écran du QCM (masqué par défaut) -->
+    <div id="qcm-screen" class="bg-white p-6 rounded-lg shadow-md hidden">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold" id="qcm-title">QCM Flash</h1>
+            <div class="flex items-center">
+                <div class="mr-4">
+                    <span id="current-question">1</span>/<span id="total-questions">5</span>
+                </div>
+                <div class="bg-gray-200 p-2 rounded-lg flex items-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span id="timer" class="font-bold">20</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h2 id="question-text" class="text-lg font-semibold mb-4">Question...</h2>
+                <div id="options-container" class="space-y-3">
+                    <!-- Les options seront générées dynamiquement -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex justify-between">
+            <button id="prev-btn" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:bg-gray-300">
+                <i class="fas fa-arrow-left mr-2"></i> Précédent
+            </button>
+            <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-400">
+                Suivant <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <button id="finish-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 hidden">
+                Terminer <i class="fas fa-check ml-2"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Écran des résultats (masqué par défaut) -->
+    <div id="results-screen" class="bg-white p-6 rounded-lg shadow-md hidden">
+        <h1 class="text-2xl font-bold mb-6">Résultats du QCM</h1>
+        
+        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold">Score final</h2>
+                <div class="text-2xl font-bold">
+                    <span id="correct-count">0</span>/<span id="question-total">5</span>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div id="score-bar" class="bg-green-600 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+                <div class="text-right mt-1">
+                    <span id="score-percentage">0</span>%
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <span id="score-message" class="font-semibold text-lg">Résultat</span>
+            </div>
+        </div>
+        
+        <h2 class="text-xl font-semibold mb-4">Détail des questions</h2>
+        <div id="questions-review" class="space-y-4">
+            <!-- Les questions seront générées dynamiquement -->
+        </div>
+        
+        <div class="mt-6 flex justify-between">
+            <button id="new-qcm" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Nouveau QCM
+            </button>
+            <button id="return-dashboard" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                Retour au tableau de bord
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialisation
+
+// Structure des données - mise à jour pour correspondre aux fichiers réels
+let themes = {
+    'snt': [
+        { name: 'Internet', file: 'internet' },
+        { name: 'Web', file: 'web' },
+        { name: 'Réseaux sociaux', file: 'rs' },
+        { name: 'Données structurées', file: 'donnees' },
+        { name: 'Localisation', file: 'carto' },
+        { name: 'Photo numérique', file: 'photos' },
+        { name: 'Informatique embarquée', file: 'embarque' }
+    ],
+    'nsi1': [
+        { name: 'Représentation des données', file: 'donnee' },
+        { name: 'Traitement des données', file: 'table' },
+        { name: 'Interactions Homme-Machine', file: 'ihm' },
+        { name: 'Architectures matérielles', file: 'os' },
+        { name: 'Langages et programmation', file: 'language' },
+        { name: 'Algorithmique', file: 'algo' },
+        { name: 'Bases de données', file: 'base' },
+        { name: 'Histoire de l\'informatique', file: 'histoire' }
+    ],
+    'nsit': [
+        { name: 'Structures de données', file: 'structure' },
+        { name: 'Bases de données', file: 'base_de_donnee' },
+        { name: 'Architectures matérielles', file: 'os_lan' },
+        { name: 'Langages et programmation', file: 'language' },
+        { name: 'Algorithmique', file: 'algo' }
+    ]
+};
+
+// Questions de démonstration au cas où le chargement échoue
+const demoQuestions = [
+    {
+        question: "Quelle est la complexité de l'algorithme de tri rapide (quicksort) dans le cas moyen ?",
+        propositions: ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+        bonne_reponse: 1,
+        explication: "Le tri rapide a une complexité moyenne de O(n log n), ce qui en fait l'un des algorithmes de tri les plus efficaces."
+    },
+    {
+        question: "Quel est le protocole utilisé pour la transmission des pages web ?",
+        propositions: ["FTP", "SMTP", "HTTP", "SSH"],
+        bonne_reponse: 2,
+        explication: "HTTP (HyperText Transfer Protocol) est le protocole standard pour la transmission des pages web."
+    },
+    {
+        question: "Quelle est la base du système binaire ?",
+        propositions: ["Base 2", "Base 8", "Base 10", "Base 16"],
+        bonne_reponse: 0,
+        explication: "Le système binaire utilise la base 2, ce qui signifie qu'il n'utilise que les chiffres 0 et 1."
+    },
+    {
+        question: "Qu'est-ce qu'une clé primaire dans une base de données ?",
+        propositions: ["Un mot de passe", "Un identifiant unique pour chaque enregistrement", "Une clé de chiffrement", "Un index de recherche"],
+        bonne_reponse: 1,
+        explication: "Une clé primaire est un identifiant unique qui permet d'identifier de manière unique chaque enregistrement dans une table."
+    },
+    {
+        question: "Quel langage est principalement utilisé pour le style des pages web ?",
+        propositions: ["HTML", "JavaScript", "CSS", "PHP"],
+        bonne_reponse: 2,
+        explication: "CSS (Cascading Style Sheets) est le langage utilisé pour définir la présentation et le style des pages web écrites en HTML."
+    }
+];
+
+let qcmQuestions = [];
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let timer;
+let timeLeft = 20;
+let questionCount = 5;
+
+// Éléments DOM
+const configScreen = document.getElementById('config-screen');
+const qcmScreen = document.getElementById('qcm-screen');
+const resultsScreen = document.getElementById('results-screen');
+const levelSelect = document.getElementById('level-select');
+const themeSelect = document.getElementById('theme-select');
+const startQcmBtn = document.getElementById('start-qcm');
+const launchQcmBtn = document.getElementById('launch-qcm');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const finishBtn = document.getElementById('finish-btn');
+const newQcmBtn = document.getElementById('new-qcm');
+const returnDashboardBtn = document.getElementById('return-dashboard');
+
+// Initialisation
+document.addEventListener('DOMContentLoaded', function() {
+    // Bouton pour démarrer directement avec les questions de démo
+    document.getElementById('start-demo-qcm').addEventListener('click', function() {
+        // Initialiser le QCM avec les questions de démonstration
+        qcmQuestions = shuffleArray(demoQuestions).slice(0, Math.min(questionCount, demoQuestions.length));
+        userAnswers = Array(qcmQuestions.length).fill(null);
+        
+        // Afficher la première question
+        currentQuestionIndex = 0;
+        displayQuestion(currentQuestionIndex);
+        
+        // Mettre à jour l'interface
+        document.getElementById('total-questions').textContent = qcmQuestions.length;
+        document.getElementById('qcm-title').textContent = `QCM Flash - Démonstration`;
+        
+        // Masquer l'écran de configuration et afficher l'écran du QCM
+        configScreen.classList.add('hidden');
+        qcmScreen.classList.remove('hidden');
+        
+        // Démarrer le timer
+        startTimer();
+    });
+    
+    // Gestion du changement de niveau
+    levelSelect.addEventListener('change', function() {
+        const level = this.value;
+        if (level) {
+            themeSelect.disabled = false;
+            themeSelect.innerHTML = '<option value="">-- Choisir un thème --</option>';
+            
+            themes[level].forEach(theme => {
+                const option = document.createElement('option');
+                option.value = theme.file;
+                option.textContent = theme.name;
+                themeSelect.appendChild(option);
+            });
+        } else {
+            themeSelect.disabled = true;
+            themeSelect.innerHTML = '<option value="">-- Choisir un thème --</option>';
+            startQcmBtn.disabled = true;
+        }
+    });
+    
+    // Gestion du changement de thème
+    themeSelect.addEventListener('change', function() {
+        startQcmBtn.disabled = !this.value;
+    });
+    
+    // Gestion du nombre de questions
+    document.querySelectorAll('input[name="question-count"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            questionCount = parseInt(this.value);
+        });
+    });
+    
+    // Démarrer le QCM
+    startQcmBtn.addEventListener('click', function() {
+        const level = levelSelect.value;
+        const theme = themeSelect.value;
+        
+        // Afficher le chemin pour le débogage
+        console.log(`Tentative de chargement depuis: /static/data/qcm/${level}/${theme}.json`);
+        
+        // Construire l'URL en tenant compte du paramètre iframe=true qui pourrait être ajouté par l'iframe parent
+        let url = `/static/data/qcm/${level}/${theme}.json`;
+        
+        // Supprimer le paramètre iframe=true s'il est présent (il sera ajouté automatiquement par l'iframe parent)
+        url = url.replace(/[?&]iframe=true/, '');
+        
+        console.log("URL finale pour le chargement des questions:", url);
+        
+        // Charger les questions depuis le serveur
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    console.error(`Erreur HTTP: ${response.status} - ${response.statusText}`);
+                    throw new Error(`Impossible de charger les questions (${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Données JSON reçues:", data);
+                
+                // Simplification du traitement des données, similaire à qcm.html
+                let allQuestions = [];
+                try {
+                    // Essayer d'extraire les questions comme dans qcm.html
+                    allQuestions = Object.values(data).flat();
+                    console.log("Questions extraites (méthode 1):", allQuestions.length);
+                } catch (e) {
+                    console.error("Erreur lors de l'extraction des questions (méthode 1):", e);
+                    
+                    // Si ça ne fonctionne pas, essayer d'autres méthodes
+                    try {
+                        if (Array.isArray(data)) {
+                            allQuestions = data;
+                        } else {
+                            allQuestions = Object.values(data);
+                        }
+                        console.log("Questions extraites (méthode 2):", allQuestions.length);
+                    } catch (e2) {
+                        console.error("Erreur lors de l'extraction des questions (méthode 2):", e2);
+                        throw new Error("Impossible d'extraire les questions du fichier JSON");
+                    }
+                }
+                
+                if (allQuestions.length === 0) {
+                    throw new Error('Aucune question trouvée');
+                }
+                
+                console.log("Format d'une question:", allQuestions[0]);
+                
+                // Mélanger et sélectionner le nombre de questions demandé
+                qcmQuestions = shuffleArray(allQuestions).slice(0, Math.min(questionCount, allQuestions.length));
+                
+                // Initialiser les réponses utilisateur
+                userAnswers = Array(qcmQuestions.length).fill(null);
+                
+                // Afficher la première question
+                currentQuestionIndex = 0;
+                displayQuestion(currentQuestionIndex);
+                
+                // Mettre à jour l'interface
+                document.getElementById('total-questions').textContent = qcmQuestions.length;
+                document.getElementById('qcm-title').textContent = `QCM Flash - ${levelSelect.options[levelSelect.selectedIndex].text} - ${themeSelect.options[themeSelect.selectedIndex].text}`;
+                
+                // Masquer l'écran de configuration et afficher l'écran du QCM
+                configScreen.classList.add('hidden');
+                qcmScreen.classList.remove('hidden');
+                
+                // Démarrer le timer
+                startTimer();
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des questions:', error);
+                
+                // Utiliser les questions de démonstration en cas d'erreur
+                alert('Impossible de charger les questions. Utilisation des questions de démonstration.');
+                
+                // Initialiser le QCM avec les questions de démonstration
+                qcmQuestions = shuffleArray(demoQuestions).slice(0, Math.min(questionCount, demoQuestions.length));
+                userAnswers = Array(qcmQuestions.length).fill(null);
+                
+                // Afficher la première question
+                currentQuestionIndex = 0;
+                displayQuestion(currentQuestionIndex);
+                
+                // Mettre à jour l'interface
+                document.getElementById('total-questions').textContent = qcmQuestions.length;
+                document.getElementById('qcm-title').textContent = `QCM Flash - Démonstration`;
+                
+                // Masquer l'écran de configuration et afficher l'écran du QCM
+                configScreen.classList.add('hidden');
+                qcmScreen.classList.remove('hidden');
+                
+                // Démarrer le timer
+                startTimer();
+            });
+    });
+    
+    // Lancer un QCM préparé par le professeur
+    launchQcmBtn.addEventListener('click', function() {
+        const code = document.getElementById('qcm-code').value.trim();
+        if (!code) {
+            alert('Veuillez entrer un code de lancement');
+            return;
+        }
+        
+        // Construire l'URL en tenant compte du paramètre iframe=true qui pourrait être ajouté par l'iframe parent
+        let codeUrl = `/static/uploads/qcm/${code}.json`;
+        
+        // Supprimer le paramètre iframe=true s'il est présent (il sera ajouté automatiquement par l'iframe parent)
+        codeUrl = codeUrl.replace(/[?&]iframe=true/, '');
+        
+        console.log("URL finale pour le chargement du QCM préparé:", codeUrl);
+        
+        // Charger le QCM depuis le serveur
+        fetch(codeUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Code de lancement invalide');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Initialiser le QCM
+                qcmQuestions = data;
+                questionCount = qcmQuestions.length;
+                userAnswers = Array(qcmQuestions.length).fill(null);
+                
+                // Afficher la première question
+                currentQuestionIndex = 0;
+                displayQuestion(currentQuestionIndex);
+                
+                // Mettre à jour l'interface
+                document.getElementById('total-questions').textContent = qcmQuestions.length;
+                document.getElementById('qcm-title').textContent = `QCM Flash - ${code}`;
+                
+                // Masquer l'écran de configuration et afficher l'écran du QCM
+                configScreen.classList.add('hidden');
+                qcmScreen.classList.remove('hidden');
+                
+                // Démarrer le timer
+                startTimer();
+            })
+            .catch(error => {
+                alert('Erreur: ' + error.message);
+            });
+    });
+    
+    // Navigation entre les questions
+    prevBtn.addEventListener('click', function() {
+        if (currentQuestionIndex > 0) {
+            clearInterval(timer);
+            currentQuestionIndex--;
+            displayQuestion(currentQuestionIndex);
+            startTimer();
+        }
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        if (currentQuestionIndex < qcmQuestions.length - 1) {
+            clearInterval(timer);
+            currentQuestionIndex++;
+            displayQuestion(currentQuestionIndex);
+            startTimer();
+        }
+    });
+    
+    finishBtn.addEventListener('click', function() {
+        clearInterval(timer);
+        showResults();
+    });
+    
+    // Retour à l'écran de configuration
+    newQcmBtn.addEventListener('click', function() {
+        resultsScreen.classList.add('hidden');
+        configScreen.classList.remove('hidden');
+    });
+    
+    // Retour au tableau de bord (pour l'iframe)
+    returnDashboardBtn.addEventListener('click', function() {
+        if (window.parent && window.parent !== window) {
+            window.parent.closeWindow('qcm_flash');
+        }
+    });
+});
+
+// Fonction pour afficher une question
+function displayQuestion(index) {
+    const question = qcmQuestions[index];
+    const optionsContainer = document.getElementById('options-container');
+    
+    // Mettre à jour l'index de la question
+    document.getElementById('current-question').textContent = index + 1;
+    
+    // Mettre à jour le texte de la question
+    document.getElementById('question-text').textContent = question.question;
+    
+    // Vider le conteneur des options
+    optionsContainer.innerHTML = '';
+    
+    // Ajouter les options
+    question.propositions.forEach((option, i) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'option p-3 border rounded-lg cursor-pointer hover:bg-gray-100';
+        
+        // Si l'utilisateur a déjà répondu à cette question, marquer l'option sélectionnée
+        if (userAnswers[index] === i) {
+            optionDiv.classList.add('bg-blue-100', 'border-blue-500');
+        }
+        
+        optionDiv.innerHTML = `
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="answer" value="${i}" class="mr-3" ${userAnswers[index] === i ? 'checked' : ''}>
+                <span>${option}</span>
+            </label>
+        `;
+        
+        optionDiv.addEventListener('click', function() {
+            // Sélectionner cette option
+            const radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+            
+            // Mettre à jour l'apparence
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('bg-blue-100', 'border-blue-500');
+            });
+            this.classList.add('bg-blue-100', 'border-blue-500');
+            
+            // Enregistrer la réponse
+            userAnswers[index] = parseInt(radio.value);
+        });
+        
+        optionsContainer.appendChild(optionDiv);
+    });
+    
+    // Mettre à jour les boutons de navigation
+    prevBtn.disabled = index === 0;
+    
+    if (index === qcmQuestions.length - 1) {
+        nextBtn.classList.add('hidden');
+        finishBtn.classList.remove('hidden');
+    } else {
+        nextBtn.classList.remove('hidden');
+        finishBtn.classList.add('hidden');
+    }
+    
+    // Réinitialiser le timer
+    timeLeft = 20;
+    document.getElementById('timer').textContent = timeLeft;
+}
+
+// Fonction pour démarrer le timer
+function startTimer() {
+    clearInterval(timer);
+    timeLeft = 20;
+    document.getElementById('timer').textContent = timeLeft;
+    
+    timer = setInterval(function() {
+        timeLeft--;
+        document.getElementById('timer').textContent = timeLeft;
+        
+        if (timeLeft <= 5) {
+            document.getElementById('timer').classList.add('text-red-600');
+        } else {
+            document.getElementById('timer').classList.remove('text-red-600');
+        }
+        
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            
+            // Si l'utilisateur n'a pas répondu, passer à la question suivante
+            if (userAnswers[currentQuestionIndex] === null) {
+                userAnswers[currentQuestionIndex] = -1; // -1 indique une absence de réponse
+            }
+            
+            // Passer à la question suivante ou terminer le QCM
+            if (currentQuestionIndex < qcmQuestions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+                startTimer();
+            } else {
+                showResults();
+            }
+        }
+    }, 1000);
+}
+
+// Fonction pour afficher les résultats
+function showResults() {
+    // Masquer l'écran du QCM et afficher l'écran des résultats
+    qcmScreen.classList.add('hidden');
+    resultsScreen.classList.remove('hidden');
+    
+    // Calculer le score
+    let correctCount = 0;
+    for (let i = 0; i < qcmQuestions.length; i++) {
+        if (userAnswers[i] === qcmQuestions[i].bonne_reponse) {
+            correctCount++;
+        }
+    }
+    
+    // Mettre à jour l'interface
+    document.getElementById('correct-count').textContent = correctCount;
+    document.getElementById('question-total').textContent = qcmQuestions.length;
+    
+    const percentage = Math.round((correctCount / qcmQuestions.length) * 100);
+    document.getElementById('score-percentage').textContent = percentage;
+    document.getElementById('score-bar').style.width = `${percentage}%`;
+    
+    // Définir la couleur de la barre de progression en fonction du score
+    const scoreBar = document.getElementById('score-bar');
+    if (percentage < 50) {
+        scoreBar.classList.remove('bg-green-600', 'bg-yellow-500');
+        scoreBar.classList.add('bg-red-600');
+    } else if (percentage < 80) {
+        scoreBar.classList.remove('bg-green-600', 'bg-red-600');
+        scoreBar.classList.add('bg-yellow-500');
+    } else {
+        scoreBar.classList.remove('bg-yellow-500', 'bg-red-600');
+        scoreBar.classList.add('bg-green-600');
+    }
+    
+    // Définir le message en fonction du score
+    const scoreMessage = document.getElementById('score-message');
+    if (percentage < 50) {
+        scoreMessage.textContent = 'Vous pouvez faire mieux ! Continuez à vous entraîner.';
+        scoreMessage.className = 'font-semibold text-lg text-red-600';
+    } else if (percentage < 80) {
+        scoreMessage.textContent = 'Pas mal ! Continuez vos efforts.';
+        scoreMessage.className = 'font-semibold text-lg text-yellow-600';
+    } else {
+        scoreMessage.textContent = 'Excellent travail ! Vous maîtrisez le sujet.';
+        scoreMessage.className = 'font-semibold text-lg text-green-600';
+    }
+    
+    // Afficher le détail des questions
+    const questionsReview = document.getElementById('questions-review');
+    questionsReview.innerHTML = '';
+    
+    qcmQuestions.forEach((question, index) => {
+        const userAnswer = userAnswers[index];
+        const isCorrect = userAnswer === question.bonne_reponse;
+        
+        const questionDiv = document.createElement('div');
+        questionDiv.className = `p-4 rounded-lg ${isCorrect ? 'bg-green-50' : 'bg-red-50'}`;
+        
+        let userAnswerText = 'Pas de réponse';
+        if (userAnswer !== null && userAnswer >= 0) {
+            userAnswerText = question.propositions[userAnswer];
+        }
+        
+        questionDiv.innerHTML = `
+            <div class="flex items-start">
+                <div class="mr-3 mt-1">
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full ${isCorrect ? 'bg-green-500' : 'bg-red-500'} text-white font-bold">
+                        ${isCorrect ? '✓' : '✗'}
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-semibold mb-2">Question ${index + 1}: ${question.question}</h3>
+                    <div class="mb-2">
+                        <span class="font-medium">Votre réponse:</span> 
+                        <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">${userAnswerText}</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-medium">Bonne réponse:</span> 
+                        <span class="text-green-600">${question.propositions[question.bonne_reponse]}</span>
+                    </div>
+                    <div class="mt-2 text-gray-700 bg-white p-2 rounded border">
+                        <span class="font-medium">Explication:</span> 
+                        ${question.explication || "Pas d'explication disponible pour cette question."}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        questionsReview.appendChild(questionDiv);
+    });
+}
+
+// Fonction pour mélanger un tableau (algorithme de Fisher-Yates)
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+</script>
 {% endblock %}

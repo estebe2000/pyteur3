@@ -183,6 +183,58 @@ function toggleDarkTheme(isDark) {
     });
 }
 
+// Fonction pour afficher/masquer le profil dans le tableau de bord
+function showProfileInDashboard() {
+    const profileSection = document.getElementById('dashboard-profile-section');
+    if (profileSection) {
+        // Si la section est déjà visible, la masquer
+        if (profileSection.style.display === 'block') {
+            profileSection.style.display = 'none';
+        } else {
+            // Sinon, l'afficher
+            profileSection.style.display = 'block';
+            
+            // Faire défiler jusqu'à la section de profil
+            profileSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
+// Fonction pour marquer un devoir comme fait/non fait via AJAX
+function toggleHomework(homeworkId, isChecked) {
+    const form = document.getElementById('homework-form-' + homeworkId);
+    
+    // Utiliser Fetch API pour soumettre le formulaire en AJAX
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur réseau');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Mettre à jour l'interface utilisateur
+            const checkbox = form.querySelector('input[type="checkbox"]');
+            checkbox.checked = isChecked;
+        } else {
+            console.error('Erreur lors de la mise à jour du devoir');
+        }
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+        // En cas d'erreur, revenir à l'état précédent
+        const checkbox = form.querySelector('input[type="checkbox"]');
+        checkbox.checked = !isChecked;
+    });
+}
+
 // Gestion du déplacement des fenêtres
 window.addEventListener('DOMContentLoaded', () => {
     // Vérifier si l'utilisateur a choisi d'ouvrir automatiquement le tableau de bord
