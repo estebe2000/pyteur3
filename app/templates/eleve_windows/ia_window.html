@@ -7,7 +7,7 @@
         <!-- Utilisation d'un iframe pour charger directement la page IA -->
         <iframe 
             src="{{ url_for('dashboard.ia') }}?iframe=true" 
-            style="width:100%; height:100%; border:none;" 
+            style="width:100%; height:100%; border:none; overflow:hidden;" 
             id="ia-iframe"
             onload="injectIframeCSS(this)"
         ></iframe>

@@ -149,6 +149,33 @@
                     
                     <div class="card">
                         <div class="card-header">
+                            <i class="fas fa-cog"></i> Préférences
+                        </div>
+                        <div class="card-body">
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="autoStartDashboard" class="mr-2" checked>
+                                <label for="autoStartDashboard">Ouvrir le tableau de bord au démarrage</label>
+                            </div>
+                            <script>
+                                // Initialiser la case à cocher avec la valeur stockée
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const checkbox = document.getElementById('autoStartDashboard');
+                                    const savedValue = localStorage.getItem('autoStartDashboard');
+                                    
+                                    // Si une valeur est stockée, l'utiliser (par défaut: true)
+                                    checkbox.checked = savedValue === null ? true : (savedValue === 'true');
+                                    
+                                    // Enregistrer le changement dans le localStorage
+                                    checkbox.addEventListener('change', function() {
+                                        localStorage.setItem('autoStartDashboard', checkbox.checked);
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="card mt-4">
+                        <div class="card-header">
                             <i class="fas fa-tasks"></i> Tâches à faire
                         </div>
                         <div class="card-body" style="padding: 0;">

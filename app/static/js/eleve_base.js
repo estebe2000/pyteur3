@@ -185,8 +185,12 @@ function toggleDarkTheme(isDark) {
 
 // Gestion du déplacement des fenêtres
 window.addEventListener('DOMContentLoaded', () => {
-    // Ouvrir automatiquement le tableau de bord au chargement de la page
-    openWindow('dashboard');
+    // Vérifier si l'utilisateur a choisi d'ouvrir automatiquement le tableau de bord
+    const autoStartDashboard = localStorage.getItem('autoStartDashboard');
+    // Si aucune préférence n'est définie ou si la préférence est true, ouvrir le tableau de bord
+    if (autoStartDashboard === null || autoStartDashboard === 'true') {
+        openWindow('dashboard');
+    }
     
     // Restaurer le thème préféré de l'utilisateur
     const darkTheme = localStorage.getItem('darkTheme') === 'true';
