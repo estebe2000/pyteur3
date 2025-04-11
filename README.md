@@ -132,6 +132,8 @@ docker-compose up
 docker-compose -f docker-compose-gunicorn.yml up
 ```
 
+L'application sera accessible à l'adresse http://localhost:5001 (notez que le déploiement avec Gunicorn utilise le port 5001)
+
 ## 📁 Structure du projet
 
 ```
