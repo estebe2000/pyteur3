@@ -20,6 +20,39 @@
 - **📋 Importation d'utilisateurs** - Via fichiers CSV
 - **🤖 Intégration IA** - Support pour Ollama et autres fournisseurs
 
+## 📸 Captures d'écran
+
+<div align="center">
+
+### 🔐 Page de connexion
+<img src="app/screens/login.png" alt="Page de connexion" width="600"/>
+
+### 🖥️ Interface bureau
+<img src="app/screens/bureau.png" alt="Interface bureau" width="600"/>
+
+### 📊 Tableau de bord élève
+<img src="app/screens/board_eleve.png" alt="Tableau de bord élève" width="600"/>
+
+### 📝 QCM interactifs
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; margin-right: 10px;">
+    <p><strong>QCM standard</strong></p>
+    <img src="app/screens/qcm.png" alt="QCM standard" width="400"/>
+  </div>
+  <div style="flex: 1; margin-left: 10px;">
+    <p><strong>QCM flash</strong></p>
+    <img src="app/screens/qcmflash.png" alt="QCM flash" width="400"/>
+  </div>
+</div>
+
+### 🧪 Bac à sable Python
+<img src="app/screens/bac.png" alt="Bac à sable Python" width="600"/>
+
+### 📈 Statistiques et suivi
+<img src="app/screens/stats.png" alt="Statistiques et suivi" width="600"/>
+
+</div>
+
 ## 🛠️ Technologies utilisées
 
 - **Backend**

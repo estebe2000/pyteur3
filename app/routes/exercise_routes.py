@@ -309,12 +309,57 @@ def upload_exercise():
         flash(f'Erreur lors du téléchargement de l\'exercice: {str(e)}', 'error')
         return redirect(url_for('exercise.exercises'))
 
-@exercise_bp.route('/assign_exercise/<int:exercise_id>')
+@exercise_bp.route('/assign_exercise/<int:exercise_id>', methods=['GET', 'POST'])
 def assign_exercise(exercise_id):
     """Affecter un exercice à des élèves"""
     exercise = Document.query.get_or_404(exercise_id)
+    
+    if request.method == 'POST':
+        # Supprimer les affectations existantes
+        ExerciseAssignment.query.filter_by(document_id=exercise_id).delete()
+        
+        # Récupérer les utilisateurs, groupes et classes sélectionnés
+        user_ids = request.form.getlist('users')
+        group_ids = request.form.getlist('groups')
+        class_ids = request.form.getlist('classes')
+        
+        # Créer les nouvelles affectations
+        for user_id in user_ids:
+            assignment = ExerciseAssignment(
+                document_id=exercise_id,
+                user_id=user_id,
+                assigned_by=current_user.id,
+                assigned_at=datetime.now()
+            )
+            db.session.add(assignment)
+        
+        # Pour les groupes et classes, il faudrait récupérer les utilisateurs correspondants
+        # et créer des affectations pour chacun d'eux
+        # (Cette partie dépend de la structure de votre base de données)
+        
+        db.session.commit()
+        flash('Affectations enregistrées avec succès', 'success')
+        return redirect(url_for('exercise.exercises'))
+    
+    # Récupérer les utilisateurs, groupes et classes
+    users = User.query.filter_by(role='eleve').all()
     classes = SchoolClass.query.all()
-    return render_template('assign_exercise.html', exercise=exercise, classes=classes)
+    groups = []  # À remplacer par la récupération des groupes si vous avez une table correspondante
+    
+    # Récupérer les affectations existantes
+    assignments = ExerciseAssignment.query.filter_by(document_id=exercise_id).all()
+    assigned_users = [a.user_id for a in assignments]
+    assigned_groups = []
+    assigned_classes = []
+    
+    return render_template('assign_exercise.html', 
+                          exercise=exercise, 
+                          users=users,
+                          groups=groups,
+                          classes=classes,
+                          assigned_users=assigned_users,
+                          assigned_groups=assigned_groups,
+                          assigned_classes=assigned_classes)
 
 @exercise_bp.route('/api/store_temp_script', methods=['POST'])
 def store_temp_script():
