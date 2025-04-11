@@ -134,6 +134,25 @@ Configuration disponible dans `docker-compose.yml` (développement) ou `docker-c
     - DATABASE_URL=postgresql://user:pass@host/dbname
   ```
 
+#### Démarrage automatique avec Docker Compose
+
+Pour configurer le démarrage automatique des conteneurs Docker au démarrage du système:
+
+**Sous Linux:**
+1. Copiez le fichier `pyteur-docker.service` dans `/etc/systemd/system/`
+2. Modifiez le chemin dans `WorkingDirectory=/path/to/pyteur3` pour qu'il corresponde à votre installation
+3. Activez et démarrez le service:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable pyteur-docker.service
+   sudo systemctl start pyteur-docker.service
+   ```
+
+**Sous Windows:**
+1. Copiez le fichier `pyteur-docker-autostart.bat` dans le dossier de démarrage:
+   `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`
+2. Modifiez le chemin dans le script si nécessaire
+
 ### Déploiement avec Gunicorn (sans Docker)
 
 Pour un déploiement en production sans Docker, utilisez les scripts fournis:

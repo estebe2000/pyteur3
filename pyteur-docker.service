@@ -1,0 +1,15 @@
+[Unit]
+Description=Pyteur Docker Compose Application
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/path/to/pyteur3
+ExecStart=/usr/bin/docker-compose -f docker-compose-gunicorn.yml up -d
+ExecStop=/usr/bin/docker-compose -f docker-compose-gunicorn.yml down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
