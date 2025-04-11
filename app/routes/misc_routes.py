@@ -16,8 +16,20 @@ def todo():
         .filter(TodoListAssignment.user_id == current_user.id)
         .all()
     )
-
-    return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists)
+    
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists, title=labels.get('todo', 'Todo'))
+    else:
+        return render_template('todo.html', my_lists=my_lists, shared_lists=shared_lists)
 
 @misc_bp.route('/todo/add_list', methods=['POST'])
 @login_required

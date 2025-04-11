@@ -1,0 +1,49 @@
+/* CSS pour cacher les éléments indésirables des pages admin dans les iframes de l'interface élève */
+
+/* Cacher la barre latérale */
+#sidebar, 
+.breadcrumb,
+button[onclick="toggleSidebar()"],
+button[onclick="toggleCollapseSidebar()"] {
+    display: none !important;
+}
+
+/* Cacher la barre de navigation supérieure */
+.flex.items-center.justify-between.h-16.px-4.bg-white.border-b.border-gray-200 {
+    display: none !important;
+}
+
+/* Ajuster le contenu principal pour qu'il prenne toute la largeur */
+.flex.flex-col.flex-1.overflow-hidden {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ajuster le contenu de la page */
+main.flex-1.overflow-auto.p-6 {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100% !important;
+}
+
+/* Supprimer les marges et paddings du body */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: auto !important;
+}
+
+/* Supprimer les marges et paddings de la div principale */
+.flex.h-screen.overflow-hidden.relative {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* Ajuster les notifications flash pour qu'elles restent visibles */
+.fixed.top-4.right-4.z-50.space-y-2 {
+    position: absolute !important;
+    z-index: 9999 !important;
+}

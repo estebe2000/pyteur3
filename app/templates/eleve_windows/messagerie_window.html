@@ -1,14 +1,14 @@
-<div class="window" id="qcm_flash-window">
+<div class="window" id="messagerie-window">
     <div class="window-header">
-        <div><i class="fas fa-bolt"></i> <span>QCM Flash</span></div>
-        <div class="close-btn" onclick="closeWindow('qcm_flash')"><i class="fas fa-times"></i></div>
+        <div><i class="fas fa-envelope"></i> <span>{{ labels['messagerie'] }}</span></div>
+        <div class="close-btn" onclick="closeWindow('messagerie')"><i class="fas fa-times"></i></div>
     </div>
     <div class="window-content overflow-auto p-0">
-        <!-- Utilisation d'un iframe pour charger directement la page admin des QCM flash -->
+        <!-- Utilisation d'un iframe pour charger directement la page admin de la messagerie -->
         <iframe 
-            src="{{ url_for('qcm.qcm_flash') }}?iframe=true" 
+            src="{{ url_for('messagerie.messagerie') }}?iframe=true" 
             style="width:100%; height:100%; border:none;" 
-            id="qcm-flash-iframe"
+            id="messagerie-iframe"
             onload="injectIframeCSS(this)"
         ></iframe>
     </div>

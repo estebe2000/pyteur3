@@ -1,14 +1,14 @@
-<div class="window" id="documents-window">
+<div class="window" id="projets-window">
     <div class="window-header">
-        <div><i class="fas fa-folder"></i> <span>{{ labels['documents'] }}</span></div>
-        <div class="close-btn" onclick="closeWindow('documents')"><i class="fas fa-times"></i></div>
+        <div><i class="fas fa-project-diagram"></i> <span>{{ labels['projets'] }}</span></div>
+        <div class="close-btn" onclick="closeWindow('projets')"><i class="fas fa-times"></i></div>
     </div>
     <div class="window-content overflow-auto p-0">
-        <!-- Utilisation d'un iframe pour charger directement la page admin des documents -->
+        <!-- Utilisation d'un iframe pour charger directement la page admin des projets -->
         <iframe 
-            src="{{ url_for('document.documents') }}?iframe=true" 
+            src="{{ url_for('project.index') }}?iframe=true" 
             style="width:100%; height:100%; border:none;" 
-            id="documents-iframe"
+            id="projets-iframe"
             onload="injectIframeCSS(this)"
         ></iframe>
     </div>

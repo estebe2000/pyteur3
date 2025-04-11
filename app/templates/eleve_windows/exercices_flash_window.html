@@ -3,7 +3,77 @@
         <div><i class="fas fa-bolt"></i> <span>Exercices flash</span></div>
         <div class="close-btn" onclick="closeWindow('exercices_flash')"><i class="fas fa-times"></i></div>
     </div>
-    <div class="window-content overflow-auto">
-        <p>À venir : intégration des exercices flash.</p>
+    <div class="window-content overflow-auto p-0">
+        <!-- Utilisation d'un iframe pour charger directement la page admin des exercices flash -->
+        <iframe 
+            src="{{ url_for('exercise.exercices_flash') }}?iframe=true" 
+            style="width:100%; height:100%; border:none;" 
+            id="exercices-flash-iframe"
+            onload="injectIframeCSS(this)"
+        ></iframe>
     </div>
 </div>
+
+<script>
+    // Fonction pour injecter le CSS dans l'iframe
+    function injectIframeCSS(iframe) {
+        try {
+            // Attendre que l'iframe soit chargé
+            if (iframe.contentDocument) {
+                // Créer un élément link pour le CSS
+                const linkElem = document.createElement('link');
+                linkElem.rel = 'stylesheet';
+                linkElem.href = "{{ url_for('static', filename='css/eleve_iframe.css') }}";
+                
+                // Ajouter le lien CSS à l'en-tête de l'iframe
+                iframe.contentDocument.head.appendChild(linkElem);
+                
+                // Ajuster les liens dans l'iframe pour qu'ils s'ouvrent dans l'iframe
+                const links = iframe.contentDocument.querySelectorAll('a');
+                links.forEach(link => {
+                    // Ne pas modifier les liens externes ou les liens avec target déjà défini
+                    if (!link.href.startsWith('http') && !link.target) {
+                        link.target = '_self';
+                    }
+                });
+                
+                // Ajuster les formulaires pour qu'ils restent dans l'iframe
+                const forms = iframe.contentDocument.querySelectorAll('form');
+                forms.forEach(form => {
+                    // Ajouter un paramètre iframe=true à l'action du formulaire
+                    const action = form.getAttribute('action');
+                    if (action && !action.includes('iframe=true')) {
+                        const separator = action.includes('?') ? '&' : '?';
+                        form.setAttribute('action', action + separator + 'iframe=true');
+                    }
+                });
+                
+                // Ajuster les requêtes AJAX pour qu'elles incluent le paramètre iframe=true
+                const originalFetch = iframe.contentWindow.fetch;
+                iframe.contentWindow.fetch = function(url, options) {
+                    // Si l'URL est relative (ne commence pas par http ou https)
+                    if (typeof url === 'string' && !url.startsWith('http')) {
+                        // Ajouter le paramètre iframe=true à l'URL
+                        const separator = url.includes('?') ? '&' : '?';
+                        url = url + separator + 'iframe=true';
+                    }
+                    return originalFetch.call(this, url, options);
+                };
+                
+                // Ajuster les requêtes XMLHttpRequest pour qu'elles incluent le paramètre iframe=true
+                const originalXHROpen = iframe.contentWindow.XMLHttpRequest.prototype.open;
+                iframe.contentWindow.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+                    // Si l'URL est relative (ne commence pas par http ou https)
+                    if (typeof url === 'string' && !url.startsWith('http')) {
+                        // Ajouter le paramètre iframe=true à l'URL
+                        const separator = url.includes('?') ? '&' : '?';
+                        url = url + separator + 'iframe=true';
+                    }
+                    return originalXHROpen.call(this, method, url, async, user, password);
+                };
+            }
+        } catch (e) {
+            console.error("Erreur lors de l'injection du CSS dans l'iframe:", e);
+        }
+    }
+</script>

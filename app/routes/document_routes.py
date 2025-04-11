@@ -29,8 +29,20 @@ def documents():
     )
 
     docs = personal_docs.union(assigned_docs).all()
-
-    return render_template('documents.html', documents=docs)
+    
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('documents.html', documents=docs, title=labels.get('documents', 'Documents'))
+    else:
+        return render_template('documents.html', documents=docs)
 
 @document_bp.route('/upload', methods=['POST'])
 @login_required

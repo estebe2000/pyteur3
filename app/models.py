@@ -125,3 +125,25 @@ class MessageRecipient(db.Model):
     message = db.relationship('Message', backref='recipients')
     recipient_user = db.relationship('User', foreign_keys=[recipient_user_id], backref='received_messages')
     recipient_group = db.relationship('Group', foreign_keys=[recipient_group_id], backref='group_messages')
+
+
+class Project(db.Model):
+    __tablename__ = 'projects'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    owner = db.relationship('User', backref='owned_projects')
+    participants = db.relationship('ProjectParticipant', backref='project', cascade='all, delete-orphan')
+
+
+class ProjectParticipant(db.Model):
+    __tablename__ = 'project_participants'
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    role = db.Column(db.String(50), default='member')  # 'owner', 'member'
+    
+    user = db.relationship('User', backref='project_participations')

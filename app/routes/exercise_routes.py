@@ -28,8 +28,20 @@ def exercises():
     )
 
     exercises = personal_exercises.union(assigned_exercises).all()
-
-    return render_template('exercises.html', exercises=exercises)
+    
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('exercises.html', exercises=exercises, title=labels.get('exercises', 'Exercices'))
+    else:
+        return render_template('exercises.html', exercises=exercises)
 
 @exercise_bp.route('/upload_exercise', methods=['POST'])
 @login_required
@@ -170,7 +182,20 @@ def exercices_flash():
     from app.ia_providers import provider_manager
     ia_name = provider_manager.active_provider_name or "Aucun fournisseur"
     model_name = provider_manager.active_provider.model if provider_manager.active_provider else "Aucun modèle"
-    return render_template('exercices_flash.html', ia_name=ia_name, model_name=model_name)
+    
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('exercices_flash.html', ia_name=ia_name, model_name=model_name, title=labels.get('exercices_flash', 'Exercices Flash'))
+    else:
+        return render_template('exercices_flash.html', ia_name=ia_name, model_name=model_name)
 
 @exercise_bp.route('/api/generateur_data', methods=['GET'])
 @login_required

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{# Ce template est utilisé pour extraire uniquement le contenu d'une page sans les éléments de navigation #}
+{# Il est utilisé par les fenêtres de l'interface élève pour réutiliser le contenu des pages admin #}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ title }}
+{% endblock %}
+
+{% block content %}
+<div id="content-for-window">
+    {% block window_content %}{% endblock %}
+</div>
+{% endblock %}

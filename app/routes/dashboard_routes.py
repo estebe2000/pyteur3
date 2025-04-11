@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from app.models import User, Document, SchoolClass
 from app import csrf
@@ -36,7 +36,19 @@ def drive():
 @dashboard_bp.route('/sandbox')
 @login_required
 def sandbox():
-    return render_template('sandbox.html')
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('sandbox.html', title=labels.get('sandbox', 'Bac à sable'))
+    else:
+        return render_template('sandbox.html')
 
 @dashboard_bp.route('/ia')
 @login_required

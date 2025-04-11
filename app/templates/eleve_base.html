@@ -73,18 +73,13 @@
     <!-- Exemples : -->
     {% include 'eleve_windows/dashboard_window.html' %}
     {% include 'eleve_windows/documents_window.html' %}
-{% include 'eleve_windows/exercises_window.html' %}
-{% include 'eleve_windows/sandbox_window.html' %}
+    {% include 'eleve_windows/exercises_window.html' %}
+    {% include 'eleve_windows/sandbox_window.html' %}
     {% include 'eleve_windows/exercices_flash_window.html' %}
-    <div class="window" id="qcm_flash-window">
-        <div class="window-header">
-            <div><i class="fas fa-bolt"></i> <span>QCM Flash</span></div>
-            <div class="close-btn" onclick="closeWindow('qcm_flash')"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="window-content overflow-auto">
-            <p>À venir : intégration des QCM flash.</p>
-        </div>
-    </div>
+    {% include 'eleve_windows/projets_window.html' %}
+    {% include 'eleve_windows/todo_window.html' %}
+    {% include 'eleve_windows/messagerie_window.html' %}
+    {% include 'eleve_windows/qcm_flash_window.html' %}
     <div class="window" id="qcm-window">
         <div class="window-header">
             <div><i class="fas fa-list"></i> <span>QCM</span></div>

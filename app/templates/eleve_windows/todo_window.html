@@ -1,14 +1,14 @@
-<div class="window" id="qcm_flash-window">
+<div class="window" id="todo-window">
     <div class="window-header">
-        <div><i class="fas fa-bolt"></i> <span>QCM Flash</span></div>
-        <div class="close-btn" onclick="closeWindow('qcm_flash')"><i class="fas fa-times"></i></div>
+        <div><i class="fas fa-check-circle"></i> <span>{{ labels['todo'] }}</span></div>
+        <div class="close-btn" onclick="closeWindow('todo')"><i class="fas fa-times"></i></div>
     </div>
     <div class="window-content overflow-auto p-0">
-        <!-- Utilisation d'un iframe pour charger directement la page admin des QCM flash -->
+        <!-- Utilisation d'un iframe pour charger directement la page admin des tâches -->
         <iframe 
-            src="{{ url_for('qcm.qcm_flash') }}?iframe=true" 
+            src="{{ url_for('misc.todo') }}?iframe=true" 
             style="width:100%; height:100%; border:none;" 
-            id="qcm-flash-iframe"
+            id="todo-iframe"
             onload="injectIframeCSS(this)"
         ></iframe>
     </div>
@@ -46,31 +46,15 @@
                         const separator = action.includes('?') ? '&' : '?';
                         form.setAttribute('action', action + separator + 'iframe=true');
                     }
+                    
+                    // Ajouter un gestionnaire d'événements pour recharger la page avec iframe=true après soumission
+                    form.addEventListener('submit', function() {
+                        setTimeout(function() {
+                            // Recharger la page avec iframe=true après un court délai
+                            iframe.contentWindow.location.href = "{{ url_for('misc.todo') }}?iframe=true";
+                        }, 500);
+                    });
                 });
-                
-                // Ajuster les requêtes AJAX pour qu'elles incluent le paramètre iframe=true
-                const originalFetch = iframe.contentWindow.fetch;
-                iframe.contentWindow.fetch = function(url, options) {
-                    // Si l'URL est relative (ne commence pas par http ou https)
-                    if (typeof url === 'string' && !url.startsWith('http')) {
-                        // Ajouter le paramètre iframe=true à l'URL
-                        const separator = url.includes('?') ? '&' : '?';
-                        url = url + separator + 'iframe=true';
-                    }
-                    return originalFetch.call(this, url, options);
-                };
-                
-                // Ajuster les requêtes XMLHttpRequest pour qu'elles incluent le paramètre iframe=true
-                const originalXHROpen = iframe.contentWindow.XMLHttpRequest.prototype.open;
-                iframe.contentWindow.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
-                    // Si l'URL est relative (ne commence pas par http ou https)
-                    if (typeof url === 'string' && !url.startsWith('http')) {
-                        // Ajouter le paramètre iframe=true à l'URL
-                        const separator = url.includes('?') ? '&' : '?';
-                        url = url + separator + 'iframe=true';
-                    }
-                    return originalXHROpen.call(this, method, url, async, user, password);
-                };
             }
         } catch (e) {
             console.error("Erreur lors de l'injection du CSS dans l'iframe:", e);

@@ -8,7 +8,19 @@ messagerie_bp = Blueprint('messagerie', __name__)
 @messagerie_bp.route('/messagerie')
 @login_required
 def messagerie():
-    return render_template('messagerie.html')
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('messagerie.html', title=labels.get('messagerie', 'Messagerie'))
+    else:
+        return render_template('messagerie.html')
 
 @messagerie_bp.route('/api/recipients', methods=['GET'])
 @login_required

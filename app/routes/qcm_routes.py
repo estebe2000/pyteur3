@@ -11,7 +11,19 @@ qcm_bp = Blueprint('qcm', __name__)
 @qcm_bp.route('/qcm_flash')
 @login_required
 def qcm_flash():
-    return render_template('qcm_flash.html')
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    if is_iframe:
+        return render_template('qcm_flash.html', title=labels.get('qcm_flash', 'QCM Flash'))
+    else:
+        return render_template('qcm_flash.html')
 
 @qcm_bp.route('/qcm')
 @login_required
