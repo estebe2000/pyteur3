@@ -7,7 +7,7 @@ services:
       args:
         INSTALL_OLLAMA: "true"
     container_name: pyteur_os
-    command: /bin/sh -c "ollama serve & sleep 2 && if [ \"$RESET_DB\" = \"true\" ]; then python manage.py --reset --init; else python manage.py --init; fi && gunicorn --bind 0.0.0.0:5001 wsgi:app"
+    command: /bin/sh -c "ollama serve & sleep 2 && if [ \"$RESET_DB\" = \"true\" ]; then python manage.py --reset --init; else python manage.py --init; fi && gunicorn -c gunicorn_config.py wsgi:app"
     ports:
       - "5001:5001"
       - "11434:11434"  # Port pour Ollama
@@ -16,7 +16,7 @@ services:
       - ./.env:/app/.env  # Monte le fichier .env dans le conteneur
       - ollama_data:/root/.ollama  # Stockage des modèles Ollama
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=production
       - RESET_DB=false    # Mettre à true pour forcer la réinitialisation complète
       - SECRET_KEY=your_secret_key
     restart: unless-stopped

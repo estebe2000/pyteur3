@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pyteur - Environnement Élève</title>
+    <title>PYTEUR - Environnement Élève</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Mono+One&family=Major+Mono+Display&display=swap" rel="stylesheet">
     {% block head %}{% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_windows.css') }}">
@@ -49,8 +52,22 @@
         </div>
     </div>
 
-    <!-- Logo PYTEUR -->
-    <div class="pyteur-logo">PYTEUR</div>
+    <!-- Logo PYTEUR avec animations et particules -->
+    <div id="particles-js" style="pointer-events: none;"></div>
+    <div class="glitch-effect" style="pointer-events: none;"></div>
+    <div class="scanlines" style="pointer-events: none;"></div>
+    <div class="noise" style="pointer-events: none;"></div>
+    
+    <div id="pyteur-container" style="pointer-events: none;">
+        <div id="pyteur-text" style="pointer-events: none;">
+            <span class="letter">P</span>
+            <span class="letter">Y</span>
+            <span class="letter">T</span>
+            <span class="letter">E</span>
+            <span class="letter">U</span>
+            <span class="letter">R</span>
+        </div>
+    </div>
 
     <!-- Icônes bureau -->
 
@@ -60,7 +77,11 @@
             <i class="fas fa-rocket"></i>
             <span>Mes applications</span>
         </div>
-        <div class="taskbar-time" id="taskbarTime" style="margin-left:auto; color:white; padding:5px 15px; border-radius:5px; background:rgba(255,255,255,0.1); text-align:right;">
+        <div class="widgets-btn" onclick="openWidgetsPanel()" title="Gestionnaire de widgets">
+            <i class="fas fa-th"></i>
+        </div>
+        <div class="taskbar-version">PYTEUR OS v1.0</div>
+        <div class="taskbar-time" id="taskbarTime" style="margin-left:10px; color:white; padding:5px 15px; border-radius:5px; background:rgba(255,255,255,0.1); text-align:right;">
             <span id="time"></span><br>
             <span id="date"></span>
         </div>
@@ -120,6 +141,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/widgets.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/calculator-widget.js') }}"></script>
     <script src="{{ url_for('static', filename='js/eleve_base.js') }}"></script>
 </body>
 </html>

@@ -19,6 +19,13 @@
       "icon": "fa-link",
       "target": "window",
       "visible": true
+    },
+    "link_1744393042643_783": {
+      "name": "Scratch",
+      "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted",
+      "icon": "fa-globe",
+      "target": "_blank",
+      "visible": true
     }
   }
 }

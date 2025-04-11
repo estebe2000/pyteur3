@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYTEUR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Mono+One&family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23e2e8f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z"></path><path d="M12 22V12"></path></svg>'), auto;
+        }
+
+        #pyteur-container {
+            position: relative;
+            text-align: center;
+        }
+
+        #pyteur-text {
+            font-family: 'Rubik Mono One', sans-serif;
+            font-size: 8rem;
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite, glitch 2s infinite alternate;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .letter {
+            display: inline-block;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        .glitch-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            mix-blend-mode: screen;
+            opacity: 0.2;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0) 100%
+            );
+            background-size: 100% 4px;
+            z-index: 15;
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        .noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVGhD7c4xEQAgDAAxhHSw/6VZQA8J3mTBHXdnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eQd9XgPeQkOj6QAAAABJRU5ErkJggg==');
+            opacity: 0.05;
+            z-index: 20;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="glitch-effect"></div>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    
+    <div id="pyteur-container">
+        <div id="pyteur-text">
+            <span class="letter">P</span>
+            <span class="letter">Y</span>
+            <span class="letter">T</span>
+            <span class="letter">E</span>
+            <span class="letter">U</span>
+            <span class="letter">R</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration des particules
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 100,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#ff00ff", "#00ffff", "#ffff00"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.8,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 4,
+                            "size_min": 0.3,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ff00ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "repulse": {
+                            "distance": 100,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Animation des lettres PYTEUR
+            const letters = document.querySelectorAll('.letter');
+            const pyteurText = document.getElementById('pyteur-text');
+            
+            pyteurText.addEventListener('mouseenter', function() {
+                letters.forEach((letter, index) => {
+                    // Animation de déconstruction
+                    gsap.to(letter, {
+                        duration: 0.5,
+                        x: (Math.random() - 0.5) * 100,
+                        y: (Math.random() - 0.5) * 100,
+                        rotation: (Math.random() - 0.5) * 360,
+                        opacity: 0,
+                        ease: "power2.out",
+                        delay: index * 0.1
+                    });
+                    
+                    // Animation de reconstruction
+                    gsap.to(letter, {
+                        duration: 0.3,
+                        x: 0,
+                        y: 0,
+                        rotation: 0,
+                        opacity: 1,
+                        ease: "power2.in",
+                        delay: index * 0.1 + 0.5
+                    });
+                });
+                
+                // Effet de couleur aléatoire
+                const colors = ['#ff00ff', '#00ffff', '#ffff00', '#ff0000', '#00ff00', '#0000ff'];
+                letters.forEach(letter => {
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    gsap.to(letter, {
+                        duration: 0.3,
+                        color: randomColor,
+                        delay: 0.8
+                    });
+                });
+            });
+
+            // Effet de glitch aléatoire
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    pyteurText.style.animation = 'glitch 0.3s';
+                    setTimeout(() => {
+                        pyteurText.style.animation = 'glitch 2s infinite alternate';
+                    }, 300);
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

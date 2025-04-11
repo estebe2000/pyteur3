@@ -78,7 +78,7 @@ body {
     z-index: 9998;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
-.start-btn {
+.start-btn, .widgets-btn {
     background: linear-gradient(90deg, #4f46e5, #7c3aed);
     color: white;
     padding: 5px 15px;
@@ -90,9 +90,19 @@ body {
     gap: 8px;
     transition: all 0.2s;
 }
-.start-btn:hover {
+.start-btn:hover, .widgets-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(79,70,229,0.4);
+}
+.taskbar-version {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    margin-left: auto;
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 .start-menu {
     position: absolute;
@@ -142,17 +152,109 @@ body {
     align-items: center;
     gap: 10px;
 }
-.pyteur-logo {
+#pyteur-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5rem;
-    font-weight: bold;
-    color: rgba(255,255,255,0.8);
-    text-shadow: 0 0 20px rgba(79,70,229,0.7);
+    text-align: center;
+    z-index: 10;
     pointer-events: none;
     user-select: none;
+}
+
+#pyteur-text {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 5rem;
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite, glitch 2s infinite alternate;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.letter {
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+.glitch-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    mix-blend-mode: screen;
+    opacity: 0.2;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.1) 50%,
+        rgba(0,0,0,0) 100%
+    );
+    background-size: 100% 4px;
+    z-index: 15;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVGhD7c4xEQAgDAAxhHSw/6VZQA8J3mTBHXdnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eWdm9nlnZvZ5Z2b2eQd9XgPeQkOj6QAAAABJRU5ErkJggg==');
+    opacity: 0.05;
+    z-index: 20;
+    pointer-events: none;
 }
 .desktop-icon {
     position: absolute;
@@ -175,4 +277,222 @@ body {
 .desktop-icon i {
     font-size: 2rem;
     margin-bottom: 5px;
+}
+
+/* Styles pour les widgets */
+.widget {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    min-height: 100px;
+    overflow: hidden;
+    z-index: 1000;
+    cursor: default;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    top: 100px; /* Position par défaut pour éviter la barre du haut */
+    left: 100px;
+}
+
+.widget-header {
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    cursor: move;
+}
+
+.widget-content {
+    padding: 12px;
+}
+
+.widget-footer {
+    padding: 8px 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.widget-close {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.widget-close:hover {
+    opacity: 0.8;
+}
+
+/* Gestionnaire de widgets */
+.widget-manager-btn {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+.widget-config-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    overflow: auto;
+    padding: 20px;
+}
+
+.widget-config-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    text-align: center;
+}
+
+.widget-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.widget-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.widget-item label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.widget-config-close {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.widget-config-close:hover {
+    background: #7c3aed;
+}
+
+/* Styles spécifiques aux widgets */
+
+/* Widget Horloge */
+.widget-clock .clock-time {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.widget-clock .clock-date {
+    font-size: 1rem;
+    text-align: center;
+    color: #666;
+}
+
+/* Widget Météo */
+.widget-weather .weather-location {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.widget-weather .weather-icon {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.widget-weather .weather-temp {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.widget-weather .weather-desc {
+    text-align: center;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Widget Notes */
+.widget-notes .notes-textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+/* Widget Devoirs */
+.widget-homework .homework-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.widget-homework .homework-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.widget-homework .homework-item.urgent {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.widget-homework .homework-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.widget-homework .homework-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.widget-homework .homework-done {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
 }

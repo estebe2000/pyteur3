@@ -8,12 +8,9 @@ ENV PYTHONUNBUFFERED=1
 # Créer le répertoire de travail
 WORKDIR /app
 
-# Argument pour installation optionnelle d'Ollama
-ARG INSTALL_OLLAMA=false
-
-# Installer les dépendances système (et curl si besoin)
+# Installer les dépendances système
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential curl sudo \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Copier les fichiers de dépendances
@@ -22,19 +19,11 @@ COPY requirements.txt .
 # Installer les dépendances Python
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Installer Ollama si demandé
-RUN if [ "$INSTALL_OLLAMA" = "true" ]; then \
-    echo "Installation d'Ollama..."; \
-    curl -fsSL https://ollama.com/install.sh | sh; \
-    else \
-    echo "Ollama non installé (INSTALL_OLLAMA=$INSTALL_OLLAMA)"; \
-    fi
-
 # Copier le reste du code
 COPY . .
 
-# Exposer le port Flask
-EXPOSE 5000
+# Exposer uniquement le port Gunicorn
+EXPOSE 5001
 
 # Commande de démarrage
-CMD ["python", "run.py"]
+CMD ["gunicorn", "-c", "gunicorn_config.py", "wsgi:app"]

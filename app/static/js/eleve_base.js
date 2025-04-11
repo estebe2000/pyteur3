@@ -152,9 +152,14 @@ function closeWindow(id) {
     }
 }
 
-// Fonction pour changer l'image de fond
-function changeBackground(imageName) {
+// Fonction pour changer l'image de fond et sauvegarder la préférence
+async function changeBackground(imageName) {
     document.body.style.backgroundImage = `url('/static/img/${imageName}')`;
+    
+    // Sauvegarder la préférence
+    if (window.widgetManager) {
+        await window.widgetManager.saveBackground(imageName);
+    }
 }
 
 // Fonction pour basculer entre les thèmes clair et sombre
@@ -261,6 +266,15 @@ function loadWelcomeMessage() {
         });
 }
 
+// Fonction pour ouvrir le panneau de configuration des widgets
+function openWidgetsPanel() {
+    if (window.widgetManager) {
+        window.widgetManager.openConfigPanel();
+    } else {
+        console.error('Gestionnaire de widgets non initialisé');
+    }
+}
+
 // Gestion du déplacement des fenêtres
 window.addEventListener('DOMContentLoaded', () => {
     // Vérifier si l'utilisateur a choisi d'ouvrir automatiquement le tableau de bord
@@ -282,6 +296,147 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Initialisation des particules pour le logo PYTEUR
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 100,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": ["#ff00ff", "#00ffff", "#ffff00"]
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
+            },
+            "opacity": {
+                "value": 0.8,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 4,
+                    "size_min": 0.3,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ff00ff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": true,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "repulse": {
+                    "distance": 100,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                }
+            }
+        },
+        "retina_detect": true
+    });
+
+    // Animation des lettres PYTEUR
+    const pyteurText = document.getElementById('pyteur-text');
+    if (pyteurText) {
+        const letters = pyteurText.querySelectorAll('.letter');
+        
+        pyteurText.addEventListener('mouseenter', function() {
+            letters.forEach((letter, index) => {
+                // Animation de déconstruction
+                gsap.to(letter, {
+                    duration: 0.5,
+                    x: (Math.random() - 0.5) * 100,
+                    y: (Math.random() - 0.5) * 100,
+                    rotation: (Math.random() - 0.5) * 360,
+                    opacity: 0,
+                    ease: "power2.out",
+                    delay: index * 0.1
+                });
+                
+                // Animation de reconstruction
+                gsap.to(letter, {
+                    duration: 0.3,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    opacity: 1,
+                    ease: "power2.in",
+                    delay: index * 0.1 + 0.5
+                });
+            });
+            
+            // Effet de couleur aléatoire
+            const colors = ['#ff00ff', '#00ffff', '#ffff00', '#ff0000', '#00ff00', '#0000ff'];
+            letters.forEach(letter => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                gsap.to(letter, {
+                    duration: 0.3,
+                    color: randomColor,
+                    delay: 0.8
+                });
+            });
+        });
+
+        // Effet de glitch aléatoire
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                pyteurText.style.animation = 'glitch 0.3s';
+                setTimeout(() => {
+                    pyteurText.style.animation = 'glitch 2s infinite alternate';
+                }, 300);
+            }
+        }, 3000);
+    }
+    
     // Charger le message de bienvenue
     loadWelcomeMessage();
 
@@ -290,15 +445,21 @@ window.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         const timeElement = document.getElementById('time');
         const dateElement = document.getElementById('date');
-        timeElement.textContent = now.toLocaleTimeString();
-        dateElement.textContent = now.toLocaleDateString();
+        if (timeElement && dateElement) {
+            timeElement.textContent = now.toLocaleTimeString();
+            dateElement.textContent = now.toLocaleDateString();
+        }
     }
     setInterval(updateDateTime, 1000);
     updateDateTime();
+    
+    // Les widgets sont maintenant initialisés dans widgets.js
+    // Pas besoin de les initialiser à nouveau ici
 
     // Rendre toutes les fenêtres déplaçables
-        document.querySelectorAll('.window').forEach(windowElement => {
-            const header = windowElement.querySelector('.window-header');
+    document.querySelectorAll('.window').forEach(windowElement => {
+        const header = windowElement.querySelector('.window-header');
+        if (header) {
             let dragOffsetX = 0;
             let dragOffsetY = 0;
             let windowIsDragging = false;
@@ -319,5 +480,6 @@ window.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('mouseup', function() {
                 windowIsDragging = false;
             });
-        });
+        }
+    });
 });

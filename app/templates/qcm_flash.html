@@ -375,10 +375,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Convertir depuis le format alternatif
                     if (q.options && q.correct !== undefined) {
+                        // Si correct est une chaîne de caractères (la valeur de la bonne réponse)
+                        // et non un index, trouver l'index correspondant dans les options
+                        let bonneReponseIndex = q.correct;
+                        if (typeof q.correct === 'string') {
+                            bonneReponseIndex = q.options.indexOf(q.correct);
+                            // Si la réponse n'est pas trouvée exactement, essayer une recherche moins stricte
+                            if (bonneReponseIndex === -1) {
+                                // Parcourir les options et chercher celle qui ressemble le plus à la bonne réponse
+                                for (let i = 0; i < q.options.length; i++) {
+                                    if (q.options[i].includes(q.correct) || q.correct.includes(q.options[i])) {
+                                        bonneReponseIndex = i;
+                                        break;
+                                    }
+                                }
+                            }
+                            // Si toujours pas trouvé, utiliser la première option par défaut
+                            if (bonneReponseIndex === -1) {
+                                console.warn("Bonne réponse non trouvée dans les options:", q.correct);
+                                bonneReponseIndex = 0;
+                            }
+                        }
+                        
                         return {
                             question: q.question,
                             propositions: q.options,
-                            bonne_reponse: q.correct,
+                            bonne_reponse: bonneReponseIndex,
                             explication: q.explanation || ""
                         };
                     }

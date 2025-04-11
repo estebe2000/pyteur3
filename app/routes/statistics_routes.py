@@ -1,10 +1,138 @@
 from flask import Blueprint, jsonify, send_file, request
 from app import db
-from app.models import User, SchoolClass, Group, Document, ExerciseAssignment, DocumentAssignment, Message, MessageRecipient, TodoList, TodoItem
+from app.models import User, SchoolClass, Group, Document, ExerciseAssignment, DocumentAssignment, Message, MessageRecipient, TodoList, TodoItem, QcmAttempt
 import csv
 import io
+from sqlalchemy import func, desc
 
 statistics_bp = Blueprint('statistics', __name__)
+
+# --- QCM ---
+@statistics_bp.route('/api/statistics/qcm')
+def get_qcm_stats():
+    """
+    Récupère les statistiques globales des QCM pour tous les élèves
+    """
+    # Total des tentatives de QCM
+    total_attempts = QcmAttempt.query.count()
+    
+    # Score moyen global
+    avg_score = db.session.query(func.avg(QcmAttempt.score)).scalar() or 0
+    
+    # Nombre de QCM distincts
+    distinct_qcms = db.session.query(QcmAttempt.qcm_id).distinct().count()
+    
+    # Top 5 des élèves avec les meilleurs scores moyens
+    top_students = db.session.query(
+        User.id,
+        User.nom,
+        User.prenom,
+        func.avg(QcmAttempt.score).label('avg_score'),
+        func.count(QcmAttempt.id).label('attempts')
+    ).join(QcmAttempt, QcmAttempt.student_id == User.id)\
+     .group_by(User.id)\
+     .order_by(desc('avg_score'))\
+     .limit(5).all()
+    
+    top_students_data = [
+        {
+            'id': student.id,
+            'nom': student.nom,
+            'prenom': student.prenom,
+            'avg_score': float(student.avg_score),
+            'attempts': student.attempts
+        }
+        for student in top_students
+    ]
+    
+    # Top 5 des QCM les plus difficiles (scores moyens les plus bas)
+    difficult_qcms = db.session.query(
+        QcmAttempt.qcm_id,
+        func.avg(QcmAttempt.score).label('avg_score'),
+        func.count(QcmAttempt.id).label('attempts')
+    ).group_by(QcmAttempt.qcm_id)\
+     .having(func.count(QcmAttempt.id) > 3)\
+     .order_by('avg_score')\
+     .limit(5).all()
+    
+    difficult_qcms_data = [
+        {
+            'qcm_id': qcm.qcm_id,
+            'avg_score': float(qcm.avg_score),
+            'attempts': qcm.attempts
+        }
+        for qcm in difficult_qcms
+    ]
+    
+    # Répartition des scores par tranches
+    score_ranges = [
+        {'min': 0, 'max': 20, 'count': 0},
+        {'min': 20, 'max': 40, 'count': 0},
+        {'min': 40, 'max': 60, 'count': 0},
+        {'min': 60, 'max': 80, 'count': 0},
+        {'min': 80, 'max': 100, 'count': 0}
+    ]
+    
+    for range_data in score_ranges:
+        count = QcmAttempt.query.filter(
+            QcmAttempt.score >= range_data['min'],
+            QcmAttempt.score < range_data['max']
+        ).count()
+        range_data['count'] = count
+    
+    # Liste détaillée des tentatives de QCM
+    qcm_attempts = []
+    attempts = QcmAttempt.query.order_by(QcmAttempt.created_at.desc()).limit(100).all()
+    
+    for attempt in attempts:
+        student = User.query.get(attempt.student_id)
+        qcm_attempts.append({
+            'id': attempt.id,
+            'student_id': attempt.student_id,
+            'student_name': f"{student.nom} {student.prenom}" if student else "N/A",
+            'qcm_id': attempt.qcm_id,
+            'score': attempt.score,
+            'total_questions': attempt.total_questions,
+            'correct_answers': attempt.correct_answers,
+            'created_at': attempt.created_at.isoformat()
+        })
+    
+    return jsonify({
+        'total_attempts': total_attempts,
+        'avg_score': avg_score,
+        'distinct_qcms': distinct_qcms,
+        'top_students': top_students_data,
+        'difficult_qcms': difficult_qcms_data,
+        'score_ranges': score_ranges,
+        'attempts': qcm_attempts
+    })
+
+@statistics_bp.route('/api/statistics/export/qcm')
+def export_qcm_csv():
+    """
+    Exporte les données des QCM au format CSV
+    """
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(['ID', 'Élève', 'QCM ID', 'Score', 'Questions', 'Réponses correctes', 'Date'])
+    
+    attempts = QcmAttempt.query.order_by(QcmAttempt.created_at.desc()).all()
+    for attempt in attempts:
+        student = User.query.get(attempt.student_id)
+        student_name = f"{student.nom} {student.prenom}" if student else "N/A"
+        
+        writer.writerow([
+            attempt.id,
+            student_name,
+            attempt.qcm_id,
+            attempt.score,
+            attempt.total_questions,
+            attempt.correct_answers,
+            attempt.created_at.isoformat()
+        ])
+    
+    output.seek(0)
+    return send_file(io.BytesIO(output.getvalue().encode()), mimetype='text/csv', as_attachment=True, download_name='qcm_statistics.csv')
 
 # --- Utilisateurs ---
 @statistics_bp.route('/api/statistics/users')

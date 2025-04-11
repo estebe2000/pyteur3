@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash, session
+from flask import Blueprint, render_template, redirect, url_for, request, flash, session, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, csrf
@@ -286,6 +286,76 @@ def import_users():
         return redirect(url_for('user.users'))
 
     return render_template('import_users.html')
+
+@user_bp.route('/api/user/preferences', methods=['GET'])
+@login_required
+@csrf.exempt
+def get_user_preferences():
+    """Récupérer les préférences de l'utilisateur connecté"""
+    from app.models import UserPreferences
+    
+    preferences = UserPreferences.query.filter_by(user_id=current_user.id).first()
+    
+    if not preferences:
+        # Créer des préférences par défaut si elles n'existent pas
+        preferences = UserPreferences(user_id=current_user.id)
+        db.session.add(preferences)
+        db.session.commit()
+    
+    return jsonify({
+        'background_image': preferences.background_image,
+        'widgets_config': preferences.widgets_config or {}
+    })
+
+@user_bp.route('/api/user/preferences/background', methods=['POST'])
+@login_required
+@csrf.exempt
+def update_background():
+    """Mettre à jour l'image de fond"""
+    from app.models import UserPreferences
+    
+    data = request.json
+    background = data.get('background')
+    
+    if not background:
+        return jsonify({'success': False, 'message': 'Image de fond non spécifiée'}), 400
+    
+    preferences = UserPreferences.query.filter_by(user_id=current_user.id).first()
+    
+    if not preferences:
+        preferences = UserPreferences(user_id=current_user.id, background_image=background)
+        db.session.add(preferences)
+    else:
+        preferences.background_image = background
+    
+    db.session.commit()
+    
+    return jsonify({'success': True})
+
+@user_bp.route('/api/user/preferences/widgets', methods=['POST'])
+@login_required
+@csrf.exempt
+def update_widgets_config():
+    """Mettre à jour la configuration des widgets"""
+    from app.models import UserPreferences
+    
+    data = request.json
+    widgets_config = data.get('widgets_config')
+    
+    if not widgets_config:
+        return jsonify({'success': False, 'message': 'Configuration des widgets non spécifiée'}), 400
+    
+    preferences = UserPreferences.query.filter_by(user_id=current_user.id).first()
+    
+    if not preferences:
+        preferences = UserPreferences(user_id=current_user.id, widgets_config=widgets_config)
+        db.session.add(preferences)
+    else:
+        preferences.widgets_config = widgets_config
+    
+    db.session.commit()
+    
+    return jsonify({'success': True})
 
 @user_bp.route('/set_language/<lang_code>')
 def set_language(lang_code):

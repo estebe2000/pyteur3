@@ -251,3 +251,16 @@ class StudentPerformanceMetric(db.Model):
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
     
     student = db.relationship('User', backref='performance_metrics')
+
+
+class UserPreferences(db.Model):
+    """Préférences utilisateur pour l'interface et les widgets"""
+    __tablename__ = 'user_preferences'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, unique=True)
+    background_image = db.Column(db.String(100), default='b1.jpg')  # Image de fond par défaut
+    widgets_config = db.Column(db.JSON, default=lambda: {})  # Configuration des widgets en JSON
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
+    
+    user = db.relationship('User', backref=db.backref('preferences', uselist=False))
