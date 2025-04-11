@@ -69,9 +69,9 @@
             {% for item, enabled in menu_config.items() if item != 'external_links' %}
                 {% if enabled %}
                     <div class="menu-item" onclick="openWindow('{{ item }}')">
-                        <i class="fas {% if item == 'dashboard' %}fa-tachometer-alt{% elif item == 'documents' %}fa-folder{% elif item == 'exercises' %}fa-code{% elif item == 'exercices_flash' %}fa-bolt{% elif item == 'qcm_flash' %}fa-bolt{% elif item == 'messagerie' %}fa-envelope{% elif item == 'todo' %}fa-tasks{% elif item == 'projets' %}fa-project-diagram{% elif item == 'drive' %}fa-hdd{% elif item == 'sandbox' %}fa-shapes{% elif item == 'profile' %}fa-user-cog{% elif item == 'ia' %}fa-robot{% endif %}"></i>
+                        <i class="fas {% if item == 'dashboard' %}fa-tachometer-alt{% elif item == 'documents' %}fa-folder{% elif item == 'exercises' %}fa-code{% elif item == 'exercices_flash' %}fa-bolt{% elif item == 'qcm_flash' %}fa-bolt{% elif item == 'messagerie' %}fa-envelope{% elif item == 'todo' %}fa-tasks{% elif item == 'projets' %}fa-project-diagram{% elif item == 'drive' %}fa-hdd{% elif item == 'sandbox' %}fa-shapes{% elif item == 'profile' %}fa-user-cog{% elif item == 'ia' %}fa-robot{% elif item == 'performance' %}fa-chart-line{% endif %}"></i>
                         <span>
-                            {% if item == 'dashboard' %}{{ labels['dashboard'] }}{% elif item == 'documents' %}{{ labels['documents'] }}{% elif item == 'exercises' %}{{ labels['exercises'] }}{% elif item == 'exercices_flash' %}Exercices flash{% elif item == 'qcm_flash' %}QCM Flash{% elif item == 'messagerie' %}{{ labels['messagerie'] }}{% elif item == 'todo' %}{{ labels['todo'] }}{% elif item == 'projets' %}{{ labels['projets'] }}{% elif item == 'drive' %}{{ labels['drive'] }}{% elif item == 'sandbox' %}Bac à sable{% elif item == 'profile' %}{{ labels['settings'] }}{% elif item == 'qcm' %}{{ labels['qcm'] }}{% elif item == 'ia' %}Intelligence Artificielle{% endif %}
+                            {% if item == 'dashboard' %}{{ labels['dashboard'] }}{% elif item == 'documents' %}{{ labels['documents'] }}{% elif item == 'exercises' %}{{ labels['exercises'] }}{% elif item == 'exercices_flash' %}Exercices flash{% elif item == 'qcm_flash' %}QCM Flash{% elif item == 'messagerie' %}{{ labels['messagerie'] }}{% elif item == 'todo' %}{{ labels['todo'] }}{% elif item == 'projets' %}{{ labels['projets'] }}{% elif item == 'drive' %}{{ labels['drive'] }}{% elif item == 'sandbox' %}Bac à sable{% elif item == 'profile' %}{{ labels['settings'] }}{% elif item == 'qcm' %}{{ labels['qcm'] }}{% elif item == 'ia' %}Intelligence Artificielle{% elif item == 'performance' %}Performance{% endif %}
                         </span>
                     </div>
                 {% endif %}
@@ -114,6 +114,7 @@
     {% include 'eleve_windows/profile_window.html' %}
     {% include 'eleve_windows/qcm_window.html' %}
     {% include 'eleve_windows/ia_window.html' %}
+    {% include 'eleve_windows/performance_window.html' %}
     {% endblock %}
         </div>
     </div>

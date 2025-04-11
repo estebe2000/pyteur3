@@ -1,0 +1,214 @@
+<div id="performance-window" class="window" style="display: none;">
+    <div class="window-header">
+        <div><i class="fas fa-chart-line"></i> <span>Performance</span></div>
+        <div class="close-btn" onclick="closeWindow('performance')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="window-content p-4">
+    <h2 class="text-xl font-bold mb-4">{{ labels.performance_title }}</h2>
+
+    <!-- Onglets de navigation -->
+    <div class="flex border-b mb-4">
+        <button id="tab-overview" class="tab-button active px-4 py-2 font-semibold">{{ labels.overview }}</button>
+        <button id="tab-qcm" class="tab-button px-4 py-2 font-semibold">{{ labels.qcm_results }}</button>
+        <button id="tab-homework" class="tab-button px-4 py-2 font-semibold">{{ labels.homework_results }}</button>
+        <button id="tab-recommendations" class="tab-button px-4 py-2 font-semibold">{{ labels.recommendations }}</button>
+    </div>
+
+    <!-- Contenu des onglets -->
+    <div id="content-overview" class="tab-content active">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Carte de statistiques QCM -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-semibold mb-2">{{ labels.qcm_stats }}</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <span>{{ labels.average_score }}</span>
+                    <span id="qcm-avg-score" class="font-bold text-lg">-</span>
+                </div>
+                <div class="flex items-center justify-between mb-2">
+                    <span>{{ labels.total_attempts }}</span>
+                    <span id="qcm-total-attempts" class="font-bold text-lg">-</span>
+                </div>
+                <div class="mt-4">
+                    <canvas id="qcm-evolution-chart" height="150"></canvas>
+                </div>
+            </div>
+
+            <!-- Carte de statistiques devoirs -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-semibold mb-2">{{ labels.homework_stats }}</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <span>{{ labels.average_score }}</span>
+                    <span id="homework-avg-score" class="font-bold text-lg">-</span>
+                </div>
+                <div class="flex items-center justify-between mb-2">
+                    <span>{{ labels.completed }}</span>
+                    <span id="homework-completed" class="font-bold text-lg">-</span>
+                </div>
+                <div class="flex items-center justify-between mb-2">
+                    <span>{{ labels.late_submissions }}</span>
+                    <span id="homework-late" class="font-bold text-lg">-</span>
+                </div>
+                <div class="mt-4">
+                    <canvas id="homework-evolution-chart" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommandations prioritaires -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h3 class="text-lg font-semibold mb-2">{{ labels.priority_recommendations }}</h3>
+            <div id="priority-recommendations" class="space-y-2">
+                <div class="flex items-center justify-center h-20 text-gray-400">
+                    <p>{{ labels.loading_recommendations }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques par matière -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <h3 class="text-lg font-semibold mb-2">{{ labels.subject_performance }}</h3>
+            <div id="subject-performance" class="space-y-2">
+                <div class="flex items-center justify-center h-20 text-gray-400">
+                    <p>{{ labels.loading_data }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-qcm" class="tab-content hidden">
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h3 class="text-lg font-semibold mb-4">{{ labels.qcm_history }}</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-left">{{ labels.qcm_id }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.score }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.correct_answers }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.date }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.actions }}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qcm-history-table" class="divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="5" class="px-4 py-4 text-center text-gray-400">{{ labels.loading_data }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-4">
+            <h3 class="text-lg font-semibold mb-4">{{ labels.qcm_performance_by_topic }}</h3>
+            <div class="h-64">
+                <canvas id="qcm-by-topic-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-homework" class="tab-content hidden">
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h3 class="text-lg font-semibold mb-4">{{ labels.homework_history }}</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-left">{{ labels.title }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.subject }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.due_date }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.status }}</th>
+                            <th class="px-4 py-2 text-left">{{ labels.score }}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="homework-history-table" class="divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="5" class="px-4 py-4 text-center text-gray-400">{{ labels.loading_data }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-4">
+            <h3 class="text-lg font-semibold mb-4">{{ labels.homework_performance_by_subject }}</h3>
+            <div class="h-64">
+                <canvas id="homework-by-subject-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-recommendations" class="tab-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Recommandations QCM -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-semibold mb-4">{{ labels.qcm_recommendations }}</h3>
+                <div id="qcm-recommendations" class="space-y-4">
+                    <div class="flex items-center justify-center h-20 text-gray-400">
+                        <p>{{ labels.loading_recommendations }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommandations ressources -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-semibold mb-4">{{ labels.resource_recommendations }}</h3>
+                <div id="resource-recommendations" class="space-y-4">
+                    <div class="flex items-center justify-center h-20 text-gray-400">
+                        <p>{{ labels.loading_recommendations }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Définir l'ID de l'utilisateur courant pour le script performance.js
+window.current_user_id = "{{ current_user.id }}";
+</script>
+<script src="{{ url_for('static', filename='js/performance.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestion des onglets
+    var tabButtons = document.querySelectorAll('.tab-button');
+    var tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Désactiver tous les onglets
+            tabButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            tabContents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+            
+            // Activer l'onglet cliqué
+            button.classList.add('active');
+            var contentId = 'content-' + button.id.split('-')[1];
+            document.getElementById(contentId).classList.add('active');
+        });
+    });
+});
+</script>
+
+<style>
+.tab-button {
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-button.active {
+    border-bottom: 2px solid #4F46E5;
+    color: #4F46E5;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+</style>

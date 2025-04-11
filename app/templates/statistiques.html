@@ -214,5 +214,73 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 
+<div class="stats-section" id="section-performances">
+  <div class="section-header">
+    <h2>📊 Performances des élèves</h2>
+    <div>
+      <button class="toggle-section btn btn-secondary">Réduire</button>
+      <button id="export-performances-csv" class="btn btn-primary">Exporter CSV</button>
+    </div>
+  </div>
+  <div class="section-content">
+    <div class="charts-grid">
+      <canvas id="chart-qcm-scores"></canvas>
+      <canvas id="chart-homework-scores"></canvas>
+    </div>
+    
+    <!-- Sélecteur d'élève -->
+    <div class="mb-4">
+      <label for="student-selector" class="font-weight-bold">Sélectionner un élève:</label>
+      <select id="student-selector" class="form-control" style="max-width: 300px;">
+        <option value="">Choisir un élève...</option>
+      </select>
+    </div>
+    
+    <!-- Onglets pour les détails de performance -->
+    <ul class="nav nav-tabs" id="performance-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="qcm-tab" data-toggle="tab" href="#qcm-content" role="tab">QCM</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="homework-tab" data-toggle="tab" href="#homework-content" role="tab">Devoirs</a>
+      </li>
+    </ul>
+    
+    <!-- Contenu des onglets -->
+    <div class="tab-content p-3 border border-top-0 rounded-bottom" id="performance-tabs-content">
+      <div class="tab-pane fade show active" id="qcm-content" role="tabpanel">
+        <table id="table-qcm-performance" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>Élève</th>
+              <th>QCM</th>
+              <th>Score</th>
+              <th>Réponses correctes</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="homework-content" role="tabpanel">
+        <table id="table-homework-performance" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>Élève</th>
+              <th>Devoir</th>
+              <th>Matière</th>
+              <th>Score</th>
+              <th>Statut</th>
+              <th>Date limite</th>
+              <th>Date de rendu</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="{{ url_for('static', filename='js/statistiques.js') }}"></script>
 {% endblock %}

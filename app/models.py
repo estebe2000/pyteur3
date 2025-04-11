@@ -189,3 +189,65 @@ class WelcomeMessage(db.Model):
     created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     
     created_by = db.relationship('User', backref='welcome_messages')
+
+
+# Modèles pour le suivi des performances des élèves
+
+class QcmAttempt(db.Model):
+    __tablename__ = 'qcm_attempts'
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    qcm_id = db.Column(db.String(100), nullable=False)  # Identifiant du QCM (niveau/thème)
+    score = db.Column(db.Float, nullable=False)  # Score en pourcentage (0-100)
+    total_questions = db.Column(db.Integer, nullable=False)
+    correct_answers = db.Column(db.Integer, nullable=False)
+    time_spent = db.Column(db.Integer)  # Temps passé en secondes
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    
+    student = db.relationship('User', backref='qcm_attempts')
+    
+    # Métadonnées pour l'IA
+    response_data = db.Column(db.JSON, nullable=True)  # Stocke des informations détaillées sur les réponses
+
+
+class HomeworkResult(db.Model):
+    __tablename__ = 'homework_results'
+    id = db.Column(db.Integer, primary_key=True)
+    completion_id = db.Column(db.Integer, db.ForeignKey('homework_completions.id'), nullable=False)
+    score = db.Column(db.Float, nullable=True)  # Score optionnel (0-100)
+    feedback = db.Column(db.Text, nullable=True)  # Feedback du professeur
+    submission_time = db.Column(db.DateTime, server_default=db.func.now())
+    is_late = db.Column(db.Boolean, default=False)  # Si soumis après la date limite
+    
+    completion = db.relationship('HomeworkCompletion', backref='result')
+    
+    # Métadonnées pour l'IA
+    submission_data = db.Column(db.JSON, nullable=True)  # Stocke des informations détaillées sur le devoir
+
+
+class StudentRecommendation(db.Model):
+    __tablename__ = 'student_recommendations'
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    recommendation_type = db.Column(db.String(50))  # 'exercise', 'qcm', 'resource'
+    content_id = db.Column(db.String(100))  # ID de la ressource recommandée
+    priority = db.Column(db.Integer, default=1)  # Priorité (1-5)
+    reason = db.Column(db.Text)  # Raison de la recommandation
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    is_viewed = db.Column(db.Boolean, default=False)
+    is_completed = db.Column(db.Boolean, default=False)
+    
+    student = db.relationship('User', backref='recommendations')
+
+
+class StudentPerformanceMetric(db.Model):
+    """Métriques agrégées de performance des élèves pour faciliter l'analyse et les recommandations"""
+    __tablename__ = 'student_performance_metrics'
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    metric_type = db.Column(db.String(50))  # 'qcm_avg', 'homework_avg', 'topic_mastery', etc.
+    topic = db.Column(db.String(100), nullable=True)  # Sujet spécifique si applicable
+    value = db.Column(db.Float)  # Valeur de la métrique
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
+    
+    student = db.relationship('User', backref='performance_metrics')

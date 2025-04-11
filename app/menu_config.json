@@ -11,6 +11,7 @@
   "drive": true,
   "sandbox": true,
   "profile": true,
+  "performance": true,
   "external_links": {
     "link_1744366185344_590": {
       "name": "Py-rates",

@@ -162,6 +162,16 @@
 </div>
 
 <script>
+// Variables globales qui seront définies par le serveur
+let currentUserId;
+let csrfToken;
+</script>
+
+<script>
+// Initialisation des variables globales depuis les variables Jinja
+currentUserId = {{ current_user.id|tojson }};
+csrfToken = "{{ csrf_token() }}";
+
 // Initialisation
 
 // Structure des données - mise à jour pour correspondre aux fichiers réels
@@ -643,6 +653,9 @@ function showResults() {
     document.getElementById('score-percentage').textContent = percentage;
     document.getElementById('score-bar').style.width = `${percentage}%`;
     
+    // Envoyer les résultats à l'API pour le suivi des performances
+    sendQcmResults(correctCount, percentage);
+    
     // Définir la couleur de la barre de progression en fonction du score
     const scoreBar = document.getElementById('score-bar');
     if (percentage < 50) {
@@ -722,6 +735,66 @@ function shuffleArray(array) {
         [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
     return newArray;
+}
+
+// Fonction pour envoyer les résultats du QCM à l'API
+function sendQcmResults(correctCount, percentage) {
+    // Utiliser l'ID de l'élève connecté depuis la variable globale
+    const studentId = currentUserId;
+    
+    // Déterminer l'identifiant du QCM
+    let qcmId = 'demo';
+    if (document.getElementById('qcm-title').textContent.includes(' - ')) {
+        const titleParts = document.getElementById('qcm-title').textContent.split(' - ');
+        if (titleParts.length >= 3) {
+            // Format: "QCM Flash - [Niveau] - [Thème]"
+            qcmId = levelSelect.value + '/' + themeSelect.value;
+        } else if (titleParts.length === 2) {
+            // Format: "QCM Flash - [Code]"
+            qcmId = titleParts[1].trim();
+        }
+    }
+    
+    // Préparer les données à envoyer
+    const data = {
+        student_id: studentId,
+        qcm_id: qcmId,
+        score: percentage,
+        total_questions: qcmQuestions.length,
+        correct_answers: correctCount,
+        time_spent: null, // On pourrait ajouter un timer global pour mesurer le temps total
+        metadata: {
+            questions: qcmQuestions.map((q, index) => ({
+                question: q.question,
+                user_answer: userAnswers[index],
+                correct_answer: q.bonne_reponse,
+                is_correct: userAnswers[index] === q.bonne_reponse
+            })),
+            timestamp: new Date().toISOString()
+        }
+    };
+    
+    // Envoyer les données à l'API
+    fetch('/api/student/qcm/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de l\'envoi des résultats');
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.log('Résultats enregistrés avec succès:', result);
+    })
+    .catch(error => {
+        console.error('Erreur lors de l\'enregistrement des résultats:', error);
+    });
 }
 </script>
 {% endblock %}

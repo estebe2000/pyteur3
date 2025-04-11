@@ -121,6 +121,65 @@
                         </div>
                     </div>
                     
+                    <!-- Bloc de performances -->
+                    <h3 style="font-weight: 500; margin: 25px 0 10px;">Mes performances</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="grid-layout" style="grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <!-- Statistiques QCM -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-question-circle"></i> QCM
+                                    </div>
+                                    <div class="card-body">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                            <span>Score moyen:</span>
+                                            <span id="dashboard-qcm-avg-score" style="font-weight: bold;">-</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Tentatives:</span>
+                                            <span id="dashboard-qcm-total-attempts" style="font-weight: bold;">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Statistiques devoirs -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-book"></i> Devoirs
+                                    </div>
+                                    <div class="card-body">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                            <span>Score moyen:</span>
+                                            <span id="dashboard-homework-avg-score" style="font-weight: bold;">-</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Terminés:</span>
+                                            <span id="dashboard-homework-completed" style="font-weight: bold;">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recommandations prioritaires -->
+                            <div style="margin-top: 15px;">
+                                <h4 style="font-weight: 500; margin-bottom: 10px;">Recommandations</h4>
+                                <div id="dashboard-priority-recommendations">
+                                    <div class="text-center" style="padding: 15px; color: var(--text-muted);">
+                                        <div class="spinner" style="margin: 0 auto;"></div>
+                                        <p style="margin-top: 10px;">Chargement des recommandations...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: right; margin-top: 15px;">
+                                <button class="btn btn-primary btn-sm" onclick="openWindow('performance')">
+                                    <i class="fas fa-chart-line"></i> Voir toutes mes performances
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Section profil (masquée par défaut) -->
                     <div id="dashboard-profile-section" style="display: none; margin-top: 20px;">
                         <h3 style="font-weight: 500; margin: 15px 0 10px;">Mon Profil</h3>
@@ -174,6 +233,141 @@
                             } catch (e) {
                                 console.error("Erreur lors de l'injection du CSS dans l'iframe:", e);
                             }
+                        }
+                        
+                        // Fonction pour charger les données de performance dans le tableau de bord
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Définir l'ID de l'utilisateur courant
+                            const userId = "{{ current_user.id }}";
+                            
+                            // Charger les statistiques QCM
+                            fetch(`/api/student/qcm/stats/${userId}`, {
+                                method: 'GET'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Données API QCM stats (dashboard):", data);
+                                
+                                // Mettre à jour les statistiques QCM
+                                document.getElementById('dashboard-qcm-avg-score').textContent = data.global.avg_score.toFixed(1) + '%';
+                                document.getElementById('dashboard-qcm-total-attempts').textContent = data.global.total_attempts;
+                            })
+                            .catch(error => {
+                                console.error("Erreur lors du chargement des statistiques QCM (dashboard):", error);
+                                document.getElementById('dashboard-qcm-avg-score').textContent = 'N/A';
+                                document.getElementById('dashboard-qcm-total-attempts').textContent = '0';
+                            });
+                            
+                            // Charger les statistiques devoirs
+                            fetch(`/api/student/homework/stats/${userId}`, {
+                                method: 'GET'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Données API homework stats (dashboard):", data);
+                                
+                                // Mettre à jour les statistiques devoirs
+                                document.getElementById('dashboard-homework-avg-score').textContent = data.global.avg_score.toFixed(1) + '%';
+                                document.getElementById('dashboard-homework-completed').textContent = data.global.total_completed;
+                            })
+                            .catch(error => {
+                                console.error("Erreur lors du chargement des statistiques devoirs (dashboard):", error);
+                                document.getElementById('dashboard-homework-avg-score').textContent = 'N/A';
+                                document.getElementById('dashboard-homework-completed').textContent = '0';
+                            });
+                            
+                            // Charger les recommandations
+                            fetch(`/api/student/recommendations/${userId}`, {
+                                method: 'GET'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Données API recommendations (dashboard):", data);
+                                
+                                // Remplir les recommandations prioritaires
+                                const priorityRecommendations = document.getElementById('dashboard-priority-recommendations');
+                                priorityRecommendations.innerHTML = '';
+                                
+                                // Filtrer les recommandations par priorité (4 et 3 sont prioritaires)
+                                const highPriorityRecs = data.results.filter(rec => rec.priority >= 3);
+                                
+                                if (highPriorityRecs.length === 0) {
+                                    priorityRecommendations.innerHTML = `<div style="padding: 15px; text-align: center; color: var(--text-muted);">Aucune recommandation prioritaire</div>`;
+                                } else {
+                                    // Limiter à 2 recommandations maximum
+                                    const limitedRecs = highPriorityRecs.slice(0, 2);
+                                    
+                                    limitedRecs.forEach(rec => {
+                                        const div = document.createElement('div');
+                                        div.className = 'alert alert-warning';
+                                        div.style.marginBottom = '10px';
+                                        div.innerHTML = `
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div>${rec.reason}</div>
+                                                <button onclick="markRecommendationCompleted(${rec.id})" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </div>
+                                        `;
+                                        priorityRecommendations.appendChild(div);
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Erreur lors du chargement des recommandations (dashboard):", error);
+                                document.getElementById('dashboard-priority-recommendations').innerHTML = `<div style="padding: 15px; text-align: center; color: var(--text-muted);">Erreur lors du chargement des recommandations</div>`;
+                            });
+                        });
+                        
+                        // Fonction pour marquer une recommandation comme complétée
+                        function markRecommendationCompleted(recommendationId) {
+                            fetch(`/api/student/recommendations/mark_completed/${recommendationId}`, {
+                                method: 'POST'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Recharger les recommandations
+                                    const userId = "{{ current_user.id }}";
+                                    fetch(`/api/student/recommendations/${userId}`, {
+                                        method: 'GET'
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Mettre à jour les recommandations
+                                        const priorityRecommendations = document.getElementById('dashboard-priority-recommendations');
+                                        priorityRecommendations.innerHTML = '';
+                                        
+                                        // Filtrer les recommandations par priorité
+                                        const highPriorityRecs = data.results.filter(rec => rec.priority >= 3);
+                                        
+                                        if (highPriorityRecs.length === 0) {
+                                            priorityRecommendations.innerHTML = `<div style="padding: 15px; text-align: center; color: var(--text-muted);">Aucune recommandation prioritaire</div>`;
+                                        } else {
+                                            // Limiter à 2 recommandations maximum
+                                            const limitedRecs = highPriorityRecs.slice(0, 2);
+                                            
+                                            limitedRecs.forEach(rec => {
+                                                const div = document.createElement('div');
+                                                div.className = 'alert alert-warning';
+                                                div.style.marginBottom = '10px';
+                                                div.innerHTML = `
+                                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <div>${rec.reason}</div>
+                                                        <button onclick="markRecommendationCompleted(${rec.id})" class="btn btn-sm btn-outline-primary">
+                                                            <i class="fas fa-check"></i>
+                                                        </button>
+                                                    </div>
+                                                `;
+                                                priorityRecommendations.appendChild(div);
+                                            });
+                                        }
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Erreur lors du marquage de la recommandation:", error);
+                            });
                         }
                     </script>
                 </div>

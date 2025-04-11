@@ -86,6 +86,7 @@ document.getElementById('export-classes-csv').onclick = () => exportTableToCSV('
 document.getElementById('export-exercices-csv').onclick = () => exportTableToCSV('table-exercices', 'exercices_documents.csv');
 document.getElementById('export-messages-csv').onclick = () => exportTableToCSV('table-messages', 'messagerie.csv');
 document.getElementById('export-todos-csv').onclick = () => exportTableToCSV('table-todos', 'todos.csv');
+document.getElementById('export-performances-csv').onclick = () => exportTableToCSV('table-qcm-performance', 'performances_eleves.csv');
 
         data.groupes.forEach(g => {
             const tr = document.createElement('tr');
@@ -351,4 +352,231 @@ document.getElementById('export-todos-csv').onclick = () => exportTableToCSV('ta
             }
         });
     });
+
+    // Charger les données de performance des élèves
+    // 1. Récupérer la liste des élèves pour le sélecteur
+    fetch('/api/statistics/users', {
+        method: 'GET',
+        headers: {
+            'X-CSRFToken': csrfToken
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Filtrer uniquement les élèves
+        const students = data.users.filter(user => user.role === 'eleve');
+        
+        // Remplir le sélecteur d'élèves
+        const studentSelector = document.getElementById('student-selector');
+        students.forEach(student => {
+            const option = document.createElement('option');
+            option.value = student.id;
+            option.textContent = `${student.nom} ${student.prenom}`;
+            studentSelector.appendChild(option);
+        });
+
+        // Initialiser les graphiques de performance avec des données vides
+        initPerformanceCharts();
+        
+        // Ajouter un événement de changement au sélecteur d'élèves
+        studentSelector.addEventListener('change', function() {
+            const studentId = this.value;
+            if (studentId) {
+                loadStudentPerformance(studentId);
+            } else {
+                // Réinitialiser les graphiques si aucun élève n'est sélectionné
+                initPerformanceCharts();
+                clearPerformanceTables();
+            }
+        });
+    });
+
+    // Fonction pour initialiser les graphiques de performance
+    function initPerformanceCharts() {
+        // Graphique des scores QCM
+        const ctxQcmScores = document.getElementById('chart-qcm-scores').getContext('2d');
+        if (window.qcmScoresChart) {
+            window.qcmScoresChart.destroy();
+        }
+        window.qcmScoresChart = new Chart(ctxQcmScores, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Score moyen QCM (%)',
+                    data: [],
+                    fill: false,
+                    borderColor: '#4bc0c0',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: { display: true, text: 'Évolution des scores QCM' }
+                }
+            }
+        });
+
+        // Graphique des scores devoirs
+        const ctxHomeworkScores = document.getElementById('chart-homework-scores').getContext('2d');
+        if (window.homeworkScoresChart) {
+            window.homeworkScoresChart.destroy();
+        }
+        window.homeworkScoresChart = new Chart(ctxHomeworkScores, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Score moyen devoirs (%)',
+                    data: [],
+                    fill: false,
+                    borderColor: '#ff6384',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: { display: true, text: 'Évolution des scores devoirs' }
+                }
+            }
+        });
+    }
+
+    // Fonction pour vider les tableaux de performance
+    function clearPerformanceTables() {
+        document.querySelector('#table-qcm-performance tbody').innerHTML = '';
+        document.querySelector('#table-homework-performance tbody').innerHTML = '';
+        
+        // Initialiser les DataTables si ce n'est pas déjà fait
+        if (!$.fn.DataTable.isDataTable('#table-qcm-performance')) {
+            $('#table-qcm-performance').DataTable();
+        } else {
+            $('#table-qcm-performance').DataTable().clear().draw();
+        }
+        
+        if (!$.fn.DataTable.isDataTable('#table-homework-performance')) {
+            $('#table-homework-performance').DataTable();
+        } else {
+            $('#table-homework-performance').DataTable().clear().draw();
+        }
+    }
+
+    // Fonction pour charger les données de performance d'un élève
+    function loadStudentPerformance(studentId) {
+        // Charger les statistiques QCM
+        fetch(`/api/student/qcm/stats/${studentId}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Données API QCM stats:", data);
+            
+            // Mettre à jour le graphique d'évolution QCM
+            if (window.qcmScoresChart) {
+                window.qcmScoresChart.data.labels = data.time_evolution.map(item => item.date);
+                window.qcmScoresChart.data.datasets[0].data = data.time_evolution.map(item => item.avg_score);
+                window.qcmScoresChart.update();
+            }
+        });
+
+        // Charger l'historique QCM
+        fetch(`/api/student/qcm/history/${studentId}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Données API QCM history:", data);
+            
+            // Récupérer l'élève sélectionné
+            const studentName = document.getElementById('student-selector').options[document.getElementById('student-selector').selectedIndex].text;
+            
+            // Remplir le tableau QCM
+            const tbodyQcm = document.querySelector('#table-qcm-performance tbody');
+            tbodyQcm.innerHTML = '';
+            
+            data.results.forEach(result => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${studentName}</td>
+                    <td>QCM #${result.qcm_id}</td>
+                    <td>${result.score}%</td>
+                    <td>${result.correct_answers}/${result.total_questions}</td>
+                    <td>${new Date(result.created_at).toLocaleDateString()}</td>
+                `;
+                tbodyQcm.appendChild(tr);
+            });
+            
+            // Rafraîchir DataTable
+            if ($.fn.DataTable.isDataTable('#table-qcm-performance')) {
+                $('#table-qcm-performance').DataTable().destroy();
+            }
+            $('#table-qcm-performance').DataTable();
+        });
+
+        // Charger les statistiques devoirs
+        fetch(`/api/student/homework/stats/${studentId}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Données API homework stats:", data);
+            
+            // Mettre à jour le graphique d'évolution devoirs
+            if (window.homeworkScoresChart) {
+                window.homeworkScoresChart.data.labels = data.time_evolution.map(item => item.date);
+                window.homeworkScoresChart.data.datasets[0].data = data.time_evolution.map(item => item.avg_score);
+                window.homeworkScoresChart.update();
+            }
+        });
+
+        // Charger l'historique devoirs
+        fetch(`/api/student/homework/history/${studentId}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Données API homework history:", data);
+            
+            // Récupérer l'élève sélectionné
+            const studentName = document.getElementById('student-selector').options[document.getElementById('student-selector').selectedIndex].text;
+            
+            // Remplir le tableau devoirs
+            const tbodyHomework = document.querySelector('#table-homework-performance tbody');
+            tbodyHomework.innerHTML = '';
+            
+            data.results.forEach(result => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${studentName}</td>
+                    <td>${result.title}</td>
+                    <td>${result.subject || 'Non spécifiée'}</td>
+                    <td>${result.score !== null ? result.score + '%' : 'Non noté'}</td>
+                    <td>${result.status}</td>
+                    <td>${result.due_date ? new Date(result.due_date).toLocaleDateString() : 'Non spécifiée'}</td>
+                    <td>${result.completed_at ? new Date(result.completed_at).toLocaleDateString() : 'Non rendu'}</td>
+                `;
+                tbodyHomework.appendChild(tr);
+            });
+            
+            // Rafraîchir DataTable
+            if ($.fn.DataTable.isDataTable('#table-homework-performance')) {
+                $('#table-homework-performance').DataTable().destroy();
+            }
+            $('#table-homework-performance').DataTable();
+        });
+    }
 });
