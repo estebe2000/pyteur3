@@ -12,271 +12,742 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ labels['messagerie'] }}</h1>
-
-<div>
-  <h3><i class="fa fa-paper-plane"></i> {{ labels['send_message_title'] }}</h3>
-  <form id="sendMessageForm">
-    <label><i class="fa fa-user"></i> {{ labels['to_user'] }} :</label>
-    <select id="recipientUser">
-      <option value="">{{ labels['none_option'] }}</option>
-    </select>
-
-    <label><i class="fa fa-users"></i> {{ labels['to_group'] }} :</label>
-    <select id="recipientGroup">
-      <option value="">{{ labels['none_option'] }}</option>
-    </select>
-
-    <label><i class="fa fa-school"></i> {{ labels['to_class'] }} :</label>
-    <select id="recipientClass">
-      <option value="">{{ labels['none_option'] }}</option>
-    </select>
-
-    <br>
-    <textarea id="messageContent" rows="3" cols="50" placeholder="{{ labels['your_message_placeholder'] }}"></textarea><br>
-    <button type="submit"><i class="fa fa-paper-plane"></i> {{ labels['send_button'] }}</button>
-  </form>
-</div>
-
-<hr>
-
-<div style="display: flex; gap: 20px;">
-  <div style="width: 250px; border-right: 1px solid #ccc;">
-<h3><i class="fa fa-comments"></i> {{ labels['conversations'] }}</h3>
-<input type="text" id="searchInput" placeholder="{{ labels['search_placeholder'] }}" style="width:90%;margin-bottom:5px;">
-<ul id="conversationsList">
-  <li>{{ labels['loading'] }}</li>
-</ul>
+<div class="messagerie-container">
+  <!-- Barre d'outils principale -->
+  <div class="messagerie-toolbar">
+    <div class="toolbar-left">
+      <button id="newMessageBtn" class="primary-btn">
+        <i class="fas fa-plus"></i> {{ labels.get('new_message', 'Nouveau message') }}
+      </button>
+      <div class="theme-toggle">
+        <i class="fas fa-sun"></i>
+        <label class="switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="slider round"></span>
+        </label>
+        <i class="fas fa-moon"></i>
+      </div>
+    </div>
+    <div class="toolbar-right">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="{{ labels.get('search_placeholder', 'Rechercher...') }}">
+        <button id="advancedSearchBtn" title="{{ labels.get('advanced_search', 'Recherche avancée') }}">
+          <i class="fas fa-filter"></i>
+        </button>
+      </div>
+    </div>
   </div>
-  <div style="flex: 1;">
-<h3><i class="fa fa-envelope"></i> {{ labels['messages'] }}</h3>
-<ul id="messagesList">
-  <li>{{ labels['select_conversation'] }}</li>
-</ul>
-<form id="replyForm" style="display:none; margin-top:10px;">
-  <textarea id="replyContent" rows="2" cols="50" placeholder="{{ labels['your_message_placeholder'] }}"></textarea><br>
-  <button type="submit"><i class="fa fa-paper-plane"></i> {{ labels['send_button'] }}</button>
-</form>
+
+  <!-- Interface principale à trois colonnes -->
+  <div class="messagerie-main">
+    <!-- Colonne 1: Liste des conversations -->
+    <div class="conversations-column">
+      <div class="column-header">
+        <h3><i class="fas fa-comments"></i> {{ labels.get('conversations', 'Conversations') }}</h3>
+      </div>
+      <div class="conversations-list" id="conversationsList">
+        <div class="loading-indicator">{{ labels.get('loading', 'Chargement...') }}</div>
+      </div>
+    </div>
+
+    <!-- Colonne 2: Messages de la conversation -->
+    <div class="messages-column">
+      <div class="column-header" id="conversationHeader">
+        <h3><i class="fas fa-envelope"></i> {{ labels.get('messages', 'Messages') }}</h3>
+      </div>
+      <div class="messages-list" id="messagesList">
+        <div class="empty-state">
+          <i class="fas fa-comments empty-icon"></i>
+          <p>{{ labels.get('select_conversation', 'Sélectionnez une conversation') }}</p>
+        </div>
+      </div>
+      <form id="replyForm" class="reply-form" style="display:none;">
+        <div class="reply-toolbar">
+          <button type="button" class="format-btn" title="{{ labels.get('bold', 'Gras') }}" onclick="formatText('bold')">
+            <i class="fas fa-bold"></i>
+          </button>
+          <button type="button" class="format-btn" title="{{ labels.get('italic', 'Italique') }}" onclick="formatText('italic')">
+            <i class="fas fa-italic"></i>
+          </button>
+          <button type="button" class="format-btn" title="{{ labels.get('list', 'Liste') }}" onclick="formatText('list')">
+            <i class="fas fa-list-ul"></i>
+          </button>
+          <button type="button" class="emoji-btn" title="{{ labels.get('emoji', 'Emoji') }}" onclick="toggleEmojiPicker()">
+            <i class="fas fa-smile"></i>
+          </button>
+        </div>
+        <div class="reply-input-container">
+          <textarea id="replyContent" placeholder="{{ labels.get('your_message_placeholder', 'Votre message...') }}"></textarea>
+          <button type="submit" class="send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Colonne 3: Détails du contact/groupe -->
+    <div class="details-column">
+      <div class="column-header">
+        <h3><i class="fas fa-info-circle"></i> {{ labels.get('details', 'Détails') }}</h3>
+      </div>
+      <div class="contact-details" id="contactDetails">
+        <div class="empty-state">
+          <i class="fas fa-user empty-icon"></i>
+          <p>{{ labels.get('select_conversation_for_details', 'Sélectionnez une conversation pour voir les détails') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal pour nouveau message -->
+  <div id="newMessageModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-paper-plane"></i> {{ labels.get('send_message_title', 'Envoyer un message') }}</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="sendMessageForm">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> {{ labels.get('to_user', 'Destinataire') }} :</label>
+            <select id="recipientUser">
+              <option value="">{{ labels.get('none_option', 'Aucun') }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-users"></i> {{ labels.get('to_group', 'Groupe') }} :</label>
+            <select id="recipientGroup">
+              <option value="">{{ labels.get('none_option', 'Aucun') }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-school"></i> {{ labels.get('to_class', 'Classe') }} :</label>
+            <select id="recipientClass">
+              <option value="">{{ labels.get('none_option', 'Aucun') }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="format-toolbar">
+              <button type="button" class="format-btn" title="{{ labels.get('bold', 'Gras') }}" onclick="formatText('bold', 'messageContent')">
+                <i class="fas fa-bold"></i>
+              </button>
+              <button type="button" class="format-btn" title="{{ labels.get('italic', 'Italique') }}" onclick="formatText('italic', 'messageContent')">
+                <i class="fas fa-italic"></i>
+              </button>
+              <button type="button" class="format-btn" title="{{ labels.get('list', 'Liste') }}" onclick="formatText('list', 'messageContent')">
+                <i class="fas fa-list-ul"></i>
+              </button>
+              <button type="button" class="emoji-btn" title="{{ labels.get('emoji', 'Emoji') }}" onclick="toggleEmojiPicker('messageContent')">
+                <i class="fas fa-smile"></i>
+              </button>
+            </div>
+            <textarea id="messageContent" rows="5" placeholder="{{ labels.get('your_message_placeholder', 'Votre message...') }}"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn">
+              <i class="fas fa-paper-plane"></i> {{ labels.get('send_button', 'Envoyer') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
 let conversations = {};
 let currentConversation = null;
+let isDarkTheme = false;
 
+// Initialisation de l'interface
+document.addEventListener('DOMContentLoaded', () => {
+  // Gestionnaire pour le bouton nouveau message
+  document.getElementById('newMessageBtn').addEventListener('click', () => {
+    openNewMessageModal();
+  });
+  
+  // Gestionnaire pour le bouton de fermeture du modal
+  document.querySelector('.close-modal').addEventListener('click', () => {
+    closeNewMessageModal();
+  });
+  
+  // Gestionnaire pour le thème sombre/clair
+  document.getElementById('themeToggle').addEventListener('change', (e) => {
+    toggleDarkTheme(e.target.checked);
+  });
+  
+  // Chargement initial des données
+  loadRecipients();
+  loadMessages();
+  
+  // Mise en place du rafraîchissement périodique
+  setupPeriodicRefresh();
+  
+  // Gestionnaire de recherche
+  setupSearch();
+});
+
+// Fonctions pour le modal de nouveau message
+function openNewMessageModal() {
+  const modal = document.getElementById('newMessageModal');
+  modal.style.display = 'flex';
+}
+
+function closeNewMessageModal() {
+  const modal = document.getElementById('newMessageModal');
+  modal.style.display = 'none';
+}
+
+// Fonction pour basculer le thème sombre/clair
+function toggleDarkTheme(isDark) {
+  isDarkTheme = isDark;
+  if (isDark) {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+}
+
+// Fonctions pour le formatage du texte
+function formatText(type, targetId = 'replyContent') {
+  const textarea = document.getElementById(targetId);
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selectedText = textarea.value.substring(start, end);
+  let formattedText = '';
+  
+  switch(type) {
+    case 'bold':
+      formattedText = `**${selectedText}**`;
+      break;
+    case 'italic':
+      formattedText = `*${selectedText}*`;
+      break;
+    case 'list':
+      formattedText = `\n- ${selectedText.split('\n').join('\n- ')}`;
+      break;
+    default:
+      formattedText = selectedText;
+  }
+  
+  textarea.value = 
+    textarea.value.substring(0, start) + 
+    formattedText + 
+    textarea.value.substring(end);
+  
+  // Replacer le curseur après le texte formaté
+  textarea.focus();
+  textarea.selectionStart = start + formattedText.length;
+  textarea.selectionEnd = start + formattedText.length;
+}
+
+// Fonction pour afficher le sélecteur d'emoji
+function toggleEmojiPicker(targetId = 'replyContent') {
+  // Implémentation simplifiée - dans une version complète, 
+  // on afficherait un vrai sélecteur d'emoji
+  const emojis = ['😀', '👍', '❤️', '🎉', '👋', '🤔', '👏', '🙏'];
+  const textarea = document.getElementById(targetId);
+  
+  // Insérer un emoji aléatoire pour cette démo
+  const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+  const cursorPos = textarea.selectionStart;
+  
+  textarea.value = 
+    textarea.value.substring(0, cursorPos) + 
+    randomEmoji + 
+    textarea.value.substring(cursorPos);
+  
+  textarea.focus();
+  textarea.selectionStart = cursorPos + randomEmoji.length;
+  textarea.selectionEnd = cursorPos + randomEmoji.length;
+}
+
+// Chargement des destinataires
 async function loadRecipients() {
-  const resp = await fetch('/api/recipients');
-  const data = await resp.json();
+  try {
+    const resp = await fetch('/api/recipients');
+    const data = await resp.json();
 
-  const userSelect = document.getElementById('recipientUser');
-  const groupSelect = document.getElementById('recipientGroup');
-  const classSelect = document.getElementById('recipientClass');
+    const userSelect = document.getElementById('recipientUser');
+    const groupSelect = document.getElementById('recipientGroup');
+    const classSelect = document.getElementById('recipientClass');
+    
+    // Vider les sélecteurs
+    userSelect.innerHTML = '<option value="">{{ labels.get("none_option", "Aucun") }}</option>';
+    groupSelect.innerHTML = '<option value="">{{ labels.get("none_option", "Aucun") }}</option>';
+    classSelect.innerHTML = '<option value="">{{ labels.get("none_option", "Aucun") }}</option>';
 
-  data.users.forEach(u => {
-    const opt = document.createElement('option');
-    opt.value = u.id;
-    opt.textContent = u.name;
-    userSelect.appendChild(opt);
-  });
-
-  data.groups.forEach(g => {
-    const opt = document.createElement('option');
-    opt.value = g.id;
-    opt.textContent = g.name;
-    groupSelect.appendChild(opt);
-  });
-
-  data.classes.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c.id;
-    opt.textContent = c.name;
-    classSelect.appendChild(opt);
-  });
-}
-
-async function loadMessages() {
-  const resp = await fetch('/api/messages');
-  const messages = await resp.json();
-
-  // Regrouper par conversation (clé = sender_id + sender_name)
-  conversations = {};
-  messages.forEach(msg => {
-    let key = msg.sender_id + '|' + msg.sender_name;
-    if (!conversations[key]) conversations[key] = [];
-    conversations[key].push(msg);
-  });
-
-  const convList = document.getElementById('conversationsList');
-  convList.innerHTML = '';
-  Object.keys(conversations).forEach(key => {
-    const [id, name] = key.split('|');
-    const li = document.createElement('li');
-    li.style.cursor = 'pointer';
-    const unread = conversations[key].some(m => !m.is_read);
-    li.innerHTML = unread ? `<strong>${name}</strong>` : name;
-    li.onclick = () => showConversation(key);
-    convList.appendChild(li);
-  });
-
-  // Effacer messages et formulaire
-  const msgList = document.getElementById('messagesList');
-  msgList.innerHTML = '<li>Sélectionnez une conversation</li>';
-  document.getElementById('replyForm').style.display = 'none';
-}
-
-function showConversation(key) {
-  currentConversation = key;
-  const msgs = conversations[key];
-  const msgList = document.getElementById('messagesList');
-  msgList.innerHTML = '';
-
-  let visibleCount = 20;
-  function renderMessages() {
-    msgList.innerHTML = '';
-    const toShow = msgs.slice(-visibleCount);
-    toShow.forEach(async msg => {
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>${msg.sender_name}</strong> : ${msg.content} <em>(${new Date(msg.timestamp).toLocaleString()})</em>`;
-
-      if (msg.sent) {
-        li.style.background = '#d1ffd1';
-        li.style.marginLeft = 'auto';
-        li.style.textAlign = 'right';
-
-        const delBtn = document.createElement('i');
-        delBtn.className = 'fa fa-trash';
-        delBtn.style.color = 'red';
-        delBtn.style.cursor = 'pointer';
-        delBtn.style.marginLeft = '8px';
-        delBtn.title = 'Supprimer';
-        delBtn.onclick = async () => {
-          if(confirm('{{ labels['delete_confirm'] }}')){
-            await fetch(`/api/messages/delete/${msg.id}`, {method: 'DELETE'});
-            loadMessages();
-          }
-        };
-        li.appendChild(delBtn);
-      } else {
-        if (!msg.is_read) {
-          li.style.fontWeight = 'bold';
-          await fetch('/api/messages/mark_read', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({message_id: msg.id})
-          });
-          li.style.fontWeight = 'normal';
-          msg.is_read = true;
-        }
-      }
-      msgList.appendChild(li);
+    // Remplir avec les nouvelles données
+    data.users.forEach(u => {
+      const opt = document.createElement('option');
+      opt.value = u.id;
+      opt.textContent = u.name;
+      userSelect.appendChild(opt);
     });
 
-    if (visibleCount < msgs.length) {
-      const moreBtn = document.createElement('button');
-      moreBtn.textContent = '{{ labels['load_more'] }}';
-      moreBtn.onclick = () => {
-        visibleCount += 20;
-        renderMessages();
-      };
-      msgList.prepend(moreBtn);
-    }
-  }
+    data.groups.forEach(g => {
+      const opt = document.createElement('option');
+      opt.value = g.id;
+      opt.textContent = g.name;
+      groupSelect.appendChild(opt);
+    });
 
-  renderMessages();
-  document.getElementById('replyForm').style.display = 'block';
+    data.classes.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.name;
+      classSelect.appendChild(opt);
+    });
+  } catch (error) {
+    console.error('Erreur lors du chargement des destinataires:', error);
+  }
 }
 
+// Chargement des messages
+async function loadMessages() {
+  try {
+    const resp = await fetch('/api/messages');
+    const messages = await resp.json();
+
+    // Regrouper par conversation (clé = sender_id + sender_name)
+    conversations = {};
+    messages.forEach(msg => {
+      let key = msg.sender_id + '|' + msg.sender_name;
+      if (!conversations[key]) conversations[key] = [];
+      conversations[key].push(msg);
+    });
+
+    renderConversationsList();
+    
+    // Si une conversation était sélectionnée, la réafficher
+    if (currentConversation && conversations[currentConversation]) {
+      showConversation(currentConversation);
+    } else {
+      // Sinon, afficher l'état vide
+      const msgList = document.getElementById('messagesList');
+      msgList.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-comments empty-icon"></i>
+          <p>{{ labels.get('select_conversation', 'Sélectionnez une conversation') }}</p>
+        </div>
+      `;
+      document.getElementById('replyForm').style.display = 'none';
+      document.getElementById('contactDetails').innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-user empty-icon"></i>
+          <p>{{ labels.get('select_conversation_for_details', 'Sélectionnez une conversation pour voir les détails') }}</p>
+        </div>
+      `;
+    }
+  } catch (error) {
+    console.error('Erreur lors du chargement des messages:', error);
+  }
+}
+
+// Affichage de la liste des conversations
+function renderConversationsList() {
+  const convList = document.getElementById('conversationsList');
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  
+  convList.innerHTML = '';
+  
+  // Trier les conversations: d'abord celles avec des messages non lus, puis par date du dernier message
+  const sortedConversations = Object.keys(conversations).sort((a, b) => {
+    const unreadA = conversations[a].some(m => !m.is_read);
+    const unreadB = conversations[b].some(m => !m.is_read);
+    
+    if (unreadA && !unreadB) return -1;
+    if (!unreadA && unreadB) return 1;
+    
+    const lastMsgA = conversations[a][conversations[a].length - 1];
+    const lastMsgB = conversations[b][conversations[b].length - 1];
+    
+    return new Date(lastMsgB.timestamp) - new Date(lastMsgA.timestamp);
+  });
+  
+  sortedConversations.forEach(key => {
+    const [id, name] = key.split('|');
+    
+    // Filtrer par recherche
+    if (search && !name.toLowerCase().includes(search)) return;
+    
+    const msgs = conversations[key];
+    const lastMsg = msgs[msgs.length - 1];
+    const unreadCount = msgs.filter(m => !m.is_read && !m.sent).length;
+    
+    // Créer l'élément de conversation
+    const div = document.createElement('div');
+    div.className = `conversation-item ${currentConversation === key ? 'active' : ''}`;
+    div.onclick = () => showConversation(key);
+    
+    // Obtenir les initiales pour l'avatar
+    const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+    
+    div.innerHTML = `
+      <div class="avatar">${initials}</div>
+      <div class="conversation-info">
+        <div class="conversation-name">${name}</div>
+        <div class="conversation-preview">${lastMsg.content.substring(0, 30)}${lastMsg.content.length > 30 ? '...' : ''}</div>
+      </div>
+      <div class="conversation-meta">
+        <div class="conversation-time">${formatTime(new Date(lastMsg.timestamp))}</div>
+        ${unreadCount > 0 ? `<div class="unread-badge">${unreadCount}</div>` : ''}
+      </div>
+    `;
+    
+    convList.appendChild(div);
+  });
+  
+  if (convList.children.length === 0) {
+    convList.innerHTML = `
+      <div class="empty-state">
+        <i class="fas fa-search empty-icon"></i>
+        <p>{{ labels.get('no_conversations', 'Aucune conversation trouvée') }}</p>
+      </div>
+    `;
+  }
+}
+
+// Affichage d'une conversation
+function showConversation(key) {
+  currentConversation = key;
+  const [id, name] = key.split('|');
+  const msgs = conversations[key];
+  const msgList = document.getElementById('messagesList');
+  
+  // Mettre à jour l'en-tête de la conversation
+  document.getElementById('conversationHeader').innerHTML = `
+    <h3><i class="fas fa-envelope"></i> ${name}</h3>
+  `;
+  
+  // Afficher les détails du contact
+  showContactDetails(id, name);
+  
+  // Mettre en surbrillance la conversation active
+  document.querySelectorAll('.conversation-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  document.querySelectorAll('.conversation-item').forEach(item => {
+    if (item.querySelector('.conversation-name').textContent === name) {
+      item.classList.add('active');
+    }
+  });
+  
+  // Afficher les messages
+  msgList.innerHTML = '';
+  
+  // Limiter le nombre de messages affichés initialement
+  let visibleCount = 20;
+  const totalMessages = msgs.length;
+  
+  // Ajouter un bouton "Charger plus" si nécessaire
+  if (totalMessages > visibleCount) {
+    const loadMoreDiv = document.createElement('div');
+    loadMoreDiv.className = 'load-more-container';
+    loadMoreDiv.innerHTML = `
+      <button class="load-more-btn">
+        {{ labels.get('load_more', 'Charger plus') }} (${totalMessages - visibleCount})
+      </button>
+    `;
+    loadMoreDiv.querySelector('button').onclick = () => {
+      visibleCount += 20;
+      if (visibleCount >= totalMessages) {
+        loadMoreDiv.remove();
+      } else {
+        loadMoreDiv.querySelector('button').textContent = 
+          `{{ labels.get('load_more', 'Charger plus') }} (${totalMessages - visibleCount})`;
+      }
+      renderMessages(msgs, msgList, visibleCount);
+    };
+    msgList.appendChild(loadMoreDiv);
+  }
+  
+  // Afficher les messages
+  renderMessages(msgs, msgList, visibleCount);
+  
+  // Afficher le formulaire de réponse
+  document.getElementById('replyForm').style.display = 'flex';
+  
+  // Faire défiler jusqu'en bas
+  msgList.scrollTop = msgList.scrollHeight;
+}
+
+// Rendu des messages
+function renderMessages(msgs, container, limit) {
+  // Prendre les derniers messages selon la limite
+  const toShow = msgs.slice(-limit);
+  
+  // Créer un fragment pour éviter les reflows multiples
+  const fragment = document.createDocumentFragment();
+  
+  toShow.forEach(async msg => {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message-bubble ${msg.sent ? 'sent' : 'received'}`;
+    
+    const formattedContent = formatMessageContent(msg.content);
+    const formattedTime = formatTime(new Date(msg.timestamp));
+    
+    messageDiv.innerHTML = `
+      <div class="message-header">
+        <span class="message-sender">${msg.sender_name}</span>
+        <span class="message-time">${formattedTime}</span>
+      </div>
+      <div class="message-content">${formattedContent}</div>
+    `;
+    
+    // Ajouter des actions pour les messages envoyés
+    if (msg.sent) {
+      const actionsDiv = document.createElement('div');
+      actionsDiv.className = 'message-actions';
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'action-btn';
+      deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      deleteBtn.title = '{{ labels.get("delete", "Supprimer") }}';
+      deleteBtn.onclick = async (e) => {
+        e.stopPropagation();
+        if (confirm('{{ labels.get("delete_confirm", "Êtes-vous sûr de vouloir supprimer ce message ?") }}')) {
+          try {
+            await fetch(`/api/messages/delete/${msg.id}`, { method: 'DELETE' });
+            loadMessages();
+          } catch (error) {
+            console.error('Erreur lors de la suppression:', error);
+          }
+        }
+      };
+      
+      actionsDiv.appendChild(deleteBtn);
+      messageDiv.appendChild(actionsDiv);
+    } 
+    // Marquer comme lu les messages reçus non lus
+    else if (!msg.is_read) {
+      try {
+        await fetch('/api/messages/mark_read', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({message_id: msg.id})
+        });
+        msg.is_read = true;
+      } catch (error) {
+        console.error('Erreur lors du marquage comme lu:', error);
+      }
+    }
+    
+    fragment.appendChild(messageDiv);
+  });
+  
+  container.appendChild(fragment);
+}
+
+// Affichage des détails du contact
+function showContactDetails(id, name) {
+  const detailsContainer = document.getElementById('contactDetails');
+  
+  // Obtenir les initiales pour l'avatar
+  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+  
+  // Générer un statut aléatoire pour la démo
+  const statuses = ['En ligne', 'Absent', 'Occupé', 'Hors ligne'];
+  const statusIcons = ['fa-circle', 'fa-clock', 'fa-moon', 'fa-circle-xmark'];
+  const statusColors = ['var(--success-color)', 'var(--warning-color)', 'var(--info-color)', 'var(--text-muted)'];
+  
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+  
+  detailsContainer.innerHTML = `
+    <div class="contact-profile">
+      <div class="contact-avatar">${initials}</div>
+      <div class="contact-name">${name}</div>
+      <div class="contact-status" style="color: ${statusColors[randomIndex]}">
+        <i class="fas ${statusIcons[randomIndex]}"></i>
+        ${statuses[randomIndex]}
+      </div>
+    </div>
+    
+    <div class="contact-info">
+      <div class="info-item">
+        <i class="fas fa-envelope info-icon"></i>
+        <div>
+          <div>Messages échangés</div>
+          <strong>${conversations[currentConversation].length}</strong>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-calendar info-icon"></i>
+        <div>
+          <div>Premier message</div>
+          <strong>${formatDate(new Date(conversations[currentConversation][0].timestamp))}</strong>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-clock info-icon"></i>
+        <div>
+          <div>Dernier message</div>
+          <strong>${formatDate(new Date(conversations[currentConversation][conversations[currentConversation].length - 1].timestamp))}</strong>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Formatage du contenu des messages (support markdown basique)
+function formatMessageContent(content) {
+  // Remplacer les liens
+  content = content.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+  
+  // Remplacer le markdown basique
+  content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  content = content.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  content = content.replace(/`(.*?)`/g, '<code>$1</code>');
+  
+  // Remplacer les listes
+  content = content.replace(/^- (.*?)$/gm, '<li>$1</li>');
+  content = content.replace(/(<li>.*?<\/li>)+/g, '<ul>$&</ul>');
+  
+  // Remplacer les sauts de ligne
+  content = content.replace(/\n/g, '<br>');
+  
+  return content;
+}
+
+// Formatage de l'heure (aujourd'hui: HH:MM, hier: Hier, avant: JJ/MM)
+function formatTime(date) {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  
+  if (date >= today) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } else if (date >= yesterday) {
+    return '{{ labels.get("yesterday", "Hier") }}';
+  } else {
+    return date.toLocaleDateString([], { day: '2-digit', month: '2-digit' });
+  }
+}
+
+// Formatage de la date complète
+function formatDate(date) {
+  return date.toLocaleDateString([], { 
+    day: '2-digit', 
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+// Configuration du rafraîchissement périodique
+function setupPeriodicRefresh() {
+  // Rafraîchir les messages toutes les 10 secondes
+  setInterval(async () => {
+    await loadMessages();
+  }, 10000);
+}
+
+// Configuration de la recherche
+function setupSearch() {
+  const searchInput = document.getElementById('searchInput');
+  
+  searchInput.addEventListener('input', () => {
+    renderConversationsList();
+  });
+  
+  // Bouton de recherche avancée
+  document.getElementById('advancedSearchBtn').addEventListener('click', () => {
+    // Pour cette démo, on affiche juste une alerte
+    alert('{{ labels.get("advanced_search_coming_soon", "La recherche avancée sera disponible prochainement!") }}');
+  });
+}
+
+// Gestionnaire d'envoi de nouveau message
 document.getElementById('sendMessageForm').addEventListener('submit', async e => {
   e.preventDefault();
+  
   const content = document.getElementById('messageContent').value.trim();
   const recipient_user_id = document.getElementById('recipientUser').value;
   const recipient_group_id = document.getElementById('recipientGroup').value;
   const recipient_class_id = document.getElementById('recipientClass').value;
-
-  const resp = await fetch('/api/messages/send', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      content,
-      recipient_user_id: recipient_user_id || null,
-      recipient_group_id: recipient_group_id || null,
-      recipient_class_id: recipient_class_id || null
-    })
-  });
-  const result = await resp.json();
-  if(result.success) {
-    document.getElementById('messageContent').value = '';
-    loadMessages();
-  } else {
-    alert(result.error || '{{ labels['error_sending'] }}');
+  
+  if (!content) {
+    alert('{{ labels.get("empty_message", "Veuillez saisir un message") }}');
+    return;
+  }
+  
+  if (!recipient_user_id && !recipient_group_id && !recipient_class_id) {
+    alert('{{ labels.get("no_recipient", "Veuillez sélectionner au moins un destinataire") }}');
+    return;
+  }
+  
+  try {
+    const resp = await fetch('/api/messages/send', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        content,
+        recipient_user_id: recipient_user_id || null,
+        recipient_group_id: recipient_group_id || null,
+        recipient_class_id: recipient_class_id || null
+      })
+    });
+    
+    const result = await resp.json();
+    
+    if (result.success) {
+      document.getElementById('messageContent').value = '';
+      closeNewMessageModal();
+      await loadMessages();
+    } else {
+      alert(result.error || '{{ labels.get("error_sending", "Erreur lors de l\'envoi du message") }}');
+    }
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi:', error);
+    alert('{{ labels.get("error_sending", "Erreur lors de l\'envoi du message") }}');
   }
 });
 
+// Gestionnaire d'envoi de réponse
 document.getElementById('replyForm').addEventListener('submit', async e => {
   e.preventDefault();
+  
   const content = document.getElementById('replyContent').value.trim();
+  
   if (!content || !currentConversation) return;
+  
   const [recipient_user_id] = currentConversation.split('|');
-  const resp = await fetch('/api/messages/send', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      content,
-      recipient_user_id: recipient_user_id || null
-    })
-  });
-  const result = await resp.json();
-  if(result.success) {
-    document.getElementById('replyContent').value = '';
-    loadMessages();
-  } else {
-    alert(result.error || '{{ labels['error_sending'] }}');
-  }
-});
-
-loadRecipients();
-loadMessages();
-
-setInterval(async () => {
-  const resp = await fetch('/api/messages');
-  const messages = await resp.json();
-
-  // Regrouper par conversation
-  conversations = {};
-  messages.forEach(msg => {
-    let key = msg.sender_id + '|' + msg.sender_name;
-    if (!conversations[key]) conversations[key] = [];
-    conversations[key].push(msg);
-  });
-
-  const convList = document.getElementById('conversationsList');
-  const search = document.getElementById('searchInput').value.toLowerCase();
-  convList.innerHTML = '';
-  Object.keys(conversations).forEach(key => {
-    const [id, name] = key.split('|');
-    if(name.toLowerCase().includes(search)){
-      const li = document.createElement('li');
-      li.style.cursor = 'pointer';
-      const unread = conversations[key].some(m => !m.is_read);
-      li.innerHTML = unread ? `<strong>${name}</strong>` : name;
-      li.onclick = () => showConversation(key);
-      convList.appendChild(li);
+  
+  try {
+    const resp = await fetch('/api/messages/send', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        content,
+        recipient_user_id: recipient_user_id || null
+      })
+    });
+    
+    const result = await resp.json();
+    
+    if (result.success) {
+      document.getElementById('replyContent').value = '';
+      await loadMessages();
+      
+      // Faire défiler jusqu'en bas après l'envoi
+      const msgList = document.getElementById('messagesList');
+      msgList.scrollTop = msgList.scrollHeight;
+    } else {
+      alert(result.error || '{{ labels.get("error_sending", "Erreur lors de l\'envoi du message") }}');
     }
-  });
-
-  if(currentConversation){
-    showConversation(currentConversation);
-  } else {
-    const msgList = document.getElementById('messagesList');
-    msgList.innerHTML = '<li>Sélectionnez une conversation</li>';
-    document.getElementById('replyForm').style.display = 'none';
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi:', error);
+    alert('{{ labels.get("error_sending", "Erreur lors de l\'envoi du message") }}');
   }
-}, 5000);
-
-document.getElementById('searchInput').addEventListener('input', () => {
-  // Forcer un rafraîchissement immédiat lors de la saisie
-  const event = new Event('refreshConversations');
-  window.dispatchEvent(event);
 });
 </script>
 
