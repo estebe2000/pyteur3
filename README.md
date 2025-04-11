@@ -112,14 +112,19 @@ docker build -t pyteur .
 docker run -p 5000:5000 pyteur
 ```
 
-#### Option 2: Avec Docker Compose (recommandé)
+#### Option 2: Avec Docker Compose (développement)
 ```bash
 docker-compose up
 ```
 
-Configuration disponible dans `docker-compose.yml`:
-- Service principal `pyteur` sur le port 5000
-- Service optionnel `ollama` pour l'IA locale (port 11434)
+#### Option 3: Avec Docker Compose et Gunicorn (production recommandée)
+```bash
+docker-compose -f docker-compose-gunicorn.yml up
+```
+
+Configuration disponible dans `docker-compose.yml` (développement) ou `docker-compose-gunicorn.yml` (production):
+- Service principal `pyteur_os` sur le port 5000 (dev) ou 5001 (prod)
+- Service `ollama` pour l'IA locale (port 11434)
 - Variables d'environnement configurables:
   ```yaml
   environment:
@@ -129,12 +134,27 @@ Configuration disponible dans `docker-compose.yml`:
     - DATABASE_URL=postgresql://user:pass@host/dbname
   ```
 
+### Déploiement avec Gunicorn (sans Docker)
+
+Pour un déploiement en production sans Docker, utilisez les scripts fournis:
+
+```bash
+# Linux/Mac
+./start_gunicorn.sh
+
+# Windows
+start_gunicorn.bat
+```
+
+Ces scripts démarrent l'application avec Gunicorn sur le port 5001, avec des paramètres optimisés définis dans `gunicorn_config.py`.
+
 > **Notes importantes**:
 > - Pour la production, configurez :
 >   - `FLASK_ENV=production`
 >   - Une base de données externe via `DATABASE_URL`
 >   - Une `SECRET_KEY` robuste
 > - Le volume `ollama_data` persiste les modèles IA entre les redémarrages
+> - Le port 5001 est utilisé pour éviter les conflits avec d'autres services sur le port 5000
 
 ---
 
