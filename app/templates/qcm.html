@@ -72,12 +72,92 @@
       <button id="export-pronote" class="mt-2 px-4 py-2 bg-green-500 text-white rounded ml-2">Exporter au format Pronote</button>
     </div>
   </div>
+
+  <!-- Section pour afficher les QCM sauvegardés -->
+  <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-bold mb-4">QCM Sauvegardés</h2>
+    <div class="overflow-x-auto">
+      <table id="saved-qcm-table" class="w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="p-3 border text-left">N°</th>
+            <th class="p-3 border text-left">Titre</th>
+            <th class="p-3 border text-left">Date</th>
+            <th class="p-3 border text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="saved-qcm-body">
+          <!-- Les QCM seront chargés ici dynamiquement -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script>
 let qcm = [];
-
 let bankQuestions = [];
+let savedQcms = [];
+
+// Charger la liste des QCM sauvegardés
+function loadSavedQcms() {
+  fetch('/get_saved_qcms')
+    .then(res => res.json())
+    .then(data => {
+      savedQcms = data;
+      updateSavedQcmTable();
+    });
+}
+
+// Mettre à jour le tableau des QCM sauvegardés
+function updateSavedQcmTable() {
+  const tbody = document.getElementById('saved-qcm-body');
+  tbody.innerHTML = '';
+  
+  savedQcms.forEach((qcm, index) => {
+    const tr = document.createElement('tr');
+    tr.className = 'hover:bg-gray-50';
+    tr.innerHTML = `
+      <td class="p-3 border">${index + 1}</td>
+      <td class="p-3 border">${qcm.name}</td>
+      <td class="p-3 border">${new Date(qcm.date).toLocaleDateString()}</td>
+      <td class="p-3 border">
+        <button onclick="copyQcmCode('${qcm.code}')" class="px-2 py-1 bg-blue-500 text-white rounded text-sm mr-2">
+          Copier code
+        </button>
+        <button onclick="deleteQcm('${qcm.code}')" class="px-2 py-1 bg-red-500 text-white rounded text-sm">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Supprimer un QCM sauvegardé
+function deleteQcm(code) {
+  if (confirm('Voulez-vous vraiment supprimer ce QCM ?')) {
+    fetch('/delete_qcm/' + encodeURIComponent(code), {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        loadSavedQcms(); // Recharger la liste
+      } else {
+        alert('Erreur lors de la suppression');
+      }
+    });
+  }
+}
+
+// Copier le code du QCM pour le partager
+function copyQcmCode(code) {
+  navigator.clipboard.writeText(code)
+    .then(() => alert('Code copié : ' + code));
+}
+
+// Charger les QCM sauvegardés au démarrage
+document.addEventListener('DOMContentLoaded', loadSavedQcms);
 
 document.getElementById('load-qcm').onchange = () => {
   const filename = document.getElementById('load-qcm').value;

@@ -106,23 +106,35 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/db.sqlite'  # SQLite par défaut
 
 ### Installation avec Docker
 
-1. **Construire l’image**
-
+#### Option 1: Construction manuelle
 ```bash
 docker build -t pyteur .
+docker run -p 5000:5000 pyteur
 ```
 
-2. **Lancer avec Docker Compose**
-
+#### Option 2: Avec Docker Compose (recommandé)
 ```bash
 docker-compose up
 ```
 
-L’application sera accessible sur `http://localhost:5000`.
+Configuration disponible dans `docker-compose.yml`:
+- Service principal `pyteur` sur le port 5000
+- Service optionnel `ollama` pour l'IA locale (port 11434)
+- Variables d'environnement configurables:
+  ```yaml
+  environment:
+    - FLASK_ENV=development|production
+    - RESET_DB=true|false
+    - SECRET_KEY=votre_clé_secrète
+    - DATABASE_URL=postgresql://user:pass@host/dbname
+  ```
 
-> **Note** : Pour la production, configurez :
-> - Une base de données PostgreSQL/MySQL via `DATABASE_URL`
-> - Une `SECRET_KEY` robuste
+> **Notes importantes**:
+> - Pour la production, configurez :
+>   - `FLASK_ENV=production`
+>   - Une base de données externe via `DATABASE_URL`
+>   - Une `SECRET_KEY` robuste
+> - Le volume `ollama_data` persiste les modèles IA entre les redémarrages
 
 ---
 

@@ -333,10 +333,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 console.log("Données JSON reçues:", data);
                 
-                // Simplification du traitement des données, similaire à qcm.html
+                // Traitement des données avec conversion de format si nécessaire
                 let allQuestions = [];
                 try {
-                    // Essayer d'extraire les questions comme dans qcm.html
+                    // Essayer d'extraire les questions
                     allQuestions = Object.values(data).flat();
                     console.log("Questions extraites (méthode 1):", allQuestions.length);
                 } catch (e) {
@@ -355,12 +355,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         throw new Error("Impossible d'extraire les questions du fichier JSON");
                     }
                 }
+
+                // Convertir le format des questions si nécessaire
+                allQuestions = allQuestions.map(q => {
+                    // Si la question est déjà dans le bon format, ne rien faire
+                    if (q.propositions && q.bonne_reponse !== undefined) {
+                        return q;
+                    }
+                    
+                    // Convertir depuis le format alternatif
+                    if (q.options && q.correct !== undefined) {
+                        return {
+                            question: q.question,
+                            propositions: q.options,
+                            bonne_reponse: q.correct,
+                            explication: q.explanation || ""
+                        };
+                    }
+                    
+                    // Format inconnu
+                    console.error("Format de question inconnu:", q);
+                    return q;
+                });
                 
                 if (allQuestions.length === 0) {
                     throw new Error('Aucune question trouvée');
                 }
                 
-                console.log("Format d'une question:", allQuestions[0]);
+                console.log("Format d'une question après conversion:", allQuestions[0]);
                 
                 // Mélanger et sélectionner le nombre de questions demandé
                 qcmQuestions = shuffleArray(allQuestions).slice(0, Math.min(questionCount, allQuestions.length));
