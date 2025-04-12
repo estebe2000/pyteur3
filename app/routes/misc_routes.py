@@ -1,11 +1,55 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
+from markupsafe import Markup
 from flask_login import login_required, current_user
+import markdown
+import os
 from app import db, csrf
 from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass, Homework, HomeworkCompletion
 from sqlalchemy import or_
 from datetime import datetime
 
 misc_bp = Blueprint('misc', __name__)
+
+@misc_bp.route('/documentation')
+@misc_bp.route('/documentation/<path:page>')
+@login_required
+def documentation(page=None):
+    # Seuls admin et prof peuvent accéder
+    if current_user.role not in ['admin', 'professeur']:
+        flash("Accès réservé aux professeurs et administrateurs.")
+        return redirect(url_for('dashboard.home'))
+    # Déterminer le fichier à charger
+    if not page:
+        page = "index"
+    # Sécurité : empêcher l'accès à des fichiers hors du dossier
+    safe_page = page.replace("..", "").replace("\\", "/")
+    doc_path = os.path.join(os.path.dirname(__file__), '../../mode_emploi', safe_page + '.md')
+    try:
+        with open(doc_path, encoding='utf-8') as f:
+            md_content = f.read()
+        # Réécriture des liens Markdown pour pointer vers la route Flask
+        import re
+        def rewrite_links(md):
+            # [texte](autre_page.md) ou [texte](autre_page) → [texte](/documentation/autre_page)
+            import re
+            # D'abord les liens avec .md
+            md = re.sub(
+                r'\[([^\]]+)\]\(([^)]+)\.md\)',
+                lambda m: f'[{m.group(1)}]({url_for("misc.documentation", page=m.group(2))})',
+                md
+            )
+            # Puis les liens sans extension (pas d'URL absolue ni d'ancre)
+            md = re.sub(
+                r'\[([^\]]+)\]\((?!http[s]?://|/|#)([^)]+)\)',
+                lambda m: f'[{m.group(1)}]({url_for("misc.documentation", page=m.group(2))})',
+                md
+            )
+            return md
+        md_content = rewrite_links(md_content)
+        html_content = Markup(markdown.markdown(md_content, extensions=['tables', 'fenced_code']))
+    except Exception as e:
+        html_content = Markup(f"<p>Erreur lors du chargement de la documentation : {e}</p>")
+    return render_template('documentation.html', doc_content=html_content)
 
 # TODO routes
 @misc_bp.route('/todo', methods=['GET'])
