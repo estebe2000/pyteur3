@@ -6,7 +6,7 @@ import uuid
 import time
 from datetime import datetime
 from werkzeug.utils import secure_filename
-from app.models import db, User, Document, SchoolClass, ExerciseAssignment
+from app.models import db, User, Document, SchoolClass, ExerciseAssignment, Rubrique
 from app.ia_client import generate_text
 from app.prompts_generateur import prompt_generation_exercice
 import tempfile
@@ -165,9 +165,72 @@ def evaluer_code():
 @exercise_bp.route('/exercises')
 def exercises():
     """Page des exercices"""
-    # Récupérer tous les exercices
-    exercises = Document.query.filter_by(type='exercise').all()
-    return render_template('exercises.html', exercises=exercises)
+    # Vérifier si la requête vient d'un iframe
+    is_iframe = request.args.get('iframe', 'false') == 'true'
+    
+    # Récupérer les labels pour le titre
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    # Vérifier si l'utilisateur est un professeur ou un administrateur
+    is_teacher = current_user.role in ['admin', 'professeur']
+    
+    # Exercices personnels (créés par l'utilisateur)
+    personal_exercises = Document.query.filter_by(user_id=current_user.id, type='exercise').all()
+    
+    # Exercices partagés (affectés à l'utilisateur)
+    filters = [ExerciseAssignment.user_id == current_user.id]
+    
+    if current_user.group_id is not None:
+        filters.append(ExerciseAssignment.group_id == current_user.group_id)
+    
+    if current_user.group and current_user.group.school_class:
+        filters.append(ExerciseAssignment.class_id == current_user.group.school_class.id)
+    
+    from sqlalchemy import or_
+    assigned_exercises = Document.query.join(ExerciseAssignment).filter(
+        Document.type == 'exercise',
+        or_(*filters)
+    ).all()
+    
+    # Récupérer toutes les rubriques
+    rubriques = Rubrique.query.all()
+    
+    # Organiser les exercices par rubrique
+    exercises_by_rubrique = {}
+    
+    # Initialiser avec "Non classé" pour les exercices sans rubrique
+    exercises_by_rubrique['non_classe'] = {
+        'nom': 'Non classé',
+        'description': 'Exercices sans rubrique',
+        'exercises': []
+    }
+    
+    # Initialiser avec toutes les rubriques existantes
+    for rubrique in rubriques:
+        exercises_by_rubrique[rubrique.id] = {
+            'nom': rubrique.nom,
+            'description': rubrique.description,
+            'exercises': []
+        }
+    
+    # Organiser les exercices partagés par rubrique
+    for ex in assigned_exercises:
+        # Trouver l'affectation pour cet exercice
+        assignment = ExerciseAssignment.query.filter_by(exercise_id=ex.id).first()
+        
+        if assignment and assignment.rubrique_id and assignment.rubrique_id in exercises_by_rubrique:
+            exercises_by_rubrique[assignment.rubrique_id]['exercises'].append(ex)
+        else:
+            exercises_by_rubrique['non_classe']['exercises'].append(ex)
+    
+    return render_template('exercises.html', 
+                          personal_exercises=personal_exercises,
+                          exercises_by_rubrique=exercises_by_rubrique,
+                          is_teacher=is_teacher,
+                          labels=labels)
 
 @exercise_bp.route('/createur_exercice', methods=['GET', 'POST'])
 def createur_exercice():
@@ -241,15 +304,32 @@ def upload_exercise():
             # Sécuriser le nom du fichier
             filename = secure_filename(file.filename)
             
-            # Créer un nom de fichier unique
-            unique_filename = f"{uuid.uuid4()}_{filename}"
+            # Créer une structure de répertoires organisée
+            # Format: uploads/exercises/[année]/[utilisateur_id]/
+            current_year = datetime.now().strftime('%Y')
+            user_folder = str(current_user.id)
             
-            # Créer le répertoire s'il n'existe pas
-            upload_dir = os.path.join(current_app.root_path, 'static', 'uploads')
-            os.makedirs(upload_dir, exist_ok=True)
+            # Chemin relatif pour la base de données (utiliser des slashes pour les URLs)
+            relative_path = f"exercises/{current_year}/{user_folder}"
+            
+            # Chemin complet pour le stockage
+            upload_folder = os.path.join('app', 'static', 'uploads', relative_path.replace('/', os.sep))
+            
+            # Créer les répertoires s'ils n'existent pas
+            if not os.path.exists(upload_folder):
+                os.makedirs(upload_folder, exist_ok=True)
+            
+            # Générer un nom de fichier unique avec timestamp pour éviter les collisions
+            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            unique_filename = f"{timestamp}_{filename}"
+            
+            # Chemin complet du fichier
+            file_path = os.path.join(upload_folder, unique_filename)
+            
+            # Chemin relatif pour la base de données (ce qui sera stocké)
+            db_filename = f"{relative_path}/{unique_filename}"
             
             # Enregistrer le fichier
-            file_path = os.path.join(upload_dir, unique_filename)
             file.save(file_path)
             
             # Récupérer les tags
@@ -257,7 +337,7 @@ def upload_exercise():
             
             # Créer un document dans la base de données
             document = Document(
-                filename=unique_filename,
+                filename=db_filename,
                 original_filename=filename,
                 type='exercise',
                 tags=tags,
@@ -274,15 +354,32 @@ def upload_exercise():
                 flash('Aucun code fourni', 'error')
                 return redirect(url_for('exercise.exercises'))
             
-            # Créer un nom de fichier unique
-            filename = f"{uuid.uuid4()}.py"
+            # Créer une structure de répertoires organisée
+            # Format: uploads/exercises/[année]/[utilisateur_id]/
+            current_year = datetime.now().strftime('%Y')
+            user_folder = str(current_user.id)
             
-            # Créer le répertoire s'il n'existe pas
-            upload_dir = os.path.join(current_app.root_path, 'static', 'uploads')
-            os.makedirs(upload_dir, exist_ok=True)
+            # Chemin relatif pour la base de données (utiliser des slashes pour les URLs)
+            relative_path = f"exercises/{current_year}/{user_folder}"
+            
+            # Chemin complet pour le stockage
+            upload_folder = os.path.join('app', 'static', 'uploads', relative_path.replace('/', os.sep))
+            
+            # Créer les répertoires s'ils n'existent pas
+            if not os.path.exists(upload_folder):
+                os.makedirs(upload_folder, exist_ok=True)
+            
+            # Générer un nom de fichier unique avec timestamp pour éviter les collisions
+            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            unique_filename = f"{timestamp}.py"
+            
+            # Chemin complet du fichier
+            file_path = os.path.join(upload_folder, unique_filename)
+            
+            # Chemin relatif pour la base de données (ce qui sera stocké)
+            db_filename = f"{relative_path}/{unique_filename}"
             
             # Enregistrer le fichier
-            file_path = os.path.join(upload_dir, filename)
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(code)
             
@@ -291,8 +388,8 @@ def upload_exercise():
             
             # Créer un document dans la base de données
             document = Document(
-                filename=filename,
-                original_filename=filename,
+                filename=db_filename,
+                original_filename=unique_filename,
                 type='exercise',
                 tags=tags,
                 user_id=current_user.id
@@ -323,12 +420,24 @@ def assign_exercise(exercise_id):
             user_ids = request.form.getlist('users')
             group_ids = request.form.getlist('groups')
             class_ids = request.form.getlist('classes')
+            rubrique_id = request.form.get('rubrique_id')
+            
+            # Récupérer les informations de notification
+            notification_message = request.form.get('notification_message', '').strip()
+            send_notification = 'send_notification' in request.form
+            
+            # Convertir en entier si une rubrique est sélectionnée
+            if rubrique_id and rubrique_id != '':
+                rubrique_id = int(rubrique_id)
+            else:
+                rubrique_id = None
             
             # Créer les nouvelles affectations pour les utilisateurs
             for user_id in user_ids:
                 assignment = ExerciseAssignment(
                     exercise_id=exercise_id,
-                    user_id=int(user_id)
+                    user_id=int(user_id),
+                    rubrique_id=rubrique_id
                 )
                 db.session.add(assignment)
             
@@ -336,7 +445,8 @@ def assign_exercise(exercise_id):
             for group_id in group_ids:
                 assignment = ExerciseAssignment(
                     exercise_id=exercise_id,
-                    group_id=int(group_id)
+                    group_id=int(group_id),
+                    rubrique_id=rubrique_id
                 )
                 db.session.add(assignment)
             
@@ -344,12 +454,71 @@ def assign_exercise(exercise_id):
             for class_id in class_ids:
                 assignment = ExerciseAssignment(
                     exercise_id=exercise_id,
-                    class_id=int(class_id)
+                    class_id=int(class_id),
+                    rubrique_id=rubrique_id
                 )
                 db.session.add(assignment)
             
             db.session.commit()
-            flash('Affectations enregistrées avec succès', 'success')
+            
+            # Envoyer une notification si demandé
+            if send_notification and (user_ids or group_ids or class_ids):
+                # Importer les modèles de messagerie
+                from app.models import Message, MessageRecipient
+                
+                # Créer un message par défaut si aucun message n'est fourni
+                if not notification_message:
+                    rubrique_info = ""
+                    if rubrique_id:
+                        rubrique = Rubrique.query.get(rubrique_id)
+                        if rubrique:
+                            rubrique_info = f" dans la rubrique '{rubrique.nom}'"
+                    
+                    notification_message = f"Un nouvel exercice '{exercise.original_filename}' vous a été affecté{rubrique_info}."
+                
+                # Créer le message
+                message = Message(sender_id=current_user.id, content=notification_message)
+                db.session.add(message)
+                db.session.flush()  # Pour obtenir l'ID du message
+                
+                # Créer les destinataires
+                recipients = []
+                
+                # Ajouter les utilisateurs comme destinataires
+                for user_id in user_ids:
+                    recipients.append(MessageRecipient(
+                        message_id=message.id,
+                        recipient_user_id=int(user_id)
+                    ))
+                
+                # Ajouter les groupes comme destinataires
+                for group_id in group_ids:
+                    recipients.append(MessageRecipient(
+                        message_id=message.id,
+                        recipient_group_id=int(group_id)
+                    ))
+                
+                # Ajouter les classes comme destinataires (via leurs groupes)
+                for class_id in class_ids:
+                    school_class = SchoolClass.query.get(class_id)
+                    if school_class:
+                        groups = school_class.groups
+                        for group in groups:
+                            recipients.append(MessageRecipient(
+                                message_id=message.id,
+                                recipient_group_id=group.id
+                            ))
+                
+                # Enregistrer les destinataires
+                if recipients:
+                    db.session.add_all(recipients)
+                    db.session.commit()
+                    flash('Affectations enregistrées et notifications envoyées avec succès', 'success')
+                else:
+                    flash('Affectations enregistrées avec succès, mais aucune notification n\'a été envoyée (aucun destinataire valide)', 'warning')
+            else:
+                flash('Affectations enregistrées avec succès', 'success')
+            
             return redirect(url_for('exercise.exercises'))
         except Exception as e:
             db.session.rollback()
@@ -361,6 +530,7 @@ def assign_exercise(exercise_id):
     users = User.query.filter_by(role='eleve').all()
     classes = SchoolClass.query.all()
     groups = []  # À remplacer par la récupération des groupes si vous avez une table correspondante
+    rubriques = Rubrique.query.all()
     
     # Récupérer les affectations existantes
     assignments = ExerciseAssignment.query.filter_by(exercise_id=exercise_id).all()
@@ -368,14 +538,21 @@ def assign_exercise(exercise_id):
     assigned_groups = [a.group_id for a in assignments if a.group_id is not None]
     assigned_classes = [a.class_id for a in assignments if a.class_id is not None]
     
+    # Récupérer la rubrique si elle existe
+    current_rubrique_id = None
+    if assignments and assignments[0].rubrique_id:
+        current_rubrique_id = assignments[0].rubrique_id
+    
     return render_template('assign_exercise.html', 
                           exercise=exercise, 
                           users=users,
                           groups=groups,
                           classes=classes,
+                          rubriques=rubriques,
                           assigned_users=assigned_users,
                           assigned_groups=assigned_groups,
-                          assigned_classes=assigned_classes)
+                          assigned_classes=assigned_classes,
+                          current_rubrique_id=current_rubrique_id)
 
 @exercise_bp.route('/api/store_temp_script', methods=['POST'])
 def store_temp_script():

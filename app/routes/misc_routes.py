@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 import markdown
 import os
 from app import db, csrf
-from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass, Homework, HomeworkCompletion
+from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass, Homework, HomeworkCompletion, Rubrique
 from sqlalchemy import or_
 from datetime import datetime
 
@@ -99,7 +99,8 @@ def todo():
                 'due_date': homework.due_date.strftime('%d/%m/%Y') if homework.due_date else 'Non spécifiée',
                 'subject': homework.subject,
                 'assigned_by': f"{homework.assigned_by.prenom} {homework.assigned_by.nom}",
-                'done_by_student': completion is not None
+                'done_by_student': completion is not None,
+                'rubrique': homework.rubrique.nom if homework.rubrique else None
             }
             
             homework_list.append(homework_data)
@@ -436,14 +437,16 @@ def homework():
         # Les professeurs ne voient que leurs propres devoirs
         homework_list = Homework.query.filter_by(assigned_by_id=current_user.id).all()
     
-    # Récupérer toutes les classes et tous les groupes pour le formulaire
+    # Récupérer toutes les classes, tous les groupes et toutes les rubriques pour le formulaire
     classes = SchoolClass.query.all()
     groups = Group.query.all()
+    rubriques = Rubrique.query.all()
     
     return render_template('homework.html', 
                           homework_list=homework_list,
                           classes=classes,
-                          groups=groups)
+                          groups=groups,
+                          rubriques=rubriques)
 
 @misc_bp.route('/homework/add', methods=['POST'])
 @login_required
@@ -460,6 +463,10 @@ def add_homework():
     due_date_str = request.form.get('due_date')
     assignment_type = request.form.get('assignment_type')
     
+    # Récupérer les informations de notification
+    notification_message = request.form.get('notification_message', '').strip()
+    send_notification = 'send_notification' in request.form
+    
     # Convertir la date
     from datetime import datetime
     try:
@@ -468,16 +475,23 @@ def add_homework():
         flash('Format de date invalide')
         return redirect(url_for('misc.homework'))
     
+    # Récupérer la rubrique
+    rubrique_id = request.form.get('rubrique_id')
+    
     # Créer le devoir
     homework = Homework(
         title=title,
         description=description,
         subject=subject,
         due_date=due_date,
-        assigned_by_id=current_user.id
+        assigned_by_id=current_user.id,
+        rubrique_id=rubrique_id if rubrique_id else None
     )
     
     # Assigner à une classe ou un groupe
+    class_id = None
+    group_id = None
+    
     if assignment_type == 'class':
         class_id = request.form.get('class_id')
         if class_id:
@@ -491,7 +505,53 @@ def add_homework():
     db.session.add(homework)
     db.session.commit()
     
-    flash('Devoir ajouté avec succès')
+    # Envoyer une notification si demandé
+    if send_notification and (class_id or group_id):
+        # Importer les modèles de messagerie
+        from app.models import Message, MessageRecipient
+        
+        # Créer un message par défaut si aucun message n'est fourni
+        if not notification_message:
+            due_date_formatted = due_date.strftime('%d/%m/%Y')
+            subject_info = f" en {subject}" if subject else ""
+            notification_message = f"Un nouveau devoir '{title}'{subject_info} vous a été assigné, à rendre pour le {due_date_formatted}."
+        
+        # Créer le message
+        message = Message(sender_id=current_user.id, content=notification_message)
+        db.session.add(message)
+        db.session.flush()  # Pour obtenir l'ID du message
+        
+        # Créer les destinataires
+        recipients = []
+        
+        # Ajouter les destinataires en fonction du type d'assignation
+        if class_id:
+            # Si assigné à une classe, envoyer à tous les groupes de cette classe
+            school_class = SchoolClass.query.get(class_id)
+            if school_class:
+                groups = school_class.groups
+                for group in groups:
+                    recipients.append(MessageRecipient(
+                        message_id=message.id,
+                        recipient_group_id=group.id
+                    ))
+        elif group_id:
+            # Si assigné à un groupe, envoyer directement au groupe
+            recipients.append(MessageRecipient(
+                message_id=message.id,
+                recipient_group_id=int(group_id)
+            ))
+        
+        # Enregistrer les destinataires
+        if recipients:
+            db.session.add_all(recipients)
+            db.session.commit()
+            flash('Devoir ajouté et notification envoyée avec succès', 'success')
+        else:
+            flash('Devoir ajouté avec succès, mais aucune notification n\'a été envoyée (aucun destinataire valide)', 'warning')
+    else:
+        flash('Devoir ajouté avec succès')
+    
     return redirect(url_for('misc.homework'))
 
 @misc_bp.route('/homework/edit/<int:homework_id>', methods=['GET', 'POST'])
@@ -524,10 +584,19 @@ def edit_homework(homework_id):
             flash('Format de date invalide')
             return redirect(url_for('misc.edit_homework', homework_id=homework_id))
         
+        # Récupérer les informations de notification
+        notification_message = request.form.get('notification_message', '').strip()
+        send_notification = 'send_notification' in request.form
+        
         # Mettre à jour l'assignation
         assignment_type = request.form.get('assignment_type')
+        old_class_id = homework.class_id
+        old_group_id = homework.group_id
         homework.class_id = None
         homework.group_id = None
+        
+        class_id = None
+        group_id = None
         
         if assignment_type == 'class':
             class_id = request.form.get('class_id')
@@ -541,12 +610,59 @@ def edit_homework(homework_id):
         # Sauvegarder les modifications
         db.session.commit()
         
-        flash('Devoir modifié avec succès')
+        # Envoyer une notification si demandé
+        if send_notification and (class_id or group_id):
+            # Importer les modèles de messagerie
+            from app.models import Message, MessageRecipient
+            
+            # Créer un message par défaut si aucun message n'est fourni
+            if not notification_message:
+                due_date_formatted = homework.due_date.strftime('%d/%m/%Y')
+                subject_info = f" en {homework.subject}" if homework.subject else ""
+                notification_message = f"Le devoir '{homework.title}'{subject_info} a été modifié, à rendre pour le {due_date_formatted}."
+            
+            # Créer le message
+            message = Message(sender_id=current_user.id, content=notification_message)
+            db.session.add(message)
+            db.session.flush()  # Pour obtenir l'ID du message
+            
+            # Créer les destinataires
+            recipients = []
+            
+            # Ajouter les destinataires en fonction du type d'assignation
+            if class_id:
+                # Si assigné à une classe, envoyer à tous les groupes de cette classe
+                school_class = SchoolClass.query.get(class_id)
+                if school_class:
+                    groups = school_class.groups
+                    for group in groups:
+                        recipients.append(MessageRecipient(
+                            message_id=message.id,
+                            recipient_group_id=group.id
+                        ))
+            elif group_id:
+                # Si assigné à un groupe, envoyer directement au groupe
+                recipients.append(MessageRecipient(
+                    message_id=message.id,
+                    recipient_group_id=int(group_id)
+                ))
+            
+            # Enregistrer les destinataires
+            if recipients:
+                db.session.add_all(recipients)
+                db.session.commit()
+                flash('Devoir modifié et notification envoyée avec succès', 'success')
+            else:
+                flash('Devoir modifié avec succès, mais aucune notification n\'a été envoyée (aucun destinataire valide)', 'warning')
+        else:
+            flash('Devoir modifié avec succès')
+        
         return redirect(url_for('misc.homework'))
     
-    # Récupérer toutes les classes et tous les groupes pour le formulaire
+    # Récupérer toutes les classes, tous les groupes et toutes les rubriques pour le formulaire
     classes = SchoolClass.query.all()
     groups = Group.query.all()
+    rubriques = Rubrique.query.all()
     
     # Déterminer le type d'assignation actuel
     assignment_type = None
@@ -559,7 +675,39 @@ def edit_homework(homework_id):
                           homework=homework,
                           classes=classes,
                           groups=groups,
+                          rubriques=rubriques,
                           assignment_type=assignment_type)
+
+@misc_bp.route('/homework/reuse/<int:homework_id>', methods=['GET'])
+@login_required
+def reuse_homework(homework_id):
+    # Vérifier que l'utilisateur est un professeur ou un administrateur
+    if current_user.role not in ['professeur', 'admin']:
+        flash('Accès non autorisé')
+        return redirect(url_for('dashboard.home'))
+    
+    # Récupérer le devoir original
+    original_homework = Homework.query.get_or_404(homework_id)
+    
+    # Créer une copie du devoir
+    new_homework = Homework(
+        title=f"Copie de {original_homework.title}",
+        description=original_homework.description,
+        subject=original_homework.subject,
+        due_date=original_homework.due_date,
+        assigned_by_id=current_user.id,
+        rubrique_id=original_homework.rubrique_id,
+        # Ne pas copier class_id ou group_id pour permettre une nouvelle affectation
+    )
+    
+    # Sauvegarder le nouveau devoir
+    db.session.add(new_homework)
+    db.session.commit()
+    
+    flash('Devoir dupliqué avec succès. Vous pouvez maintenant le modifier et l\'assigner à une classe ou un groupe.')
+    
+    # Rediriger vers le formulaire d'édition du nouveau devoir
+    return redirect(url_for('misc.edit_homework', homework_id=new_homework.id))
 
 @misc_bp.route('/homework/delete/<int:homework_id>', methods=['POST'])
 @login_required

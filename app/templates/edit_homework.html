@@ -47,6 +47,40 @@
             </div>
         </div>
         
+        <div class="mb-4">
+            <label for="notification_message" class="block text-sm font-medium text-gray-700 mb-1">Message de notification (optionnel)</label>
+            <textarea id="notification_message" name="notification_message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Entrez un message qui sera envoyé aux destinataires pour les informer de ce devoir..."></textarea>
+            <p class="text-sm text-gray-500 mt-1">
+                Ce message sera envoyé aux élèves, groupes et classes sélectionnés pour les informer de ce devoir.
+            </p>
+            <div class="mt-2">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" name="send_notification" value="1" checked>
+                    <span>Envoyer une notification</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="font-semibold mb-2">Rubrique (optionnel)</h3>
+            <div class="mb-4">
+                <select name="rubrique_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                    <option value="">-- Aucune rubrique --</option>
+                    {% for rubrique in rubriques %}
+                    <option value="{{ rubrique.id }}" {% if homework.rubrique_id == rubrique.id %}selected{% endif %}>
+                        {{ rubrique.nom }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <p class="text-sm text-gray-500 mt-1">
+                    Sélectionnez une rubrique pour classer ce devoir. 
+                    <a href="{{ url_for('document.manage_rubriques') }}" class="text-blue-600 hover:underline" target="_blank">
+                        Gérer les rubriques
+                    </a>
+                </p>
+            </div>
+        </div>
+
         <div id="class_field" class="{% if assignment_type != 'class' %}hidden{% endif %} mb-4">
             <label for="class_id" class="block text-sm font-medium text-gray-700 mb-1">Classe</label>
             <select id="class_id" name="class_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">

@@ -156,7 +156,7 @@ def assign_document(document_id):
     if current_user.role != 'admin':
         return "Accès non autorisé", 403
 
-    from app.models import User, Group, SchoolClass, DocumentAssignment, Document
+    from app.models import User, Group, SchoolClass, DocumentAssignment, Document, Message, MessageRecipient
 
     document = Document.query.get_or_404(document_id)
 
@@ -167,6 +167,10 @@ def assign_document(document_id):
         group_ids = request.form.getlist('groups')
         class_ids = request.form.getlist('classes')
         rubrique_id = request.form.get('rubrique_id')
+        
+        # Récupérer les informations de notification
+        notification_message = request.form.get('notification_message', '').strip()
+        send_notification = 'send_notification' in request.form
         
         # Convertir en entier si une rubrique est sélectionnée
         if rubrique_id and rubrique_id != '':
@@ -199,7 +203,62 @@ def assign_document(document_id):
             db.session.add(assign)
 
         db.session.commit()
-        flash("Affectations mises à jour")
+        
+        # Envoyer une notification si demandé
+        if send_notification and (user_ids or group_ids or class_ids):
+            # Créer un message par défaut si aucun message n'est fourni
+            if not notification_message:
+                rubrique_info = ""
+                if rubrique_id:
+                    rubrique = Rubrique.query.get(rubrique_id)
+                    if rubrique:
+                        rubrique_info = f" dans la rubrique '{rubrique.nom}'"
+                
+                notification_message = f"Un nouveau document '{document.original_filename}' vous a été affecté{rubrique_info}."
+            
+            # Créer le message
+            message = Message(sender_id=current_user.id, content=notification_message)
+            db.session.add(message)
+            db.session.flush()  # Pour obtenir l'ID du message
+            
+            # Créer les destinataires
+            recipients = []
+            
+            # Ajouter les utilisateurs comme destinataires
+            for user_id in user_ids:
+                recipients.append(MessageRecipient(
+                    message_id=message.id,
+                    recipient_user_id=int(user_id)
+                ))
+            
+            # Ajouter les groupes comme destinataires
+            for group_id in group_ids:
+                recipients.append(MessageRecipient(
+                    message_id=message.id,
+                    recipient_group_id=int(group_id)
+                ))
+            
+            # Ajouter les classes comme destinataires (via leurs groupes)
+            for class_id in class_ids:
+                school_class = SchoolClass.query.get(class_id)
+                if school_class:
+                    groups = school_class.groups
+                    for group in groups:
+                        recipients.append(MessageRecipient(
+                            message_id=message.id,
+                            recipient_group_id=group.id
+                        ))
+            
+            # Enregistrer les destinataires
+            if recipients:
+                db.session.add_all(recipients)
+                db.session.commit()
+                flash('Affectations enregistrées et notifications envoyées avec succès', 'success')
+            else:
+                flash('Affectations enregistrées avec succès, mais aucune notification n\'a été envoyée (aucun destinataire valide)', 'warning')
+        else:
+            flash("Affectations mises à jour", 'success')
+        
         return redirect(url_for('document.documents'))
 
     users = User.query.filter_by(role='eleve').all()

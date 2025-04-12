@@ -62,11 +62,13 @@ class ExerciseAssignment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
     class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
+    rubrique_id = db.Column(db.Integer, db.ForeignKey('rubriques.id'), nullable=True)
 
     exercise = db.relationship('Document', backref='assignments')
     user = db.relationship('User', backref='exercise_assignments')
     group = db.relationship('Group', backref='exercise_assignments')
     school_class = db.relationship('SchoolClass', backref='exercise_assignments')
+    rubrique = db.relationship('Rubrique', backref='exercise_assignments')
 
 
 class DocumentAssignment(db.Model):
@@ -173,9 +175,11 @@ class Homework(db.Model):
     # Relations pour les assignations
     class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
+    rubrique_id = db.Column(db.Integer, db.ForeignKey('rubriques.id'), nullable=True)
     
     school_class = db.relationship('SchoolClass', backref='homework_assignments')
     group = db.relationship('Group', backref='homework_assignments')
+    rubrique = db.relationship('Rubrique', backref='homework_assignments')
 
 
 class HomeworkCompletion(db.Model):

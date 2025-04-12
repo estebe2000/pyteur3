@@ -38,6 +38,10 @@
                         <span class="mx-2">•</span>
                         <span>{{ homework.subject }}</span>
                         {% endif %}
+                        {% if homework.rubrique %}
+                        <span class="mx-2">•</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-xs">{{ homework.rubrique }}</span>
+                        {% endif %}
                     </div>
                 </div>
             </form>

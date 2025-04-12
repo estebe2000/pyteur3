@@ -4,7 +4,13 @@
 {% block page_title %}Affecter l'exercice{% endblock %}
 
 {% block content %}
-<h2 class="text-xl font-semibold mb-4">Affecter l'exercice : {{ exercise.original_filename }}</h2>
+<h2 class="text-xl font-semibold mb-4">
+    {% if exercise.type == 'document' %}
+    Affecter le document : {{ exercise.original_filename }}
+    {% else %}
+    Affecter l'exercice : {{ exercise.original_filename }}
+    {% endif %}
+</h2>
 
 <form method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -26,6 +32,22 @@
                     Gérer les rubriques
                 </a>
             </p>
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Message de notification (optionnel)</h3>
+        <div class="mb-4">
+            <textarea name="notification_message" class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="3" placeholder="Entrez un message qui sera envoyé aux destinataires pour les informer de cette affectation..."></textarea>
+            <p class="text-sm text-gray-500 mt-1">
+                Ce message sera envoyé aux élèves, groupes et classes sélectionnés pour les informer de cette affectation.
+            </p>
+            <div class="mt-2">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" name="send_notification" value="1" checked>
+                    <span>Envoyer une notification</span>
+                </label>
+            </div>
         </div>
     </div>
 
