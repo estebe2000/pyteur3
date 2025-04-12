@@ -1,95 +1,145 @@
 {% extends "base.html" %}
 {% block title %}QCM{% endblock %}
 {% block page_title %}QCM{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/qcm.css') }}">
+{% endblock %}
+
 {% block breadcrumb %}
 <a href="{{ url_for('dashboard.home') }}">Accueil</a> > QCM
 {% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-6">Éditeur de QCM</h1>
+<div class="container mt-4">
+  <div class="banniere-qcm mb-4">
+    <h1>Éditeur de QCM</h1>
+    <p>Créez et gérez vos questionnaires à choix multiples</p>
+  </div>
 
-<div class="flex flex-col gap-6">
-  <!-- Ligne du haut : 2 colonnes -->
-  <div class="flex flex-row gap-6">
-    <!-- Colonne gauche -->
-    <div class="flex flex-col gap-4 w-1/2 p-2 border rounded bg-gray-50">
-      <div>
-        <h2 class="text-lg font-semibold mb-2">Charger un QCM</h2>
-        <select id="load-qcm" class="w-full p-2 border rounded">
-          <option value="">-- Choisir un QCM --</option>
-          {% for saved in saved_qcms %}
-          <option value="{{ saved }}">{{ saved }}</option>
-          {% endfor %}
-        </select>
+  <div class="flex flex-col gap-6">
+    <!-- Ligne du haut : 2 colonnes -->
+    <div class="flex flex-row gap-6">
+      <!-- Colonne gauche -->
+      <div class="card w-1/2">
+        <div class="card-header">
+          Banque de questions
+        </div>
+        <div class="card-body">
+          <div>
+            <h2 class="mb-2">Charger un QCM</h2>
+            <select id="load-qcm">
+              <option value="">-- Choisir un QCM --</option>
+              {% for saved in saved_qcms %}
+              <option value="{{ saved }}">{{ saved }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mt-4">
+            <h2 class="mb-2">Banque de questions</h2>
+            <select id="qcm-file" class="mb-2">
+              <option value="">-- Choisir une banque --</option>
+              {% for file in qcm_files %}
+              <option value="{{ file }}">{{ file }}</option>
+              {% endfor %}
+            </select>
+            <div id="bank-questions" class="mt-2">
+              <h3 class="mb-2">Questions disponibles</h3>
+              <select id="bank-select"></select>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 class="text-lg font-semibold mb-2">Banque de questions</h2>
-        <select id="qcm-file" class="w-full p-2 border rounded mb-2">
-          <option value="">-- Choisir une banque --</option>
-          {% for file in qcm_files %}
-          <option value="{{ file }}">{{ file }}</option>
-          {% endfor %}
-        </select>
-        <div id="bank-questions" class="mt-2">
-          <h3 class="text-md font-semibold mb-2">Questions disponibles</h3>
-          <select id="bank-select" class="w-full p-2 border rounded"></select>
+
+      <!-- Colonne droite -->
+      <div class="card w-1/2">
+        <div class="card-header">
+          Nouvelle question personnalisée
+        </div>
+        <div class="card-body">
+          <textarea id="question-text" rows="4" placeholder="Écrivez la question ici..."></textarea>
+          <div class="mb-3">
+            <h3 class="mb-2">Propositions :</h3>
+            
+            <div class="proposition-container">
+              <input type="text" id="prop0" placeholder="Proposition 1">
+              <input type="radio" name="correct" value="0" id="correct0">
+              <label for="correct0">Bonne réponse</label>
+            </div>
+            
+            <div class="proposition-container">
+              <input type="text" id="prop1" placeholder="Proposition 2">
+              <input type="radio" name="correct" value="1" id="correct1">
+              <label for="correct1">Bonne réponse</label>
+            </div>
+            
+            <div class="proposition-container">
+              <input type="text" id="prop2" placeholder="Proposition 3">
+              <input type="radio" name="correct" value="2" id="correct2">
+              <label for="correct2">Bonne réponse</label>
+            </div>
+            
+            <div class="proposition-container">
+              <input type="text" id="prop3" placeholder="Proposition 4">
+              <input type="radio" name="correct" value="3" id="correct3">
+              <label for="correct3">Bonne réponse</label>
+            </div>
+          </div>
+          <button id="add-question" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Ajouter au QCM
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Colonne droite -->
-    <div class="flex flex-col gap-4 w-1/2 p-2 border rounded bg-gray-50">
-      <div>
-        <h2 class="text-lg font-semibold mb-2">Nouvelle question personnalisée</h2>
-        <textarea id="question-text" rows="4" class="w-full p-2 border rounded mb-2" placeholder="Écrivez la question ici..."></textarea>
-        <div class="mb-2">
-          <label class="font-semibold">Propositions :</label><br>
-          <input type="text" id="prop0" placeholder="Proposition 1" class="p-1 border rounded mb-1 w-full">
-          <input type="radio" name="correct" value="0"> Bonne réponse<br>
-          <input type="text" id="prop1" placeholder="Proposition 2" class="p-1 border rounded mb-1 w-full">
-          <input type="radio" name="correct" value="1"> Bonne réponse<br>
-          <input type="text" id="prop2" placeholder="Proposition 3" class="p-1 border rounded mb-1 w-full">
-          <input type="radio" name="correct" value="2"> Bonne réponse<br>
-          <input type="text" id="prop3" placeholder="Proposition 4" class="p-1 border rounded mb-1 w-full">
-          <input type="radio" name="correct" value="3"> Bonne réponse<br>
+    <!-- Ligne du bas : pleine largeur -->
+    <div class="card">
+      <div class="card-header">
+        Questions du QCM
+      </div>
+      <div class="card-body">
+        <ul id="qcm-list"></ul>
+        
+        <div class="mt-4">
+          <h2 class="mb-2">Sauvegarder</h2>
+          <div class="mb-3">
+            <label for="qcm-name">Nom du QCM :</label>
+            <input type="text" id="qcm-name" placeholder="Nom du QCM">
+          </div>
+          <div>
+            <button id="save-qcm" class="btn btn-primary">
+              <i class="fas fa-save"></i> Sauvegarder le QCM
+            </button>
+            <button id="export-pronote" class="btn btn-success">
+              <i class="fas fa-file-export"></i> Exporter au format Pronote
+            </button>
+          </div>
         </div>
-        <button id="add-question" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Ajouter au QCM</button>
       </div>
     </div>
-  </div>
 
-  <!-- Ligne du bas : pleine largeur -->
-  <div class="flex flex-col gap-4 p-2 border rounded bg-gray-50">
-    <div>
-      <h2 class="text-lg font-semibold mb-2">Questions du QCM</h2>
-      <ul id="qcm-list" class="space-y-2"></ul>
-    </div>
-    <div>
-      <h2 class="text-lg font-semibold mb-2">Sauvegarder</h2>
-      <label for="qcm-name" class="font-semibold">Nom du QCM :</label>
-      <input type="text" id="qcm-name" placeholder="Nom du QCM" class="w-full p-2 border rounded mb-2">
-      <button id="save-qcm" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Sauvegarder le QCM</button>
-      <button id="export-pronote" class="mt-2 px-4 py-2 bg-green-500 text-white rounded ml-2">Exporter au format Pronote</button>
-    </div>
-  </div>
-
-  <!-- Section pour afficher les QCM sauvegardés -->
-  <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-xl font-bold mb-4">QCM Sauvegardés</h2>
-    <div class="overflow-x-auto">
-      <table id="saved-qcm-table" class="w-full border-collapse">
-        <thead>
-          <tr class="bg-gray-100">
-            <th class="p-3 border text-left">N°</th>
-            <th class="p-3 border text-left">Titre</th>
-            <th class="p-3 border text-left">Date</th>
-            <th class="p-3 border text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="saved-qcm-body">
-          <!-- Les QCM seront chargés ici dynamiquement -->
-        </tbody>
-      </table>
+    <!-- Section pour afficher les QCM sauvegardés -->
+    <div class="card mt-4">
+      <div class="card-header">
+        QCM Sauvegardés
+      </div>
+      <div class="card-body">
+        <div class="overflow-x-auto">
+          <table id="saved-qcm-table">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="saved-qcm-body">
+              <!-- Les QCM seront chargés ici dynamiquement -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -116,16 +166,15 @@ function updateSavedQcmTable() {
   
   savedQcms.forEach((qcm, index) => {
     const tr = document.createElement('tr');
-    tr.className = 'hover:bg-gray-50';
     tr.innerHTML = `
-      <td class="p-3 border">${index + 1}</td>
-      <td class="p-3 border">${qcm.name}</td>
-      <td class="p-3 border">${new Date(qcm.date).toLocaleDateString()}</td>
-      <td class="p-3 border">
-        <button onclick="copyQcmCode('${qcm.code}')" class="px-2 py-1 bg-blue-500 text-white rounded text-sm mr-2">
-          Copier code
+      <td>${index + 1}</td>
+      <td>${qcm.name}</td>
+      <td>${new Date(qcm.date).toLocaleDateString()}</td>
+      <td>
+        <button onclick="copyQcmCode('${qcm.code}')" class="btn btn-primary btn-sm">
+          <i class="fas fa-copy"></i> Copier code
         </button>
-        <button onclick="deleteQcm('${qcm.code}')" class="px-2 py-1 bg-red-500 text-white rounded text-sm">
+        <button onclick="deleteQcm('${qcm.code}')" class="btn btn-danger btn-sm">
           <i class="fas fa-trash"></i>
         </button>
       </td>
@@ -233,10 +282,24 @@ function updateQcmList() {
   ul.innerHTML = '';
   qcm.forEach((q, idx) => {
     const li = document.createElement('li');
-    li.innerHTML = `
-      <span style="cursor:pointer;" onclick="deleteQuestion(${idx})">🗑️</span>
-      <span style="cursor:pointer; margin-left:5px;" onclick="editQuestion(${idx})">✏️</span>
-      📄 <b>${q.question}</b> (Bonne réponse : ${q.propositions[q.bonne_reponse]})`;
+    li.innerHTML = `<b>${q.question}</b> (Bonne réponse : ${q.propositions[q.bonne_reponse]})`;
+    
+    // Ajouter les icônes d'action
+    const editIcon = document.createElement('span');
+    editIcon.className = 'action-icon edit-icon';
+    editIcon.innerHTML = '<i class="fas fa-edit"></i>';
+    editIcon.title = 'Modifier cette question';
+    editIcon.onclick = function() { editQuestion(idx); };
+    
+    const deleteIcon = document.createElement('span');
+    deleteIcon.className = 'action-icon delete-icon';
+    deleteIcon.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteIcon.title = 'Supprimer cette question';
+    deleteIcon.onclick = function() { deleteQuestion(idx); };
+    
+    li.appendChild(editIcon);
+    li.appendChild(deleteIcon);
+    
     ul.appendChild(li);
   });
 }
@@ -270,7 +333,7 @@ document.getElementById('save-qcm').onclick = () => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({name: qcmName, questions: qcm})
   }).then(res => {
-if (res.ok) {
+    if (res.ok) {
       alert('QCM sauvegardé avec succès.');
       updateQcmList();
     } else {

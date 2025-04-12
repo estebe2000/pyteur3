@@ -3,162 +3,181 @@
 {% block title %}Gestion des devoirs{% endblock %}
 {% block page_title %}Gestion des devoirs{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homework.css') }}">
+{% endblock %}
+
 {% block breadcrumb %}
 <a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Gestion des devoirs
 {% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4">
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold">Ajouter un nouveau devoir</h2>
+<div class="container mt-4">
+    <div class="banniere-homework mb-4">
+        <h2>Gestion des devoirs</h2>
+        <p>Créez et suivez les devoirs pour vos classes et groupes</p>
     </div>
 
-    <form method="POST" action="{{ url_for('misc.add_homework') }}" class="bg-white p-6 rounded-lg shadow-md mb-8">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Titre du devoir *</label>
-                <input type="text" id="title" name="title" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
-            </div>
-            <div>
-                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Matière</label>
-                <input type="text" id="subject" name="subject" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-            </div>
+    <div class="card mb-8">
+        <div class="card-header">
+            <i class="fas fa-plus-circle"></i> Ajouter un nouveau devoir
         </div>
-        
-        <div class="mb-4">
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-            <textarea id="description" name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('misc.add_homework') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="grid grid-cols-2 mb-4">
+                    <div>
+                        <label for="title" class="mb-1">Titre du devoir *</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div>
+                        <label for="subject" class="mb-1">Matière</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="description" class="mb-1">Description</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+                
+                <div class="grid grid-cols-2 mb-4">
+                    <div>
+                        <label for="due_date" class="mb-1">Date limite *</label>
+                        <input type="date" id="due_date" name="due_date" required>
+                    </div>
+                    <div>
+                        <label for="assignment_type" class="mb-1">Assigner à *</label>
+                        <select id="assignment_type" name="assignment_type" required onchange="toggleAssignmentFields()">
+                            <option value="">Sélectionner...</option>
+                            <option value="class">Classe entière</option>
+                            <option value="group">Groupe</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="mb-2"><i class="fas fa-folder"></i> Rubrique (optionnel)</h3>
+                    <div class="mb-4">
+                        <select name="rubrique_id">
+                            <option value="">-- Aucune rubrique --</option>
+                            {% for rubrique in rubriques %}
+                            <option value="{{ rubrique.id }}">
+                                {{ rubrique.nom }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <p class="text-sm mt-1">
+                            Sélectionnez une rubrique pour classer ce devoir. 
+                            <a href="{{ url_for('document.manage_rubriques') }}" class="text-blue-600 hover:underline" target="_blank">
+                                Gérer les rubriques
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="notification_message" class="mb-1">Message de notification (optionnel)</label>
+                    <textarea id="notification_message" name="notification_message" rows="3" placeholder="Entrez un message qui sera envoyé aux destinataires pour les informer de ce devoir..."></textarea>
+                    <p class="text-sm mt-1">
+                        Ce message sera envoyé aux élèves, groupes et classes sélectionnés pour les informer de ce devoir.
+                    </p>
+                    <div class="mt-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" name="send_notification" value="1" checked>
+                            <span>Envoyer une notification</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="class_field" class="hidden mb-4">
+                    <label for="class_id" class="mb-1">Classe</label>
+                    <select id="class_id" name="class_id">
+                        <option value="">Sélectionner une classe...</option>
+                        {% for class in classes %}
+                        <option value="{{ class.id }}">{{ class.niveau }} {{ class.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div id="group_field" class="hidden mb-4">
+                    <label for="group_id" class="mb-1">Groupe</label>
+                    <select id="group_id" name="group_id">
+                        <option value="">Sélectionner un groupe...</option>
+                        {% for group in groups %}
+                        <option value="{{ group.id }}">{{ group.nom }} ({{ group.school_class.niveau }} {{ group.school_class.nom }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="flex justify-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Ajouter le devoir
+                    </button>
+                </div>
+            </form>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-                <label for="due_date" class="block text-sm font-medium text-gray-700 mb-1">Date limite *</label>
-                <input type="date" id="due_date" name="due_date" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
-            </div>
-            <div>
-                <label for="assignment_type" class="block text-sm font-medium text-gray-700 mb-1">Assigner à *</label>
-                <select id="assignment_type" name="assignment_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md" onchange="toggleAssignmentFields()">
-                    <option value="">Sélectionner...</option>
-                    <option value="class">Classe entière</option>
-                    <option value="group">Groupe</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="font-semibold mb-2">Rubrique (optionnel)</h3>
-            <div class="mb-4">
-                <select name="rubrique_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                    <option value="">-- Aucune rubrique --</option>
-                    {% for rubrique in rubriques %}
-                    <option value="{{ rubrique.id }}">
-                        {{ rubrique.nom }}
-                    </option>
-                    {% endfor %}
-                </select>
-                <p class="text-sm text-gray-500 mt-1">
-                    Sélectionnez une rubrique pour classer ce devoir. 
-                    <a href="{{ url_for('document.manage_rubriques') }}" class="text-blue-600 hover:underline" target="_blank">
-                        Gérer les rubriques
-                    </a>
-                </p>
-            </div>
-        </div>
-        
-        <div class="mb-4">
-            <label for="notification_message" class="block text-sm font-medium text-gray-700 mb-1">Message de notification (optionnel)</label>
-            <textarea id="notification_message" name="notification_message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Entrez un message qui sera envoyé aux destinataires pour les informer de ce devoir..."></textarea>
-            <p class="text-sm text-gray-500 mt-1">
-                Ce message sera envoyé aux élèves, groupes et classes sélectionnés pour les informer de ce devoir.
-            </p>
-            <div class="mt-2">
-                <label class="flex items-center space-x-2">
-                    <input type="checkbox" name="send_notification" value="1" checked>
-                    <span>Envoyer une notification</span>
-                </label>
-            </div>
-        </div>
-        
-        <div id="class_field" class="hidden mb-4">
-            <label for="class_id" class="block text-sm font-medium text-gray-700 mb-1">Classe</label>
-            <select id="class_id" name="class_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                <option value="">Sélectionner une classe...</option>
-                {% for class in classes %}
-                <option value="{{ class.id }}">{{ class.niveau }} {{ class.nom }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div id="group_field" class="hidden mb-4">
-            <label for="group_id" class="block text-sm font-medium text-gray-700 mb-1">Groupe</label>
-            <select id="group_id" name="group_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                <option value="">Sélectionner un groupe...</option>
-                {% for group in groups %}
-                <option value="{{ group.id }}">{{ group.nom }} ({{ group.school_class.niveau }} {{ group.school_class.nom }})</option>
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div class="flex justify-end">
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Ajouter le devoir</button>
-        </div>
-    </form>
+    </div>
 
-    <h2 class="text-xl font-semibold mb-4">Devoirs assignés</h2>
-    
-    <div class="overflow-x-auto">
-        <table class="min-w-full bg-white border border-gray-200">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b text-left">Titre</th>
-                    <th class="py-2 px-4 border-b text-left">Matière</th>
-                    <th class="py-2 px-4 border-b text-left">Date limite</th>
-                    <th class="py-2 px-4 border-b text-left">Assigné à</th>
-                    <th class="py-2 px-4 border-b text-left">Assigné par</th>
-                    <th class="py-2 px-4 border-b text-left">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for homework in homework_list %}
-                <tr class="hover:bg-gray-50">
-                    <td class="py-2 px-4 border-b">{{ homework.title }}</td>
-                    <td class="py-2 px-4 border-b">{{ homework.subject or '-' }}</td>
-                    <td class="py-2 px-4 border-b">{{ homework.due_date.strftime('%d/%m/%Y') }}</td>
-                    <td class="py-2 px-4 border-b">
-                        {% if homework.class_id %}
-                            Classe: {{ homework.school_class.niveau }} {{ homework.school_class.nom }}
-                        {% elif homework.group_id %}
-                            Groupe: {{ homework.group.nom }}
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-list"></i> Devoirs assignés
+        </div>
+        <div class="card-body">
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Matière</th>
+                            <th>Date limite</th>
+                            <th>Assigné à</th>
+                            <th>Assigné par</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for homework in homework_list %}
+                        <tr>
+                            <td>{{ homework.title }}</td>
+                            <td>{{ homework.subject or '-' }}</td>
+                            <td>{{ homework.due_date.strftime('%d/%m/%Y') }}</td>
+                            <td>
+                                {% if homework.class_id %}
+                                    Classe: {{ homework.school_class.niveau }} {{ homework.school_class.nom }}
+                                {% elif homework.group_id %}
+                                    Groupe: {{ homework.group.nom }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>{{ homework.assigned_by.prenom }} {{ homework.assigned_by.nom }}</td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <a href="{{ url_for('misc.edit_homework', homework_id=homework.id) }}" class="icon icon-edit" title="Modifier">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{{ url_for('misc.reuse_homework', homework_id=homework.id) }}" class="icon icon-copy" title="Réutiliser">
+                                        <i class="fas fa-copy"></i>
+                                    </a>
+                                    <form method="POST" action="{{ url_for('misc.delete_homework', homework_id=homework.id) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce devoir?');">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="icon icon-delete" title="Supprimer">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
                         {% else %}
-                            -
-                        {% endif %}
-                    </td>
-                    <td class="py-2 px-4 border-b">{{ homework.assigned_by.prenom }} {{ homework.assigned_by.nom }}</td>
-                    <td class="py-2 px-4 border-b">
-                        <div class="flex space-x-2">
-                            <a href="{{ url_for('misc.edit_homework', homework_id=homework.id) }}" class="text-blue-600 hover:text-blue-800" title="Modifier">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="{{ url_for('misc.reuse_homework', homework_id=homework.id) }}" class="text-green-600 hover:text-green-800" title="Réutiliser">
-                                <i class="fas fa-copy"></i>
-                            </a>
-                            <form method="POST" action="{{ url_for('misc.delete_homework', homework_id=homework.id) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce devoir?');">
-                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                                <button type="submit" class="text-red-600 hover:text-red-800" title="Supprimer">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td colspan="6" class="py-4 px-4 text-center text-gray-500">Aucun devoir assigné pour le moment.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        <tr>
+                            <td colspan="6" class="text-center">Aucun devoir assigné pour le moment.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

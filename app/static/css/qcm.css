@@ -1,0 +1,246 @@
+/* Style dédié à la page QCM - design attractif */
+
+/* Palette dynamique */
+:root {
+  --color-primary: #4f46e5; /* violet */
+  --color-secondary: #22c55e; /* vert */
+  --color-accent: #f97316; /* orange */
+  --color-bg: #f0f4ff;
+  --color-text: #333;
+}
+
+/* Conteneur principal */
+.container {
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Titres */
+h1, h2, h3, h4, h5 {
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+}
+
+/* Bannière titre */
+.banniere-qcm {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+.banniere-qcm h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: white;
+}
+
+.banniere-qcm p {
+  margin: 10px 0 0;
+  font-size: 1.2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+}
+
+/* Cartes */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 15px 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Formulaires */
+select, input[type="text"], textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+select:focus, input[type="text"]:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Boutons */
+.btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #16a34a;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #ea580c;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
+}
+
+.btn-sm {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+
+/* Liste des questions */
+#qcm-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#qcm-list li {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  padding-right: 80px; /* Espace pour les icônes */
+}
+
+#qcm-list li:hover {
+  background-color: #f8f9fa;
+}
+
+/* Icônes d'action */
+.action-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.delete-icon {
+  right: 15px;
+  color: #ef4444;
+}
+
+.edit-icon {
+  right: 45px;
+  color: var(--color-primary);
+}
+
+/* Tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+  }
+  
+  .w-1/2 {
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Propositions de réponse */
+.proposition-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.proposition-container input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.proposition-container input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.proposition-container label {
+  margin-left: 5px;
+  cursor: pointer;
+}

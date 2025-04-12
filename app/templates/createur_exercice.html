@@ -109,8 +109,14 @@ function refreshThemes() {
     data[niveau].forEach((themeObj, idx) => {
         const li = document.createElement('li');
         li.className = 'list-group-item list-group-item-action';
+        li.style.position = 'relative';
+        li.style.paddingRight = '40px'; // Espace pour l'icône de suppression
         li.style.cursor = 'pointer';
+        
+        // Ajouter le texte directement au li
         li.textContent = themeObj.thème;
+        
+        // Gérer le clic sur le li pour sélectionner le thème
         li.onclick = function() {
             document.getElementById('themeText').textContent = themeObj.thème;
             refreshLevels(idx);
@@ -121,6 +127,23 @@ function refreshThemes() {
             });
             this.classList.add('active');
         };
+        
+        // Créer un bouton de suppression
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-danger btn-sm';
+        deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+        deleteBtn.title = 'Supprimer ce thème';
+        deleteBtn.style.position = 'absolute';
+        deleteBtn.style.right = '8px';
+        deleteBtn.style.top = '50%';
+        deleteBtn.style.transform = 'translateY(-50%)';
+        deleteBtn.onclick = function(e) {
+            e.stopPropagation(); // Empêcher le déclenchement du clic sur li
+            deleteTheme(idx);
+        };
+        
+        // Ajouter le bouton au li
+        li.appendChild(deleteBtn);
         themesList.appendChild(li);
     });
 
@@ -223,12 +246,10 @@ function addTheme() {
     refreshThemes();
 }
 
-function deleteTheme() {
+function deleteTheme(themeIdx) {
     const niveau = document.getElementById('niveauSelect').value;
-    const themeIdx = document.getElementById('themeSelect').value;
-    if(themeIdx === '') return;
-    if(!confirm('Supprimer ce thème ?')) return;
-    data[niveau].splice(themeIdx,1);
+    if(!confirm('Êtes-vous sûr de vouloir supprimer ce thème ?')) return;
+    data[niveau].splice(themeIdx, 1);
     refreshThemes();
 }
 
