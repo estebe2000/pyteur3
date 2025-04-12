@@ -14,10 +14,13 @@ function bringToFront(win) {
 }
 
 function openWindow(id) {
+    console.log("openWindow appelé pour:", id);
     let winId = id + '-window';
+    console.log("Recherche de la fenêtre avec ID:", winId);
     const win = document.getElementById(winId);
     
     if(win) {
+        console.log("Fenêtre trouvée:", win);
         // Fermer les fenêtres incompatibles si nécessaire
         if (id === 'exercises') {
             closeWindow('exercices_flash');
@@ -28,6 +31,7 @@ function openWindow(id) {
         
         // Ouvrir la fenêtre demandée
         win.style.display = 'block';
+        console.log("Fenêtre affichée");
         bringToFront(win);
         
         // Centrer et dimensionner la fenêtre
@@ -40,8 +44,14 @@ function openWindow(id) {
         win.style.height = `${winHeight}px`;
         win.style.left = `${(viewportWidth - winWidth) / 2}px`;
         win.style.top = `${(viewportHeight - winHeight) / 2}px`;
+        console.log("Fenêtre dimensionnée et positionnée");
     } else {
         console.error('Fenêtre non trouvée:', winId);
+        // Lister toutes les fenêtres disponibles
+        console.log("Fenêtres disponibles:");
+        document.querySelectorAll('.window').forEach(win => {
+            console.log("- ID:", win.id);
+        });
     }
 }
 
@@ -362,6 +372,113 @@ function showNotification(title, message, type = 'info') {
         }
     }, 5000);
 }
+
+// Fonctions pour minimiser et maximiser les fenêtres
+function minimizeWindow(id) {
+    console.log("minimizeWindow appelé pour:", id);
+    // Pour l'instant, on se contente de fermer la fenêtre
+    closeWindow(id);
+}
+
+function maximizeWindow(id) {
+    console.log("maximizeWindow appelé pour:", id);
+    const win = document.getElementById(id + '-window');
+    if(win) {
+        // Mettre la fenêtre en plein écran
+        win.style.width = '100%';
+        win.style.height = '100%';
+        win.style.left = '0';
+        win.style.top = '0';
+        bringToFront(win);
+    }
+}
+
+// Fonction pour ouvrir un document dans la fenêtre
+function openDocumentViewer(documentUrl, documentTitle) {
+    console.log("openDocumentViewer appelé avec:", documentUrl, documentTitle);
+    
+    // Vérifier si la fenêtre existe
+    const win = document.getElementById('documentViewer-window');
+    console.log("Fenêtre documentViewer-window:", win);
+    
+    if (!win) {
+        console.error("La fenêtre documentViewer-window n'existe pas!");
+        return;
+    }
+    
+    // Mettre à jour le titre
+    const titleElement = document.getElementById('documentViewerTitle');
+    if (titleElement) {
+        titleElement.textContent = documentTitle || 'Visualiseur de document';
+    } else {
+        console.error("L'élément documentViewerTitle n'existe pas!");
+    }
+    
+    // Mettre à jour l'iframe avec l'URL du document
+    const frameElement = document.getElementById('documentViewerFrame');
+    if (frameElement) {
+        frameElement.src = documentUrl;
+    } else {
+        console.error("L'élément documentViewerFrame n'existe pas!");
+    }
+    
+    // Mettre à jour le bouton de téléchargement
+    const downloadBtn = document.getElementById('documentDownloadBtn');
+    if (downloadBtn) {
+        downloadBtn.onclick = function() {
+            window.open(documentUrl, '_blank');
+        };
+    } else {
+        console.error("L'élément documentDownloadBtn n'existe pas!");
+    }
+    
+    // Configurer le bouton plein écran
+    const fullscreenBtn = document.getElementById('documentFullscreenBtn');
+    if (fullscreenBtn) {
+        fullscreenBtn.onclick = function() {
+            const iframe = document.getElementById('documentViewerFrame');
+            if (iframe) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    iframe.msRequestFullscreen();
+                }
+            }
+        };
+    } else {
+        console.error("L'élément documentFullscreenBtn n'existe pas!");
+    }
+    
+    // Ouvrir la fenêtre
+    console.log("Appel de openWindow('documentViewer')");
+    openWindow('documentViewer');
+}
+
+// Écouteur d'événements pour les messages postMessage
+window.addEventListener('message', function(event) {
+    console.log("Message reçu:", event.data);
+    console.log("Source du message:", event.source);
+    console.log("Origine du message:", event.origin);
+    
+    // Vérifier si le message est du type attendu
+    if (event.data && event.data.type === 'openDocument') {
+        console.log("Message openDocument reçu, appel de openDocumentViewer");
+        console.log("URL du document:", event.data.documentUrl);
+        console.log("Titre du document:", event.data.documentTitle);
+        
+        try {
+            // Appeler la fonction openDocumentViewer avec les paramètres reçus
+            openDocumentViewer(event.data.documentUrl, event.data.documentTitle);
+            console.log("Fonction openDocumentViewer appelée avec succès");
+        } catch (error) {
+            console.error("Erreur lors de l'appel de openDocumentViewer:", error);
+        }
+    } else {
+        console.log("Message non reconnu ou de type incorrect");
+    }
+});
 
 // Initialisation au chargement de la page
 window.addEventListener('DOMContentLoaded', () => {

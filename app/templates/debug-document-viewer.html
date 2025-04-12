@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Débogage de la fenêtre de visualisation de document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_windows.css') }}">
+    <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .debug-panel {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .debug-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .debug-button:hover {
+            background-color: #45a049;
+        }
+        .debug-log {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .debug-log p {
+            margin: 0;
+            padding: 2px 0;
+        }
+        .debug-log .error {
+            color: #ff5555;
+        }
+        .debug-log .info {
+            color: #55ff55;
+        }
+        .debug-log .warning {
+            color: #ffff55;
+        }
+    </style>
+</head>
+<body>
+    <h1>Débogage de la fenêtre de visualisation de document</h1>
+    
+    <div class="debug-panel">
+        <h2>Actions de débogage</h2>
+        <button id="checkWindowBtn" class="debug-button">Vérifier la fenêtre</button>
+        <button id="checkElementsBtn" class="debug-button">Vérifier les éléments</button>
+        <button id="openWindowBtn" class="debug-button">Ouvrir la fenêtre</button>
+    </div>
+    
+    <div class="debug-log" id="debugLog"></div>
+    
+    <!-- Inclure la fenêtre de visualisation de document -->
+    {% include 'eleve_windows/document_viewer_window.html' %}
+    
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/eleve_base.js') }}"></script>
+    <script>
+        // Fonction pour ajouter un message au log de débogage
+        function log(message, type = 'normal') {
+            const logElement = document.getElementById('debugLog');
+            const logEntry = document.createElement('p');
+            logEntry.className = type;
+            logEntry.textContent = message;
+            logElement.appendChild(logEntry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        // Rediriger console.log, console.error, console.warn vers notre log
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        
+        console.log = function() {
+            originalConsoleLog.apply(console, arguments);
+            log(Array.from(arguments).join(' '), 'info');
+        };
+        
+        console.error = function() {
+            originalConsoleError.apply(console, arguments);
+            log(Array.from(arguments).join(' '), 'error');
+        };
+        
+        console.warn = function() {
+            originalConsoleWarn.apply(console, arguments);
+            log(Array.from(arguments).join(' '), 'warning');
+        };
+        
+        // Fonction pour vérifier si la fenêtre existe
+        function checkDocumentViewerWindow() {
+            const win = document.getElementById('documentViewer-window');
+            console.log("Fenêtre documentViewer-window:", win);
+            
+            if (!win) {
+                console.error("La fenêtre documentViewer-window n'existe pas!");
+                
+                // Lister toutes les fenêtres disponibles
+                console.log("Fenêtres disponibles:");
+                document.querySelectorAll('.window').forEach(win => {
+                    console.log("- ID:", win.id);
+                });
+                
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Fonction pour vérifier si les éléments de la fenêtre existent
+        function checkDocumentViewerElements() {
+            const elements = [
+                'documentViewerTitle',
+                'documentViewerFrame',
+                'documentDownloadBtn',
+                'documentFullscreenBtn'
+            ];
+            
+            let allExist = true;
+            
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                console.log(`Élément ${id}:`, element);
+                
+                if (!element) {
+                    console.error(`L'élément ${id} n'existe pas!`);
+                    allExist = false;
+                }
+            });
+            
+            return allExist;
+        }
+        
+        // Fonction pour ouvrir directement la fenêtre de visualisation de document
+        function debugOpenDocumentViewer() {
+            console.log("Tentative d'ouverture de la fenêtre de visualisation de document");
+            
+            // Vérifier si la fenêtre existe
+            if (!checkDocumentViewerWindow()) {
+                return;
+            }
+            
+            // Vérifier si les éléments de la fenêtre existent
+            if (!checkDocumentViewerElements()) {
+                return;
+            }
+            
+            // Mettre à jour le titre
+            document.getElementById('documentViewerTitle').textContent = 'Document de test';
+            
+            // Mettre à jour l'iframe avec l'URL du document
+            document.getElementById('documentViewerFrame').src = '/view_document/1';
+            
+            // Mettre à jour le bouton de téléchargement
+            document.getElementById('documentDownloadBtn').onclick = function() {
+                window.open('/view_document/1', '_blank');
+            };
+            
+            // Configurer le bouton plein écran
+            document.getElementById('documentFullscreenBtn').onclick = function() {
+                const iframe = document.getElementById('documentViewerFrame');
+                if (iframe) {
+                    if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe.msRequestFullscreen) { /* IE11 */
+                        iframe.msRequestFullscreen();
+                    }
+                }
+            };
+            
+            // Ouvrir la fenêtre
+            console.log("Appel de openWindow('documentViewer')");
+            
+            // Vérifier si la fonction openWindow existe
+            if (typeof openWindow !== 'function') {
+                console.error("La fonction openWindow n'existe pas!");
+                return;
+            }
+            
+            // Ouvrir la fenêtre
+            openWindow('documentViewer');
+        }
+        
+        // Ajouter les gestionnaires d'événements aux boutons
+        document.getElementById('checkWindowBtn').addEventListener('click', checkDocumentViewerWindow);
+        document.getElementById('checkElementsBtn').addEventListener('click', checkDocumentViewerElements);
+        document.getElementById('openWindowBtn').addEventListener('click', debugOpenDocumentViewer);
+        
+        // Initialisation
+        console.log("Page de débogage chargée");
+    </script>
+</body>
+</html>

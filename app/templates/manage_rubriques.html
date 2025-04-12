@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}Gestion des rubriques{% endblock %}
+{% block page_title %}Gestion des rubriques{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} <a href="{{ url_for('document.documents') }}">{{ labels['documents'] }}</a> {{ labels['breadcrumb_separator'] }} Gestion des rubriques
+{% endblock %}
+
+{% block content %}
+<div class="mb-6 flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Gestion des rubriques pour les documents</h2>
+    <button onclick="document.getElementById('addRubriqueModal').classList.remove('hidden')"
+        class="btn btn-primary flex-1 py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition max-w-xs">
+        <i class="fas fa-plus mr-2"></i> Ajouter une rubrique
+    </button>
+</div>
+
+<!-- Liste des rubriques -->
+<div class="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+    {% if rubriques %}
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Documents</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            {% for rubrique in rubriques %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <i class="fas fa-folder text-yellow-500 mr-2"></i>
+                        <span class="font-medium">{{ rubrique.nom }}</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {{ rubrique.description }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {{ rubrique.assignments|length }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button onclick="openEditModal('{{ rubrique.id }}', '{{ rubrique.nom }}', '{{ rubrique.description }}')" 
+                            class="text-blue-600 hover:text-blue-900 mr-3">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="confirmDeleteRubrique('{{ rubrique.id }}')" 
+                            class="text-red-600 hover:text-red-900 mr-3">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="p-8 text-center text-gray-500">
+        <i class="fas fa-folder-open text-4xl mb-2"></i>
+        <p>Aucune rubrique trouvée. Créez votre première rubrique pour organiser vos documents.</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Modal Ajout Rubrique -->
+<div id="addRubriqueModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Ajouter une rubrique</h3>
+            <button onclick="document.getElementById('addRubriqueModal').classList.add('hidden')"
+                class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form method="POST" action="{{ url_for('document.add_rubrique') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Nom de la rubrique</label>
+                <input type="text" name="nom" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Description (optionnelle)</label>
+                <textarea name="description" rows="3"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
+                Ajouter
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Modification Rubrique -->
+<div id="editRubriqueModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Modifier la rubrique</h3>
+            <button onclick="document.getElementById('editRubriqueModal').classList.add('hidden')"
+                class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form method="POST" action="{{ url_for('document.edit_rubrique') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="rubrique_id" id="edit_rubrique_id">
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Nom de la rubrique</label>
+                <input type="text" name="nom" id="edit_nom" required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Description (optionnelle)</label>
+                <textarea name="description" id="edit_description" rows="3"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full py-2 px-4 rounded-lg shadow bg-blue-600 text-white hover:bg-blue-700 transition">
+                Enregistrer les modifications
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+function openEditModal(id, nom, description) {
+    document.getElementById('edit_rubrique_id').value = id;
+    document.getElementById('edit_nom').value = nom;
+    document.getElementById('edit_description').value = description;
+    document.getElementById('editRubriqueModal').classList.remove('hidden');
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function confirmDeleteRubrique(rubriqueId) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cette rubrique ? Les documents associés ne seront pas supprimés mais ne seront plus classés.")) {
+        fetch('/rubriques/delete/' + rubriqueId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrf_token')
+            }
+        }).then(response => {
+            if (response.ok) {
+                location.reload();
+            }
+        });
+    }
+}
+</script>
+{% endblock %}

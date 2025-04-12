@@ -32,6 +32,7 @@ def create_app():
     from app.routes.project_routes import project_bp
     from app.routes.welcome_routes import welcome_bp
     from app.routes.student_performance_routes import student_performance_bp
+    from app.routes.debug_routes import debug_bp
 
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(user_bp)
@@ -46,6 +47,7 @@ def create_app():
     app.register_blueprint(project_bp)
     app.register_blueprint(welcome_bp)
     app.register_blueprint(student_performance_bp)
+    app.register_blueprint(debug_bp)
 
     @app.context_processor
     def inject_labels():

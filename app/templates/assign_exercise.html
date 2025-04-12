@@ -10,6 +10,26 @@
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
     <div class="mb-6">
+        <h3 class="font-semibold mb-2">Rubrique (optionnel)</h3>
+        <div class="mb-4">
+            <select name="rubrique_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option value="">-- Aucune rubrique --</option>
+                {% for rubrique in rubriques %}
+                <option value="{{ rubrique.id }}" {% if current_rubrique_id == rubrique.id %}selected{% endif %}>
+                    {{ rubrique.nom }}
+                </option>
+                {% endfor %}
+            </select>
+            <p class="text-sm text-gray-500 mt-1">
+                Sélectionnez une rubrique pour classer ce document. 
+                <a href="{{ url_for('document.manage_rubriques') }}" class="text-blue-600 hover:underline" target="_blank">
+                    Gérer les rubriques
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="mb-6">
         <h3 class="font-semibold mb-2">Élèves</h3>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
             {% for user in users %}
