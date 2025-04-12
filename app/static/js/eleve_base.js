@@ -267,8 +267,49 @@ function loadWelcomeMessage() {
             return response.json();
         })
         .then(function(data) {
-            contentElement.innerHTML = data.content;
+            // Formater le contenu (similaire à la fonction updatePreview dans welcome_editor.js)
+            let html = data.content;
+            
+            // Remplacer les liens markdown
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+            
+            // Remplacer le markdown basique
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            html = html.replace(/`(.*?)`/g, '<code>$1</code>');
+            
+            // Remplacer les titres
+            html = html.replace(/^# (.*?)$/gm, '<h1>$1</h1>');
+            html = html.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
+            
+            // Remplacer les listes
+            html = html.replace(/^- (.*?)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*?<\/li>)+/g, '<ul>$&</ul>');
+            
+            // Remplacer les sauts de ligne
+            html = html.replace(/\n/g, '<br>');
+            
+            // Appliquer le contenu formaté
+            contentElement.innerHTML = html;
             infoElement.textContent = "Mis à jour le " + data.updated_at + " par " + data.created_by;
+            
+            // Ajouter des styles pour améliorer l'apparence
+            contentElement.style.padding = '10px';
+            contentElement.style.lineHeight = '1.5';
+            
+            // Styles pour les éléments spécifiques
+            const headings = contentElement.querySelectorAll('h1, h2, h3');
+            headings.forEach(heading => {
+                heading.style.marginBottom = '10px';
+                heading.style.fontWeight = 'bold';
+            });
+            
+            const lists = contentElement.querySelectorAll('ul');
+            lists.forEach(list => {
+                list.style.marginLeft = '20px';
+                list.style.marginBottom = '10px';
+            });
         })
         .catch(function(error) {
             console.error('Erreur lors du chargement du message de bienvenue:', error);
