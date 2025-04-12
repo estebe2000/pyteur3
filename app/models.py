@@ -39,6 +39,13 @@ class User(UserMixin, db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
 
+class Rubrique(db.Model):
+    __tablename__ = 'rubriques'
+    id = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(255))
+    assignments = db.relationship('DocumentAssignment', backref='rubrique', lazy=True)
+
 class Document(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(100))
@@ -69,6 +76,7 @@ class DocumentAssignment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=True)
     class_id = db.Column(db.Integer, db.ForeignKey('school_class.id'), nullable=True)
+    rubrique_id = db.Column(db.Integer, db.ForeignKey('rubriques.id'), nullable=True)
 
     document = db.relationship('Document', backref='doc_assignments')
     user = db.relationship('User', backref='document_assignments')

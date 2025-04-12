@@ -14,6 +14,7 @@ document_bp = Blueprint('document', __name__)
 def documents():
     # Documents personnels
     personal_docs = Document.query.filter_by(user_id=current_user.id, type='document')
+    personal_documents = personal_docs.all()
 
     filters = [DocumentAssignment.user_id == current_user.id]
 
@@ -27,8 +28,7 @@ def documents():
         Document.type == 'document',
         or_(*filters)
     )
-
-    docs = personal_docs.union(assigned_docs).all()
+    shared_documents = assigned_docs.all()
     
     # Vérifier si la requête vient d'un iframe
     is_iframe = request.args.get('iframe', 'false') == 'true'
@@ -40,9 +40,9 @@ def documents():
     labels = labels_fr if lang == 'fr' else labels_en
     
     if is_iframe:
-        return render_template('documents.html', documents=docs, title=labels.get('documents', 'Documents'))
+        return render_template('documents.html', personal_documents=personal_documents, shared_documents=shared_documents, title=labels.get('documents', 'Documents'))
     else:
-        return render_template('documents.html', documents=docs)
+        return render_template('documents.html', personal_documents=personal_documents, shared_documents=shared_documents)
 
 @document_bp.route('/upload', methods=['POST'])
 @login_required
