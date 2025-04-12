@@ -132,7 +132,8 @@ function makeWindowDraggable(windowElement) {
         dragOffsetX = e.clientX - windowElement.offsetLeft;
         dragOffsetY = e.clientY - windowElement.offsetTop;
         bringToFront(windowElement);
-    });
+});
+
 
     document.addEventListener('mousemove', function(e) {
         if (!windowIsDragging) return;
@@ -275,7 +276,94 @@ function openWidgetsPanel() {
     }
 }
 
-// Gestion du déplacement des fenêtres
+// --- Gestion du sous-menu "Liens externes" ---
+function setupExternalLinksMenu() {
+    const externalLinksMenuItem = document.getElementById('external-links-menu-item');
+    if (externalLinksMenuItem) {
+        // Gestion ouverture/fermeture au clic
+        externalLinksMenuItem.addEventListener('click', function (e) {
+            e.stopPropagation();
+            // Fermer les autres sous-menus si besoin
+            document.querySelectorAll('.menu-item-has-submenu.open').forEach(item => {
+                if (item !== externalLinksMenuItem) item.classList.remove('open', 'open-up');
+            });
+
+            // Toggle open
+            externalLinksMenuItem.classList.toggle('open');
+
+            // Détecter si c'est le dernier item visible du menu
+            const menuItems = Array.from(externalLinksMenuItem.parentNode.querySelectorAll('.menu-item, .menu-item-has-submenu'));
+            const visibleMenuItems = menuItems.filter(item => item.offsetParent !== null);
+            const isLast = visibleMenuItems[visibleMenuItems.length - 1] === externalLinksMenuItem;
+
+            if (isLast) {
+                externalLinksMenuItem.classList.add('open-up');
+            } else {
+                externalLinksMenuItem.classList.remove('open-up');
+            }
+        });
+
+        // Fermer le sous-menu si on clique ailleurs
+        document.addEventListener('click', function () {
+            externalLinksMenuItem.classList.remove('open', 'open-up');
+        });
+
+        // Empêcher la fermeture si on clique dans le sous-menu
+        const submenu = document.getElementById('external-links-submenu');
+        if (submenu) {
+            submenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        }
+    }
+}
+
+// Système de notifications
+function showNotification(title, message, type = 'info') {
+    // Créer l'élément de notification
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-header">
+            <div class="notification-title">${title}</div>
+            <div class="notification-close">&times;</div>
+        </div>
+        <div class="notification-body">${message}</div>
+    `;
+    
+    // Ajouter au conteneur de notifications (le créer s'il n'existe pas)
+    let container = document.getElementById('notifications-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'notifications-container';
+        document.body.appendChild(container);
+    }
+    
+    container.appendChild(notification);
+    
+    // Gérer la fermeture
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.addEventListener('click', () => {
+        notification.classList.add('notification-hiding');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    });
+    
+    // Fermer automatiquement après 5 secondes
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.classList.add('notification-hiding');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    }, 5000);
+}
+
+// Initialisation au chargement de la page
 window.addEventListener('DOMContentLoaded', () => {
     // Vérifier si l'utilisateur a choisi d'ouvrir automatiquement le tableau de bord
     const autoStartDashboard = localStorage.getItem('autoStartDashboard');
@@ -286,8 +374,17 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // Restaurer le thème préféré de l'utilisateur
     const darkTheme = localStorage.getItem('darkTheme') === 'true';
-    document.getElementById('themeToggle').checked = darkTheme;
-    toggleDarkTheme(darkTheme);
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.checked = darkTheme;
+        toggleDarkTheme(darkTheme);
+        
+        // Rendre visible le toggle de thème
+        const themeToggleContainer = document.querySelector('.theme-toggle');
+        if (themeToggleContainer) {
+            themeToggleContainer.style.display = 'flex';
+        }
+    }
     
     // Fermer le menu démarrer quand on clique sur un élément
     document.querySelectorAll('.start-menu .menu-item').forEach(item => {
@@ -297,96 +394,98 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     
     // Initialisation des particules pour le logo PYTEUR
-    particlesJS('particles-js', {
-        "particles": {
-            "number": {
-                "value": 100,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": ["#ff00ff", "#00ffff", "#ffff00"]
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                }
-            },
-            "opacity": {
-                "value": 0.8,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 4,
-                    "size_min": 0.3,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#ff00ff",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 2,
-                "direction": "none",
-                "random": true,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": true,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "repulse"
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
                 },
-                "onclick": {
+                "color": {
+                    "value": ["#ff00ff", "#00ffff", "#ffff00"]
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.8,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 4,
+                        "size_min": 0.3,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
                     "enable": true,
-                    "mode": "push"
+                    "distance": 150,
+                    "color": "#ff00ff",
+                    "opacity": 0.4,
+                    "width": 1
                 },
-                "resize": true
-            },
-            "modes": {
-                "repulse": {
-                    "distance": 100,
-                    "duration": 0.4
-                },
-                "push": {
-                    "particles_nb": 4
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
                 }
-            }
-        },
-        "retina_detect": true
-    });
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    }
 
     // Animation des lettres PYTEUR
     const pyteurText = document.getElementById('pyteur-text');
-    if (pyteurText) {
+    if (pyteurText && typeof gsap !== 'undefined') {
         const letters = pyteurText.querySelectorAll('.letter');
         
         pyteurText.addEventListener('mouseenter', function() {
@@ -453,33 +552,16 @@ window.addEventListener('DOMContentLoaded', () => {
     setInterval(updateDateTime, 1000);
     updateDateTime();
     
-    // Les widgets sont maintenant initialisés dans widgets.js
-    // Pas besoin de les initialiser à nouveau ici
-
+    // Initialiser le menu des liens externes
+    setupExternalLinksMenu();
+    
     // Rendre toutes les fenêtres déplaçables
     document.querySelectorAll('.window').forEach(windowElement => {
-        const header = windowElement.querySelector('.window-header');
-        if (header) {
-            let dragOffsetX = 0;
-            let dragOffsetY = 0;
-            let windowIsDragging = false;
-
-            header.addEventListener('mousedown', function(e) {
-                windowIsDragging = true;
-                dragOffsetX = e.clientX - windowElement.offsetLeft;
-                dragOffsetY = e.clientY - windowElement.offsetTop;
-                bringToFront(windowElement);
-            });
-
-            document.addEventListener('mousemove', function(e) {
-                if (!windowIsDragging) return;
-                windowElement.style.left = (e.clientX - dragOffsetX) + 'px';
-                windowElement.style.top = (e.clientY - dragOffsetY) + 'px';
-            });
-
-            document.addEventListener('mouseup', function() {
-                windowIsDragging = false;
-            });
-        }
+        makeWindowDraggable(windowElement);
     });
+    
+    // Ajouter une notification de bienvenue
+    setTimeout(() => {
+        showNotification('Bienvenue sur PYTEUR OS', 'Votre environnement de travail est prêt !', 'success');
+    }, 1000);
 });

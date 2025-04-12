@@ -19,6 +19,13 @@ class WidgetManager {
   // Charger la configuration depuis le serveur
   async loadConfig() {
     try {
+      // S'assurer que la configuration a une structure par défaut valide
+      this.config = {
+        activeWidgets: [],
+        positions: {},
+        settings: {}
+      };
+      
       const response = await fetch('/api/user/preferences', {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
@@ -30,8 +37,15 @@ class WidgetManager {
       
       // Récupérer la configuration des widgets
       if (data.widgets_config) {
-        this.config = data.widgets_config;
+        // Fusionner avec la configuration par défaut pour s'assurer que tous les champs existent
+        this.config = {
+          activeWidgets: data.widgets_config.activeWidgets || [],
+          positions: data.widgets_config.positions || {},
+          settings: data.widgets_config.settings || {}
+        };
         console.log('Configuration des widgets chargée:', this.config);
+      } else {
+        console.log('Aucune configuration de widgets trouvée, utilisation des valeurs par défaut');
       }
       
       // Appliquer le fond d'écran
@@ -43,6 +57,13 @@ class WidgetManager {
       return true;
     } catch (error) {
       console.error('Erreur lors du chargement des préférences:', error);
+      // En cas d'erreur, utiliser une configuration par défaut
+      this.config = {
+        activeWidgets: [],
+        positions: {},
+        settings: {}
+      };
+      console.log('Utilisation de la configuration par défaut suite à une erreur');
       return false;
     }
   }
@@ -105,39 +126,51 @@ class WidgetManager {
     
     console.log(`Activation du widget ${id}`);
     
-    // Créer une instance du widget
-    const widget = new this.widgets[id]();
-    
-    // Ajouter à la liste des widgets actifs
-    this.activeWidgets.push({
-      id,
-      instance: widget
-    });
-    
-    // Mettre à jour la configuration
-    if (!this.config.activeWidgets.includes(id)) {
-      this.config.activeWidgets.push(id);
+    try {
+      // Créer une instance du widget
+      const widget = new this.widgets[id]();
+      
+      // Ajouter à la liste des widgets actifs
+      this.activeWidgets.push({
+        id,
+        instance: widget
+      });
+      
+      // Mettre à jour la configuration
+      if (!this.config.activeWidgets.includes(id)) {
+        this.config.activeWidgets.push(id);
+      }
+      
+      // Initialiser et afficher le widget
+      widget.init();
+      widget.render();
+      
+      console.log(`Widget ${id} initialisé et rendu`);
+      
+      // Positionner le widget selon la configuration
+      if (this.config.positions && this.config.positions[id]) {
+        widget.element.style.left = this.config.positions[id].x;
+        widget.element.style.top = this.config.positions[id].y;
+        console.log(`Widget ${id} positionné selon la configuration: ${this.config.positions[id].x}, ${this.config.positions[id].y}`);
+      } else {
+        console.log(`Widget ${id} positionné par défaut`);
+      }
+      
+      // Activer un widget par défaut pour les tests
+      if (this.activeWidgets.length === 1) {
+        console.log("Premier widget activé, affichage forcé");
+        document.body.appendChild(widget.element);
+        widget.element.style.display = 'block';
+      }
+      
+      // Sauvegarder la configuration
+      await this.saveConfig();
+      
+      return true;
+    } catch (error) {
+      console.error(`Erreur lors de l'activation du widget ${id}:`, error);
+      return false;
     }
-    
-    // Initialiser et afficher le widget
-    widget.init();
-    widget.render();
-    
-    console.log(`Widget ${id} initialisé et rendu`);
-    
-    // Positionner le widget selon la configuration
-    if (this.config.positions && this.config.positions[id]) {
-      widget.element.style.left = this.config.positions[id].x;
-      widget.element.style.top = this.config.positions[id].y;
-      console.log(`Widget ${id} positionné selon la configuration: ${this.config.positions[id].x}, ${this.config.positions[id].y}`);
-    } else {
-      console.log(`Widget ${id} positionné par défaut`);
-    }
-    
-    // Sauvegarder la configuration
-    await this.saveConfig();
-    
-    return true;
   }
   
   // Désactiver un widget
@@ -169,23 +202,31 @@ class WidgetManager {
     
     console.log('Initialisation des widgets...');
     
-    // Charger la configuration
-    await this.loadConfig();
-    
-    console.log('Widgets actifs à charger:', this.config.activeWidgets);
-    
-    // Activer les widgets selon la configuration
-    if (this.config.activeWidgets && Array.isArray(this.config.activeWidgets)) {
-      for (const id of this.config.activeWidgets) {
-        console.log('Activation du widget:', id);
-        await this.activateWidget(id);
+    try {
+      // Charger la configuration
+      await this.loadConfig();
+      
+      console.log('Widgets actifs à charger:', this.config.activeWidgets);
+      
+      // Activer les widgets selon la configuration
+      if (this.config.activeWidgets && Array.isArray(this.config.activeWidgets)) {
+        for (const id of this.config.activeWidgets) {
+          console.log('Activation du widget:', id);
+          await this.activateWidget(id);
+        }
+      } else {
+        console.log('Aucun widget actif trouvé dans la configuration');
+        
+        // Si aucun widget n'est actif, activer l'horloge par défaut
+        console.log('Activation de l\'horloge par défaut');
+        await this.activateWidget('clock');
       }
-    } else {
-      console.log('Aucun widget actif trouvé dans la configuration');
+      
+      this.isInitialized = true;
+      console.log('Initialisation des widgets terminée');
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation des widgets:', error);
     }
-    
-    this.isInitialized = true;
-    console.log('Initialisation des widgets terminée');
   }
   
   // Mettre à jour la position d'un widget
@@ -226,66 +267,86 @@ class WidgetManager {
   
   // Ouvrir le panneau de configuration
   openConfigPanel() {
-    // Fermer le panneau s'il est déjà ouvert
-    const existingPanel = document.querySelector('.widget-config-panel');
-    if (existingPanel) {
-      existingPanel.remove();
-      return;
-    }
-    
-    // Créer et afficher l'interface de configuration
-    const panel = document.createElement('div');
-    panel.className = 'widget-config-panel';
-    
-    // Ajouter un titre
-    const title = document.createElement('h2');
-    title.textContent = 'Gestionnaire de widgets';
-    title.className = 'widget-config-title';
-    panel.appendChild(title);
-    
-    // Ajouter la liste des widgets disponibles
-    const widgetList = document.createElement('div');
-    widgetList.className = 'widget-list';
-    
-    Object.keys(this.widgets).forEach(id => {
-      const widget = this.widgets[id];
-      const isActive = this.activeWidgets.some(w => w.id === id);
+    try {
+      // Fermer le panneau s'il est déjà ouvert
+      const existingPanel = document.querySelector('.widget-config-panel');
+      if (existingPanel) {
+        existingPanel.remove();
+        return;
+      }
       
-      const item = document.createElement('div');
-      item.className = 'widget-item';
+      // S'assurer que la configuration est initialisée
+      if (!this.config || !this.config.activeWidgets) {
+        console.error('Configuration non initialisée');
+        this.config = {
+          activeWidgets: [],
+          positions: {},
+          settings: {}
+        };
+      }
       
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = isActive;
-      checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-          this.activateWidget(id);
-        } else {
-          this.deactivateWidget(id);
-        }
+      // Créer et afficher l'interface de configuration
+      const panel = document.createElement('div');
+      panel.className = 'widget-config-panel';
+      
+      // Ajouter un titre
+      const title = document.createElement('h2');
+      title.textContent = 'Gestionnaire de widgets';
+      title.className = 'widget-config-title';
+      panel.appendChild(title);
+      
+      // Ajouter la liste des widgets disponibles
+      const widgetList = document.createElement('div');
+      widgetList.className = 'widget-list';
+      
+      Object.keys(this.widgets).forEach(id => {
+        const widget = this.widgets[id];
+        const isActive = this.activeWidgets.some(w => w.id === id);
+        
+        const item = document.createElement('div');
+        item.className = 'widget-item';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = isActive;
+        checkbox.addEventListener('change', () => {
+          try {
+            if (checkbox.checked) {
+              this.activateWidget(id);
+            } else {
+              this.deactivateWidget(id);
+            }
+          } catch (error) {
+            console.error(`Erreur lors de la modification du widget ${id}:`, error);
+            checkbox.checked = isActive; // Rétablir l'état précédent
+          }
+        });
+        
+        const label = document.createElement('label');
+        label.textContent = widget.name || id;
+        
+        item.appendChild(checkbox);
+        item.appendChild(label);
+        widgetList.appendChild(item);
       });
       
-      const label = document.createElement('label');
-      label.textContent = widget.name || id;
+      panel.appendChild(widgetList);
       
-      item.appendChild(checkbox);
-      item.appendChild(label);
-      widgetList.appendChild(item);
-    });
-    
-    panel.appendChild(widgetList);
-    
-    // Ajouter un bouton de fermeture
-    const closeButton = document.createElement('button');
-    closeButton.textContent = 'Fermer';
-    closeButton.className = 'widget-config-close';
-    closeButton.addEventListener('click', () => {
-      panel.remove();
-    });
-    
-    panel.appendChild(closeButton);
-    
-    document.body.appendChild(panel);
+      // Ajouter un bouton de fermeture
+      const closeButton = document.createElement('button');
+      closeButton.textContent = 'Fermer';
+      closeButton.className = 'widget-config-close';
+      closeButton.addEventListener('click', () => {
+        panel.remove();
+      });
+      
+      panel.appendChild(closeButton);
+      
+      document.body.appendChild(panel);
+    } catch (error) {
+      console.error('Erreur lors de l\'ouverture du panneau de configuration:', error);
+      alert('Une erreur est survenue lors de l\'ouverture du panneau de configuration des widgets.');
+    }
   }
 }
 
@@ -314,21 +375,63 @@ class Widget {
   }
   
   render() {
-    // À implémenter dans les classes dérivées
-    document.body.appendChild(this.element);
+    try {
+      // Ajouter le widget au document
+      document.body.appendChild(this.element);
+      
+      // S'assurer que le widget est visible
+      this.element.style.display = 'block';
+      
+      // Positionner le widget par défaut au milieu de l'écran
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Position par défaut : au milieu de l'écran, mais en évitant la barre du haut
+      const left = Math.random() * (viewportWidth - 300) + 50;
+      const top = Math.random() * (viewportHeight - 300) + 100;
+      
+      this.element.style.left = `${left}px`;
+      this.element.style.top = `${top}px`;
+      
+      // Ajouter une poignée de redimensionnement
+      const resizeHandle = document.createElement('div');
+      resizeHandle.className = 'window-resize-handle';
+      this.element.appendChild(resizeHandle);
+      
+      // Ajouter la fonctionnalité de redimensionnement
+      this.makeResizable(resizeHandle);
+      
+      console.log(`Widget ${this.id} rendu à la position: ${left}, ${top}`);
+    } catch (error) {
+      console.error(`Erreur lors du rendu du widget ${this.id}:`, error);
+    }
+  }
+  
+  // Rendre le widget redimensionnable
+  makeResizable(handle) {
+    let startX, startY, startWidth, startHeight;
     
-    // Positionner le widget par défaut au milieu de l'écran
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const startResize = (e) => {
+      e.preventDefault();
+      startX = e.clientX;
+      startY = e.clientY;
+      startWidth = parseInt(document.defaultView.getComputedStyle(this.element).width, 10);
+      startHeight = parseInt(document.defaultView.getComputedStyle(this.element).height, 10);
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('mouseup', stopResize);
+    };
     
-    // Position par défaut : au milieu de l'écran, mais en évitant la barre du haut
-    const left = Math.random() * (viewportWidth - 300) + 50;
-    const top = Math.random() * (viewportHeight - 300) + 100;
+    const resize = (e) => {
+      this.element.style.width = (startWidth + e.clientX - startX) + 'px';
+      this.element.style.height = (startHeight + e.clientY - startY) + 'px';
+    };
     
-    this.element.style.left = `${left}px`;
-    this.element.style.top = `${top}px`;
+    const stopResize = () => {
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('mouseup', stopResize);
+    };
     
-    console.log(`Widget ${this.id} rendu à la position: ${left}, ${top}`);
+    handle.addEventListener('mousedown', startResize);
   }
   
   destroy() {
