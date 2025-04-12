@@ -40,22 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Graphique répartition par sexe
+        // Graphique répartition par besoins particuliers
         const ctxSexe = document.getElementById('chart-users-sexe');
         if (ctxSexe) {
             new Chart(ctxSexe.getContext('2d'), {
                 type: 'pie',
                 data: {
-                    labels: data.sexes.map(s => s.sexe || 'Non spécifié'),
+                    labels: data.besoins.map(b => b.besoins === 'avec' ? 'Avec besoins particuliers' : 'Sans besoins particuliers'),
                     datasets: [{
-                        data: data.sexes.map(s => s.count),
-                        backgroundColor: ['#36a2eb', '#ff6384', '#4bc0c0']
+                        data: data.besoins.map(b => b.count),
+                        backgroundColor: ['#ff6384', '#36a2eb']
                     }]
                 },
                 options: {
                     responsive: true,
                     plugins: {
-                        title: { display: true, text: 'Répartition par sexe' },
+                        title: { display: true, text: 'Élèves avec/sans besoins particuliers' },
                         legend: { position: 'right' }
                     }
                 }
@@ -447,30 +447,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Tableau des tentatives QCM
-        const tbodyQcm = document.querySelector('#table-qcm-performance tbody');
-        if (tbodyQcm) {
-            tbodyQcm.innerHTML = '';
+        if ($('#table-qcm-performance').length) {
+            // Détruire la table existante si elle existe déjà
+            if ($.fn.DataTable.isDataTable('#table-qcm-performance')) {
+                $('#table-qcm-performance').DataTable().destroy();
+            }
+            
+            // Vider le tableau
+            $('#table-qcm-performance tbody').empty();
+            
+            // Préparer les données pour DataTables
+            const tableData = [];
             
             if (data.attempts && data.attempts.length > 0) {
                 data.attempts.forEach(attempt => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${attempt.student_name}</td>
-                        <td>QCM #${attempt.qcm_id}</td>
-                        <td>${attempt.score}%</td>
-                        <td>${attempt.correct_answers}/${attempt.total_questions}</td>
-                        <td>${new Date(attempt.created_at).toLocaleDateString()}</td>
-                    `;
-                    tbodyQcm.appendChild(tr);
+                    tableData.push([
+                        attempt.student_name,
+                        `QCM #${attempt.qcm_id}`,
+                        `${attempt.score}%`,
+                        `${attempt.correct_answers}/${attempt.total_questions}`,
+                        new Date(attempt.created_at).toLocaleDateString()
+                    ]);
                 });
-            } else {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="5" class="text-center">Aucune donnée disponible</td>`;
-                tbodyQcm.appendChild(tr);
             }
             
-            // Initialiser DataTable
-            $('#table-qcm-performance').DataTable();
+            // Initialiser DataTable avec les données
+            $('#table-qcm-performance').DataTable({
+                data: tableData,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                }
+            });
+            
+            // Si aucune donnée, afficher un message
+            if (tableData.length === 0) {
+                $('#table-qcm-performance tbody').html('<tr><td colspan="5" class="text-center">Aucune donnée disponible</td></tr>');
+            }
         }
     })
     .catch(error => {
@@ -532,45 +544,40 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Récupérer l'élève sélectionné
                         const studentName = document.getElementById('student-selector').options[document.getElementById('student-selector').selectedIndex].text;
                         
-                        // Remplir le tableau QCM
-                        const tbodyQcm = document.querySelector('#table-qcm-performance tbody');
-                        if (tbodyQcm) {
-                            tbodyQcm.innerHTML = '';
-                            
-                            if (data.results && data.results.length > 0) {
-                                data.results.forEach(result => {
-                                    const tr = document.createElement('tr');
-                                    tr.innerHTML = `
-                                        <td>${studentName}</td>
-                                        <td>QCM #${result.qcm_id}</td>
-                                        <td>${result.score}%</td>
-                                        <td>${result.correct_answers}/${result.total_questions}</td>
-                                        <td>${new Date(result.created_at).toLocaleDateString()}</td>
-                                    `;
-                                    tbodyQcm.appendChild(tr);
-                                });
-                            } else {
-                                const tr = document.createElement('tr');
-                                tr.innerHTML = `<td colspan="5" class="text-center">Aucune donnée de QCM disponible pour cet élève</td>`;
-                                tbodyQcm.appendChild(tr);
-                            }
-                            
-                            // Rafraîchir DataTable
-                            if ($.fn.DataTable.isDataTable('#table-qcm-performance')) {
-                                $('#table-qcm-performance').DataTable().destroy();
-                            }
-                            
-                            // Initialiser DataTable avec des options spécifiques pour éviter l'erreur de colonnes
-                            $('#table-qcm-performance').DataTable({
-                                // S'assurer que le nombre de colonnes correspond à l'en-tête
-                                columns: [
-                                    { data: 0 }, // Élève
-                                    { data: 1 }, // QCM
-                                    { data: 2 }, // Score
-                                    { data: 3 }, // Réponses correctes
-                                    { data: 4 }  // Date
-                                ]
+                        // Préparer les données pour DataTables
+                        const tableData = [];
+                        
+                        if (data.results && data.results.length > 0) {
+                            data.results.forEach(result => {
+                                tableData.push([
+                                    studentName,
+                                    `QCM #${result.qcm_id}`,
+                                    `${result.score}%`,
+                                    `${result.correct_answers}/${result.total_questions}`,
+                                    new Date(result.created_at).toLocaleDateString()
+                                ]);
                             });
+                        }
+                        
+                        // Rafraîchir DataTable
+                        if ($.fn.DataTable.isDataTable('#table-qcm-performance')) {
+                            $('#table-qcm-performance').DataTable().destroy();
+                        }
+                        
+                        // Vider le tableau
+                        $('#table-qcm-performance tbody').empty();
+                        
+                        // Initialiser DataTable avec les données
+                        $('#table-qcm-performance').DataTable({
+                            data: tableData,
+                            language: {
+                                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
+                            }
+                        });
+                        
+                        // Si aucune donnée, afficher un message
+                        if (tableData.length === 0) {
+                            $('#table-qcm-performance tbody').html('<tr><td colspan="5" class="text-center">Aucune donnée de QCM disponible pour cet élève</td></tr>');
                         }
                     })
                     .catch(error => {

@@ -145,9 +145,16 @@ def get_users_stats():
     roles = db.session.query(User.role, func.count(User.id)).group_by(User.role).all()
     roles_data = [{"role": r, "count": c} for r, c in roles]
 
-    # Répartition par sexe
-    sexes = db.session.query(User.sexe, func.count(User.id)).group_by(User.sexe).all()
-    sexes_data = [{"sexe": s, "count": c} for s, c in sexes]
+    # Répartition par besoins particuliers (avec/sans)
+    besoins = db.session.query(
+        db.case(
+            (User.besoins_particuliers.is_(None), "sans"),
+            (User.besoins_particuliers == "", "sans"),
+            else_="avec"
+        ).label('besoins'),
+        func.count(User.id)
+    ).group_by('besoins').all()
+    besoins_data = [{"besoins": b, "count": c} for b, c in besoins]
 
     # Répartition par niveau scolaire
     niveaux = db.session.query(SchoolClass.niveau, func.count(User.id))\
@@ -182,7 +189,7 @@ def get_users_stats():
     return jsonify({
         "total": total,
         "roles": roles_data,
-        "sexes": sexes_data,
+        "besoins": besoins_data,
         "niveaux": niveaux_data,
         "inscriptions": inscriptions_data,
         "users": users_list
