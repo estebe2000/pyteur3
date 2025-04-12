@@ -1,1091 +1,2180 @@
-{
-  "Troisième": [
-    {
-      "thème": "Afficher des messages avec print",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code qui affiche Bonjour et remplacer Bonjour par votre prénom.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Écrire une ligne de code qui affiche la phrase Jaime le Python.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Écrire un code qui affiche votre nom sur une ligne et votre age juste le nombre sur la ligne suivante.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Écrire une ligne de code qui affiche le résultat de l addition 15 plus 7.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Écrire une seule ligne de code qui affiche Mon fruit préféré est suivi du nom de votre fruit préféré.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Garder des informations Variables",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code age reçoit 10 puis affiche age. Changer la valeur 10 par votre propre age.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Créer une variable couleur contenant votre couleur préférée comme texte par exemple bleu et afficher le contenu de cette variable.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Créer une variable animal pour votre animal préféré et une variable cri pour le son quil fait. Afficher ensuite le contenu des deux variables.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Créer une variable score initialisée à 0. Lafficher. Ajouter 50 au score avec score reçoit score plus 50. Afficher le nouveau score.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Créer une variable ville avec le nom de votre ville et une variable pays avec France. Afficher la phrase J habite a ville en pays en utilisant ces variables.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Faire des calculs simples Opérateurs",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code resultat reçoit 5 plus 3 puis affiche resultat. Remplacer l addition plus par une multiplication etoile.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Écrire un code qui calcule 20 moins 8 et affiche le résultat directement avec la fonction print.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Écrire un code qui calcule 50 divisé par 5 et affiche le résultat.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Créer deux variables nombre1 reçoit 12 et nombre2 reçoit 4. Calculer et afficher leur produit multiplication.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Créer deux variables note1 reçoit 15 et note2 reçoit 13. Calculer et afficher la moyenne de ces deux notes la somme divisée par 2.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Demander à l utilisateur avec input",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code nom reçoit input avec la question Ton nom puis affiche Salut suivi du nom. Changer la question Ton nom par Quel est ton sport prefere.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Demander à l utilisateur son plat préféré avec input et afficher Miam jaime aussi suivi du plat préféré.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Demander le prénom de l utilisateur puis son nom de famille avec deux input séparés. Afficher Bonjour prenom nom.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Demander le nom de l utilisateur puis son age juste le nombre. Afficher nom a age ans Attention lage sera du texte.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Demander à l utilisateur un pays quil aimerait visiter et afficher Jespere que tu iras bientot en suivi du pays.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Prendre des décisions if else",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code temperature reçoit 15 puis la condition if else qui affiche Il fait frais ou Il fait bon. Changer la valeur 15 par 25 et voir ce qui saffiche.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Créer une variable nombre reçoit 7. Écrire une condition if pour afficher Positif si le nombre est supérieur à 0.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Créer une variable note reçoit 12. Écrire une condition if else pour afficher Admis si la note est 10 ou plus sinon afficher Non admis.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Demander un mot à l utilisateur avec input. Si le mot est exactement python en minuscules afficher Bravo sinon afficher Dommage.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Créer une variable heure reçoit 14. Si lheure est avant 12 afficher Matin. Si lheure est 12 ou après afficher Apres-midi. Utiliser if else.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Répéter des actions for loop avec range",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier le code for i in range 3 qui affiche Ligne. Changer 3 pour que le mot Ligne saffiche 5 fois.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Écrire une boucle for qui utilise range 10 pour afficher le mot Python 10 fois.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Écrire une boucle for qui affiche les nombres de 0 à 4 utiliser range 5.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Écrire une boucle for qui affiche les nombres de 1 à 5 utiliser range 1 virgule 6.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Écrire une boucle for qui affiche la table de multiplication par 2 pour les nombres de 0 à 3 afficher 2 etoile 0 2 etoile 1 etc.",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Ranger plusieurs choses Listes bases",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Recopier la liste fruits contenant pomme banane puis le code qui affiche fruits index 0. Changer index 0 par index 1 pour afficher le deuxième fruit.",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Créer une liste couleurs avec trois couleurs de votre choix par exemple rouge vert bleu. Afficher la première couleur de la liste celle a l index 0.",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Créer une liste animaux contenant chien chat oiseau. Afficher le dernier animal de la liste celui a l index 2.",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Créer une liste jours avec Lundi Mardi Mercredi Jeudi. Afficher le premier jour index 0 ET le troisième jour index 2 de la liste sur des lignes séparées.",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Créer une liste hobbies avec sport musique lecture. Afficher la phrase Mon deuxieme hobby est suivi du deuxieme hobby de la liste.",
-          "debutant": true
-        }
-      ]
-    }
-  ],
-  "Seconde": [],
-  "SNT": [
-    {
-      "thème": "Statistiques simples",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer la moyenne d'une liste de nombres avec le module statistics",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Calculer la médiane d'une liste de nombres avec le module statistics",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Calculer l'écart-type d'une liste de nombres avec le module statistics",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Analyser des données simples avec le module statistics",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Créer un histogramme simple à partir de données",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Variable",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Addition de deux variables",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Comparaison de deux variables",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Addition de deux variables négatives ou flottantes",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Calcul de la moyenne de trois nombres",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Conversion de température entre Celsius et Fahrenheit",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Boucle",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Afficher les nombres de 1 à 10 avec une boucle for",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Calculer la somme des nombres de 1 à n (où n est une variable prédéfinie)",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Afficher les nombres pairs entre 1 et 20",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Calculer la factorielle d'un nombre prédéfini",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Générer les n premiers termes de la suite de Fibonacci",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Condition",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Déterminer si un nombre prédéfini est positif, négatif ou nul",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Déterminer si un nombre prédéfini est pair ou impair",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Déterminer le plus grand de trois nombres prédéfinis",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Calculer le prix après remise (remise de 10% si le prix dépasse 100€, 20% s'il dépasse 200€)",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Déterminer si une année prédéfinie est bissextile",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Random",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Générer un nombre aléatoire entre 1 et 10 et l'afficher",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Simuler un lancer de dé (nombre aléatoire entre 1 et 6)",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Générer 10 nombres aléatoires entre 1 et 100 et calculer leur moyenne",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Simuler 100 lancers de pièce (pile ou face) et compter le nombre de piles",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Générer un mot de passe aléatoire de longueur n composé de lettres et de chiffres",
-          "debutant": true
-        }
-      ]
-    },
-    {
-      "thème": "Jeux simples",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Simuler un jeu de pile ou face où l'ordinateur fait un tirage aléatoire et affiche le résultat",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Créer un jeu où l'ordinateur choisit un nombre entre 1 et 100, puis indique si un nombre prédéfini est plus grand, plus petit ou égal",
-          "debutant": true
-        },
-        {
-          "niveau": 3,
-          "description": "Simuler un jeu de pierre-papier-ciseaux où l'ordinateur fait un choix aléatoire et le compare à un choix prédéfini",
-          "debutant": true
-        },
-        {
-          "niveau": 4,
-          "description": "Créer un jeu de dés où l'ordinateur lance deux dés et détermine si le joueur gagne selon des règles simples",
-          "debutant": true
-        },
-        {
-          "niveau": 5,
-          "description": "Simuler un mini jeu de blackjack où l'ordinateur distribue des cartes aléatoires et détermine si le joueur dépasse 21",
-          "debutant": true
-        }
-      ]
-    }
-  ],
-  "Première": [
-    {
-      "thème": "Traitement de texte avancé",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Utiliser les expressions régulières pour extraire des motifs dans un texte",
-          "debutant": true
-        },
-        {
-          "niveau": 2,
-          "description": "Analyser la fréquence des mots dans un texte",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Créer un correcteur orthographique simple avec TextBlob",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Analyser le sentiment d'un texte avec TextBlob",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Tokeniser et analyser un texte avec NLTK",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Statistiques avec NumPy",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer des statistiques descriptives sur un tableau NumPy",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Générer des nombres aléatoires avec différentes distributions",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Calculer la corrélation entre deux séries de données",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Créer et manipuler des histogrammes avec NumPy",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Effectuer des tests statistiques simples avec SciPy",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Algorithmes simples",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer la somme des éléments d'une liste prédéfinie",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Calculer le produit des éléments d'une liste prédéfinie",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Trouver le maximum et le minimum dans une liste prédéfinie",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Vérifier si une liste prédéfinie est triée par ordre croissant",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Générer les n premiers termes de la suite de Fibonacci (version itérative)",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Manipulation de chaînes de caractères",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Compter le nombre de voyelles dans une chaîne prédéfinie",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Vérifier si une chaîne prédéfinie est un palindrome",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Inverser une chaîne de caractères sans utiliser la fonction reverse",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Supprimer les espaces inutiles (début, fin et doublons) dans une chaîne",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Rechercher un motif dans une chaîne et compter ses occurrences",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Structures de données de base",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Fusionner deux listes triées en une seule liste triée",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Calculer la fréquence de chaque élément dans une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Compter le nombre d'occurrences de chaque mot dans une phrase en utilisant un dictionnaire",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Échanger deux éléments dans une liste à des positions données",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Transposer une matrice représentée par une liste de listes",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Recherche et tri",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter une recherche linéaire dans une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter une recherche dichotomique dans une liste triée",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Implémenter le tri par sélection sur une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Implémenter le tri à bulles sur une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Implémenter le tri par insertion sur une liste",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Boucles et récursivité",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer la somme des nombres de 1 à n (version itérative)",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Calculer la somme des nombres de 1 à n (version récursive)",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Calculer la factorielle d'un nombre (version itérative et récursive)",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Générer les n premiers termes de la suite de Fibonacci (version récursive)",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Compter le nombre de chiffres d'un nombre sans utiliser la conversion en chaîne",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Jeux et simulations simples",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Simuler plusieurs lancers de dés et afficher les résultats",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Effectuer un tirage aléatoire dans une liste prédéfinie",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Simuler un jeu de Pierre-Feuille-Ciseaux avec des choix prédéfinis",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Générer une grille de morpion aléatoire",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Simuler un jeu de cartes simple avec mélange et distribution",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Statistiques et traitement de données",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer la moyenne, la médiane et l'écart-type d'une liste de nombres",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Compter le nombre de valeurs uniques dans une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Filtrer les nombres pairs d'une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Trier une liste de tuples (nom, note) par note décroissante",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Calculer des statistiques sur un ensemble de données (min, max, moyenne, médiane)",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Cryptographie simple",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter le chiffrement de César avec un décalage fixe",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter le déchiffrement de César avec un décalage fixe",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Créer une fonction de rotation des lettres dans une chaîne",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Implémenter un chiffrement par substitution simple",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Implémenter un chiffrement par transposition (permutation des caractères)",
-          "debutant": false
-        }
-      ]
-    }
-  ],
-  "Terminale": [
-    {
-      "thème": "Analyse de données avec Pandas",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Créer et manipuler un DataFrame à partir d'un dictionnaire",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Filtrer et trier des données dans un DataFrame",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Calculer des statistiques descriptives sur un DataFrame",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Fusionner deux DataFrames avec différentes méthodes de jointure",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Analyser une série temporelle avec pandas et créer des visualisations",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Calcul scientifique avec NumPy",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Créer et manipuler des tableaux NumPy",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Effectuer des opérations mathématiques sur des tableaux NumPy",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Résoudre un système d'équations linéaires avec NumPy",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Calculer des valeurs propres et vecteurs propres d'une matrice",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Implémenter une régression linéaire avec NumPy",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Calcul symbolique avec SymPy",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Manipuler des expressions symboliques avec SymPy",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Résoudre des équations symboliques",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Calculer des dérivées et intégrales symboliques",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Développer et factoriser des expressions algébriques",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Résoudre des équations différentielles avec SymPy",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Algorithmes avancés",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter la recherche par dichotomie et analyser sa complexité",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter le tri par fusion et comparer ses performances avec d'autres algorithmes de tri",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Implémenter l'algorithme d'Euclide pour calculer le PGCD de deux nombres",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Écrire une fonction qui décompose un nombre en facteurs premiers",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Calculer la suite de Fibonacci par programmation dynamique (mémoïsation)",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Manipulation de chaînes de caractères avancée",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Détecter les mots anagrammes dans une liste de mots",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter un algorithme de compression simple d'une chaîne (exemple : aaabbc → a3b2c1)",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Détecter des motifs dans une chaîne sans utiliser d'expressions régulières",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Effectuer une rotation circulaire d'une chaîne de caractères",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Vérifier la validité d'une adresse email (version simplifiée)",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Structures de données complexes",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter une pile avec une classe (méthodes push, pop, is_empty)",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter une file (FIFO) avec une classe",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Créer et manipuler un graphe sous forme de dictionnaire d'adjacence",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Implémenter une liste chaînée avec une classe Noeud",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Manipuler une matrice : transposition, addition, multiplication",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Recherche dans un graphe",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter un parcours en largeur (BFS) dans un graphe",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter un parcours en profondeur (DFS) dans un graphe",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Détecter la présence de cycles dans un graphe",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Implémenter l'algorithme de Dijkstra pour trouver le plus court chemin",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Vérifier la connexité d'un graphe et implémenter un algorithme de coloration glouton",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Programmation orientée objet (POO)",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Créer une classe CompteBancaire avec méthodes de dépôt, retrait et consultation du solde",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter l'héritage avec une classe CompteEpargne dérivée de CompteBancaire",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Surcharger des opérateurs (__add__, __str__) dans une classe personnalisée",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Créer une classe Vecteur avec opérations d'addition, produit scalaire et calcul de norme",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Implémenter un jeu de cartes avec les classes Carte et Paquet",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Algorithmes gloutons et récursifs",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Résoudre le problème du sac à dos avec une approche gloutonne",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter l'algorithme du rendu de monnaie (version gloutonne)",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Parcourir un labyrinthe par backtracking",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Implémenter l'algorithme de Kruskal pour trouver l'arbre couvrant minimal",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Résoudre le problème des Tours de Hanoï avec une approche récursive",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Traitement de données",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Calculer le coefficient de corrélation de Pearson entre deux séries de données",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Implémenter une moyenne mobile pour lisser une série temporelle",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Trier une liste de dictionnaires selon la valeur d'un champ spécifique",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Fusionner deux listes triées en une seule liste triée",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Construire un histogramme à partir d'une liste de valeurs",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Cryptographie",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Implémenter le chiffrement de César avec une clé variable",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Créer une fonction de chiffrement et déchiffrement XOR",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Implémenter l'encodage et le décodage en Base64",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Calculer le hachage SHA256 d'une chaîne de caractères",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Implémenter un mini système de signature numérique (RSA simplifié)",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Problèmes combinatoires",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Générer toutes les permutations d'une liste",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Trouver la plus longue sous-séquence croissante dans une liste (programmation dynamique)",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Résoudre le problème du voyageur de commerce (TSP) avec une approche naïve",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Générer l'ensemble des sous-ensembles d'un ensemble donné",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Utiliser le backtracking pour résoudre un sudoku",
-          "debutant": false
-        }
-      ]
-    },
-    {
-      "thème": "Simulation et modélisation",
-      "niveaux": [
-        {
-          "niveau": 1,
-          "description": "Simuler la loi des grands nombres avec des lancers de dés",
-          "debutant": false
-        },
-        {
-          "niveau": 2,
-          "description": "Utiliser la méthode de Monte-Carlo pour approximer π",
-          "debutant": false
-        },
-        {
-          "niveau": 3,
-          "description": "Implémenter le jeu de la vie de Conway",
-          "debutant": false
-        },
-        {
-          "niveau": 4,
-          "description": "Créer un modèle de propagation d'épidémie (modèle SIR)",
-          "debutant": false
-        },
-        {
-          "niveau": 5,
-          "description": "Simuler une file d'attente et calculer le temps d'attente moyen",
-          "debutant": false
-        }
-      ]
-    }
-  ]
+{
+
+  "Troisième": [
+
+    {
+
+      "thème": "Afficher des messages avec print",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code qui affiche Bonjour et remplacer Bonjour par votre prénom.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Écrire une ligne de code qui affiche la phrase Jaime le Python.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Écrire un code qui affiche votre nom sur une ligne et votre age juste le nombre sur la ligne suivante.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Écrire une ligne de code qui affiche le résultat de l addition 15 plus 7.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Écrire une seule ligne de code qui affiche Mon fruit préféré est suivi du nom de votre fruit préféré.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Garder des informations Variables",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code age reçoit 10 puis affiche age. Changer la valeur 10 par votre propre age.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Créer une variable couleur contenant votre couleur préférée comme texte par exemple bleu et afficher le contenu de cette variable.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer une variable animal pour votre animal préféré et une variable cri pour le son quil fait. Afficher ensuite le contenu des deux variables.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer une variable score initialisée à 0. Lafficher. Ajouter 50 au score avec score reçoit score plus 50. Afficher le nouveau score.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Créer une variable ville avec le nom de votre ville et une variable pays avec France. Afficher la phrase J habite a ville en pays en utilisant ces variables.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Faire des calculs simples Opérateurs",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code resultat reçoit 5 plus 3 puis affiche resultat. Remplacer l addition plus par une multiplication etoile.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Écrire un code qui calcule 20 moins 8 et affiche le résultat directement avec la fonction print.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Écrire un code qui calcule 50 divisé par 5 et affiche le résultat.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer deux variables nombre1 reçoit 12 et nombre2 reçoit 4. Calculer et afficher leur produit multiplication.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Créer deux variables note1 reçoit 15 et note2 reçoit 13. Calculer et afficher la moyenne de ces deux notes la somme divisée par 2.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Demander à l utilisateur avec input",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code nom reçoit input avec la question Ton nom puis affiche Salut suivi du nom. Changer la question Ton nom par Quel est ton sport prefere.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Demander à l utilisateur son plat préféré avec input et afficher Miam jaime aussi suivi du plat préféré.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Demander le prénom de l utilisateur puis son nom de famille avec deux input séparés. Afficher Bonjour prenom nom.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Demander le nom de l utilisateur puis son age juste le nombre. Afficher nom a age ans Attention lage sera du texte.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Demander à l utilisateur un pays quil aimerait visiter et afficher Jespere que tu iras bientot en suivi du pays.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Prendre des décisions if else",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code temperature reçoit 15 puis la condition if else qui affiche Il fait frais ou Il fait bon. Changer la valeur 15 par 25 et voir ce qui saffiche.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Créer une variable nombre reçoit 7. Écrire une condition if pour afficher Positif si le nombre est supérieur à 0.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer une variable note reçoit 12. Écrire une condition if else pour afficher Admis si la note est 10 ou plus sinon afficher Non admis.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Demander un mot à l utilisateur avec input. Si le mot est exactement python en minuscules afficher Bravo sinon afficher Dommage.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Créer une variable heure reçoit 14. Si lheure est avant 12 afficher Matin. Si lheure est 12 ou après afficher Apres-midi. Utiliser if else.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Répéter des actions for loop avec range",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier le code for i in range 3 qui affiche Ligne. Changer 3 pour que le mot Ligne saffiche 5 fois.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Écrire une boucle for qui utilise range 10 pour afficher le mot Python 10 fois.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Écrire une boucle for qui affiche les nombres de 0 à 4 utiliser range 5.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Écrire une boucle for qui affiche les nombres de 1 à 5 utiliser range 1 virgule 6.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Écrire une boucle for qui affiche la table de multiplication par 2 pour les nombres de 0 à 3 afficher 2 etoile 0 2 etoile 1 etc.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Ranger plusieurs choses Listes bases",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Recopier la liste fruits contenant pomme banane puis le code qui affiche fruits index 0. Changer index 0 par index 1 pour afficher le deuxième fruit.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Créer une liste couleurs avec trois couleurs de votre choix par exemple rouge vert bleu. Afficher la première couleur de la liste celle a l index 0.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer une liste animaux contenant chien chat oiseau. Afficher le dernier animal de la liste celui a l index 2.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer une liste jours avec Lundi Mardi Mercredi Jeudi. Afficher le premier jour index 0 ET le troisième jour index 2 de la liste sur des lignes séparées.",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Créer une liste hobbies avec sport musique lecture. Afficher la phrase Mon deuxieme hobby est suivi du deuxieme hobby de la liste.",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+
+  "SNT": [
+
+    {
+
+      "thème": "Statistiques simples",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer la moyenne d'une liste de nombres avec le module statistics",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Calculer la médiane d'une liste de nombres avec le module statistics",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Calculer l'écart-type d'une liste de nombres avec le module statistics",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Analyser des données simples avec le module statistics",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Créer un histogramme simple à partir de données",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Variable",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Addition de deux variables",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Comparaison de deux variables",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Addition de deux variables négatives ou flottantes",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Calcul de la moyenne de trois nombres",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Conversion de température entre Celsius et Fahrenheit",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Boucle",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Afficher les nombres de 1 à 10 avec une boucle for",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Calculer la somme des nombres de 1 à n (où n est une variable prédéfinie)",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Afficher les nombres pairs entre 1 et 20",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Calculer la factorielle d'un nombre prédéfini",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Générer les n premiers termes de la suite de Fibonacci",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Condition",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Déterminer si un nombre prédéfini est positif, négatif ou nul",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Déterminer si un nombre prédéfini est pair ou impair",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Déterminer le plus grand de trois nombres prédéfinis",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Calculer le prix après remise (remise de 10% si le prix dépasse 100€, 20% s'il dépasse 200€)",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Déterminer si une année prédéfinie est bissextile",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Random",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Générer un nombre aléatoire entre 1 et 10 et l'afficher",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Simuler un lancer de dé (nombre aléatoire entre 1 et 6)",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Générer 10 nombres aléatoires entre 1 et 100 et calculer leur moyenne",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Simuler 100 lancers de pièce (pile ou face) et compter le nombre de piles",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Générer un mot de passe aléatoire de longueur n composé de lettres et de chiffres",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Jeux simples",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Simuler un jeu de pile ou face où l'ordinateur fait un tirage aléatoire et affiche le résultat",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Créer un jeu où l'ordinateur choisit un nombre entre 1 et 100, puis indique si un nombre prédéfini est plus grand, plus petit ou égal",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Simuler un jeu de pierre-papier-ciseaux où l'ordinateur fait un choix aléatoire et le compare à un choix prédéfini",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer un jeu de dés où l'ordinateur lance deux dés et détermine si le joueur gagne selon des règles simples",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Simuler un mini jeu de blackjack où l'ordinateur distribue des cartes aléatoires et détermine si le joueur dépasse 21",
+
+          "debutant": true
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "Première": [
+
+    {
+
+      "thème": "Traitement de texte avancé",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Utiliser les expressions régulières pour extraire des motifs dans un texte",
+
+          "debutant": true
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Analyser la fréquence des mots dans un texte",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer un correcteur orthographique simple avec TextBlob",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Analyser le sentiment d'un texte avec TextBlob",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Tokeniser et analyser un texte avec NLTK",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Statistiques avec NumPy",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer des statistiques descriptives sur un tableau NumPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Générer des nombres aléatoires avec différentes distributions",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Calculer la corrélation entre deux séries de données",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer et manipuler des histogrammes avec NumPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Effectuer des tests statistiques simples avec SciPy",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Algorithmes simples",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer la somme des éléments d'une liste prédéfinie",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Calculer le produit des éléments d'une liste prédéfinie",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Trouver le maximum et le minimum dans une liste prédéfinie",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Vérifier si une liste prédéfinie est triée par ordre croissant",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Générer les n premiers termes de la suite de Fibonacci (version itérative)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Manipulation de chaînes de caractères",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Compter le nombre de voyelles dans une chaîne prédéfinie",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Vérifier si une chaîne prédéfinie est un palindrome",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Inverser une chaîne de caractères sans utiliser la fonction reverse",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Supprimer les espaces inutiles (début, fin et doublons) dans une chaîne",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Rechercher un motif dans une chaîne et compter ses occurrences",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Structures de données de base",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Fusionner deux listes triées en une seule liste triée",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Calculer la fréquence de chaque élément dans une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Compter le nombre d'occurrences de chaque mot dans une phrase en utilisant un dictionnaire",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Échanger deux éléments dans une liste à des positions données",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Transposer une matrice représentée par une liste de listes",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Recherche et tri",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter une recherche linéaire dans une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter une recherche dichotomique dans une liste triée",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Implémenter le tri par sélection sur une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Implémenter le tri à bulles sur une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Implémenter le tri par insertion sur une liste",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Boucles et récursivité",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer la somme des nombres de 1 à n (version itérative)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Calculer la somme des nombres de 1 à n (version récursive)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Calculer la factorielle d'un nombre (version itérative et récursive)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Générer les n premiers termes de la suite de Fibonacci (version récursive)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Compter le nombre de chiffres d'un nombre sans utiliser la conversion en chaîne",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Jeux et simulations simples",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Simuler plusieurs lancers de dés et afficher les résultats",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Effectuer un tirage aléatoire dans une liste prédéfinie",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Simuler un jeu de Pierre-Feuille-Ciseaux avec des choix prédéfinis",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Générer une grille de morpion aléatoire",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Simuler un jeu de cartes simple avec mélange et distribution",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Statistiques et traitement de données",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer la moyenne, la médiane et l'écart-type d'une liste de nombres",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Compter le nombre de valeurs uniques dans une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Filtrer les nombres pairs d'une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Trier une liste de tuples (nom, note) par note décroissante",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Calculer des statistiques sur un ensemble de données (min, max, moyenne, médiane)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Cryptographie simple",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter le chiffrement de César avec un décalage fixe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter le déchiffrement de César avec un décalage fixe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer une fonction de rotation des lettres dans une chaîne",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Implémenter un chiffrement par substitution simple",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Implémenter un chiffrement par transposition (permutation des caractères)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "Terminale": [
+
+    {
+
+      "thème": "Analyse de données avec Pandas",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Créer et manipuler un DataFrame à partir d'un dictionnaire",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Filtrer et trier des données dans un DataFrame",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Calculer des statistiques descriptives sur un DataFrame",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Fusionner deux DataFrames avec différentes méthodes de jointure",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Analyser une série temporelle avec pandas et créer des visualisations",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Calcul scientifique avec NumPy",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Créer et manipuler des tableaux NumPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Effectuer des opérations mathématiques sur des tableaux NumPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Résoudre un système d'équations linéaires avec NumPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Calculer des valeurs propres et vecteurs propres d'une matrice",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Implémenter une régression linéaire avec NumPy",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Calcul symbolique avec SymPy",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Manipuler des expressions symboliques avec SymPy",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Résoudre des équations symboliques",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Calculer des dérivées et intégrales symboliques",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Développer et factoriser des expressions algébriques",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Résoudre des équations différentielles avec SymPy",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Algorithmes avancés",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter la recherche par dichotomie et analyser sa complexité",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter le tri par fusion et comparer ses performances avec d'autres algorithmes de tri",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Implémenter l'algorithme d'Euclide pour calculer le PGCD de deux nombres",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Écrire une fonction qui décompose un nombre en facteurs premiers",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Calculer la suite de Fibonacci par programmation dynamique (mémoïsation)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Manipulation de chaînes de caractères avancée",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Détecter les mots anagrammes dans une liste de mots",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter un algorithme de compression simple d'une chaîne (exemple : aaabbc → a3b2c1)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Détecter des motifs dans une chaîne sans utiliser d'expressions régulières",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Effectuer une rotation circulaire d'une chaîne de caractères",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Vérifier la validité d'une adresse email (version simplifiée)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Structures de données complexes",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter une pile avec une classe (méthodes push, pop, is_empty)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter une file (FIFO) avec une classe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Créer et manipuler un graphe sous forme de dictionnaire d'adjacence",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Implémenter une liste chaînée avec une classe Noeud",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Manipuler une matrice : transposition, addition, multiplication",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Recherche dans un graphe",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter un parcours en largeur (BFS) dans un graphe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter un parcours en profondeur (DFS) dans un graphe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Détecter la présence de cycles dans un graphe",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Implémenter l'algorithme de Dijkstra pour trouver le plus court chemin",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Vérifier la connexité d'un graphe et implémenter un algorithme de coloration glouton",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Programmation orientée objet (POO)",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Créer une classe CompteBancaire avec méthodes de dépôt, retrait et consultation du solde",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter l'héritage avec une classe CompteEpargne dérivée de CompteBancaire",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Surcharger des opérateurs (__add__, __str__) dans une classe personnalisée",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer une classe Vecteur avec opérations d'addition, produit scalaire et calcul de norme",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Implémenter un jeu de cartes avec les classes Carte et Paquet",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Algorithmes gloutons et récursifs",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Résoudre le problème du sac à dos avec une approche gloutonne",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter l'algorithme du rendu de monnaie (version gloutonne)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Parcourir un labyrinthe par backtracking",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Implémenter l'algorithme de Kruskal pour trouver l'arbre couvrant minimal",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Résoudre le problème des Tours de Hanoï avec une approche récursive",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Traitement de données",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Calculer le coefficient de corrélation de Pearson entre deux séries de données",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Implémenter une moyenne mobile pour lisser une série temporelle",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Trier une liste de dictionnaires selon la valeur d'un champ spécifique",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Fusionner deux listes triées en une seule liste triée",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Construire un histogramme à partir d'une liste de valeurs",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Cryptographie",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Implémenter le chiffrement de César avec une clé variable",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Créer une fonction de chiffrement et déchiffrement XOR",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Implémenter l'encodage et le décodage en Base64",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Calculer le hachage SHA256 d'une chaîne de caractères",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Implémenter un mini système de signature numérique (RSA simplifié)",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Problèmes combinatoires",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Générer toutes les permutations d'une liste",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Trouver la plus longue sous-séquence croissante dans une liste (programmation dynamique)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Résoudre le problème du voyageur de commerce (TSP) avec une approche naïve",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Générer l'ensemble des sous-ensembles d'un ensemble donné",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Utiliser le backtracking pour résoudre un sudoku",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "thème": "Simulation et modélisation",
+
+      "niveaux": [
+
+        {
+
+          "niveau": 1,
+
+          "description": "Simuler la loi des grands nombres avec des lancers de dés",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 2,
+
+          "description": "Utiliser la méthode de Monte-Carlo pour approximer π",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 3,
+
+          "description": "Implémenter le jeu de la vie de Conway",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 4,
+
+          "description": "Créer un modèle de propagation d'épidémie (modèle SIR)",
+
+          "debutant": false
+
+        },
+
+        {
+
+          "niveau": 5,
+
+          "description": "Simuler une file d'attente et calculer le temps d'attente moyen",
+
+          "debutant": false
+
+        }
+
+      ]
+
+    }
+
+  ]
+
 }

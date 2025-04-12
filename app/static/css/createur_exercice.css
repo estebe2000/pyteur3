@@ -1,0 +1,207 @@
+/* Style dédié à la page créateur d'exercice - design attractif */
+
+/* Palette dynamique */
+:root {
+  --color-primary: #4f46e5; /* violet */
+  --color-secondary: #22c55e; /* vert */
+  --color-accent: #f97316; /* orange */
+  --color-bg: #f0f4ff;
+  --color-text: #333;
+}
+
+/* Conteneur principal */
+.container {
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Titres */
+h2, h5 {
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+}
+
+/* Bannière titre */
+.banniere-createur {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+.banniere-createur h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+  color: white;
+}
+
+.banniere-createur p {
+  margin: 10px 0 0;
+  font-size: 1.2rem;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+}
+
+/* Cartes */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-title {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Sélecteur de niveau */
+.form-select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid var(--color-primary);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+  border-color: var(--color-primary);
+}
+
+/* Liste des thèmes */
+.list-group-item {
+  border-radius: 10px !important;
+  margin-bottom: 8px;
+  border: 2px solid #e5e7eb;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.02);
+}
+
+.list-group-item-action.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Tableau des niveaux */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: rgba(79, 70, 229, 0.05);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Textarea */
+.form-control {
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+  border-color: var(--color-primary);
+}
+
+/* Checkbox */
+.form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* Boutons */
+.btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-secondary) !important;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #16a34a !important;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background-color: var(--color-accent) !important;
+  border: none;
+  color: white !important;
+}
+
+.btn-success:hover {
+  background-color: #ea580c !important;
+  transform: scale(1.05);
+}
+
+/* Bouton d'ajout de thème */
+.btn-add-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+}

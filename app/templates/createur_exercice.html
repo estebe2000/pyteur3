@@ -4,18 +4,25 @@
 <a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} Créateur d'exercices
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/createur_exercice.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
-    <h2>Créateur d'exercices</h2>
+    <div class="banniere-createur mb-4">
+        <h2>Créateur d'exercices</h2>
+        <p>Organisez vos thèmes et niveaux pour créer des exercices adaptés</p>
+    </div>
 
-<form id="exerciseForm" method="POST">
+    <form id="exerciseForm" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="json_data" id="json_data">
 
         <!-- 1. Choix du niveau scolaire -->
         <div class="card mb-4">
             <div class="card-body">
-                <h5 class="card-title">Niveau scolaire</h5>
+                <h5 class="card-title"><i class="fas fa-graduation-cap"></i> Niveau scolaire</h5>
                 <select id="niveauSelect" class="form-select"></select>
             </div>
         </div>
@@ -26,8 +33,8 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
-                            <h5 class="card-title">Thèmes</h5>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addTheme()">
+                            <h5 class="card-title"><i class="fas fa-book"></i> Thèmes</h5>
+                            <button type="button" class="btn btn-success btn-sm btn-add-theme" onclick="addTheme()">
                                 <i class="fas fa-plus"></i> Ajouter
                             </button>
                         </div>
@@ -40,7 +47,7 @@
             <div class="col-md-8 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 id="selectedThemeTitle" class="card-title mb-3"></h5>
+                        <h5 id="selectedThemeTitle" class="card-title mb-3"><i class="fas fa-layer-group"></i> <span id="themeText">Sélectionnez un thème</span></h5>
                         <div id="niveauxContainer"></div>
                     </div>
                 </div>
@@ -104,19 +111,30 @@ function refreshThemes() {
         li.className = 'list-group-item list-group-item-action';
         li.style.cursor = 'pointer';
         li.textContent = themeObj.thème;
-        li.onclick = () => {
-            document.getElementById('selectedThemeTitle').textContent = themeObj.thème;
+        li.onclick = function() {
+            document.getElementById('themeText').textContent = themeObj.thème;
             refreshLevels(idx);
+            
+            // Ajouter la classe active à l'élément sélectionné
+            document.querySelectorAll('#themesList .list-group-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+            this.classList.add('active');
         };
         themesList.appendChild(li);
     });
 
     // Par défaut, afficher le premier thème s'il existe
     if (data[niveau].length > 0) {
-        document.getElementById('selectedThemeTitle').textContent = data[niveau][0].thème;
+        document.getElementById('themeText').textContent = data[niveau][0].thème;
         refreshLevels(0);
+        
+        // Activer le premier élément
+        if (themesList.firstChild) {
+            themesList.firstChild.classList.add('active');
+        }
     } else {
-        document.getElementById('selectedThemeTitle').textContent = '';
+        document.getElementById('themeText').textContent = 'Aucun thème disponible';
         document.getElementById('niveauxContainer').innerHTML = '';
     }
 }
@@ -153,8 +171,11 @@ function refreshLevels(themeIdx) {
         textarea.className = 'form-control';
         textarea.style.width = '100%';
         textarea.rows = 2;
+        textarea.placeholder = "Décrivez ce niveau d'exercice...";
         textarea.value = niv.description;
-        textarea.onchange = () => updateDescription(niveau, themeIdx, idx, textarea.value);
+        textarea.onchange = function() {
+            updateDescription(niveau, themeIdx, idx, this.value);
+        };
         tdDesc.appendChild(textarea);
         tr.appendChild(tdDesc);
 
@@ -164,7 +185,9 @@ function refreshLevels(themeIdx) {
         checkbox.type = 'checkbox';
         checkbox.className = 'form-check-input';
         checkbox.checked = niv.debutant;
-        checkbox.onchange = () => updateDebutant(niveau, themeIdx, idx, checkbox.checked);
+        checkbox.onchange = function() {
+            updateDebutant(niveau, themeIdx, idx, this.checked);
+        };
         tdDeb.appendChild(checkbox);
         tr.appendChild(tdDeb);
 
