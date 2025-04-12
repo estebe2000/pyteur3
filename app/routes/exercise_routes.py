@@ -315,31 +315,47 @@ def assign_exercise(exercise_id):
     exercise = Document.query.get_or_404(exercise_id)
     
     if request.method == 'POST':
-        # Supprimer les affectations existantes
-        ExerciseAssignment.query.filter_by(document_id=exercise_id).delete()
-        
-        # Récupérer les utilisateurs, groupes et classes sélectionnés
-        user_ids = request.form.getlist('users')
-        group_ids = request.form.getlist('groups')
-        class_ids = request.form.getlist('classes')
-        
-        # Créer les nouvelles affectations
-        for user_id in user_ids:
-            assignment = ExerciseAssignment(
-                document_id=exercise_id,
-                user_id=user_id,
-                assigned_by=current_user.id,
-                assigned_at=datetime.now()
-            )
-            db.session.add(assignment)
-        
-        # Pour les groupes et classes, il faudrait récupérer les utilisateurs correspondants
-        # et créer des affectations pour chacun d'eux
-        # (Cette partie dépend de la structure de votre base de données)
-        
-        db.session.commit()
-        flash('Affectations enregistrées avec succès', 'success')
-        return redirect(url_for('exercise.exercises'))
+        try:
+            # Supprimer les affectations existantes
+            ExerciseAssignment.query.filter_by(exercise_id=exercise_id).delete()
+            
+            # Récupérer les utilisateurs, groupes et classes sélectionnés
+            user_ids = request.form.getlist('users')
+            group_ids = request.form.getlist('groups')
+            class_ids = request.form.getlist('classes')
+            
+            # Créer les nouvelles affectations pour les utilisateurs
+            for user_id in user_ids:
+                assignment = ExerciseAssignment(
+                    exercise_id=exercise_id,
+                    user_id=int(user_id)
+                )
+                db.session.add(assignment)
+            
+            # Créer les nouvelles affectations pour les groupes
+            for group_id in group_ids:
+                assignment = ExerciseAssignment(
+                    exercise_id=exercise_id,
+                    group_id=int(group_id)
+                )
+                db.session.add(assignment)
+            
+            # Créer les nouvelles affectations pour les classes
+            for class_id in class_ids:
+                assignment = ExerciseAssignment(
+                    exercise_id=exercise_id,
+                    class_id=int(class_id)
+                )
+                db.session.add(assignment)
+            
+            db.session.commit()
+            flash('Affectations enregistrées avec succès', 'success')
+            return redirect(url_for('exercise.exercises'))
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(f"Erreur lors de l'affectation de l'exercice: {str(e)}")
+            flash(f'Erreur lors de l\'affectation de l\'exercice: {str(e)}', 'error')
+            return redirect(url_for('exercise.exercises'))
     
     # Récupérer les utilisateurs, groupes et classes
     users = User.query.filter_by(role='eleve').all()
@@ -347,10 +363,10 @@ def assign_exercise(exercise_id):
     groups = []  # À remplacer par la récupération des groupes si vous avez une table correspondante
     
     # Récupérer les affectations existantes
-    assignments = ExerciseAssignment.query.filter_by(document_id=exercise_id).all()
-    assigned_users = [a.user_id for a in assignments]
-    assigned_groups = []
-    assigned_classes = []
+    assignments = ExerciseAssignment.query.filter_by(exercise_id=exercise_id).all()
+    assigned_users = [a.user_id for a in assignments if a.user_id is not None]
+    assigned_groups = [a.group_id for a in assignments if a.group_id is not None]
+    assigned_classes = [a.class_id for a in assignments if a.class_id is not None]
     
     return render_template('assign_exercise.html', 
                           exercise=exercise, 
