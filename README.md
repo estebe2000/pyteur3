@@ -264,9 +264,8 @@ Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) po
 
 ## 👥 Auteurs et contributeurs
 
-- **Équipe de développement L3 Informatique**
-  - Université [Nom de l'université]
-  - Promotion 2024-2025
+- **Équipe de développement **
+  - Steeve PYTEL
 
 ## 🔗 Liens utiles
 
