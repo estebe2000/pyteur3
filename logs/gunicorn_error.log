@@ -1,0 +1,376 @@
+[2025-04-11 20:06:37 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 20:06:37 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 20:06:37 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 20:06:37 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 20:06:37 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 20:06:37 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 20:06:37 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 20:13:24 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 20:13:24 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 20:13:24 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 20:13:24 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 20:13:24 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 20:13:24 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 20:13:24 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 20:14:10 +0000] [11] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 20:14:10 +0000] [11] [INFO] Listening at: http://0.0.0.0:5001 (11)
+[2025-04-11 20:14:10 +0000] [11] [INFO] Using worker: gthread
+[2025-04-11 20:14:10 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 20:14:10 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 20:14:10 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 20:14:10 +0000] [15] [INFO] Booting worker with pid: 15
+[2025-04-11 20:58:50 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 20:58:50 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 20:58:50 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 20:58:50 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 20:58:50 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 20:58:50 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 20:58:50 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 21:11:01 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 21:11:01 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 21:11:01 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 21:11:01 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 21:11:01 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 21:11:01 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 21:11:01 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 21:11:10,939] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/dashboard_routes.py", line 17, in home
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/app/templates/base.html", line 56, in top-level template code
+    <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'exercise.createur_exercice'. Did you mean 'exercise.generer_exercice' instead?
+[2025-04-11 21:11:12,556] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/dashboard_routes.py", line 17, in home
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/app/templates/base.html", line 56, in top-level template code
+    <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'exercise.createur_exercice'. Did you mean 'exercise.generer_exercice' instead?
+[2025-04-11 21:11:18,936] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/dashboard_routes.py", line 17, in home
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/app/templates/base.html", line 56, in top-level template code
+    <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'exercise.createur_exercice'. Did you mean 'exercise.generer_exercice' instead?
+[2025-04-11 21:11:43,285] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/dashboard_routes.py", line 17, in home
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/app/templates/base.html", line 56, in top-level template code
+    <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'exercise.createur_exercice'. Did you mean 'exercise.generer_exercice' instead?
+[2025-04-11 21:11:44,430] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/dashboard_routes.py", line 17, in home
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/app/templates/base.html", line 56, in top-level template code
+    <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'exercise.createur_exercice'. Did you mean 'exercise.generer_exercice' instead?
+[2025-04-11 22:29:45 +0000] [11] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 22:29:45 +0000] [11] [INFO] Listening at: http://0.0.0.0:5001 (11)
+[2025-04-11 22:29:45 +0000] [11] [INFO] Using worker: gthread
+[2025-04-11 22:29:45 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 22:29:45 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 22:29:45 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 22:29:45 +0000] [15] [INFO] Booting worker with pid: 15
+[2025-04-11 22:59:05 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 22:59:05 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 22:59:05 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 22:59:05 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 22:59:05 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 22:59:05 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 22:59:05 +0000] [14] [INFO] Booting worker with pid: 14
+[2025-04-11 23:03:24,182] ERROR in app: Exception on /assign_exercise/1 [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'ExerciseAssignment' has no attribute 'document_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/exercise_routes.py", line 350, in assign_exercise
+    assignments = ExerciseAssignment.query.filter_by(document_id=exercise_id).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1991, in filter_by
+    clauses = [
+              ^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1992, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "exercise_assignments" has no property "document_id"
+[2025-04-11 23:03:41,346] ERROR in app: Exception on /assign_exercise/1 [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'ExerciseAssignment' has no attribute 'document_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/exercise_routes.py", line 350, in assign_exercise
+    assignments = ExerciseAssignment.query.filter_by(document_id=exercise_id).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1991, in filter_by
+    clauses = [
+              ^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1992, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "exercise_assignments" has no property "document_id"
+[2025-04-11 23:05:20,177] ERROR in app: Exception on /assign_exercise/1 [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'ExerciseAssignment' has no attribute 'document_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/routes/exercise_routes.py", line 350, in assign_exercise
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1991, in filter_by
+    clauses = [
+              ^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1992, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "exercise_assignments" has no property "document_id"
+[2025-04-11 23:05:59 +0000] [10] [INFO] Starting gunicorn 23.0.0
+[2025-04-11 23:05:59 +0000] [10] [INFO] Listening at: http://0.0.0.0:5001 (10)
+[2025-04-11 23:05:59 +0000] [10] [INFO] Using worker: gthread
+[2025-04-11 23:05:59 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-04-11 23:05:59 +0000] [12] [INFO] Booting worker with pid: 12
+[2025-04-11 23:05:59 +0000] [13] [INFO] Booting worker with pid: 13
+[2025-04-11 23:05:59 +0000] [14] [INFO] Booting worker with pid: 14
