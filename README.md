@@ -268,6 +268,9 @@ Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) po
   - Steeve PYTEL
 
 
+- D'après une idée originale de [David Roche](https://www.linkedin.com/in/david-roche-34b9a024a/)
+- Développé pour l'Éducation Nationale
+  
 ## 🔗 Liens utiles
 
 - [Documentation Flask](https://flask.palletsprojects.com/)
