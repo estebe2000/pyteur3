@@ -72,8 +72,8 @@ with app.app_context():
             user = User(
                 nom="Pyteur",
                 prenom="Eleve",
-                login="eleve.pyteur",
-                password=generate_password_hash("password"),
+                login="eleve",
+                password=generate_password_hash("eleve"),
                 role="eleve",
                 date_naissance=date(2005, 1, 1),
                 sexe="G",
