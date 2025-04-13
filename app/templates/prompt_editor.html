@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+<style>
+    .CodeMirror {
+        height: 400px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .tab-content {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+    }
+    .nav-tabs {
+        margin-bottom: 0;
+    }
+    .nav-tabs .nav-link {
+        border-radius: 4px 4px 0 0;
+    }
+    .nav-tabs .nav-link.active {
+        background-color: #f8f9fa;
+        border-bottom-color: #f8f9fa;
+    }
+    .section-tabs .nav-link {
+        font-weight: bold;
+    }
+    .prompt-section {
+        margin-bottom: 30px;
+    }
+    .prompt-section h3 {
+        margin-bottom: 15px;
+    }
+    .btn-save {
+        margin-top: 15px;
+    }
+    .preview-section {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .preview-section pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    .variables-section {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f0f8ff;
+        border: 1px solid #b8d0e8;
+        border-radius: 4px;
+    }
+    .variable-tag {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .variable-tag:hover {
+        background-color: #dee2e6;
+    }
+</style>
+{% endblock %}
+
+{% block breadcrumb %}
+<a href="{{ url_for('dashboard.home') }}">{{ labels['home'] }}</a> {{ labels['breadcrumb_separator'] }} {{ labels['exercise_generator'] }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ labels['exercise_generator'] }}</h2>
+    <p><strong>IA :</strong> {{ ia_name }} | <strong>Modèle :</strong> {{ model_name }}</p>
+
+    <!-- Onglets principaux -->
+    <ul class="nav nav-tabs section-tabs mb-3" id="mainTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="generation-tab" data-bs-toggle="tab" data-bs-target="#generation" type="button" role="tab" aria-controls="generation" aria-selected="true">Génération</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="evaluation-tab" data-bs-toggle="tab" data-bs-target="#evaluation" type="button" role="tab" aria-controls="evaluation" aria-selected="false">Évaluation</button>
+        </li>
+    </ul>
+
+    <!-- Contenu des onglets -->
+    <div class="tab-content" id="mainTabsContent">
+        <!-- Onglet Génération -->
+        <div class="tab-pane fade show active" id="generation" role="tabpanel" aria-labelledby="generation-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="prompt-section">
+                        <h3>Prompt de génération d'exercice</h3>
+                        <div class="variables-section">
+                            <h5>Variables disponibles :</h5>
+                            <div class="variable-tags">
+                                <span class="variable-tag" data-value="{niveau}">niveau</span>
+                                <span class="variable-tag" data-value="{theme}">theme</span>
+                                <span class="variable-tag" data-value="{difficulte}">difficulte</span>
+                                <span class="variable-tag" data-value="{description}">description</span>
+                                <span class="variable-tag" data-value="{debutant}">debutant</span>
+                                <span class="variable-tag" data-value="{niveau_python}">niveau_python</span>
+                            </div>
+                        </div>
+                        <textarea id="generationPrompt" class="form-control">{{ generation_prompt }}</textarea>
+                        <button id="saveGenerationPrompt" class="btn btn-primary btn-save">Enregistrer le prompt de génération</button>
+                        <button id="resetGenerationPrompt" class="btn btn-outline-secondary btn-save ml-2">Réinitialiser</button>
+                    </div>
+
+                    <div class="preview-section">
+                        <h4>Aperçu du prompt avec les variables remplacées :</h4>
+                        <pre id="generationPreview"></pre>
+                    </div>
+
+                    <div class="mt-4">
+                        <h4>Tester le prompt</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="testNiveau">Niveau :</label>
+                                <select id="testNiveau" class="form-control">
+                                    <option value="Troisième">Troisième</option>
+                                    <option value="SNT">SNT</option>
+                                    <option value="Première">Première</option>
+                                    <option value="Terminale">Terminale</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="testTheme">Thème :</label>
+                                <input type="text" id="testTheme" class="form-control" value="Algorithmes de tri">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="testDifficulte">Difficulté (1-5) :</label>
+                                <input type="number" id="testDifficulte" class="form-control" min="1" max="5" value="3">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="testDebutant">Débutant :</label>
+                                <select id="testDebutant" class="form-control">
+                                    <option value="false">Non</option>
+                                    <option value="true">Oui</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="testDescription">Description :</label>
+                                <textarea id="testDescription" class="form-control" rows="3">Créer un algorithme de tri à bulles</textarea>
+                            </div>
+                        </div>
+                        <button id="testGenerationPrompt" class="btn btn-success">Tester le prompt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Évaluation -->
+        <div class="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="prompt-section">
+                        <h3>Prompt d'évaluation de code</h3>
+                        <div class="variables-section">
+                            <h5>Variables disponibles :</h5>
+                            <div class="variable-tags">
+                                <span class="variable-tag" data-value="{code}">code</span>
+                                <span class="variable-tag" data-value="{enonce}">enonce</span>
+                                <span class="variable-tag" data-value="{HTML_FORMATTING_INSTRUCTIONS}">HTML_FORMATTING_INSTRUCTIONS</span>
+                            </div>
+                        </div>
+                        <textarea id="evaluationPrompt" class="form-control">{{ evaluation_prompt }}</textarea>
+                        <button id="saveEvaluationPrompt" class="btn btn-primary btn-save">Enregistrer le prompt d'évaluation</button>
+                        <button id="resetEvaluationPrompt" class="btn btn-outline-secondary btn-save ml-2">Réinitialiser</button>
+                    </div>
+
+                    <div class="preview-section">
+                        <h4>Aperçu du prompt avec les variables remplacées :</h4>
+                        <pre id="evaluationPreview"></pre>
+                    </div>
+
+                    <div class="mt-4">
+                        <h4>Tester le prompt</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="testEnonce">Énoncé :</label>
+                                <textarea id="testEnonce" class="form-control" rows="3">Créer une fonction qui calcule la factorielle d'un nombre.</textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="testCode">Code à évaluer :</label>
+                                <textarea id="testCode" class="form-control" rows="5">def factorielle(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorielle(n-1)
+
+print(factorielle(5))</textarea>
+                            </div>
+                        </div>
+                        <button id="testEvaluationPrompt" class="btn btn-success">Tester le prompt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Éléments cachés pour le JavaScript -->
+<div style="display: none;">
+    <script id="labels_json" type="application/json">{{ labels | tojson }}</script>
+    <div id="default_generation_prompt">{{ default_generation_prompt }}</div>
+    <div id="default_evaluation_prompt">{{ default_evaluation_prompt }}</div>
+    <div id="default_html_formatting">{{ default_html_formatting }}</div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+<script src="{{ url_for('static', filename='js/prompt_editor.js') }}"></script>
+{% endblock %}

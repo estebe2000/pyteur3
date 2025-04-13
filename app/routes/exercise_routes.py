@@ -8,7 +8,7 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from app.models import db, User, Document, SchoolClass, ExerciseAssignment, Rubrique
 from app.ia_client import generate_text
-from app.prompts_generateur import prompt_generation_exercice
+from app.prompts_generateur import prompt_generation_exercice, HTML_FORMATTING_INSTRUCTIONS
 import tempfile
 
 exercise_bp = Blueprint('exercise', __name__)
@@ -608,6 +608,182 @@ def get_temp_notebook(notebook_id):
             return jsonify({"error": "Notebook non trouvé ou expiré"})
     except Exception as e:
         return jsonify({"error": str(e)})
+
+@exercise_bp.route('/prompt_editor')
+def prompt_editor():
+    """Page de l'éditeur de prompts"""
+    # Récupérer les informations sur l'IA et le modèle
+    ia_name = current_app.config.get('IA_NAME', 'IA locale')
+    model_name = current_app.config.get('MODEL_NAME', 'Modèle par défaut')
+    
+    # Récupérer les labels pour les traductions
+    from app.lang.lang_fr import LABELS as labels_fr
+    from app.lang.lang_en import LABELS as labels_en
+    lang = request.cookies.get('lang', 'fr')
+    labels = labels_fr if lang == 'fr' else labels_en
+    
+    # Récupérer les prompts personnalisés s'ils existent
+    try:
+        with open(os.path.join(current_app.root_path, 'prompts_config.json'), 'r', encoding='utf-8') as f:
+            prompts_config = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        prompts_config = {
+            "generation": None,
+            "evaluation": None,
+            "html_formatting": None
+        }
+    
+    # Récupérer les prompts par défaut depuis le module prompts_generateur
+    from app.prompts_generateur import prompt_generation_exercice, prompt_evaluation_code, HTML_FORMATTING_INSTRUCTIONS
+    
+    # Utiliser les prompts personnalisés s'ils existent, sinon utiliser les prompts par défaut
+    generation_prompt = prompts_config.get('generation') or prompt_generation_exercice("Niveau", "Theme", 3, "Description", False)
+    evaluation_prompt = prompts_config.get('evaluation') or prompt_evaluation_code("code", "enonce")
+    html_formatting = prompts_config.get('html_formatting') or HTML_FORMATTING_INSTRUCTIONS
+    
+    # Extraire le corps des fonctions pour obtenir uniquement le texte du prompt
+    import inspect
+    
+    # Pour le prompt de génération, on extrait le corps de la fonction
+    generation_prompt_default = inspect.getsource(prompt_generation_exercice)
+    generation_prompt_default = generation_prompt_default.split('return f"""')[1].split('"""')[0]
+    
+    # Pour le prompt d'évaluation, on extrait le corps de la fonction
+    evaluation_prompt_default = inspect.getsource(prompt_evaluation_code)
+    evaluation_prompt_default = evaluation_prompt_default.split('return f"""')[1].split('"""')[0]
+    
+    return render_template('prompt_editor.html',
+                          ia_name=ia_name,
+                          model_name=model_name,
+                          labels=labels,
+                          generation_prompt=generation_prompt,
+                          evaluation_prompt=evaluation_prompt,
+                          default_generation_prompt=generation_prompt_default,
+                          default_evaluation_prompt=evaluation_prompt_default,
+                          default_html_formatting=HTML_FORMATTING_INSTRUCTIONS)
+
+@exercise_bp.route('/api/save_prompt', methods=['POST'])
+def save_prompt():
+    """Sauvegarde un prompt personnalisé"""
+    try:
+        data = request.json
+        prompt_type = data.get('type')
+        content = data.get('content')
+        
+        if not prompt_type or not content:
+            return jsonify({"success": False, "error": "Type de prompt ou contenu manquant"}), 400
+        
+        # Vérifier que le type de prompt est valide
+        if prompt_type not in ['generation', 'evaluation', 'html_formatting']:
+            return jsonify({"success": False, "error": "Type de prompt invalide"}), 400
+        
+        # Charger la configuration actuelle
+        try:
+            with open(os.path.join(current_app.root_path, 'prompts_config.json'), 'r', encoding='utf-8') as f:
+                prompts_config = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            prompts_config = {
+                "generation": None,
+                "evaluation": None,
+                "html_formatting": None
+            }
+        
+        # Mettre à jour le prompt
+        prompts_config[prompt_type] = content
+        
+        # Sauvegarder la configuration
+        with open(os.path.join(current_app.root_path, 'prompts_config.json'), 'w', encoding='utf-8') as f:
+            json.dump(prompts_config, f, ensure_ascii=False, indent=4)
+        
+        return jsonify({"success": True})
+    except Exception as e:
+        current_app.logger.error(f"Erreur lors de la sauvegarde du prompt: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@exercise_bp.route('/api/test_prompt', methods=['POST'])
+def test_prompt():
+    """Teste un prompt personnalisé"""
+    try:
+        data = request.json
+        prompt_type = data.get('type')
+        prompt_content = data.get('prompt')
+        params = data.get('params', {})
+        
+        if not prompt_type or not prompt_content:
+            return jsonify({"success": False, "error": "Type de prompt ou contenu manquant"}), 400
+        
+        # Vérifier que le type de prompt est valide
+        if prompt_type not in ['generation', 'evaluation']:
+            return jsonify({"success": False, "error": "Type de prompt invalide"}), 400
+        
+        # Construire le prompt final en remplaçant les variables
+        final_prompt = prompt_content
+        
+        if prompt_type == 'generation':
+            niveau = params.get('niveau', 'Terminale')
+            theme = params.get('theme', 'Algorithmes')
+            difficulte = params.get('difficulte', 3)
+            description = params.get('description', 'Exercice sur les algorithmes')
+            debutant = params.get('debutant', False)
+            
+            # Créer le niveau_python en fonction de debutant
+            niveau_python = ""
+            if debutant:
+                niveau_python = """
+IMPORTANT: Cet exercice est destiné à des débutants en Python. 
+N'utilise PAS de fonctions, de classes, d'objets ou d'autres concepts avancés dans le squelette de code.
+Utilise uniquement des variables, des opérations de base, des conditions (if/else) et des boucles (for/while).
+Le code doit être simple et direct, sans abstractions avancées.
+"""
+            else:
+                niveau_python = """
+Cet exercice peut utiliser des fonctions, des classes et d'autres concepts avancés de Python si nécessaire.
+"""
+            
+            # Remplacer les variables dans le prompt
+            final_prompt = final_prompt.replace('{niveau}', niveau)
+            final_prompt = final_prompt.replace('{theme}', theme)
+            final_prompt = final_prompt.replace('{difficulte}', str(difficulte))
+            final_prompt = final_prompt.replace('{description}', description)
+            final_prompt = final_prompt.replace('{debutant}', str(debutant).lower())
+            final_prompt = final_prompt.replace('{niveau_python}', niveau_python)
+        
+        elif prompt_type == 'evaluation':
+            code = params.get('code', '# Code à évaluer')
+            enonce = params.get('enonce', 'Énoncé de l\'exercice')
+            html_formatting = params.get('HTML_FORMATTING_INSTRUCTIONS', HTML_FORMATTING_INSTRUCTIONS)
+            
+            # Remplacer les variables dans le prompt
+            final_prompt = final_prompt.replace('{code}', code)
+            final_prompt = final_prompt.replace('{enonce}', enonce)
+            final_prompt = final_prompt.replace('{HTML_FORMATTING_INSTRUCTIONS}', html_formatting)
+        
+        # Utiliser l'IA pour générer une réponse
+        try:
+            response = generate_text(final_prompt, max_tokens=1024, temperature=0.7)
+            
+            # Convertir la réponse en HTML pour l'affichage
+            if prompt_type == 'generation':
+                import markdown
+                response_html = markdown.markdown(response)
+            else:
+                response_html = response
+            
+            return jsonify({
+                "success": True,
+                "prompt": final_prompt,
+                "response": response_html
+            })
+        except Exception as e:
+            current_app.logger.error(f"Erreur lors de la génération du texte: {str(e)}")
+            return jsonify({
+                "success": False,
+                "error": f"Erreur lors de la génération du texte: {str(e)}"
+            }), 500
+    
+    except Exception as e:
+        current_app.logger.error(f"Erreur lors du test du prompt: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
 
 # Nettoyage périodique des fichiers temporaires
 @exercise_bp.route('/api/cleanup_temp_data')

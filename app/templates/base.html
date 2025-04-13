@@ -51,16 +51,19 @@
                                 <span>{{ labels['qcm'] }}</span>
                             </a>
                             
-                            
-                            
                             <a href="{{ url_for('exercise.createur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.createur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                                 <i class="fas fa-edit mr-3"></i>
-                                <span>{{ labels.get('creator_exercise', 'Créateur exercice') }}</span>
+                                <span>{{ labels.get('creator_exercise', 'Réglage exercice IA') }}</span>
+                            </a>
+                            
+                            <a href="{{ url_for('exercise.prompt_editor') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.prompt_editor') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
+                                <i class="fas fa-edit mr-3"></i>
+                                <span>{{ labels.get('prompt_editor', 'Réglage prompt IA') }}</span>
                             </a>
                             
                             <a href="{{ url_for('exercise.generateur_exercice') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('exercise.generateur_exercice') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">
                                 <i class="fas fa-magic mr-3"></i>
-                                <span>{{ labels['exercise_generator'] }}</span>
+                                <span>{{ labels.get('test_ia_generation', 'Test IA génération') }}</span>
                             </a>
                             
                             <a href="{{ url_for('dashboard.statistiques') }}" class="flex items-center px-2 py-2 text-sm font-medium rounded-md {% if request.path == url_for('dashboard.statistiques') %}bg-primary bg-opacity-10 text-primary{% else %}text-gray-600 hover:bg-gray-100{% endif %}">

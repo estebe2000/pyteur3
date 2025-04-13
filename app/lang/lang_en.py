@@ -195,6 +195,8 @@ LABELS = {
     "error_loading_data": "Error loading data:",
     "error_upload_notebook": "Error uploading notebook",
     "creator_exercise": "Exercise AI Settings",
+    "prompt_editor": "AI Prompt Settings",
+    "test_ia_generation": "AI Generation Test",
     "homework_management": "Homework Management",
     "welcome_message": "Welcome Message",
     "documentation": "Documentation",
