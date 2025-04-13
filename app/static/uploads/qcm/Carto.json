@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Quel est le parallèle de référence pour la latitude, correspondant à 0° ?",
+    "propositions": [
+      "Le Tropique du Cancer",
+      "Le Cercle Polaire Arctique",
+      "L'Équateur",
+      "Le Méridien de Greenwich"
+    ],
+    "bonne_reponse": 2
+  },
+  {
+    "question": "Sur quel principe mathématique repose principalement le calcul de la position par GPS ?",
+    "propositions": [
+      "La triangulation (mesure d'angles)",
+      "La trigonométrie sphérique",
+      "La trilatération (mesure de distances)",
+      "L'effet Doppler"
+    ],
+    "bonne_reponse": 2
+  },
+  {
+    "question": "Laquelle de ces propositions est une source d'erreur affectant la précision du GPS ?",
+    "propositions": [
+      "La rotation de la Terre",
+      "Les retards du signal dus à la traversée de l'atmosphère (ionosphère, troposphère)",
+      "La présence de la Lune",
+      "Le champ magnétique terrestre"
+    ],
+    "bonne_reponse": 1
+  },
+  {
+    "question": "Que signifie l'acronyme GPS ?",
+    "propositions": [
+      "Global Positioning Satellite",
+      "Geographic Positioning System",
+      "Global Positioning System",
+      "General Purpose Software"
+    ],
+    "bonne_reponse": 2
+  },
+  {
+    "question": "Quel est le nom du système de navigation par satellite chinois ?",
+    "propositions": [
+      "GPS",
+      "Galileo",
+      "Beidou (BDS)",
+      "NavIC"
+    ],
+    "bonne_reponse": 2
+  }
+]
