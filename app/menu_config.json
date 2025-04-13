@@ -26,20 +26,6 @@
       "icon": "fa-globe",
       "target": "_blank",
       "visible": true
-    },
-    "link_prompt_editor": {
-      "name": "Réglage prompt IA",
-      "url": "/prompt_editor",
-      "icon": "fa-edit",
-      "target": "_self",
-      "visible": true
-    },
-    "link_generateur_exercice": {
-      "name": "Test IA génération",
-      "url": "/generateur_exercice",
-      "icon": "fa-robot",
-      "target": "_self",
-      "visible": true
     }
   }
 }
