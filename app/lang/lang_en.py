@@ -169,7 +169,7 @@ LABELS = {
     "toggle_task_button": "Mark done/undone",
     "edit_button": "Edit",
     "delete_button": "Delete",
-    "exercise_generator": "Exercise Generator",
+    "exercise_generator": "AI Prompt Settings",
     "choose_level": "Choose a school level",
     "choose_theme": "Choose a theme",
     "choose_difficulty": "Choose difficulty",
@@ -193,5 +193,12 @@ LABELS = {
     "open_console": "Open in Python console",
     "open_notebook": "Open in Python notebook",
     "error_loading_data": "Error loading data:",
-    "error_upload_notebook": "Error uploading notebook"
+    "error_upload_notebook": "Error uploading notebook",
+    "creator_exercise": "Exercise AI Settings",
+    "homework_management": "Homework Management",
+    "welcome_message": "Welcome Message",
+    "documentation": "Documentation",
+    "flash_exercises": "Flash Exercises",
+    "qcm_flash": "Flash MCQ",
+    "logout": "Logout"
 }
