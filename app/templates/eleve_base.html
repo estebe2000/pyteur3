@@ -77,6 +77,10 @@
             <i class="fas fa-rocket"></i>
             <span>Mes applications</span>
         </div>
+        <div class="links-btn" onclick="toggleLinksMenu()">
+            <i class="fas fa-link"></i>
+            <span>Liens</span>
+        </div>
         <div class="widgets-btn" onclick="openWidgetsPanel()" title="Gestionnaire de widgets">
             <i class="fas fa-th"></i>
         </div>
@@ -97,22 +101,16 @@
                     </div>
                 {% endif %}
             {% endfor %}
-            
-            <!-- Séparateur si des liens externes sont présents et visibles -->
-            {% set has_visible_links = false %}
-            {% for link_id, link_data in menu_config.external_links.items() if link_data.visible %}
-                {% set has_visible_links = true %}
-            {% endfor %}
-            
-            {% if has_visible_links %}
-                <div class="menu-separator my-2 border-t border-gray-600"></div>
-            {% endif %}
-            
-            <!-- Liens externes -->
+        </div>
+        
+        <!-- Menu des liens externes -->
+        <div class="links-menu" id="linksMenu">
             {% for link_id, link_data in menu_config.external_links.items() %}
                 {% if link_data.visible %}
-                    <div class="menu-item" {% if link_data.target == 'window' %}onclick="openExternalWindow('{{ link_id }}', '{{ link_data.name }}', '{{ link_data.url }}', '{{ link_data.icon }}')"{% else %}onclick="window.open('{{ link_data.url }}', '_blank')"{% endif %}>
-                        <i class="fas {{ link_data.icon }}"></i>
+                    <div class="menu-item" data-link-id="{{ link_id }}" data-link-name="{{ link_data.name }}" data-link-url="{{ link_data.url }}" data-link-target="{{ link_data.target }}">
+                        <div class="link-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
                         <span>{{ link_data.name }}</span>
                     </div>
                 {% endif %}
@@ -145,6 +143,42 @@
     <script src="{{ url_for('static', filename='js/widgets.js') }}"></script>
     <script src="{{ url_for('static', filename='js/calculator-widget.js') }}"></script>
     <script src="{{ url_for('static', filename='js/calendar-widget.js') }}"></script>
+    <script>
+        // Précharger les favicons pour les liens externes
+        document.addEventListener('DOMContentLoaded', function() {
+            const linkItems = document.querySelectorAll('.links-menu .menu-item');
+            
+            linkItems.forEach(item => {
+                const linkUrl = item.dataset.linkUrl;
+                const linkId = item.dataset.linkId;
+                const linkName = item.dataset.linkName;
+                const linkTarget = item.dataset.linkTarget;
+                const iconContainer = item.querySelector('.link-icon');
+                
+                // Récupérer le favicon
+                fetch(`/api/get_favicon?url=${encodeURIComponent(linkUrl)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.favicon_url) {
+                            // Remplacer l'icône par le favicon
+                            iconContainer.innerHTML = `<img src="${data.favicon_url}" alt="favicon" style="width: 16px; height: 16px;">`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de la récupération du favicon:', error);
+                    });
+                
+                // Ajouter l'événement de clic
+                item.addEventListener('click', function() {
+                    if (linkTarget === 'window') {
+                        openExternalWindow(linkId, linkName, linkUrl);
+                    } else {
+                        window.open(linkUrl, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
     <script src="{{ url_for('static', filename='js/eleve_base.js') }}"></script>
 </body>
 </html>

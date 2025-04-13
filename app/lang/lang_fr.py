@@ -168,7 +168,7 @@ LABELS = {
     "toggle_task_button": "Marquer fait/non fait",
     "edit_button": "Modifier",
     "delete_button": "Supprimer",
-    "exercise_generator": "Générateur d'exercice",
+    "exercise_generator": "Réglage IA exercice",
     "choose_level": "Choisissez un niveau scolaire",
     "choose_theme": "Choisissez un thème",
     "choose_difficulty": "Choisissez la difficulté",
@@ -192,5 +192,12 @@ LABELS = {
     "open_console": "Ouvrir dans la console Python",
     "open_notebook": "Ouvrir dans notebook Python",
     "error_loading_data": "Erreur chargement données:",
-    "error_upload_notebook": "Erreur upload notebook"
+    "error_upload_notebook": "Erreur upload notebook",
+    "creator_exercise": "Créateur exercice",
+    "homework_management": "Gestion des devoirs",
+    "welcome_message": "Message de bienvenue",
+    "documentation": "Documentation",
+    "flash_exercises": "Exercices flash",
+    "qcm_flash": "QCM flash",
+    "logout": "Déconnexion"
 }

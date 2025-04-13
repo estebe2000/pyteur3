@@ -181,7 +181,8 @@ def settings():
     # Récupérer les labels pour le titre
     from app.lang.lang_fr import LABELS as labels_fr
     from app.lang.lang_en import LABELS as labels_en
-    lang = request.cookies.get('lang', 'fr')
+    from flask import session
+    lang = request.cookies.get('lang') or session.get('lang', 'fr')
     labels = labels_fr if lang == 'fr' else labels_en
     
     # Passer l'URL du drive au template
@@ -361,6 +362,9 @@ def update_widgets_config():
 def set_language(lang_code):
     if lang_code in ['fr', 'en']:
         session['lang'] = lang_code
+        response = redirect(request.referrer or url_for('dashboard.home'))
+        response.set_cookie('lang', lang_code, max_age=60*60*24*365)  # Cookie valide pendant 1 an
+        return response
     referrer = request.referrer
     if referrer:
         return redirect(referrer)

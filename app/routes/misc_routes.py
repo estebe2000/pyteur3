@@ -1,14 +1,64 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from markupsafe import Markup
 from flask_login import login_required, current_user
 import markdown
 import os
+import requests
+import re
+from urllib.parse import urljoin, urlparse
 from app import db, csrf
 from app.models import TodoList, TodoListAssignment, TodoItem, User, Group, SchoolClass, Homework, HomeworkCompletion, Rubrique
 from sqlalchemy import or_
 from datetime import datetime
 
 misc_bp = Blueprint('misc', __name__)
+
+@misc_bp.route('/api/get_favicon', methods=['GET'])
+def get_favicon():
+    url = request.args.get('url')
+    if not url:
+        return jsonify({'error': 'URL manquante'}), 400
+    
+    try:
+        # Ajouter http:// si nécessaire
+        if not url.startswith(('http://', 'https://')):
+            url = 'https://' + url
+        
+        # Récupérer la page
+        response = requests.get(url, timeout=5)
+        if response.status_code != 200:
+            return jsonify({'error': 'Site inaccessible'}), 404
+        
+        # Chercher les liens d'icônes avec des expressions régulières
+        icon_links = []
+        
+        # Chercher les balises link avec rel="icon" ou rel="shortcut icon"
+        link_pattern = r'<link[^>]*rel=["\'](icon|shortcut icon)["\'][^>]*href=["\'](.*?)["\'][^>]*>'
+        for match in re.finditer(link_pattern, response.text, re.IGNORECASE):
+            icon_url = match.group(2)
+            icon_url = urljoin(url, icon_url)
+            icon_links.append(icon_url)
+        
+        # Si aucune icône n'est trouvée, essayer avec /favicon.ico
+        if not icon_links:
+            parsed_url = urlparse(url)
+            favicon_url = f"{parsed_url.scheme}://{parsed_url.netloc}/favicon.ico"
+            icon_links.append(favicon_url)
+        
+        # Vérifier si l'icône est accessible
+        for icon_url in icon_links:
+            try:
+                icon_response = requests.head(icon_url, timeout=3)
+                if icon_response.status_code == 200:
+                    return jsonify({'favicon_url': icon_url})
+            except:
+                continue
+        
+        # Si aucune icône n'est accessible
+        return jsonify({'error': 'Favicon non trouvé'}), 404
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @misc_bp.route('/documentation')
 @misc_bp.route('/documentation/<path:page>')
@@ -111,7 +161,8 @@ def todo():
     # Récupérer les labels pour le titre
     from app.lang.lang_fr import LABELS as labels_fr
     from app.lang.lang_en import LABELS as labels_en
-    lang = request.cookies.get('lang', 'fr')
+    from flask import session
+    lang = request.cookies.get('lang') or session.get('lang', 'fr')
     labels = labels_fr if lang == 'fr' else labels_en
     
     if is_iframe:

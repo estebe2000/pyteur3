@@ -51,12 +51,12 @@ def create_app():
 
     @app.context_processor
     def inject_labels():
-        from flask import session
-        lang_code = session.get('lang', 'fr')
+        from flask import session, request
+        # Récupérer la langue depuis les cookies ou la session
+        lang_code = request.cookies.get('lang') or session.get('lang', 'fr')
         if lang_code == 'en':
             try:
                 from app.lang.lang_en import LABELS as LABELS_EN
-
                 return {'labels': LABELS_EN}
             except ImportError:
                 from app.lang.lang_fr import LABELS as LABELS_FR

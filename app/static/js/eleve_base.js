@@ -5,6 +5,23 @@ let externalWindows = {}; // Pour stocker les références aux fenêtres externe
 function toggleStartMenu() {
     const menu = document.getElementById('startMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    
+    // Fermer le menu des liens si ouvert
+    const linksMenu = document.getElementById('linksMenu');
+    if (linksMenu.style.display === 'block') {
+        linksMenu.style.display = 'none';
+    }
+}
+
+function toggleLinksMenu() {
+    const menu = document.getElementById('linksMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    
+    // Fermer le menu des applications si ouvert
+    const startMenu = document.getElementById('startMenu');
+    if (startMenu.style.display === 'block') {
+        startMenu.style.display = 'none';
+    }
 }
 
 function bringToFront(win) {
@@ -56,7 +73,7 @@ function openWindow(id) {
 }
 
 // Fonction pour ouvrir une fenêtre externe
-function openExternalWindow(linkId, linkName, linkUrl, linkIcon) {
+function openExternalWindow(linkId, linkName, linkUrl) {
     // Vérifier si la fenêtre existe déjà
     const winId = 'external-' + linkId + '-window';
     let win = document.getElementById(winId);
@@ -66,68 +83,90 @@ function openExternalWindow(linkId, linkName, linkUrl, linkIcon) {
         win.style.display = 'block';
         bringToFront(win);
     } else {
-        // Sinon, créer une nouvelle fenêtre
-        const windowDiv = document.createElement('div');
-        windowDiv.id = winId;
-        windowDiv.className = 'window';
-        windowDiv.style.display = 'block';
-        
-        // Créer l'en-tête de la fenêtre
-        const headerDiv = document.createElement('div');
-        headerDiv.className = 'window-header';
-        
-        const titleDiv = document.createElement('div');
-        titleDiv.innerHTML = `<i class="fas ${linkIcon}"></i> <span>${linkName}</span>`;
-        
-        const closeBtn = document.createElement('div');
-        closeBtn.className = 'close-btn';
-        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-        closeBtn.onclick = function() { closeWindow('external-' + linkId); };
-        
-        headerDiv.appendChild(titleDiv);
-        headerDiv.appendChild(closeBtn);
-        
-        // Créer le contenu de la fenêtre
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'window-content overflow-auto p-0';
-        
-        // Créer l'iframe
-        const iframe = document.createElement('iframe');
-        iframe.src = linkUrl;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.id = 'external-' + linkId + '-iframe';
-        
-        contentDiv.appendChild(iframe);
-        
-        // Assembler la fenêtre
-        windowDiv.appendChild(headerDiv);
-        windowDiv.appendChild(contentDiv);
-        
-        // Ajouter la fenêtre au document
-        document.body.appendChild(windowDiv);
-        
-        // Rendre la fenêtre déplaçable
-        makeWindowDraggable(windowDiv);
-        
-        // Centrer et dimensionner la fenêtre
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const winWidth = viewportWidth * 0.95;
-        const winHeight = viewportHeight * 0.90;
-        
-        windowDiv.style.width = `${winWidth}px`;
-        windowDiv.style.height = `${winHeight}px`;
-        windowDiv.style.left = `${(viewportWidth - winWidth) / 2}px`;
-        windowDiv.style.top = `${(viewportHeight - winHeight) / 2}px`;
-        
-        // Mettre la fenêtre au premier plan
-        bringToFront(windowDiv);
-        
-        // Stocker la référence à la fenêtre
-        externalWindows[linkId] = windowDiv;
+        // Récupérer le favicon du site
+        fetch(`/api/get_favicon?url=${encodeURIComponent(linkUrl)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Créer la fenêtre avec l'icône récupérée ou l'icône par défaut
+                createExternalWindow(linkId, linkName, linkUrl, data.favicon_url || null);
+            })
+            .catch(error => {
+                // En cas d'erreur, utiliser l'icône par défaut
+                console.error('Erreur lors de la récupération du favicon:', error);
+                createExternalWindow(linkId, linkName, linkUrl, null);
+            });
     }
+}
+
+// Fonction pour créer la fenêtre externe
+function createExternalWindow(linkId, linkName, linkUrl, faviconUrl) {
+    // Créer une nouvelle fenêtre
+    const windowDiv = document.createElement('div');
+    windowDiv.id = 'external-' + linkId + '-window';
+    windowDiv.className = 'window';
+    windowDiv.style.display = 'block';
+    
+    // Créer l'en-tête de la fenêtre
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'window-header';
+    
+    const titleDiv = document.createElement('div');
+    
+    // Utiliser le favicon si disponible, sinon utiliser l'icône par défaut
+    if (faviconUrl) {
+        titleDiv.innerHTML = `<img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 8px;"> <span>${linkName}</span>`;
+    } else {
+        titleDiv.innerHTML = `<i class="fas fa-globe"></i> <span>${linkName}</span>`;
+    }
+    
+    const closeBtn = document.createElement('div');
+    closeBtn.className = 'close-btn';
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    closeBtn.onclick = function() { closeWindow('external-' + linkId); };
+    
+    headerDiv.appendChild(titleDiv);
+    headerDiv.appendChild(closeBtn);
+    
+    // Créer le contenu de la fenêtre
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'window-content overflow-auto p-0';
+    
+    // Créer l'iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = linkUrl;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframe.id = 'external-' + linkId + '-iframe';
+    
+    contentDiv.appendChild(iframe);
+    
+    // Assembler la fenêtre
+    windowDiv.appendChild(headerDiv);
+    windowDiv.appendChild(contentDiv);
+    
+    // Ajouter la fenêtre au document
+    document.body.appendChild(windowDiv);
+    
+    // Rendre la fenêtre déplaçable
+    makeWindowDraggable(windowDiv);
+    
+    // Centrer et dimensionner la fenêtre
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const winWidth = viewportWidth * 0.95;
+    const winHeight = viewportHeight * 0.90;
+    
+    windowDiv.style.width = `${winWidth}px`;
+    windowDiv.style.height = `${winHeight}px`;
+    windowDiv.style.left = `${(viewportWidth - winWidth) / 2}px`;
+    windowDiv.style.top = `${(viewportHeight - winHeight) / 2}px`;
+    
+    // Mettre la fenêtre au premier plan
+    bringToFront(windowDiv);
+    
+    // Stocker la référence à la fenêtre
+    externalWindows[linkId] = windowDiv;
 }
 
 // Fonction pour rendre une fenêtre déplaçable
@@ -544,11 +583,28 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Fermer le menu démarrer quand on clique sur un élément
-    document.querySelectorAll('.start-menu .menu-item').forEach(item => {
+    // Fermer les menus quand on clique sur un élément
+    document.querySelectorAll('.start-menu .menu-item, .links-menu .menu-item').forEach(item => {
         item.addEventListener('click', () => {
             document.getElementById('startMenu').style.display = 'none';
+            document.getElementById('linksMenu').style.display = 'none';
         });
+    });
+    
+    // Fermer les menus quand on clique ailleurs
+    document.addEventListener('click', function(event) {
+        const startBtn = document.querySelector('.start-btn');
+        const linksBtn = document.querySelector('.links-btn');
+        const startMenu = document.getElementById('startMenu');
+        const linksMenu = document.getElementById('linksMenu');
+        
+        if (!startBtn.contains(event.target) && !startMenu.contains(event.target)) {
+            startMenu.style.display = 'none';
+        }
+        
+        if (!linksBtn.contains(event.target) && !linksMenu.contains(event.target)) {
+            linksMenu.style.display = 'none';
+        }
     });
     
     // Initialisation des particules pour le logo PYTEUR
