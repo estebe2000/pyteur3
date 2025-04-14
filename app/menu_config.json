@@ -20,11 +20,18 @@
       "target": "window",
       "visible": true
     },
-    "link_1744393042643_783": {
-      "name": "Scratch",
-      "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted",
+    "link_1744625444983_559": {
+      "name": "BD",
+      "url": "https://educajou.forge.apps.education.fr/autobd/?type_galerie=fonds&personnage=Primtux&fond=Montagne",
       "icon": "fa-globe",
-      "target": "_blank",
+      "target": "window",
+      "visible": true
+    },
+    "link_1744625528158_977": {
+      "name": "Scratch",
+      "url": "https://codepm.forge.apps.education.fr/app/",
+      "icon": "fa-globe",
+      "target": "window",
       "visible": true
     }
   }
