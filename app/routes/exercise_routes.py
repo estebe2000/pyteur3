@@ -93,13 +93,16 @@ def generer_exercice():
                 current_app.logger.error(f"Erreur IA: {response}")
                 response = f"L'IA n'est pas disponible actuellement. Voici l'énoncé de l'exercice:\n\n# Exercice sur {theme}\n\nNiveau: {niveau}, Difficulté: {difficulte}/5\n\n{description}\n\n```python\n# Votre code ici\n```"
         except Exception as e:
-            current_app.logger.error(f"Erreur lors de la génération du texte: {str(e)}")
+            current_app.logger.exception("Erreur lors de la génération du texte")
             response = f"L'IA n'est pas disponible actuellement. Voici l'énoncé de l'exercice:\n\n# Exercice sur {theme}\n\nNiveau: {niveau}, Difficulté: {difficulte}/5\n\n{description}\n\n```python\n# Votre code ici\n```"
-        
+
         current_app.logger.info("Envoi de la réponse au client")
         return jsonify({"prompt": prompt, "response": response})
+    except (json.JSONDecodeError, OSError) as e:
+        current_app.logger.exception("Erreur lors du traitement de la requête")
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
-        current_app.logger.error(f"Erreur dans generer_exercice: {str(e)}")
+        current_app.logger.exception("Erreur inattendue lors de la génération de l'exercice")
         return jsonify({"error": str(e)}), 500
 
 @exercise_bp.route('/api/upload_notebook', methods=['POST'])
@@ -303,6 +306,11 @@ def upload_exercise():
             
             # Sécuriser le nom du fichier
             filename = secure_filename(file.filename)
+
+            # Vérifier le type de fichier
+            if not filename.endswith(('.py', '.ipynb')):
+                flash('Type de fichier non autorisé. Seuls les fichiers .py et .ipynb sont autorisés.', 'error')
+                return redirect(url_for('exercise.exercises'))
             
             # Créer une structure de répertoires organisée
             # Format: uploads/exercises/[année]/[utilisateur_id]/

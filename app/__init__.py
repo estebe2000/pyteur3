@@ -49,6 +49,9 @@ def create_app():
     app.register_blueprint(student_performance_bp)
     app.register_blueprint(debug_bp)
 
+    from app.routes import mobile_routes
+    app.register_blueprint(mobile_routes.mobile_bp)
+
     @app.context_processor
     def inject_labels():
         from flask import session, request

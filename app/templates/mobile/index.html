@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'fr') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYTEUR Mobile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eleve_windows.css') }}">
+    <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PYTEUR Mobile</h1>
+        <p>Bienvenue sur l'interface mobile de PYTEUR !</p>
+        <ul>
+            <li><a href="#">Documents</a></li>
+            <li><a href="#">Exercices</a></li>
+            <li><a href="#">Messagerie</a></li>
+            <li><a href="#">To-Do</a></li>
+            <li><a href="#">Profil</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,27 +1,32 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from app.models import User, Document, SchoolClass
 from app import csrf
+from werkzeug.user_agent import UserAgent
 
 dashboard_bp = Blueprint('dashboard', __name__)
 
 @dashboard_bp.route('/')
 @login_required
 def home():
-    import datetime
-    nb_eleves = User.query.filter_by(role='eleve').count()
-    nb_profs = User.query.filter_by(role='professeur').count()
-    nb_classes = SchoolClass.query.count()
-    nb_exercices = Document.query.filter_by(type='exercise').count()
-    nb_documents = Document.query.filter_by(type='document').count()
-    return render_template('dashboard.html',
-                           user=current_user,
-                           now=datetime.datetime.now(),
-                           nb_eleves=nb_eleves,
-                           nb_profs=nb_profs,
-                           nb_classes=nb_classes,
-                           nb_exercices=nb_exercices,
-                           nb_documents=nb_documents)
+    user_agent = UserAgent(request.headers.get('User-Agent'))
+    if user_agent.platform in ['android', 'iphone', 'ipad']:
+        return redirect(url_for('mobile.index'))
+    else:
+        import datetime
+        nb_eleves = User.query.filter_by(role='eleve').count()
+        nb_profs = User.query.filter_by(role='professeur').count()
+        nb_classes = SchoolClass.query.count()
+        nb_exercices = Document.query.filter_by(type='exercise').count()
+        nb_documents = Document.query.filter_by(type='document').count()
+        return render_template('dashboard.html',
+                               user=current_user,
+                               now=datetime.datetime.now(),
+                               nb_eleves=nb_eleves,
+                               nb_profs=nb_profs,
+                               nb_classes=nb_classes,
+                               nb_exercices=nb_exercices,
+                               nb_documents=nb_documents)
 
 @dashboard_bp.route('/projets')
 @login_required
