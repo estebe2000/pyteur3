@@ -33,6 +33,27 @@
       "icon": "fa-globe",
       "target": "window",
       "visible": true
+    },
+    "link_1744883566477_989": {
+      "name": "Cours NSI T",
+      "url": "https://cours-snt-nsi.forge.apps.education.fr/nsi1/",
+      "icon": "fa-globe",
+      "target": "window",
+      "visible": true
+    },
+    "link_1744883573815_657": {
+      "name": "Cours NSI 1",
+      "url": "https://cours-snt-nsi.forge.apps.education.fr/nsi1/",
+      "icon": "fa-globe",
+      "target": "window",
+      "visible": true
+    },
+    "link_1744883579483_947": {
+      "name": "Cours SNT",
+      "url": "https://cours-snt-nsi.forge.apps.education.fr/nsi1/",
+      "icon": "fa-globe",
+      "target": "window",
+      "visible": true
     }
   }
 }
